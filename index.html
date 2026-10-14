@@ -5087,7 +5087,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '820-ef3ff16';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5611,17 +5611,31 @@ function _lessonDoneMap(){
   return _ldCache;
 }
 function _lessonDoneMigrate(key){
-  const mk = key + '_mig1';
-  try{ if(localStorage.getItem(mk)) return; }catch(e){ return; }
+  const mk = key + '_mig1', mk2 = key + '_mig2';
+  let need1, need2;
+  try{ need1 = !localStorage.getItem(mk); need2 = !localStorage.getItem(mk2); }catch(e){ return; }
+  if(!need1 && !need2) return;
   const lessons = (typeof LESSONS !== 'undefined' && Array.isArray(LESSONS)) ? LESSONS : [];
   let changed = false;
-  for(const l of lessons){
-    if(l.type === 'speech' || l.type === 'examsim' || _ldCache[l.id]) continue;
-    if(lessonProgress(l).pct >= 80){ _ldCache[l.id] = 1; changed = true; }
+  if(need1){
+    for(const l of lessons){
+      if(l.type === 'speech' || l.type === 'examsim' || _ldCache[l.id]) continue;
+      if(lessonProgress(l).pct >= 80){ _ldCache[l.id] = 1; changed = true; }
+    }
+  }
+  // mig2: вузли діалог/Forumsbeitrag/E-Mail, пройдені ДО виправлення (завершення тоді не
+  // записувалось, і наступний урок лишався заблокованим): картка вузла вже «зіграна» → вузол пройдено.
+  if(need2){
+    for(const l of lessons){
+      if(l.type !== 'dialogue' && l.type !== 'forum' && l.type !== 'email') continue;
+      if(_ldCache[l.id]) continue;
+      if(lessonProgress(l).pct >= 80){ _ldCache[l.id] = 1; changed = true; }
+    }
   }
   try{
     if(changed) localStorage.setItem(key, JSON.stringify(_ldCache));
-    localStorage.setItem(mk, '1');
+    if(need1) localStorage.setItem(mk, '1');
+    if(need2) localStorage.setItem(mk2, '1');
   }catch(e){}
 }
 function lessonMarkDone(id){
@@ -6592,7 +6606,8 @@ const I18N = {
     btn_dlg_finish:'Abschließen',
     
     btn_check:'Prüfen',
-    sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_res_ok:'Richtig!', sp_res_nok:'Nicht ganz', lr_l_phrases:'Sätze', sp_mic_restarting:'Mikrofon wird neu gestartet…', sp_mic_restarted:'Mikrofon neu gestartet — tippen und sprechen', sp_mic_stuck:'Das Mikrofon reagiert nicht. Schließe die Lektion und öffne sie erneut.', lr_l_phr_ok:'Richtig gesprochen', sp_skipped_toast:'Übersprungen. Weiter mit der nächsten Lektion.', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
+    sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_res_ok:'Richtig!', sp_res_nok:'Nicht ganz', lr_l_phrases:'Sätze', sp_mic_restarting:'Mikrofon wird neu gestartet…', sp_mic_restarted:'Mikrofon neu gestartet — tippen und sprechen', sp_mic_stuck:'Das Mikrofon reagiert nicht. Schließe die Lektion und öffne sie erneut.',
+     sp_mic_silent:'iOS liefert keinen Ton vom Mikrofon. Schließe die App vollständig (im App-Umschalter nach oben wischen), prüfe, ob eine andere App das Mikrofon nutzt, oder starte das iPhone neu.', sp_sr_silent:'Das Mikrofon funktioniert, aber die Spracherkennung reagiert nicht. Prüfe die Internetverbindung und ob unter Einstellungen › Allgemein › Tastatur „Diktierfunktion“ aktiv ist; schließe dann die App vollständig und öffne sie neu.', lr_l_phr_ok:'Richtig gesprochen', sp_skipped_toast:'Übersprungen. Weiter mit der nächsten Lektion.', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -6749,7 +6764,8 @@ const I18N = {
     btn_dlg_finish:'Завершити',
     
     btn_check:'Перевірити',
-    sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', sp_mic_restarting:'Перезапуск мікрофона…', sp_mic_restarted:'Мікрофон перезапущено — натисніть і говоріть', sp_mic_stuck:'Мікрофон не відповідає. Закрийте урок і відкрийте знову.', lr_l_phr_ok:'Вимовлено правильно', sp_skipped_toast:'Пропущено. Переходимо до наступного уроку.', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
+    sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', sp_mic_restarting:'Перезапуск мікрофона…', sp_mic_restarted:'Мікрофон перезапущено — натисніть і говоріть', sp_mic_stuck:'Мікрофон не відповідає. Закрийте урок і відкрийте знову.',
+     sp_mic_silent:'iOS не передає звук з мікрофона. Повністю закрийте застосунок (змахніть угору в перемикачі застосунків), перевірте, що мікрофон не зайнятий іншим застосунком, або перезавантажте iPhone.', sp_sr_silent:'Мікрофон працює, але розпізнавання мовлення не відповідає. Перевірте інтернет і що в Налаштування › Загальні › Клавіатура увімкнено «Диктування», потім повністю закрийте застосунок і відкрийте знову.', lr_l_phr_ok:'Вимовлено правильно', sp_skipped_toast:'Пропущено. Переходимо до наступного уроку.', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -6905,7 +6921,8 @@ const I18N = {
     btn_dlg_finish:'Finish',
     
     btn_check:'Check',
-    sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_res_ok:'Correct!', sp_res_nok:'Not quite', lr_l_phrases:'Phrases', sp_mic_restarting:'Restarting the microphone…', sp_mic_restarted:'Microphone restarted — tap and speak', sp_mic_stuck:'The microphone is not responding. Close the lesson and open it again.', lr_l_phr_ok:'Pronounced correctly', sp_skipped_toast:'Skipped. On to the next lesson.', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
+    sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_res_ok:'Correct!', sp_res_nok:'Not quite', lr_l_phrases:'Phrases', sp_mic_restarting:'Restarting the microphone…', sp_mic_restarted:'Microphone restarted — tap and speak', sp_mic_stuck:'The microphone is not responding. Close the lesson and open it again.',
+     sp_mic_silent:'iOS is not delivering any sound from the microphone. Close the app completely (swipe it up in the app switcher), check that no other app is using the microphone, or restart your iPhone.', sp_sr_silent:'The microphone works, but speech recognition is not responding. Check your internet connection and that Dictation is on under Settings › General › Keyboard, then close the app completely and reopen it.', lr_l_phr_ok:'Pronounced correctly', sp_skipped_toast:'Skipped. On to the next lesson.', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -7061,7 +7078,8 @@ const I18N = {
     btn_dlg_finish:'Завершить',
     
     btn_check:'Проверить',
-    sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', sp_mic_restarting:'Перезапуск микрофона…', sp_mic_restarted:'Микрофон перезапущен — нажмите и говорите', sp_mic_stuck:'Микрофон не отвечает. Закройте урок и откройте снова.', lr_l_phr_ok:'Произнесено верно', sp_skipped_toast:'Пропущено. Переходим к следующему уроку.', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
+    sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', sp_mic_restarting:'Перезапуск микрофона…', sp_mic_restarted:'Микрофон перезапущен — нажмите и говорите', sp_mic_stuck:'Микрофон не отвечает. Закройте урок и откройте снова.',
+     sp_mic_silent:'iOS не передаёт звук с микрофона. Полностью закройте приложение (смахните вверх в переключателе приложений), проверьте, что микрофон не занят другим приложением, или перезагрузите iPhone.', sp_sr_silent:'Микрофон работает, но распознавание речи не отвечает. Проверьте интернет и что в Настройки › Основные › Клавиатура включена «Диктовка», затем полностью закройте приложение и откройте снова.', lr_l_phr_ok:'Произнесено верно', sp_skipped_toast:'Пропущено. Переходим к следующему уроку.', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -11479,8 +11497,13 @@ function _runBonusLessonFlow(lesson){
     _grammarBonusPool: lesson._grammarBonusPool,
     speechCards: lesson._speechBonusPool,   // лише для 'Вимова: довгі фрази' (інакше undefined)
     speechField: lesson._speechField,
-    // Для «Вимова: довгі фрази» вузол стежки = _bonusForLessonId, щоб findCurrentLesson() після неї
-    // вказав на наступний УРОК (для решти бонусних уроків поведінку не чіпаємо).
+    // Вузол стежки = _bonusForLessonId: lfShowResult() за ним позначає вузол пройденим
+    // (lessonMarkDone) і пише mova_last_completed_lesson, щоб findCurrentLesson() після
+    // нього вказав на наступний УРОК. Це потрібно для «Вимова: довгі фрази» (_speechOnly) і
+    // для вузлів діалог/Forumsbeitrag/E-Mail (_pathNode, див. startModule*Bonus). БАГ
+    // (виправлено): для діалогу/форуму/листа тут було undefined, тож завершення бралося з
+    // синтетичного id сесії («_frm_module_…»), вузол НІКОЛИ не ставав пройденим, і наступний
+    // урок лишався заблокованим. Решта бонусів (граматика, екзамен-сим) поведінку не міняють.
     _bonusForLessonId: (lesson._speechOnly || lesson._pathNode) ? lesson._bonusForLessonId : undefined,
     _xpAtStart: xpGetTotal(),
   };
@@ -12757,10 +12780,8 @@ function startModuleDialogueBonus(lessonId){
     id: '_dlg_module_'+lesson.id,
     title,
     _isBonusLesson: true,
+    _pathNode: true,       // вузол стежки: завершення має позначити саме цей вузол (див. _runBonusLessonFlow)
     _bonusForLessonId: lesson.id,
-    _pathNode: true,   // вузол шляху: після завершення lfShowResult() має позначити lesson.id пройденим
-    chapter: lesson.chapter, module: lesson.module, _parentModuleId: lesson._parentModuleId,
-    moduleTitle: lesson.moduleTitle, chapterTitle: lesson.chapterTitle,
     steps: ['dlg_learn', 'result'],
     _dlgBonusPool: pool,   // ВЕСЬ пул одразу — без порційного "Наступний діалог"
   });
@@ -12805,10 +12826,8 @@ function startModuleForumBonus(lessonId){
     id: '_frm_module_'+lesson.id,
     title,
     _isBonusLesson: true,
+    _pathNode: true,
     _bonusForLessonId: lesson.id,
-    _pathNode: true,   // вузол шляху: після завершення lfShowResult() має позначити lesson.id пройденим
-    chapter: lesson.chapter, module: lesson.module, _parentModuleId: lesson._parentModuleId,
-    moduleTitle: lesson.moduleTitle, chapterTitle: lesson.chapterTitle,
     steps: ['frm_learn', 'result'],
     _frmBonusPool: pool,
   });
@@ -12844,10 +12863,8 @@ function startModuleEmailBonus(lessonId){
     id: '_eml_module_'+lesson.id,
     title,
     _isBonusLesson: true,
+    _pathNode: true,
     _bonusForLessonId: lesson.id,
-    _pathNode: true,   // вузол шляху: після завершення lfShowResult() має позначити lesson.id пройденим
-    chapter: lesson.chapter, module: lesson.module, _parentModuleId: lesson._parentModuleId,
-    moduleTitle: lesson.moduleTitle, chapterTitle: lesson.chapterTitle,
     steps: ['eml_learn', 'result'],
     _emlBonusPool: pool,
   });
@@ -17320,7 +17337,7 @@ function spShowCard(){
 // ні як помилка: крок просто пропускається, XP за вимову не нараховується.
 function spSkipLinkUpdate(){
   const el = document.getElementById('sp-skip-link'); if(!el) return;
-  const show = !!(spState && spState.lesson && LF && !LF.solo && spState.idx === 0 && spState.cycle === 0);
+  const show = !!(spState && spState.lesson && LF && !LF.solo && ((spState.idx === 0 && spState.cycle === 0) || spState._stuck));
   el.style.display = show ? '' : 'none';
 }
 function spSkipSpeech(){
@@ -17575,14 +17592,64 @@ function spTryStart(SR, mb, lbl, attempt){
 // контексту, пауза, новий контекст. Мікрофон потім вмикає ЛЮДИНА (автозапис без попередження
 // був би несподіваним). Двічі за вправу максимум; далі — підказка закрити й відкрити урок.
 const SP_DEAF_MS = 6500;
+
+// Зонд рівня мікрофона (лише після «глухого старту», коли мікрофон уже звільнено): ~1 с
+// слухаємо getUserMedia через AnalyserNode і міряємо амплітуду. Відповідає на питання, яке
+// з логів не видно: звук з мікрофона до веб-сторінки ВЗАГАЛІ не доходить (iOS віддає цифрову
+// тишу: мікрофон зайнятий/заглушений на рівні системи) чи звук є, а мовчить саме служба
+// розпізнавання мовлення. Побічних ефектів немає: потік і контекст одразу закриваються.
+async function spMicLevelProbe(ms){
+  const Ctx = window.AudioContext || window.webkitAudioContext;
+  if(!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || !Ctx) return { error: 'unsupported' };
+  let stream = null, ctx = null, timedOut = false;
+  try{
+    const gum = navigator.mediaDevices.getUserMedia({ audio: { echoCancellation: false, noiseSuppression: false, autoGainControl: false, channelCount: 1 } });
+    stream = await Promise.race([ gum, new Promise(r => setTimeout(() => { timedOut = true; r(null); }, 3000)) ]);
+    if(!stream){
+      gum.then(st => { try{ st.getTracks().forEach(tr => tr.stop()); }catch(e){} }).catch(() => {});
+      return { error: timedOut ? 'timeout' : 'no-stream' };
+    }
+    ctx = new Ctx();
+    try{ await ctx.resume(); }catch(e){}
+    const src = ctx.createMediaStreamSource(stream);
+    const an = ctx.createAnalyser(); an.fftSize = 1024;
+    const sink = ctx.createGain(); sink.gain.value = 0;
+    src.connect(an); an.connect(sink); sink.connect(ctx.destination);   // як у spMicPulse: гарантує, що вузол «тягнеться»
+    const buf = new Float32Array(an.fftSize);
+    let peak = 0, sumSq = 0, n = 0, nz = 0;
+    const t0 = performance.now();
+    while(performance.now() - t0 < ms){
+      await new Promise(r => setTimeout(r, 60));
+      an.getFloatTimeDomainData(buf);
+      for(let i = 0; i < buf.length; i++){
+        const a = Math.abs(buf[i]);
+        if(a > peak) peak = a;
+        sumSq += buf[i] * buf[i]; n++;
+        if(a > 1e-6) nz++;
+      }
+    }
+    return { peak, rms: Math.sqrt(sumSq / Math.max(1, n)), nonzero: n ? nz / n : 0, state: ctx.state };
+  }catch(e){
+    return { error: (e && e.name) || 'error' };
+  }finally{
+    try{ stream && stream.getTracks().forEach(tr => tr.stop()); }catch(e){}
+    try{ ctx && ctx.state !== 'closed' && ctx.close(); }catch(e){}
+  }
+}
+function spProbeIsSilent(p){ return !!(p && !p.error && p.peak < 1e-4); }
+
 function spDeafRecover(reason){
   if(!_spActive || !spState || spState._resetting) return;
   if((spState._resets || 0) >= 2){
     spStopRecord();
     const mb = document.getElementById('sp-mic-btn'), lbl = document.getElementById('sp-mic-label');
     if(mb){ mb.classList.remove('recording'); mb.innerHTML = movaIcon('mic'); mb.style.color = 'var(--forest)'; }
-    if(lbl) lbl.textContent = t('sp_mic_stuck');
-    spL(`deaf: reset limit reached (${reason}) — asking user to reopen`);
+    // Текст за результатом зонда: звуку з мікрофона нема → проблема на рівні iOS; звук є, а
+    // розпізнавання мовчить → служба диктування/мережа. Без зонда — загальна підказка.
+    const p = spState._probe;
+    if(lbl) lbl.textContent = !p || p.error ? t('sp_mic_stuck') : (spProbeIsSilent(p) ? t('sp_mic_silent') : t('sp_sr_silent'));
+    spState._stuck = true; spSkipLinkUpdate();     // у «глухому» стані лишаємо вихід: «Не можу говорити зараз»
+    spL(`deaf: reset limit reached (${reason}) — probe=${p ? (p.error ? 'error:' + p.error : (spProbeIsSilent(p) ? 'silent' : 'audio-ok')) : 'none'}`);
     return;
   }
   spHardReset(reason);
@@ -17605,7 +17672,15 @@ async function spHardReset(reason){
     spState.recording = false;
     spState._empty = 0;
     if(mb){ mb.classList.remove('recording'); mb.innerHTML = movaIcon('mic'); mb.style.color = 'var(--forest)'; }
-    if(lbl) lbl.textContent = t('sp_mic_restarted');
+    // Діагностика: чи доходить звук з мікрофона до сторінки (див. spMicLevelProbe)
+    let probe = null;
+    try{ probe = await spMicLevelProbe(1000); }catch(e){ probe = { error: 'exception' }; }
+    if(spState){ spState._probe = probe; }
+    spL(probe && !probe.error
+      ? `mic probe: peak=${probe.peak.toFixed(5)} rms=${probe.rms.toFixed(5)} nonzero=${Math.round(probe.nonzero * 100)}% ctx=${probe.state} → ${spProbeIsSilent(probe) ? 'SILENT (iOS gives no audio)' : 'audio reaches the page'}`
+      : `mic probe: ${probe ? probe.error : 'none'}`);
+    if(_spActive && lbl) lbl.textContent = spProbeIsSilent(probe) ? t('sp_mic_silent') : t('sp_mic_restarted');
+    spState._stuck = true; spSkipLinkUpdate();     // після першого «глухого» скидання даємо можливість пропустити вправу
     spL('HARD RESET done — waiting for user to tap the mic');
   }
   spState._resetting = false;
