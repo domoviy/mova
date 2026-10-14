@@ -10837,8 +10837,8 @@ var VOCAB = [
     "term": {
       "de": "das Treppenhaus",
       "en": "stairwell",
-      "uk": "підʼїзд, сходова клітка",
-      "ru": "подъезд, лестничная клетка"
+      "uk": "підʼїзд",
+      "ru": "подъезд"
     },
     "short": {
       "de": "der Teil des Hauses mit der Treppe, durch den man zu den Wohnungen geht",
@@ -10997,7 +10997,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "der Umzug",
-      "en": "move, relocation",
+      "en": "move",
       "uk": "переїзд",
       "ru": "переезд"
     },
@@ -11089,7 +11089,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "der Aufzug",
-      "en": "elevator, lift",
+      "en": "elevator",
       "uk": "ліфт",
       "ru": "лифт"
     },
@@ -11112,7 +11112,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "der Keller",
-      "en": "basement, cellar",
+      "en": "basement",
       "uk": "підвал",
       "ru": "подвал"
     },
@@ -11158,7 +11158,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "das Stockwerk",
-      "en": "floor, storey",
+      "en": "floor",
       "uk": "поверх",
       "ru": "этаж"
     },
@@ -11181,7 +11181,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "der Briefkasten",
-      "en": "mailbox, letterbox",
+      "en": "mailbox",
       "uk": "поштова скринька",
       "ru": "почтовый ящик"
     },
@@ -11273,7 +11273,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "der Hof",
-      "en": "courtyard, yard",
+      "en": "courtyard",
       "uk": "двір",
       "ru": "двор"
     },
@@ -11365,9 +11365,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "der Parkplatz",
-      "en": "parking spot, car park",
-      "uk": "парковка, паркувальне місце",
-      "ru": "парковка, парковочное место"
+      "en": "parking spot",
+      "uk": "паркувальне місце",
+      "ru": "парковочное место"
     },
     "short": {
       "de": "ein Platz, wo man das Auto abstellen kann",
@@ -11378,7 +11378,7 @@ var VOCAB = [
     "def": {
       "de": "Wir stellen unser Auto jeden Tag <g>auf den</g> <b>Parkplatz</b> Nummer sieben.",
       "en": "We park our car in <b>parking spot</b> number seven every day.",
-      "uk": "Ми щодня ставимо машину на <b>парковочне місце</b> номер сім.",
+      "uk": "Ми щодня ставимо машину на <b>паркувальне місце</b> номер сім.",
       "ru": "Мы каждый день ставим машину на <b>парковочное место</b> номер семь."
     },
     "gram": "wechselpraepositionen_wdh_b1"
@@ -11413,7 +11413,7 @@ var VOCAB = [
       "de": "der Gefallen",
       "en": "favour",
       "uk": "послуга",
-      "ru": "услуга, одолжение"
+      "ru": "одолжение"
     },
     "short": {
       "de": "eine kleine Hilfe, um die man jemanden bittet",
@@ -11457,9 +11457,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "reichen",
-      "en": "to pass, to hand",
-      "uk": "подавати, простягати",
-      "ru": "подавать, протягивать"
+      "en": "to pass",
+      "uk": "подавати",
+      "ru": "подавать"
     },
     "short": {
       "de": "jemandem etwas geben, indem man es ihm hinhält",
@@ -11526,7 +11526,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "aufpassen (auf)",
-      "en": "to keep an eye on, to watch",
+      "en": "to keep an eye on",
       "uk": "пильнувати (за)",
       "ru": "присматривать (за)"
     },
@@ -11549,7 +11549,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "abholen",
-      "en": "to pick up, to collect",
+      "en": "to pick up",
       "uk": "забирати (когось / щось)",
       "ru": "забирать (кого-то / что-то)"
     },
@@ -11664,7 +11664,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "gelingen",
-      "en": "to succeed, to manage",
+      "en": "to succeed",
       "uk": "вдаватися (успішно зробити)",
       "ru": "удаваться (успешно сделать)"
     },
@@ -11676,7 +11676,7 @@ var VOCAB = [
     },
     "def": {
       "de": "Endlich ist es uns <b>gelungen</b>, eine Lösung für das Parkplatzproblem <g>zu finden</g>.",
-      "en": "We <b>finally managed</b> <g>to find</g> a solution to the parking problem.",
+      "en": "We <b>finally succeeded</b> <g>in finding</g> a solution to the parking problem.",
       "uk": "Нам нарешті <b>вдалося</b> знайти рішення проблеми з парковкою.",
       "ru": "Нам наконец <b>удалось</b> найти решение проблемы с парковкой."
     },
@@ -11687,7 +11687,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "vorschlagen",
-      "en": "to suggest, to propose",
+      "en": "to suggest",
       "uk": "пропонувати",
       "ru": "предлагать"
     },
@@ -11710,7 +11710,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "sich einigen",
-      "en": "to agree, to reach an agreement",
+      "en": "to agree",
       "uk": "домовлятися",
       "ru": "договариваться"
     },
@@ -11734,8 +11734,8 @@ var VOCAB = [
     "term": {
       "de": "teilen",
       "en": "to share",
-      "uk": "ділити, спільно користуватися",
-      "ru": "делить, совместно пользоваться"
+      "uk": "ділити",
+      "ru": "делить"
     },
     "short": {
       "de": "etwas mit einer anderen Person zusammen benutzen oder aufteilen",
@@ -11779,7 +11779,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "grillen",
-      "en": "to grill, to barbecue",
+      "en": "to grill",
       "uk": "смажити на грилі",
       "ru": "жарить на гриле"
     },
@@ -11825,7 +11825,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "lüften",
-      "en": "to air out, to ventilate",
+      "en": "to air out",
       "uk": "провітрювати",
       "ru": "проветривать"
     },
@@ -11894,7 +11894,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "die Gemeinschaftsräume",
-      "en": "common rooms, shared rooms",
+      "en": "common rooms",
       "uk": "спільні приміщення",
       "ru": "общие помещения"
     },
@@ -11940,7 +11940,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "sich streiten",
-      "en": "to argue, to quarrel",
+      "en": "to argue",
       "uk": "сваритися",
       "ru": "ссориться"
     },
@@ -11986,9 +11986,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "rücksichtslos",
-      "en": "inconsiderate, reckless",
-      "uk": "нетактовний, безцеремонний",
-      "ru": "бестактный, бесцеремонный"
+      "en": "inconsiderate",
+      "uk": "нетактовний",
+      "ru": "бестактный"
     },
     "short": {
       "de": "wenn man nicht an die anderen Menschen denkt",
@@ -12124,7 +12124,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "der Gang",
-      "en": "corridor, hallway",
+      "en": "corridor",
       "uk": "коридор",
       "ru": "коридор"
     },
@@ -12147,9 +12147,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "absprechen",
-      "en": "to arrange (with someone), to agree on",
-      "uk": "домовлятися, узгоджувати",
-      "ru": "договариваться, согласовывать"
+      "en": "to agree on",
+      "uk": "домовлятися",
+      "ru": "договариваться"
     },
     "short": {
       "de": "mit anderen über etwas sprechen und sich auf etwas einigen",
@@ -12171,8 +12171,8 @@ var VOCAB = [
     "term": {
       "de": "das Balkongeländer",
       "en": "balcony railing",
-      "uk": "огорожа балкона, перила",
-      "ru": "ограждение балкона, перила"
+      "uk": "огорожа балкона",
+      "ru": "ограждение балкона"
     },
     "short": {
       "de": "die Stange oder Wand am Rand eines Balkons, damit niemand hinunterfällt",
@@ -12193,9 +12193,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "befestigen",
-      "en": "to fasten, to attach",
-      "uk": "кріпити, прикріплювати",
-      "ru": "крепить, прикреплять"
+      "en": "to fasten",
+      "uk": "кріпити",
+      "ru": "крепить"
     },
     "short": {
       "de": "etwas so an einem Ort machen, dass es fest ist und nicht herunterfällt",
@@ -12217,8 +12217,8 @@ var VOCAB = [
     "term": {
       "de": "behalten",
       "en": "to keep",
-      "uk": "залишати собі, зберігати",
-      "ru": "оставлять себе, сохранять"
+      "uk": "залишати собі",
+      "ru": "оставлять себе"
     },
     "short": {
       "de": "etwas weiter haben und nicht weggeben oder verlieren",
@@ -12285,7 +12285,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "festkleben",
-      "en": "to stick on, to glue on",
+      "en": "to stick on",
       "uk": "приклеювати",
       "ru": "приклеивать"
     },
@@ -12308,7 +12308,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "der Gegenstand",
-      "en": "object, item",
+      "en": "object",
       "uk": "предмет",
       "ru": "предмет"
     },
@@ -12355,8 +12355,8 @@ var VOCAB = [
     "term": {
       "de": "hämmern",
       "en": "to hammer",
-      "uk": "забивати молотком, стукати молотком",
-      "ru": "бить молотком, стучать молотком"
+      "uk": "стукати молотком",
+      "ru": "стучать молотком"
     },
     "short": {
       "de": "mit einem Hammer auf etwas schlagen",
@@ -12446,9 +12446,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "miteinander",
-      "en": "with each other, together",
-      "uk": "один з одним, разом",
-      "ru": "друг с другом, вместе"
+      "en": "with each other",
+      "uk": "один з одним",
+      "ru": "друг с другом"
     },
     "short": {
       "de": "eine Person mit der anderen, gemeinsam",
@@ -12469,7 +12469,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "der Abstellplatz",
-      "en": "storage space, parking space",
+      "en": "storage space",
       "uk": "місце для зберігання чи паркування",
       "ru": "место для хранения или парковки"
     },
@@ -12538,9 +12538,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "betreten",
-      "en": "to enter, to step onto",
-      "uk": "заходити, ступати на",
-      "ru": "входить, ступать на"
+      "en": "to enter",
+      "uk": "заходити",
+      "ru": "входить"
     },
     "short": {
       "de": "in einen Raum oder auf einen Ort gehen",
@@ -12561,9 +12561,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "gesetzlich",
-      "en": "legal, statutory",
-      "uk": "законний, передбачений законом",
-      "ru": "законный, предусмотренный законом"
+      "en": "statutory",
+      "uk": "законний",
+      "ru": "предусмотренный законом"
     },
     "short": {
       "de": "so, wie es das Gesetz sagt",
@@ -12631,7 +12631,7 @@ var VOCAB = [
     "term": {
       "de": "offen",
       "en": "open",
-      "uk": "відчинений, відкритий",
+      "uk": "відчинений",
       "ru": "открытый"
     },
     "short": {
@@ -12676,9 +12676,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "selbstverständlich",
-      "en": "of course, naturally",
-      "uk": "звичайно, само собою зрозуміло",
-      "ru": "разумеется, само собой разумеется"
+      "en": "of course",
+      "uk": "звичайно",
+      "ru": "разумеется"
     },
     "short": {
       "de": "ganz normal und klar, ohne dass man es sagen muss",
@@ -12699,7 +12699,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "der Verstoß",
-      "en": "violation, breach",
+      "en": "violation",
       "uk": "порушення",
       "ru": "нарушение"
     },
@@ -12722,7 +12722,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "verstoßen",
-      "en": "to violate, to breach",
+      "en": "to violate",
       "uk": "порушувати",
       "ru": "нарушать"
     },
@@ -12745,9 +12745,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "vorschreiben",
-      "en": "to prescribe, to stipulate",
-      "uk": "приписувати, вимагати",
-      "ru": "предписывать, требовать"
+      "en": "to stipulate",
+      "uk": "приписувати",
+      "ru": "предписывать"
     },
     "short": {
       "de": "genau sagen, was jemand tun muss",
@@ -12768,7 +12768,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "wegräumen",
-      "en": "to clear away, to put away",
+      "en": "to clear away",
       "uk": "прибирати з місця",
       "ru": "убирать с места"
     },
@@ -12815,7 +12815,7 @@ var VOCAB = [
     "term": {
       "de": "zumachen",
       "en": "to close",
-      "uk": "зачиняти, закривати",
+      "uk": "зачиняти",
       "ru": "закрывать"
     },
     "short": {
@@ -12837,9 +12837,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "der Zutritt",
-      "en": "access, entry",
-      "uk": "доступ, вхід",
-      "ru": "доступ, вход"
+      "en": "access",
+      "uk": "доступ",
+      "ru": "доступ"
     },
     "short": {
       "de": "die Erlaubnis, an einen Ort zu gehen oder in einen Raum zu kommen",
@@ -12860,9 +12860,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "andauernd",
-      "en": "constantly, continually",
-      "uk": "постійно, безперестанку",
-      "ru": "постоянно, беспрерывно"
+      "en": "constantly",
+      "uk": "безперестанку",
+      "ru": "беспрерывно"
     },
     "short": {
       "de": "immer wieder oder die ganze Zeit",
@@ -12884,8 +12884,8 @@ var VOCAB = [
     "term": {
       "de": "ärgerlich",
       "en": "annoying",
-      "uk": "прикрий, дратівливий",
-      "ru": "досадный, раздражающий"
+      "uk": "прикрий",
+      "ru": "досадный"
     },
     "short": {
       "de": "so, dass man schlechte Laune bekommt",
@@ -12906,9 +12906,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "die Aufregung",
-      "en": "excitement, agitation",
-      "uk": "хвилювання, збудження",
-      "ru": "волнение, возбуждение"
+      "en": "excitement",
+      "uk": "хвилювання",
+      "ru": "волнение"
     },
     "short": {
       "de": "ein starkes Gefühl von Unruhe, wenn etwas Wichtiges oder Schlimmes passiert",
@@ -12931,7 +12931,7 @@ var VOCAB = [
       "de": "beleidigen",
       "en": "to insult",
       "uk": "ображати",
-      "ru": "оскорблять, обижать"
+      "ru": "оскорблять"
     },
     "short": {
       "de": "etwas Böses sagen, das jemanden verletzt",
@@ -12954,7 +12954,7 @@ var VOCAB = [
       "de": "die Beleidigung",
       "en": "insult",
       "uk": "образа",
-      "ru": "оскорбление, обида"
+      "ru": "оскорбление"
     },
     "short": {
       "de": "böse Worte, die jemanden verletzen",
@@ -12975,9 +12975,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "beschimpfen",
-      "en": "to swear at, to verbally abuse",
-      "uk": "лаяти, ображати словами",
-      "ru": "ругать, оскорблять словами"
+      "en": "to swear at",
+      "uk": "лаяти",
+      "ru": "ругать"
     },
     "short": {
       "de": "mit sehr bösen Wörtern über jemanden oder zu jemandem sprechen",
@@ -12998,9 +12998,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "die Beschimpfung",
-      "en": "verbal abuse, insult",
-      "uk": "лайка, образливе слово",
-      "ru": "ругательство, оскорбительное слово"
+      "en": "verbal abuse",
+      "uk": "лайка",
+      "ru": "ругательство"
     },
     "short": {
       "de": "ein sehr böses Wort, das man zu jemandem sagt",
@@ -13021,7 +13021,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "doof",
-      "en": "stupid, dumb (colloquial)",
+      "en": "stupid (colloquial)",
       "uk": "дурний (розм.)",
       "ru": "глупый (разг.)"
     },
@@ -13045,8 +13045,8 @@ var VOCAB = [
     "term": {
       "de": "dumm",
       "en": "stupid",
-      "uk": "нерозумний, дурний",
-      "ru": "глупый, неумный"
+      "uk": "нерозумний",
+      "ru": "глупый"
     },
     "short": {
       "de": "nicht klug, man denkt oder versteht nicht gut",
@@ -13090,9 +13090,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "meckern",
-      "en": "to grumble, to moan",
-      "uk": "бурчати, скаржитися",
-      "ru": "ворчать, брюзжать"
+      "en": "to grumble",
+      "uk": "бурчати",
+      "ru": "ворчать"
     },
     "short": {
       "de": "immer wieder sagen, dass etwas nicht gut ist",
@@ -13136,7 +13136,7 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "sauer",
-      "en": "cross, annoyed (colloquial)",
+      "en": "cross (colloquial)",
       "uk": "сердитий (розм.)",
       "ru": "сердитый (разг.)"
     },
@@ -13205,9 +13205,9 @@ var VOCAB = [
     "cat": "k1",
     "term": {
       "de": "wütend",
-      "en": "furious, angry",
-      "uk": "розлючений, злий",
-      "ru": "разъярённый, злой"
+      "en": "furious",
+      "uk": "розлючений",
+      "ru": "разъярённый"
     },
     "short": {
       "de": "so ärgerlich, dass man laut oder aggressiv wird",
@@ -13252,8 +13252,8 @@ var VOCAB = [
     "term": {
       "de": "die Reklamation",
       "en": "complaint (about goods)",
-      "uk": "рекламація, претензія",
-      "ru": "рекламация, претензия"
+      "uk": "рекламація",
+      "ru": "рекламация"
     },
     "short": {
       "de": "wenn man einer Firma sagt, dass eine Ware oder ein Service nicht in Ordnung ist",
@@ -13320,7 +13320,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "die Mahnung",
-      "en": "dunning notice, warning",
+      "en": "dunning notice",
       "uk": "офіційне нагадування",
       "ru": "официальное напоминание"
     },
@@ -13343,7 +13343,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "die Rechnung",
-      "en": "invoice, bill",
+      "en": "invoice",
       "uk": "рахунок (до оплати)",
       "ru": "счёт (к оплате)"
     },
@@ -13458,9 +13458,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "fehlerhaft",
-      "en": "defective, faulty",
-      "uk": "несправний, бракований",
-      "ru": "неисправный, бракованный"
+      "en": "faulty",
+      "uk": "несправний",
+      "ru": "неисправный"
     },
     "short": {
       "de": "wenn eine Ware nicht richtig funktioniert oder kaputt ist",
@@ -13619,9 +13619,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "das Angebot",
-      "en": "offer, deal",
-      "uk": "пропозиція, акція",
-      "ru": "предложение, акция"
+      "en": "offer",
+      "uk": "пропозиція",
+      "ru": "предложение"
     },
     "short": {
       "de": "ein günstiger Preis oder eine besondere Aktion in einem Geschäft",
@@ -13642,7 +13642,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "der Vorrat",
-      "en": "stock, supply",
+      "en": "supply",
       "uk": "запас",
       "ru": "запас"
     },
@@ -13688,7 +13688,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "günstig",
-      "en": "cheap, good value",
+      "en": "affordable",
       "uk": "вигідний (за ціною)",
       "ru": "выгодный (по цене)"
     },
@@ -13711,7 +13711,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "die Kasse",
-      "en": "checkout, till",
+      "en": "checkout",
       "uk": "каса",
       "ru": "касса"
     },
@@ -13781,8 +13781,8 @@ var VOCAB = [
     "term": {
       "de": "sich entscheiden (für)",
       "en": "to decide (on)",
-      "uk": "вирішувати, обирати",
-      "ru": "решать, выбирать"
+      "uk": "вирішувати",
+      "ru": "решать"
     },
     "short": {
       "de": "nach dem Nachdenken eine Wahl treffen",
@@ -13850,8 +13850,8 @@ var VOCAB = [
     "term": {
       "de": "sich ärgern (über)",
       "en": "to get annoyed (about)",
-      "uk": "сердитися, дратуватися (через)",
-      "ru": "сердиться, раздражаться (из-за)"
+      "uk": "сердитися (через)",
+      "ru": "сердиться (из-за)"
     },
     "short": {
       "de": "negative Gefühle haben, weil etwas nicht gut gelaufen ist",
@@ -13896,8 +13896,8 @@ var VOCAB = [
     "term": {
       "de": "sich freuen (auf)",
       "en": "to look forward (to)",
-      "uk": "чекати (з радістю), тішитися",
-      "ru": "с радостью ждать, радоваться"
+      "uk": "чекати (з радістю)",
+      "ru": "с радостью ждать"
     },
     "short": {
       "de": "eine positive, glückliche Erwartung von etwas haben, das noch kommt",
@@ -13964,9 +13964,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "der Irrtum",
-      "en": "mistake, error",
-      "uk": "помилка, непорозуміння",
-      "ru": "ошибка, недоразумение"
+      "en": "mistake",
+      "uk": "помилка",
+      "ru": "ошибка"
     },
     "short": {
       "de": "wenn man etwas falsch verstanden oder falsch gemacht hat",
@@ -13987,7 +13987,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "die Verwechslung",
-      "en": "mix-up, confusion",
+      "en": "mix-up",
       "uk": "плутанина",
       "ru": "путаница"
     },
@@ -14103,8 +14103,8 @@ var VOCAB = [
     "term": {
       "de": "fehlen",
       "en": "to be missing",
-      "uk": "бракувати, бути відсутнім",
-      "ru": "не хватать, отсутствовать"
+      "uk": "бути відсутнім",
+      "ru": "отсутствовать"
     },
     "short": {
       "de": "nicht da sein, obwohl es da sein sollte",
@@ -14125,7 +14125,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "der Warenkorb",
-      "en": "shopping cart, basket",
+      "en": "shopping cart",
       "uk": "кошик (для покупок)",
       "ru": "корзина (для покупок)"
     },
@@ -14310,8 +14310,8 @@ var VOCAB = [
     "term": {
       "de": "die Frist",
       "en": "deadline",
-      "uk": "термін, дедлайн",
-      "ru": "срок, дедлайн"
+      "uk": "термін",
+      "ru": "срок"
     },
     "short": {
       "de": "der letzte Tag, an dem man etwas erledigen muss",
@@ -14322,7 +14322,7 @@ var VOCAB = [
     "def": {
       "de": "Die <b>Frist</b>, <g>die</g> uns die Firma gegeben hat, ist schon nächste Woche.",
       "en": "The <b>deadline</b> <g>that</g> the company gave us is already next week.",
-      "uk": "<b>Термін</b>, <g>який</g> дала нам компанія, вже наступного тижня.",
+      "uk": "<b>Строк</b>, <g>який</g> дала нам компанія, вже наступного тижня.",
       "ru": "<b>Срок</b>, <g>который</g> дала нам компания, уже на следующей неделе."
     },
     "gram": "relativsatz_akkusativ_b1"
@@ -14332,7 +14332,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "der Betrag",
-      "en": "amount, sum",
+      "en": "amount",
       "uk": "сума",
       "ru": "сумма"
     },
@@ -14402,8 +14402,8 @@ var VOCAB = [
     "term": {
       "de": "die Gebühr",
       "en": "fee",
-      "uk": "комісія, збір",
-      "ru": "комиссия, сбор"
+      "uk": "комісія",
+      "ru": "комиссия"
     },
     "short": {
       "de": "ein Geldbetrag, den man für eine Leistung bezahlen muss",
@@ -14562,9 +14562,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "der Testbericht",
-      "en": "test report, review",
-      "uk": "тестовий звіт, огляд",
-      "ru": "тестовый отчёт, обзор"
+      "en": "test report",
+      "uk": "тестовий звіт",
+      "ru": "тестовый отчёт"
     },
     "short": {
       "de": "ein Text, der zeigt, wie gut ein Produkt in einem Test war",
@@ -14585,9 +14585,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "reduziert",
-      "en": "reduced, discounted",
-      "uk": "уцінений, зі знижкою",
-      "ru": "уценённый, со скидкой"
+      "en": "discounted",
+      "uk": "уцінений",
+      "ru": "уценённый"
     },
     "short": {
       "de": "wenn ein Preis niedriger als normal ist",
@@ -14609,8 +14609,8 @@ var VOCAB = [
     "term": {
       "de": "sich lohnen",
       "en": "to be worth it",
-      "uk": "бути вартим, окупатися",
-      "ru": "стоить того, окупаться"
+      "uk": "окупатися",
+      "ru": "окупаться"
     },
     "short": {
       "de": "wenn der Nutzen von etwas größer ist als der Aufwand oder die Kosten",
@@ -14631,9 +14631,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "die Auswahl",
-      "en": "selection, choice",
-      "uk": "вибір, асортимент",
-      "ru": "выбор, ассортимент"
+      "en": "selection",
+      "uk": "вибір",
+      "ru": "выбор"
     },
     "short": {
       "de": "viele verschiedene Dinge, aus denen man etwas aussuchen kann",
@@ -14724,8 +14724,8 @@ var VOCAB = [
     "term": {
       "de": "erhältlich",
       "en": "available",
-      "uk": "доступний, у продажу",
-      "ru": "доступный, в продаже"
+      "uk": "доступний",
+      "ru": "доступный"
     },
     "short": {
       "de": "so, dass man es im Geschäft oder im Internet kaufen kann",
@@ -14747,8 +14747,8 @@ var VOCAB = [
     "term": {
       "de": "der Gutschein",
       "en": "voucher",
-      "uk": "подарунковий сертифікат, ваучер",
-      "ru": "подарочный сертификат, ваучер"
+      "uk": "подарунковий сертифікат",
+      "ru": "подарочный сертификат"
     },
     "short": {
       "de": "ein Papier, mit dem man in einem Geschäft statt mit Geld bezahlen kann",
@@ -14815,7 +14815,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "das Lager",
-      "en": "warehouse, storeroom",
+      "en": "warehouse",
       "uk": "склад",
       "ru": "склад"
     },
@@ -14861,7 +14861,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "die Ware",
-      "en": "goods, merchandise",
+      "en": "goods",
       "uk": "товар",
       "ru": "товар"
     },
@@ -14885,8 +14885,8 @@ var VOCAB = [
     "term": {
       "de": "anfassen",
       "en": "to touch",
-      "uk": "торкатися, чіпати",
-      "ru": "трогать, прикасаться"
+      "uk": "торкатися",
+      "ru": "трогать"
     },
     "short": {
       "de": "etwas mit der Hand berühren",
@@ -14907,7 +14907,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "die Anprobe",
-      "en": "fitting, trying on",
+      "en": "fitting",
       "uk": "примірка",
       "ru": "примерка"
     },
@@ -14930,9 +14930,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "die Art",
-      "en": "kind, type, way",
-      "uk": "вид, тип, спосіб",
-      "ru": "вид, тип, способ"
+      "en": "kind",
+      "uk": "вид",
+      "ru": "вид"
     },
     "short": {
       "de": "die Sorte von etwas oder die Weise, wie man etwas macht",
@@ -14954,8 +14954,8 @@ var VOCAB = [
     "term": {
       "de": "die Artikelnummer",
       "en": "item number",
-      "uk": "артикул, номер товару",
-      "ru": "артикул, номер товара"
+      "uk": "артикул",
+      "ru": "артикул"
     },
     "short": {
       "de": "die Nummer, mit der man ein Produkt im Geschäft erkennt",
@@ -15137,7 +15137,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "die Ergänzung",
-      "en": "addition, supplement",
+      "en": "addition",
       "uk": "доповнення",
       "ru": "дополнение"
     },
@@ -15161,8 +15161,8 @@ var VOCAB = [
     "term": {
       "de": "korrekt",
       "en": "correct",
-      "uk": "правильний, коректний",
-      "ru": "правильный, корректный"
+      "uk": "правильний",
+      "ru": "правильный"
     },
     "short": {
       "de": "ohne Fehler, richtig",
@@ -15183,9 +15183,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "nachsehen",
-      "en": "to check, to look up",
-      "uk": "перевіряти, дивитися",
-      "ru": "проверять, смотреть"
+      "en": "to check",
+      "uk": "перевіряти",
+      "ru": "проверять"
     },
     "short": {
       "de": "genau hinschauen, um etwas zu prüfen oder zu finden",
@@ -15459,9 +15459,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "das Paket",
-      "en": "parcel, package",
-      "uk": "посилка, пакунок",
-      "ru": "посылка, пакет"
+      "en": "parcel",
+      "uk": "посилка",
+      "ru": "посылка"
     },
     "short": {
       "de": "eine Sendung in einem Karton, die man mit der Post schickt",
@@ -15482,9 +15482,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "der Paketbote",
-      "en": "parcel courier, delivery person",
-      "uk": "курʼєр, що доставляє посилки",
-      "ru": "курьер, доставляющий посылки"
+      "en": "parcel courier",
+      "uk": "курʼєр",
+      "ru": "курьер"
     },
     "short": {
       "de": "eine Person, die Pakete zu den Kunden bringt",
@@ -15529,8 +15529,8 @@ var VOCAB = [
     "term": {
       "de": "das Porto",
       "en": "postage",
-      "uk": "поштові витрати, вартість пересилання",
-      "ru": "почтовые расходы, стоимость пересылки"
+      "uk": "вартість пересилання",
+      "ru": "стоимость пересылки"
     },
     "short": {
       "de": "das Geld, das man für die Post bezahlt, damit sie einen Brief oder ein Paket transportiert",
@@ -15597,7 +15597,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "verpacken",
-      "en": "to pack, to wrap",
+      "en": "to pack",
       "uk": "пакувати",
       "ru": "упаковывать"
     },
@@ -15620,9 +15620,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "der Versand",
-      "en": "shipping, dispatch",
-      "uk": "відправлення, доставка",
-      "ru": "отправка, доставка"
+      "en": "shipping",
+      "uk": "відправлення",
+      "ru": "отправка"
     },
     "short": {
       "de": "das Schicken von Waren an die Kunden",
@@ -15689,7 +15689,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "versenden",
-      "en": "to send, to dispatch",
+      "en": "to dispatch",
       "uk": "відправляти",
       "ru": "отправлять"
     },
@@ -15712,9 +15712,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "der Werktag",
-      "en": "working day, weekday",
-      "uk": "робочий день, будній день",
-      "ru": "рабочий день, будний день"
+      "en": "working day",
+      "uk": "робочий день",
+      "ru": "рабочий день"
     },
     "short": {
       "de": "ein Tag von Montag bis Samstag, an dem man normalerweise arbeitet",
@@ -15782,8 +15782,8 @@ var VOCAB = [
     "term": {
       "de": "der Bankeinzug",
       "en": "direct debit",
-      "uk": "прямий дебет, автоматичне списання з рахунку",
-      "ru": "прямое дебетование, автоматическое списание со счёта"
+      "uk": "автоматичне списання з рахунку",
+      "ru": "автоматическое списание со счёта"
     },
     "short": {
       "de": "wenn die Firma das Geld direkt vom Konto des Kunden nimmt",
@@ -15804,7 +15804,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "der Bezahlvorgang",
-      "en": "payment process, checkout",
+      "en": "payment process",
       "uk": "процес оплати",
       "ru": "процесс оплаты"
     },
@@ -15850,7 +15850,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "das Eigentum",
-      "en": "property, ownership",
+      "en": "property",
       "uk": "власність",
       "ru": "собственность"
     },
@@ -15873,9 +15873,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "das Impressum",
-      "en": "legal notice, imprint",
-      "uk": "вихідні дані (на сайті), юридична інформація",
-      "ru": "выходные данные (на сайте), юридическая информация"
+      "en": "legal notice",
+      "uk": "вихідні дані (на сайті)",
+      "ru": "выходные данные (на сайте)"
     },
     "short": {
       "de": "der Teil einer Internetseite mit dem Namen und der Adresse der Firma, die die Seite macht",
@@ -15919,7 +15919,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "der Kaufvertrag",
-      "en": "purchase contract, sales contract",
+      "en": "purchase contract",
       "uk": "договір купівлі-продажу",
       "ru": "договор купли-продажи"
     },
@@ -15942,9 +15942,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "umgehend",
-      "en": "immediately, promptly",
-      "uk": "негайно, одразу",
-      "ru": "незамедлительно, сразу"
+      "en": "immediately",
+      "uk": "негайно",
+      "ru": "незамедлительно"
     },
     "short": {
       "de": "sofort, ohne zu warten",
@@ -15966,8 +15966,8 @@ var VOCAB = [
     "term": {
       "de": "unverbindlich",
       "en": "non-binding",
-      "uk": "необовʼязковий, без зобовʼязань",
-      "ru": "необязывающий, без обязательств"
+      "uk": "необовʼязковий",
+      "ru": "необязывающий"
     },
     "short": {
       "de": "so, dass man sich noch nicht entscheiden oder etwas versprechen muss",
@@ -16012,8 +16012,8 @@ var VOCAB = [
     "term": {
       "de": "die Zahlung",
       "en": "payment",
-      "uk": "платіж, оплата",
-      "ru": "платёж, оплата"
+      "uk": "оплата",
+      "ru": "оплата"
     },
     "short": {
       "de": "wenn man das Geld für etwas gibt, das man gekauft hat",
@@ -16104,8 +16104,8 @@ var VOCAB = [
     "term": {
       "de": "das Autoteil",
       "en": "car part",
-      "uk": "автозапчастина, деталь автомобіля",
-      "ru": "автозапчасть, деталь автомобиля"
+      "uk": "автозапчастина",
+      "ru": "автозапчасть"
     },
     "short": {
       "de": "ein Stück, aus dem ein Auto besteht, zum Beispiel ein Reifen",
@@ -16149,9 +16149,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "dicht",
-      "en": "tight, sealed",
-      "uk": "щільний, герметичний",
-      "ru": "плотный, герметичный"
+      "en": "tight",
+      "uk": "щільний",
+      "ru": "плотный"
     },
     "short": {
       "de": "so, dass nichts durchgehen kann, zum Beispiel Wasser oder Luft",
@@ -16218,9 +16218,9 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "die Herstellung",
-      "en": "production, manufacture",
-      "uk": "виготовлення, виробництво",
-      "ru": "изготовление, производство"
+      "en": "production",
+      "uk": "виготовлення",
+      "ru": "изготовление"
     },
     "short": {
       "de": "wenn eine Firma ein Produkt macht",
@@ -16287,7 +16287,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "der Oldtimer",
-      "en": "vintage car, classic car",
+      "en": "vintage car",
       "uk": "ретроавтомобіль",
       "ru": "ретроавтомобиль"
     },
@@ -16310,7 +16310,7 @@ var VOCAB = [
     "cat": "k2",
     "term": {
       "de": "produzieren",
-      "en": "to produce, to manufacture",
+      "en": "to produce",
       "uk": "виробляти",
       "ru": "производить"
     },
@@ -16472,8 +16472,8 @@ var VOCAB = [
     "term": {
       "de": "die Versicherung",
       "en": "insurance",
-      "uk": "страхування, страховка",
-      "ru": "страхование, страховка"
+      "uk": "страхування",
+      "ru": "страхование"
     },
     "short": {
       "de": "ein Vertrag, der bei einem Problem oder Schaden Geld bezahlt",
@@ -16563,7 +16563,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "kündigen",
-      "en": "to cancel, terminate (a contract)",
+      "en": "to cancel (a contract)",
       "uk": "розривати (договір)",
       "ru": "расторгать (договор)"
     },
@@ -16586,7 +16586,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "die Kündigung",
-      "en": "cancellation, termination",
+      "en": "termination",
       "uk": "розірвання договору",
       "ru": "расторжение договора"
     },
@@ -16679,8 +16679,8 @@ var VOCAB = [
     "term": {
       "de": "die Gebühr",
       "en": "fee",
-      "uk": "плата, збір",
-      "ru": "плата, сбор"
+      "uk": "плата",
+      "ru": "плата"
     },
     "short": {
       "de": "Geld, das man für einen Service oder eine Leistung bezahlen muss",
@@ -16725,7 +16725,7 @@ var VOCAB = [
     "term": {
       "de": "der Schaden",
       "en": "damage",
-      "uk": "шкода, збиток",
+      "uk": "шкода",
       "ru": "ущерб"
     },
     "short": {
@@ -16932,7 +16932,7 @@ var VOCAB = [
     "term": {
       "de": "gültig",
       "en": "valid",
-      "uk": "дійсний, чинний",
+      "uk": "дійсний",
       "ru": "действительный"
     },
     "short": {
@@ -17092,7 +17092,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "die Bankkarte",
-      "en": "bank card, debit card",
+      "en": "bank card",
       "uk": "банківська картка",
       "ru": "банковская карта"
     },
@@ -17162,7 +17162,7 @@ var VOCAB = [
     "term": {
       "de": "verlieren",
       "en": "to lose",
-      "uk": "губити, втрачати",
+      "uk": "втрачати",
       "ru": "терять"
     },
     "short": {
@@ -17391,7 +17391,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "die Selbstbeteiligung",
-      "en": "deductible, excess",
+      "en": "deductible",
       "uk": "франшиза",
       "ru": "франшиза"
     },
@@ -17414,7 +17414,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "der Versicherungsfall",
-      "en": "insured event, claim situation",
+      "en": "insured event",
       "uk": "страховий випадок",
       "ru": "страховой случай"
     },
@@ -17426,7 +17426,7 @@ var VOCAB = [
     },
     "def": {
       "de": "Im <b>Versicherungsfall</b> half die Firma sofort, <g>obwohl</g> es Wochenende war.",
-      "en": "In the <b>case of a claim</b>, the company helped immediately <g>although</g> it was the weekend.",
+      "en": "In an <b>insured event</b>, the company helped immediately <g>although</g> it was the weekend.",
       "uk": "У <b>страховому випадку</b> фірма допомогла одразу, <g>хоча</g> були вихідні.",
       "ru": "В <b>страховом случае</b> фирма помогла сразу, <g>хотя</g> были выходные."
     },
@@ -17483,7 +17483,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "sinnvoll",
-      "en": "sensible, worthwhile",
+      "en": "worthwhile",
       "uk": "доцільний",
       "ru": "целесообразный"
     },
@@ -17621,7 +17621,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "die Fahrerlaubnis",
-      "en": "driving licence, permit",
+      "en": "driving licence",
       "uk": "посвідчення водія",
       "ru": "водительские права"
     },
@@ -17690,7 +17690,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "rechtzeitig",
-      "en": "in time, punctually",
+      "en": "in time",
       "uk": "вчасно",
       "ru": "вовремя"
     },
@@ -17713,7 +17713,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "einhalten",
-      "en": "to keep, to meet (a deadline)",
+      "en": "to meet (a deadline)",
       "uk": "дотримувати (терміну)",
       "ru": "соблюдать (срок)"
     },
@@ -17782,9 +17782,9 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "widerrufen",
-      "en": "to revoke, to cancel",
-      "uk": "скасовувати, відкликати",
-      "ru": "отменять, отзывать"
+      "en": "to revoke",
+      "uk": "відкликати",
+      "ru": "отменять"
     },
     "short": {
       "de": "eine Entscheidung oder einen Vertrag innerhalb einer bestimmten Zeit rückgängig machen",
@@ -17795,7 +17795,7 @@ var VOCAB = [
     "def": {
       "de": "Sie kann den Vertrag <b>widerrufen</b>, <g>oder</g> sie behält ihn einfach wie geplant.",
       "en": "She can <b>revoke</b> the contract, <g>or</g> she can simply keep it as planned.",
-      "uk": "Вона може <b>скасувати</b> договір, <g>або</g> просто залишити його, як планувалося.",
+      "uk": "Вона може <b>відкликати</b> договір, <g>або</g> просто залишити його, як планувалося.",
       "ru": "Она может <b>отозвать</b> договор, <g>или</g> просто оставить его, как планировалось."
     },
     "gram": "konnektoren_wdh_b1"
@@ -17920,7 +17920,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "der Kofferraum",
-      "en": "boot, luggage compartment",
+      "en": "boot",
       "uk": "багажник",
       "ru": "багажник"
     },
@@ -17966,7 +17966,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "das Nummernschild",
-      "en": "number plate, licence plate",
+      "en": "number plate",
       "uk": "номерний знак",
       "ru": "номерной знак"
     },
@@ -18104,7 +18104,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "der Schadensfall",
-      "en": "insured event, claim",
+      "en": "insured event",
       "uk": "страховий випадок",
       "ru": "страховой случай"
     },
@@ -18127,8 +18127,8 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "sinnlos",
-      "en": "pointless, senseless",
-      "uk": "безглуздий, марний",
+      "en": "pointless",
+      "uk": "безглуздий",
       "ru": "бессмысленный"
     },
     "short": {
@@ -18151,8 +18151,8 @@ var VOCAB = [
     "term": {
       "de": "der Sturm",
       "en": "storm",
-      "uk": "буря, шторм",
-      "ru": "буря, шторм"
+      "uk": "буря",
+      "ru": "буря"
     },
     "short": {
       "de": "sehr starker Wind, oft mit Regen",
@@ -18197,8 +18197,8 @@ var VOCAB = [
     "term": {
       "de": "die Überschwemmung",
       "en": "flood",
-      "uk": "повінь, затоплення",
-      "ru": "наводнение, затопление"
+      "uk": "повінь",
+      "ru": "наводнение"
     },
     "short": {
       "de": "wenn so viel Wasser kommt, dass Straßen und Häuser unter Wasser stehen",
@@ -18311,9 +18311,9 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "berechtigt",
-      "en": "entitled, authorised",
-      "uk": "уповноважений, має право",
-      "ru": "имеющий право, уполномоченный"
+      "en": "entitled",
+      "uk": "уповноважений",
+      "ru": "уполномоченный"
     },
     "short": {
       "de": "so, dass man das Recht hat, etwas zu tun",
@@ -18334,7 +18334,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "eingehen",
-      "en": "to arrive, to be received",
+      "en": "to arrive",
       "uk": "надходити",
       "ru": "поступать"
     },
@@ -18380,7 +18380,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "fristgerecht",
-      "en": "within the deadline, on time",
+      "en": "within the deadline",
       "uk": "у встановлений строк",
       "ru": "в установленный срок"
     },
@@ -18392,7 +18392,7 @@ var VOCAB = [
     },
     "def": {
       "de": "Das <g>Kündigungsschreiben</g> muss <b>fristgerecht</b> bei der Versicherung ankommen.",
-      "en": "The letter of termination must reach the insurance company <b>on time</b>.",
+      "en": "The letter of termination must reach the insurance company <b>within the deadline</b>.",
       "uk": "Лист про розірвання має надійти до страхової <b>у встановлений строк</b>.",
       "ru": "Письмо о расторжении должно поступить в страховую <b>в установленный срок</b>."
     },
@@ -18403,9 +18403,9 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "fristlos",
-      "en": "without notice, immediate",
-      "uk": "без попередження, негайний",
-      "ru": "без предупреждения, немедленный"
+      "en": "without notice",
+      "uk": "без попередження",
+      "ru": "без предупреждения"
     },
     "short": {
       "de": "sofort und ohne Wartezeit, zum Beispiel bei einer Kündigung",
@@ -18472,7 +18472,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "verpflichten",
-      "en": "to obligate, to commit",
+      "en": "to obligate",
       "uk": "зобовʼязувати",
       "ru": "обязывать"
     },
@@ -18541,9 +18541,9 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "allerdings",
-      "en": "however, though",
-      "uk": "проте, однак",
-      "ru": "однако, впрочем"
+      "en": "though",
+      "uk": "проте",
+      "ru": "однако"
     },
     "short": {
       "de": "ein Wort wie aber: es zeigt, dass etwas nicht ganz so ist",
@@ -18610,7 +18610,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "einlegen",
-      "en": "to lodge, to file",
+      "en": "to file",
       "uk": "подавати (скаргу, заперечення)",
       "ru": "подавать (жалобу, возражение)"
     },
@@ -18633,9 +18633,9 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "falls",
-      "en": "in case, if",
-      "uk": "якщо, на випадок",
-      "ru": "если, в случае"
+      "en": "in case",
+      "uk": "якщо",
+      "ru": "если"
     },
     "short": {
       "de": "ein Wort wie wenn: es nennt etwas, das vielleicht passiert",
@@ -18657,8 +18657,8 @@ var VOCAB = [
     "term": {
       "de": "indem",
       "en": "by (doing something)",
-      "uk": "тим, що; шляхом",
-      "ru": "тем, что; путём"
+      "uk": "тим",
+      "ru": "тем"
     },
     "short": {
       "de": "ein Wort, das zeigt, auf welche Weise man etwas macht",
@@ -18679,7 +18679,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "insofern",
-      "en": "in this respect, to that extent",
+      "en": "in this respect",
       "uk": "у цьому відношенні",
       "ru": "в этом отношении"
     },
@@ -18702,7 +18702,7 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "soweit",
-      "en": "as far as, to the extent that",
+      "en": "as far as",
       "uk": "наскільки",
       "ru": "насколько"
     },
@@ -18725,9 +18725,9 @@ var VOCAB = [
     "cat": "k3",
     "term": {
       "de": "der Widerspruch",
-      "en": "objection, contradiction",
-      "uk": "заперечення, суперечність",
-      "ru": "возражение, противоречие"
+      "en": "objection",
+      "uk": "заперечення",
+      "ru": "возражение"
     },
     "short": {
       "de": "wenn man sagt, dass man mit etwas nicht einverstanden ist",
@@ -18771,7 +18771,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "sich ernähren",
-      "en": "to eat, nourish oneself",
+      "en": "to eat",
       "uk": "харчуватися",
       "ru": "питаться"
     },
@@ -18886,7 +18886,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "probieren",
-      "en": "to try, taste",
+      "en": "to try",
       "uk": "пробувати",
       "ru": "пробовать"
     },
@@ -18956,8 +18956,8 @@ var VOCAB = [
     "term": {
       "de": "der Snack",
       "en": "snack",
-      "uk": "снек, легка закуска",
-      "ru": "снек, лёгкая закуска"
+      "uk": "снек",
+      "ru": "снек"
     },
     "short": {
       "de": "eine kleine Mahlzeit zwischen den Hauptmahlzeiten",
@@ -19231,7 +19231,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "satt",
-      "en": "full, satisfied",
+      "en": "full",
       "uk": "ситий",
       "ru": "сытый"
     },
@@ -19415,9 +19415,9 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "holen",
-      "en": "to get, to fetch",
-      "uk": "приносити, забирати",
-      "ru": "приносить, забирать"
+      "en": "to get",
+      "uk": "приносити",
+      "ru": "приносить"
     },
     "short": {
       "de": "irgendwohin gehen, um etwas zu bekommen und zurückzubringen",
@@ -19461,7 +19461,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "früher",
-      "en": "formerly, in the past",
+      "en": "in the past",
       "uk": "раніше",
       "ru": "раньше"
     },
@@ -19599,7 +19599,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "bewusst",
-      "en": "conscious, mindful",
+      "en": "conscious",
       "uk": "усвідомлений",
       "ru": "осознанный"
     },
@@ -19622,7 +19622,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "weiterhin",
-      "en": "still, continuing",
+      "en": "still",
       "uk": "і надалі",
       "ru": "по-прежнему"
     },
@@ -19634,7 +19634,7 @@ var VOCAB = [
     },
     "def": {
       "de": "Die Ernährung war früher ungesund, <g>trotzdem</g> isst die Familie <b>weiterhin</b> viel Fast Food.",
-      "en": "The diet used to be unhealthy; <g>nevertheless</g>, the family <b>continues</b> to eat a lot of fast food.",
+      "en": "The diet used to be unhealthy; <g>nevertheless</g>, the family <b>still</b> eats a lot of fast food.",
       "uk": "Харчування раніше було нездоровим, <g>проте</g> сімʼя <b>і надалі</b> їсть багато фаст-фуду.",
       "ru": "Питание раньше было нездоровым, <g>однако</g> семья <b>по-прежнему</b> ест много фастфуда."
     },
@@ -19645,7 +19645,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "die Lebensmittel",
-      "en": "food, groceries",
+      "en": "groceries",
       "uk": "продукти харчування",
       "ru": "продукты питания"
     },
@@ -19967,7 +19967,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "befragen",
-      "en": "to survey, to question",
+      "en": "to survey",
       "uk": "опитувати",
       "ru": "опрашивать"
     },
@@ -20152,8 +20152,8 @@ var VOCAB = [
     "term": {
       "de": "der Döner",
       "en": "doner kebab",
-      "uk": "донер, донер-кебаб",
-      "ru": "донер, донер-кебаб"
+      "uk": "донер",
+      "ru": "донер"
     },
     "short": {
       "de": "ein Gericht mit Fleisch, Salat und Soße in einem Brot",
@@ -20220,7 +20220,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "das Nahrungsmittel",
-      "en": "food, foodstuff",
+      "en": "food",
       "uk": "продукти харчування",
       "ru": "продукты питания"
     },
@@ -20243,7 +20243,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "naschen",
-      "en": "to snack on sweets, to nibble",
+      "en": "to snack on sweets",
       "uk": "ласувати (солодощами)",
       "ru": "лакомиться (сладким)"
     },
@@ -20266,7 +20266,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "die Speise",
-      "en": "dish, food",
+      "en": "dish",
       "uk": "страва",
       "ru": "блюдо"
     },
@@ -20473,7 +20473,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "vertragen",
-      "en": "to tolerate (food), to digest well",
+      "en": "to tolerate (food)",
       "uk": "переносити (їжу)",
       "ru": "переносить (еду)"
     },
@@ -20519,9 +20519,9 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "bisher",
-      "en": "so far, until now",
-      "uk": "досі, до цього часу",
-      "ru": "до сих пор, пока"
+      "en": "so far",
+      "uk": "досі",
+      "ru": "до сих пор"
     },
     "short": {
       "de": "bis jetzt",
@@ -20542,9 +20542,9 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "deswegen",
-      "en": "therefore, that's why",
-      "uk": "тому, з цієї причини",
-      "ru": "поэтому, по этой причине"
+      "en": "that's why",
+      "uk": "тому",
+      "ru": "поэтому"
     },
     "short": {
       "de": "aus diesem Grund, darum",
@@ -20565,7 +20565,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "ebenso",
-      "en": "likewise, just as",
+      "en": "just as",
       "uk": "так само",
       "ru": "точно так же"
     },
@@ -20588,8 +20588,8 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "eher",
-      "en": "rather, more likely",
-      "uk": "швидше, радше",
+      "en": "rather",
+      "uk": "швидше",
       "ru": "скорее"
     },
     "short": {
@@ -20611,7 +20611,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "häufig",
-      "en": "often, frequently",
+      "en": "often",
       "uk": "часто",
       "ru": "часто"
     },
@@ -20634,9 +20634,9 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "inzwischen",
-      "en": "meanwhile, by now",
-      "uk": "тим часом, уже",
-      "ru": "тем временем, уже"
+      "en": "by now",
+      "uk": "вже",
+      "ru": "уже"
     },
     "short": {
       "de": "jetzt, nachdem Zeit vergangen ist",
@@ -20681,8 +20681,8 @@ var VOCAB = [
     "term": {
       "de": "die Phase",
       "en": "phase",
-      "uk": "фаза, етап",
-      "ru": "фаза, этап"
+      "uk": "фаза",
+      "ru": "фаза"
     },
     "short": {
       "de": "ein Teil einer längeren Zeit, in dem etwas besonders ist",
@@ -20704,8 +20704,8 @@ var VOCAB = [
     "term": {
       "de": "der Trend",
       "en": "trend",
-      "uk": "тренд, тенденція",
-      "ru": "тренд, тенденция"
+      "uk": "тренд",
+      "ru": "тренд"
     },
     "short": {
       "de": "eine Entwicklung, bei der immer mehr Menschen etwas tun oder modern finden",
@@ -20726,9 +20726,9 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "weshalb",
-      "en": "why, for which reason",
-      "uk": "чому, з якої причини",
-      "ru": "почему, по какой причине"
+      "en": "why",
+      "uk": "чому",
+      "ru": "почему"
     },
     "short": {
       "de": "aus welchem Grund, warum",
@@ -20795,7 +20795,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "der Geruch",
-      "en": "smell, odour",
+      "en": "smell",
       "uk": "запах",
       "ru": "запах"
     },
@@ -20818,9 +20818,9 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "das Gewürz",
-      "en": "spice, seasoning",
-      "uk": "пряність, приправа",
-      "ru": "пряность, приправа"
+      "en": "spice",
+      "uk": "приправа",
+      "ru": "приправа"
     },
     "short": {
       "de": "etwas, das man zum Essen gibt, damit es mehr Geschmack hat, zum Beispiel Pfeffer",
@@ -20865,8 +20865,8 @@ var VOCAB = [
     "term": {
       "de": "die Haselnuss",
       "en": "hazelnut",
-      "uk": "фундук, ліщинний горіх",
-      "ru": "фундук, лесной орех"
+      "uk": "фундук",
+      "ru": "фундук"
     },
     "short": {
       "de": "eine kleine braune Frucht mit harter Schale, die man gern in Schokolade isst",
@@ -20887,9 +20887,9 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "die Hülsenfrucht",
-      "en": "legume, pulse",
-      "uk": "бобова рослина, бобові",
-      "ru": "бобовое растение, бобовые"
+      "en": "legume",
+      "uk": "бобові",
+      "ru": "бобовые"
     },
     "short": {
       "de": "eine Pflanze, deren Samen man isst, zum Beispiel Bohnen oder Erbsen",
@@ -20933,9 +20933,9 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "der Milchzucker",
-      "en": "lactose, milk sugar",
-      "uk": "лактоза, молочний цукор",
-      "ru": "лактоза, молочный сахар"
+      "en": "lactose",
+      "uk": "лактоза",
+      "ru": "лактоза"
     },
     "short": {
       "de": "der Zucker, der in Milch ist",
@@ -21025,7 +21025,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "behaupten",
-      "en": "to claim, to assert",
+      "en": "to claim",
       "uk": "стверджувати",
       "ru": "утверждать"
     },
@@ -21071,7 +21071,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "das Diagramm",
-      "en": "diagram, chart",
+      "en": "chart",
       "uk": "діаграма",
       "ru": "диаграмма"
     },
@@ -21140,9 +21140,9 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "grundsätzlich",
-      "en": "generally, in principle",
-      "uk": "загалом, як правило",
-      "ru": "в принципе, как правило"
+      "en": "generally",
+      "uk": "як правило",
+      "ru": "как правило"
     },
     "short": {
       "de": "als allgemeine Regel, meistens, auch wenn es Ausnahmen gibt",
@@ -21187,8 +21187,8 @@ var VOCAB = [
     "term": {
       "de": "die Institution",
       "en": "institution",
-      "uk": "установа, інституція",
-      "ru": "учреждение, институция"
+      "uk": "установа",
+      "ru": "учреждение"
     },
     "short": {
       "de": "eine große Organisation, zum Beispiel eine Schule, ein Krankenhaus oder ein Amt",
@@ -21347,9 +21347,9 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "bedenklich",
-      "en": "questionable, worrying",
-      "uk": "сумнівний, тривожний",
-      "ru": "сомнительный, тревожный"
+      "en": "questionable",
+      "uk": "сумнівний",
+      "ru": "сомнительный"
     },
     "short": {
       "de": "so, dass man sich Sorgen machen muss, weil es vielleicht schlecht oder gefährlich ist",
@@ -21416,7 +21416,7 @@ var VOCAB = [
     "cat": "k4",
     "term": {
       "de": "einseitig",
-      "en": "one-sided, unbalanced",
+      "en": "one-sided",
       "uk": "однобічний",
       "ru": "односторонний"
     },
@@ -21532,8 +21532,8 @@ var VOCAB = [
     "term": {
       "de": "sich ärgern",
       "en": "to get annoyed",
-      "uk": "сердитися, дратуватися",
-      "ru": "сердиться, раздражаться"
+      "uk": "сердитися",
+      "ru": "сердиться"
     },
     "short": {
       "de": "ein schlechtes Gefühl haben, weil etwas nicht so ist, wie man möchte",
@@ -21761,9 +21761,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "auffallen",
-      "en": "to be noticeable, stand out",
-      "uk": "виділятися, впадати в очі",
-      "ru": "выделяться, бросаться в глаза"
+      "en": "to be noticed",
+      "uk": "впадати в очі",
+      "ru": "бросаться в глаза"
     },
     "short": {
       "de": "Bemerkt werden, weil etwas anders oder besonders ist",
@@ -21774,8 +21774,8 @@ var VOCAB = [
     "def": {
       "de": "Der Fehler ist niemandem <b>aufgefallen</b>, <g>bis</g> der Chef die Liste noch einmal gelesen hat.",
       "en": "Nobody <b>noticed</b> the mistake <g>until</g> the boss read the list again.",
-      "uk": "Помилку ніхто не <b>помітив</b>, <g>доки</g> керівник ще раз не прочитав список.",
-      "ru": "Ошибку никто не <b>заметил</b>, <g>пока</g> начальник снова не прочитал список."
+      "uk": "Помилка нікому не <b>впала в очі</b>, <g>доки</g> керівник ще раз не прочитав список.",
+      "ru": "Ошибка никому не <b>бросилась в глаза</b>, <g>пока</g> начальник снова не прочитал список."
     },
     "gram": "nebensatz_mit_bis"
   },
@@ -21899,9 +21899,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "fremd",
-      "en": "foreign, strange",
-      "uk": "чужий, незнайомий",
-      "ru": "чужой, незнакомый"
+      "en": "foreign",
+      "uk": "чужий",
+      "ru": "чужой"
     },
     "short": {
       "de": "unbekannt oder ungewohnt, aus einem anderen Land oder einer anderen Kultur",
@@ -21923,8 +21923,8 @@ var VOCAB = [
     "term": {
       "de": "vertraut",
       "en": "familiar",
-      "uk": "знайомий, звичний",
-      "ru": "знакомый, привычный"
+      "uk": "знайомий",
+      "ru": "знакомый"
     },
     "short": {
       "de": "gut bekannt, wie etwas, das man schon oft erlebt hat",
@@ -22152,7 +22152,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "sich beschäftigen (mit)",
-      "en": "to deal (with), to engage (with)",
+      "en": "to occupy oneself (with)",
       "uk": "займатися (чимось)",
       "ru": "заниматься (чем-то)"
     },
@@ -22267,9 +22267,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "meistern",
-      "en": "to master, to cope with",
-      "uk": "опановувати, долати",
-      "ru": "осваивать, преодолевать"
+      "en": "to master",
+      "uk": "опановувати",
+      "ru": "осваивать"
     },
     "short": {
       "de": "eine schwierige Aufgabe erfolgreich lösen",
@@ -22336,9 +22336,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "durchhalten",
-      "en": "to persevere, to hold out",
-      "uk": "витримувати, не здаватися",
-      "ru": "выдерживать, не сдаваться"
+      "en": "to hold out",
+      "uk": "витримувати",
+      "ru": "выдерживать"
     },
     "short": {
       "de": "trotz Schwierigkeiten nicht aufgeben und weitermachen",
@@ -22543,7 +22543,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "das Zurechtfinden",
-      "en": "finding one's way, getting oriented",
+      "en": "finding one's way",
       "uk": "орієнтація (в новому місці)",
       "ru": "ориентация (в новом месте)"
     },
@@ -22612,7 +22612,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "nachdenken (über)",
-      "en": "to think over, to reflect (on)",
+      "en": "to think over (on)",
       "uk": "роздумувати (над)",
       "ru": "размышлять (над)"
     },
@@ -22773,9 +22773,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "der Brauch",
-      "en": "tradition, custom",
-      "uk": "звичай, традиція",
-      "ru": "обычай, традиция"
+      "en": "custom",
+      "uk": "звичай",
+      "ru": "обычай"
     },
     "short": {
       "de": "eine Handlung, die in einer Gruppe oder Region seit Langem so gemacht wird",
@@ -22888,9 +22888,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "bloß",
-      "en": "merely, only",
-      "uk": "лише, тільки",
-      "ru": "только, всего лишь"
+      "en": "merely",
+      "uk": "лише",
+      "ru": "всего лишь"
     },
     "short": {
       "de": "nur, nichts weiter",
@@ -22911,9 +22911,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "daneben",
-      "en": "besides, in addition",
-      "uk": "крім того, до цього",
-      "ru": "кроме того, помимо этого"
+      "en": "besides",
+      "uk": "крім того",
+      "ru": "помимо этого"
     },
     "short": {
       "de": "außerdem, zusätzlich zu etwas anderem",
@@ -22934,7 +22934,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "einfallen",
-      "en": "to occur to (someone), to come to mind",
+      "en": "to occur to (someone)",
       "uk": "спадати на думку",
       "ru": "приходить в голову"
     },
@@ -22957,9 +22957,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "eventuell",
-      "en": "possibly, perhaps",
-      "uk": "можливо, за потреби",
-      "ru": "возможно, при необходимости"
+      "en": "possibly",
+      "uk": "можливо",
+      "ru": "возможно"
     },
     "short": {
       "de": "vielleicht, wenn es passt oder möglich ist",
@@ -22980,7 +22980,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "die Gemeinsamkeit",
-      "en": "common feature, similarity",
+      "en": "similarity",
       "uk": "спільна риса",
       "ru": "общая черта"
     },
@@ -23026,9 +23026,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "kaum",
-      "en": "hardly, barely",
-      "uk": "ледве, майже не",
-      "ru": "едва, почти не"
+      "en": "hardly",
+      "uk": "ледве",
+      "ru": "едва"
     },
     "short": {
       "de": "fast nicht, sehr wenig",
@@ -23049,9 +23049,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "massiv",
-      "en": "massive, severe",
-      "uk": "значний, потужний",
-      "ru": "значительный, мощный"
+      "en": "massive",
+      "uk": "значний",
+      "ru": "значительный"
     },
     "short": {
       "de": "sehr stark oder sehr groß",
@@ -23073,8 +23073,8 @@ var VOCAB = [
     "term": {
       "de": "offenbar",
       "en": "apparently",
-      "uk": "очевидно, мабуть",
-      "ru": "по-видимому, очевидно"
+      "uk": "мабуть",
+      "ru": "по-видимому"
     },
     "short": {
       "de": "so, wie es aussieht, aber man ist nicht ganz sicher",
@@ -23118,9 +23118,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "tatsächlich",
-      "en": "actually, really",
-      "uk": "насправді, справді",
-      "ru": "на самом деле, действительно"
+      "en": "really",
+      "uk": "справді",
+      "ru": "действительно"
     },
     "short": {
       "de": "wirklich, in der Realität",
@@ -23141,9 +23141,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "übereinstimmen",
-      "en": "to match, to agree",
-      "uk": "збігатися, погоджуватися",
-      "ru": "совпадать, соглашаться"
+      "en": "to match",
+      "uk": "збігатися",
+      "ru": "совпадать"
     },
     "short": {
       "de": "gleich sein oder die gleiche Meinung haben",
@@ -23164,7 +23164,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "unglaublich",
-      "en": "unbelievable, incredible",
+      "en": "unbelievable",
       "uk": "неймовірний",
       "ru": "невероятный"
     },
@@ -23187,9 +23187,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "völlig",
-      "en": "completely, totally",
-      "uk": "цілком, повністю",
-      "ru": "совершенно, полностью"
+      "en": "completely",
+      "uk": "цілком",
+      "ru": "совершенно"
     },
     "short": {
       "de": "ganz und gar, komplett",
@@ -23211,8 +23211,8 @@ var VOCAB = [
     "term": {
       "de": "wahr",
       "en": "true",
-      "uk": "правдивий, істинний",
-      "ru": "правдивый, истинный"
+      "uk": "правдивий",
+      "ru": "правдивый"
     },
     "short": {
       "de": "so, wie es wirklich ist, nicht falsch",
@@ -23233,9 +23233,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "die Weise",
-      "en": "way, manner",
-      "uk": "спосіб, манера",
-      "ru": "способ, манера"
+      "en": "manner",
+      "uk": "манера",
+      "ru": "манера"
     },
     "short": {
       "de": "der Weg, wie man etwas macht",
@@ -23256,9 +23256,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "ziemlich",
-      "en": "quite, fairly",
-      "uk": "досить, доволі",
-      "ru": "довольно, достаточно"
+      "en": "quite",
+      "uk": "досить",
+      "ru": "довольно"
     },
     "short": {
       "de": "mehr als normal, aber nicht extrem",
@@ -23279,9 +23279,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "zufällig",
-      "en": "by chance, accidental",
-      "uk": "випадковий, випадково",
-      "ru": "случайный, случайно"
+      "en": "by chance",
+      "uk": "випадково",
+      "ru": "случайно"
     },
     "short": {
       "de": "ohne dass man es geplant hat",
@@ -23302,9 +23302,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "sich auseinandersetzen",
-      "en": "to engage (with), to grapple (with)",
-      "uk": "розбиратися (з чимось), вникати",
-      "ru": "разбираться (с чем-либо), вникать"
+      "en": "to grapple (with)",
+      "uk": "розбиратися (з чимось)",
+      "ru": "разбираться (с чем-либо)"
     },
     "short": {
       "de": "über ein Thema oder Problem lange und genau nachdenken und diskutieren",
@@ -23394,9 +23394,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "mitreden",
-      "en": "to join in the conversation, to have a say",
-      "uk": "брати участь у розмові, мати право голосу",
-      "ru": "участвовать в разговоре, иметь право голоса"
+      "en": "to join in the conversation",
+      "uk": "брати участь у розмові",
+      "ru": "участвовать в разговоре"
     },
     "short": {
       "de": "in einem Gespräch auch etwas sagen, weil man etwas darüber weiß",
@@ -23406,7 +23406,7 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Auf wen</g> hört er, wenn er beim Fußball <b>mitreden</b> will?",
-      "en": "<g>Whom</g> does he listen <g>to</g> when he wants to <b>have a say</b> in football?",
+      "en": "<g>Whom</g> does he listen <g>to</g> when he wants to <b>join in the conversation</b> about football?",
       "uk": "<g>Кого</g> він слухає, коли хоче <b>брати участь у розмові</b> про футбол?",
       "ru": "<g>Кого</g> он слушает, когда хочет <b>участвовать в разговоре</b> о футболе?"
     },
@@ -23486,7 +23486,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "das Ereignis",
-      "en": "event, occurrence",
+      "en": "event",
       "uk": "подія",
       "ru": "событие"
     },
@@ -23510,8 +23510,8 @@ var VOCAB = [
     "term": {
       "de": "erleben",
       "en": "to experience",
-      "uk": "пережити, відчути на собі",
-      "ru": "пережить, испытать на себе"
+      "uk": "пережити",
+      "ru": "пережить"
     },
     "short": {
       "de": "etwas selbst sehen und fühlen, wenn es passiert",
@@ -23555,9 +23555,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "die Leine",
-      "en": "lead, washing line",
-      "uk": "повідець, мотузка",
-      "ru": "поводок, верёвка"
+      "en": "lead",
+      "uk": "повідець",
+      "ru": "поводок"
     },
     "short": {
       "de": "eine lange Schnur, zum Beispiel für einen Hund oder für nasse Wäsche",
@@ -23578,9 +23578,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "miterleben",
-      "en": "to witness, to experience first-hand",
-      "uk": "бути свідком, переживати на власні очі",
-      "ru": "быть свидетелем, переживать на собственном опыте"
+      "en": "to witness",
+      "uk": "бути свідком",
+      "ru": "быть свидетелем"
     },
     "short": {
       "de": "dabei sein, wenn etwas passiert",
@@ -23670,7 +23670,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "die Taschenlampe",
-      "en": "torch, flashlight",
+      "en": "torch",
       "uk": "кишеньковий ліхтарик",
       "ru": "карманный фонарик"
     },
@@ -23739,7 +23739,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "die Wandertour",
-      "en": "hike, walking tour",
+      "en": "hike",
       "uk": "піший похід",
       "ru": "пеший поход"
     },
@@ -23762,9 +23762,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "das Weltall",
-      "en": "space, outer space",
-      "uk": "космос, всесвіт",
-      "ru": "космос, вселенная"
+      "en": "space",
+      "uk": "космос",
+      "ru": "космос"
     },
     "short": {
       "de": "der Raum mit Sternen und Planeten außerhalb der Erde",
@@ -23831,7 +23831,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "ausschlafen",
-      "en": "to sleep in, to get enough sleep",
+      "en": "to sleep in",
       "uk": "виспатися",
       "ru": "выспаться"
     },
@@ -23854,7 +23854,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "der Autofahrer",
-      "en": "driver, motorist",
+      "en": "driver",
       "uk": "водій",
       "ru": "водитель"
     },
@@ -24015,9 +24015,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "nebenbei",
-      "en": "on the side, in passing",
-      "uk": "принагідно, паралельно",
-      "ru": "попутно, параллельно"
+      "en": "on the side",
+      "uk": "паралельно",
+      "ru": "параллельно"
     },
     "short": {
       "de": "während man etwas anderes macht, nicht als Hauptsache",
@@ -24038,9 +24038,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "die Parklücke",
-      "en": "parking space, gap",
-      "uk": "паркомісце, вільне місце для паркування",
-      "ru": "парковочное место, свободное место для парковки"
+      "en": "parking space",
+      "uk": "паркомісце",
+      "ru": "парковочное место"
     },
     "short": {
       "de": "ein freier Platz zwischen zwei Autos, wo man parken kann",
@@ -24085,8 +24085,8 @@ var VOCAB = [
     "term": {
       "de": "rückwärts",
       "en": "backwards",
-      "uk": "назад, заднім ходом",
-      "ru": "назад, задним ходом"
+      "uk": "заднім ходом",
+      "ru": "задним ходом"
     },
     "short": {
       "de": "in die Richtung nach hinten, nicht nach vorn",
@@ -24107,7 +24107,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "der Straßenrand",
-      "en": "roadside, edge of the road",
+      "en": "roadside",
       "uk": "узбіччя",
       "ru": "обочина"
     },
@@ -24176,9 +24176,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "wegfahren",
-      "en": "to drive away, to leave",
-      "uk": "виїжджати, відʼїжджати",
-      "ru": "уезжать, отъезжать"
+      "en": "to leave",
+      "uk": "виїжджати",
+      "ru": "уезжать"
     },
     "short": {
       "de": "mit einem Fahrzeug von einem Ort weg in eine andere Richtung fahren",
@@ -24245,9 +24245,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "furchtbar",
-      "en": "terrible, awful",
-      "uk": "жахливий, страшенний",
-      "ru": "ужасный, страшный"
+      "en": "terrible",
+      "uk": "жахливий",
+      "ru": "ужасный"
     },
     "short": {
       "de": "sehr schlecht oder sehr unangenehm",
@@ -24269,8 +24269,8 @@ var VOCAB = [
     "term": {
       "de": "das Gefühl",
       "en": "feeling",
-      "uk": "почуття, відчуття",
-      "ru": "чувство, ощущение"
+      "uk": "відчуття",
+      "ru": "ощущение"
     },
     "short": {
       "de": "etwas, das man innen spürt, zum Beispiel Freude oder Angst",
@@ -24291,7 +24291,7 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "nachdenklich",
-      "en": "thoughtful, pensive",
+      "en": "thoughtful",
       "uk": "задумливий",
       "ru": "задумчивый"
     },
@@ -24315,8 +24315,8 @@ var VOCAB = [
     "term": {
       "de": "verärgert",
       "en": "annoyed",
-      "uk": "роздратований, розсерджений",
-      "ru": "раздражённый, рассерженный"
+      "uk": "роздратований",
+      "ru": "раздражённый"
     },
     "short": {
       "de": "ein wenig wütend, weil etwas nicht gut war",
@@ -24337,9 +24337,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "sich angewöhnen",
-      "en": "to get used to, to take up (a habit)",
-      "uk": "звикати, виробляти звичку",
-      "ru": "привыкать, приобретать привычку"
+      "en": "to take up (a habit)",
+      "uk": "виробляти звичку",
+      "ru": "привыкать"
     },
     "short": {
       "de": "etwas so oft tun, dass es normal wird",
@@ -24360,9 +24360,9 @@ var VOCAB = [
     "cat": "k5",
     "term": {
       "de": "üblich",
-      "en": "usual, customary",
-      "uk": "звичайний, прийнятий",
-      "ru": "обычный, принятый"
+      "en": "usual",
+      "uk": "звичайний",
+      "ru": "обычный"
     },
     "short": {
       "de": "so, wie es normalerweise gemacht wird",
@@ -24373,8 +24373,8 @@ var VOCAB = [
     "def": {
       "de": "In Deutschland ist es <b>üblich</b>, pünktlich zu sein; <g>darauf</g> achtet man sehr.",
       "en": "In Germany it is <b>usual</b> to be on time; people pay close attention <g>to it</g>.",
-      "uk": "У Німеччині <b>прийнято</b> бути пунктуальним; <g>на це</g> дуже звертають увагу.",
-      "ru": "В Германии <b>принято</b> быть пунктуальным; <g>на это</g> очень обращают внимание."
+      "uk": "У Німеччині <b>звичайною</b> справою є пунктуальність; <g>на це</g> дуже звертають увагу.",
+      "ru": "В Германии <b>обычным</b> делом является пунктуальность; <g>на это</g> очень обращают внимание."
     },
     "gram": "praepositionaladverbien_b1"
   },
@@ -24453,8 +24453,8 @@ var VOCAB = [
     "term": {
       "de": "der Verband",
       "en": "bandage",
-      "uk": "бинт, повʼязка",
-      "ru": "бинт, повязка"
+      "uk": "повʼязка",
+      "ru": "повязка"
     },
     "short": {
       "de": "ein Stück Stoff, das man um eine Wunde legt",
@@ -24591,8 +24591,8 @@ var VOCAB = [
     "term": {
       "de": "das Formular",
       "en": "form",
-      "uk": "формуляр, бланк",
-      "ru": "формуляр, бланк"
+      "uk": "бланк",
+      "ru": "бланк"
     },
     "short": {
       "de": "ein Papier mit Feldern, die man ausfüllen muss",
@@ -24603,8 +24603,8 @@ var VOCAB = [
     "def": {
       "de": "Sie füllte das <b>Formular</b> sehr sorgfältig aus, <g>um</g> keine Fehler <g>zu</g> machen.",
       "en": "She filled in the <b>form</b> very carefully <g>in order not to</g> make any mistakes.",
-      "uk": "Вона дуже уважно заповнила <b>формуляр</b>, <g>щоб</g> не зробити помилок.",
-      "ru": "Она очень внимательно заполнила <b>формуляр</b>, <g>чтобы</g> не сделать ошибок."
+      "uk": "Вона дуже уважно заповнила <b>бланк</b>, <g>щоб</g> не зробити помилок.",
+      "ru": "Она очень внимательно заполнила <b>бланк</b>, <g>чтобы</g> не сделать ошибок."
     },
     "gram": "satz_mit_um_zu"
   },
@@ -24637,8 +24637,8 @@ var VOCAB = [
     "term": {
       "de": "das Medikament",
       "en": "medication",
-      "uk": "медикамент, ліки",
-      "ru": "медикамент, лекарство"
+      "uk": "медикамент",
+      "ru": "медикамент"
     },
     "short": {
       "de": "etwas, das man gegen eine Krankheit nimmt, um gesund zu werden",
@@ -24660,8 +24660,8 @@ var VOCAB = [
     "term": {
       "de": "der Unfall",
       "en": "accident",
-      "uk": "аварія, нещасний випадок",
-      "ru": "авария, несчастный случай"
+      "uk": "аварія",
+      "ru": "авария"
     },
     "short": {
       "de": "ein plötzliches, unerwartetes Ereignis, bei dem jemand verletzt wird",
@@ -24706,8 +24706,8 @@ var VOCAB = [
     "term": {
       "de": "die Geburt",
       "en": "birth",
-      "uk": "народження, пологи",
-      "ru": "роды, рождение"
+      "uk": "народження",
+      "ru": "рождение"
     },
     "short": {
       "de": "der Moment, in dem ein Baby zur Welt kommt",
@@ -24889,7 +24889,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "betreuen",
-      "en": "to look after, to care for",
+      "en": "to look after",
       "uk": "доглядати",
       "ru": "ухаживать"
     },
@@ -24935,9 +24935,9 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "heilen",
-      "en": "to heal, to cure",
-      "uk": "загоюватися, лікувати",
-      "ru": "заживать, лечить"
+      "en": "to heal",
+      "uk": "загоюватися",
+      "ru": "заживать"
     },
     "short": {
       "de": "eine Krankheit oder Wunde vollständig beseitigen",
@@ -24981,7 +24981,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "der Befund",
-      "en": "findings, result",
+      "en": "findings",
       "uk": "результат обстеження",
       "ru": "результат обследования"
     },
@@ -25050,7 +25050,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "abklingen",
-      "en": "to subside, to wear off",
+      "en": "to subside",
       "uk": "вщухати",
       "ru": "утихать"
     },
@@ -25119,7 +25119,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "retten",
-      "en": "to rescue, to save",
+      "en": "to save",
       "uk": "рятувати",
       "ru": "спасать"
     },
@@ -25326,7 +25326,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "vorlegen",
-      "en": "to present, to submit",
+      "en": "to submit",
       "uk": "подавати (документ)",
       "ru": "подавать (документ)"
     },
@@ -25487,7 +25487,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "aufklären",
-      "en": "to inform, to brief (a patient)",
+      "en": "to inform (a patient)",
       "uk": "інформувати (пацієнта)",
       "ru": "информировать (пациента)"
     },
@@ -25510,7 +25510,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "zustimmen",
-      "en": "to agree, to consent",
+      "en": "to agree",
       "uk": "погоджуватися",
       "ru": "соглашаться"
     },
@@ -25556,7 +25556,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "betäuben",
-      "en": "to anaesthetize, to numb",
+      "en": "to numb",
       "uk": "знеболювати",
       "ru": "обезболивать"
     },
@@ -25763,7 +25763,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "die Begleitperson",
-      "en": "companion, accompanying person",
+      "en": "accompanying person",
       "uk": "супровідна особа",
       "ru": "сопровождающее лицо"
     },
@@ -25809,7 +25809,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "anfahren",
-      "en": "to hit (with a car), to run into",
+      "en": "to hit (with a car)",
       "uk": "наїхати",
       "ru": "наехать"
     },
@@ -25902,8 +25902,8 @@ var VOCAB = [
     "term": {
       "de": "der Blinker",
       "en": "indicator",
-      "uk": "поворотник, вказівник повороту",
-      "ru": "поворотник, указатель поворота"
+      "uk": "поворотник",
+      "ru": "поворотник"
     },
     "short": {
       "de": "das Licht am Auto, das zeigt, dass man links oder rechts abbiegen will",
@@ -25947,9 +25947,9 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "krachen",
-      "en": "to crash, to bang",
-      "uk": "гуркотіти, з гуркотом зіткнутися",
-      "ru": "грохотать, с грохотом столкнуться"
+      "en": "to bang",
+      "uk": "гуркотіти",
+      "ru": "грохотать"
     },
     "short": {
       "de": "mit einem lauten Geräusch gegen etwas stoßen oder brechen",
@@ -26016,9 +26016,9 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "quietschen",
-      "en": "to squeal, to squeak",
-      "uk": "скрипіти, вищати",
-      "ru": "скрипеть, визжать"
+      "en": "to squeal",
+      "uk": "вищати",
+      "ru": "визжать"
     },
     "short": {
       "de": "ein hohes, unangenehmes Geräusch machen, zum Beispiel Reifen beim Bremsen",
@@ -26029,7 +26029,7 @@ var VOCAB = [
     "def": {
       "de": "Die Reifen <b>quietschten</b> <g>nicht nur</g> laut, <g>sondern auch</g> lange.",
       "en": "The tyres <b>squealed</b> <g>not only</g> loudly <g>but also</g> for a long time.",
-      "uk": "Шини <b>скрипіли</b> <g>не лише</g> голосно, <g>а й</g> довго.",
+      "uk": "Шини <b>вищали</b> <g>не лише</g> голосно, <g>а й</g> довго.",
       "ru": "Шины <b>визжали</b> <g>не только</g> громко, <g>но и</g> долго."
     },
     "gram": "nicht_nur_sondern_auch"
@@ -26039,7 +26039,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "das Rücklicht",
-      "en": "rear light, tail light",
+      "en": "rear light",
       "uk": "задній ліхтар",
       "ru": "задний фонарь"
     },
@@ -26085,9 +26085,9 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "rutschen",
-      "en": "to slip, to skid",
-      "uk": "ковзати, зісковзувати",
-      "ru": "скользить, соскальзывать"
+      "en": "to skid",
+      "uk": "ковзати",
+      "ru": "скользить"
     },
     "short": {
       "de": "auf einer glatten Fläche nicht festen Halt haben und schnell gleiten, zum Beispiel auf Eis",
@@ -26108,8 +26108,8 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "die Scheibe",
-      "en": "pane, window glass",
-      "uk": "скло, шибка",
+      "en": "window glass",
+      "uk": "скло",
       "ru": "стекло"
     },
     "short": {
@@ -26155,8 +26155,8 @@ var VOCAB = [
     "term": {
       "de": "schwingen",
       "en": "to swing",
-      "uk": "розгойдуватися, коливатися",
-      "ru": "качаться, колебаться"
+      "uk": "розгойдуватися",
+      "ru": "качаться"
     },
     "short": {
       "de": "sich in einem Bogen hin und her bewegen",
@@ -26201,8 +26201,8 @@ var VOCAB = [
     "term": {
       "de": "umfallen",
       "en": "to fall over",
-      "uk": "падати, перекидатися",
-      "ru": "падать, опрокидываться"
+      "uk": "падати",
+      "ru": "падать"
     },
     "short": {
       "de": "aus dem Stand auf die Seite oder auf den Boden fallen",
@@ -26292,9 +26292,9 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "eilig",
-      "en": "urgent, hurried",
-      "uk": "нагальний, терміновий",
-      "ru": "срочный, неотложный"
+      "en": "urgent",
+      "uk": "терміновий",
+      "ru": "срочный"
     },
     "short": {
       "de": "so, dass es schnell gehen muss",
@@ -26385,8 +26385,8 @@ var VOCAB = [
     "term": {
       "de": "ärztlich",
       "en": "medical (by a doctor)",
-      "uk": "лікарський, медичний",
-      "ru": "врачебный, медицинский"
+      "uk": "лікарський",
+      "ru": "врачебный"
     },
     "short": {
       "de": "so, dass es mit dem Arzt zu tun hat oder vom Arzt kommt",
@@ -26476,7 +26476,7 @@ var VOCAB = [
     "cat": "k6",
     "term": {
       "de": "das Seniorenheim",
-      "en": "care home, retirement home",
+      "en": "care home",
       "uk": "будинок для літніх людей",
       "ru": "дом для пожилых людей"
     },
@@ -26568,7 +26568,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "trennen",
-      "en": "to sort, separate (waste)",
+      "en": "to sort (waste)",
       "uk": "сортувати (сміття)",
       "ru": "сортировать (мусор)"
     },
@@ -26638,8 +26638,8 @@ var VOCAB = [
     "term": {
       "de": "nachhaltig",
       "en": "sustainable",
-      "uk": "сталий, екологічний",
-      "ru": "устойчивый, экологичный"
+      "uk": "сталий",
+      "ru": "устойчивый"
     },
     "short": {
       "de": "so, dass es der Umwelt für lange Zeit nicht schadet",
@@ -26650,8 +26650,8 @@ var VOCAB = [
     "def": {
       "de": "Auf diesem Hof <g>wird</g> sehr <b>nachhaltig</b> <g>gearbeitet</g>.",
       "en": "On this farm, work <g>is</g> done in a very <b>sustainable</b> way.",
-      "uk": "На цій фермі працюють дуже <b>екологічно</b> (сталим способом).",
-      "ru": "На этой ферме работают очень <b>экологично</b> (устойчивым способом)."
+      "uk": "На цій фермі працюють дуже <b>сталим</b> способом.",
+      "ru": "На этой ферме работают очень <b>устойчивым</b> способом."
     },
     "gram": "passiv_praesens_b1"
   },
@@ -27212,7 +27212,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "sich engagieren",
-      "en": "to get involved, to commit",
+      "en": "to get involved",
       "uk": "займатися (активно)",
       "ru": "заниматься (активно)"
     },
@@ -27258,7 +27258,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "sich einsetzen (für)",
-      "en": "to advocate (for), to stand up (for)",
+      "en": "to advocate (for)",
       "uk": "відстоювати",
       "ru": "отстаивать"
     },
@@ -27281,7 +27281,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "steigen",
-      "en": "to rise, to increase",
+      "en": "to rise",
       "uk": "зростати",
       "ru": "расти"
     },
@@ -27304,7 +27304,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "sinken",
-      "en": "to fall, to decrease",
+      "en": "to fall",
       "uk": "знижуватися",
       "ru": "снижаться"
     },
@@ -27327,9 +27327,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "wechseln",
-      "en": "to switch, to change",
-      "uk": "змінювати, переходити",
-      "ru": "менять, переходить"
+      "en": "to switch",
+      "uk": "змінювати",
+      "ru": "менять"
     },
     "short": {
       "de": "etwas gegen etwas anderes tauschen, zum Beispiel den Stromanbieter",
@@ -27340,8 +27340,8 @@ var VOCAB = [
     "def": {
       "de": "Wir <g>sind</g> letztes Jahr zu einem grünen Stromanbieter <b>gewechselt</b>.",
       "en": "We <g>have</g> <b>switched</b> to a green electricity provider last year.",
-      "uk": "Ми минулого року <b>перейшли</b> на екологічного постачальника електроенергії.",
-      "ru": "Мы в прошлом году <b>перешли</b> на экологичного поставщика электроэнергии."
+      "uk": "Ми минулого року <b>змінили</b> постачальника електроенергії на екологічного.",
+      "ru": "Мы в прошлом году <b>сменили</b> поставщика электроэнергии на экологичного."
     },
     "gram": "perfekt_wdh_b1"
   },
@@ -27351,8 +27351,8 @@ var VOCAB = [
     "term": {
       "de": "erkennen",
       "en": "to recognize",
-      "uk": "визнавати, розпізнавати",
-      "ru": "признавать, распознавать"
+      "uk": "усвідомлювати",
+      "ru": "осознавать"
     },
     "short": {
       "de": "etwas klar verstehen oder bemerken",
@@ -27363,8 +27363,8 @@ var VOCAB = [
     "def": {
       "de": "Viele Menschen <g>haben</g> die Gefahr des Klimawandels erst spät <b>erkannt</b>.",
       "en": "Many people <g>have</g> only <b>recognized</b> the danger of climate change late.",
-      "uk": "Багато людей <b>визнали</b> небезпеку зміни клімату лише пізно.",
-      "ru": "Многие люди <b>признали</b> опасность изменения климата лишь поздно."
+      "uk": "Багато людей лише пізно <b>усвідомили</b> небезпеку зміни клімату.",
+      "ru": "Многие люди лишь поздно <b>осознали</b> опасность изменения климата."
     },
     "gram": "perfekt_wdh_b1"
   },
@@ -27580,7 +27580,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "pflücken",
-      "en": "to pick, to harvest by hand",
+      "en": "to pick",
       "uk": "збирати (руками)",
       "ru": "собирать (руками)"
     },
@@ -27672,7 +27672,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "kontrollieren",
-      "en": "to check, to inspect",
+      "en": "to check",
       "uk": "перевіряти",
       "ru": "проверять"
     },
@@ -27856,7 +27856,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "die Auswirkung",
-      "en": "effect, impact",
+      "en": "effect",
       "uk": "наслідок",
       "ru": "последствие"
     },
@@ -28017,7 +28017,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "die Konservendose",
-      "en": "tin, can",
+      "en": "tin",
       "uk": "консервна банка",
       "ru": "консервная банка"
     },
@@ -28040,9 +28040,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "der Kunststoff",
-      "en": "plastic, synthetic material",
-      "uk": "пластмаса, синтетичний матеріал",
-      "ru": "пластмасса, синтетический материал"
+      "en": "plastic",
+      "uk": "пластмаса",
+      "ru": "пластмасса"
     },
     "short": {
       "de": "ein künstliches Material, das man in Fabriken herstellt",
@@ -28477,7 +28477,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "senken",
-      "en": "to lower, to reduce",
+      "en": "to reduce",
       "uk": "знижувати",
       "ru": "снижать"
     },
@@ -28523,9 +28523,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "sparsam",
-      "en": "economical, thrifty",
-      "uk": "ощадливий, економний",
-      "ru": "экономный, бережливый"
+      "en": "economical",
+      "uk": "економний",
+      "ru": "экономный"
     },
     "short": {
       "de": "so, dass man wenig Geld oder Energie benutzt",
@@ -28593,8 +28593,8 @@ var VOCAB = [
     "term": {
       "de": "unnötig",
       "en": "unnecessary",
-      "uk": "непотрібний, зайвий",
-      "ru": "ненужный, лишний"
+      "uk": "непотрібний",
+      "ru": "ненужный"
     },
     "short": {
       "de": "so, dass man es nicht braucht",
@@ -28616,8 +28616,8 @@ var VOCAB = [
     "term": {
       "de": "der Verbrauch",
       "en": "consumption",
-      "uk": "споживання, витрата",
-      "ru": "потребление, расход"
+      "uk": "споживання",
+      "ru": "потребление"
     },
     "short": {
       "de": "die Menge von Energie, Wasser oder etwas anderem, die man benutzt",
@@ -28638,7 +28638,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "die Wärme",
-      "en": "heat, warmth",
+      "en": "heat",
       "uk": "тепло",
       "ru": "тепло"
     },
@@ -28730,9 +28730,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "belasten",
-      "en": "to burden, to put a strain on",
-      "uk": "обтяжувати, завдавати навантаження",
-      "ru": "обременять, оказывать нагрузку"
+      "en": "to burden",
+      "uk": "обтяжувати",
+      "ru": "обременять"
     },
     "short": {
       "de": "für Menschen oder die Umwelt eine Last oder ein Problem sein",
@@ -28753,7 +28753,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "die Belastung",
-      "en": "burden, strain",
+      "en": "strain",
       "uk": "навантаження",
       "ru": "нагрузка"
     },
@@ -28799,7 +28799,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "giftig",
-      "en": "poisonous, toxic",
+      "en": "poisonous",
       "uk": "отруйний",
       "ru": "ядовитый"
     },
@@ -28822,9 +28822,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "schädigen",
-      "en": "to damage, to harm",
-      "uk": "шкодити, завдавати шкоди",
-      "ru": "вредить, наносить вред"
+      "en": "to damage",
+      "uk": "шкодити",
+      "ru": "вредить"
     },
     "short": {
       "de": "so etwas tun, dass etwas schlechter wird oder kaputtgeht",
@@ -28868,9 +28868,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "die Sorge",
-      "en": "worry, concern",
-      "uk": "турбота, занепокоєння",
-      "ru": "забота, беспокойство"
+      "en": "worry",
+      "uk": "занепокоєння",
+      "ru": "беспокойство"
     },
     "short": {
       "de": "wenn man Angst hat, dass etwas Schlimmes passiert",
@@ -28914,7 +28914,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "umgehen",
-      "en": "to deal with, to handle",
+      "en": "to handle",
       "uk": "поводитися (з чимось, з кимось)",
       "ru": "обращаться (с чем-либо, с кем-либо)"
     },
@@ -28937,7 +28937,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "verschmutzen",
-      "en": "to pollute, to make dirty",
+      "en": "to pollute",
       "uk": "забруднювати",
       "ru": "загрязнять"
     },
@@ -28984,8 +28984,8 @@ var VOCAB = [
     "term": {
       "de": "zerstören",
       "en": "to destroy",
-      "uk": "руйнувати, знищувати",
-      "ru": "разрушать, уничтожать"
+      "uk": "знищувати",
+      "ru": "уничтожать"
     },
     "short": {
       "de": "etwas so kaputt machen, dass man es nicht mehr benutzen kann",
@@ -29007,8 +29007,8 @@ var VOCAB = [
     "term": {
       "de": "die Zerstörung",
       "en": "destruction",
-      "uk": "руйнування, знищення",
-      "ru": "разрушение, уничтожение"
+      "uk": "знищення",
+      "ru": "уничтожение"
     },
     "short": {
       "de": "wenn etwas ganz kaputt gemacht wird",
@@ -29075,9 +29075,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "biologisch",
-      "en": "biological, natural",
-      "uk": "біологічний, природний",
-      "ru": "биологический, природный"
+      "en": "biological",
+      "uk": "біологічний",
+      "ru": "биологический"
     },
     "short": {
       "de": "so, dass es natürlich ist und der Natur nicht schadet",
@@ -29167,7 +29167,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "das Getreide",
-      "en": "grain, cereal",
+      "en": "grain",
       "uk": "зернові",
       "ru": "зерновые"
     },
@@ -29236,7 +29236,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "tierisch",
-      "en": "animal (adj.), of animal origin",
+      "en": "animal (adj.)",
       "uk": "тваринний",
       "ru": "животный"
     },
@@ -29260,8 +29260,8 @@ var VOCAB = [
     "term": {
       "de": "der Behälter",
       "en": "container",
-      "uk": "ємність, контейнер",
-      "ru": "ёмкость, контейнер"
+      "uk": "ємність",
+      "ru": "ёмкость"
     },
     "short": {
       "de": "etwas, in das man andere Dinge hineintut, zum Beispiel eine Box",
@@ -29283,8 +29283,8 @@ var VOCAB = [
     "term": {
       "de": "der Beutel",
       "en": "bag",
-      "uk": "пакет, мішечок",
-      "ru": "пакет, мешочек"
+      "uk": "мішечок",
+      "ru": "мешочек"
     },
     "short": {
       "de": "eine weiche Tasche aus Papier, Plastik oder Stoff",
@@ -29305,7 +29305,7 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "der Container",
-      "en": "container, skip",
+      "en": "container",
       "uk": "контейнер",
       "ru": "контейнер"
     },
@@ -29489,9 +29489,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "verwerten",
-      "en": "to utilise, to reuse",
-      "uk": "утилізувати, використовувати повторно",
-      "ru": "утилизировать, использовать повторно"
+      "en": "to utilise",
+      "uk": "використовувати повторно",
+      "ru": "использовать повторно"
     },
     "short": {
       "de": "etwas Gebrauchtes noch einmal sinnvoll benutzen",
@@ -29604,9 +29604,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "das Hochwasser",
-      "en": "flood, high water",
-      "uk": "повінь, велика вода",
-      "ru": "наводнение, паводок"
+      "en": "flood",
+      "uk": "повінь",
+      "ru": "паводок"
     },
     "short": {
       "de": "wenn ein Fluss oder das Meer so viel Wasser hat, dass das Land nass wird",
@@ -29765,9 +29765,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "trüb",
-      "en": "dull, murky",
-      "uk": "похмурий, каламутний",
-      "ru": "пасмурный, мутный"
+      "en": "dull",
+      "uk": "похмурий",
+      "ru": "пасмурный"
     },
     "short": {
       "de": "nicht klar, sondern grau und dunkel, zum Beispiel das Wetter oder das Wasser",
@@ -29812,8 +29812,8 @@ var VOCAB = [
     "term": {
       "de": "das Unwetter",
       "en": "severe weather",
-      "uk": "негода, буревій",
-      "ru": "непогода, ненастье"
+      "uk": "негода",
+      "ru": "непогода"
     },
     "short": {
       "de": "sehr schlechtes Wetter mit viel Regen, Wind oder Gewitter",
@@ -29834,9 +29834,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "voraussichtlich",
-      "en": "expected, probably",
-      "uk": "ймовірно, за прогнозом",
-      "ru": "предположительно, ожидаемо"
+      "en": "probably",
+      "uk": "ймовірно",
+      "ru": "предположительно"
     },
     "short": {
       "de": "so, wie man es für die Zukunft erwartet",
@@ -29857,9 +29857,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "vorhersagen",
-      "en": "to predict, to forecast",
-      "uk": "прогнозувати, передбачати",
-      "ru": "прогнозировать, предсказывать"
+      "en": "to forecast",
+      "uk": "прогнозувати",
+      "ru": "прогнозировать"
     },
     "short": {
       "de": "sagen, wie etwas in der Zukunft sein wird, zum Beispiel das Wetter",
@@ -29903,9 +29903,9 @@ var VOCAB = [
     "cat": "k7",
     "term": {
       "de": "der Wirbelsturm",
-      "en": "cyclone, whirlwind",
-      "uk": "циклон, смерч",
-      "ru": "циклон, смерч"
+      "en": "cyclone",
+      "uk": "циклон",
+      "ru": "циклон"
     },
     "short": {
       "de": "ein sehr starker Sturm, bei dem sich die Luft schnell im Kreis dreht",
@@ -29972,9 +29972,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "die Bewertung",
-      "en": "review, rating",
-      "uk": "відгук, оцінка",
-      "ru": "отзыв, оценка"
+      "en": "review",
+      "uk": "відгук",
+      "ru": "отзыв"
     },
     "short": {
       "de": "eine persönliche Meinung darüber, ob etwas gut oder schlecht war",
@@ -30181,7 +30181,7 @@ var VOCAB = [
       "de": "begeistert",
       "en": "enthusiastic",
       "uk": "захоплений",
-      "ru": "восторженный, увлечённый"
+      "ru": "увлечённый"
     },
     "short": {
       "de": "sehr glücklich und voller Interesse wegen etwas",
@@ -30202,7 +30202,7 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "der Eintritt",
-      "en": "admission, entry",
+      "en": "admission",
       "uk": "вхід (плата за вхід)",
       "ru": "вход (плата за вход)"
     },
@@ -30248,9 +30248,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "das Angebot",
-      "en": "offer, program",
-      "uk": "пропозиція, програма",
-      "ru": "предложение, программа"
+      "en": "offer",
+      "uk": "пропозиція",
+      "ru": "предложение"
     },
     "short": {
       "de": "etwas, das eine Firma oder Organisation den Menschen anbietet",
@@ -30319,7 +30319,7 @@ var VOCAB = [
       "de": "stattfinden",
       "en": "to take place",
       "uk": "відбуватися",
-      "ru": "проходить, состояться"
+      "ru": "проходить"
     },
     "short": {
       "de": "an einem bestimmten Ort und zu einer bestimmten Zeit passieren",
@@ -30340,9 +30340,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "der Termin",
-      "en": "appointment, date",
-      "uk": "домовлена дата, зустріч",
-      "ru": "назначенная дата, встреча"
+      "en": "appointment",
+      "uk": "домовлена дата",
+      "ru": "назначенная дата"
     },
     "short": {
       "de": "eine bestimmte Zeit, zu der man etwas machen oder wohin man gehen möchte",
@@ -30502,8 +30502,8 @@ var VOCAB = [
     "term": {
       "de": "sich erinnern (an +Akk)",
       "en": "to remember",
-      "uk": "памʼятати, згадувати",
-      "ru": "помнить, вспоминать"
+      "uk": "памʼятати",
+      "ru": "помнить"
     },
     "short": {
       "de": "sich an etwas aus der Vergangenheit zurückdenken",
@@ -30593,7 +30593,7 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "sich beschäftigen (mit +Dat)",
-      "en": "to occupy oneself (with), to deal (with)",
+      "en": "to occupy oneself (with)",
       "uk": "займатися (чимось)",
       "ru": "заниматься (чем-то)"
     },
@@ -30732,8 +30732,8 @@ var VOCAB = [
     "term": {
       "de": "neugierig (auf +Akk)",
       "en": "curious (about)",
-      "uk": "зацікавлений, допитливий",
-      "ru": "любопытный, заинтересованный"
+      "uk": "зацікавлений",
+      "ru": "заинтересованный"
     },
     "short": {
       "de": "mit großem Interesse etwas Neues erfahren wollen",
@@ -30800,9 +30800,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "die Stimmung",
-      "en": "mood, atmosphere",
-      "uk": "настрій, атмосфера",
-      "ru": "настроение, атмосфера"
+      "en": "mood",
+      "uk": "настрій",
+      "ru": "настроение"
     },
     "short": {
       "de": "das allgemeine Gefühl oder die Laune in einer Gruppe von Menschen",
@@ -30847,8 +30847,8 @@ var VOCAB = [
     "term": {
       "de": "die Frist",
       "en": "deadline",
-      "uk": "строк, дедлайн",
-      "ru": "срок, дедлайн"
+      "uk": "строк",
+      "ru": "срок"
     },
     "short": {
       "de": "der letzte Zeitpunkt, bis zu dem man etwas machen muss",
@@ -30869,7 +30869,7 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "verlängern",
-      "en": "to extend, to renew",
+      "en": "to extend",
       "uk": "продовжувати",
       "ru": "продлевать"
     },
@@ -30893,8 +30893,8 @@ var VOCAB = [
     "term": {
       "de": "die Gebühr",
       "en": "fee",
-      "uk": "плата, збір",
-      "ru": "плата, сбор"
+      "uk": "плата",
+      "ru": "плата"
     },
     "short": {
       "de": "das Geld, das man für eine bestimmte Leistung bezahlen muss",
@@ -30915,7 +30915,7 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "zurückgeben",
-      "en": "to return, to give back",
+      "en": "to return",
       "uk": "повертати",
       "ru": "возвращать"
     },
@@ -30938,9 +30938,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "der Ausweis",
-      "en": "card, ID",
-      "uk": "квиток, посвідчення",
-      "ru": "билет, удостоверение"
+      "en": "card",
+      "uk": "квиток",
+      "ru": "билет"
     },
     "short": {
       "de": "eine Karte, mit der man zeigt, dass man Mitglied oder berechtigt ist",
@@ -31076,7 +31076,7 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "die Ruhe",
-      "en": "quiet, silence",
+      "en": "quiet",
       "uk": "тиша",
       "ru": "тишина"
     },
@@ -31099,9 +31099,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "der Bereich",
-      "en": "area, section",
-      "uk": "частина, зона",
-      "ru": "часть, зона"
+      "en": "section",
+      "uk": "частина",
+      "ru": "часть"
     },
     "short": {
       "de": "ein bestimmter Teil eines größeren Ortes oder Themas",
@@ -31307,8 +31307,8 @@ var VOCAB = [
     "term": {
       "de": "ankündigen",
       "en": "to announce",
-      "uk": "оголошувати, анонсувати",
-      "ru": "объявлять, анонсировать"
+      "uk": "анонсувати",
+      "ru": "анонсировать"
     },
     "short": {
       "de": "vorher sagen, dass etwas passieren wird",
@@ -31329,9 +31329,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "anschauen",
-      "en": "to look at, to watch",
-      "uk": "дивитися, роздивлятися",
-      "ru": "смотреть, рассматривать"
+      "en": "to watch",
+      "uk": "дивитися",
+      "ru": "смотреть"
     },
     "short": {
       "de": "etwas genau und mit Interesse mit den Augen betrachten",
@@ -31352,9 +31352,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "demnächst",
-      "en": "soon, shortly",
+      "en": "soon",
       "uk": "незабаром",
-      "ru": "в ближайшее время, скоро"
+      "ru": "в ближайшее время"
     },
     "short": {
       "de": "bald, in der nächsten Zeit",
@@ -31513,7 +31513,7 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "die Reportage",
-      "en": "report, feature",
+      "en": "report",
       "uk": "репортаж",
       "ru": "репортаж"
     },
@@ -31697,7 +31697,7 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "zappen",
-      "en": "to channel-hop, to zap",
+      "en": "to zap",
       "uk": "перемикати канали (пультом)",
       "ru": "переключать каналы (пультом)"
     },
@@ -31789,9 +31789,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "der Kandidat",
-      "en": "candidate, contestant",
-      "uk": "кандидат, учасник",
-      "ru": "кандидат, участник"
+      "en": "contestant",
+      "uk": "учасник",
+      "ru": "участник"
     },
     "short": {
       "de": "eine Person, die an einem Wettbewerb oder einer Wahl teilnimmt",
@@ -31835,7 +31835,7 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "die Moderation",
-      "en": "presenting, hosting",
+      "en": "hosting",
       "uk": "ведення (передачі)",
       "ru": "ведение (передачи)"
     },
@@ -31881,7 +31881,7 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "zeitlich",
-      "en": "temporal, time-related",
+      "en": "time-related",
       "uk": "часовий",
       "ru": "временной"
     },
@@ -31904,7 +31904,7 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "der Zeitpunkt",
-      "en": "point in time, moment",
+      "en": "moment",
       "uk": "момент (часу)",
       "ru": "момент (времени)"
     },
@@ -31927,7 +31927,7 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "der Zuschauer",
-      "en": "spectator, viewer",
+      "en": "spectator",
       "uk": "глядач",
       "ru": "зритель"
     },
@@ -31973,9 +31973,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "begeistern",
-      "en": "to inspire, to enthuse",
+      "en": "to enthuse",
       "uk": "захоплювати",
-      "ru": "восхищать, увлекать"
+      "ru": "увлекать"
     },
     "short": {
       "de": "jemandem so gut gefallen, dass er sehr froh und interessiert ist",
@@ -32226,9 +32226,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "das Rätsel",
-      "en": "puzzle, riddle",
-      "uk": "загадка, головоломка",
-      "ru": "загадка, головоломка"
+      "en": "puzzle",
+      "uk": "головоломка",
+      "ru": "головоломка"
     },
     "short": {
       "de": "eine Frage oder Aufgabe, bei der man etwas herausfinden muss",
@@ -32249,9 +32249,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "die Fantasie",
-      "en": "imagination, fantasy",
-      "uk": "уява, фантазія",
-      "ru": "воображение, фантазия"
+      "en": "imagination",
+      "uk": "уява",
+      "ru": "воображение"
     },
     "short": {
       "de": "die Fähigkeit, sich Dinge vorzustellen, die es nicht gibt",
@@ -32318,9 +32318,9 @@ var VOCAB = [
     "cat": "k8",
     "term": {
       "de": "zaubern",
-      "en": "to do magic, to conjure",
-      "uk": "чаклувати, показувати фокуси",
-      "ru": "колдовать, показывать фокусы"
+      "en": "to do magic",
+      "uk": "показувати фокуси",
+      "ru": "показывать фокусы"
     },
     "short": {
       "de": "mit Tricks oder mit Magie Dinge erscheinen oder verschwinden lassen",
@@ -32732,9 +32732,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "der Aufstieg",
-      "en": "promotion, advancement",
-      "uk": "підвищення, карʼєрне зростання",
-      "ru": "повышение, карьерный рост"
+      "en": "promotion",
+      "uk": "підвищення",
+      "ru": "повышение"
     },
     "short": {
       "de": "die berufliche Entwicklung zu einer höheren Position",
@@ -32847,7 +32847,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "wechseln",
-      "en": "to change, to switch",
+      "en": "to change",
       "uk": "змінювати",
       "ru": "менять"
     },
@@ -32893,7 +32893,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "kündigen",
-      "en": "to quit, to resign",
+      "en": "to quit",
       "uk": "звільнятися",
       "ru": "увольняться"
     },
@@ -32962,7 +32962,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "der Lebenslauf",
-      "en": "CV, résumé",
+      "en": "CV",
       "uk": "резюме",
       "ru": "резюме"
     },
@@ -33077,9 +33077,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "das Zeugnis",
-      "en": "certificate, reference",
-      "uk": "свідоцтво, характеристика",
-      "ru": "справка, характеристика"
+      "en": "certificate",
+      "uk": "свідоцтво",
+      "ru": "справка"
     },
     "short": {
       "de": "ein offizielles Dokument, das Leistungen oder Erfahrungen bestätigt",
@@ -33123,7 +33123,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "rechnen (mit +Dat)",
-      "en": "to count (on), to expect",
+      "en": "to count (on)",
       "uk": "розраховувати (на)",
       "ru": "рассчитывать (на)"
     },
@@ -33146,9 +33146,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "die Rückmeldung",
-      "en": "feedback, reply",
-      "uk": "відповідь, зворотний звʼязок",
-      "ru": "ответ, обратная связь"
+      "en": "feedback",
+      "uk": "відповідь",
+      "ru": "ответ"
     },
     "short": {
       "de": "eine Antwort oder Reaktion auf etwas",
@@ -33353,7 +33353,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "zuständig",
-      "en": "responsible, in charge",
+      "en": "responsible",
       "uk": "відповідальний (за)",
       "ru": "ответственный (за)"
     },
@@ -33376,7 +33376,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "das Auftreten",
-      "en": "manner, demeanour",
+      "en": "manner",
       "uk": "манера триматися",
       "ru": "манера держаться"
     },
@@ -33491,7 +33491,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "anheben",
-      "en": "to raise, to increase",
+      "en": "to raise",
       "uk": "підвищувати",
       "ru": "повышать"
     },
@@ -33514,9 +33514,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "die Anstellung",
-      "en": "employment, position",
-      "uk": "працевлаштування, посада",
-      "ru": "трудоустройство, должность"
+      "en": "employment",
+      "uk": "працевлаштування",
+      "ru": "трудоустройство"
     },
     "short": {
       "de": "eine Arbeit bei einer Firma mit einem Vertrag",
@@ -33698,7 +33698,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "unbefristet",
-      "en": "permanent, open-ended",
+      "en": "permanent",
       "uk": "безстроковий",
       "ru": "бессрочный"
     },
@@ -33744,9 +33744,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "die Vergütung",
-      "en": "pay, remuneration",
-      "uk": "винагорода, оплата",
-      "ru": "вознаграждение, оплата"
+      "en": "pay",
+      "uk": "оплата",
+      "ru": "оплата"
     },
     "short": {
       "de": "das Geld, das man für die Arbeit bekommt",
@@ -33767,9 +33767,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "zusätzlich",
-      "en": "additional, in addition",
-      "uk": "додатковий, додатково",
-      "ru": "дополнительный, дополнительно"
+      "en": "in addition",
+      "uk": "додатково",
+      "ru": "дополнительно"
     },
     "short": {
       "de": "dazu, noch zu etwas anderem",
@@ -33790,9 +33790,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "absolvieren",
-      "en": "to complete, to graduate",
-      "uk": "проходити, закінчувати",
-      "ru": "проходить, оканчивать"
+      "en": "to complete",
+      "uk": "закінчувати",
+      "ru": "оканчивать"
     },
     "short": {
       "de": "eine Ausbildung oder ein Studium bis zum Ende machen",
@@ -33813,7 +33813,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "die Arbeitsstelle",
-      "en": "workplace, job",
+      "en": "job",
       "uk": "місце роботи",
       "ru": "место работы"
     },
@@ -33859,7 +33859,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "die Berufsbezeichnung",
-      "en": "job title, occupation",
+      "en": "job title",
       "uk": "назва професії",
       "ru": "название профессии"
     },
@@ -33975,8 +33975,8 @@ var VOCAB = [
     "term": {
       "de": "fließend",
       "en": "fluent",
-      "uk": "вільно, швидко (про мову)",
-      "ru": "свободно, бегло (о языке)"
+      "uk": "вільно (про мову)",
+      "ru": "свободно (о языке)"
     },
     "short": {
       "de": "so, dass man eine Sprache ohne Pausen und ohne Probleme spricht",
@@ -34158,9 +34158,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "die Anlage",
-      "en": "enclosure, attachment",
-      "uk": "додаток, вкладення",
-      "ru": "приложение, вложение"
+      "en": "enclosure",
+      "uk": "додаток",
+      "ru": "приложение"
     },
     "short": {
       "de": "ein Dokument, das man zu einem Brief oder zu einer E-Mail dazugibt",
@@ -34227,9 +34227,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "das Bewerbungsschreiben",
-      "en": "cover letter, application letter",
-      "uk": "мотиваційний лист, лист-заявка",
-      "ru": "сопроводительное письмо, письмо-заявка"
+      "en": "cover letter",
+      "uk": "мотиваційний лист",
+      "ru": "сопроводительное письмо"
     },
     "short": {
       "de": "ein Brief, mit dem man sich für eine Arbeit bewirbt",
@@ -34250,9 +34250,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "das Briefpapier",
-      "en": "letterhead, writing paper",
-      "uk": "фірмовий бланк, папір для листів",
-      "ru": "фирменный бланк, бумага для писем"
+      "en": "letterhead",
+      "uk": "фірмовий бланк",
+      "ru": "фирменный бланк"
     },
     "short": {
       "de": "Papier für Briefe, oft mit dem Namen oder dem Logo der Firma",
@@ -34319,9 +34319,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "die Erstellung",
-      "en": "creation, preparation",
-      "uk": "створення, складання",
-      "ru": "создание, составление"
+      "en": "preparation",
+      "uk": "складання",
+      "ru": "составление"
     },
     "short": {
       "de": "wenn man etwas macht oder schreibt, zum Beispiel ein Dokument",
@@ -34365,7 +34365,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "die Formulierung",
-      "en": "wording, phrasing",
+      "en": "wording",
       "uk": "формулювання",
       "ru": "формулировка"
     },
@@ -34503,7 +34503,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "beherrschen",
-      "en": "to master, to have a command of",
+      "en": "to have a command of",
       "uk": "володіти",
       "ru": "владеть"
     },
@@ -34526,7 +34526,7 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "beurteilen",
-      "en": "to assess, to judge",
+      "en": "to assess",
       "uk": "оцінювати",
       "ru": "оценивать"
     },
@@ -34618,9 +34618,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "der Umgang",
-      "en": "dealing (with), handling",
-      "uk": "поводження, спілкування",
-      "ru": "обращение, общение"
+      "en": "dealing (with)",
+      "uk": "спілкування",
+      "ru": "общение"
     },
     "short": {
       "de": "die Art, wie man sich anderen Menschen oder Dingen gegenüber verhält",
@@ -34917,9 +34917,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "mitdenken",
-      "en": "to think along, to use one's initiative",
-      "uk": "мислити самостійно, думати разом",
-      "ru": "думать самостоятельно, думать вместе"
+      "en": "to think along",
+      "uk": "мислити самостійно",
+      "ru": "думать самостоятельно"
     },
     "short": {
       "de": "beim Arbeiten selbst nachdenken und Probleme sehen, nicht nur tun, was man sagt",
@@ -34941,8 +34941,8 @@ var VOCAB = [
     "term": {
       "de": "der PC",
       "en": "PC",
-      "uk": "ПК, персональний компʼютер",
-      "ru": "ПК, персональный компьютер"
+      "uk": "ПК",
+      "ru": "ПК"
     },
     "short": {
       "de": "ein Computer, den man auf dem Tisch benutzt",
@@ -34986,9 +34986,9 @@ var VOCAB = [
     "cat": "k9",
     "term": {
       "de": "der Terminkalender",
-      "en": "diary, appointment calendar",
-      "uk": "календар зустрічей, щоденник",
-      "ru": "календарь встреч, ежедневник"
+      "en": "diary",
+      "uk": "календар зустрічей",
+      "ru": "календарь встреч"
     },
     "short": {
       "de": "ein Kalender oder Buch, in dem man seine Termine aufschreibt",
@@ -35677,8 +35677,8 @@ var VOCAB = [
     "term": {
       "de": "die Leistung",
       "en": "performance",
-      "uk": "досягнення, результат",
-      "ru": "достижение, результат"
+      "uk": "досягнення",
+      "ru": "достижение"
     },
     "short": {
       "de": "das Ergebnis, das jemand durch seine Arbeit oder Anstrengung erreicht",
@@ -35814,9 +35814,9 @@ var VOCAB = [
     "cat": "k10",
     "term": {
       "de": "die Strecke",
-      "en": "route, distance",
-      "uk": "дистанція, маршрут",
-      "ru": "дистанция, маршрут"
+      "en": "route",
+      "uk": "дистанція",
+      "ru": "дистанция"
     },
     "short": {
       "de": "der Weg oder die Distanz, die man zurücklegen muss",
@@ -36159,7 +36159,7 @@ var VOCAB = [
     "cat": "k10",
     "term": {
       "de": "die Bewegung",
-      "en": "exercise, movement",
+      "en": "exercise",
       "uk": "рух",
       "ru": "движение"
     },
@@ -36459,8 +36459,8 @@ var VOCAB = [
     "term": {
       "de": "der Schiedsrichter",
       "en": "referee",
-      "uk": "арбітр, суддя",
-      "ru": "арбитр, судья"
+      "uk": "арбітр",
+      "ru": "арбитр"
     },
     "short": {
       "de": "eine Person, die im Spiel auf die Regeln aufpasst",
@@ -36481,9 +36481,9 @@ var VOCAB = [
     "cat": "k10",
     "term": {
       "de": "schießen",
-      "en": "to shoot, to kick",
-      "uk": "бити (по мʼячу), стріляти",
-      "ru": "бить (по мячу), стрелять"
+      "en": "to shoot",
+      "uk": "бити (по мʼячу)",
+      "ru": "бить (по мячу)"
     },
     "short": {
       "de": "den Ball mit dem Fuß fest in eine Richtung spielen",
@@ -36551,8 +36551,8 @@ var VOCAB = [
     "term": {
       "de": "das Tor",
       "en": "goal",
-      "uk": "ворота, гол",
-      "ru": "ворота, гол"
+      "uk": "гол",
+      "ru": "гол"
     },
     "short": {
       "de": "die Stelle, in die man den Ball schießen muss, um einen Punkt zu bekommen",
@@ -36597,8 +36597,8 @@ var VOCAB = [
     "term": {
       "de": "fair",
       "en": "fair",
-      "uk": "чесний, справедливий",
-      "ru": "честный, справедливый"
+      "uk": "чесний",
+      "ru": "честный"
     },
     "short": {
       "de": "so, dass man sich an die Regeln hält und gerecht ist",
@@ -36666,8 +36666,8 @@ var VOCAB = [
     "term": {
       "de": "die Rangliste",
       "en": "ranking list",
-      "uk": "рейтинг, таблиця рейтингу",
-      "ru": "рейтинг, таблица рейтинга"
+      "uk": "рейтинг",
+      "ru": "рейтинг"
     },
     "short": {
       "de": "eine Liste, die zeigt, wer wie gut ist",
@@ -36688,9 +36688,9 @@ var VOCAB = [
     "cat": "k10",
     "term": {
       "de": "die Runde",
-      "en": "lap, round",
-      "uk": "коло, раунд",
-      "ru": "круг, раунд"
+      "en": "lap",
+      "uk": "коло",
+      "ru": "круг"
     },
     "short": {
       "de": "eine Strecke, die einmal im Kreis herumführt",
@@ -36780,7 +36780,7 @@ var VOCAB = [
     "cat": "k10",
     "term": {
       "de": "unentschieden",
-      "en": "drawn, tied",
+      "en": "drawn",
       "uk": "внічию",
       "ru": "вничью"
     },
@@ -36804,7 +36804,7 @@ var VOCAB = [
     "term": {
       "de": "der Verlierer",
       "en": "loser",
-      "uk": "той, хто програв",
+      "uk": "той",
       "ru": "проигравший"
     },
     "short": {
@@ -36850,8 +36850,8 @@ var VOCAB = [
     "term": {
       "de": "besiegen",
       "en": "to defeat",
-      "uk": "перемагати, здолати",
-      "ru": "побеждать, одолевать"
+      "uk": "перемагати",
+      "ru": "побеждать"
     },
     "short": {
       "de": "in einem Wettkampf besser sein als eine andere Person",
@@ -37286,7 +37286,7 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "der Kinderwagen",
-      "en": "pram, stroller",
+      "en": "pram",
       "uk": "дитяча коляска",
       "ru": "детская коляска"
     },
@@ -37470,7 +37470,7 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "aufpassen (auf +Akk)",
-      "en": "to look after, to watch",
+      "en": "to look after",
       "uk": "наглядати (за)",
       "ru": "присматривать (за)"
     },
@@ -37516,9 +37516,9 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "berufstätig",
-      "en": "employed, working",
-      "uk": "працевлаштований, зайнятий",
-      "ru": "работающий, занятый"
+      "en": "employed",
+      "uk": "працевлаштований",
+      "ru": "работающий"
     },
     "short": {
       "de": "eine bezahlte Arbeit oder einen Beruf ausüben",
@@ -37700,7 +37700,7 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "bewältigen",
-      "en": "to cope with, to manage",
+      "en": "to cope with",
       "uk": "долати",
       "ru": "справляться"
     },
@@ -37746,9 +37746,9 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "erledigen",
-      "en": "to get done, to take care of",
-      "uk": "робити, виконувати",
-      "ru": "делать, выполнять"
+      "en": "to get done",
+      "uk": "робити",
+      "ru": "делать"
     },
     "short": {
       "de": "eine Aufgabe fertig machen",
@@ -37815,7 +37815,7 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "das Klischee",
-      "en": "stereotype, cliché",
+      "en": "stereotype",
       "uk": "стереотип",
       "ru": "стереотип"
     },
@@ -38114,7 +38114,7 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "die Krippe",
-      "en": "crèche, nursery",
+      "en": "nursery",
       "uk": "ясла",
       "ru": "ясли"
     },
@@ -38138,8 +38138,8 @@ var VOCAB = [
     "term": {
       "de": "kuscheln",
       "en": "to cuddle",
-      "uk": "обніматися, притулятися",
-      "ru": "обниматься, прижиматься"
+      "uk": "обніматися",
+      "ru": "обниматься"
     },
     "short": {
       "de": "sich eng und zärtlich an jemanden legen",
@@ -38160,9 +38160,9 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "aufteilen",
-      "en": "to divide, to split up",
-      "uk": "розподіляти, ділити",
-      "ru": "разделять, распределять"
+      "en": "to divide",
+      "uk": "розподіляти",
+      "ru": "распределять"
     },
     "short": {
       "de": "etwas in Teile teilen und verteilen",
@@ -38183,7 +38183,7 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "die Aufteilung",
-      "en": "division, distribution",
+      "en": "distribution",
       "uk": "розподіл",
       "ru": "распределение"
     },
@@ -38206,9 +38206,9 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "die Berufstätigkeit",
-      "en": "employment, being in work",
-      "uk": "професійна діяльність, зайнятість",
-      "ru": "профессиональная деятельность, занятость"
+      "en": "employment",
+      "uk": "професійна діяльність",
+      "ru": "профессиональная деятельность"
     },
     "short": {
       "de": "wenn man einen Beruf hat und arbeitet",
@@ -38252,9 +38252,9 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "versorgen",
-      "en": "to provide for, to look after",
-      "uk": "забезпечувати, піклуватися",
-      "ru": "обеспечивать, заботиться"
+      "en": "to look after",
+      "uk": "піклуватися",
+      "ru": "заботиться"
     },
     "short": {
       "de": "dafür sorgen, dass jemand alles hat, was er braucht, zum Beispiel Essen",
@@ -38276,8 +38276,8 @@ var VOCAB = [
     "term": {
       "de": "der Frust",
       "en": "frustration",
-      "uk": "розчарування, фрустрація",
-      "ru": "разочарование, фрустрация"
+      "uk": "розчарування",
+      "ru": "разочарование"
     },
     "short": {
       "de": "das schlechte Gefühl, wenn man etwas nicht schafft oder es nicht so ist, wie man will",
@@ -38299,8 +38299,8 @@ var VOCAB = [
     "term": {
       "de": "frustriert",
       "en": "frustrated",
-      "uk": "розчарований, фрустрований",
-      "ru": "разочарованный, фрустрированный"
+      "uk": "розчарований",
+      "ru": "разочарованный"
     },
     "short": {
       "de": "unzufrieden und traurig, weil etwas nicht klappt",
@@ -38321,9 +38321,9 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "irgendwann",
-      "en": "some time, at some point",
-      "uk": "колись, у якийсь момент",
-      "ru": "когда-нибудь, в какой-то момент"
+      "en": "some time",
+      "uk": "колись",
+      "ru": "когда-нибудь"
     },
     "short": {
       "de": "zu einer Zeit, die man nicht genau kennt",
@@ -38344,9 +38344,9 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "irgendwelche",
-      "en": "any, some",
+      "en": "any",
       "uk": "будь-які",
-      "ru": "какие-нибудь, любые"
+      "ru": "какие-нибудь"
     },
     "short": {
       "de": "nicht bestimmte, egal welche",
@@ -38367,9 +38367,9 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "irgendwer",
-      "en": "someone, anyone",
-      "uk": "хтось, будь-хто",
-      "ru": "кто-нибудь, кто-то"
+      "en": "anyone",
+      "uk": "хтось",
+      "ru": "кто-нибудь"
     },
     "short": {
       "de": "eine Person, die man nicht kennt oder nicht genau nennt",
@@ -38392,7 +38392,7 @@ var VOCAB = [
       "de": "irgendwie",
       "en": "somehow",
       "uk": "якось",
-      "ru": "как-нибудь, как-то"
+      "ru": "как-нибудь"
     },
     "short": {
       "de": "auf eine Art, die man nicht genau kennt",
@@ -38436,7 +38436,7 @@ var VOCAB = [
     "cat": "k11",
     "term": {
       "de": "treu",
-      "en": "faithful, loyal",
+      "en": "loyal",
       "uk": "вірний",
       "ru": "верный"
     },
@@ -38896,7 +38896,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "die Behörde",
-      "en": "authority, office",
+      "en": "authority",
       "uk": "установа",
       "ru": "учреждение"
     },
@@ -38919,7 +38919,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "der Antrag",
-      "en": "application, request",
+      "en": "application",
       "uk": "заява",
       "ru": "заявление"
     },
@@ -38988,7 +38988,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "die Wohnung",
-      "en": "apartment, flat",
+      "en": "apartment",
       "uk": "квартира",
       "ru": "квартира"
     },
@@ -39057,7 +39057,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "leiten",
-      "en": "to manage, to lead",
+      "en": "to lead",
       "uk": "керувати",
       "ru": "руководить"
     },
@@ -39103,7 +39103,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "der Abschluss",
-      "en": "degree, qualification",
+      "en": "degree",
       "uk": "диплом",
       "ru": "диплом"
     },
@@ -39172,7 +39172,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "wechseln",
-      "en": "to change, to switch",
+      "en": "to change",
       "uk": "змінювати",
       "ru": "менять"
     },
@@ -39494,9 +39494,9 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "der Ablauf",
-      "en": "process, procedure",
-      "uk": "процес, порядок дій",
-      "ru": "процесс, порядок действий"
+      "en": "process",
+      "uk": "процес",
+      "ru": "процесс"
     },
     "short": {
       "de": "die Reihenfolge, in der etwas passiert oder gemacht wird",
@@ -39517,7 +39517,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "der Wechsel",
-      "en": "transition, change",
+      "en": "transition",
       "uk": "перехід",
       "ru": "переход"
     },
@@ -39540,7 +39540,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "der Nachweis",
-      "en": "proof, certificate",
+      "en": "certificate",
       "uk": "підтвердження",
       "ru": "подтверждение"
     },
@@ -39587,8 +39587,8 @@ var VOCAB = [
     "term": {
       "de": "der Titel",
       "en": "title",
-      "uk": "звання, титул",
-      "ru": "звание, титул"
+      "uk": "звання",
+      "ru": "звание"
     },
     "short": {
       "de": "eine offizielle Bezeichnung für einen akademischen Grad oder eine Position",
@@ -39634,7 +39634,7 @@ var VOCAB = [
       "de": "anfangs",
       "en": "at first",
       "uk": "спочатку",
-      "ru": "сначала, вначале"
+      "ru": "сначала"
     },
     "short": {
       "de": "zu Beginn, zuerst",
@@ -39656,8 +39656,8 @@ var VOCAB = [
     "term": {
       "de": "die Beglaubigung",
       "en": "certification",
-      "uk": "засвідчення, нотаріальне завірення",
-      "ru": "заверение, нотариальное засвидетельствование"
+      "uk": "засвідчення",
+      "ru": "заверение"
     },
     "short": {
       "de": "wenn ein Amt mit Stempel bestätigt, dass eine Kopie mit dem Original gleich ist",
@@ -39770,7 +39770,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "hierher",
-      "en": "here, to this place",
+      "en": "here",
       "uk": "сюди",
       "ru": "сюда"
     },
@@ -39885,9 +39885,9 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "sich wohlfühlen",
-      "en": "to feel comfortable, to feel at ease",
-      "uk": "почуватися добре, комфортно",
-      "ru": "чувствовать себя хорошо, комфортно"
+      "en": "to feel comfortable",
+      "uk": "почуватися добре",
+      "ru": "чувствовать себя хорошо"
     },
     "short": {
       "de": "sich an einem Ort oder bei jemandem gut und glücklich fühlen",
@@ -39932,8 +39932,8 @@ var VOCAB = [
     "term": {
       "de": "die Betriebswirtschaft",
       "en": "business administration",
-      "uk": "економіка підприємства, менеджмент",
-      "ru": "экономика предприятия, менеджмент"
+      "uk": "економіка підприємства",
+      "ru": "экономика предприятия"
     },
     "short": {
       "de": "ein Studienfach über Firmen, Geld und Management",
@@ -40000,7 +40000,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "das Finanzwesen",
-      "en": "finance, financial sector",
+      "en": "finance",
       "uk": "фінансова сфера",
       "ru": "финансовая сфера"
     },
@@ -40254,8 +40254,8 @@ var VOCAB = [
     "term": {
       "de": "der Selbstständige",
       "en": "self-employed person",
-      "uk": "самозайнята особа, підприємець",
-      "ru": "самозанятый, предприниматель"
+      "uk": "самозайнята особа",
+      "ru": "самозанятый"
     },
     "short": {
       "de": "eine Person, die für sich selbst arbeitet und keinen Chef hat",
@@ -40368,9 +40368,9 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "das Unternehmen",
-      "en": "company, enterprise",
-      "uk": "підприємство, компанія",
-      "ru": "предприятие, компания"
+      "en": "company",
+      "uk": "підприємство",
+      "ru": "предприятие"
     },
     "short": {
       "de": "eine Firma",
@@ -40391,9 +40391,9 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "die Assistenz",
-      "en": "assistance, assistant role",
-      "uk": "асистування, посада асистента",
-      "ru": "ассистирование, должность ассистента"
+      "en": "assistant role",
+      "uk": "асистування",
+      "ru": "должность ассистента"
     },
     "short": {
       "de": "die Arbeit als Helfer einer anderen Person im Beruf",
@@ -40414,9 +40414,9 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "festlegen",
-      "en": "to determine, to set",
-      "uk": "встановлювати, визначати",
-      "ru": "устанавливать, определять"
+      "en": "to set",
+      "uk": "встановлювати",
+      "ru": "устанавливать"
     },
     "short": {
       "de": "bestimmen, wie etwas sein soll, zum Beispiel ein Datum",
@@ -40437,9 +40437,9 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "regeln",
-      "en": "to arrange, to sort out",
-      "uk": "врегульовувати, залагоджувати",
-      "ru": "урегулировать, улаживать"
+      "en": "to sort out",
+      "uk": "залагоджувати",
+      "ru": "улаживать"
     },
     "short": {
       "de": "eine Sache so lösen oder organisieren, dass alles passt",
@@ -40461,8 +40461,8 @@ var VOCAB = [
     "term": {
       "de": "die Umschulung",
       "en": "retraining",
-      "uk": "перепідготовка, перекваліфікація",
-      "ru": "переподготовка, переквалификация"
+      "uk": "перепідготовка",
+      "ru": "переподготовка"
     },
     "short": {
       "de": "eine neue Ausbildung für einen anderen Beruf",
@@ -40484,8 +40484,8 @@ var VOCAB = [
     "term": {
       "de": "die Verstärkung",
       "en": "reinforcement",
-      "uk": "підкріплення, допомога",
-      "ru": "подкрепление, помощь"
+      "uk": "підкріплення",
+      "ru": "подкрепление"
     },
     "short": {
       "de": "zusätzliche Hilfe oder zusätzliche Personen, die jemandem helfen",
@@ -40506,7 +40506,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "färben",
-      "en": "to dye, to colour",
+      "en": "to dye",
       "uk": "фарбувати",
       "ru": "красить"
     },
@@ -40599,8 +40599,8 @@ var VOCAB = [
     "term": {
       "de": "schneiden",
       "en": "to cut",
-      "uk": "різати, стригти",
-      "ru": "резать, стричь"
+      "uk": "стригти",
+      "ru": "стричь"
     },
     "short": {
       "de": "mit einer Schere oder einem Messer in Teile teilen oder kürzer machen, zum Beispiel Haare",
@@ -40622,8 +40622,8 @@ var VOCAB = [
     "term": {
       "de": "amtlich",
       "en": "official",
-      "uk": "офіційний, службовий",
-      "ru": "официальный, служебный"
+      "uk": "офіційний",
+      "ru": "официальный"
     },
     "short": {
       "de": "so, dass es von einem Amt kommt und offiziell ist",
@@ -40644,7 +40644,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "anrechnen",
-      "en": "to credit, to count towards",
+      "en": "to credit",
       "uk": "зараховувати",
       "ru": "засчитывать"
     },
@@ -40690,9 +40690,9 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "benötigen",
-      "en": "to need, to require",
+      "en": "to need",
       "uk": "потребувати",
-      "ru": "нуждаться, требоваться"
+      "ru": "требоваться"
     },
     "short": {
       "de": "etwas dringend brauchen",
@@ -40714,8 +40714,8 @@ var VOCAB = [
     "term": {
       "de": "bescheinigen",
       "en": "to certify",
-      "uk": "засвідчувати, підтверджувати довідкою",
-      "ru": "удостоверять, подтверждать справкой"
+      "uk": "підтверджувати довідкою",
+      "ru": "подтверждать справкой"
     },
     "short": {
       "de": "mit einem Papier offiziell sagen, dass etwas stimmt",
@@ -40736,9 +40736,9 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "entnehmen",
-      "en": "to gather (from), to infer",
-      "uk": "дізнаватися (з), робити висновок",
-      "ru": "узнавать (из), делать вывод"
+      "en": "to gather (from)",
+      "uk": "дізнаватися (з)",
+      "ru": "узнавать (из)"
     },
     "short": {
       "de": "aus einem Text oder aus Angaben erkennen, was dort steht",
@@ -40759,7 +40759,7 @@ var VOCAB = [
     "cat": "k12",
     "term": {
       "de": "entsprechen",
-      "en": "to correspond to, to meet",
+      "en": "to meet",
       "uk": "відповідати",
       "ru": "соответствовать"
     },
@@ -40806,8 +40806,8 @@ var VOCAB = [
     "term": {
       "de": "förmlich",
       "en": "formal",
-      "uk": "офіційний, церемонний",
-      "ru": "официальный, церемонный"
+      "uk": "офіційний",
+      "ru": "официальный"
     },
     "short": {
       "de": "sehr höflich und offiziell, nicht locker",
@@ -40898,8 +40898,8 @@ var VOCAB = [
     "term": {
       "de": "ehrenamtlich",
       "en": "voluntary (unpaid)",
-      "uk": "громадський, волонтерський",
-      "ru": "общественный, волонтёрский"
+      "uk": "волонтерський",
+      "ru": "волонтёрский"
     },
     "short": {
       "de": "ohne Bezahlung und aus freiem Willen",
@@ -41357,7 +41357,7 @@ var VOCAB = [
     "cat": "k13",
     "term": {
       "de": "erledigen",
-      "en": "to get done, to take care of",
+      "en": "to get done",
       "uk": "виконувати",
       "ru": "выполнять"
     },
@@ -41380,7 +41380,7 @@ var VOCAB = [
     "cat": "k13",
     "term": {
       "de": "beschaffen",
-      "en": "to procure, to obtain",
+      "en": "to procure",
       "uk": "придбавати",
       "ru": "приобретать"
     },
@@ -41473,8 +41473,8 @@ var VOCAB = [
     "term": {
       "de": "der Termin",
       "en": "appointment",
-      "uk": "зустріч, домовлена дата",
-      "ru": "встреча, назначенная дата"
+      "uk": "зустріч",
+      "ru": "встреча"
     },
     "short": {
       "de": "eine bestimmte Zeit, zu der man etwas machen oder wohin man gehen möchte",
@@ -41541,7 +41541,7 @@ var VOCAB = [
     "cat": "k13",
     "term": {
       "de": "der Mangel (an +Dat)",
-      "en": "shortage, lack",
+      "en": "shortage",
       "uk": "нестача",
       "ru": "нехватка"
     },
@@ -41587,9 +41587,9 @@ var VOCAB = [
     "cat": "k13",
     "term": {
       "de": "das Engagement",
-      "en": "commitment, involvement",
-      "uk": "відданість справі, залученість",
-      "ru": "приверженность делу, вовлечённость"
+      "en": "commitment",
+      "uk": "відданість справі",
+      "ru": "приверженность делу"
     },
     "short": {
       "de": "der aktive und starke Einsatz für eine Sache",
@@ -41840,7 +41840,7 @@ var VOCAB = [
     "cat": "k13",
     "term": {
       "de": "der Sinn",
-      "en": "sense, meaning",
+      "en": "meaning",
       "uk": "сенс",
       "ru": "смысл"
     },
@@ -41887,8 +41887,8 @@ var VOCAB = [
     "term": {
       "de": "die Rücksicht",
       "en": "consideration",
-      "uk": "делікатність, увага (до когось)",
-      "ru": "деликатность, внимание (к кому-то)"
+      "uk": "делікатність (до когось)",
+      "ru": "деликатность (к кому-то)"
     },
     "short": {
       "de": "das Verhalten, bei dem man auf die Bedürfnisse anderer achtet",
@@ -41909,9 +41909,9 @@ var VOCAB = [
     "cat": "k13",
     "term": {
       "de": "die Kraft",
-      "en": "strength, energy",
-      "uk": "сила, енергія",
-      "ru": "сила, энергия"
+      "en": "strength",
+      "uk": "сила",
+      "ru": "сила"
     },
     "short": {
       "de": "die körperliche oder seelische Energie, etwas zu tun",
@@ -42025,8 +42025,8 @@ var VOCAB = [
     "term": {
       "de": "abdecken",
       "en": "to cover (costs)",
-      "uk": "покривати (витрати), включати",
-      "ru": "покрывать (расходы), включать"
+      "uk": "покривати (витрати)",
+      "ru": "покрывать (расходы)"
     },
     "short": {
       "de": "Kosten oder Schäden mit einschließen und bezahlen, zum Beispiel bei einer Versicherung",
@@ -42346,9 +42346,9 @@ var VOCAB = [
     "cat": "k14",
     "term": {
       "de": "das Gesuch, -e",
-      "en": "request / wanted ad",
-      "uk": "запит, оголошення про пошук",
-      "ru": "запрос, объявление о поиске"
+      "en": "wanted ad",
+      "uk": "оголошення про пошук",
+      "ru": "объявление о поиске"
     },
     "short": {
       "de": "eine Anzeige, in der man nach etwas sucht, zum Beispiel nach einer Wohnung",
@@ -42358,7 +42358,7 @@ var VOCAB = [
     },
     "def": {
       "de": "<g>Was</g> in ihrem <b>Gesuch</b> stand, hat mich sofort überzeugt.",
-      "en": "<g>What</g> was written in her <b>advertisement</b> convinced me immediately.",
+      "en": "<g>What</g> was written in her <b>wanted ad</b> convinced me immediately.",
       "uk": "<g>Те, що</g> було написано в її <b>оголошенні</b>, одразу мене переконало.",
       "ru": "<g>То, что</g> было написано в её <b>объявлении</b>, сразу меня убедило."
     },
@@ -42484,7 +42484,7 @@ var VOCAB = [
     "cat": "k14",
     "term": {
       "de": "der Mensch, -en",
-      "en": "person, human",
+      "en": "person",
       "uk": "людина",
       "ru": "человек"
     },
@@ -42668,7 +42668,7 @@ var VOCAB = [
     "cat": "k14",
     "term": {
       "de": "der Vermieter, - / die Vermieterin, -nen",
-      "en": "landlord, landlady",
+      "en": "landlord",
       "uk": "орендодавець",
       "ru": "арендодатель"
     },
@@ -42852,7 +42852,7 @@ var VOCAB = [
     "cat": "k14",
     "term": {
       "de": "das Viertel, -",
-      "en": "neighbourhood, district",
+      "en": "neighbourhood",
       "uk": "квартал",
       "ru": "квартал"
     },
@@ -43105,7 +43105,7 @@ var VOCAB = [
     "cat": "k14",
     "term": {
       "de": "der Handwerker, - / die Handwerkerin, -nen",
-      "en": "tradesperson, craftsman",
+      "en": "tradesperson",
       "uk": "майстер",
       "ru": "мастер"
     },
@@ -43312,7 +43312,7 @@ var VOCAB = [
     "cat": "k14",
     "term": {
       "de": "die Ausstattung (Sg.)",
-      "en": "fittings, furnishings",
+      "en": "fittings",
       "uk": "оснащення",
       "ru": "оснащение"
     },
@@ -43381,9 +43381,9 @@ var VOCAB = [
     "cat": "k14",
     "term": {
       "de": "sich melden",
-      "en": "to answer the phone, to identify oneself",
-      "uk": "відповідати на дзвінок, називати себе",
-      "ru": "отвечать на звонок, называть себя"
+      "en": "to answer the phone",
+      "uk": "відповідати на дзвінок",
+      "ru": "отвечать на звонок"
     },
     "short": {
       "de": "am Telefon den eigenen Namen sagen, wenn man abhebt",
@@ -43394,8 +43394,8 @@ var VOCAB = [
     "def": {
       "de": "Bei einem <g>hochoffiziellen</g> Anruf sollte man sich immer mit vollem Namen <b>melden</b>.",
       "en": "For a highly official call, you should always <b>answer</b> with your full name.",
-      "uk": "Під час дуже офіційного дзвінка слід завжди <b>називати</b> повне імʼя.",
-      "ru": "Во время очень официального звонка следует всегда <b>называть</b> полное имя."
+      "uk": "Під час дуже офіційного дзвінка слід завжди <b>відповідати</b>, називаючи повне імʼя.",
+      "ru": "Во время очень официального звонка следует всегда <b>отвечать</b>, называя полное имя."
     },
     "gram": "adjektive_super_hoch_ueber_extra"
   },
@@ -43520,7 +43520,7 @@ var VOCAB = [
     "term": {
       "de": "der Auszug",
       "en": "moving out",
-      "uk": "виїзд (з квартири), переїзд",
+      "uk": "виїзд (з квартири)",
       "ru": "выезд (из квартиры)"
     },
     "short": {
@@ -43542,7 +43542,7 @@ var VOCAB = [
     "cat": "k14",
     "term": {
       "de": "erhöhen",
-      "en": "to raise, to increase",
+      "en": "to increase",
       "uk": "підвищувати",
       "ru": "повышать"
     },
@@ -43680,9 +43680,9 @@ var VOCAB = [
     "cat": "k14",
     "term": {
       "de": "der Zeitraum",
-      "en": "period, time span",
-      "uk": "період, проміжок часу",
-      "ru": "период, промежуток времени"
+      "en": "period",
+      "uk": "період",
+      "ru": "период"
     },
     "short": {
       "de": "ein Abschnitt in der Zeit mit einem Anfang und einem Ende",
@@ -43866,7 +43866,7 @@ var VOCAB = [
       "de": "der Empfang",
       "en": "reception",
       "uk": "рецепція",
-      "ru": "ресепшн, приёмная"
+      "ru": "ресепшн"
     },
     "short": {
       "de": "der Platz in einem Hotel oder einer Firma, wo Gäste ankommen und begrüßt werden",
@@ -43887,9 +43887,9 @@ var VOCAB = [
     "cat": "k14",
     "term": {
       "de": "empfangen",
-      "en": "to receive, to welcome",
-      "uk": "приймати, зустрічати",
-      "ru": "принимать, встречать"
+      "en": "to welcome",
+      "uk": "зустрічати",
+      "ru": "встречать"
     },
     "short": {
       "de": "Gäste begrüßen, wenn sie ankommen",
@@ -43911,8 +43911,8 @@ var VOCAB = [
     "term": {
       "de": "sich erkundigen",
       "en": "to enquire",
-      "uk": "довідуватися, цікавитися",
-      "ru": "справляться, наводить справки"
+      "uk": "довідуватися",
+      "ru": "справляться"
     },
     "short": {
       "de": "Fragen stellen, um Informationen zu bekommen",
@@ -43933,9 +43933,9 @@ var VOCAB = [
     "cat": "k14",
     "term": {
       "de": "führen",
-      "en": "to conduct, to lead",
-      "uk": "вести (розмову), керувати",
-      "ru": "вести (разговор), руководить"
+      "en": "to conduct",
+      "uk": "вести (розмову)",
+      "ru": "вести (разговор)"
     },
     "short": {
       "de": "ein Gespräch mit jemandem haben und leiten, zum Beispiel am Telefon",
@@ -44233,8 +44233,8 @@ var VOCAB = [
     "term": {
       "de": "vollständig",
       "en": "complete",
-      "uk": "повний, завершений",
-      "ru": "полный, законченный"
+      "uk": "повний",
+      "ru": "полный"
     },
     "short": {
       "de": "ganz und ohne dass etwas fehlt",
@@ -44256,8 +44256,8 @@ var VOCAB = [
     "term": {
       "de": "nachweisen",
       "en": "to prove / to provide evidence of",
-      "uk": "доводити, підтверджувати документально",
-      "ru": "доказывать, подтверждать документально"
+      "uk": "підтверджувати документально",
+      "ru": "подтверждать документально"
     },
     "short": {
       "de": "mit Dokumenten zeigen, dass etwas wahr ist",
@@ -44578,8 +44578,8 @@ var VOCAB = [
     "term": {
       "de": "die Zahl, -en",
       "en": "number",
-      "uk": "кількість, число",
-      "ru": "количество, число"
+      "uk": "кількість",
+      "ru": "число"
     },
     "short": {
       "de": "eine Menge, die man zählen kann",
@@ -44738,7 +44738,7 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "der Nachweis, -e",
-      "en": "proof, certificate",
+      "en": "certificate",
       "uk": "підтвердження",
       "ru": "подтверждение"
     },
@@ -44761,7 +44761,7 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "die Prüfung, -en",
-      "en": "exam, test",
+      "en": "exam",
       "uk": "іспит",
       "ru": "экзамен"
     },
@@ -44773,7 +44773,7 @@ var VOCAB = [
     },
     "def": {
       "de": "Die <g>bestandene</g> <b>Prüfung</b> war die letzte Hürde vor der Einbürgerung.",
-      "en": "The <g>passed</g> <b>test</b> was the last hurdle before naturalisation.",
+      "en": "The passed <b>exam</b> was the last hurdle before naturalisation.",
       "uk": "Складений <b>іспит</b> став останньою перешкодою перед натуралізацією.",
       "ru": "Сданный <b>экзамен</b> стал последним препятствием перед натурализацией."
     },
@@ -44785,8 +44785,8 @@ var VOCAB = [
     "term": {
       "de": "die Frist, -en",
       "en": "deadline",
-      "uk": "строк, дедлайн",
-      "ru": "срок, дедлайн"
+      "uk": "строк",
+      "ru": "срок"
     },
     "short": {
       "de": "der letzte Zeitpunkt, bis zu dem man etwas machen muss",
@@ -44797,7 +44797,7 @@ var VOCAB = [
     "def": {
       "de": "Die <g>verpasste</g> <b>Frist</b> führte zu einer Verzögerung des Verfahrens.",
       "en": "The <g>missed</g> <b>deadline</b> led to a delay in the process.",
-      "uk": "Пропущений <b>термін</b> призвів до затримки процесу.",
+      "uk": "Пропущений <b>строк</b> призвів до затримки процесу.",
       "ru": "Пропущенный <b>срок</b> привёл к задержке процесса."
     },
     "gram": "partizip2_als_adjektiv"
@@ -44807,7 +44807,7 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "die Anfrage, -n",
-      "en": "inquiry, request",
+      "en": "inquiry",
       "uk": "запит",
       "ru": "запрос"
     },
@@ -44854,8 +44854,8 @@ var VOCAB = [
     "term": {
       "de": "der Termin, -e",
       "en": "appointment",
-      "uk": "зустріч, домовлена дата",
-      "ru": "встреча, назначенная дата"
+      "uk": "зустріч",
+      "ru": "встреча"
     },
     "short": {
       "de": "eine bestimmte Zeit, zu der man etwas machen oder wohin man gehen möchte",
@@ -44945,7 +44945,7 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "verlängern",
-      "en": "to extend, to renew",
+      "en": "to extend",
       "uk": "продовжувати",
       "ru": "продлевать"
     },
@@ -45061,8 +45061,8 @@ var VOCAB = [
     "term": {
       "de": "die Gebühr, -en",
       "en": "fee",
-      "uk": "збір, плата",
-      "ru": "сбор, плата"
+      "uk": "збір",
+      "ru": "сбор"
     },
     "short": {
       "de": "das Geld, das man für eine bestimmte Leistung bezahlen muss",
@@ -45107,8 +45107,8 @@ var VOCAB = [
     "term": {
       "de": "der Sachbearbeiter, - / die Sachbearbeiterin, -nen",
       "en": "caseworker",
-      "uk": "працівник, відповідальний за справу",
-      "ru": "сотрудник, ответственный за дело"
+      "uk": "працівник",
+      "ru": "сотрудник"
     },
     "short": {
       "de": "eine Person bei einer Behörde, die für einen bestimmten Fall zuständig ist",
@@ -45152,9 +45152,9 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "die Arbeitskraft",
-      "en": "worker, labour",
-      "uk": "робоча сила, працівник",
-      "ru": "рабочая сила, работник"
+      "en": "worker",
+      "uk": "робоча сила",
+      "ru": "рабочая сила"
     },
     "short": {
       "de": "ein Mensch, den eine Firma als Arbeiter braucht",
@@ -45290,9 +45290,9 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "die Heimat",
-      "en": "homeland, home",
-      "uk": "батьківщина, рідний край",
-      "ru": "родина, родные края"
+      "en": "homeland",
+      "uk": "батьківщина",
+      "ru": "родина"
     },
     "short": {
       "de": "der Ort oder das Land, wo man zu Hause ist und aufgewachsen ist",
@@ -45315,7 +45315,7 @@ var VOCAB = [
       "de": "die Notunterkunft",
       "en": "emergency shelter",
       "uk": "тимчасовий притулок",
-      "ru": "временное жильё, приют"
+      "ru": "временное жильё"
     },
     "short": {
       "de": "ein Ort, an dem Menschen schnell wohnen können, wenn sie kein Zuhause haben",
@@ -45383,8 +45383,8 @@ var VOCAB = [
     "term": {
       "de": "verlassen",
       "en": "to leave",
-      "uk": "залишати, покидати",
-      "ru": "покидать, оставлять"
+      "uk": "залишати",
+      "ru": "покидать"
     },
     "short": {
       "de": "von einem Ort oder einer Person weggehen",
@@ -45566,9 +45566,9 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "fördern",
-      "en": "to support, to promote",
-      "uk": "підтримувати, сприяти",
-      "ru": "поддерживать, способствовать"
+      "en": "to support",
+      "uk": "підтримувати",
+      "ru": "поддерживать"
     },
     "short": {
       "de": "jemandem oder etwas helfen, damit es besser oder größer wird",
@@ -45819,9 +45819,9 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "doppelt",
-      "en": "double, twice",
-      "uk": "подвійний, вдвічі",
-      "ru": "двойной, вдвое"
+      "en": "twice",
+      "uk": "вдвічі",
+      "ru": "вдвое"
     },
     "short": {
       "de": "zweimal so viel oder zweimal vorhanden",
@@ -45843,8 +45843,8 @@ var VOCAB = [
     "term": {
       "de": "einsperren",
       "en": "to lock up",
-      "uk": "замикати, увʼязнювати",
-      "ru": "запирать, сажать (в тюрьму)"
+      "uk": "замикати",
+      "ru": "запирать (в тюрьму)"
     },
     "short": {
       "de": "jemanden in einen Raum bringen und die Tür so schließen, dass er nicht herauskommt",
@@ -45980,7 +45980,7 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "verdrängen",
-      "en": "to repress, to suppress",
+      "en": "to repress",
       "uk": "витісняти (зі свідомості)",
       "ru": "вытеснять (из сознания)"
     },
@@ -46026,9 +46026,9 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "zerschlagen",
-      "en": "to smash, to crush",
-      "uk": "розбивати, розгромлювати",
-      "ru": "разбивать, разгромить"
+      "en": "to crush",
+      "uk": "розгромлювати",
+      "ru": "разгромить"
     },
     "short": {
       "de": "etwas mit großer Kraft in Stücke schlagen oder ganz zerstören",
@@ -46142,7 +46142,7 @@ var VOCAB = [
     "term": {
       "de": "jahrelang",
       "en": "for years",
-      "uk": "роками, протягом багатьох років",
+      "uk": "роками",
       "ru": "годами"
     },
     "short": {
@@ -46166,7 +46166,7 @@ var VOCAB = [
       "de": "das Jahrhundert",
       "en": "century",
       "uk": "століття",
-      "ru": "столетие, век"
+      "ru": "век"
     },
     "short": {
       "de": "hundert Jahre",
@@ -46304,7 +46304,7 @@ var VOCAB = [
       "de": "die Teilung",
       "en": "division",
       "uk": "поділ",
-      "ru": "раздел, разделение"
+      "ru": "раздел"
     },
     "short": {
       "de": "wenn etwas in zwei oder mehr Teile geteilt wird, zum Beispiel ein Land",
@@ -46440,7 +46440,7 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "abschicken",
-      "en": "to send off, to post",
+      "en": "to send off",
       "uk": "відсилати",
       "ru": "отправлять"
     },
@@ -46463,9 +46463,9 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "die Abwicklung",
-      "en": "processing, handling",
-      "uk": "обробка, проведення (справи)",
-      "ru": "обработка, проведение (дела)"
+      "en": "handling",
+      "uk": "проведення (справи)",
+      "ru": "проведение (дела)"
     },
     "short": {
       "de": "wenn man eine Sache Schritt für Schritt bis zum Ende organisiert und macht",
@@ -46487,8 +46487,8 @@ var VOCAB = [
     "term": {
       "de": "die Bearbeitung",
       "en": "processing",
-      "uk": "обробка, розгляд",
-      "ru": "обработка, рассмотрение"
+      "uk": "розгляд",
+      "ru": "рассмотрение"
     },
     "short": {
       "de": "wenn ein Amt oder eine Firma einen Antrag oder eine Aufgabe prüft und macht",
@@ -46509,7 +46509,7 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "berufen",
-      "en": "to invoke, to rely on (a right)",
+      "en": "to rely on (a right)",
       "uk": "посилатися (на право, правило)",
       "ru": "ссылаться (на право, правило)"
     },
@@ -46601,9 +46601,9 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "gewährleisten",
-      "en": "to ensure, to guarantee",
-      "uk": "забезпечувати, гарантувати",
-      "ru": "обеспечивать, гарантировать"
+      "en": "to ensure",
+      "uk": "забезпечувати",
+      "ru": "обеспечивать"
     },
     "short": {
       "de": "dafür sorgen, dass etwas ganz sicher möglich ist oder funktioniert",
@@ -46624,9 +46624,9 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "problemlos",
-      "en": "problem-free, smooth",
-      "uk": "безпроблемний, без проблем",
-      "ru": "беспроблемный, без проблем"
+      "en": "smooth",
+      "uk": "без проблем",
+      "ru": "без проблем"
     },
     "short": {
       "de": "ohne Probleme",
@@ -46647,9 +46647,9 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "zügig",
-      "en": "swift, speedy",
-      "uk": "швидкий, без затримок",
-      "ru": "быстрый, без задержек"
+      "en": "swift",
+      "uk": "швидкий",
+      "ru": "быстрый"
     },
     "short": {
       "de": "schnell und ohne Pausen",
@@ -46670,9 +46670,9 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "zulassen",
-      "en": "to admit, to approve",
-      "uk": "допускати, дозволяти",
-      "ru": "допускать, разрешать"
+      "en": "to approve",
+      "uk": "допускати",
+      "ru": "допускать"
     },
     "short": {
       "de": "offiziell erlauben, dass jemand oder etwas benutzt werden darf, zum Beispiel ein Auto",
@@ -46693,9 +46693,9 @@ var VOCAB = [
     "cat": "k15",
     "term": {
       "de": "zusammenstellen",
-      "en": "to put together, to compile",
-      "uk": "складати, упорядковувати",
-      "ru": "составлять, подбирать"
+      "en": "to compile",
+      "uk": "складати",
+      "ru": "составлять"
     },
     "short": {
       "de": "verschiedene Dinge aussuchen und zusammen in eine Mappe oder Liste tun",
@@ -47016,8 +47016,8 @@ var VOCAB = [
     "term": {
       "de": "das Urteil, -e",
       "en": "verdict / judgment",
-      "uk": "вирок, судове рішення",
-      "ru": "приговор, судебное решение"
+      "uk": "вирок",
+      "ru": "приговор"
     },
     "short": {
       "de": "die offizielle Entscheidung eines Gerichts",
@@ -47084,7 +47084,7 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "die Feier, -n",
-      "en": "celebration, party",
+      "en": "party",
       "uk": "свято",
       "ru": "праздник"
     },
@@ -47107,7 +47107,7 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "sich erholen",
-      "en": "to recover, to relax",
+      "en": "to relax",
       "uk": "відпочивати",
       "ru": "отдыхать"
     },
@@ -47130,7 +47130,7 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "die Reise, -n",
-      "en": "trip, journey",
+      "en": "trip",
       "uk": "подорож",
       "ru": "путешествие"
     },
@@ -47176,9 +47176,9 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "das Fest, -e",
-      "en": "festival, party",
-      "uk": "свято, фестиваль",
-      "ru": "праздник, фестиваль"
+      "en": "party",
+      "uk": "свято",
+      "ru": "праздник"
     },
     "short": {
       "de": "eine große, oft öffentliche Feier",
@@ -47223,8 +47223,8 @@ var VOCAB = [
     "term": {
       "de": "abreisen",
       "en": "to depart",
-      "uk": "виїжджати, вирушати",
-      "ru": "уезжать, отправляться"
+      "uk": "виїжджати",
+      "ru": "уезжать"
     },
     "short": {
       "de": "einen Ort verlassen, um eine Reise zu beginnen",
@@ -47245,7 +47245,7 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "nachkommen",
-      "en": "to follow, to come later",
+      "en": "to follow",
       "uk": "приєднатися пізніше",
       "ru": "присоединиться позже"
     },
@@ -47314,7 +47314,7 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "weiterfahren",
-      "en": "to continue driving, to drive on",
+      "en": "to continue driving",
       "uk": "їхати далі",
       "ru": "ехать дальше"
     },
@@ -47567,7 +47567,7 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "aussteigen",
-      "en": "to get off, to disembark",
+      "en": "to get off",
       "uk": "виходити (з транспорту)",
       "ru": "выходить (из транспорта)"
     },
@@ -47590,7 +47590,7 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "einsteigen",
-      "en": "to get on, to board",
+      "en": "to get on",
       "uk": "сідати (у транспорт)",
       "ru": "садиться (в транспорт)"
     },
@@ -47613,7 +47613,7 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "umsteigen",
-      "en": "to change, to transfer",
+      "en": "to change",
       "uk": "пересідати",
       "ru": "пересаживаться"
     },
@@ -47659,9 +47659,9 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "die Absage",
-      "en": "refusal, cancellation",
-      "uk": "відмова, скасування",
-      "ru": "отказ, отмена"
+      "en": "refusal",
+      "uk": "відмова",
+      "ru": "отказ"
     },
     "short": {
       "de": "wenn man sagt, dass man nicht kommen kann oder nicht mitmacht",
@@ -47958,7 +47958,7 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "der Reiseplan",
-      "en": "travel plan, itinerary",
+      "en": "itinerary",
       "uk": "план подорожі",
       "ru": "план путешествия"
     },
@@ -48466,7 +48466,7 @@ var VOCAB = [
       "de": "die Übernachtung",
       "en": "overnight stay",
       "uk": "ночівля",
-      "ru": "ночёвка, проживание на ночь"
+      "ru": "ночёвка"
     },
     "short": {
       "de": "wenn man eine Nacht an einem Ort schläft, zum Beispiel im Hotel",
@@ -48511,8 +48511,8 @@ var VOCAB = [
     "term": {
       "de": "umdrehen",
       "en": "to turn around",
-      "uk": "розвертатися, повертатися назад",
-      "ru": "разворачиваться, поворачивать назад"
+      "uk": "розвертатися",
+      "ru": "разворачиваться"
     },
     "short": {
       "de": "in die andere Richtung drehen oder zurückgehen",
@@ -48534,8 +48534,8 @@ var VOCAB = [
     "term": {
       "de": "der Waschraum",
       "en": "washroom",
-      "uk": "умивальня, санвузол",
-      "ru": "умывальная, санузел"
+      "uk": "умивальня",
+      "ru": "умывальная"
     },
     "short": {
       "de": "ein Raum mit Waschbecken, Dusche oder Toilette",
@@ -48603,7 +48603,7 @@ var VOCAB = [
     "term": {
       "de": "zurücklassen",
       "en": "to leave behind",
-      "uk": "залишати, кидати",
+      "uk": "залишати",
       "ru": "оставлять"
     },
     "short": {
@@ -48695,8 +48695,8 @@ var VOCAB = [
     "term": {
       "de": "der Einbruch",
       "en": "burglary",
-      "uk": "злам, крадіжка зі зломом",
-      "ru": "взлом, кража со взломом"
+      "uk": "злам",
+      "ru": "взлом"
     },
     "short": {
       "de": "wenn jemand mit Gewalt in ein Haus geht, um etwas zu stehlen",
@@ -48717,9 +48717,9 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "der Kommissar",
-      "en": "inspector, detective",
-      "uk": "комісар, слідчий",
-      "ru": "комиссар, следователь"
+      "en": "inspector",
+      "uk": "комісар",
+      "ru": "комиссар"
     },
     "short": {
       "de": "ein Polizist, der Verbrechen aufklärt",
@@ -48786,9 +48786,9 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "der Schläger",
-      "en": "thug, brawler",
-      "uk": "хуліган, бешкетник",
-      "ru": "хулиган, драчун"
+      "en": "thug",
+      "uk": "хуліган",
+      "ru": "хулиган"
     },
     "short": {
       "de": "eine Person, die andere Menschen mit Gewalt verletzt",
@@ -48832,9 +48832,9 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "das Unrecht",
-      "en": "injustice, wrong",
-      "uk": "несправедливість, кривда",
-      "ru": "несправедливость, неправота"
+      "en": "injustice",
+      "uk": "кривда",
+      "ru": "несправедливость"
     },
     "short": {
       "de": "etwas, das nicht richtig und nicht gerecht ist",
@@ -48856,8 +48856,8 @@ var VOCAB = [
     "term": {
       "de": "versehentlich",
       "en": "accidentally",
-      "uk": "ненавмисно, помилково",
-      "ru": "нечаянно, по ошибке"
+      "uk": "ненавмисно",
+      "ru": "нечаянно"
     },
     "short": {
       "de": "nicht mit Absicht, durch einen Fehler",
@@ -48878,9 +48878,9 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "verurteilen",
-      "en": "to sentence, to convict",
+      "en": "to sentence",
       "uk": "засуджувати",
-      "ru": "осуждать, приговаривать"
+      "ru": "приговаривать"
     },
     "short": {
       "de": "als Richter sagen, dass jemand schuldig ist, und eine Strafe geben",
@@ -48901,9 +48901,9 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "der Aufruf",
-      "en": "call, appeal",
-      "uk": "заклик, виклик",
-      "ru": "призыв, вызов"
+      "en": "appeal",
+      "uk": "заклик",
+      "ru": "призыв"
     },
     "short": {
       "de": "wenn man Menschen laut bittet, etwas zu tun, zum Beispiel durch Lautsprecher",
@@ -49154,9 +49154,9 @@ var VOCAB = [
     "cat": "k16",
     "term": {
       "de": "traumhaft",
-      "en": "dreamlike, wonderful",
-      "uk": "казковий, чудовий",
-      "ru": "сказочный, чудесный"
+      "en": "dreamlike",
+      "uk": "казковий",
+      "ru": "сказочный"
     },
     "short": {
       "de": "so schön, dass es wie ein Traum ist",
