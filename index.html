@@ -1799,6 +1799,12 @@ body{
   font-family:'Inter',sans-serif;line-height:1.3;
 }
 .quiz-options{display:flex;flex-direction:column;gap:10px;}
+/* Питання/відповіді з картинками (img у QUIZ) */
+.quiz-q-img{margin-top:12px;border-radius:12px;overflow:hidden;background:#fff;text-align:center;}
+.quiz-q-img img{display:block;max-width:100%;max-height:260px;margin:0 auto;object-fit:contain;}
+.quiz-options.has-img{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.quiz-options.has-img .quiz-opt{flex-direction:column;align-items:stretch;gap:8px;padding:10px;}
+.quiz-opt-img{display:block;width:100%;height:110px;object-fit:contain;background:#fff;border-radius:8px;}
 .quiz-opt{
   padding:13px 16px;border-radius:14px;
   border:1.5px solid var(--border);
@@ -4511,6 +4517,7 @@ body{
         <div class="quiz-question" id="quiz-question" style="display:none">
           <div class="quiz-q-num" id="quiz-q-num"></div>
           <div class="quiz-q-text" id="quiz-q-text"></div>
+          <div class="quiz-q-img" id="quiz-q-img" style="display:none"></div>
         </div>
         <div class="quiz-options" id="quiz-options"></div>
       </div>
@@ -4948,6 +4955,10 @@ body{
         <span class="dbg-switch-track"></span>
       </label>
     </div>
+    <div class="srow" id="region-row" style="display:none">
+      <div class="srow-label"><label data-i18n="lbl_region">Bundesland</label><small data-i18n="sub_region">Für regionale Quizfragen</small></div>
+      <select id="region-select" onchange="setQuizRegion(this.value)" style="max-width:55%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--ink);font-size:14px"></select>
+    </div>
     <div class="srow">
       <div class="srow-label"><label data-i18n="lbl_dtchars">Sonderzeichen unter dem Feld</label><small data-i18n="sub_dtchars">ä ö ü ß in der Tipp-Übung</small></div>
       <div style="display:flex;gap:6px;flex-shrink:0">
@@ -5032,6 +5043,10 @@ body{
         </div>
       </div>
     </div>
+    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
+      <div class="srow-label"><label>Курси в розробці</label><small>Не показуються звичайним користувачам. Тап — перемкнути на курс.</small></div>
+      <div id="debug-course-list" style="display:flex;flex-direction:column;gap:6px"></div>
+    </div>
     <div class="srow">
       <div class="srow-label"><label><i data-mi="calendar" class="mi-inline"></i>Daily Plan</label><small>Картка "Продовжити навчання" (#sr-daily-plan) над лінією уроків — прихована за замовчуванням (дублює чіп "Продовжити" на поточному модулі й стрік у шапці). Лише для тестування.</small></div>
       <label class="dbg-switch">
@@ -5087,7 +5102,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '832-5fae62b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5132,6 +5147,14 @@ const COURSES = [
     icon:     'briefcase',
     level:    'B2',
     langs:    ['de','uk','en'],
+  },
+  {
+    id:       'Leben-in-Deutschland',
+    emoji:    '🇩🇪',
+    icon:     'flag',
+    level:    'LiD',
+    langs:    ['de','uk','en','ru'],
+    debugOnly: true,   // курс ще в розробці: не показується в списку курсів/онбордингу, лише в Налаштування → Налагодження
   },
   {
     id:       'Financial-Accounting-Foundations',
@@ -6118,6 +6141,8 @@ function loadCourseScript(courseId){
       _lpSpeechGateMigrate(LESSONS);   // вузли мовлення, що опинились перед уже пройденими уроками
         }
       }catch(e){ console.error('[path] buildLearningPath failed:', e); }
+      // Рядок «Bundesland» у налаштуваннях — лише для курсів з REGIONS
+      try{ renderRegionSetting(); }catch(e){}
       // Smart Review: додаємо examPart до карток якщо ще не є
       try{ srTagVocab(); }catch(e){}
       // Grammatik-Trainer: перебудовуємо похідний пул карток під новий курс.
@@ -6527,7 +6552,7 @@ const I18N = {
     grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch',
     course_loading:'Kurs wird geladen: {course}', course_active:'{course} ist jetzt aktiv', course_error:'Kurs konnte nicht geladen werden',
     sec_debug:'Fehlersuche', sec_lang:'Sprache',
-    lbl_dtchars:'Sonderzeichen unter dem Feld', sub_dtchars:'Zeile mit ä ö ü ß in der Tipp-Übung. „Auto“ blendet sie aus, sobald du Umlaute selbst tippst', opt_auto:'Auto', opt_always:'Immer',
+    lbl_region:'Bundesland', sub_region:'Für regionale Quizfragen', region_none:'Nicht gewählt (nur allgemeine Fragen)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Vorbereitung auf den Einbürgerungstest', lbl_dtchars:'Sonderzeichen unter dem Feld', sub_dtchars:'Zeile mit ä ö ü ß in der Tipp-Übung. „Auto“ blendet sie aus, sobald du Umlaute selbst tippst', opt_auto:'Auto', opt_always:'Immer',
     // Назви й підписи курсів (див. COURSES / courseTitle)
     course_Deutsch_A1_title:'Deutsch A1', course_Deutsch_A1_desc:'Deutsch für Anfänger',
     course_Deutsch_A2_title:'Deutsch A2', course_Deutsch_A2_desc:'Deutsch für den Alltag',
@@ -6689,7 +6714,7 @@ const I18N = {
     grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне',
     course_loading:'Завантажуємо курс: {course}', course_active:'Курс «{course}» активний', course_error:'Не вдалося завантажити курс',
     sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
-    lbl_dtchars:'Спецсимволи під полем', sub_dtchars:'Рядок із ä ö ü ß у вправі на письмо. «Авто» ховає його, коли ви самі набираєте умлаути', opt_auto:'Авто', opt_always:'Завжди',
+    lbl_region:'Федеральна земля', sub_region:'Для регіональних питань квізу', region_none:'Не обрано (лише загальні питання)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Підготовка до тесту на громадянство', lbl_dtchars:'Спецсимволи під полем', sub_dtchars:'Рядок із ä ö ü ß у вправі на письмо. «Авто» ховає його, коли ви самі набираєте умлаути', opt_auto:'Авто', opt_always:'Завжди',
     // Назви й підписи курсів (див. COURSES / courseTitle)
     course_Deutsch_A1_title:'Німецька A1', course_Deutsch_A1_desc:'Німецька для початківців',
     course_Deutsch_A2_title:'Німецька A2', course_Deutsch_A2_desc:'Побутова німецька',
@@ -6846,7 +6871,7 @@ const I18N = {
     grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical',
     course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
     sec_debug:'Debug', sec_lang:'Interface Language',
-    lbl_dtchars:'Special characters row', sub_dtchars:'Row with ä ö ü ß in the typing exercise. “Auto” hides it once you type umlauts yourself', opt_auto:'Auto', opt_always:'Always',
+    lbl_region:'Federal state', sub_region:'For regional quiz questions', region_none:'Not selected (general questions only)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Naturalisation test preparation', lbl_dtchars:'Special characters row', sub_dtchars:'Row with ä ö ü ß in the typing exercise. “Auto” hides it once you type umlauts yourself', opt_auto:'Auto', opt_always:'Always',
     // Назви й підписи курсів (див. COURSES / courseTitle)
     course_Deutsch_A1_title:'German A1', course_Deutsch_A1_desc:'German for beginners',
     course_Deutsch_A2_title:'German A2', course_Deutsch_A2_desc:'Everyday German',
@@ -7004,7 +7029,7 @@ const I18N = {
     grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое',
     course_loading:'Загружаем курс: {course}', course_active:'Курс «{course}» активен', course_error:'Не удалось загрузить курс',
     sec_debug:'Отладка', sec_lang:'Язык интерфейса',
-    lbl_dtchars:'Спецсимволы под полем', sub_dtchars:'Строка с ä ö ü ß в упражнении на письмо. «Авто» скрывает её, когда вы сами набираете умлауты', opt_auto:'Авто', opt_always:'Всегда',
+    lbl_region:'Федеральная земля', sub_region:'Для региональных вопросов квиза', region_none:'Не выбрано (только общие вопросы)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Подготовка к тесту на гражданство', lbl_dtchars:'Спецсимволы под полем', sub_dtchars:'Строка с ä ö ü ß в упражнении на письмо. «Авто» скрывает её, когда вы сами набираете умлауты', opt_auto:'Авто', opt_always:'Всегда',
     // Назви й підписи курсів (див. COURSES / courseTitle)
     course_Deutsch_A1_title:'Немецкий A1', course_Deutsch_A1_desc:'Немецкий для начинающих',
     course_Deutsch_A2_title:'Немецкий A2', course_Deutsch_A2_desc:'Бытовой немецкий',
@@ -10514,10 +10539,33 @@ function showSrsHint(emoji, label, q, areaId='fc-area'){
 }
 
 
+// Курси з debugOnly:true (ще не готові) — лише в Налаштування → Налагодження.
+function visibleCourses(){ return COURSES.filter(c=>!c.debugOnly); }
+
+function renderDebugCourseList(){
+  const box = document.getElementById('debug-course-list');
+  if(!box) return;
+  box.textContent = '';
+  COURSES.filter(c=>c.debugOnly).forEach(c=>{
+    const b = document.createElement('button');
+    b.className = 'btn btn-s' + (c.id===activeCourse?.id ? ' active' : '');
+    b.style.cssText = 'width:100%;text-align:left;display:flex;align-items:center;gap:8px';
+    b.onclick = async ()=>{
+      await switchCourse(c.id);   // для вже активного курсу — нічого не робить
+      if(!(typeof LESSONS !== 'undefined' && LESSONS.length)) debugOpenVocabTab(5);   // курс без уроків → одразу Квіз
+    };
+    const t1 = document.createElement('span');
+    t1.textContent = courseTitle(c) + (c.id===activeCourse?.id ? ' ✓' : '');
+    b.appendChild(t1);
+    box.appendChild(b);
+  });
+}
+
 function renderCourseList(){
+  try{ renderDebugCourseList(); }catch(e){}
   const container = document.getElementById('course-list');
   if(!container) return;
-  container.innerHTML = COURSES.map(c=>`
+  container.innerHTML = visibleCourses().map(c=>`
     <button class="course-btn ${c.id===activeCourse?.id?'active':''}"
             data-course="${c.id}"
             onclick="switchCourse('${c.id}')"
@@ -12004,8 +12052,29 @@ function renderLernpfad(opts){
   try{ srRenderDailyPlan(); }catch(e){ console.warn('[SR] renderDailyPlan:', e); }
   const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
   if(!lessons.length){
-    document.getElementById('lp-chapters').innerHTML =
-      '<p style="text-align:center;padding:40px;color:var(--muted)">'+t('lp_no_lessons')+'</p>';
+    // Шапка лишалась від попереднього курсу (кількість карток, «Ти тут») — скидаємо.
+    const _f = document.getElementById('lp-overall-fill');   if(_f) _f.style.width = '0%';
+    const _t = document.getElementById('lp-overall-text');   if(_t) _t.textContent = '';
+    const _l = document.getElementById('lp-header-location'); if(_l) _l.textContent = '';
+    const _m = document.getElementById('lp-module-fill');    if(_m) _m.style.width = '0%';
+    const box = document.getElementById('lp-chapters');
+    box.textContent = '';
+    const msg = document.createElement('p');
+    msg.style.cssText = 'text-align:center;padding:40px 20px 16px;color:var(--muted)';
+    msg.textContent = t('lp_no_lessons');
+    box.appendChild(msg);
+    // Курс без уроків, але з питаннями (напр. Leben in Deutschland) — прямий вхід у Квіз.
+    if(typeof QUIZ !== 'undefined' && QUIZ.length){
+      const wrap = document.createElement('div');
+      wrap.style.cssText = 'text-align:center';
+      const b = document.createElement('button');
+      b.className = 'btn btn-s';
+      b.innerHTML = movaIcon('quiz') + ' ';
+      b.appendChild(document.createTextNode((LF_STEP_LABELS.quiz[uiLang] || LF_STEP_LABELS.quiz.de) + ' (' + QUIZ.length + ')'));
+      b.onclick = ()=> debugOpenVocabTab(5);
+      wrap.appendChild(b);
+      box.appendChild(wrap);
+    }
     return;
   }
   _lpSpeechGateMigrate(lessons);
@@ -15050,7 +15119,7 @@ const COURSE_OB_SUBTITLE = {
 function renderCourseOnboardingCards(){
   const container = document.getElementById('course-ob-cards');
   if(!container) return;
-  container.innerHTML = COURSES.map(c=>`
+  container.innerHTML = visibleCourses().map(c=>`
     <div class="ob-card" onclick="selectOnboardCourse('${c.id}')">
       <div class="ob-card-flag">${c.icon ? movaIcon(c.icon) : c.emoji}</div>
       <div class="ob-card-text">
@@ -22794,9 +22863,62 @@ let quizState = null;
 function quizGetPool(lessonId){
   const all = typeof QUIZ !== 'undefined' ? QUIZ : [];
   if(!all.length) return [];
+  // Регіональні питання: q.region — порожнє/відсутнє (питання для всіх),
+  // рядок ('BY') або масив ['BY','BW']. Курс без REGIONS фільтр не застосовує.
+  const reg = quizUserRegion();
+  const hasRegions = typeof REGIONS !== 'undefined' && Array.isArray(REGIONS) && REGIONS.length;
+  const byRegion = q => {
+    if(!hasRegions || !q.region || (Array.isArray(q.region) && !q.region.length)) return true;
+    return !!reg && [].concat(q.region).includes(reg);
+  };
+  const pool = all.filter(byRegion);
   return lessonId
-    ? all.filter(q => !q.lessonId || q.lessonId === lessonId)
-    : all;
+    ? pool.filter(q => !q.lessonId || q.lessonId === lessonId)
+    : pool;
+}
+
+// ── Регіон користувача (Bundesland) ─────────────────────────────
+// Один раз на пристрій (людина живе в одній землі), тому ключ без id курсу.
+function quizUserRegion(){
+  try{
+    const r = localStorage.getItem('mova_region') || '';
+    return (typeof REGIONS !== 'undefined' && Array.isArray(REGIONS) && REGIONS.some(x=>x.id===r)) ? r : '';
+  }catch(e){ return ''; }
+}
+function setQuizRegion(id){
+  try{ if(id) localStorage.setItem('mova_region', id); else localStorage.removeItem('mova_region'); }catch(e){}
+  // Якщо сесія квізу вже йде — наступний старт візьме новий пул.
+  quizState = (quizState && quizState._lfMode) ? quizState : null;
+}
+// Рядок налаштувань показується лише для курсів, у файлі яких є REGIONS.
+function renderRegionSetting(){
+  const row = document.getElementById('region-row');
+  const sel = document.getElementById('region-select');
+  if(!row || !sel) return;
+  const has = typeof REGIONS !== 'undefined' && Array.isArray(REGIONS) && REGIONS.length;
+  row.style.display = has ? '' : 'none';
+  if(!has) return;
+  const cur = quizUserRegion();
+  sel.innerHTML = '';
+  const o0 = document.createElement('option');
+  o0.value = ''; o0.textContent = t('region_none');
+  sel.appendChild(o0);
+  REGIONS.forEach(r=>{
+    const o = document.createElement('option');
+    o.value = r.id;
+    o.textContent = r[uiLang] || r.de || r.id;
+    if(r.id === cur) o.selected = true;
+    sel.appendChild(o);
+  });
+}
+
+// Шлях до картинки питання/відповіді. Відносний шлях → img/<id курсу>/<файл>
+// (як audio/<id>/…); http(s)://, data: і шляхи від кореня беруться як є.
+function quizImgUrl(p){
+  if(!p) return '';
+  if(/^(https?:|data:|\/)/.test(p)) return p;
+  const cid = (typeof activeCourse !== 'undefined' && activeCourse) ? activeCourse.id : '';
+  return 'img/' + cid + '/' + p;
 }
 
 // Точка входу з вкладки (вільний режим)
@@ -22874,14 +22996,12 @@ function _quizShowEmpty(){
     id: 'q001',
     cardId: 'v001',   // опційно
     lessonId: 'l01',  // опційно
-    q: {
-      de: 'Was ist ...?',
-      uk: 'Що таке ...?',
-      en: 'What is ...?'
-    },
+    region: 'BY',     // опційно: id з REGIONS (рядок або масив); без нього — для всіх
+    img: 'q001.png',  // опційно: картинка питання (img/&lt;id курсу&gt;/)
+    question: { de:'Was ist ...?', uk:'Що таке ...?', en:'What is ...?' },
     answers: [
       { de:'...', uk:'...', en:'...', correct:true },
-      { de:'...', uk:'...', en:'...' },
+      { de:'...', uk:'...', en:'...', img:'a2.png' },  // img — опційно
       { de:'...', uk:'...', en:'...' },
       { de:'...', uk:'...', en:'...' },
     ]
@@ -22914,6 +23034,26 @@ function _quizShowCard(){
     `${t('quiz_question')} ${quizState.idx + 1} ${t('quiz_of')} ${quizState.questions.length}`;
 
   // Текст питання в актуальній мові
+  // Картинка до питання (необов'язкова): q.img — рядок або {src, alt:{de,uk,..}}
+  const qImgEl = document.getElementById('quiz-q-img');
+  if(qImgEl){
+    qImgEl.innerHTML = '';
+    const im = q.img && (typeof q.img === 'string' ? {src:q.img} : q.img);
+    if(im && im.src){
+      const el = document.createElement('img');
+      el.src = quizImgUrl(im.src);
+      el.alt = (im.alt && (im.alt[uiLang] || im.alt.de)) || '';
+      el.loading = 'eager';
+      qImgEl.appendChild(el);
+      if(q.imgCredit){   // автор фото (© ...) — дрібним підписом
+        const cr = document.createElement('div');
+        cr.textContent = q.imgCredit;
+        cr.style.cssText = 'font-size:11px;color:#667;padding:2px 8px 6px';
+        qImgEl.appendChild(cr);
+      }
+      qImgEl.style.display = '';
+    } else qImgEl.style.display = 'none';
+  }
   const qTextEl = document.getElementById('quiz-q-text');
   if(qTextEl) qTextEl.textContent =
     q.question?.[uiLang] || q.question?.[primaryLang()] || q.question?.en || q.question?.uk || q.question?.de ||
@@ -22925,12 +23065,28 @@ function _quizShowCard(){
 
   const optBox = document.getElementById('quiz-options');
   optBox.innerHTML = '';
+  // Якщо хоч одна відповідь має картинку — сітка 2×2 (напр. «Яка з цих емблем…»)
+  optBox.classList.toggle('has-img', answers.some(a => a.img));
   answers.forEach((ans, i)=>{
     const btn = document.createElement('button');
     btn.className = 'quiz-opt';
-    btn.innerHTML = `
-      <span class="quiz-opt-letter">${letters[i]}</span>
-      <span>${ans[uiLang] || ans[primaryLang()] || ans.en || ans.uk || ans.de || ''}</span>`;
+    const label = ans[uiLang] || ans[primaryLang()] || ans.en || ans.uk || ans.de || '';
+    const letter = document.createElement('span');
+    letter.className = 'quiz-opt-letter';
+    letter.textContent = letters[i];
+    btn.appendChild(letter);
+    if(ans.img){
+      const im = document.createElement('img');
+      im.className = 'quiz-opt-img';
+      im.src = quizImgUrl(typeof ans.img === 'string' ? ans.img : ans.img.src);
+      im.alt = label;
+      btn.appendChild(im);
+    }
+    if(label){
+      const tx = document.createElement('span');
+      tx.textContent = label;   // текст з бази — лише textContent
+      btn.appendChild(tx);
+    }
     btn.addEventListener('click', ()=> _quizAnswer(btn, ans, answers, q));
     optBox.appendChild(btn);
   });
