@@ -5102,7 +5102,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '836-408ac6d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5750,7 +5750,12 @@ function buildLearningPath(rawLessons, courseLevel){
     if(!ids.length){
       var mapped = (lesson.unlockAfter === null || lesson.unlockAfter === undefined)
         ? null : (lastSubOf[lesson.unlockAfter] || lesson.unlockAfter);
-      var passthrough = Object.assign({}, lesson, { type: 'lesson', unlockAfter: mapped });
+      // Урок без карток, але з питаннями квізу (QUIZ[].lessonId) — вузол типу 'quiz':
+      // свій модуль (_parentModuleId), прогрес — за відповідями на питання (lessonProgress).
+      var hasQuiz = (typeof QUIZ !== 'undefined' && Array.isArray(QUIZ) &&
+                     QUIZ.some(function(q){ return q.lessonId === lesson.id; }));
+      var passthrough = Object.assign({}, lesson, { type: hasQuiz ? 'quiz' : 'lesson', unlockAfter: mapped });
+      if(hasQuiz){ passthrough._parentModuleId = lesson.id; passthrough._subIndex = 1; passthrough._subTotal = 1; }
       out.push(passthrough);
       lastSubOf[lesson.id] = passthrough.id;
       moduleCardIds[lesson.id] = ids;
@@ -6632,7 +6637,7 @@ const I18N = {
     
     btn_check:'Prüfen',
     sp_tap_to_speak:'Tippe zum Sprechen', sp_skip_cant_speak:'Ich kann gerade nicht sprechen', sp_res_ok:'Richtig!', sp_res_nok:'Nicht ganz', lr_l_phrases:'Sätze', sp_mic_restarting:'Mikrofon wird neu gestartet…', sp_mic_restarted:'Mikrofon neu gestartet — tippen und sprechen', sp_mic_stuck:'Das Mikrofon reagiert nicht. Schließe die Lektion und öffne sie erneut.',
-     sp_mic_silent:'iOS liefert keinen Ton vom Mikrofon. Schließe die App vollständig (im App-Umschalter nach oben wischen), prüfe, ob eine andere App das Mikrofon nutzt, oder starte das iPhone neu.', sp_sr_silent:'Das Mikrofon funktioniert, aber die Spracherkennung reagiert nicht. Prüfe die Internetverbindung und ob unter Einstellungen › Allgemein › Tastatur „Diktierfunktion“ aktiv ist; schließe dann die App vollständig und öffne sie neu.', lr_l_phr_ok:'Richtig gesprochen', sp_skipped_toast:'Übersprungen. Weiter mit der nächsten Lektion.', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
+     sp_mic_silent:'iOS liefert keinen Ton vom Mikrofon. Schließe die App vollständig (im App-Umschalter nach oben wischen), prüfe, ob eine andere App das Mikrofon nutzt, oder starte das iPhone neu.', sp_sr_silent:'Das Mikrofon funktioniert, aber die Spracherkennung reagiert nicht. Prüfe die Internetverbindung und ob unter Einstellungen › Allgemein › Tastatur „Diktierfunktion“ aktiv ist; schließe dann die App vollständig und öffne sie neu.', lr_l_phr_ok:'Richtig gesprochen', sp_skipped_toast:'Übersprungen. Weiter mit der nächsten Lektion.', sp_you_said:'Sie sagten:', sp_try_again:'Nochmal versuchen', sp_listening:'Ich höre zu… bitte jetzt sprechen', sp_no_speech:'Nichts gehört – bitte nochmal versuchen', sp_mic_denied:'Kein Zugriff auf das Mikrofon', sp_not_supported:'Spracherkennung wird nicht unterstützt', sp_error:'Fehler bei der Spracherkennung', sp_next:'Weiter', sp_result_btn:'Ergebnis', sp_done_title:'Übung abgeschlossen!', sp_score_of:'{a} von {b}', sp_again:'Nochmal', sp_finish:'Beenden', lr_t_frm:'Beitrag abgeschlossen!', lr_t_eml:'E-Mail abgeschlossen!', lr_t_dlg:'Dialog abgeschlossen!', lr_t_gram:'Grammatik abgeschlossen!', lr_t_great:'Ausgezeichnet!', lr_t_good:'Gut gemacht!', lr_t_keep:'Weiter so!', lr_l_xp:'M verdient', lr_l_time:'Zeit', lr_l_frm:'Beiträge', lr_l_eml:'E-Mails', lr_l_eml_q:'Richtige Antworten', lr_l_dlg:'Dialoge', lr_l_turns:'Repliken', lr_l_quiz_q:'Fragen', lr_l_quiz_ok:'Richtig', region_pick_title:'Bundesland wählen', region_pick_sub:'Für die Fragen zu deinem Bundesland', lr_l_cards:'Karten', lr_l_improved:'Verbessert', lr_u_min:'min', lr_u_sec:'s', streak_days:'Tage in Folge', tab_def_short:'Lückentext', tab_speech:'Sprechen',
     quiz_title:'❓ Quiz',
     quiz_question:'Frage',
     quiz_of:'von',
@@ -6790,7 +6795,7 @@ const I18N = {
     
     btn_check:'Перевірити',
     sp_tap_to_speak:'Натисни щоб говорити', sp_skip_cant_speak:'Не можу говорити зараз', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', sp_mic_restarting:'Перезапуск мікрофона…', sp_mic_restarted:'Мікрофон перезапущено — натисніть і говоріть', sp_mic_stuck:'Мікрофон не відповідає. Закрийте урок і відкрийте знову.',
-     sp_mic_silent:'iOS не передає звук з мікрофона. Повністю закрийте застосунок (змахніть угору в перемикачі застосунків), перевірте, що мікрофон не зайнятий іншим застосунком, або перезавантажте iPhone.', sp_sr_silent:'Мікрофон працює, але розпізнавання мовлення не відповідає. Перевірте інтернет і що в Налаштування › Загальні › Клавіатура увімкнено «Диктування», потім повністю закрийте застосунок і відкрийте знову.', lr_l_phr_ok:'Вимовлено правильно', sp_skipped_toast:'Пропущено. Переходимо до наступного уроку.', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
+     sp_mic_silent:'iOS не передає звук з мікрофона. Повністю закрийте застосунок (змахніть угору в перемикачі застосунків), перевірте, що мікрофон не зайнятий іншим застосунком, або перезавантажте iPhone.', sp_sr_silent:'Мікрофон працює, але розпізнавання мовлення не відповідає. Перевірте інтернет і що в Налаштування › Загальні › Клавіатура увімкнено «Диктування», потім повністю закрийте застосунок і відкрийте знову.', lr_l_phr_ok:'Вимовлено правильно', sp_skipped_toast:'Пропущено. Переходимо до наступного уроку.', sp_you_said:'Ви сказали:', sp_try_again:'Спробувати ще раз', sp_listening:'Слухаю… говоріть зараз', sp_no_speech:'Нічого не почуто — спробуйте ще раз', sp_mic_denied:'Немає доступу до мікрофона', sp_not_supported:'Розпізнавання мовлення не підтримується', sp_error:'Помилка розпізнавання', sp_next:'Далі', sp_result_btn:'Результат', sp_done_title:'Практику завершено!', sp_score_of:'{a} з {b}', sp_again:'Ще раз', sp_finish:'Завершити', lr_t_frm:'Допис завершено!', lr_t_eml:'Лист завершено!', lr_t_dlg:'Діалог завершено!', lr_t_gram:'Граматику завершено!', lr_t_great:'Чудово!', lr_t_good:'Добре!', lr_t_keep:'Продовжуй!', lr_l_xp:'M зароблено', lr_l_time:'Час', lr_l_frm:'Дописів', lr_l_eml:'Листів', lr_l_eml_q:'Правильних відповідей', lr_l_dlg:'Діалогів', lr_l_turns:'Реплік', lr_l_quiz_q:'Питання', lr_l_quiz_ok:'Правильно', region_pick_title:'Оберіть федеральну землю', region_pick_sub:'Для питань про вашу землю', lr_l_cards:'Карток пройдено', lr_l_improved:'Покращено', lr_u_min:'хв', lr_u_sec:'с', streak_days:'днів поспіль', tab_def_short:'Заповни', tab_speech:'Говоріння',
     quiz_title:'❓ Квіз',
     quiz_question:'Запитання',
     quiz_of:'з',
@@ -6947,7 +6952,7 @@ const I18N = {
     
     btn_check:'Check',
     sp_tap_to_speak:'Tap to speak', sp_skip_cant_speak:"I can't speak right now", sp_res_ok:'Correct!', sp_res_nok:'Not quite', lr_l_phrases:'Phrases', sp_mic_restarting:'Restarting the microphone…', sp_mic_restarted:'Microphone restarted — tap and speak', sp_mic_stuck:'The microphone is not responding. Close the lesson and open it again.',
-     sp_mic_silent:'iOS is not delivering any sound from the microphone. Close the app completely (swipe it up in the app switcher), check that no other app is using the microphone, or restart your iPhone.', sp_sr_silent:'The microphone works, but speech recognition is not responding. Check your internet connection and that Dictation is on under Settings › General › Keyboard, then close the app completely and reopen it.', lr_l_phr_ok:'Pronounced correctly', sp_skipped_toast:'Skipped. On to the next lesson.', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
+     sp_mic_silent:'iOS is not delivering any sound from the microphone. Close the app completely (swipe it up in the app switcher), check that no other app is using the microphone, or restart your iPhone.', sp_sr_silent:'The microphone works, but speech recognition is not responding. Check your internet connection and that Dictation is on under Settings › General › Keyboard, then close the app completely and reopen it.', lr_l_phr_ok:'Pronounced correctly', sp_skipped_toast:'Skipped. On to the next lesson.', sp_you_said:'You said:', sp_try_again:'Try again', sp_listening:'Listening… speak now', sp_no_speech:'No speech detected — try again', sp_mic_denied:'Microphone access denied', sp_not_supported:'Speech recognition is not supported', sp_error:'Recognition error', sp_next:'Next', sp_result_btn:'Result', sp_done_title:'Practice complete!', sp_score_of:'{a} of {b}', sp_again:'Again', sp_finish:'Finish', lr_t_frm:'Forum post completed!', lr_t_eml:'E-mail completed!', lr_t_dlg:'Dialogue completed!', lr_t_gram:'Grammar completed!', lr_t_great:'Excellent!', lr_t_good:'Good job!', lr_t_keep:'Keep going!', lr_l_xp:'M earned', lr_l_time:'Time', lr_l_frm:'Forum posts', lr_l_eml:'E-mails', lr_l_eml_q:'Correct answers', lr_l_dlg:'Dialogues', lr_l_turns:'Turns', lr_l_quiz_q:'Questions', lr_l_quiz_ok:'Correct', region_pick_title:'Choose your federal state', region_pick_sub:'For the questions about your state', lr_l_cards:'Cards covered', lr_l_improved:'Improved', lr_u_min:'min', lr_u_sec:'s', streak_days:'day streak', tab_def_short:'Fill-in', tab_speech:'Speaking',
     quiz_title:'❓ Quiz',
     quiz_question:'Question',
     quiz_of:'of',
@@ -7104,7 +7109,7 @@ const I18N = {
     
     btn_check:'Проверить',
     sp_tap_to_speak:'Нажмите чтобы говорить', sp_skip_cant_speak:'Не могу говорить сейчас', sp_res_ok:'Правильно!', sp_res_nok:'Неточно', lr_l_phrases:'Фраз', sp_mic_restarting:'Перезапуск микрофона…', sp_mic_restarted:'Микрофон перезапущен — нажмите и говорите', sp_mic_stuck:'Микрофон не отвечает. Закройте урок и откройте снова.',
-     sp_mic_silent:'iOS не передаёт звук с микрофона. Полностью закройте приложение (смахните вверх в переключателе приложений), проверьте, что микрофон не занят другим приложением, или перезагрузите iPhone.', sp_sr_silent:'Микрофон работает, но распознавание речи не отвечает. Проверьте интернет и что в Настройки › Основные › Клавиатура включена «Диктовка», затем полностью закройте приложение и откройте снова.', lr_l_phr_ok:'Произнесено верно', sp_skipped_toast:'Пропущено. Переходим к следующему уроку.', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
+     sp_mic_silent:'iOS не передаёт звук с микрофона. Полностью закройте приложение (смахните вверх в переключателе приложений), проверьте, что микрофон не занят другим приложением, или перезагрузите iPhone.', sp_sr_silent:'Микрофон работает, но распознавание речи не отвечает. Проверьте интернет и что в Настройки › Основные › Клавиатура включена «Диктовка», затем полностью закройте приложение и откройте снова.', lr_l_phr_ok:'Произнесено верно', sp_skipped_toast:'Пропущено. Переходим к следующему уроку.', sp_you_said:'Вы сказали:', sp_try_again:'Попробовать снова', sp_listening:'Слушаю… говорите', sp_no_speech:'Ничего не слышно — попробуйте ещё раз', sp_mic_denied:'Нет доступа к микрофону', sp_not_supported:'Распознавание речи не поддерживается', sp_error:'Ошибка распознавания', sp_next:'Далее', sp_result_btn:'Результат', sp_done_title:'Практика завершена!', sp_score_of:'{a} из {b}', sp_again:'Ещё раз', sp_finish:'Завершить', lr_t_frm:'Пост завершён!', lr_t_eml:'Письмо завершено!', lr_t_dlg:'Диалог завершён!', lr_t_gram:'Грамматика завершена!', lr_t_great:'Отлично!', lr_t_good:'Хорошо!', lr_t_keep:'Продолжай!', lr_l_xp:'M заработано', lr_l_time:'Время', lr_l_frm:'Постов', lr_l_eml:'Писем', lr_l_eml_q:'Правильных ответов', lr_l_dlg:'Диалогов', lr_l_turns:'Реплик', lr_l_quiz_q:'Вопросы', lr_l_quiz_ok:'Верно', region_pick_title:'Выберите федеральную землю', region_pick_sub:'Для вопросов о вашей земле', lr_l_cards:'Карточек пройдено', lr_l_improved:'Улучшено', lr_u_min:'мин', lr_u_sec:'с', streak_days:'дней подряд', tab_def_short:'Вставь', tab_speech:'Говорение',
     quiz_title:'❓ Квиз',
     quiz_question:'Вопрос',
     quiz_of:'из',
@@ -11280,7 +11285,47 @@ function findCurrentLesson(){
   return _lpCurrentLessonCache;
 }
 
+// ── Квіз-уроки: статистика відповідей по питаннях (на курс) ─────────────────
+// {id питання: {n: скільки разів відповідали, c: скільки разів правильно}}.
+// Урок вважається пройденим, коли ≥80% його питань відповідали правильно хоча б раз.
+var _qsCache = null, _qsKey = null;
+function _quizStatsKey(){
+  const id = (typeof activeCourse !== 'undefined' && activeCourse && activeCourse.id) || getSavedCourseId();
+  return 'mova_quizq_' + courseStateId(id);
+}
+function _quizStats(){
+  const key = _quizStatsKey();
+  if(_qsKey !== key){
+    let m = {};
+    try{ m = JSON.parse(localStorage.getItem(key) || '{}') || {}; }catch(e){ m = {}; }
+    _qsCache = m; _qsKey = key;
+  }
+  return _qsCache;
+}
+function quizRecordAnswer(q, ok){
+  if(!q || !q.id) return;
+  const m = _quizStats();
+  const st = m[q.id] || (m[q.id] = {n:0, c:0});
+  st.n++; if(ok) st.c++;
+  try{ localStorage.setItem(_quizStatsKey(), JSON.stringify(m)); }catch(e){}
+}
+// Пріоритет питання при доборі в сесію: нові → відповідані лише хибно → рідко правильні.
+function _quizQPriority(q){
+  const st = _quizStats()[q.id];
+  if(!st || !st.n) return 3;
+  if(!st.c) return 2;
+  return 1 / (1 + st.c);
+}
+
 function lessonProgress(lesson){
+  if(lesson && lesson.type === 'quiz'){
+    const pool = quizGetPool(lesson.id);
+    const st = _quizStats();
+    let done = 0;
+    pool.forEach(q=>{ if(st[q.id] && st[q.id].c > 0) done++; });
+    const total = pool.length;
+    return {done, total, pct: total ? Math.round(done/total*100) : 0};
+  }
   // Вузол «Вимова: довгі фрази»: у суми прогресу не входить (total 0), pct=100 — щоб не псувати
   // відсотки модуля. Його стан — speechNodeDone(); «чекає на проходження» рахує _lpNodePending().
   if(lesson && lesson.type === 'speech') return {done:0, total:0, pct:100};
@@ -12608,6 +12653,9 @@ function _lpNodeVisual(node){
   if(node.type === 'speech'){
     return { icon: movaIcon('mic'), cls: 'lp-node-speech' };
   }
+  if(node.type === 'quiz'){
+    return { icon: movaIcon('quiz'), cls: 'lp-node-lesson' };
+  }
   return { icon: movaIcon('book'), cls: 'lp-node-lesson' };
 }
 
@@ -12658,7 +12706,7 @@ function renderPathNode(node, idx){
       <span class="lp-node-icon">${icon}</span>
     </div>
     ${isCurrent ? `<div class="lp-node-label">${_playLabel(chipLabel)}</div>`
-      : (unlocked && !isDone && !isSpeech ? `<div class="lp-node-progress">${done}/${total}</div>` : '')}
+      : (unlocked && !isDone && !isSpeech && total > 0 ? `<div class="lp-node-progress">${done}/${total}</div>` : '')}
   </div>`;
 }
 
@@ -18742,6 +18790,7 @@ function startLessonFlow(lessonId){
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
   const lesson  = lessons.find(l=>l.id===lessonId);
   if(!lesson) return;
+  if(lesson.type === 'quiz'){ startQuizLesson(lessonId); return; }
   try{ localStorage.setItem("mova_last_lesson", lessonId); }catch(e){}
 
   const vocab   = typeof VOCAB!=='undefined' ? VOCAB : [];
@@ -18750,6 +18799,109 @@ function startLessonFlow(lessonId){
   if(!cards.length){ notify('⚠️ Keine Karten'); return; }
 
   _runLessonFlow(lesson, cards);
+}
+
+// Урок-квіз (вузол type:'quiz'): без карток словника, єдиний крок — квіз за питаннями цього уроку.
+function startQuizLesson(lessonId){
+  const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
+  const lesson  = lessons.find(l=>l.id===lessonId);
+  if(!lesson) return;
+  if(!quizGetPool(lessonId).length){
+    // Регіональний урок, а землю ще не обрано — пропонуємо обрати й стартуємо
+    const regional = QUIZ.some(q=>q.lessonId===lessonId && q.region);
+    if(regional && typeof REGIONS!=='undefined' && REGIONS.length && !quizUserRegion()){
+      quizPickRegion(()=>startQuizLesson(lessonId));
+    } else {
+      notify('⚠️ ' + (LF_STEP_LABELS.quiz[uiLang] || LF_STEP_LABELS.quiz.de) + ': —');
+    }
+    return;
+  }
+  try{ localStorage.setItem("mova_last_lesson", lessonId); }catch(e){}
+  stopVocab();
+  LF = {
+    lessonId:  lesson.id,
+    lesson,
+    cards:     [],
+    speechCards: [],
+    matchCards: [],
+    matchAudioCards: null,
+    matchExtraPools: {},
+    stepCost:  null,
+    tilesCards: [],
+    allCards:  [],
+    sbCards:   [],
+    sbIdx:     0,
+    dlgCard:   null,
+    steps:     ['quiz', 'result'],
+    step:      0,
+    results:   {},
+    startTime: Date.now(),
+    _xpAtStart: xpGetTotal(),
+    _quizOnly: true,
+  };
+  _mLogLessonStart(lesson);
+  window._xpDisplayFrozen = true;
+
+  V.lessonId    = lesson.id;
+  V.lessonCards = [];
+  V.queue       = [];
+  V.idx         = 0;
+  V.repeatCount = 0;
+  V.flipped     = false;
+  if(typeof _preLessonVocabMode === 'undefined' || _preLessonVocabMode === null){
+    window._preLessonVocabMode = V.mode;
+  }
+  V.mode = 'srs';
+  const _vshBtn = document.getElementById('vshuffle-btn');
+  if(_vshBtn){ _vshBtn.classList.remove('shuffle'); _vshBtn.classList.add('smart'); _vshBtn.innerHTML=movaIcon('timer'); }
+
+  showView('vocab');
+  lfRenderBar();
+  lfGoStep(0);
+}
+
+// Вибір федеральної землі (для регіональних питань) — модальне вікно з 16 кнопками.
+function quizPickRegion(done){
+  const old = document.getElementById('region-picker');
+  if(old) old.remove();
+  const ov = document.createElement('div');
+  ov.id = 'region-picker';
+  ov.style.cssText = 'position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:16px';
+  const box = document.createElement('div');
+  box.style.cssText = 'background:var(--card,#fff);color:var(--ink,#111);border-radius:16px;padding:16px;max-width:420px;width:100%;max-height:85vh;overflow:auto';
+  const h = document.createElement('div');
+  h.style.cssText = 'font-weight:700;font-size:17px;margin-bottom:2px';
+  h.textContent = t('region_pick_title');
+  const sub = document.createElement('div');
+  sub.style.cssText = 'font-size:13px;opacity:.7;margin-bottom:12px';
+  sub.textContent = t('region_pick_sub');
+  const grid = document.createElement('div');
+  grid.style.cssText = 'display:grid;grid-template-columns:1fr 1fr;gap:8px';
+  REGIONS.forEach(r=>{
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = 'btn btn-s';
+    b.style.cssText = 'text-align:left;padding:10px';
+    b.textContent = r[uiLang] || r.de || r.id;
+    b.onclick = ()=>{
+      setQuizRegion(r.id);
+      ov.remove();
+      try{ renderRegionSetting(); }catch(e){}
+      try{ renderLernpfad({skipAutoScroll:true}); }catch(e){}
+      if(done) done();
+    };
+    grid.appendChild(b);
+  });
+  const cancel = document.createElement('button');
+  cancel.type = 'button';
+  cancel.className = 'btn btn-s';
+  cancel.style.cssText = 'width:100%;margin-top:10px';
+  cancel.textContent = '✕';
+  cancel.onclick = ()=> ov.remove();
+  box.appendChild(h); box.appendChild(sub); box.appendChild(grid); box.appendChild(cancel);
+  ov.appendChild(box);
+  ov.addEventListener('click', e=>{ if(e.target === ov) ov.remove(); });
+  document.body.appendChild(ov);
 }
 
 function lfRenderBar(){
@@ -22474,8 +22626,14 @@ function lfShowResult(){
   const isSpeechOnly = !!(LF.lesson && LF.lesson._speechOnly);
   const speechScore = isSpeechOnly ? (typeof LF.results?.speech === 'number' ? LF.results.speech : 0) : 0;
 
+  const isQuizOnly = !!LF._quizOnly;
+  const _qs = LF._quizStats || {correct:0, total:0};
   let improved = 0, pct = 0, emoji, titleText;
-  if(isSpeechOnly){
+  if(isQuizOnly){
+    pct = _qs.total ? Math.round(_qs.correct / _qs.total * 100) : 0;
+    emoji = pct>=80?'🏆':pct>=50?'🎉':'💪';
+    titleText = t(pct>=80 ? 'lr_t_great' : pct>=50 ? 'lr_t_good' : 'lr_t_keep');
+  } else if(isSpeechOnly){
     pct = Math.round(speechScore * 100);
     emoji = pct>=80?'🏆':pct>=50?'🎉':'💪';
     titleText = t(pct>=80 ? 'lr_t_great' : pct>=50 ? 'lr_t_good' : 'lr_t_keep');
@@ -22617,7 +22775,11 @@ function lfShowResult(){
     const xpRow = [movaIcon('mpoint'), t('lr_l_xp'), xpEarnedThisLesson, 'xp'];
     const timeRow = [movaIcon('timer'), t('lr_l_time'), timeStr];
     const _ss = LF._speechStats || { correct: 0, total: (LF.speechCards||[]).length };
-    const rows = isSpeechOnly ? [
+    const rows = isQuizOnly ? [
+      [movaIcon('quiz'), t('lr_l_quiz_q'), _qs.total],
+      [movaIcon('check'), t('lr_l_quiz_ok'), _qs.correct + '/' + _qs.total],
+      timeRow, xpRow,
+    ] : isSpeechOnly ? [
       [movaIcon('mic'), t('lr_l_phrases'), _ss.total],
       [movaIcon('check'), t('lr_l_phr_ok'), _ss.correct + '/' + _ss.total],
       timeRow, xpRow,
@@ -22931,8 +23093,8 @@ function startQuiz(){
   }
   // Сортуємо за SRS-пріоритетом (слабкіші cardId — вище)
   const sorted = [...pool].sort((a,b)=>{
-    const pa = a.cardId ? srsPriority(a.cardId) : 0;
-    const pb = b.cardId ? srsPriority(b.cardId) : 0;
+    const pa = a.cardId ? srsPriority(a.cardId) : _quizQPriority(a);
+    const pb = b.cardId ? srsPriority(b.cardId) : _quizQPriority(b);
     return pb - pa;
   });
   const chosen = sorted
@@ -22962,8 +23124,8 @@ function lfStartQuiz(){
     return;
   }
   const sorted = [...pool].sort((a,b)=>{
-    const pa = a.cardId ? srsPriority(a.cardId) : 0;
-    const pb = b.cardId ? srsPriority(b.cardId) : 0;
+    const pa = a.cardId ? srsPriority(a.cardId) : _quizQPriority(a);
+    const pb = b.cardId ? srsPriority(b.cardId) : _quizQPriority(b);
     return pb - pa;
   });
   const chosen = sorted
@@ -23098,6 +23260,7 @@ function _quizAnswer(btn, chosen, answers, q){
 
   const isCorrect = !!chosen.correct;
   if(isCorrect) quizState.correct++;
+  try{ quizRecordAnswer(q, isCorrect); }catch(e){}
   // Звук + вібрація — ПЕРШИМИ, до recordCardEvent()/DOM: recordCardEvent
   // синхронно серіалізує весь SM-2 стан у localStorage (десятки мс і більше
   // на телефоні), і звук, поставлений ПІСЛЯ нього, чутно із запізненням.
@@ -23169,6 +23332,7 @@ function _quizShowResult(){
     </div>`;
 
   if(quizState._lfMode){
+    if(LF) LF._quizStats = {correct, total};
     lfStepDone('quiz', correct / (total || 1));
   }
 }
