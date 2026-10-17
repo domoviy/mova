@@ -589,6 +589,8 @@ body{
 #view-vocab{padding:0 !important}
 #view-vocab.active{display:flex;flex-direction:column;overflow:hidden}
 #view-vocab .vocab-top{padding:12px 14px 0;flex-shrink:0}
+/* У квізі (вільному й у lesson-flow) верхня панель Словника не потрібна */
+#view-vocab.quiz-tab .vocab-top{display:none !important}
 #vocab-panel-card{flex:1;min-height:0;display:flex;flex-direction:column;padding:0px 14px calc(var(--lm-nav) + env(safe-area-inset-bottom,0px) + 8px) 14px}
 .fc-area{perspective:1400px;user-select:none;touch-action:none;}
 #bottom-nav{
@@ -1777,14 +1779,6 @@ body{
   flex:1;min-height:0;display:flex;flex-direction:column;
   padding:12px 14px 140px;overflow-y:auto;
 }
-.quiz-progress{display:flex;gap:4px;margin-bottom:12px;}
-.quiz-dot{
-  flex:1;height:4px;border-radius:2px;background:var(--border);
-  transition:background .3s;
-}
-.quiz-dot.done   {background:var(--gold);}
-.quiz-dot.current{background:rgba(201,168,76,.5);}
-
 .quiz-question{
   background:var(--forest);border-radius:16px;
   padding:16px 16px 14px;margin-bottom:14px;
@@ -1798,6 +1792,12 @@ body{
   font-size:17px;font-weight:700;color:var(--gold);
   font-family:'Inter',sans-serif;line-height:1.3;
 }
+.quiz-q-tr{
+  font-size:14px;font-weight:500;line-height:1.35;margin-top:7px;
+  color:rgba(255,255,255,.72);font-family:'Inter',sans-serif;
+}
+.quiz-opt-txt{display:flex;flex-direction:column;gap:2px;min-width:0;}
+.quiz-opt-tr{font-size:12.5px;font-weight:400;line-height:1.3;color:var(--muted);}
 .quiz-options{display:flex;flex-direction:column;gap:10px;}
 /* Питання/відповіді з картинками (img у QUIZ) */
 .quiz-q-img{margin-top:12px;border-radius:12px;overflow:hidden;background:#fff;text-align:center;}
@@ -4513,10 +4513,10 @@ body{
       </div>
 
       <div id="vocab-panel-quiz" style="display:none">
-        <div class="quiz-progress" id="quiz-progress"></div>
         <div class="quiz-question" id="quiz-question" style="display:none">
           <div class="quiz-q-num" id="quiz-q-num"></div>
           <div class="quiz-q-text" id="quiz-q-text"></div>
+          <div class="quiz-q-tr" id="quiz-q-tr" style="display:none"></div>
           <div class="quiz-q-img" id="quiz-q-img" style="display:none"></div>
         </div>
         <div class="quiz-options" id="quiz-options"></div>
@@ -5102,7 +5102,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '838-8d9ba95';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -23109,7 +23109,6 @@ function startQuiz(){
     answered: false,
     _lfMode: false,
   };
-  _quizRenderProgress();
   _quizShowCard();
 }
 
@@ -23139,7 +23138,6 @@ function lfStartQuiz(){
     answered: false,
     _lfMode: true,
   };
-  _quizRenderProgress();
   _quizShowCard();
 }
 
@@ -23172,13 +23170,13 @@ function _quizShowEmpty(){
     </div>`;
 }
 
-function _quizRenderProgress(){
-  const bar = document.getElementById('quiz-progress');
-  if(!bar || !quizState) return;
-  bar.innerHTML = quizState.questions.map((_,i)=>{
-    const cls = i < quizState.idx ? 'done' : i === quizState.idx ? 'current' : '';
-    return `<div class="quiz-dot ${cls}"></div>`;
-  }).join('');
+// {de, en, uk, ru} → {main: текст основною мовою курсу, tr: переклад мовою інтерфейсу або ''}
+function _quizTexts(obj){
+  if(!obj) return {main:'', tr:''};
+  const pl = primaryLang();
+  const main = obj[pl] || obj.de || obj.en || obj.uk || obj.ru || '';
+  const tr = (uiLang !== pl && obj[uiLang] && obj[uiLang] !== main) ? obj[uiLang] : '';
+  return {main, tr};
 }
 
 function _quizShowCard(){
@@ -23216,10 +23214,16 @@ function _quizShowCard(){
       qImgEl.style.display = '';
     } else qImgEl.style.display = 'none';
   }
+  // Питання: основною мовою курсу (primaryLang) — великим шрифтом; переклад на мову
+  // інтерфейсу — дрібніше під ним (лише якщо він є і відрізняється від основного тексту).
   const qTextEl = document.getElementById('quiz-q-text');
-  if(qTextEl) qTextEl.textContent =
-    q.question?.[uiLang] || q.question?.[primaryLang()] || q.question?.en || q.question?.uk || q.question?.de ||
-    q.q?.[uiLang] || q.q?.[primaryLang()] || q.q?.en || q.q?.uk || q.q?.de || '';
+  const qTrEl   = document.getElementById('quiz-q-tr');
+  const qt = _quizTexts(q.question || q.q);
+  if(qTextEl) qTextEl.textContent = qt.main;
+  if(qTrEl){
+    qTrEl.textContent = qt.tr;
+    qTrEl.style.display = qt.tr ? '' : 'none';
+  }
 
   // Варіанти відповідей — перемішуємо, але запам'ятовуємо correct
   const answers = [...(q.answers || [])].sort(()=>Math.random()-.5);
@@ -23232,7 +23236,8 @@ function _quizShowCard(){
   answers.forEach((ans, i)=>{
     const btn = document.createElement('button');
     btn.className = 'quiz-opt';
-    const label = ans[uiLang] || ans[primaryLang()] || ans.en || ans.uk || ans.de || '';
+    const at = _quizTexts(ans);
+    const label = at.main;
     const letter = document.createElement('span');
     letter.className = 'quiz-opt-letter';
     letter.textContent = letters[i];
@@ -23244,10 +23249,21 @@ function _quizShowCard(){
       im.alt = label;
       btn.appendChild(im);
     }
-    if(label){
-      const tx = document.createElement('span');
-      tx.textContent = label;   // текст з бази — лише textContent
-      btn.appendChild(tx);
+    if(label || at.tr){
+      const wrap = document.createElement('span');
+      wrap.className = 'quiz-opt-txt';
+      if(label){
+        const tx = document.createElement('span');
+        tx.textContent = label;   // текст з бази — лише textContent
+        wrap.appendChild(tx);
+      }
+      if(at.tr){
+        const tr = document.createElement('span');
+        tr.className = 'quiz-opt-tr';
+        tr.textContent = at.tr;
+        wrap.appendChild(tr);
+      }
+      btn.appendChild(wrap);
     }
     btn.addEventListener('click', ()=> _quizAnswer(btn, ans, answers, q));
     optBox.appendChild(btn);
@@ -23261,6 +23277,15 @@ function _quizAnswer(btn, chosen, answers, q){
   const isCorrect = !!chosen.correct;
   if(isCorrect) quizState.correct++;
   try{ quizRecordAnswer(q, isCorrect); }catch(e){}
+  // Бали за правильну відповідь у квіз-уроці: вага навички «Lesen» (як за звичайне читання).
+  // Хибна відповідь балів не дає (це об'єктивний тест, а не самооцінка, як у SM-2 свайпах),
+  // тож випадкові тапи не фармлять XP. Лише для уроків-квізів (LF._quizOnly); вільний
+  // квіз у «Налагодженні» та інші курси економіку балів не змінюють.
+  try{
+    if(isCorrect && quizState._lfMode && typeof LF !== 'undefined' && LF && LF._quizOnly){
+      xpAward(XP_TASK_WEIGHT.Lesen);
+    }
+  }catch(e){}
   // Звук + вібрація — ПЕРШИМИ, до recordCardEvent()/DOM: recordCardEvent
   // синхронно серіалізує весь SM-2 стан у localStorage (десятки мс і більше
   // на телефоні), і звук, поставлений ПІСЛЯ нього, чутно із запізненням.
@@ -23287,7 +23312,6 @@ function _quizAnswer(btn, chosen, answers, q){
   // Автоперехід через 1.4с
   setTimeout(()=>{
     quizState.idx++;
-    _quizRenderProgress();
     if(quizState.idx >= quizState.questions.length){
       _quizShowResult();
     } else {
@@ -24970,6 +24994,7 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-choice').style.display = tab===3?'flex':'none';
   document.getElementById('vocab-panel-tiles').style.display  = tab===4?'flex':'none';
   document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
+  document.getElementById('view-vocab')?.classList.toggle('quiz-tab', tab===5);
   document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
   document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
   var _dtPanel = document.getElementById('vocab-panel-deftype'); if(_dtPanel) _dtPanel.style.display = tab===8?'flex':'none';
