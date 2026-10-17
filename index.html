@@ -1777,7 +1777,7 @@ body{
 /* ── QUIZ PANEL ─────────────────────────────────────────────── */
 #vocab-panel-quiz{
   flex:1;min-height:0;display:flex;flex-direction:column;
-  padding:12px 14px 140px;overflow-y:auto;
+  padding:12px 14px max(140px, calc(88px + var(--fs-card) * 2.6));overflow-y:auto;
 }
 .quiz-question{
   background:var(--forest);border-radius:16px;
@@ -1785,19 +1785,19 @@ body{
   position:relative;
 }
 .quiz-q-num{
-  font-size:14px;font-weight:700;letter-spacing:.6px;
+  font-size:var(--fs-tertiary);font-weight:700;letter-spacing:.6px;
   color:rgba(255,255,255,.35);margin-bottom:6px;text-transform:uppercase;
 }
 .quiz-q-text{
-  font-size:17px;font-weight:700;color:var(--gold);
+  font-size:var(--fs-card);font-weight:700;color:var(--gold);
   font-family:'Inter',sans-serif;line-height:1.3;
 }
 .quiz-q-tr{
-  font-size:14px;font-weight:500;line-height:1.35;margin-top:7px;
+  font-size:var(--fs-secondary);font-weight:500;line-height:1.35;margin-top:7px;
   color:rgba(255,255,255,.72);font-family:'Inter',sans-serif;
 }
 .quiz-opt-txt{display:flex;flex-direction:column;gap:2px;min-width:0;}
-.quiz-opt-tr{font-size:12.5px;font-weight:400;line-height:1.3;color:var(--muted);}
+.quiz-opt-tr{font-size:var(--fs-secondary);font-weight:400;line-height:1.3;color:var(--muted);}
 .quiz-options{display:flex;flex-direction:column;gap:10px;}
 /* Питання/відповіді з картинками (img у QUIZ) */
 .quiz-q-img{margin-top:12px;border-radius:12px;overflow:hidden;background:#fff;text-align:center;}
@@ -1809,7 +1809,7 @@ body{
   padding:13px 16px;border-radius:14px;
   border:1.5px solid var(--border);
   background:var(--card);color:var(--ink);
-  font-size:14px;font-weight:500;
+  font-size:var(--fs-card);font-weight:500;
   text-align:left;cursor:pointer;font-family:inherit;
   transition:border-color .15s,background .15s,transform .1s;
   -webkit-tap-highlight-color:transparent;
@@ -1817,9 +1817,9 @@ body{
   display:flex;align-items:center;gap:10px;
 }
 .quiz-opt-letter{
-  width:26px;height:26px;border-radius:50%;flex-shrink:0;
+  width:calc(var(--fs-tertiary) * 1.9);height:calc(var(--fs-tertiary) * 1.9);border-radius:50%;flex-shrink:0;
   background:var(--soft);color:var(--muted);
-  font-size:14px;font-weight:700;
+  font-size:var(--fs-tertiary);font-weight:700;
   display:flex;align-items:center;justify-content:center;
   transition:background .15s,color .15s;
 }
@@ -1843,9 +1843,9 @@ body{
   background:rgba(201,168,76,.07);
 }
 .quiz-score-num{font-size:var(--fs-emphasis);font-weight:800;color:var(--gold);font-family:'Inter',sans-serif;}
-.quiz-score-of {font-size:14px;color:var(--muted);font-weight:600;}
+.quiz-score-of {font-size:var(--fs-tertiary);color:var(--muted);font-weight:600;}
 .quiz-result-title{font-size:var(--fs-card);font-weight:800;color:var(--ink);font-family:'Inter',sans-serif;}
-.quiz-result-sub  {font-size:14px;color:var(--muted);text-align:center;line-height:1.3;}
+.quiz-result-sub  {font-size:var(--fs-tertiary);color:var(--muted);text-align:center;line-height:1.3;}
 .quiz-result-btns {display:flex;flex-direction:column;gap:10px;width:100%;max-width:320px;}
 .mc-dot{
   flex:1;height:4px;border-radius:2px;
@@ -5102,7 +5102,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '840-3455d93';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -23179,6 +23179,13 @@ function _quizTexts(obj){
   return {main, tr};
 }
 
+// У режимі уроку передає смужці lesson-flow-bar, скільки питань уже відповіли.
+function _quizSyncLessonBar(done){
+  if(!quizState || !quizState._lfMode || typeof LF === 'undefined' || !LF) return;
+  LF.unitProgress = { done: done, total: quizState.questions.length };
+  lfRenderBar();
+}
+
 function _quizShowCard(){
   _quizRemoveNextBtn();
   const q = quizState?.questions[quizState.idx];
@@ -23189,10 +23196,15 @@ function _quizShowCard(){
   const qBox = document.getElementById('quiz-question');
   if(qBox) qBox.style.display = '';
 
-  // Номер питання
+  // Номер питання — лише у вільному квізі; в уроці його замінює смужка прогресу lesson-flow-bar
   const numEl = document.getElementById('quiz-q-num');
-  if(numEl) numEl.textContent =
-    `${t('quiz_question')} ${quizState.idx + 1} ${t('quiz_of')} ${quizState.questions.length}`;
+  if(numEl){
+    numEl.textContent =
+      `${t('quiz_question')} ${quizState.idx + 1} ${t('quiz_of')} ${quizState.questions.length}`;
+    numEl.style.display = quizState._lfMode ? 'none' : '';
+  }
+  // Смужка прогресу уроку: частка відповіданих питань поточного кроку (як у speech/matching)
+  _quizSyncLessonBar(quizState.idx);
 
   // Текст питання в актуальній мові
   // Картинка до питання (необов'язкова): q.img — рядок або {src, alt:{de,uk,..}}
@@ -23209,7 +23221,7 @@ function _quizShowCard(){
       if(q.imgCredit){   // автор фото (© ...) — дрібним підписом
         const cr = document.createElement('div');
         cr.textContent = q.imgCredit;
-        cr.style.cssText = 'font-size:11px;color:#667;padding:2px 8px 6px';
+        cr.style.cssText = 'font-size:var(--fs-utility);color:#667;padding:2px 8px 6px';
         qImgEl.appendChild(cr);
       }
       qImgEl.style.display = '';
@@ -23310,6 +23322,7 @@ function _quizAnswer(btn, chosen, answers, q){
     }
   });
 
+  _quizSyncLessonBar(quizState.idx + 1);
   // Далі — за кнопкою (без автопереходу): час прочитати правильну відповідь і переклад
   _quizShowNextBtn();
 }
