@@ -5102,7 +5102,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '839-5e74618';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -23180,6 +23180,7 @@ function _quizTexts(obj){
 }
 
 function _quizShowCard(){
+  _quizRemoveNextBtn();
   const q = quizState?.questions[quizState.idx];
   if(!q){ _quizShowResult(); return; }
   quizState.answered = false;
@@ -23309,18 +23310,41 @@ function _quizAnswer(btn, chosen, answers, q){
     }
   });
 
-  // Автоперехід через 1.4с
-  setTimeout(()=>{
-    quizState.idx++;
-    if(quizState.idx >= quizState.questions.length){
-      _quizShowResult();
-    } else {
-      _quizShowCard();
-    }
-  }, 1400);
+  // Далі — за кнопкою (без автопереходу): час прочитати правильну відповідь і переклад
+  _quizShowNextBtn();
+}
+
+// Стандартна кнопка уроку «Далі» (#lf-next-row + .btn-lesson-sb-next — той самий нижній рядок,
+// що й в інших кроках; на останньому питанні — «Завершити», як у решти кроків).
+function _quizShowNextBtn(){
+  _quizRemoveNextBtn();
+  if(!quizState) return;
+  const isLast = quizState.idx >= quizState.questions.length - 1;
+  const row = document.createElement('div');
+  row.id = 'lf-next-row';
+  row.className = 'lf-next-row';
+  row.dataset.quiz = '1';                       // щоб не зняти чужу кнопку «Далі»
+  const btn = document.createElement('button');
+  btn.className = 'btn btn-lesson-sb-next';
+  btn.textContent = t(isLast ? 'btn_dlg_finish' : 'btn_sb_weiter');
+  btn.onclick = _quizAdvance;
+  row.appendChild(btn);
+  document.body.appendChild(row);
+}
+function _quizRemoveNextBtn(){
+  const r = document.getElementById('lf-next-row');
+  if(r && r.dataset.quiz) r.remove();
+}
+function _quizAdvance(){
+  _quizRemoveNextBtn();
+  if(!quizState) return;
+  quizState.idx++;
+  if(quizState.idx >= quizState.questions.length) _quizShowResult();
+  else _quizShowCard();
 }
 
 function _quizShowResult(){
+  _quizRemoveNextBtn();
   const total   = quizState?.questions.length || 0;
   const correct = quizState?.correct || 0;
   const pct     = total ? Math.round(correct / total * 100) : 0;
@@ -24995,6 +25019,7 @@ function switchVocabTab(tab){
   document.getElementById('vocab-panel-tiles').style.display  = tab===4?'flex':'none';
   document.getElementById('vocab-panel-quiz').style.display   = tab===5?'flex':'none';
   document.getElementById('view-vocab')?.classList.toggle('quiz-tab', tab===5);
+  if(tab !== 5) _quizRemoveNextBtn();
   document.getElementById('vocab-panel-def').style.display    = tab===6?'flex':'none';
   document.getElementById('vocab-panel-speech').style.display  = tab===7?'flex':'none';
   var _dtPanel = document.getElementById('vocab-panel-deftype'); if(_dtPanel) _dtPanel.style.display = tab===8?'flex':'none';
