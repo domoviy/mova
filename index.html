@@ -5102,7 +5102,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '846-0ace30c';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5623,6 +5623,15 @@ function _lessonDoneKey(){
   const id = (typeof activeCourse !== 'undefined' && activeCourse && activeCourse.id) || getSavedCourseId();
   return LESSON_DONE_PREFIX + courseStateId(id);
 }
+// «Останній завершений урок» — ПО КУРСУ. Раніше це був один глобальний ключ mova_last_completed_lesson:
+// id з іншого курсу (A1) збігався з id у A2, і «поточним» ставав урок із чужої глави/модуля —
+// заблокований, тому лінія лишалась без підсвітки, а розгорнутою була глава без жодного пройденого уроку.
+function _lastCompletedKey(){
+  const id = (typeof activeCourse !== 'undefined' && activeCourse && activeCourse.id) || getSavedCourseId();
+  return 'mova_last_completed_lesson_' + courseStateId(id);
+}
+function lastCompletedGet(){ try{ return localStorage.getItem(_lastCompletedKey()); }catch(e){ return null; } }
+function lastCompletedSet(id){ try{ localStorage.setItem(_lastCompletedKey(), id); }catch(e){} }
 function _lessonDoneMap(){
   const key = _lessonDoneKey();
   if(_ldKey !== key){
@@ -5958,6 +5967,7 @@ function buildLearningPath(rawLessons, courseLevel){
 const MovaCourse = (function(){
   let st = null;   // { id, core, parts:{name:{base}}, langs:Set, gen }
   let gen = 0;     // номер завантаження: відкидає відповіді застарілого (перемкнутого) курсу
+  let lastFail = '';   // чому розбита база не завантажилась (для діагностики; див. loadCourseScript)
 
   function url(rel){ return 'data/' + st.id + '/' + rel + '?v=' + APP_VERSION; }
   function relOf(name, lang){
@@ -5965,7 +5975,7 @@ const MovaCourse = (function(){
   }
   async function getJson(rel, optional){
     const r = await fetch(url(rel));
-    if(!r.ok){ if(optional) return null; throw new Error(rel + ' → HTTP ' + r.status); }
+    if(!r.ok){ lastFail = rel + ' → HTTP ' + r.status; if(optional) return null; throw new Error(rel + ' → HTTP ' + r.status); }
     return await r.json();
   }
   // Накладає sidecar на target НА МІСЦІ (масиви — за індексом, null = нічого).
@@ -6028,9 +6038,13 @@ const MovaCourse = (function(){
   // true — база зібрана з розбитих файлів; false — розбитої бази нема (потрібен монолітний скрипт).
   async function init(course){
     const my = st = { id: course.id, core: null, parts: {}, langs: new Set(), gen: ++gen };
+    lastFail = '';
     try{
       const core = await getJson('core.json', true);
-      if(!core || core.format !== 1 || !core.order) return (st = null, false);
+      if(!core || core.format !== 1 || !core.order){
+        if(!lastFail) lastFail = core ? ('core.json: format=' + core.format + ' order=' + !!core.order) : 'core.json: порожня відповідь';
+        return (st = null, false);
+      }
       if(my !== st) return false;
       my.core = core;
       wantedLangs(core).forEach(l => my.langs.add(l));
@@ -6041,6 +6055,7 @@ const MovaCourse = (function(){
       assemble();
       return true;
     }catch(e){
+      lastFail = (e && e.message) || String(e);
       console.warn('[MovaCourse] розбита база недоступна, перехід на монолітний файл:', e);
       if(st === my) st = null;
       return false;
@@ -6073,7 +6088,7 @@ const MovaCourse = (function(){
     return true;
   }
   function ensureLesson(lessonId){ return ensureBuckets((st && st.core && st.core.needs[lessonId]) || []); }
-  return { init, ensureLangs, ensureLang: ensureLangs, ensureBuckets, ensureLesson, get state(){ return st; } };
+  return { get lastFail(){ return lastFail; }, init, ensureLangs, ensureLang: ensureLangs, ensureBuckets, ensureLesson, get state(){ return st; } };
 })();
 // </MovaCourse>
 
@@ -6169,7 +6184,12 @@ function loadCourseScript(courseId){
       s.onerror = ()=>reject(new Error('Failed to load: '+course.id+'.js'));
       document.head.appendChild(s);
     };
-    MovaCourse.init(course).catch(()=>false).then(ok=>{ if(ok) _onCourseData(); else _loadMonolith(); });
+    MovaCourse.init(course).catch(()=>false).then(ok=>{
+      if(ok){ _onCourseData(); return; }
+      // Діагностика: у логу видно, ЧОМУ використано монолітний файл (404, HTML замість JSON, format тощо).
+      try{ const why = MovaCourse.lastFail || 'невідомо'; console.warn('[course] монолітний ' + course.id + '.js; причина:', why); if(typeof logErr === 'function') logErr('course:split', 'fallback to monolith: ' + why, course.id); }catch(e){}
+      _loadMonolith();
+    });
   });
 }
 
@@ -11239,51 +11259,27 @@ function _findNextLessonAfterCompletion(completedId){
 }
 
 let _lpCurrentLessonCache;
+// Уроки в порядку, в якому їх бачить користувач у Lernpfad: глави за номером (як Object.values у
+// renderLernpfad), усередині глави — за номером модуля (стабільно, зберігаючи порядок підвузлів).
+function _lpOrderedLessons(lessons){
+  const groups = {};
+  lessons.forEach(l => { (groups[l.chapter] || (groups[l.chapter] = [])).push(l); });
+  const out = [];
+  Object.keys(groups).forEach(k => {
+    groups[k].slice().sort((a,b) => (a.module||0) - (b.module||0)).forEach(l => out.push(l));
+  });
+  return out;
+}
+
+// «Поточний» урок — ПЕРШИЙ у порядку курсу, який розблокований і ще не пройдений. Перед ним не
+// може лишитись жодного пропущеного уроку. Раніше пріоритет мав «наступний після останнього
+// завершеного» (id у глобальному localStorage): якщо id збігався з уроком іншого курсу (A1 → A2),
+// «поточним» ставав заблокований урок із середини курсу, лінія лишалась без підсвітки, а
+// розгорнутою була глава без жодного пройденого уроку.
 function findCurrentLesson(){
   if(_lpCurrentLessonCache !== undefined) return _lpCurrentLessonCache;
   const lessons = typeof LESSONS!=='undefined' ? LESSONS : [];
-
-  // Спершу — "наступний ПІСЛЯ щойно завершеного" (mova_last_completed_lesson,
-  // записується в lfShowResult() у момент реального завершення будь-якого
-  // уроку, включно з бонусними forum/email/dialogue). Це дає природне
-  // відчуття прогресу "я зробив X → ось що далі", а не сліпе повернення до
-  // першого незавершеного в УСЬОМУ курсі — той міг лишитись позаду, поки
-  // користувач проходив щось поза основною лінійною послідовністю (бонусний
-  // урок, розділ підготовки до екзамену тощо).
-  //
-  // ВАЖЛИВО: раніше тут був прямий forward-скан "перший unlocked && pct<80
-  // будь-де далі в масиві" від позиції завершеного уроку. Це виглядало
-  // правильно в більшості випадків (вузли одного модуля й так ідуть
-  // підряд), але ламалось, щойно один із НАСТУПНИХ вузлів ЦЬОГО Ж модуля
-  // випадково вже мав pct>=80 (напр. його cardIds — здебільшого "review"-
-  // картки з попередніх модулів, які вже давно вивчені: lessonProgress
-  // рахує % за ВСІМА cardIds, тож пороги переповнюються словами-
-  // повтореннями, а не лише новими) — скан просто пропускав такий вузол,
-  // а разом з ним і решту модуля, стрибаючи одразу в наступний модуль
-  // (той відкритий, бо перший урок нового розділу/модуля розблокований
-  // незалежно від прогресу). Саме так лінія уроків "перестрибувала"
-  // непройдені уроки чи цілі модулі.
-  //
-  // Тепер навігація явно модуль-обізнана (_findNextLessonAfterCompletion):
-  //  • якщо щойно завершений урок САМ ще <80% (один прохід lesson-flow
-  //    показує макс. 4 картки — може бути замало) — лишаємось на ньому;
-  //  • інакше в межах модуля — рівно наступний вузол (гарантовано
-  //    розблокований);
-  //  • і лише після ОСТАННЬОГО вузла модуля — пошук по наступних модулях.
-  let lastCompletedId = null;
-  try{ lastCompletedId = localStorage.getItem('mova_last_completed_lesson'); }catch(e){}
-  if(lastCompletedId){
-    const next = _findNextLessonAfterCompletion(lastCompletedId);
-    if(next){
-      _lpCurrentLessonCache = next;
-      return _lpCurrentLessonCache;
-    }
-  }
-
-  // Фолбек — перший візит без історії завершень, або після останнього
-  // завершеного далі вже нічого нема (кінець розділу/курсу): перший
-  // незавершений будь-де, стара поведінка.
-  _lpCurrentLessonCache = lessons.find(l => lessonUnlocked(l) && _lpNodePending(l)) || null;
+  _lpCurrentLessonCache = _lpOrderedLessons(lessons).find(l => lessonUnlocked(l) && _lpNodePending(l)) || null;
   return _lpCurrentLessonCache;
 }
 
@@ -17477,7 +17473,7 @@ function spSkipSpeech(){
     const _nid = LF.lesson._speechNodeId || LF.lesson._bonusForLessonId;
     if(_nid){
       speechNodeMarkSkipped(_nid);
-      try{ localStorage.setItem('mova_last_completed_lesson', _nid); }catch(e){}
+      lastCompletedSet(_nid);
     }
     exitLessonFlow();
     notify(t('sp_skipped_toast'));
@@ -22760,8 +22756,7 @@ function lfShowResult(){
     // політ іскри) — саме тому анімація раніше "губилась".
     showView('lernpfad', { skipLernpfadRender: true });
 
-    let lastCompletedId = null;
-    try{ lastCompletedId = localStorage.getItem('mova_last_completed_lesson'); }catch(e){}
+    const lastCompletedId = lastCompletedGet();
     const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
     const prevLesson = lastCompletedId ? lessons.find(l => l.id === lastCompletedId) : null;
 
@@ -22906,7 +22901,7 @@ function lfShowResult(){
     try{
       const completedId = LF._bonusForLessonId || LF.lessonId;
       if(completedId){
-        localStorage.setItem('mova_last_completed_lesson', completedId);
+        lastCompletedSet(completedId);
         // Реальне завершення вузла стежки (синтетичні id повторень сюди не потрапляють).
         if(typeof LESSONS !== 'undefined' && LESSONS.some(l => l.id === completedId)) lessonMarkDone(completedId);
       }
