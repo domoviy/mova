@@ -193,7 +193,7 @@ if(location.protocol === 'https:'){
     _starting = true;
     try{
     const app = await getFbApp();
-    const {getAnalytics,logEvent,setUserId,setUserProperty,setAnalyticsCollectionEnabled} = await import(FB_BASE+'firebase-analytics.js');
+    const {getAnalytics,logEvent,setUserId,setUserProperties,setAnalyticsCollectionEnabled} = await import(FB_BASE+'firebase-analytics.js');
     const anal = getAnalytics(app);
     const uid = _ensureUid();
     setUserId(anal,uid);
@@ -220,7 +220,7 @@ if(location.protocol === 'https:'){
     // з'являються фільтри/сегменти на кшталт "курс = B2-Beruf" чи
     // "платформа = iOS" у стандартних звітах, без потреби парсити
     // кожну подію окремо.
-    window.mprop=(name,value)=>{try{setUserProperty(anal,name,String(value));}catch(_){}};
+    window.mprop=(name,value)=>{try{setUserProperties(anal,{[name]:String(value)});}catch(e){console.warn('mprop failed:',name,e);}};
 
     // ── Платформа (ОС) — визначаємо один раз при старті ────────────
     // Це PWA в браузері, не нативний застосунок, тож "ОС" тут — не
@@ -4034,13 +4034,13 @@ body{
       <line x1="580.8" y1="575" x2="637.2" y2="575" stroke="#c9a84c" stroke-width="35" stroke-linecap="round"/>
     </svg>
   </div>
-  <p class="ob-subtitle">Wählen Sie Ihre Sprache<br>Оберіть вашу мову<br>Choose your language<br>Выберите язык</p>
+  <p class="ob-subtitle">Wählen Sie die Sprache der Benutzeroberfläche<br>Оберіть мову інтерфейсу<br>Choose the interface language<br>Выберите язык интерфейса</p>
   <div class="ob-cards">
     <div class="ob-card" onclick="selectOnboardLang('de')">
       <div class="ob-card-flag"><i data-flag="de"></i></div>
       <div class="ob-card-text">
         <div class="ob-card-lang">Deutsch</div>
-        <div class="ob-card-desc">Ich möchte den Kurs auf Deutsch absolvieren</div>
+        <div class="ob-card-desc">Die App-Oberfläche auf Deutsch</div>
       </div>
       <div class="ob-card-arrow">›</div>
     </div>
@@ -4048,7 +4048,7 @@ body{
       <div class="ob-card-flag"><i data-flag="uk"></i></div>
       <div class="ob-card-text">
         <div class="ob-card-lang">Українська</div>
-        <div class="ob-card-desc">Я хочу проходити курс українською мовою</div>
+        <div class="ob-card-desc">Інтерфейс застосунку українською</div>
       </div>
       <div class="ob-card-arrow">›</div>
     </div>
@@ -4056,7 +4056,7 @@ body{
       <div class="ob-card-flag"><i data-flag="en"></i></div>
       <div class="ob-card-text">
         <div class="ob-card-lang">English</div>
-        <div class="ob-card-desc">I want to take the course in English</div>
+        <div class="ob-card-desc">App interface in English</div>
       </div>
       <div class="ob-card-arrow">›</div>
     </div>
@@ -4064,7 +4064,7 @@ body{
       <div class="ob-card-flag"><i data-flag="ru"></i></div>
       <div class="ob-card-text">
         <div class="ob-card-lang">Русский</div>
-        <div class="ob-card-desc">Я хочу проходить курс на русском языке</div>
+        <div class="ob-card-desc">Интерфейс приложения на русском</div>
       </div>
       <div class="ob-card-arrow">›</div>
     </div>
@@ -5102,7 +5102,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '850-c46294d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -12568,6 +12568,18 @@ function lpAttachWaves(root){
     entries.forEach(function(en){ lpDrawWave(en.target); });
   });
   Array.prototype.forEach.call(paths, function(p){ _lpWaveRO.observe(p); });
+  // Страховка: розмір .lp-path міг не змінитись, а вузли — зсунутись (шрифти, анімації,
+  // зміна вікна/орієнтації). Перемальовуємо і за цими подіями.
+  var redrawAll = function(){ Array.prototype.forEach.call(root.querySelectorAll('.lp-path[data-wave-key]'), lpDrawWave); };
+  if(!window._lpWaveGlobalBound){
+    window._lpWaveGlobalBound = true;
+    window.addEventListener('resize', function(){ if(window._lpRedrawAll) window._lpRedrawAll(); });
+    window.addEventListener('orientationchange', function(){ setTimeout(function(){ if(window._lpRedrawAll) window._lpRedrawAll(); }, 250); });
+    if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ if(window._lpRedrawAll) window._lpRedrawAll(); });
+  }
+  window._lpRedrawAll = redrawAll;
+  requestAnimationFrame(function(){ requestAnimationFrame(redrawAll); });
+  setTimeout(redrawAll, 600);
 }
 
 function lpDrawWave(pathEl){
@@ -12579,10 +12591,24 @@ function lpDrawWave(pathEl){
 
   var pts = [];
   Array.prototype.forEach.call(nodes, function(n){
-    var r = n.getBoundingClientRect();
+    // Layout-позиція (offsetLeft/offsetTop) НЕ враховує CSS-transform, тож зигзаг-зсув
+    // (translateX на обгортці) додаємо вручну з її inline-стилю, а pop-in/scale-анімації
+    // гем і масштаб предків на вимір не впливають.
+    var wrap = n.parentElement, tx = 0;
+    if(wrap && wrap.style && wrap.style.transform){
+      var m = wrap.style.transform.match(/translateX\((-?[\d.]+)px\)/);
+      if(m) tx = parseFloat(m[1]) || 0;
+    }
+    var wl = 0, wt = 0, op = n.offsetParent, el = n;
+    // Піднімаємось по ланцюжку offsetParent від вузла до самої .lp-path
+    var x = 0, y = 0, guard = 0;
+    while(el && el !== pathEl && guard++ < 6){
+      x += el.offsetLeft; y += el.offsetTop;
+      el = el.offsetParent;
+    }
     pts.push({
-      x: +(r.left + r.width/2 - pr.left).toFixed(1),
-      y: +(r.top + r.height/2 - pr.top).toFixed(1),
+      x: +(x + n.offsetWidth/2 + tx).toFixed(1),
+      y: +(y + n.offsetHeight/2).toFixed(1),
       done: n.classList.contains('done'),
       locked: n.classList.contains('locked'),
     });
@@ -12606,7 +12632,7 @@ function lpDrawWave(pathEl){
   var stillD = gold.slice(0, still).join('');
   var newD   = gold.slice(still).join('');
 
-  var W = Math.round(pr.width), H = Math.round(pr.height);
+  var W = Math.round(pathEl.offsetWidth || pr.width), H = Math.round(pathEl.offsetHeight || pr.height);
   var svg = '<svg class="lp-wave" width="'+W+'" height="'+H+'" viewBox="0 0 '+W+' '+H+'" aria-hidden="true">'
     + (ahead.length ? '<path class="lp-wave-ahead" d="'+ahead.join('')+'"/>' : '')
     + (stillD ? '<path class="lp-wave-glow" d="'+stillD+'"/><path class="lp-wave-done" d="'+stillD+'"/>' : '')
