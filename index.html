@@ -5102,7 +5102,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '842-be86df8';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6148,6 +6148,8 @@ function loadCourseScript(courseId){
       }catch(e){ console.error('[path] buildLearningPath failed:', e); }
       // Рядок «Bundesland» у налаштуваннях — лише для курсів з REGIONS
       try{ renderRegionSetting(); }catch(e){}
+      // Обране — окремо для кожного курсу: забираємо старе спільне обране й оновлюємо бейдж
+      try{ _favMigrateLegacy(); updateFavBadge(); }catch(e){}
       // Smart Review: додаємо examPart до карток якщо ще не є
       try{ srTagVocab(); }catch(e){}
       // Grammatik-Trainer: перебудовуємо похідний пул карток під новий курс.
@@ -10118,7 +10120,7 @@ function buildVocabQueue(){
 function cardScore(v){
   let d={totalPlays:0,lastSeen:0,favorite:false};
   try{d=JSON.parse(localStorage.getItem('mova_'+v.id)||'{}');}catch(e){}
-  const tp=d.totalPlays||0,ls=d.lastSeen||0,fav=d.favorite||false;
+  const tp=d.totalPlays||0,ls=d.lastSeen||0,fav=isFavorite(v.id);
   const days=ls?(Date.now()-ls)/86400000:999;
   return(tp===0?100:0)+fav*40+days*10-Math.log(tp+1)*20;
 }
@@ -11285,44 +11287,42 @@ function findCurrentLesson(){
   return _lpCurrentLessonCache;
 }
 
-// ── Квіз-уроки: статистика відповідей по питаннях (на курс) ─────────────────
-// {id питання: {n: скільки разів відповідали, c: скільки разів правильно}}.
-// Урок вважається пройденим, коли ≥80% його питань відповідали правильно хоча б раз.
-var _qsCache = null, _qsKey = null;
-function _quizStatsKey(){
-  const id = (typeof activeCourse !== 'undefined' && activeCourse && activeCourse.id) || getSavedCourseId();
-  return 'mova_quizq_' + courseStateId(id);
-}
-function _quizStats(){
-  const key = _quizStatsKey();
-  if(_qsKey !== key){
-    let m = {};
-    try{ m = JSON.parse(localStorage.getItem(key) || '{}') || {}; }catch(e){ m = {}; }
-    _qsCache = m; _qsKey = key;
-  }
-  return _qsCache;
-}
+// ── Квіз і SM-2 ────────────────────────────────────────────────────────────
+// Питання квізу запам'ятовуються тим самим SM-2 (Smart Review), що й картки: правильна
+// відповідь = подія 'task_correct' (оцінка 5), хибна = 'task_wrong' (оцінка 1) — як в інших
+// завданнях з вибором варіанта. Стан живе в srLoadState().cards під ключем картки питання
+// (q.cardId, якщо питання прив'язане до картки словника) або 'quiz:'+q.id.
+function _quizSrKey(q){ return q.cardId || ('quiz:' + q.id); }
+
 function quizRecordAnswer(q, ok){
   if(!q || !q.id) return;
-  const m = _quizStats();
-  const st = m[q.id] || (m[q.id] = {n:0, c:0});
-  st.n++; if(ok) st.c++;
-  try{ localStorage.setItem(_quizStatsKey(), JSON.stringify(m)); }catch(e){}
+  // examPart: для питань без картки — 'General' (для карток його визначає srGetExamPart)
+  recordCardEvent(_quizSrKey(q), ok ? 'task_correct' : 'task_wrong', q.cardId ? undefined : 'General');
 }
-// Пріоритет питання при доборі в сесію: нові → відповідані лише хибно → рідко правильні.
-function _quizQPriority(q){
-  const st = _quizStats()[q.id];
-  if(!st || !st.n) return 3;
-  if(!st.c) return 2;
-  return 1 / (1 + st.c);
+
+// Чи питання вже хоч раз відповідали правильно (оцінка ≥3 в історії SM-2).
+function _quizKnown(root){
+  return !!root && ((root.repetitions || 0) > 0 ||
+         (Array.isArray(root.history) && root.history.some(r => r >= 3)));
+}
+
+// Порядок питань за SM-2: нові → прострочені (менший interval — вище) → ще не прострочені;
+// за рівних — складніші (нижчий easeFactor) першими, далі випадково.
+function quizSortBySm2(pool){
+  const st = srLoadState();
+  const tie = new Map(pool.map(q => [q, Math.random()]));
+  const pri = q => srPriorityFromState(st, _quizSrKey(q));
+  const ef  = q => st.cards?.[_quizSrKey(q)]?.easeFactor ?? 2.5;
+  return [...pool].sort((a, b) =>
+    (pri(b) - pri(a)) || (ef(a) - ef(b)) || (tie.get(a) - tie.get(b)));
 }
 
 function lessonProgress(lesson){
   if(lesson && lesson.type === 'quiz'){
     const pool = quizGetPool(lesson.id);
-    const st = _quizStats();
+    const st = srLoadState();
     let done = 0;
-    pool.forEach(q=>{ if(st[q.id] && st[q.id].c > 0) done++; });
+    pool.forEach(q=>{ if(_quizKnown(st.cards?.[_quizSrKey(q)])) done++; });
     const total = pool.length;
     return {done, total, pct: total ? Math.round(done/total*100) : 0};
   }
@@ -23091,16 +23091,8 @@ function startQuiz(){
     _quizShowEmpty();
     return;
   }
-  // Сортуємо за SRS-пріоритетом (слабкіші cardId — вище)
-  const sorted = [...pool].sort((a,b)=>{
-    const pa = a.cardId ? srsPriority(a.cardId) : _quizQPriority(a);
-    const pb = b.cardId ? srsPriority(b.cardId) : _quizQPriority(b);
-    return pb - pa;
-  });
-  const chosen = sorted
-    .slice(0, Math.min(QUIZ_COUNT * 2, sorted.length))
-    .sort(()=>Math.random()-.5)
-    .slice(0, Math.min(QUIZ_COUNT, sorted.length));
+  // Добір і порядок — за SM-2 (нові та прострочені першими), без перемішування
+  const chosen = quizSortBySm2(pool).slice(0, Math.min(QUIZ_COUNT, pool.length));
 
   quizState = {
     questions: chosen,
@@ -23122,14 +23114,8 @@ function lfStartQuiz(){
     lfStepDone('quiz', 1);
     return;
   }
-  const sorted = [...pool].sort((a,b)=>{
-    const pa = a.cardId ? srsPriority(a.cardId) : _quizQPriority(a);
-    const pb = b.cardId ? srsPriority(b.cardId) : _quizQPriority(b);
-    return pb - pa;
-  });
-  const chosen = sorted
-    .slice(0, Math.min(QUIZ_COUNT, sorted.length))
-    .sort(()=>Math.random()-.5);
+  // Добір і порядок питань уроку — за SM-2 (нові та прострочені першими), без перемішування
+  const chosen = quizSortBySm2(pool).slice(0, Math.min(QUIZ_COUNT, pool.length));
 
   quizState = {
     questions: chosen,
@@ -23852,11 +23838,7 @@ function renderDialogueCard(){
 // але оновлює лише власні кнопки Dialogue — без впливу на картки Словника.
 function toggleDialogueFavorite(id){
   haptic.light();
-  const key='mova_'+id; let data={};
-  try{ data=JSON.parse(localStorage.getItem(key)||'{}'); }catch(e){}
-  data.favorite=!data.favorite;
-  localStorage.setItem(key, JSON.stringify(data));
-  const fav=data.favorite;
+  const fav = _favSet(id, !isFavorite(id));
   ['dlg-fc-fav-front','dlg-fc-fav-back'].forEach(elId=>{
     const btn=document.getElementById(elId);
     if(btn){ btn.innerHTML = favIcon(fav); btn.classList.toggle('active',fav); }
@@ -24749,16 +24731,73 @@ function cycleVocabMode(){
 }
 
 // ── FAVORITES ─────────────────────────────────────────────────
-function isFavorite(id){try{return!!JSON.parse(localStorage.getItem('mova_'+id)||'{}').favorite;}catch(e){return false;}}
+// Обране — ОКРЕМО для кожного курсу: 'mova_favs_<id курсу>' = { "<id картки>": час додавання, мс }.
+// (Раніше прапорець лежав у спільному ключі 'mova_'+id картки, тож обране «текло» між курсами.)
+// Час додавання потрібен, щоб «Обране» показувало найновіші першими; 1 = час невідомий (старе обране).
+const FAVS_PREFIX     = 'mova_favs_';
+const FAVS_CLAIM_KEY  = 'mova_favs_legacy_claimed';   // { id картки: курс, що забрав старе обране }
+const FAVS_MIG_PREFIX = 'mova_favs_mig_';             // прапорець «міграцію для цього курсу виконано»
+var _favCache = null, _favKey = null;
+function _favCourseId(){
+  return (typeof activeCourse !== 'undefined' && activeCourse && activeCourse.id) || getSavedCourseId();
+}
+function _favStoreKey(){ return FAVS_PREFIX + _favCourseId(); }
+function _favMap(){
+  const key = _favStoreKey();
+  if(_favKey !== key){
+    let m = {};
+    try{ m = JSON.parse(localStorage.getItem(key) || '{}') || {}; }catch(e){ m = {}; }
+    _favCache = m; _favKey = key;
+  }
+  return _favCache;
+}
+function _favSave(){ try{ localStorage.setItem(_favStoreKey(), JSON.stringify(_favMap())); }catch(e){} }
+function _favSet(id, on){
+  const m = _favMap();
+  if(on) m[id] = Date.now(); else delete m[id];
+  _favSave();
+  return !!on;
+}
+// Одноразова (на курс) міграція старого спільного обраного 'mova_'+id → 'mova_favs_<курс>'.
+// Стару картку забирає ПЕРШИЙ курс, у якому є такий id (щоб при збігу id між курсами
+// обране не дублювалось); старі записи не видаляються (нічого не втрачається).
+function _favMigrateLegacy(){
+  try{
+    const cid = _favCourseId();
+    const migKey = FAVS_MIG_PREFIX + cid;
+    if(localStorage.getItem(migKey)) return false;
+    const lists = [
+      typeof VOCAB !== 'undefined' ? VOCAB : [],
+      typeof DIALOGE !== 'undefined' ? DIALOGE : [],
+      typeof SPRACHBAUSTEINE !== 'undefined' ? SPRACHBAUSTEINE : [],
+    ];
+    let claimed = {};
+    try{ claimed = JSON.parse(localStorage.getItem(FAVS_CLAIM_KEY) || '{}') || {}; }catch(e){ claimed = {}; }
+    const m = _favMap();
+    let moved = 0;
+    lists.forEach(arr => (arr || []).forEach(c => {
+      if(!c || !c.id || claimed[c.id]) return;
+      let d = null;
+      try{ d = JSON.parse(localStorage.getItem('mova_' + c.id) || 'null'); }catch(e){}
+      if(d && d.favorite){
+        if(!m[c.id]) m[c.id] = d.favAt || 1;
+        claimed[c.id] = cid;
+        moved++;
+      }
+    }));
+    if(moved){
+      _favSave();
+      localStorage.setItem(FAVS_CLAIM_KEY, JSON.stringify(claimed));
+    }
+    localStorage.setItem(migKey, '1');
+    return moved > 0;
+  }catch(e){ return false; }
+}
+function isFavorite(id){ return !!_favMap()[id]; }
 function toggleFavorite(id, silent){
   haptic.light();
-  const key='mova_'+id;let data={};
-  try{data=JSON.parse(localStorage.getItem(key)||'{}');}catch(e){}
-  data.favorite=!data.favorite;
-  // favAt — коли картку додали в обране: «Обране» показує найновіші першими
-  if(data.favorite) data.favAt=Date.now(); else delete data.favAt;
-  localStorage.setItem(key,JSON.stringify(data));
-  const fav=data.favorite;
+  // favAt (час додавання) зберігається в самому значенні: «Обране» показує найновіші першими
+  const fav = _favSet(id, !isFavorite(id));
   // Оновлюємо лише кнопки САМЕ цієї картки (data-fav-id===id) — не
   // перерендеримо картку, не чіпаємо V.flipped. РАНІШЕ тут був
   // querySelectorAll('.fc-fav,.fc-fav-back') БЕЗ фільтра за id: клас
@@ -24799,7 +24838,7 @@ function updateFavBadge(){const count=_favCount();const nb=document.getElementBy
 // Обрані картки VOCAB: найновіше додані — першими. Картки, додані до появи
 // favAt (час невідомий), йдуть після них у порядку бази.
 function _favSortedVocab(){
-  const at = v => { try{ return JSON.parse(localStorage.getItem('mova_'+v.id)||'{}').favAt || 0; }catch(e){ return 0; } };
+  const at = v => _favMap()[v.id] || 0;
   return VOCAB.filter(v=>isFavorite(v.id))
     .map((v,i)=>({v, t:at(v), i}))
     .sort((a,b)=> (b.t-a.t) || (a.i-b.i))
@@ -25984,7 +26023,7 @@ function sbHideFeedbackModal() {
   }
 }
 
-function sbIsFav(id){ try{ return JSON.parse(localStorage.getItem('mova_'+id)||'{}').favorite===true; }catch(e){ return false; } }
+function sbIsFav(id){ return isFavorite(id); }
 function sbToggleFav(e) {
   if(e){ e.stopPropagation(); if(e.cancelable) e.preventDefault(); }
   var card=SB.learnQueue[SB.learnIdx]; if(!card) return;
