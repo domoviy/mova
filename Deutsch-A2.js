@@ -7057,45 +7057,45 @@ var DIALOGE = [
     "name_q": "de_w_julia",
     "name_a": "de_m_mark",
     "q": {
-      "de": "Hallo! Ich bin neu hier und finde mein Büro nicht. Kannst du mir helfen?",
-      "en": "Hi! I'm new here and can't find my office. Can you help me?",
-      "uk": "Привіт! Я тут новенька і не можу знайти свій офіс. Можеш мені допомогти?",
-      "ru": "Привет! Я тут новенькая и не могу найти свой офис. Можешь мне помочь?",
+      "de": "Hallo! Ich bin Julia und neu hier. Ich brauche noch den Schlüssel für mein Büro. Kannst du mir helfen?",
+      "en": "Hi! I'm Julia and I'm new here. I still need the key to my office. Can you help me?",
+      "uk": "Привіт! Я Юлія, я тут новенька. Мені ще потрібен ключ від мого офісу. Можеш мені допомогти?",
+      "ru": "Привет! Я Юлия, я здесь новенькая. Мне ещё нужен ключ от моего офиса. Можешь мне помочь?",
       "gram": ""
     },
     "a": {
-      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten doch</r> zusammen <g>zur Rezeption</g> gehen und den Schlüssel holen.<br><r>Was denkst du?</r>",
-      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could</r> go <g>to the reception</g> together and get the key.<br><r>What do you think?</r>",
-      "uk": "<r>Чудово, так і зробимо.</r><br><r>Ми могли б</r> разом піти <g>на рецепцію</g> і забрати ключ.<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Отлично, так и сделаем.</r><br><r>Мы могли бы</r> вместе пойти <g>на ресепшн</g> и забрать ключ.<br><r>Что ты думаешь?</r>",
-      "gram": "lokale_praepositionen"
-    },
-    "q1": {
-      "de": "<r>Das klingt gut, aber</r> vielleicht <g>sollten</g> wir zuerst meinen Arbeitsplatz <g>suchen</g>.<br><r>Ich hätte einen Vorschlag:</r> Du zeigst mir zuerst das Büro, dann holen wir den Schlüssel.<br><r>Wie findest du das?</r>",
-      "en": "<r>That sounds good, but</r> maybe we <g>should</g> <g>look for</g> my workplace first.<br><r>I have a suggestion:</r> you show me the office first, then we get the key.<br><r>How do you like that?</r>",
-      "uk": "<r>Це звучить непогано, але</r>, можливо, нам <g>варто</g> спершу <g>знайти</g> моє робоче місце.<br><r>У мене є пропозиція:</r> спочатку ти покажеш мені офіс, а потім ми заберемо ключ.<br><r>Як тобі така ідея?</r>",
-      "ru": "<r>Это звучит неплохо, но</r>, возможно, нам <g>стоит</g> сначала <g>найти</g> моё рабочее место.<br><r>У меня есть предложение:</r> сначала ты покажешь мне офис, а потом мы заберём ключ.<br><r>Как тебе такая идея?</r>",
-      "gram": "modalverben"
-    },
-    "a1": {
-      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> der Schreibtisch am Fenster <g>dir</g> gehört.<br><r>Bist du damit einverstanden?</r>",
-      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> the desk by the window belongs to <g>you</g>.<br><r>Are you okay with that?</r>",
-      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> стіл біля вікна належить <g>тобі</g>.<br><r>Ти згодна з цим?</r>",
-      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> стол у окна принадлежит <g>тебе</g>.<br><r>Ты согласна с этим?</r>",
+      "de": "<r>Klar, kein Problem.</r> Ich helfe <g>dir</g> gern.<br><r>Wir könnten doch</r> zuerst zur Rezeption gehen und den Schlüssel holen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sure, no problem.</r> I'm happy to help <g>you</g>.<br><r>We could</r> go to the reception first and get the key.<br><r>What do you think?</r>",
+      "uk": "<r>Звісно, без проблем.</r> Я з радістю допоможу <g>тобі</g>.<br><r>Ми могли б</r> спершу піти на рецепцію й забрати ключ.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Конечно, без проблем.</r> Я с удовольствием помогу <g>тебе</g>.<br><r>Мы могли бы</r> сначала пойти на ресепшн и забрать ключ.<br><r>Что ты думаешь?</r>",
       "gram": "dativ_verben"
     },
+    "q1": {
+      "de": "<r>Das klingt gut, aber</r> ich habe um zehn Uhr ein Gespräch mit meiner Chefin.<br><r>Wie wäre es, wenn wir</r> in der Pause um zwölf Uhr zur Rezeption gehen?<br><r>Passt dir das so?</r>",
+      "en": "<r>That sounds good, but</r> I have a meeting with my boss at ten o'clock.<br><r>How about if we</r> go to the reception during the break at twelve o'clock?<br><r>Does that work for you?</r>",
+      "uk": "<r>Звучить непогано, але</r> о десятій у мене розмова з моєю начальницею.<br><r>Як щодо того, щоб</r> ми пішли на рецепцію в перерву о дванадцятій?<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Звучит неплохо, но</r> в десять часов у меня разговор с моей начальницей.<br><r>Как насчёт того, чтобы</r> мы пошли на ресепшн в перерыв в двенадцать?<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r> Ich habe um zwölf Uhr auch Pause.<br><r>Ich hätte einen Vorschlag:</r> Danach zeige ich dir dein Büro und deinen Arbeitsplatz.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well.</r> I have my break at twelve too.<br><r>I have a suggestion:</r> afterwards I'll show you your office and your workplace.<br><r>How do you see that?</r>",
+      "uk": "<r>Домовились, це добре підходить.</r> У мене теж перерва о дванадцятій.<br><r>У мене є пропозиція:</r> після цього я покажу тобі твій офіс і робоче місце.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Договорились, это хорошо подходит.</r> У меня тоже перерыв в двенадцать.<br><r>У меня есть предложение:</r> после этого я покажу тебе твой офис и рабочее место.<br><r>Как ты на это смотришь?</r>",
+      "gram": ""
+    },
     "q2": {
-      "de": "<r>Perfekt, so machen wir es.</r><br><r>Wir könnten es doch so machen:</r> Wir treffen uns um neun Uhr <g>vor dem Büro</g>.<br><r>Passt dir das so?</r>",
-      "en": "<r>Perfect, that's how we'll do it.</r><br><r>We could do it like this:</r> we meet at nine o'clock <g>in front of the office</g>.<br><r>Does that work for you?</r>",
-      "uk": "<r>Чудово, так і зробимо.</r><br><r>Можна зробити так:</r> зустрінемося о дев'ятій <g>перед офісом</g>.<br><r>Тобі так підходить?</r>",
-      "ru": "<r>Отлично, так и сделаем.</r><br><r>Можно сделать так:</r> встретимся в девять <g>перед офисом</g>.<br><r>Тебе так подходит?</r>",
-      "gram": "wechselpraepositionen"
+      "de": "<r>Das gefällt <g>mir</g> sehr gut.</r><br><r>Mein Vorschlag wäre, dass</r> die Chefin mir am Nachmittag die Aufgaben erklärt.<br><r>Bist du damit einverstanden?</r>",
+      "en": "<r>That appeals <g>to me</g> a lot.</r><br><r>My suggestion would be that</r> the boss explains the tasks to me in the afternoon.<br><r>Are you okay with that?</r>",
+      "uk": "<r>Це <g>мені</g> дуже подобається.</r><br><r>Моя пропозиція —</r> щоб начальниця пояснила мені завдання після обіду.<br><r>Ти з цим згоден?</r>",
+      "ru": "<r>Это <g>мне</g> очень нравится.</r><br><r>Моё предложение —</r> чтобы начальница объяснила мне задания днём.<br><r>Ты с этим согласен?</r>",
+      "gram": "dativ_verben"
     },
     "a2": {
-      "de": "Gut, dann ist das geklärt. Ich freue mich, <g>dir</g> zu helfen. Bis später, Julia!",
-      "en": "Good, then that's settled. I'm glad to help <g>you</g>. See you later, Julia!",
-      "uk": "Добре, тоді все вирішено. Я радий <g>тобі</g> допомогти. До зустрічі, Юліє!",
-      "ru": "Хорошо, тогда всё решено. Я рад <g>тебе</g> помочь. До встречи, Юлия!",
+      "de": "Ja, das ist in Ordnung. <r>Also, wir machen es so:</r> Um zwölf Uhr holen wir den Schlüssel, danach zeige ich dir dein Büro, und am Nachmittag erklärt <g>dir</g> die Chefin die Aufgaben. <r>Bis dann, Julia!</r>",
+      "en": "Yes, that's fine. <r>So, here's what we'll do:</r> at twelve we'll get the key, afterwards I'll show you your office, and in the afternoon the boss will explain the tasks to <g>you</g>. <r>See you then, Julia!</r>",
+      "uk": "Так, це добре. <r>Отже, робимо так:</r> о дванадцятій ми забираємо ключ, після цього я покажу тобі твій офіс, а після обіду начальниця пояснить <g>тобі</g> завдання. <r>До зустрічі, Юліє!</r>",
+      "ru": "Да, это хорошо. <r>Итак, делаем так:</r> в двенадцать мы забираем ключ, после этого я покажу тебе твой офис, а днём начальница объяснит <g>тебе</g> задания. <r>До встречи, Юлия!</r>",
       "gram": "dativ_verben"
     }
   },

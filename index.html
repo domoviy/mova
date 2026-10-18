@@ -5102,7 +5102,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '844-9766c11';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -16595,6 +16595,10 @@ let _spTok = 0;               // інкремент скасовує відкл�
 let _spRestoreP = null;       // Promise: аудіо-сесію повернено в режим програвання
 let _spLastExitAt = 0;        // Date.now() останнього spExit — для діагностики "глухого старту" (див. spHardReset)
 let _spLastReleaseAt = 0;     // Date.now() останнього закриття мікрофона
+let _spRecStage = 0;          // етап автовідновлення «глухого» мікрофона: 1 жорстке скидання, 2–3 м'який перезапуск, 4 — підказка
+let _spSoftTok = 0;           // інкремент скасовує відкладений м'який перезапуск
+let _spSoftPending = false;   // м'який перезапуск чекає паузи (вправа тимчасово закрита)
+const SP_SOFT_WAIT = 3000;    // мс повного спокою мікрофона перед м'яким перезапуском (iOS)
 
 const SP_POST_DELAY = 300;    // мс між закриттям мікрофона і поверненням типу аудіо-сесії
 function _spIsIOS(){
@@ -17106,6 +17110,7 @@ function startSpeech(){
     return;
   }
   spStopRecord();
+  _spRecStage = 0;
   _spActive = true;
   spState = { SR: SR || null, cards, idx: 0, recognition: null, recording: false,
               correctCount: 0, totalCount: 0, cycle: 0, lesson: inLesson, field };
@@ -17131,6 +17136,7 @@ function startSpeech(){
 // Вихід з вправи (перехід на іншу вкладку/екран, teardown уроку).
 // Дешево, якщо вправа не відкрита. Reload більше НЕ потрібен.
 function spExit(){
+  if(_spSoftPending){ _spSoftPending = false; _spSoftTok++; }   // користувач пішов, поки чекали м'який перезапуск
   if(!_spActive) return;
   spStopRecord();
   spFlushCancel();
@@ -17607,11 +17613,19 @@ function spTryStart(SR, mb, lbl, attempt){
   // «Глухий старт» (див. spHardReset): audiostart був, а звуку/результатів немає взагалі.
   // Через SP_DEAF_MS без жодної ознаки життя — одразу відновлюємося, не чекаючи 8–13 с,
   // після яких платформа сама перерве розпізнавання ('aborted'/'no-speech').
-  const _wd = setTimeout(() => {
+  // Відлік — від audiostart (холодний старт iOS ≈ 1.2 с не «з'їдає» бюджет), запасний — від start().
+  // Перед вердиктом ще 500 мс на запізнілі події: iOS інколи віддає speechstart/interim із затримкою.
+  let _wd = null;
+  const _wdFire = () => {
     if(_done || _heard || spState.recognition !== rec || !spState.recording || !_spActive) return;
-    spL(`deaf-watchdog: no sound/results ${SP_DEAF_MS}ms after start`);
-    spDeafRecover('watchdog');
-  }, SP_DEAF_MS);
+    setTimeout(() => {
+      if(_done || _heard || spState.recognition !== rec || !spState.recording || !_spActive) return;
+      spL(`deaf-watchdog: no sound/results ${SP_DEAF_MS}ms after start`);
+      spDeafRecover('watchdog');
+    }, 500);
+  };
+  const _armWd = (ms) => { clearTimeout(_wd); _wd = setTimeout(_wdFire, ms); };
+  _armWd(SP_DEAF_MS + 2000);
 
   rec.onresult = (e) => {
     _heard = true;
@@ -17622,7 +17636,7 @@ function spTryStart(SR, mb, lbl, attempt){
     }
     if(interim){ _lastInterim = interim; spL(`interim: "${interim}"`); spHighlightLive(interim); spVoicePulse(); }
     if(final && !_done){
-      _done = true; clearTimeout(_wd);
+      _done = true; clearTimeout(_wd); _spRecStage = 0;
       spL(`final: "${final}"`);
       // Явно просимо зупинити розпізнавання ЗАРАЗ (continuous=false на iOS
       // завершується із затримкою або ненадійно).
@@ -17644,7 +17658,7 @@ function spTryStart(SR, mb, lbl, attempt){
       if(spState._empty >= 2){ setTimeout(() => spDeafRecover('empty x' + spState._empty + ' (' + e.error + ')'), 300); }
     }
     // iOS aborted але є interim — використовуємо його
-    if(e.error === 'aborted' && _lastInterim && !_done){
+    if(e.error === 'aborted' && _lastInterim && !_done && !spState._resetting && !_spSoftPending){
       _done = true;
       spL(`using lastInterim: "${_lastInterim}"`);
       spState.recognition = null;
@@ -17686,6 +17700,7 @@ function spTryStart(SR, mb, lbl, attempt){
 
   rec.onaudiostart = () => {
     const d = Date.now() - _startTime;
+    if(!_done) _armWd(SP_DEAF_MS);
     // холодний старт мікрофона на iOS ≈ 0.8–1.2 с; кілька мс означає, що аудіоблок
     // УЖЕ працював (мікрофон не був вимкнений після попереднього циклу)
     spL(`SR audiostart +${d}ms after start() ${d < 150 ? '(warm start)' : '(cold start)'} AS=${spAS()}`);
@@ -17761,21 +17776,31 @@ async function spMicLevelProbe(ms){
 }
 function spProbeIsSilent(p){ return !!(p && !p.error && p.peak < 1e-4); }
 
+// Етапи відновлення (кожен наступний — лише якщо попередній не допоміг):
+//   1 — spHardReset (без зонда: мікрофон має лишитись вільним);
+//   2, 3 — spSoftRestart: те саме, що робить користувач руками (вийти з вправи, пауза без
+//          мікрофона, зайти знову), з тими самими картками й позицією;
+//   4 — підказка «закрийте застосунок» + зонд рівня звуку (щоб показати точнішу причину).
+// _spRecStage скидається після першого успішного результату і при новому startSpeech.
 function spDeafRecover(reason){
-  if(!_spActive || !spState || spState._resetting) return;
-  if((spState._resets || 0) >= 2){
-    spStopRecord();
-    const mb = document.getElementById('sp-mic-btn'), lbl = document.getElementById('sp-mic-label');
-    if(mb){ mb.classList.remove('recording'); mb.innerHTML = movaIcon('mic'); mb.style.color = 'var(--forest)'; }
-    // Текст за результатом зонда: звуку з мікрофона нема → проблема на рівні iOS; звук є, а
-    // розпізнавання мовчить → служба диктування/мережа. Без зонда — загальна підказка.
-    const p = spState._probe;
+  if(!_spActive || !spState || spState._resetting || _spSoftPending) return;
+  _spRecStage++;
+  if(_spRecStage === 1){ spHardReset(reason); return; }
+  if(_spRecStage <= 3){ spSoftRestart(reason); return; }
+  spStopRecord();
+  const mb = document.getElementById('sp-mic-btn'), lbl = document.getElementById('sp-mic-label');
+  if(mb){ mb.classList.remove('recording'); mb.innerHTML = movaIcon('mic'); mb.style.color = 'var(--forest)'; }
+  if(lbl) lbl.textContent = t('sp_mic_stuck');
+  spState._stuck = true; spSkipLinkUpdate();     // у «глухому» стані лишаємо вихід: «Не можу говорити зараз»
+  spL(`deaf: recovery exhausted (${reason}) — probing mic level`);
+  spMicLevelProbe(1000).then(p => {
+    if(!_spActive || !spState) return;
+    spState._probe = p;
+    spL(p && !p.error
+      ? `mic probe: peak=${p.peak.toFixed(5)} rms=${p.rms.toFixed(5)} nonzero=${Math.round(p.nonzero * 100)}% ctx=${p.state} → ${spProbeIsSilent(p) ? 'SILENT (iOS gives no audio)' : 'audio reaches the page'}`
+      : `mic probe: ${p ? p.error : 'none'}`);
     if(lbl) lbl.textContent = !p || p.error ? t('sp_mic_stuck') : (spProbeIsSilent(p) ? t('sp_mic_silent') : t('sp_sr_silent'));
-    spState._stuck = true; spSkipLinkUpdate();     // у «глухому» стані лишаємо вихід: «Не можу говорити зараз»
-    spL(`deaf: reset limit reached (${reason}) — probe=${p ? (p.error ? 'error:' + p.error : (spProbeIsSilent(p) ? 'silent' : 'audio-ok')) : 'none'}`);
-    return;
-  }
-  spHardReset(reason);
+  }).catch(() => {});
 }
 async function spHardReset(reason){
   if(!_spActive || !spState || spState._resetting) return;
@@ -17795,18 +17820,47 @@ async function spHardReset(reason){
     spState.recording = false;
     spState._empty = 0;
     if(mb){ mb.classList.remove('recording'); mb.innerHTML = movaIcon('mic'); mb.style.color = 'var(--forest)'; }
-    // Діагностика: чи доходить звук з мікрофона до сторінки (див. spMicLevelProbe)
-    let probe = null;
-    try{ probe = await spMicLevelProbe(1000); }catch(e){ probe = { error: 'exception' }; }
-    if(spState){ spState._probe = probe; }
-    spL(probe && !probe.error
-      ? `mic probe: peak=${probe.peak.toFixed(5)} rms=${probe.rms.toFixed(5)} nonzero=${Math.round(probe.nonzero * 100)}% ctx=${probe.state} → ${spProbeIsSilent(probe) ? 'SILENT (iOS gives no audio)' : 'audio reaches the page'}`
-      : `mic probe: ${probe ? probe.error : 'none'}`);
-    if(_spActive && lbl) lbl.textContent = spProbeIsSilent(probe) ? t('sp_mic_silent') : t('sp_mic_restarted');
+    // Зонд (gUM) одразу після скидання знову відкривав мікрофон, коли iOS його ще звільняв, —
+    // за логом 2026-10-18 після зонда мікрофон лишався мертвим (peak=0). Тепер зонд — лише в кінці.
+    spL('hard reset: probe skipped (mic stays released)');
+    if(_spActive && lbl) lbl.textContent = t('sp_mic_restarted');
     spState._stuck = true; spSkipLinkUpdate();     // після першого «глухого» скидання даємо можливість пропустити вправу
     spL('HARD RESET done — waiting for user to tap the mic');
   }
   spState._resetting = false;
+}
+
+// М'який перезапуск: автоматично повторює те, що допомагало руками (вийти з вправи → пауза
+// без жодного доступу до мікрофона → зайти знову), але з тими самими картками та позицією.
+async function spSoftRestart(reason){
+  if(!_spActive || !spState || spState._resetting || _spSoftPending) return;
+  const snap = { SR: spState.SR, cards: spState.cards, idx: spState.idx, lesson: !!spState.lesson,
+                 field: spState.field, correctCount: spState.correctCount || 0, totalCount: spState.totalCount || 0 };
+  const lbl = document.getElementById('sp-mic-label');
+  spL(`SOFT RESTART stage=${_spRecStage} (${reason}) idx=${snap.idx}`);
+  if(lbl) lbl.textContent = t('sp_mic_restarting');
+  spExit();                                     // рівно як ручний вихід (spShutdownMic, тип сесії 'auto')
+  const tok = ++_spSoftTok;
+  _spSoftPending = true;
+  await new Promise(r => setTimeout(r, _spIsIOS() ? SP_SOFT_WAIT : 1200));
+  if(tok !== _spSoftTok || !_spSoftPending){ spL('soft restart: cancelled (user left)'); return; }
+  _spSoftPending = false;
+  if(snap.lesson && !(LF && LF.steps && LF.steps[LF.step] === 'speech')){ spL('soft restart: cancelled (lesson step changed)'); return; }
+  if(!document.getElementById('sp-mic-btn')){ spL('soft restart: cancelled (no speech UI)'); return; }
+  _spActive = true;
+  spState = { SR: snap.SR, cards: snap.cards, idx: snap.idx, recognition: null, recording: false,
+              correctCount: snap.correctCount, totalCount: snap.totalCount, cycle: 0,
+              lesson: snap.lesson, field: snap.field, _stuck: true };   // _stuck: лишаємо «Не можу говорити зараз»
+  const spPanel = document.getElementById('vocab-panel-speech');
+  if(spPanel) spPanel.classList.toggle('sp-lesson', snap.lesson);
+  spAttachAudioDiag();
+  try{
+    const _sc = _sfxGetCtx();
+    if(_sc && _sc.state !== 'running' && _sc.state !== 'closed') _sc.resume().catch(function(){});
+  }catch(e){}
+  spL(`startSpeech[soft]: cards=${snap.cards.length} idx=${snap.idx} lesson=${snap.lesson} AS=${spAS()} sfx=${_spSfxInfo()}`);
+  spHb('exercise');
+  spShowCard();
 }
 
 // ── Після розпізнавання: "промивання" звуку ───────────────────────
