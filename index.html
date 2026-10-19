@@ -75,18 +75,22 @@
 (function(){
   var KEY = 'mova_consent_v1';
   var TXT = {
-    de:{t:'Datenschutz & Statistik',
-        b:'Mit Ihrer Einwilligung messen wir mit Google Firebase Analytics, wie MOVA genutzt wird (z. B. „Lektion gestartet“). Dabei werden eine zufällige Nutzer-ID sowie Geräte- und Nutzungsdaten an Google übertragen. Ohne Einwilligung funktioniert die App vollständig. Sie können Ihre Entscheidung jederzeit in den Einstellungen ändern.',
-        y:'Zustimmen', n:'Ablehnen', l:'Datenschutzerklärung'},
-    uk:{t:'Конфіденційність і статистика',
-        b:'За вашою згодою ми використовуємо Google Firebase Analytics, щоб розуміти, як люди користуються MOVA (наприклад, «урок розпочато»). Для цього до Google передаються випадковий ідентифікатор користувача, дані про пристрій і використання. Без згоди застосунок працює повністю. Ви можете змінити рішення будь-коли в налаштуваннях.',
-        y:'Погодитись', n:'Відмовитись', l:'Політика конфіденційності'},
-    en:{t:'Privacy & statistics',
-        b:'With your consent we use Google Firebase Analytics to measure how MOVA is used (e.g. “lesson started”). A random user ID plus device and usage data are sent to Google. The app works fully without your consent. You can change your decision at any time in Settings.',
-        y:'Agree', n:'Decline', l:'Privacy policy'},
-    ru:{t:'Конфиденциальность и статистика',
-        b:'С вашего согласия мы используем Google Firebase Analytics, чтобы понимать, как пользуются MOVA (например, «урок начат»). Для этого в Google передаются случайный идентификатор пользователя, данные об устройстве и использовании. Без согласия приложение работает полностью. Вы можете изменить решение в любое время в настройках.',
-        y:'Согласиться', n:'Отказаться', l:'Политика конфиденциальности'}
+    de:{t:'Helfen Sie uns, MOVA besser zu machen',
+        b:'MOVA entsteht gemeinsam mit den Menschen, die damit Deutsch lernen. Damit wir wissen, welche Kurse und Übungen wir zuerst verbessern sollten, möchten wir sehen, wie die App in der Praxis genutzt wird: welcher Kurs gewählt wurde, in welcher Sprache die Oberfläche läuft und wo Lektionen leichtfallen oder abgebrochen werden. Ihre Teilnahme beeinflusst direkt, was in den nächsten Updates entsteht.',
+        d:'Es handelt sich nur um Nutzungsstatistik, ohne Ihren Namen oder Ihre E-Mail-Adresse: gewählter Kurs, Oberflächensprache, Lektionsschritte (gestartet, abgeschlossen, abgebrochen) und Gerätetyp. Dafür nutzen wir Google Firebase Analytics: Eine zufällige Nutzer-ID sowie Geräte- und Nutzungsdaten werden an Google übertragen. Die App funktioniert auch ohne Ihre Einwilligung vollständig. Sie können Ihre Entscheidung jederzeit in den Einstellungen ändern.',
+        y:'Ja, ich helfe mit', n:'Nein, danke', l:'Mehr zu Daten & Datenschutz…'},
+    uk:{t:'Допоможіть нам зробити MOVA кращою',
+        b:'MOVA створюється разом з тими, хто нею вчиться. Щоб розуміти, які курси та вправи вдосконалювати насамперед, нам важливо бачити, як застосунком користуються на практиці: який курс обрано, якою мовою інтерфейс, де урок проходиться легко, а де люди зупиняються. Ваша участь напряму впливає на те, що з’явиться в наступних оновленнях.',
+        d:'Це лише статистика користування, без вашого імені та e-mail: обраний курс, мова інтерфейсу, етапи уроків (розпочато, завершено, перервано) і тип пристрою. Для цього ми використовуємо Google Firebase Analytics: до Google передаються випадковий ідентифікатор користувача, дані про пристрій і використання. Застосунок повністю працює й без вашої згоди. Рішення можна змінити будь-коли в налаштуваннях.',
+        y:'Так, допоможу', n:'Ні, дякую', l:'Детальніше про дані та конфіденційність…'},
+    en:{t:'Help us make MOVA better',
+        b:'MOVA is built together with the people who learn with it. To know which courses and exercises to improve first, we need to see how the app is used in practice: which course was chosen, which interface language is used, and where lessons feel easy or where people get stuck. Your participation directly shapes what comes in the next updates.',
+        d:'This is usage statistics only, without your name or e-mail: selected course, interface language, lesson steps (started, completed, abandoned) and device type. We use Google Firebase Analytics for this: a random user ID plus device and usage data are sent to Google. The app works fully without your consent. You can change your decision at any time in Settings.',
+        y:'Yes, I’ll help', n:'No, thanks', l:'More about data & privacy…'},
+    ru:{t:'Помогите нам сделать MOVA лучше',
+        b:'MOVA создаётся вместе с теми, кто по ней учится. Чтобы понимать, какие курсы и упражнения улучшать в первую очередь, нам важно видеть, как приложением пользуются на практике: какой курс выбран, на каком языке интерфейс, где урок проходится легко, а где люди останавливаются. Ваше участие напрямую влияет на то, что появится в следующих обновлениях.',
+        d:'Это только статистика использования, без вашего имени и e-mail: выбранный курс, язык интерфейса, этапы уроков (начат, завершён, прерван) и тип устройства. Для этого мы используем Google Firebase Analytics: в Google передаются случайный идентификатор пользователя, данные об устройстве и использовании. Приложение полностью работает и без вашего согласия. Решение можно изменить в любое время в настройках.',
+        y:'Да, помогу', n:'Нет, спасибо', l:'Подробнее о данных и конфиденциальности…'}
   };
   function lang(){ try{ var l = localStorage.getItem('mova_ui_lang') || 'de'; return TXT[l] ? l : 'de'; }catch(e){ return 'de'; } }
   function read(){
@@ -104,6 +108,7 @@
     d.setAttribute('aria-label', x.t);
     d.querySelector('h2').textContent = x.t;
     d.querySelector('p').textContent = x.b;
+    var dd = d.querySelector('.cb-d'); if(dd) dd.textContent = x.d;
     d.querySelector('#cb-link').textContent = x.l;
     d.querySelector('#cb-no').textContent = x.n;
     d.querySelector('#cb-yes').textContent = x.y;
@@ -117,9 +122,10 @@
         '#consent-banner{position:fixed;left:0;right:0;bottom:0;z-index:99999;display:flex;justify-content:center;pointer-events:none}' +
         '#consent-banner .cb-box{pointer-events:auto;box-sizing:border-box;width:100%;max-width:560px;background:var(--paper,#fff);color:var(--ink,#1c1917);' +
         'border-top:1px solid var(--border,#e7e3dc);box-shadow:0 -6px 24px rgba(0,0,0,.18);border-radius:16px 16px 0 0;' +
-        'padding:16px 16px calc(14px + env(safe-area-inset-bottom,0px));font-family:inherit}' +
-        '#consent-banner h2{margin:0 0 6px;font-size:16px}' +
-        '#consent-banner p{margin:0 0 10px;font-size:13px;line-height:1.45;color:var(--warm,#44403c)}' +
+        'padding:18px 18px calc(14px + env(safe-area-inset-bottom,0px));font-family:inherit;max-height:88vh;overflow-y:auto}' +
+        '#consent-banner h2{margin:0 0 8px;font-size:18px;line-height:1.25}' +
+        '#consent-banner p{margin:0 0 10px;font-size:14px;line-height:1.5;color:var(--warm,#44403c)}' +
+        '#consent-banner p.cb-d{font-size:12px;line-height:1.45;opacity:.85}' +
         '#consent-banner a{color:inherit;font-size:13px;text-decoration:underline;cursor:pointer}' +
         '#consent-banner .cb-row{display:flex;gap:10px;margin-top:12px}' +
         '#consent-banner button{flex:1;padding:12px 10px;border-radius:10px;border:1.5px solid var(--forest,#0d2b1a);' +
@@ -129,7 +135,7 @@
     var d = document.createElement('div');
     d.id = 'consent-banner'; d.setAttribute('role', 'dialog'); d.setAttribute('aria-label', x.t);
     d.innerHTML =
-      '<div class="cb-box"><h2></h2><p></p><a id="cb-link"></a>' +
+      '<div class="cb-box"><h2></h2><p></p><p class="cb-d"></p><a id="cb-link"></a>' +
       '<div class="cb-row"><button type="button" id="cb-no"></button><button type="button" id="cb-yes"></button></div></div>';
     fill(d);
     d.querySelector('#cb-link').onclick = function(){ window.openPrivacyPolicy(); };
@@ -5106,7 +5112,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '855-bb85556';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
