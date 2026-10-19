@@ -77,19 +77,19 @@
   var TXT = {
     de:{t:'Helfen Sie uns, MOVA besser zu machen',
         b:'MOVA entsteht gemeinsam mit den Menschen, die damit Deutsch lernen. Damit wir wissen, welche Kurse und Übungen wir zuerst verbessern sollten, möchten wir sehen, wie die App in der Praxis genutzt wird: welcher Kurs gewählt wurde, in welcher Sprache die Oberfläche läuft und wo Lektionen leichtfallen oder abgebrochen werden. Ihre Teilnahme beeinflusst direkt, was in den nächsten Updates entsteht.',
-        d:'Es handelt sich nur um Nutzungsstatistik, ohne Ihren Namen oder Ihre E-Mail-Adresse: gewählter Kurs, Oberflächensprache, Lektionsschritte (gestartet, abgeschlossen, abgebrochen) und Gerätetyp. Dafür nutzen wir Google Firebase Analytics: Eine zufällige Nutzer-ID sowie Geräte- und Nutzungsdaten werden an Google übertragen. Die App funktioniert auch ohne Ihre Einwilligung vollständig. Sie können Ihre Entscheidung jederzeit in den Einstellungen ändern.',
+        d:'Es handelt sich nur um Nutzungsstatistik, <b>ohne Ihren Namen oder Ihre E-Mail-Adresse</b>: gewählter Kurs, Oberflächensprache, Lektionsschritte (gestartet, abgeschlossen, abgebrochen) und Gerätetyp. Dafür nutzen wir Google Firebase Analytics: Eine zufällige Nutzer-ID sowie Geräte- und Nutzungsdaten werden an Google übertragen. Die App funktioniert auch ohne Ihre Einwilligung vollständig. Sie können Ihre Entscheidung jederzeit in den Einstellungen ändern.',
         y:'Ja, ich helfe mit', n:'Nein, danke', l:'Mehr zu Daten & Datenschutz…'},
     uk:{t:'Допоможіть нам зробити MOVA кращою',
         b:'MOVA створюється разом з тими, хто нею вчиться. Щоб розуміти, які курси та вправи вдосконалювати насамперед, нам важливо бачити, як застосунком користуються на практиці: який курс обрано, якою мовою інтерфейс, де урок проходиться легко, а де люди зупиняються. Ваша участь напряму впливає на те, що з’явиться в наступних оновленнях.',
-        d:'Це лише статистика користування, без вашого імені та e-mail: обраний курс, мова інтерфейсу, етапи уроків (розпочато, завершено, перервано) і тип пристрою. Для цього ми використовуємо Google Firebase Analytics: до Google передаються випадковий ідентифікатор користувача, дані про пристрій і використання. Застосунок повністю працює й без вашої згоди. Рішення можна змінити будь-коли в налаштуваннях.',
+        d:'Це лише статистика користування, <b>без вашого імені та e-mail</b>: обраний курс, мова інтерфейсу, етапи уроків (розпочато, завершено, перервано) і тип пристрою. Для цього ми використовуємо Google Firebase Analytics: до Google передаються випадковий ідентифікатор користувача, дані про пристрій і використання. Застосунок повністю працює й без вашої згоди. Рішення можна змінити будь-коли в налаштуваннях.',
         y:'Так, допоможу', n:'Ні, дякую', l:'Детальніше про дані та конфіденційність…'},
     en:{t:'Help us make MOVA better',
         b:'MOVA is built together with the people who learn with it. To know which courses and exercises to improve first, we need to see how the app is used in practice: which course was chosen, which interface language is used, and where lessons feel easy or where people get stuck. Your participation directly shapes what comes in the next updates.',
-        d:'This is usage statistics only, without your name or e-mail: selected course, interface language, lesson steps (started, completed, abandoned) and device type. We use Google Firebase Analytics for this: a random user ID plus device and usage data are sent to Google. The app works fully without your consent. You can change your decision at any time in Settings.',
+        d:'This is usage statistics only, <b>without your name or e-mail</b>: selected course, interface language, lesson steps (started, completed, abandoned) and device type. We use Google Firebase Analytics for this: a random user ID plus device and usage data are sent to Google. The app works fully without your consent. You can change your decision at any time in Settings.',
         y:'Yes, I’ll help', n:'No, thanks', l:'More about data & privacy…'},
     ru:{t:'Помогите нам сделать MOVA лучше',
         b:'MOVA создаётся вместе с теми, кто по ней учится. Чтобы понимать, какие курсы и упражнения улучшать в первую очередь, нам важно видеть, как приложением пользуются на практике: какой курс выбран, на каком языке интерфейс, где урок проходится легко, а где люди останавливаются. Ваше участие напрямую влияет на то, что появится в следующих обновлениях.',
-        d:'Это только статистика использования, без вашего имени и e-mail: выбранный курс, язык интерфейса, этапы уроков (начат, завершён, прерван) и тип устройства. Для этого мы используем Google Firebase Analytics: в Google передаются случайный идентификатор пользователя, данные об устройстве и использовании. Приложение полностью работает и без вашего согласия. Решение можно изменить в любое время в настройках.',
+        d:'Это только статистика использования, <b>без вашего имени и e-mail</b>: выбранный курс, язык интерфейса, этапы уроков (начат, завершён, прерван) и тип устройства. Для этого мы используем Google Firebase Analytics: в Google передаются случайный идентификатор пользователя, данные об устройстве и использовании. Приложение полностью работает и без вашего согласия. Решение можно изменить в любое время в настройках.',
         y:'Да, помогу', n:'Нет, спасибо', l:'Подробнее о данных и конфиденциальности…'}
   };
   function lang(){ try{ var l = localStorage.getItem('mova_ui_lang') || 'de'; return TXT[l] ? l : 'de'; }catch(e){ return 'de'; } }
@@ -108,7 +108,7 @@
     d.setAttribute('aria-label', x.t);
     d.querySelector('h2').textContent = x.t;
     d.querySelector('p').textContent = x.b;
-    var dd = d.querySelector('.cb-d'); if(dd) dd.textContent = x.d;
+    var dd = d.querySelector('.cb-d'); if(dd) dd.innerHTML = x.d;   // x.d — наші константи, містять <b>
     d.querySelector('#cb-link').textContent = x.l;
     d.querySelector('#cb-no').textContent = x.n;
     d.querySelector('#cb-yes').textContent = x.y;
@@ -125,11 +125,12 @@
         'padding:18px 18px calc(14px + env(safe-area-inset-bottom,0px));font-family:inherit;max-height:88vh;overflow-y:auto}' +
         '#consent-banner h2{margin:0 0 8px;font-size:18px;line-height:1.25}' +
         '#consent-banner p{margin:0 0 10px;font-size:14px;line-height:1.5;color:var(--warm,#44403c)}' +
-        '#consent-banner p.cb-d{font-size:12px;line-height:1.45;opacity:.85}' +
         '#consent-banner a{color:inherit;font-size:13px;text-decoration:underline;cursor:pointer}' +
         '#consent-banner .cb-row{display:flex;gap:10px;margin-top:12px}' +
         '#consent-banner button{flex:1;padding:12px 10px;border-radius:10px;border:1.5px solid var(--forest,#0d2b1a);' +
-        'background:var(--forest,#0d2b1a);color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}';
+        'background:var(--forest,#0d2b1a);color:#fff;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit}' +
+        '#consent-banner #cb-no{background:#fff;color:var(--forest,#0d2b1a)}' +
+        '#consent-banner b{font-weight:700;color:var(--ink,#1c1917)}';
       document.head.appendChild(st);
     }
     var d = document.createElement('div');
@@ -146,7 +147,9 @@
   window.mConsent = {
     analytics: function(){ var r = read(); return r ? r.analytics : null; },
     set: function(v){
-      try{ localStorage.setItem(KEY, JSON.stringify({analytics: !!v, ts: Date.now(), v: 1})); }catch(e){}
+      var prev = read(), prevN = prev ? (prev.n || 1) : 0;
+      var n = document.getElementById('consent-banner') ? prevN + 1 : Math.max(prevN, 1);
+      try{ localStorage.setItem(KEY, JSON.stringify({analytics: !!v, ts: Date.now(), v: 1, n: n})); }catch(e){}
       hide(); sync();
       window.dispatchEvent(new CustomEvent('mova-consent', {detail:{analytics: !!v}}));
     },
@@ -166,7 +169,20 @@
   // кнопки мов, а текст міг бути незрозумілою мовою. Нові користувачі бачать його
   // одразу після вибору мови (selectOnboardLang → maybeShow), решта — при запуску.
   function langChosen(){ try{ return !!localStorage.getItem('mova_ui_lang'); }catch(e){ return false; } }
-  function maybeShow(){ if(location.protocol === 'https:' && read() === null && langChosen()) show(); }
+  // Повторне запитання тим, хто відмовився: не частіше, ніж раз на REASK_DAYS днів
+  // і не більше REASK_MAX разів (разом із першим — 3 запити), потім більше не турбуємо.
+  // Постійно (при кожному запуску) НЕ питаємо: EDPB (Guidelines 03/2022) вважає
+  // повторні запити попри вже висловлений вибір маніпулятивним патерном «continuous prompting».
+  // Змінити рішення завжди можна в Налаштуваннях (тумблер «Статистика використання»).
+  var REASK_DAYS = 30, REASK_MAX = 2;
+  function due(){
+    var r = read();
+    if(!r) return true;                          // рішення ще немає
+    if(r.analytics) return false;                // згода є
+    var asked = r.n || 1;                        // старі записи без n = один запит
+    return asked <= REASK_MAX && (Date.now() - (r.ts || 0)) > REASK_DAYS * 864e5;
+  }
+  function maybeShow(){ if(location.protocol === 'https:' && due() && langChosen()) show(); }
   function init(){ maybeShow(); sync(); }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
@@ -5117,7 +5133,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '860-db2d185';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6622,6 +6638,7 @@ const I18N = {
     srs_new:'✨ neue Karte', srs_today:'📅 heute',
     card_new:'✨ Neue Karte',
     update_available:'🔄 Neue Version verfügbar – App neu laden',
+    upd_title:'App aktualisiert', upd_body:'Die neue Version von MOVA ist installiert. Ein Neustart aktiviert alle Verbesserungen.', upd_btn:'Neu starten',
     match_title:'🔗 Begriff mit Erklärung verbinden', match_audio_title:'🔊 Klang mit Bedeutung verbinden', 
     match_perfect:'Perfekt! Alle beim ersten Versuch 🎉',
     match_good:'Gut gemacht! Weiter üben.',
@@ -6783,6 +6800,7 @@ const I18N = {
     srs_new:'✨ нова картка', srs_today:'📅 сьогодні',
     card_new:'✨ Нова картка',
     update_available:'🔄 Доступна нова версія — перезавантажте додаток',
+    upd_title:'Застосунок оновлено', upd_body:'Нова версія MOVA вже встановлена. Перезапуск активує всі покращення.', upd_btn:'Перезапустити',
     match_title:'🔗 Поєднай термін з поясненням', match_audio_title:'🔊 Поєднай звук із значенням', 
     match_perfect:'Ідеально! Всі з першої спроби 🎉',
     match_good:'Непогано! Продовжуй повторювати.',
@@ -6943,6 +6961,7 @@ const I18N = {
     srs_new:'✨ new card', srs_today:'📅 today',
     card_new:'✨ New card',
     update_available:'🔄 New version available – reload the app',
+    upd_title:'App updated', upd_body:'The new version of MOVA is installed. A restart activates all improvements.', upd_btn:'Restart',
     match_title:'🔗 Match the term with its explanation', match_audio_title:'🔊 Match the sound with its meaning', 
     match_perfect:'Perfect! All on first try 🎉',
     match_good:'Good job! Keep reviewing.',
@@ -7104,6 +7123,7 @@ const I18N = {
     srs_new:'✨ новая карточка', srs_today:'📅 сегодня',
     card_new:'✨ Новая карточка',
     update_available:'🔄 Доступна новая версия — перезагрузите приложение',
+    upd_title:'Приложение обновлено', upd_body:'Новая версия MOVA уже установлена. Перезапуск активирует все улучшения.', upd_btn:'Перезапустить',
     match_title:'🔗 Соедини термин с объяснением', match_audio_title:'🔊 Соедини звук со значением', 
     match_perfect:'Идеально! Все с первой попытки 🎉',
     match_good:'Неплохо! Продолжай повторять.',
@@ -26841,20 +26861,118 @@ function sbExamSubmit() {
   };
 })();
 
+// ── Оновлення застосунку ─────────────────────────────────────────────
+// Правила:
+//  1) Перевірка оновлень — лише при ЗАПУСКУ та при ПОВЕРНЕННІ в застосунок
+//     (після ≥ 60 с у фоні) і ніколи під час уроку.
+//  2) Вікно «Застосунок оновлено» НІКОЛИ не з'являється під час уроку: якщо нова
+//     версія встановилась посеред уроку, показ відкладається до його завершення.
+//  3) Перезапуск — лише за кнопкою користувача (без мовчазного reload, який
+//     виглядав як збій анімації запуску).
+var _updatePending = false, _updatePoll = null, _updateWorker = null, _applyingUpdate = false;
+
+// Чи зараз іде урок або інша «сесія», яку не можна переривати
+function isLessonActive(){
+  try{
+    if(typeof LF !== 'undefined' && LF && LF.steps && LF.steps.length > 0) return true;   // урок / чекпоінт
+    if(typeof _spActive !== 'undefined' && _spActive) return true;                         // вправа «Вимова»
+    var ex = document.querySelector('.lf-exit');                                           // шапка уроку видима (в т.ч. story-режим)
+    if(ex && ex.offsetParent !== null) return true;
+    var ids = ['exam-sim-test', 'exam-sim-briefing', 'exam-sim-picker'];                  // симуляція іспиту
+    for(var i = 0; i < ids.length; i++){
+      var el = document.getElementById(ids[i]);
+      if(el && el.offsetParent !== null) return true;
+    }
+  }catch(e){}
+  return false;
+}
+
+function showUpdateModal(){
+  if(document.getElementById('update-modal-overlay')) return;
+  var overlay = document.createElement('div');
+  overlay.id = 'update-modal-overlay';
+  overlay.className = 'locked-modal-overlay';
+  overlay.style.zIndex = '100000';                     // поверх інших екранів
+  overlay.innerHTML =
+    '<div class="locked-modal" role="alertdialog" aria-modal="true">' +
+      '<div class="locked-modal-icon">'+movaIcon('download')+'</div>' +
+      '<div class="locked-modal-title">'+t('upd_title')+'</div>' +
+      '<div class="locked-modal-body">'+t('upd_body')+'</div>' +
+      '<button class="locked-modal-cta" onclick="applyUpdate()">'+t('upd_btn')+'</button>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  try{ haptic.light(); }catch(e){}
+}
+
+// Нова версія готова: показуємо вікно, але лише коли не йде урок (інакше чекаємо)
+function updateReady(worker){
+  if(worker) _updateWorker = worker;
+  _updatePending = true;
+  tryShowPendingUpdate();
+  if(_updatePending && !_updatePoll) _updatePoll = setInterval(tryShowPendingUpdate, 3000);
+}
+function tryShowPendingUpdate(){
+  if(!_updatePending || isLessonActive()) return;
+  _updatePending = false;
+  if(_updatePoll){ clearInterval(_updatePoll); _updatePoll = null; }
+  showUpdateModal();
+}
+
+// Кнопка «Перезапустити». Якщо нова версія ще у стані waiting (sw.js чекає команди) —
+// активуємо її саме зараз; інакше (стара схема з автоматичним skipWaiting) — просто reload.
+function applyUpdate(){
+  var w = _updateWorker || (window._swReg && window._swReg.waiting);
+  if(w){
+    _applyingUpdate = true;
+    var reloaded = false;
+    var go = function(){ if(!reloaded){ reloaded = true; window.location.reload(); } };
+    navigator.serviceWorker.addEventListener('controllerchange', go);
+    try{ w.postMessage({type: 'SKIP_WAITING'}); }catch(e){ go(); return; }
+    setTimeout(go, 3000);                              // якщо sw.js не відповів — перезапускаємо все одно
+  } else {
+    window.location.reload();
+  }
+}
+
 if('serviceWorker' in navigator){
+  // Сторінку вже контролював service worker → зміна контролера = реальне ОНОВЛЕННЯ.
+  // Під час першого встановлення (controller == null) подія теж спрацьовує, але
+  // перезапускати нічого не треба.
+  var _hadSwController = !!navigator.serviceWorker.controller;
   window.addEventListener('load',()=>{
     // Реєструємо БЕЗ ?v= — query string ігнорується браузером при реєстрації SW.
     // Версія кешу контролюється всередині sw.js через CACHE_NAME.
     navigator.serviceWorker.register('sw.js').then(reg=>{
-      // Перевіряємо оновлення при кожному запуску
+      window._swReg = reg;
+      // Перевірка оновлень — при запуску (урок на старті неможливий)
       reg.update();
-      // SW сам викликає skipWaiting() в install → ми лише перезавантажуємось
+      // Режим «waiting»: нова версія встановлена, але чекає. Є й одразу після запуску,
+      // якщо вона встановилась у попередній сесії.
+      if(reg.waiting && navigator.serviceWorker.controller) updateReady(reg.waiting);
+      reg.addEventListener('updatefound', ()=>{
+        var nw = reg.installing; if(!nw) return;
+        nw.addEventListener('statechange', ()=>{
+          if(nw.state === 'installed' && navigator.serviceWorker.controller) updateReady(nw);
+        });
+      });
+      // Стара схема: sw.js сам викликає skipWaiting() → нова версія вже активна.
       navigator.serviceWorker.addEventListener('controllerchange', ()=>{
-        // Коротка пауза щоб notify встиг показатись перед reload
-        notify(typeof t==='function' ? t('update_available') : '🔄 Neue Version – App neu laden');
-        setTimeout(()=>window.location.reload(), 1200);
+        if(_applyingUpdate) return;                    // перезапуск уже ініційований кнопкою
+        if(!_hadSwController){ _hadSwController = true; return; }   // перше встановлення
+        updateReady();
       });
     }).catch(e=>console.warn('SW:',e));
+  });
+
+  // «Відкриття застосунку»: повернулись із фону після ≥ 60 с — перевіряємо оновлення
+  // (не під час уроку) і показуємо відкладене вікно, якщо воно чекало.
+  var _hiddenAt = 0;
+  document.addEventListener('visibilitychange', ()=>{
+    if(document.visibilityState === 'hidden'){ _hiddenAt = Date.now(); return; }
+    tryShowPendingUpdate();
+    if(_hiddenAt && Date.now() - _hiddenAt > 60000 && !isLessonActive() && window._swReg){
+      try{ window._swReg.update(); }catch(e){}
+    }
   });
 }
 </script>
