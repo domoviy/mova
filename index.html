@@ -5106,7 +5106,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '854-f90755d';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6578,7 +6578,7 @@ const I18N = {
     msg_streak_broken:'Deine Serie ist abgerissen 😔 Wir starten neu — heute hast du schon den ersten Schritt gemacht!',
     streak_frozen_note:'🧊 Durch Streak-Schutz gerettet', streak_modal_close:'Verstanden',
     streak_milestone_freeze:'🎁 +1 Streak-Schutz als Belohnung!',
-    sec_sfx:'Soundeffekte', sub_sfx:'Bei richtig/falsch',
+    sec_sfx:'Soundeffekte', sub_sfx:'Bei richtig/falsch und beim Abschluss von Lektion, Modul und Kapitel',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
     grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch',
     course_loading:'Kurs wird geladen: {course}', course_active:'{course} ist jetzt aktiv', course_error:'Kurs konnte nicht geladen werden',
@@ -6743,7 +6743,7 @@ const I18N = {
     msg_streak_broken:'Стрік перервався 😔 Починаємо занову — але сьогодні ти вже зробив перший крок!',
     streak_frozen_note:'🧊 Врятовано заморозкою', streak_modal_close:'Зрозуміло',
     streak_milestone_freeze:'🎁 +1 заморозка в нагороду!',
-    sec_sfx:'Звукові ефекти', sub_sfx:'При правильній/неправильній відповіді',
+    sec_sfx:'Звукові ефекти', sub_sfx:'При відповідях та завершенні уроку, модуля, розділу',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
     grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне',
     course_loading:'Завантажуємо курс: {course}', course_active:'Курс «{course}» активний', course_error:'Не вдалося завантажити курс',
@@ -6903,7 +6903,7 @@ const I18N = {
     msg_streak_broken:'Your streak broke 😔 Starting fresh — but you already took the first step today!',
     streak_frozen_note:'🧊 Saved by a freeze', streak_modal_close:'Got it',
     streak_milestone_freeze:'🎁 +1 streak freeze as a reward!',
-    sec_sfx:'Sound effects', sub_sfx:'On correct/wrong answers',
+    sec_sfx:'Sound effects', sub_sfx:'On answers and when you finish a lesson, module or chapter',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
     grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical',
     course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
@@ -7064,7 +7064,7 @@ const I18N = {
     msg_streak_broken:'Стрик прервался 😔 Начинаем заново — но сегодня ты уже сделал первый шаг!',
     streak_frozen_note:'🧊 Спасено заморозкой', streak_modal_close:'Понятно',
     streak_milestone_freeze:'🎁 +1 заморозка в награду!',
-    sec_sfx:'Звуковые эффекты', sub_sfx:'При правильном/неправильном ответе',
+    sec_sfx:'Звуковые эффекты', sub_sfx:'При ответах и завершении урока, модуля, раздела',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
     grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое',
     course_loading:'Загружаем курс: {course}', course_active:'Курс «{course}» активен', course_error:'Не удалось загрузить курс',
@@ -9157,6 +9157,60 @@ const sfx = {
       // й так нервують перед іспитом, тут не потрібен "звук помилки"
       // зі шкільного тесту).
       _sfxTone(ctx, 196, t, 0.18, 'triangle', 0.13);
+    });
+  },
+  // ── Святкові звуки для анімацій завершення ────────────────────────
+  // Той самий мотив (висхідне арпеджіо до-мажор), але три масштаби:
+  // урок (~1 с) < модуль (~1,6 с) < розділ/глава (~2,6 с, з «іскорками»).
+  // Синтез, без файлів — як і success/error (offline-first). Старт трохи
+  // зсунуто (+0.05 с), щоб не збігатися з haptic/pop-in у першому кадрі.
+  lesson(){
+    if(!sfxEnabled()) return;
+    _sfxPlay(function(ctx){
+      const t = ctx.currentTime + 0.05;
+      _sfxTone(ctx, 523.25,  t,      0.16, 'sine', 0.15);   // C5
+      _sfxTone(ctx, 659.25,  t+0.11, 0.16, 'sine', 0.15);   // E5
+      _sfxTone(ctx, 783.99,  t+0.22, 0.18, 'sine', 0.15);   // G5
+      _sfxTone(ctx, 1046.5,  t+0.35, 0.60, 'sine', 0.16);   // C6, довга
+      _sfxTone(ctx, 523.25,  t+0.35, 0.60, 'triangle', 0.05); // тепло знизу
+    });
+  },
+  module(){
+    if(!sfxEnabled()) return;
+    _sfxPlay(function(ctx){
+      const t = ctx.currentTime + 0.05;
+      _sfxTone(ctx, 523.25,  t,      0.15, 'sine', 0.14);   // C5
+      _sfxTone(ctx, 659.25,  t+0.10, 0.15, 'sine', 0.14);   // E5
+      _sfxTone(ctx, 783.99,  t+0.20, 0.15, 'sine', 0.14);   // G5
+      _sfxTone(ctx, 1046.5,  t+0.30, 0.17, 'sine', 0.14);   // C6
+      // фінальний акорд C-E-G-C, тримається
+      const c = t + 0.45;
+      _sfxTone(ctx, 523.25,  c, 1.00, 'sine',     0.08);
+      _sfxTone(ctx, 659.25,  c, 1.00, 'sine',     0.07);
+      _sfxTone(ctx, 783.99,  c, 1.00, 'sine',     0.07);
+      _sfxTone(ctx, 1046.5,  c, 1.00, 'sine',     0.07);
+      _sfxTone(ctx, 261.63,  c, 1.00, 'triangle', 0.06);   // C4 — основа
+    });
+  },
+  chapter(){
+    if(!sfxEnabled()) return;
+    _sfxPlay(function(ctx){
+      const t = ctx.currentTime + 0.05;
+      // швидкий підйом G4 C5 E5 G5 C6
+      [392.00, 523.25, 659.25, 783.99, 1046.5].forEach(function(f, i){
+        _sfxTone(ctx, f, t + i*0.09, 0.14, 'sine', 0.13);
+      });
+      // великий акорд C-E-G-C-E з низькою основою
+      const c = t + 0.55;
+      [523.25, 659.25, 783.99, 1046.5, 1318.51].forEach(function(f){
+        _sfxTone(ctx, f, c, 1.70, 'sine', 0.06);
+      });
+      _sfxTone(ctx, 261.63, c, 1.70, 'triangle', 0.08);      // C4
+      _sfxTone(ctx, 130.81, c, 1.70, 'triangle', 0.06);      // C3
+      // «іскорки» зверху: E6 G6 C7
+      [1318.51, 1567.98, 2093.0].forEach(function(f, i){
+        _sfxTone(ctx, f, c + 0.10 + i*0.16, 0.28, 'sine', 0.05);
+      });
     });
   },
 };
@@ -14872,6 +14926,7 @@ function showChapterCelebration(opts, onDone){
   clearTimeout(el._ccTimer);
   el._ccTimer = setTimeout(_dismissChapterCelebration, 4400);
   if(typeof haptic !== 'undefined') haptic.success();
+  try{ sfx.chapter(); }catch(e){}    // звук завершення розділу (глави)
 }
 
 function _dismissChapterCelebration(){
@@ -14944,6 +14999,7 @@ function showModuleCelebration(opts, onDone){
   clearTimeout(el._mcTimer);
   el._mcTimer = setTimeout(_dismissModuleCelebration, 3600);
   if(typeof haptic !== 'undefined') haptic.success();
+  try{ sfx.module(); }catch(e){}     // звук завершення модуля
 }
 
 function _dismissModuleCelebration(){
@@ -14989,6 +15045,7 @@ function showLessonCelebration(opts){
   opts = opts || {};
   const el = document.getElementById('lesson-result');
   if(!el) return;
+  try{ sfx.lesson(); }catch(e){}     // звук завершення уроку (разом з pop-in іконки)
 
   // Перезапускаємо pop-in іконки навіть якщо елемент лишився в DOM з
   // попереднього уроку (той самий reflow-прийом, що й у вогні стріку).
