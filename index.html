@@ -150,7 +150,7 @@
       hide(); sync();
       window.dispatchEvent(new CustomEvent('mova-consent', {detail:{analytics: !!v}}));
     },
-    show: show, sync: sync,
+    show: show, maybeShow: maybeShow, sync: sync,
     refresh: function(){ var d = document.getElementById('consent-banner'); if(d) fill(d); }
   };
   window.openPrivacyPolicy = function(){
@@ -161,8 +161,13 @@
     var m = lang();
     window.open('impressum.html?lang=' + m, '_blank', 'noopener');
   };
-  // Банер лише там, де аналітика взагалі можлива (https) і рішення ще не ухвалене
-  function init(){ if(location.protocol === 'https:' && window.mConsent.analytics() === null) show(); sync(); }
+  // Банер лише там, де аналітика взагалі можлива (https), рішення ще не ухвалене і
+  // мову інтерфейсу вже обрано. На першому екрані (вибір мови) банер перекривав би
+  // кнопки мов, а текст міг бути незрозумілою мовою. Нові користувачі бачать його
+  // одразу після вибору мови (selectOnboardLang → maybeShow), решта — при запуску.
+  function langChosen(){ try{ return !!localStorage.getItem('mova_ui_lang'); }catch(e){ return false; } }
+  function maybeShow(){ if(location.protocol === 'https:' && read() === null && langChosen()) show(); }
+  function init(){ maybeShow(); sync(); }
   if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init); else init();
 })();
 </script>
@@ -5112,7 +5117,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '858-10b6e18';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -15253,6 +15258,9 @@ function selectOnboardLang(lang){ unlockAudioCtx();
         cob.style.display = 'flex';
         window.mlog?.('onboarding_step', {step:'course', action:'shown'});
       }
+      // Банер згоди — вже обраною мовою (на екрані вибору мови він перекривав би кнопки мов).
+      // Події з екрана мови до рішення лише копляться в пам'яті й підуть у GA4 після згоди.
+      setTimeout(function(){ window.mConsent?.maybeShow?.(); }, 500);
     }, 380);
   }
 }
