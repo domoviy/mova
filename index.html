@@ -3559,6 +3559,10 @@ body{
   font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
 }
 .locked-modal-cta:active{opacity:.85;}
+.locked-modal-cta-secondary{
+  background:transparent;color:var(--ink);
+  border:1.5px solid var(--border);margin-top:10px;
+}
 
 /* Модалка "Стрік і заморозки" — той самий bottom-sheet принцип, що й
    .locked-modal вище, окремі класи для незалежного стилювання. */
@@ -4331,7 +4335,7 @@ body{
 <div id="lesson-flow-bar">
   <div class="lf-header">
     <div class="lf-title" id="lf-title"></div>
-    <button class="lf-exit" onclick="exitLessonFlow()" title="Урок завершити"><i data-mi="cross"></i></button>
+    <button class="lf-exit" onclick="lfRequestExit()" title="Урок завершити"><i data-mi="cross"></i></button>
   </div>
   <div class="lf-steps" id="lf-steps"></div>
   <div class="lf-step-label"><span id="lf-step-name"></span></div>
@@ -5102,7 +5106,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '851-0f391be';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6598,6 +6602,9 @@ const I18N = {
     locked_modal_title:'Noch nicht so weit',
     locked_modal_body:'Schließe zuerst den vorherigen Schritt ab — darauf baut dieser hier auf. Das ist kein Hindernis, sondern Teil des Wegs zu flüssigem Deutsch: Jede abgeschlossene Lektion bringt dich schneller ans Ziel als jeder Sprung nach vorn.',
     locked_modal_cta:'Verstanden',
+    lf_exit_title:'Möchtest du die Lektion wirklich verlassen?',
+    lf_exit_body_one:'Es bleibt nur noch {n} Schritt übrig', lf_exit_body_few:'Es bleiben nur noch {n} Schritte übrig', lf_exit_body_many:'Es bleiben nur noch {n} Schritte übrig',
+    lf_exit_continue:'Lektion fortsetzen', lf_exit_finish:'Lektion beenden',
     
     hint_srs:'↑ Nicht kennen · ↓ Kennen · ← Weiter · → Zurück',
     hint_srs_lesson:'↑ Nicht kennen · ↓ Kennen',
@@ -6756,6 +6763,9 @@ const I18N = {
     locked_modal_title:'Ще зарано',
     locked_modal_body:'Спершу завершіть попередній крок — матеріал тут на ньому й будується. Це не перешкода, а частина шляху до вільної німецької: кожен пройдений урок наближає вас до мети швидше, ніж будь-який стрибок наперед.',
     locked_modal_cta:'Зрозуміло',
+    lf_exit_title:'Ви точно хочете вийти з уроку?',
+    lf_exit_body_one:'Залишився всього {n} крок', lf_exit_body_few:'Залишилося всього {n} кроки', lf_exit_body_many:'Залишилося всього {n} кроків',
+    lf_exit_continue:'Продовжити урок', lf_exit_finish:'Завершити урок',
     
     hint_srs:'↑ Не знаю · ↓ Знаю · ← Далі · → Назад',
     hint_srs_lesson:'↑ Не знаю · ↓ Знаю',
@@ -6913,6 +6923,9 @@ const I18N = {
     locked_modal_title:'Not yet',
     locked_modal_body:'Finish the previous step first — this one builds directly on it. It\'s not a roadblock, it\'s part of the path to fluent German: every completed lesson gets you there faster than skipping ahead ever could.',
     locked_modal_cta:'Got it',
+    lf_exit_title:'Are you sure you want to leave the lesson?',
+    lf_exit_body_one:'Only {n} step left', lf_exit_body_few:'Only {n} steps left', lf_exit_body_many:'Only {n} steps left',
+    lf_exit_continue:'Continue lesson', lf_exit_finish:'End lesson',
     
     hint_srs:'↑ Don\'t know · ↓ Know · ← Next · → Back',
     hint_srs_lesson:'↑ Don\'t know · ↓ Know',
@@ -7071,6 +7084,9 @@ const I18N = {
     locked_modal_title:'Ещё рано',
     locked_modal_body:'Сначала завершите предыдущий шаг — этот урок строится именно на нём. Это не преграда, а часть пути к свободному немецкому: каждый пройденный урок приближает вас к цели быстрее, чем любой прыжок вперёд.',
     locked_modal_cta:'Понятно',
+    lf_exit_title:'Вы точно хотите выйти из урока?',
+    lf_exit_body_one:'Остался всего {n} шаг', lf_exit_body_few:'Осталось всего {n} шага', lf_exit_body_many:'Осталось всего {n} шагов',
+    lf_exit_continue:'Продолжить урок', lf_exit_finish:'Завершить урок',
     
     hint_srs:'↑ Не знаю · ↓ Знаю · ← Далее · → Назад',
     hint_srs_lesson:'↑ Не знаю · ↓ Знаю',
@@ -16463,23 +16479,56 @@ function dtShowCard(){
   _dtFocusFirst();
 }
 
-// Перше поле активне одразу (на телефоні це відкриває клавіатуру, якщо браузер
-// дозволяє). Кілька спроб — бо панель щойно показана; плюс страховка: перший
-// дотик по панелі (жест користувача) теж ставить фокус у поле — на iOS це єдиний
-// надійний спосіб відкрити клавіатуру, якщо автофокус без жесту заблоковано.
+// Перше (порожнє) поле активне одразу.
+// 1) Автофокус: кілька спроб, бо панель щойно показана. Це відкриває клавіатуру
+//    на десктопі й там, де браузер дозволяє фокус без жесту.
+// 2) iOS (і частина мобільних браузерів) без дотику лише ставить фокус у поле, а
+//    клавіатуру НЕ показує. Раніше страховка слухала pointerdown (на iOS він не
+//    рахується жестом для клавіатури) і пропускала фокус, якщо поле вже
+//    activeElement (а воно якраз уже було «в фокусі», але без клавіатури).
+//    Тепер: перший тап (click/touchend) ПО ПАНЕЛІ поза кнопками й полем —
+//    blur() + focus() у межах жесту, і клавіатура відкривається.
 function _dtFocusFirst(){
-  const go = () => {
+  const target = () => {
+    const ins = dtState.inputs || [];
+    return ins.find(x => !x.value.trim()) || ins[0];
+  };
+  const quiet = () => {
     try{
-      const inp = dtState.inputs[0];
+      const inp = target();
       if(inp && !dtState.checked && document.activeElement !== inp) inp.focus({preventScroll:true});
     }catch(e){}
   };
-  go();
-  requestAnimationFrame(go);
-  setTimeout(go, 60);
-  setTimeout(go, 350);
+  quiet();
+  requestAnimationFrame(quiet);
+  setTimeout(quiet, 60);
+  setTimeout(quiet, 350);
+
   const panel = document.getElementById('vocab-panel-deftype');
-  if(panel) panel.addEventListener('pointerdown', go, {once:true});
+  if(!panel) return;
+  if(panel._dtKick){            // не накопичуємо слухачів між картками
+    panel.removeEventListener('click', panel._dtKick, true);
+    panel.removeEventListener('touchend', panel._dtKick, true);
+  }
+  const stop = () => {
+    panel.removeEventListener('click', kick, true);
+    panel.removeEventListener('touchend', kick, true);
+    panel._dtKick = null;
+  };
+  const kick = (e) => {
+    if(dtState.checked) return;
+    const tg = e.target;
+    if(tg && tg.closest && tg.closest('button, a, input')) return;   // кнопки (ä ö ü, «Перевірити», ✕) й саме поле не чіпаємо
+    const vv = window.visualViewport;
+    if(vv && (window.innerHeight - vv.height) > 120){ stop(); return; } // клавіатура вже відкрита
+    const inp = target();
+    if(!inp){ stop(); return; }
+    try{ inp.blur(); inp.focus({preventScroll:true}); }catch(_){}
+    stop();
+  };
+  panel._dtKick = kick;
+  panel.addEventListener('click', kick, true);
+  panel.addEventListener('touchend', kick, true);
 }
 
 function dtUpdateCheckBtn(){
@@ -21332,6 +21381,77 @@ function closeInfoModal(){
   if(el) el.remove();
 }
 
+// Подія lesson_abandon (спільна для виходу через меню та через «Завершити урок»
+// у модалці підтвердження). Логується лише якщо урок ще не зараховано.
+function lfLogAbandon(){
+  if(!LF) return;
+  if(!LF._recorded && typeof window.mlog === 'function'){
+    window.mlog('lesson_abandon', {
+      course:      (typeof activeCourse !== 'undefined' && activeCourse) ? activeCourse.id : '',
+      chapter:     LF.lesson.chapter || 0,
+      module:      LF.lesson.module || 0,
+      lesson_id:   LF._bonusForLessonId || LF.lessonId || LF.lesson.id || '',
+      duration_sec: Math.round((Date.now() - LF.startTime) / 1000),
+      // На ЯКОМУ кроці (vocab-картки/граматика/matching/dlg_learn/tiles/
+      // sb_prac...) саме покинули урок — головне, чого не вистачало в
+      // самій лише події без цього параметра: "покинули" й "на чому
+      // саме застрягли" — це різні питання для продукту.
+      step:        LF.steps && LF.steps[LF.step] || '',
+      step_index:  LF.step || 0,
+      step_total:  LF.steps ? LF.steps.length : 0,
+    });
+  }
+}
+
+// ── Підтвердження виходу з уроку по «✕» ─────────────────────────
+// Якщо урок уже завершено (екран результату) — виходимо без питань.
+function lfRequestExit(){
+  if(!LF || LF._recorded || LF.steps[LF.step] === 'result'){ exitLessonFlow(); return; }
+  var total = LF.steps.filter(function(x){ return x !== 'result'; }).length;
+  showLessonExitModal(Math.max(1, total - LF.step));
+}
+
+// «Залишилося N кроків» з правильним відмінюванням (uk/ru: 1 / 2-4 / 5+)
+function _lfStepsLeftText(n){
+  var m10 = n % 10, m100 = n % 100, cat = 'many';
+  if(uiLang === 'uk' || uiLang === 'ru'){
+    if(m10 === 1 && m100 !== 11) cat = 'one';
+    else if(m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) cat = 'few';
+  } else if(n === 1){ cat = 'one'; }
+  return t('lf_exit_body_' + cat).replace('{n}', n);
+}
+
+function showLessonExitModal(left){
+  closeLessonExitModal();
+  var overlay = document.createElement('div');
+  overlay.id = 'lf-exit-modal-overlay';
+  overlay.className = 'locked-modal-overlay';
+  // тап по затемненню = «Продовжити урок» (випадково не вийти)
+  overlay.onclick = function(e){ if(e.target === overlay) closeLessonExitModal(); };
+  overlay.innerHTML =
+    '<div class="locked-modal" role="dialog" aria-modal="true">' +
+      '<div class="locked-modal-icon">'+movaIcon('cap')+'</div>' +
+      '<div class="locked-modal-title">'+t('lf_exit_title')+'</div>' +
+      '<div class="locked-modal-body">'+_lfStepsLeftText(left)+'</div>' +
+      '<button class="locked-modal-cta" onclick="closeLessonExitModal()">'+t('lf_exit_continue')+'</button>' +
+      '<button class="locked-modal-cta locked-modal-cta-secondary" onclick="lfConfirmExit()">'+t('lf_exit_finish')+'</button>' +
+    '</div>';
+  document.body.appendChild(overlay);
+  haptic.light();
+}
+
+function closeLessonExitModal(){
+  var el = document.getElementById('lf-exit-modal-overlay');
+  if(el) el.remove();
+}
+
+function lfConfirmExit(){
+  closeLessonExitModal();
+  lfLogAbandon();      // достроковий вихід — рахуємо як lesson_abandon
+  exitLessonFlow();
+}
+
+
 // Повноекранний рідер повного правила (GRAMMAR[].rule) — окремий шар
 // поверх усього (не bottom-sheet): довгий структурований текст з
 // нумерованими розділами читається набагато комфортніше на весь екран,
@@ -23475,22 +23595,7 @@ function abandonLessonFlow(){
   // lfShowResult() ще НЕ зарахував його (LF._recorded), інакше це не
   // покидання уроку, а звичайна навігація вже ПІСЛЯ завершення
   // (екран результату сам собою теж проходить через цю функцію).
-  if(!LF._recorded && typeof window.mlog === 'function'){
-    window.mlog('lesson_abandon', {
-      course:      (typeof activeCourse !== 'undefined' && activeCourse) ? activeCourse.id : '',
-      chapter:     LF.lesson.chapter || 0,
-      module:      LF.lesson.module || 0,
-      lesson_id:   LF._bonusForLessonId || LF.lessonId || LF.lesson.id || '',
-      duration_sec: Math.round((Date.now() - LF.startTime) / 1000),
-      // На ЯКОМУ кроці (vocab-картки/граматика/matching/dlg_learn/tiles/
-      // sb_prac...) саме покинули урок — головне, чого не вистачало в
-      // самій лише події без цього параметра: "покинули" й "на чому
-      // саме застрягли" — це різні питання для продукту.
-      step:        LF.steps && LF.steps[LF.step] || '',
-      step_index:  LF.step || 0,
-      step_total:  LF.steps ? LF.steps.length : 0,
-    });
-  }
+  lfLogAbandon();
   stopVocab();
   sbStopPlay();
   // Якщо вихід посеред уроку — розморожуємо хедер негайно (інакше
@@ -24357,7 +24462,7 @@ function _storyLeaveLessonChrome(){
     bar.classList.remove('active');
     // Повертаємо «✕» звичайним урокам (тут ми його перевизначали)
     var exitBtn = bar.querySelector('.lf-exit');
-    if(exitBtn) exitBtn.onclick = function(){ exitLessonFlow(); };
+    if(exitBtn) exitBtn.onclick = function(){ lfRequestExit(); };
   }
   document.documentElement.style.setProperty('--lf-bar-h','0px');
   var dlgTop = document.querySelector('#view-dialogue .vocab-top');
