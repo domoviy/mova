@@ -5106,7 +5106,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '853-8d34946';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -16002,6 +16002,12 @@ function tilesRevealResultBtn(){
   var btn = document.getElementById('tiles-result-action');
   if(btn) btn.style.visibility = 'visible';
 }
+// Перерва системи (сповіщення про заряд, дзвінок, Siri) обриває озвучення БЕЗ події
+// 'ended'/'error' → onEnd не викликається, і кнопка модалки лишалась прихованою назавжди.
+// Після повернення в застосунок показуємо її в будь-якому разі.
+document.addEventListener('visibilitychange', function(){ if(document.visibilityState === 'visible') tilesRevealResultBtn(); });
+window.addEventListener('pageshow', tilesRevealResultBtn);
+window.addEventListener('focus', tilesRevealResultBtn);
 
 // ── DEF FILL-IN (tab 6) ───────────────────────────────────────
 // Показує речення з def[primaryLang()] з пропуском замість слів у <b>...</b>
@@ -18116,11 +18122,26 @@ function spShowResultModal(target, heardText, pct, isOk){
   // Остання фраза в уроці: «Завершити» вимикає мікрофон, тож з'являється лише коли
   // "промивання" звуку завершилось (так само, як у spLessonShowFinish).
   if(lessonLast){
-    const tok = _spTok;
-    Promise.race([ _spRestoreP || Promise.resolve(), new Promise(r => setTimeout(r, 4000)) ]).then(() => {
-      if(tok !== _spTok || !_spActive) return;
-      const b = document.getElementById('sp-modal-next'); if(b) b.style.visibility = '';
-    });
+    // Кнопку тримаємо прихованою, поки "промивання" звуку не завершиться (макс. 4 с).
+    // Раніше показ залежав від _spTok/_spActive: перерва системи (сповіщення про заряд,
+    // дзвінок) викликає visibilitychange/pagehide → spCleanup() → _spTok++, і кнопка
+    // лишалась прихованою НАЗАВЖДИ. Тепер орієнтуємось на саму кнопку: є в DOM — показуємо.
+    const nb = document.getElementById('sp-modal-next');
+    const reveal = () => { if(nb && nb.isConnected) nb.style.visibility = ''; };
+    Promise.race([ _spRestoreP || Promise.resolve(), new Promise(r => setTimeout(r, 4000)) ]).then(reveal, reveal);
+    setTimeout(reveal, 6000);                       // абсолютний запобіжник
+    const onBack = () => {
+      if(!nb || !nb.isConnected){                   // модалку закрито — прибираємо слухачів
+        document.removeEventListener('visibilitychange', onBack);
+        window.removeEventListener('pageshow', onBack);
+        window.removeEventListener('focus', onBack);
+        return;
+      }
+      if(document.visibilityState === 'visible') reveal();   // повернулись після перерви
+    };
+    document.addEventListener('visibilitychange', onBack);
+    window.addEventListener('pageshow', onBack);
+    window.addEventListener('focus', onBack);
   }
 }
 
@@ -18145,9 +18166,13 @@ function spRetry(){
 // "промивання" останньої фрази вже завершилось: клік вимикає мікрофон, і обривати ремонт звуку не можна.
 function spLessonShowFinish(){
   if(!spState.lesson) return;
-  const tok = _spTok;
+  // Не прив'язуємось до _spTok: його збільшує й spCleanup() при ПЕРЕРВІ системи
+  // (visibilitychange/pagehide), і тоді «Завершити» не з'являлась ніколи. Натомість
+  // перевіряємо, що користувач не пішов далі / не натиснув «ще раз» (індекс і лічильник).
+  const idx0 = spState.idx, tot0 = spState.totalCount;
   Promise.race([ _spRestoreP || Promise.resolve(), new Promise(r => setTimeout(r, 4000)) ]).then(() => {
-    if(!_spActive || !spState.lesson || tok !== _spTok) return;    // за цей час натиснули «ще раз»/вийшли
+    if(!_spActive || !spState.lesson) return;
+    if(spState.idx !== idx0 || spState.totalCount !== tot0) return;    // за цей час натиснули «ще раз»/вийшли
     if(document.getElementById('lf-next-row')) return;
     const row = document.createElement('div');
     row.id = 'lf-next-row'; row.className = 'lf-next-row';
@@ -18165,7 +18190,7 @@ function spLessonFinish(){
   const _solo = !!(LF && LF.solo);
   const _snap = { correctCount: spState.correctCount, totalCount: spState.totalCount };
   if(LF) LF._speechStats = { correct: spState.correctCount, total: spState.totalCount };   // для екрана результату
-  spExit();                                   // мікрофон вимкнено (spShutdownMic)
+  try{ spExit(); }catch(e){ try{ spL('finish: spExit error ' + (e && e.message)); }catch(_){} }   // мікрофон вимкнено (spShutdownMic); збій не блокує перехід далі
   if(_solo){ spState = Object.assign({}, spState, _snap); spSoloFinish(); return; }
   if(LF){ LF.results.speech = score; lfNextStep(); }
 }
