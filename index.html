@@ -383,19 +383,46 @@ if(location.protocol === 'https:'){
   window.cloudInit = ensureCloud;
   if(localStorage.getItem(CLOUD_FLAG) === '1') ensureCloud().catch(e => console.warn('Cloud init failed:', e));
 
+  // Зрозумілі повідомлення замість англійських «Firebase: Error (auth/...)»
+  function _cloudErrText(e){
+    const code = (e && e.code) || '';
+    const map = {
+      'auth/password-does-not-meet-requirements': 'Пароль занадто слабкий: мінімум 8 символів, велика й мала літери, цифра та спецсимвол',
+      'auth/weak-password': 'Пароль занадто слабкий',
+      'auth/email-already-in-use': 'Акаунт з таким email уже існує — спробуйте увійти або скинути пароль',
+      'auth/invalid-email': 'Некоректний email',
+      'auth/invalid-credential': 'Невірний email або пароль',
+      'auth/wrong-password': 'Невірний email або пароль',
+      'auth/user-not-found': 'Невірний email або пароль',
+      'auth/too-many-requests': 'Забагато спроб — спробуйте пізніше',
+      'auth/network-request-failed': 'Немає з’єднання з інтернетом'
+    };
+    return map[code] || (e && (e.message || e.code)) || String(e);
+  }
   window.cloudSignUp = async (email, password) => {
     try{
       const c = await ensureCloud();
       await c.A.createUserWithEmailAndPassword(c.auth, email, password);
       window.notify?.('✅ Акаунт створено');
-    }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+    }catch(e){ window.notify?.('⚠️ '+_cloudErrText(e)); }
   };
   window.cloudSignIn = async (email, password) => {
     try{
       const c = await ensureCloud();
       await c.A.signInWithEmailAndPassword(c.auth, email, password);
       window.notify?.('✅ Увійшли');
-    }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+    }catch(e){ window.notify?.('⚠️ '+_cloudErrText(e)); }
+  };
+  // Скидання пароля. Лист приходить мовою інтерфейсу застосунку (de/uk/en/ru):
+  // Firebase бере шаблон за auth.languageCode. Через Email enumeration protection
+  // відповідь однакова, чи існує акаунт, чи ні — це навмисно.
+  window.cloudResetPassword = async (email) => {
+    try{
+      const c = await ensureCloud();
+      try{ const l = localStorage.getItem('mova_ui_lang'); if(l) c.auth.languageCode = l; }catch(_){}
+      await c.A.sendPasswordResetEmail(c.auth, email);
+      window.notify?.('📧 Якщо акаунт з таким email існує, ми надіслали лист для скидання пароля. Перевірте також «Спам»');
+    }catch(e){ window.notify?.('⚠️ '+_cloudErrText(e)); }
   };
   window.cloudSignOut = async () => {
     try{ const c = await ensureCloud(); await c.A.signOut(c.auth); window.notify?.('👋 Вийшли'); }
@@ -5054,12 +5081,13 @@ body{
       <div id="cloud-auth-form" style="display:flex;flex-direction:column;gap:6px">
         <input type="email" id="cloud-email" placeholder="Email" autocomplete="email"
           style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
-        <input type="password" id="cloud-password" placeholder="Пароль (мін. 6 символів)" autocomplete="current-password"
+        <input type="password" id="cloud-password" placeholder="Пароль (мін. 8: великі й малі літери, цифра, спецсимвол)" autocomplete="current-password"
           style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
         <div style="display:flex;gap:6px">
           <button class="btn btn-s" style="flex:1" onclick="debugCloudSignUp()">Зареєструватись</button>
           <button class="btn btn-s" style="flex:1" onclick="debugCloudSignIn()">Увійти</button>
         </div>
+        <button class="btn btn-s" style="font-size:12px" onclick="debugCloudReset()">Забули пароль?</button>
       </div>
       <div id="cloud-signed-in-actions" style="display:none;flex-direction:column;gap:6px">
         <div style="display:flex;gap:6px">
@@ -5164,7 +5192,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '864-0c4d554';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -19016,7 +19044,7 @@ function debugCloudSignUp(){
   const email = document.getElementById('cloud-email')?.value.trim();
   const pw    = document.getElementById('cloud-password')?.value;
   if(!email || !pw){ notify('⚠️ Введіть email і пароль'); return; }
-  if(pw.length < 6){ notify('⚠️ Пароль — мінімум 6 символів'); return; }
+  if(pw.length < 8){ notify('⚠️ Пароль — мінімум 8 символів'); return; }
   window.cloudSignUp?.(email, pw);
 }
 function debugCloudSignIn(){
@@ -19024,6 +19052,11 @@ function debugCloudSignIn(){
   const pw    = document.getElementById('cloud-password')?.value;
   if(!email || !pw){ notify('⚠️ Введіть email і пароль'); return; }
   window.cloudSignIn?.(email, pw);
+}
+function debugCloudReset(){
+  const email = document.getElementById('cloud-email')?.value.trim();
+  if(!email){ notify('⚠️ Введіть email, на який надіслати лист для скидання пароля'); return; }
+  window.cloudResetPassword?.(email);
 }
 function debugCloudDelete(){
   if(!confirm('Видалити акаунт і хмарну копію прогресу назавжди? Локальні дані на цьому пристрої залишаться.')) return;
