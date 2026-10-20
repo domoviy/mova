@@ -2573,10 +2573,33 @@ body{
   padding:4px 12px;display:inline-block;
 }
 .lr-continue-hint{
-  font-size:12.5px;color:var(--muted);font-family:'Inter',sans-serif;
-  margin-top:2px;opacity:.7;
+  font-size:15px;font-weight:600;color:var(--warm,#44403c);font-family:'Inter',sans-serif;
+  margin-top:6px;opacity:.9;
   animation: lrFadeUp .4s ease .55s backwards;
 }
+/* ── Головний заклик до дії після уроку (A/B-варіанти формулювань) ── */
+.lr-cta{
+  width:100%;max-width:380px;margin:14px auto 0;
+  display:flex;flex-direction:column;align-items:center;gap:10px;
+  animation: lrCtaIn .45s cubic-bezier(.34,1.3,.64,1) both;
+}
+.lr-cta-msg{ font-size:19px;line-height:1.3;font-weight:800;color:var(--ink);font-family:'Inter',sans-serif; }
+.lr-cta-sub{ font-size:15px;line-height:1.45;color:var(--warm,#44403c);font-family:'Inter',sans-serif; }
+.lr-cta-btn{
+  width:100%;min-height:56px;margin-top:6px;border:none;border-radius:16px;
+  background:var(--forest,#0d2b1a);color:#fff;font-size:18px;font-weight:700;
+  font-family:'Inter',sans-serif;cursor:pointer;
+  box-shadow:0 6px 18px rgba(13,43,26,.28);
+  animation: lrCtaPulse 2.2s ease-in-out 1s infinite;
+}
+.lr-cta-btn:active{ transform:scale(.98); }
+.lr-cta-skip{
+  background:none;border:none;padding:10px 16px;font-size:15px;font-weight:600;
+  color:var(--muted);font-family:'Inter',sans-serif;cursor:pointer;
+}
+@keyframes lrCtaIn{ from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
+@keyframes lrCtaPulse{ 0%,100%{box-shadow:0 6px 18px rgba(13,43,26,.28)} 50%{box-shadow:0 6px 26px rgba(201,168,76,.55)} }
+@media (prefers-reduced-motion:reduce){ .lr-cta-btn{ animation:none; } .lr-cta{ animation:none; } }
 
 /* Вогонь на чистому CSS (без зовнішніх залежностей/мережі — раніше тут
    був Lottie з CDN, який міг просто не завантажитись при відсутній
@@ -4457,6 +4480,14 @@ body{
                хоч і рідко коли одночасні, причини). -->
           <div class="lr-streak-frozen-note" id="lr-streak-milestone-note" style="display:none"></div>
         </div>
+        <!-- Головний заклик до дії: з'являється після анімації, якщо є наступний урок
+             (текст — за A/B-варіантом, кількістю уроків за день і типом наступного уроку) -->
+        <div class="lr-cta" id="lr-cta" style="display:none">
+          <div class="lr-cta-msg" id="lr-cta-msg"></div>
+          <div class="lr-cta-sub" id="lr-cta-sub"></div>
+          <button type="button" class="lr-cta-btn" id="lr-cta-btn"></button>
+          <button type="button" class="lr-cta-skip" id="lr-cta-skip"></button>
+        </div>
         <div class="lr-continue-hint" id="lr-continue-hint" data-i18n="lr_continue_hint">Weiter geht's gleich…</div>
       </div>
 
@@ -5133,7 +5164,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '861-7921afe';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6639,6 +6670,11 @@ const I18N = {
     card_new:'✨ Neue Karte',
     update_available:'🔄 Neue Version verfügbar – App neu laden',
     upd_title:'App aktualisiert', upd_body:'Die neue Version von MOVA ist installiert. Ein Neustart aktiviert alle Verbesserungen.', upd_btn:'Neu starten',
+    cta_b_control:'Nächste Lektion', cta_b_challenge:'Herausforderung angenommen', cta_b_support:'Machen wir zusammen', cta_b_motivation:'Noch eine Lektion', cta_skip:'Nicht jetzt',
+    cta_h_challenge_1:'Die erste Lektion heute ist geschafft. Schaffst du noch eine?', cta_h_challenge_2:'Zwei Lektionen an einem Tag! Packst du die dritte?', cta_h_challenge_n:'Wow, schon die {n}. Lektion heute! Schaffst du noch eine?',
+    cta_h_support_1:'Toller Start! Lass uns zusammen noch eine Lektion machen.', cta_h_support_2:'Schon die zweite Lektion heute – weiter so! Noch eine zusammen?', cta_h_support_n:'Wow, schon die {n}. Lektion heute! Lass uns noch eine machen.',
+    cta_h_motivation_1:'Jede Lektion bringt dich näher zu sicherem Deutsch. Weiter geht’s?', cta_h_motivation_2:'Schon zwei Lektionen heute – Regelmäßigkeit zahlt sich aus! Noch eine?', cta_h_motivation_n:'Wow, die {n}. Lektion heute! So entsteht echter Fortschritt.',
+    cta_sub_vocab:'Als Nächstes: neue Wörter und Übungen zum Festigen.', cta_sub_speech:'Als Nächstes: Sprechen. Lass uns gemeinsam laut lesen! Das ist das beste Aussprachetraining.', cta_sub_dialogue:'Als Nächstes: ein Dialog. Wir üben echte Gespräche.', cta_sub_forum:'Als Nächstes: Schreiben (Forumsbeitrag) – eine typische Prüfungsaufgabe. Wir üben zusammen.', cta_sub_email:'Als Nächstes: eine E-Mail. Ein weiterer Schritt zu sicherem Schreiben.', cta_sub_quiz:'Als Nächstes: ein Quiz – wir prüfen, was schon sitzt.',
     match_title:'🔗 Begriff mit Erklärung verbinden', match_audio_title:'🔊 Klang mit Bedeutung verbinden', 
     match_perfect:'Perfekt! Alle beim ersten Versuch 🎉',
     match_good:'Gut gemacht! Weiter üben.',
@@ -6801,6 +6837,11 @@ const I18N = {
     card_new:'✨ Нова картка',
     update_available:'🔄 Доступна нова версія — перезавантажте додаток',
     upd_title:'Застосунок оновлено', upd_body:'Нова версія MOVA вже встановлена. Перезапуск активує всі покращення.', upd_btn:'Перезапустити',
+    cta_b_control:'Наступний урок', cta_b_challenge:'Приймаю виклик', cta_b_support:'Давай разом', cta_b_motivation:'Ще один урок', cta_skip:'Не зараз',
+    cta_h_challenge_1:'Перший урок за сьогодні вже є. Зможеш пройти ще один?', cta_h_challenge_2:'Два уроки за день! Спробуєш дотиснути третій?', cta_h_challenge_n:'Вау, це вже {n}-й урок сьогодні! Спробуєш ще один?',
+    cta_h_support_1:'Чудовий початок! Давай пройдемо ще один урок разом.', cta_h_support_2:'Ти вже на другому уроці — так тримати! Давай ще один?', cta_h_support_n:'Вау, це вже {n}-й урок сьогодні! Давай пройдемо ще один.',
+    cta_h_motivation_1:'Кожен урок наближає тебе до впевненої німецької. Продовжимо?', cta_h_motivation_2:'Вже два уроки сьогодні — регулярність дає результат! Ще один?', cta_h_motivation_n:'Вау, {n}-й урок сьогодні! Саме так будується справжній результат.',
+    cta_sub_vocab:'Далі — нові слова та вправи на закріплення.', cta_sub_speech:'Далі — мовлення. Давай почитаємо вголос разом! Це найкращий спосіб тренування вимови.', cta_sub_dialogue:'Далі — діалог. Потренуємо живу розмову.', cta_sub_forum:'Далі — письмо (Forumsbeitrag). Це типове завдання іспиту — потренуємось разом.', cta_sub_email:'Далі — діловий лист (E-Mail). Ще один крок до впевненого письма.', cta_sub_quiz:'Далі — квіз: перевіримо, що вже закріпилось.',
     match_title:'🔗 Поєднай термін з поясненням', match_audio_title:'🔊 Поєднай звук із значенням', 
     match_perfect:'Ідеально! Всі з першої спроби 🎉',
     match_good:'Непогано! Продовжуй повторювати.',
@@ -6962,6 +7003,11 @@ const I18N = {
     card_new:'✨ New card',
     update_available:'🔄 New version available – reload the app',
     upd_title:'App updated', upd_body:'The new version of MOVA is installed. A restart activates all improvements.', upd_btn:'Restart',
+    cta_b_control:'Next lesson', cta_b_challenge:'Challenge accepted', cta_b_support:'Let’s do it together', cta_b_motivation:'One more lesson', cta_skip:'Not now',
+    cta_h_challenge_1:'First lesson of the day done. Can you do one more?', cta_h_challenge_2:'Two lessons in one day! Can you make it three?', cta_h_challenge_n:'Wow, that’s lesson #{n} today! Can you do one more?',
+    cta_h_support_1:'Great start! Let’s do one more lesson together.', cta_h_support_2:'Already your second lesson today – keep it up! One more together?', cta_h_support_n:'Wow, that’s lesson #{n} today! Let’s do one more.',
+    cta_h_motivation_1:'Every lesson brings you closer to confident German. Keep going?', cta_h_motivation_2:'Two lessons today – consistency pays off! One more?', cta_h_motivation_n:'Wow, lesson #{n} today! This is how real progress is built.',
+    cta_sub_vocab:'Up next: new words and practice to lock them in.', cta_sub_speech:'Up next: speaking. Let’s read aloud together! It’s the best way to train pronunciation.', cta_sub_dialogue:'Up next: a dialogue. We’ll practise real conversation.', cta_sub_forum:'Up next: writing (forum post) – a typical exam task. We’ll practise it together.', cta_sub_email:'Up next: an e-mail. One more step toward confident writing.', cta_sub_quiz:'Up next: a quiz – let’s check what already sticks.',
     match_title:'🔗 Match the term with its explanation', match_audio_title:'🔊 Match the sound with its meaning', 
     match_perfect:'Perfect! All on first try 🎉',
     match_good:'Good job! Keep reviewing.',
@@ -7124,6 +7170,11 @@ const I18N = {
     card_new:'✨ Новая карточка',
     update_available:'🔄 Доступна новая версия — перезагрузите приложение',
     upd_title:'Приложение обновлено', upd_body:'Новая версия MOVA уже установлена. Перезапуск активирует все улучшения.', upd_btn:'Перезапустить',
+    cta_b_control:'Следующий урок', cta_b_challenge:'Принимаю вызов', cta_b_support:'Давай вместе', cta_b_motivation:'Ещё один урок', cta_skip:'Не сейчас',
+    cta_h_challenge_1:'Первый урок за сегодня уже есть. Сможешь пройти ещё один?', cta_h_challenge_2:'Два урока за день! Попробуешь добить третий?', cta_h_challenge_n:'Вау, это уже {n}-й урок сегодня! Попробуешь ещё один?',
+    cta_h_support_1:'Отличное начало! Давай пройдём ещё один урок вместе.', cta_h_support_2:'Ты уже на втором уроке — так держать! Давай ещё один?', cta_h_support_n:'Вау, это уже {n}-й урок сегодня! Давай пройдём ещё один.',
+    cta_h_motivation_1:'Каждый урок приближает тебя к уверенному немецкому. Продолжим?', cta_h_motivation_2:'Уже два урока сегодня — регулярность даёт результат! Ещё один?', cta_h_motivation_n:'Вау, {n}-й урок сегодня! Так строится настоящий результат.',
+    cta_sub_vocab:'Дальше — новые слова и упражнения на закрепление.', cta_sub_speech:'Дальше — речь. Давай почитаем вслух вместе! Это лучший способ тренировки произношения.', cta_sub_dialogue:'Дальше — диалог. Потренируем живую беседу.', cta_sub_forum:'Дальше — письмо (Forumsbeitrag). Это типичное задание экзамена — потренируемся вместе.', cta_sub_email:'Дальше — деловое письмо (E-Mail). Ещё один шаг к уверенному письму.', cta_sub_quiz:'Дальше — квиз: проверим, что уже закрепилось.',
     match_title:'🔗 Соедини термин с объяснением', match_audio_title:'🔊 Соедини звук со значением', 
     match_perfect:'Идеально! Все с первой попытки 🎉',
     match_good:'Неплохо! Продолжай повторять.',
@@ -15077,6 +15128,7 @@ function showLessonCelebration(opts){
   const el = document.getElementById('lesson-result');
   if(!el) return;
   try{ sfx.lesson(); }catch(e){}     // звук завершення уроку (разом з pop-in іконки)
+  _lrCtaReset();                      // ховаємо CTA від попереднього результату
 
   // Перезапускаємо pop-in іконки навіть якщо елемент лишився в DOM з
   // попереднього уроку (той самий reflow-прийом, що й у вогні стріку).
@@ -15112,6 +15164,110 @@ function showLessonCelebration(opts){
   _lrProceedAfterStats(el, xpEarned > 0 ? 2100 : 1200);
 
   if(typeof haptic !== 'undefined') haptic.medium?.();
+}
+
+// ── Заклик до дії після уроку (A/B-тест формулювань) ─────────────────────
+// 4 гілки: control (без тексту, лише «Наступний урок»), challenge (виклик),
+// support (підтримка), motivation (мотивація). Гілка призначається ОДИН раз на
+// користувача (localStorage) і пишеться в GA4 як user property cta_variant, тож
+// по ній можна порівнювати будь-які метрики (уроків на користувача, retention).
+// Події: lesson_cta_shown / lesson_cta_click (cta_action: next | skip).
+var CTA_VARIANTS = ['control', 'challenge', 'support', 'motivation'];
+function _lrCtaVariant(){
+  var v = null;
+  try{ v = localStorage.getItem('mova_cta_variant'); }catch(e){}
+  if(CTA_VARIANTS.indexOf(v) < 0){
+    v = CTA_VARIANTS[Math.floor(Math.random() * CTA_VARIANTS.length)];
+    try{ localStorage.setItem('mova_cta_variant', v); }catch(e){}
+  }
+  if(typeof window.mprop === 'function') window.mprop('cta_variant', v);
+  return v;
+}
+try{ _lrCtaVariant(); }catch(e){}   // user property одразу для всіх подій, а не лише після першого CTA
+
+// Скільки уроків ЗАВЕРШЕНО сьогодні (читання без збільшення лічильника)
+function _mDailyCompleted(){
+  try{
+    var raw = JSON.parse(localStorage.getItem(DAILY_LESSON_COUNTS_KEY) || 'null');
+    var today = new Date().toISOString().slice(0,10);
+    return (raw && raw.date === today) ? (raw.completed || 0) : 0;
+  }catch(e){ return 0; }
+}
+
+// Тип наступного уроку для тексту: speech / dialogue / forum / email / quiz / vocab
+function _lrNodeKind(node){
+  var tp = node && node.type;
+  return (tp === 'speech' || tp === 'dialogue' || tp === 'forum' || tp === 'email' || tp === 'quiz') ? tp : 'vocab';
+}
+
+// Запуск вузла — той самий роутинг, що в renderPathNode()
+function _lrStartNode(node){
+  var id = node.id;
+  if(node.type === 'dialogue')      startModuleDialogueBonus(id);
+  else if(node.type === 'forum')    startModuleForumBonus(id);
+  else if(node.type === 'email')    startModuleEmailBonus(id);
+  else if(node.type === 'speech')   startSpeechDefLesson(id);
+  else                              startLessonFlow(id);
+}
+
+function _lrCtaReset(){
+  var c = document.getElementById('lr-cta'); if(c) c.style.display = 'none';
+  var h = document.getElementById('lr-continue-hint'); if(h) h.style.display = '';
+}
+
+// Показує CTA. Повертає true, якщо екран «тримається» й чекає на вибір користувача
+// (тоді автоповернення на шлях НЕ відбувається), false — якщо наступного уроку нема.
+function _lrOfferNext(goToPath){
+  try{
+    if(LF && LF.soloReturn) return false;
+    _lpCurrentLessonCache = undefined;                 // свіжий розрахунок «наступного» після зарахування уроку
+    var node = findCurrentLesson();
+    var box = document.getElementById('lr-cta');
+    if(!node || !box) return false;
+
+    var variant = _lrCtaVariant();
+    var kind = _lrNodeKind(node);
+    var n = _mDailyCompleted();
+    var bucket = n <= 1 ? '1' : (n === 2 ? '2' : 'n');
+    var isCtl = variant === 'control';
+
+    var msgEl = document.getElementById('lr-cta-msg');
+    var subEl = document.getElementById('lr-cta-sub');
+    var btn   = document.getElementById('lr-cta-btn');
+    var skip  = document.getElementById('lr-cta-skip');
+    msgEl.textContent = isCtl ? '' : t('cta_h_' + variant + '_' + bucket).replace('{n}', n);
+    subEl.textContent = isCtl ? '' : t('cta_sub_' + kind);
+    msgEl.style.display = isCtl ? 'none' : '';
+    subEl.style.display = isCtl ? 'none' : '';
+    btn.textContent  = t('cta_b_' + variant);
+    skip.textContent = t('cta_skip');
+
+    var hint = document.getElementById('lr-continue-hint'); if(hint) hint.style.display = 'none';
+    box.style.display = 'flex';
+    box.style.animation = 'none'; void box.offsetWidth; box.style.animation = '';   // перезапуск появи
+
+    var base = { cta_variant: variant, next_type: kind, lessons_completed_today: n };
+    if(typeof window.mlog === 'function') window.mlog('lesson_cta_shown', base);
+    if(typeof haptic !== 'undefined') haptic.light?.();
+
+    btn.onclick = function(ev){
+      ev.stopPropagation();
+      if(typeof window.mlog === 'function') window.mlog('lesson_cta_click', Object.assign({cta_action: 'next'}, base));
+      box.style.display = 'none';
+      exitLessonFlow();                                 // чисте повернення (урок уже зараховано — повторно нічого не рахує)
+      setTimeout(function(){ _lrStartNode(node); }, 0);
+    };
+    skip.onclick = function(ev){
+      ev.stopPropagation();
+      if(typeof window.mlog === 'function') window.mlog('lesson_cta_click', Object.assign({cta_action: 'skip'}, base));
+      box.style.display = 'none';
+      goToPath();
+    };
+    return true;
+  }catch(e){
+    console.warn('[cta]', e);
+    return false;
+  }
 }
 
 // Наступна стадія після того, як основна статистика встигла "прожитись":
@@ -23194,7 +23350,13 @@ function lfShowResult(){
       streakResult: streakResult,
       frozenDaysUsed: streakResult ? streakResult.frozenDaysUsed : 0,
       onDone: function(){
-        if(!_moduleJustCompleted){ goToLernpfadActivePoint(); return; }
+        if(!_moduleJustCompleted){
+          // Звичайне завершення уроку: замість мовчазного автоповернення — заклик пройти наступний.
+          // (Якщо наступного уроку нема — поведінка як раніше.) Після модуля/розділу лишається
+          // власна, більша послідовність святкувань нижче.
+          if(_lrOfferNext(goToLernpfadActivePoint)) return;
+          goToLernpfadActivePoint(); return;
+        }
         showModuleCelebration(_moduleCompletedInfo, function(){
           if(_chapterJustCompleted){
             showChapterCelebration(_chapterCompletedInfo, goToLernpfadActivePoint);
