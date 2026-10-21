@@ -9068,42 +9068,112 @@ var DIALOGE = [
   },
   {
     "id": "dlg_a22_031",
-    "cat": "Feste und Einladungen",
-    "name_q": "de_w_anna",
-    "name_a": "de_m_mark",
+    "cat": "Eine Einladung höflich ablehnen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie und ein Freund / eine Freundin haben eine Einladung zur Hochzeit einer Kollegin bekommen, können aber nicht kommen. Sie möchten die Einladung höflich ablehnen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wie sagen wir ab? (Anruf, Karte)<br>Was schreiben wir? (Bedauern, Glückwünsche)<br>Was schicken wir? (Blumen, Geschenk)",
+      "en": "You and a friend have received an invitation to a colleague's wedding but cannot come. You would like to decline the invitation politely.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>How do we decline? (phone call, card)<br>What do we write? (regret, congratulations)<br>What do we send? (flowers, present)",
+      "uk": "Ви та друг / подруга отримали запрошення на весілля колежанки, але не можете прийти. Ви хочете ввічливо відхилити запрошення.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Як ми відмовимося? (дзвінок, листівка)<br>Що ми напишемо? (жаль, вітання)<br>Що ми надішлемо? (квіти, подарунок)",
+      "ru": "Вы и друг / подруга получили приглашение на свадьбу коллеги, но не можете прийти. Вы хотите вежливо отклонить приглашение.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Как мы откажемся? (звонок, открытка)<br>Что мы напишем? (сожаление, поздравления)<br>Что мы отправим? (цветы, подарок)"
+    },
+    "name_q": "de_w_mia",
+    "name_a": "de_m_alex",
     "q": {
-      "de": "Nimmst du unsere Einladung zur Feier an?",
-      "en": "Will you accept our invitation to the celebration?",
-      "uk": "Ти приймаєш наше запрошення на святкування?",
-      "ru": "Ты принимаешь наше приглашение на торжество?",
+      "de": "Hallo Alex! Wir haben eine Einladung zur Hochzeit unserer Kollegin bekommen. Wir müssen sie leider ablehnen. Planst du das mit mir?",
+      "en": "Hi Alex! We have received an invitation to our colleague's wedding. Unfortunately we have to decline it. Will you plan it with me?",
+      "uk": "Привіт, Алексе! Ми отримали запрошення на весілля нашої колежанки. На жаль, нам доведеться його відхилити. Плануєш це зі мною?",
+      "ru": "Привет, Алекс! Мы получили приглашение на свадьбу нашей коллеги. К сожалению, нам придётся его отклонить. Планируешь это со мной?",
       "gram": ""
     },
     "a": {
-      "de": "Ja, sehr gern, ich <g>freue mich</g> schon sehr <g>darauf</g>!",
-      "en": "Yes, gladly, I am already really <g>looking forward to it</g>!",
-      "uk": "Так, залюбки, я вже дуже <g>цього чекаю</g>!",
-      "ru": "Да, с удовольствием, я уже очень <g>этого жду</g>!",
-      "gram": "praepositionalverben"
+      "de": "<r>Klar, kein Problem.</r><br><r>Ich hätte einen Vorschlag:</r> Wir rufen sie an.<br><r>Was denkst du?</r>",
+      "en": "<r>Sure, no problem.</r><br><r>I have a suggestion:</r> we call her.<br><r>What do you think?</r>",
+      "uk": "<r>Звісно, без проблем.</r><br><r>У мене є пропозиція:</r> зателефонуємо їй.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Конечно, без проблем.</r><br><r>У меня есть предложение:</r> позвоним ей.<br><r>Что ты думаешь?</r>",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Ehrlich gesagt bin ich davon nicht so überzeugt.</r> Sie ist vor der Hochzeit sehr beschäftigt.<br><r>Wir könnten es doch so machen:</r> Wir schreiben eine Karte.<br><r>Passt dir das so?</r>",
+      "en": "<r>To be honest, I'm not so convinced.</r> She is very busy before the wedding.<br><r>We could do it like this:</r> we write a card.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чесно кажучи, я не дуже в цьому впевнена.</r> Перед весіллям вона дуже зайнята.<br><r>Можна зробити так:</r> напишемо листівку.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Честно говоря, я не очень в этом убеждена.</r> Перед свадьбой она очень занята.<br><r>Можно сделать так:</r> напишем открытку.<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich schlage vor, dass</r> wir schreiben: Es tut uns sehr leid, und wir gratulieren euch.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I suggest that</r> we write: We are very sorry, and we congratulate you.<br><r>What do you think about that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб ми написали: нам дуже шкода, і ми вас вітаємо.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы мы написали: нам очень жаль, и мы вас поздравляем.<br><r>Что ты об этом скажешь?</r>",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Ich würde vorschlagen, dass</r> wir ihr Blumen schicken.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>I would suggest that</r> we send her flowers.<br><r>How do you see that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Я пропоную</r> надіслати їй квіти.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Я предлагаю</r> отправить ей цветы.<br><r>Как ты на это смотришь?</r>",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir schreiben ihr eine Karte mit Bedauern und Glückwünschen und schicken ihr Blumen. <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We write her a card with our regrets and congratulations and send her flowers. <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Пишемо їй листівку з жалем і вітаннями та надсилаємо їй квіти. <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Пишем ей открытку с сожалением и поздравлениями и отправляем ей цветы. <r>До встречи!</r>",
+      "gram": ""
     }
   },
   {
     "id": "dlg_a22_032",
-    "cat": "Feste und Einladungen",
-    "name_q": "de_w_anna",
-    "name_a": "de_m_mark",
+    "cat": "Ein Grillfest für den Verein planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Ihr Sportverein hat bald ein Jubiläum. Sie und ein Vereinsmitglied möchten ein Grillfest organisieren.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann und wo feiern wir? (Samstag, Park)<br>Was braten wir? (Würstchen, Hamburger)<br>Wie viele Portionen kaufen wir? (30, 50)",
+      "en": "Your sports club will soon have an anniversary. You and another club member would like to organise a barbecue.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When and where do we celebrate? (Saturday, park)<br>What do we grill? (sausages, burgers)<br>How many portions do we buy? (30, 50)",
+      "uk": "У вашого спортивного клубу скоро ювілей. Ви та інший член клубу хочете організувати гриль-вечірку.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли й де ми святкуємо? (субота, парк)<br>Що ми смажимо? (сосиски, гамбургери)<br>Скільки порцій ми купимо? (30, 50)",
+      "ru": "У вашего спортивного клуба скоро юбилей. Вы и другой член клуба хотите организовать гриль-вечеринку.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда и где мы празднуем? (суббота, парк)<br>Что мы жарим? (сосиски, гамбургеры)<br>Сколько порций мы купим? (30, 50)"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_nina",
     "q": {
-      "de": "Welche Traditionen gibt es bei euch zu Silvester?",
-      "en": "What traditions do you have for New Year's Eve?",
-      "uk": "Які у вас традиції на Новий рік?",
-      "ru": "Какие у вас традиции на Новый год?",
+      "de": "Hallo Nina! Unser Sportverein hat bald ein Jubiläum. Wir wollen ein Grillfest organisieren. Planst du das mit mir?",
+      "en": "Hi Nina! Our sports club will soon have an anniversary. We want to organise a barbecue. Will you plan it with me?",
+      "uk": "Привіт, Ніно! У нашого спортивного клубу скоро ювілей. Ми хочемо організувати гриль-вечірку. Плануєш це зі мною?",
+      "ru": "Привет, Нина! У нашего спортивного клуба скоро юбилей. Мы хотим организовать гриль-вечеринку. Планируешь это со мной?",
       "gram": ""
     },
     "a": {
-      "de": "Wir feiern draußen, <g>obwohl</g> es oft sehr kalt ist.",
-      "en": "We celebrate outside, <g>although</g> it is often very cold.",
-      "uk": "Ми святкуємо надворі, <g>хоча</g> часто дуже холодно.",
-      "ru": "Мы празднуем на улице, <g>хотя</g> часто очень холодно.",
-      "gram": "nebensaetze_konnektoren_wdh"
+      "de": "<r>Natürlich, gern.</r><br><r>Wie wäre es, wenn wir</r> am Samstag im Park feiern?",
+      "en": "<r>Of course, gladly.</r><br><r>How about if we</r> celebrate in the park on Saturday?",
+      "uk": "<r>Звичайно, із задоволенням.</r><br><r>Що, як ми</r> святкуватимемо в суботу в парку?",
+      "ru": "<r>Конечно, с удовольствием.</r><br><r>Как насчёт того, чтобы мы</r> будем праздновать в субботу в парке?",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Das passt mir leider nicht so gut, weil</r> man im Park nicht grillen darf.<br><r>Wir könnten es doch so machen:</r> Wir feiern auf dem Vereinsgelände.<br><r>Passt dir das so?</r>",
+      "en": "<r>That doesn't suit me so well, I'm afraid, because</r> you're not allowed to barbecue in the park.<br><r>We could do it like this:</r> we celebrate on the club grounds.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це, на жаль, не дуже підходить, тому що</r> у парку не можна смажити на грилі.<br><r>Можна зробити так:</r> святкуємо на території клубу.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это, к сожалению, не очень подходит, потому что</r> в парке нельзя жарить на гриле.<br><r>Можно сделать так:</r> празднуем на территории клуба.<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich schlage vor, dass</r> wir Würstchen und Hamburger braten.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I suggest that</r> we grill sausages and burgers.<br><r>What do you think about that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб ми смажили сосиски й гамбургери.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы мы жарили сосиски и гамбургеры.<br><r>Что ты об этом скажешь?</r>",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Ich würde vorschlagen, dass</r> wir fünfzig Portionen kaufen.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>I would suggest that</r> we buy fifty portions.<br><r>How do you see that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Я пропоную</r>, щоб ми купили п'ятдесят порцій.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Я предлагаю</r>, чтобы мы купили пятьдесят порций.<br><r>Как ты на это смотришь?</r>",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir feiern am Samstag auf dem Vereinsgelände, braten Würstchen und Hamburger und kaufen fünfzig Portionen. <r>Ich freue mich schon darauf!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We celebrate on Saturday on the club grounds, grill sausages and burgers and buy fifty portions. <r>I'm already looking forward to it!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Святкуємо в суботу на території клубу, смажимо сосиски й гамбургери та купуємо п'ятдесят порцій. <r>Я вже з нетерпінням чекаю!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Празднуем в субботу на территории клуба, жарим сосиски и гамбургеры и покупаем пятьдесят порций. <r>Я уже с нетерпением жду!</r>",
+      "gram": ""
     }
   },
   {

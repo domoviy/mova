@@ -5326,7 +5326,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '872-1e341f6';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -21810,7 +21810,7 @@ function closeGrammarModal(){
 // відкривала прихований <div> у ТОМУ Ж модальному вікні — замінено на
 // повноцінну окрему модалку за прямим запитом, для єдиної "мови"
 // взаємодії з обома кнопками (завжди книжка → завжди окреме вікно).
-function showCardExplanationModal(explText){
+function showCardExplanationModal(explText, iconName){
   if(!explText) return;
   closeCardExplanationModal();
   var overlay = document.createElement('div');
@@ -21820,7 +21820,7 @@ function showCardExplanationModal(explText){
   overlay.innerHTML =
     '<div class="grammar-modal">' +
       '<div class="grammar-modal-header">' +
-        '<span class="grammar-modal-icon">'+movaIcon('book')+'</span>' +
+        '<span class="grammar-modal-icon">'+movaIcon(iconName || 'book')+'</span>' +
         '<div class="grammar-modal-title-wrap">' +
           '<div class="grammar-modal-title">'+t('card_expl_modal_title')+'</div>' +
         '</div>' +
@@ -24037,8 +24037,32 @@ function _quizShowNextBtn(){
   btn.className = 'btn btn-lesson-sb-next';
   btn.textContent = t(isLast ? 'btn_dlg_finish' : 'btn_sb_weiter');
   btn.onclick = _quizAdvance;
+  // 💡 зліва від «Далі»: лише коли в питання є пояснення (q.expl) хоч якоюсь мовою
+  const q = quizState.questions[quizState.idx];
+  if(_quizHasExpl(q)){
+    const eb = document.createElement('button');
+    eb.className = 'lf-repeat-btn';
+    eb.innerHTML = movaIcon('bulb');
+    eb.title = t('card_expl_modal_title');
+    eb.setAttribute('aria-label', t('card_expl_modal_title'));
+    eb.onclick = function(){ _quizShowExpl(q); };
+    row.appendChild(eb);
+  }
   row.appendChild(btn);
   document.body.appendChild(row);
+}
+// Пояснення питання (q.expl = {de,en,uk,ru}): текст primary_lang + переклад мовою інтерфейсу
+// в тій самій модалці, що й пояснення карток (showCardExplanationModal), з іконкою-лампочкою.
+function _quizHasExpl(q){
+  const e = q && q.expl;
+  return !!(e && Object.keys(e).some(function(k){ return typeof e[k] === 'string' && e[k].trim(); }));
+}
+function _quizShowExpl(q){
+  const x = _quizTexts(q && q.expl);
+  if(!x.main) return;
+  const html = '<div>'+x.main+'</div>'
+    + (x.tr ? '<div style="margin-top:14px;padding-top:12px;border-top:1px solid var(--border);color:var(--muted)">'+x.tr+'</div>' : '');
+  showCardExplanationModal(html, 'bulb');
 }
 function _quizRemoveNextBtn(){
   const r = document.getElementById('lf-next-row');
