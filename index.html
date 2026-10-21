@@ -14,8 +14,8 @@
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="MOVA">
-<title>MOVA — німецька точно за програмою Integrationskurs</title>
-<meta name="description" content="Слова, граматика й діалоги — ті самі, що на інтеграційних курсах A2, B1 та B2 Beruf. Готуйся до telc з телефону: аудіо з носійною вимовою, живі діалоги, офлайн.">
+<title>MOVA — німецька для життя й роботи в Німеччині</title>
+<meta name="description" content="Слова, граматика й вправи на рівнях A2, B1 та B2 Beruf. Вчи німецьку з телефону: аудіо з носійною вимовою, живі діалоги, офлайн.">
 
 <!-- Open Graph — прев'ю посилання в месенджерах (WhatsApp, Telegram, Viber, Signal...).
      Важливо: ці теги СТАТИЧНІ — краулери месенджерів HTML не рендерять і JS не
@@ -30,8 +30,8 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="MOVA">
 <meta property="og:url" content="https://mova.now/">
-<meta property="og:title" content="MOVA — німецька точно за програмою Integrationskurs">
-<meta property="og:description" content="Слова, граматика й діалоги — ті самі, що на інтеграційних курсах A2, B1 та B2 Beruf. Готуйся до telc: аудіо з носійною вимовою, живі діалоги, офлайн — просто з телефону.">
+<meta property="og:title" content="MOVA — німецька для життя й роботи в Німеччині">
+<meta property="og:description" content="Слова, граматика й вправи на рівнях A2, B1 та B2 Beruf: аудіо з носійною вимовою, живі діалоги, офлайн — просто з телефону.">
 <meta property="og:image" content="https://mova.now/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -40,8 +40,8 @@
 <!-- Twitter Card — деякі клієнти (напр. Telegram Instant View, X) читають саме ці,
      а не og:*, тому дублюємо ті самі значення. -->
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:title" content="MOVA — німецька точно за програмою Integrationskurs">
-<meta name="twitter:description" content="Слова, граматика й діалоги — ті самі, що на інтеграційних курсах A2, B1 та B2 Beruf. Готуйся до telc: аудіо з носійною вимовою, живі діалоги, офлайн.">
+<meta name="twitter:title" content="MOVA — німецька для життя й роботи в Німеччині">
+<meta name="twitter:description" content="Слова, граматика й вправи на рівнях A2, B1 та B2 Beruf: аудіо з носійною вимовою, живі діалоги, офлайн — просто з телефону.">
 <meta name="twitter:image" content="https://mova.now/og-image.png">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -2849,6 +2849,17 @@ body{
 .ui-lang-btn.ssec-btn{font-size:var(--fs-tertiary);text-align:left;padding:14px 18px}
 .ui-lang-btn .mf{ font-size:1.3em;margin-right:12px;vertical-align:-.25em; }
 .ui-lang-btn.active{border-color:var(--gold);background:rgba(201,168,76,.12);color:var(--gold);font-weight:600}
+/* Кнопки-посилання в налаштуваннях (Політика конфіденційності, Імпресум): напис на кнопці + стрілка */
+.ssec-note{font-size:13px;line-height:1.55;color:var(--muted);margin:2px 2px 14px}
+.ssec-note b{color:var(--warm);font-weight:600}
+.ssec-link-btn{display:flex;align-items:center;width:100%;font-weight:600}
+.ssec-link-btn > span{flex:1}
+.ssec-link-btn .mi-inline{color:var(--gold)}
+.ssec-link-btn .ssec-link-chev{width:1.1em;height:1.1em;flex-shrink:0;color:var(--muted);margin:0 0 0 10px}
+.ssec-link-btn.ssec-action-btn{justify-content:center;gap:6px;white-space:nowrap}
+.ssec-link-btn.ssec-action-btn > span{flex:none}
+.ssec-action-btn #fs-default-val{color:var(--muted);font-weight:500}
+.ssec-link-btn:active{border-color:var(--gold);background:rgba(201,168,76,.12)}
 .fs-setting-val{font-weight:700;font-size:var(--fs-tertiary);color:var(--gold);min-width:36px;text-align:right}
 .fs-setting-scale{display:flex;justify-content:space-between;font-size:var(--fs-utility);color:var(--muted);margin-top:-4px}
 .sp-label{font-size:var(--fs-tertiary);letter-spacing:.8px;text-transform:uppercase}
@@ -5073,9 +5084,7 @@ body{
       <div class="fs-setting-scale">
         <span>14px</span><span>21px</span><span>28px</span>
       </div>
-      <button type="button" class="btn btn-s" style="align-self:flex-start" onclick="resetFontSize()">
-        <span data-i18n="btn_fontsize_reset">Zurücksetzen</span> <span id="fs-default-val"></span>
-      </button>
+      <button type="button" class="btn ui-lang-btn ssec-btn ssec-link-btn ssec-action-btn" onclick="resetFontSize()"><i data-mi="repeat" class="mi-inline"></i><span data-i18n="btn_fontsize_reset">Standardgröße</span><span id="fs-default-val"></span></button>
     </div>
     </div>
     </div><!-- /ГРУПА 1 -->
@@ -5149,13 +5158,10 @@ body{
         <span class="dbg-switch-track"></span>
       </label>
     </div>
-    <div class="srow">
-      <div class="srow-label"><label data-i18n="lbl_privacy_policy">Datenschutzerklärung</label></div>
-      <button class="btn btn-s" style="white-space:nowrap" onclick="window.openPrivacyPolicy&&window.openPrivacyPolicy()"><i data-mi="clipboard" class="mi-inline"></i><span data-i18n="btn_open">Öffnen</span></button>
-    </div>
-    <div class="srow">
-      <div class="srow-label"><label data-i18n="lbl_impressum">Impressum</label></div>
-      <button class="btn btn-s" style="white-space:nowrap" onclick="window.openImpressum&&window.openImpressum()"><i data-mi="clipboard" class="mi-inline"></i><span data-i18n="btn_open">Öffnen</span></button>
+    <p class="ssec-note" data-i18n-html="txt_analytics_info"></p>
+    <div style="display:flex;flex-direction:column;gap:8px;padding:4px 0 0">
+      <button type="button" class="btn ui-lang-btn ssec-btn ssec-link-btn" onclick="window.openPrivacyPolicy&&window.openPrivacyPolicy()"><i data-mi="clipboard" class="mi-inline"></i><span data-i18n="lbl_privacy_policy">Datenschutzerklärung</span><i data-mi="chevron" class="ssec-link-chev"></i></button>
+      <button type="button" class="btn ui-lang-btn ssec-btn ssec-link-btn" onclick="window.openImpressum&&window.openImpressum()"><i data-mi="info" class="mi-inline"></i><span data-i18n="lbl_impressum">Impressum</span><i data-mi="chevron" class="ssec-link-chev"></i></button>
     </div>
     </div>
     </div><!-- /ГРУПА Конфіденційність -->
@@ -5326,7 +5332,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '875-b74300b';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6905,7 +6911,7 @@ const I18N = {
     sec_fontsize:'Schriftgröße',
     lbl_fontsize_card:'Kartengröße',
     lbl_fontsize_card_sub:'Begriff, Definition, Sätze, Kacheln',
-    btn_fontsize_reset:'Zurücksetzen',
+    btn_fontsize_reset:'Standardgröße',
     quiz_score:'Ergebnis',
     
     
@@ -6924,7 +6930,7 @@ const I18N = {
     bugreport_submit:'Senden',
     bugreport_submitting:'Wird gesendet…',
     bugreport_privacy_note:'Gesendet werden: Übungskontext, Ihr Kommentar, technische Geräteinformationen und eine zufällige Installations-ID – keine Namen oder E-Mail-Adressen.',
-     grp_privacy:'Datenschutz', lbl_analytics:'Nutzungsstatistik', sub_analytics:'Google Firebase Analytics – nur mit Ihrer Einwilligung', lbl_privacy_policy:'Datenschutzerklärung', btn_open:'Öffnen', lbl_impressum:'Impressum',
+     grp_privacy:'Datenschutz', lbl_analytics:'Nutzungsstatistik', sub_analytics:'Google Firebase Analytics – nur mit Ihrer Einwilligung', txt_analytics_info:'Es handelt sich nur um Nutzungsstatistik, <b>ohne Ihren Namen oder Ihre E-Mail-Adresse</b>: gewählter Kurs, Oberflächensprache, Lektionsschritte (gestartet, abgeschlossen, abgebrochen) und Gerätetyp. Dafür nutzen wir Google Firebase Analytics: Eine zufällige Nutzer-ID sowie Geräte- und Nutzungsdaten werden an Google übertragen. Die Erfassung erfolgt nur mit Ihrer Einwilligung; die App funktioniert auch ohne sie vollständig.', lbl_privacy_policy:'Datenschutzerklärung', btn_open:'Öffnen', lbl_impressum:'Impressum',
     bugreport_notify_ok:'Danke, der Bericht wurde gesendet',
     bugreport_notify_queued:'Kein Netz — wird später gesendet',
     bugtype_translation:'Schlechte Übersetzung',
@@ -7072,7 +7078,7 @@ const I18N = {
     sec_fontsize:'Розмір шрифту',
     lbl_fontsize_card:'Розмір карток',
     lbl_fontsize_card_sub:'Термін, визначення, речення, плитки',
-    btn_fontsize_reset:'Скинути',
+    btn_fontsize_reset:'Стандартний розмір',
     quiz_score:'Результат', 
     
     sr_no_date_dashboard:'Дату не вказано',
@@ -7090,7 +7096,7 @@ const I18N = {
     bugreport_submit:'Надіслати',
     bugreport_submitting:'Надсилаємо…',
     bugreport_privacy_note:'Надсилається: контекст вправи, ваш коментар, технічна інформація про пристрій і випадковий ідентифікатор встановлення — без імен чи email.',
-     grp_privacy:'Конфіденційність', lbl_analytics:'Статистика використання', sub_analytics:'Google Firebase Analytics — лише за вашою згодою', lbl_privacy_policy:'Політика конфіденційності', btn_open:'Відкрити', lbl_impressum:'Імпресум (Impressum)',
+     grp_privacy:'Конфіденційність', lbl_analytics:'Статистика використання', sub_analytics:'Google Firebase Analytics — лише за вашою згодою', txt_analytics_info:'Це лише статистика користування, <b>без вашого імені та e-mail</b>: обраний курс, мова інтерфейсу, етапи уроків (розпочато, завершено, перервано) і тип пристрою. Для цього використовується Google Firebase Analytics: до Google передаються випадковий ідентифікатор, дані про пристрій і використання. Збір працює лише за вашою згодою, а застосунок повністю працює й без неї.', lbl_privacy_policy:'Політика конфіденційності', btn_open:'Відкрити', lbl_impressum:'Імпресум (Impressum)',
     bugreport_notify_ok:'Дякуємо, звіт надіслано',
     bugreport_notify_queued:'Мережі нема — надішлемо пізніше',
     bugtype_translation:'Поганий переклад',
@@ -7239,7 +7245,7 @@ const I18N = {
     sec_fontsize:'Font Size',
     lbl_fontsize_card:'Card size',
     lbl_fontsize_card_sub:'Term, definition, sentences, tiles',
-    btn_fontsize_reset:'Reset',
+    btn_fontsize_reset:'Default size',
     
     
     sr_no_date_dashboard:'No date set',
@@ -7257,7 +7263,7 @@ const I18N = {
     bugreport_submit:'Submit',
     bugreport_submitting:'Sending…',
     bugreport_privacy_note:'Sent: exercise context, your comment, technical device info and a random installation ID – no names or email addresses.',
-     grp_privacy:'Privacy', lbl_analytics:'Usage statistics', sub_analytics:'Google Firebase Analytics – only with your consent', lbl_privacy_policy:'Privacy policy', btn_open:'Open', lbl_impressum:'Legal notice (Impressum)',
+     grp_privacy:'Privacy', lbl_analytics:'Usage statistics', sub_analytics:'Google Firebase Analytics – only with your consent', txt_analytics_info:'This is only usage statistics, <b>without your name or e-mail address</b>: selected course, interface language, lesson steps (started, completed, abandoned) and device type. We use Google Firebase Analytics: a random user ID plus device and usage data are sent to Google. Collection happens only with your consent, and the app works fully without it.', lbl_privacy_policy:'Privacy policy', btn_open:'Open', lbl_impressum:'Legal notice (Impressum)',
     bugreport_notify_ok:'Thanks, your report was sent',
     bugreport_notify_queued:'No network — we\'ll send it later',
     bugtype_translation:'Bad translation',
@@ -7405,7 +7411,7 @@ const I18N = {
     sec_fontsize:'Размер шрифта',
     lbl_fontsize_card:'Размер карточек',
     lbl_fontsize_card_sub:'Термин, определение, предложения, плитки',
-    btn_fontsize_reset:'Сбросить',
+    btn_fontsize_reset:'Стандартный размер',
     
     
     sr_no_date_dashboard:'Дата не указана',
@@ -7423,7 +7429,7 @@ const I18N = {
     bugreport_submit:'Отправить',
     bugreport_submitting:'Отправляем…',
     bugreport_privacy_note:'Отправляется: контекст упражнения, ваш комментарий, техническая информация об устройстве и случайный идентификатор установки — без имён и email.',
-     grp_privacy:'Конфиденциальность', lbl_analytics:'Статистика использования', sub_analytics:'Google Firebase Analytics — только с вашего согласия', lbl_privacy_policy:'Политика конфиденциальности', btn_open:'Открыть', lbl_impressum:'Импрессум (Impressum)',
+     grp_privacy:'Конфиденциальность', lbl_analytics:'Статистика использования', sub_analytics:'Google Firebase Analytics — только с вашего согласия', txt_analytics_info:'Это только статистика использования, <b>без вашего имени и e-mail</b>: выбранный курс, язык интерфейса, этапы уроков (начато, завершено, прервано) и тип устройства. Для этого используется Google Firebase Analytics: в Google передаются случайный идентификатор, данные об устройстве и использовании. Сбор работает только с вашего согласия, а приложение полностью работает и без него.', lbl_privacy_policy:'Политика конфиденциальности', btn_open:'Открыть', lbl_impressum:'Импрессум (Impressum)',
     bugreport_notify_ok:'Спасибо, отчёт отправлен',
     bugreport_notify_queued:'Нет сети — отправим позже',
     bugtype_translation:'Плохой перевод',
@@ -7544,6 +7550,8 @@ function applyI18n(){
     if(/[\u2605\u2606]/.test(_v) && !/</.test(_v)) el.innerHTML = _iconizeText(_v);
     else el.textContent = _v;
   });
+  // Тексти з розміткою (<b>) — окремим атрибутом data-i18n-html (рядки лише наші, не користувацькі)
+  document.querySelectorAll('[data-i18n-html]').forEach(el=>{ el.innerHTML = t(el.dataset.i18nHtml); });
   // Атрибут title (підказка при наведенні) — той самий принцип,
   // окремим data-i18n-title, бо data-i18n змінює лише textContent.
   document.querySelectorAll('[data-i18n-title]').forEach(el=>{
