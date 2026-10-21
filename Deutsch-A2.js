@@ -3199,6 +3199,7 @@ var LESSONS = [
     "unlockAfter": "k12m4",
     "sbCards": [],
     "dlgCards": [
+      "dlg_a22_017",
       "dlg_081"
     ]
   },
@@ -3238,10 +3239,7 @@ var LESSONS = [
     "unlockAfter": "k13m1",
     "sbCards": [],
     "dlgCards": [
-      "dlg_a22_017",
       "dlg_a22_018",
-      "dlg_a22_019",
-      "dlg_a22_020",
       "dlg_082"
     ]
   },
@@ -3281,6 +3279,7 @@ var LESSONS = [
     "unlockAfter": "k13m2",
     "sbCards": [],
     "dlgCards": [
+      "dlg_a22_019",
       "dlg_083"
     ]
   },
@@ -3426,6 +3425,7 @@ var LESSONS = [
     "unlockAfter": "k13m3",
     "sbCards": [],
     "dlgCards": [
+      "dlg_a22_020",
       "dlg_084"
     ]
   },
@@ -3465,6 +3465,7 @@ var LESSONS = [
     "unlockAfter": "k13m4",
     "sbCards": [],
     "dlgCards": [
+      "dlg_a22_021",
       "dlg_085"
     ]
   },
@@ -3504,10 +3505,7 @@ var LESSONS = [
     "unlockAfter": "k14m1",
     "sbCards": [],
     "dlgCards": [
-      "dlg_a22_021",
       "dlg_a22_022",
-      "dlg_a22_023",
-      "dlg_a22_024",
       "dlg_086"
     ]
   },
@@ -3547,6 +3545,7 @@ var LESSONS = [
     "unlockAfter": "k14m2",
     "sbCards": [],
     "dlgCards": [
+      "dlg_a22_023",
       "dlg_087"
     ]
   },
@@ -3605,6 +3604,7 @@ var LESSONS = [
     "unlockAfter": "k14m3",
     "sbCards": [],
     "dlgCards": [
+      "dlg_a22_024",
       "dlg_088"
     ]
   },
@@ -3645,9 +3645,6 @@ var LESSONS = [
     "sbCards": [],
     "dlgCards": [
       "dlg_a22_025",
-      "dlg_a22_026",
-      "dlg_a22_027",
-      "dlg_a22_028",
       "dlg_089"
     ]
   },
@@ -3687,6 +3684,7 @@ var LESSONS = [
     "unlockAfter": "k15m1",
     "sbCards": [],
     "dlgCards": [
+      "dlg_a22_026",
       "dlg_090"
     ]
   },
@@ -3726,6 +3724,7 @@ var LESSONS = [
     "unlockAfter": "k15m2",
     "sbCards": [],
     "dlgCards": [
+      "dlg_a22_027",
       "dlg_091"
     ]
   },
@@ -3917,6 +3916,7 @@ var LESSONS = [
     "unlockAfter": "k15m3",
     "sbCards": [],
     "dlgCards": [
+      "dlg_a22_028",
       "dlg_092"
     ]
   },
@@ -3956,6 +3956,7 @@ var LESSONS = [
     "unlockAfter": "k15m4",
     "sbCards": [],
     "dlgCards": [
+      "dlg_a22_029",
       "dlg_093"
     ]
   },
@@ -3995,10 +3996,7 @@ var LESSONS = [
     "unlockAfter": "k16m1",
     "sbCards": [],
     "dlgCards": [
-      "dlg_a22_029",
       "dlg_a22_030",
-      "dlg_a22_031",
-      "dlg_a22_032",
       "dlg_094"
     ]
   },
@@ -4038,6 +4036,7 @@ var LESSONS = [
     "unlockAfter": "k16m2",
     "sbCards": [],
     "dlgCards": [
+      "dlg_a22_031",
       "dlg_095"
     ]
   },
@@ -4089,7 +4088,10 @@ var LESSONS = [
       "got_203"
     ],
     "unlockAfter": "k16m3",
-    "sbCards": []
+    "sbCards": [],
+    "dlgCards": [
+      "dlg_a22_032"
+    ]
   }
 ];
 
@@ -8241,302 +8243,827 @@ var DIALOGE = [
   },
   {
     "id": "dlg_a22_016",
-    "cat": "Einkaufen und Meinungen",
+    "cat": "Küchensachen für die WG besorgen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie und ein Mitbewohner / eine Mitbewohnerin sind neu in einer WG. In der Küche fehlen noch Töpfe, Messer und Löffel. Sie möchten sie zusammen besorgen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wo und wann kaufen wir? (Flohmarkt, Sonntag)<br>Was suchen wir zuerst? (Töpfe, Messer)<br>Wie viel geben wir aus? (preiswert, 50 Euro)",
+      "en": "You and a flatmate are new in a flat share. The kitchen still lacks pots, knives and spoons. You would like to get them together.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>Where and when do we buy? (flea market, Sunday)<br>What do we look for first? (pots, knives)<br>How much do we spend? (cheap, 50 euros)",
+      "uk": "Ви та ваш сусід / ваша сусідка по квартирі нові у спільній квартирі. На кухні ще бракує каструль, ножів і ложок. Ви хочете разом їх роздобути.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Де й коли ми купимо? (блошиний ринок, неділя)<br>Що ми шукаємо спочатку? (каструлі, ножі)<br>Скільки ми витратимо? (недорого, 50 євро)",
+      "ru": "Вы и ваш сосед / ваша соседка по квартире новички в общей квартире. На кухне ещё не хватает кастрюль, ножей и ложек. Вы хотите вместе их раздобыть.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Где и когда мы купим? (барахолка, воскресенье)<br>Что мы ищем сначала? (кастрюли, ножи)<br>Сколько мы потратим? (недорого, 50 евро)"
+    },
     "name_q": "de_m_mark",
-    "name_a": "de_m_david",
+    "name_a": "de_m_max",
     "q": {
-      "de": "<g>Hast</g> du die Konzertkarten schon <g>gebucht</g>?",
-      "en": "<g>Have</g> you already <g>booked</g> the concert tickets?",
-      "uk": "Ти вже <g>забронювала</g> квитки на концерт?",
-      "ru": "Ты уже <g>забронировала</g> билеты на концерт?",
-      "gram": "perfekt"
+      "de": "Hallo Max! In unserer neuen WG fehlen noch Küchensachen. Wir brauchen Töpfe, Messer und Löffel. Wollen wir sie zusammen besorgen?",
+      "en": "Hi Max! Our new flat share still lacks kitchen things. We need pots, knives and spoons. Shall we get them together?",
+      "uk": "Привіт, Максе! У нашій новій спільній квартирі ще бракує кухонних речей. Нам потрібні каструлі, ножі й ложки. Роздобудемо їх разом?",
+      "ru": "Привет, Макс! В нашей новой общей квартире ещё не хватает кухонных вещей. Нам нужны кастрюли, ножи и ложки. Раздобудем их вместе?",
+      "gram": ""
     },
     "a": {
-      "de": "Ja, ich <g>habe</g> sie online für uns beide <g>gebucht</g>.",
-      "en": "Yes, I <g>booked</g> them online for both of us.",
-      "uk": "Так, я <g>забронювала</g> їх онлайн для нас обох.",
-      "ru": "Да, я <g>забронировала</g> их онлайн для нас обоих.",
-      "gram": "perfekt"
+      "de": "<r>Das gefällt mir sehr gut.</r><br><r>Wir könnten doch</r> auf den Flohmarkt gehen. Dort ist alles preiswert.<br><r>Was denkst du?</r>",
+      "en": "<r>I like that a lot.</r><br><r>We could</r> go to the flea market. Everything is cheap there.<br><r>What do you think?</r>",
+      "uk": "<r>Мені це дуже подобається.</r><br><r>Ми могли б</r> піти на блошиний ринок. Там усе недорого.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Мне это очень нравится.</r><br><r>Мы могли бы</r> пойти на барахолку. Там всё недорого.<br><r>Что ты думаешь?</r>",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Einverstanden, das passt gut.</r> Der Flohmarkt ist nur am Sonntagvormittag.<br><r>Wie wäre es, wenn wir</r> um zehn Uhr hingehen?",
+      "en": "<r>Agreed, that works well.</r> The flea market is only on Sunday morning.<br><r>How about if we</r> go there at ten o'clock?",
+      "uk": "<r>Домовились, це підходить.</r> Блошиний ринок працює лише в неділю зранку.<br><r>Що, як ми</r> підемо туди о десятій?",
+      "ru": "<r>Договорились, это подходит.</r> Барахолка работает только в воскресенье утром.<br><r>Как насчёт того, чтобы мы</r> пойдём туда в десять?",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich schlage vor, dass</r> wir zuerst Töpfe und Messer suchen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I suggest that</r> we look for pots and knives first.<br><r>What do you think about that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб ми спочатку шукали каструлі й ножі.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы мы сначала искали кастрюли и ножи.<br><r>Что ты об этом скажешь?</r>",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Ich würde vorschlagen, dass</r> wir höchstens fünfzig Euro ausgeben.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>I would suggest that</r> we spend fifty euros at most.<br><r>How do you see that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Я пропоную</r>, щоб ми витратили щонайбільше п'ятдесят євро.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Я предлагаю</r>, чтобы мы потратили максимум пятьдесят евро.<br><r>Как ты на это смотришь?</r>",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir gehen am Sonntag um zehn Uhr auf den Flohmarkt, suchen zuerst Töpfe und Messer und geben höchstens fünfzig Euro aus. <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We go to the flea market on Sunday at ten o'clock, look for pots and knives first and spend fifty euros at most. <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Йдемо в неділю о десятій на блошиний ринок, спочатку шукаємо каструлі й ножі та витрачаємо щонайбільше п'ятдесят євро. <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Идём в воскресенье в десять на барахолку, сначала ищем кастрюли и ножи и тратим максимум пятьдесят евро. <r>До встречи!</r>",
+      "gram": ""
     }
   },
   {
     "id": "dlg_a22_017",
-    "cat": "Beruf und Bewerbung",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "cat": "Ein Praktikum für den Sohn organisieren",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Ihr Sohn wird bald sechzehn und möchte Bäcker werden. Sie und Ihr Partner / Ihre Partnerin möchten ein Praktikum für ihn organisieren.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wo fragen wir? (Bäckerei am Markt, kleine Bäckerei)<br>Wann ist das Praktikum? (Sommerferien, eine Woche)<br>Wer ruft an? (du, ich)",
+      "en": "Your son is turning sixteen soon and wants to become a baker. You and your partner would like to organise a work placement for him.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>Where do we ask? (bakery at the market, small bakery)<br>When is the work placement? (summer holidays, one week)<br>Who calls? (you, me)",
+      "uk": "Вашому синові скоро буде шістнадцять, і він хоче стати пекарем. Ви та ваш партнер / ваша партнерка хочете організувати для нього практику.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Де ми запитаємо? (пекарня на ринку, маленька пекарня)<br>Коли буде практика? (літні канікули, тиждень)<br>Хто телефонує? (ти, я)",
+      "ru": "Вашему сыну скоро будет шестнадцать, и он хочет стать пекарем. Вы и ваш партнёр / ваша партнёрша хотите организовать для него практику.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Где мы спросим? (пекарня на рынке, маленькая пекарня)<br>Когда будет практика? (летние каникулы, неделя)<br>Кто звонит? (ты, я)"
+    },
+    "name_q": "de_w_anna",
+    "name_a": "de_m_max",
     "q": {
-      "de": "Was möchtest du werden, <g>wenn</g> du die Ausbildung beendet <g>hast</g>?",
-      "en": "What do you want to become <g>when</g> you <g>finish</g> your training?",
-      "uk": "Ким ти хочеш стати, <g>коли завершиш</g> навчання?",
-      "ru": "Кем ты хочешь стать, <g>когда закончишь</g> обучение?",
-      "gram": "wenn_satz"
+      "de": "Hallo Max! Unser Sohn <g>wird</g> bald sechzehn. Er möchte Bäcker <g>werden</g>. Wollen wir ein Praktikum für ihn organisieren?",
+      "en": "Hi Max! Our son <g>is turning</g> sixteen soon. He wants to <g>become</g> a baker. Shall we organise a work placement for him?",
+      "uk": "Привіт, Максе! Нашому синові скоро <g>буде</g> шістнадцять. Він хоче <g>стати</g> пекарем. Організуємо для нього практику?",
+      "ru": "Привет, Макс! Нашему сыну скоро <g>будет</g> шестнадцать. Он хочет <g>стать</g> пекарем. Организуем для него практику?",
+      "gram": "verb_werden"
     },
     "a": {
-      "de": "Ich <g>werde</g> hoffentlich ein guter Tischler.",
-      "en": "I <g>will</g> hopefully be a good carpenter.",
-      "uk": "Сподіваюся, я <g>стану</g> хорошим столяром.",
-      "ru": "Надеюсь, я <g>стану</g> хорошим столяром.",
+      "de": "<r>Das gefällt mir sehr gut.</r><br><r>Wir könnten doch</r> in der Bäckerei am Markt fragen.<br><r>Was denkst du?</r>",
+      "en": "<r>I like that a lot.</r><br><r>We could</r> ask at the bakery at the market.<br><r>What do you think?</r>",
+      "uk": "<r>Мені це дуже подобається.</r><br><r>Ми могли б</r> запитати в пекарні на ринку.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Мне это очень нравится.</r><br><r>Мы могли бы</r> спросить в пекарне на рынке.<br><r>Что ты думаешь?</r>",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Das passt mir leider nicht so gut, weil</r> die Bäckerei am Markt keine Praktikanten nimmt.<br><r>Wir könnten es doch so machen:</r> Wir fragen in der kleinen Bäckerei neben der Schule.<br><r>Passt dir das so?</r>",
+      "en": "<r>That doesn't suit me so well, I'm afraid, because</r> the bakery at the market doesn't take any trainees.<br><r>We could do it like this:</r> we ask in the small bakery next to the school.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це, на жаль, не дуже підходить, тому що</r> пекарня на ринку не приймає практикантів.<br><r>Можна зробити так:</r> запитаємо в маленькій пекарні біля школи.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это, к сожалению, не очень подходит, потому что</r> пекарня на рынке не принимает практикантов.<br><r>Можно сделать так:</r> спросим в маленькой пекарне рядом со школой.<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Mein Vorschlag wäre, dass</r> er das Praktikum in den Sommerferien macht.<br><r>Wie findest du das?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>My suggestion would be that</r> he does the work placement in the summer holidays.<br><r>How do you like that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Моя пропозиція —</r> він пройде практику влітку на канікулах.<br><r>Як тобі це?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Моё предложение —</r> он пройдёт практику летом на каникулах.<br><r>Как тебе это?</r>",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich würde vorschlagen, dass</r> du morgen dort anrufst.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I would suggest that</r> you call there tomorrow.<br><r>How do you see that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб ти завтра туди зателефонував.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы ты завтра туда позвонил.<br><r>Как ты на это смотришь?</r>",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir fragen in der kleinen Bäckerei neben der Schule, er macht das Praktikum in den Sommerferien, und ich rufe morgen dort an. Er <g>wird</g> bestimmt viel lernen! <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We ask in the small bakery next to the school, he does the work placement in the summer holidays, and I call there tomorrow. He <g>will</g> certainly learn a lot! <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Запитуємо в маленькій пекарні біля школи, він проходить практику влітку на канікулах, а я завтра туди телефоную. Він напевно <g>багато навчиться</g>! <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Спрашиваем в маленькой пекарне рядом со школой, он проходит практику летом на каникулах, а я завтра туда звоню. Он наверняка <g>многому научится</g>! <r>До встречи!</r>",
       "gram": "verb_werden"
     }
   },
   {
     "id": "dlg_a22_018",
-    "cat": "Beruf und Bewerbung",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "cat": "Eine Entscheidung für die Ausbildung vorbereiten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie haben zwei Ausbildungsplätze zur Auswahl und können sich nicht entscheiden. Sie und eine Freundin möchten die Entscheidung vorbereiten.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Was schreiben wir auf? (Vorteile, Nachteile)<br>Wann treffen wir uns? (Tag, Uhrzeit)<br>Wen fragen wir noch? (Eltern, Lehrerin)",
+      "en": "You have two apprenticeship places to choose from and can't decide. You and a friend would like to prepare the decision.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>What do we write down? (advantages, disadvantages)<br>When do we meet? (day, time)<br>Whom else do we ask? (parents, teacher)",
+      "uk": "У вас є два місця для навчання на вибір, і ви не можете вирішити. Ви та подруга хочете підготувати рішення.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Що ми запишемо? (переваги, недоліки)<br>Коли ми зустрінемося? (день, час)<br>Кого ми ще запитаємо? (батьків, вчительку)",
+      "ru": "У вас есть два места для обучения на выбор, и вы не можете решить. Вы и подруга хотите подготовить решение.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Что мы запишем? (преимущества, недостатки)<br>Когда мы встретимся? (день, время)<br>Кого мы ещё спросим? (родителей, учительницу)"
+    },
+    "name_q": "de_w_nina",
+    "name_a": "de_w_mia",
     "q": {
-      "de": "Was <g>würdest</g> du mir für die Berufswahl raten?",
-      "en": "What <g>would</g> you advise me for choosing a career?",
-      "uk": "Що <g>б</g> ти порадив мені щодо вибору професії?",
-      "ru": "Что <g>бы</g> ты посоветовал мне по выбору профессии?",
+      "de": "Hallo Mia! Ich habe zwei Ausbildungsplätze und kann mich nicht entscheiden. <g>Könntest</g> du mir helfen?",
+      "en": "Hi Mia! I have two apprenticeship places and can't decide. <g>Could</g> you help me?",
+      "uk": "Привіт, Міє! У мене два місця для навчання, і я не можу вирішити. Ти <g>могла б</g> мені допомогти?",
+      "ru": "Привет, Мия! У меня два места для обучения, и я не могу решить. <g>Могла бы</g> ты мне помочь?",
       "gram": "hoeflichkeit_konjunktiv_a22"
     },
     "a": {
-      "de": "Ich <g>würde</g> dir raten, zuerst ein Praktikum zu machen.",
-      "en": "I <g>would</g> advise you to do an internship first.",
-      "uk": "Я порадив <g>би</g> тобі спочатку пройти стажування.",
-      "ru": "Я посоветовал <g>бы</g> тебе сначала пройти стажировку.",
+      "de": "<r>Klar, kein Problem.</r><br><r>Ich hätte einen Vorschlag:</r> Wir schreiben alle Vorteile und Nachteile auf. Du <g>solltest</g> nichts vergessen.<br><r>Was denkst du?</r>",
+      "en": "<r>Sure, no problem.</r><br><r>I have a suggestion:</r> we write down all the advantages and disadvantages. You <g>shouldn't</g> forget anything.<br><r>What do you think?</r>",
+      "uk": "<r>Звісно, без проблем.</r><br><r>У мене є пропозиція:</r> запишемо всі переваги й недоліки. Тобі <g>не слід</g> нічого забувати.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Конечно, без проблем.</r><br><r>У меня есть предложение:</r> запишем все преимущества и недостатки. Тебе <g>не следует</g> ничего забывать.<br><r>Что ты думаешь?</r>",
       "gram": "hoeflichkeit_konjunktiv_a22"
+    },
+    "q1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Wie wäre es, wenn wir</r> uns morgen um sechs Uhr treffen?",
+      "en": "<r>Agreed, that works well.</r><br><r>How about if we</r> meet tomorrow at six o'clock?",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Що, як ми</r> зустрінемося завтра о шостій?",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Как насчёт того, чтобы мы</r> встретимся завтра в шесть?",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich schlage vor, dass</r> wir auch deine Eltern fragen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I suggest that</r> we also ask your parents.<br><r>What do you think about that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб ми запитали й твоїх батьків.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы мы спросили и твоих родителей.<br><r>Что ты об этом скажешь?</r>",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Eigentlich schon, aber wäre es nicht besser, wenn</r> wir zuerst allein entscheiden?<br><r>Ich <g>hätte</g> einen Vorschlag:</r> Wir fragen die Eltern erst, wenn die Liste fertig ist.<br><r>Wie findest du das?</r>",
+      "en": "<r>Actually yes, but wouldn't it be better if</r> we decided on our own first?<br><r>I <g>would</g> like to make a suggestion:</r> we only ask the parents when the list is finished.<br><r>How do you like that?</r>",
+      "uk": "<r>Загалом так, але чи не краще було б,</r> якби ми спочатку вирішили самі?<br><r>Я <g>хотіла б</g> запропонувати:</r> запитаємо батьків лише тоді, коли список буде готовий.<br><r>Як тобі це?</r>",
+      "ru": "<r>Вообще да, но разве не лучше было бы,</r> если бы мы сначала решили сами?<br><r>Я <g>хотела бы</g> предложить:</r> спросим родителей только тогда, когда список будет готов.<br><r>Как тебе это?</r>",
+      "gram": "hoeflichkeit_konjunktiv_a22"
+    },
+    "a2": {
+      "de": "<r>Einverstanden, das passt gut.</r> <r>Also, wir machen es so:</r> Wir schreiben alle Vorteile und Nachteile auf, treffen uns morgen um sechs Uhr und fragen deine Eltern erst, wenn die Liste fertig ist. <r>Bis dann!</r>",
+      "en": "<r>Agreed, that works well.</r> <r>So, here's what we'll do:</r> We write down all the advantages and disadvantages, meet tomorrow at six o'clock and only ask your parents when the list is finished. <r>See you then!</r>",
+      "uk": "<r>Домовились, це підходить.</r> <r>Отже, робимо так:</r> Записуємо всі переваги й недоліки, зустрічаємося завтра о шостій і питаємо твоїх батьків лише тоді, коли список буде готовий. <r>До зустрічі!</r>",
+      "ru": "<r>Договорились, это подходит.</r> <r>Итак, делаем так:</r> Записываем все преимущества и недостатки, встречаемся завтра в шесть и спрашиваем твоих родителей только тогда, когда список будет готов. <r>До встречи!</r>",
+      "gram": ""
     }
   },
   {
     "id": "dlg_a22_019",
-    "cat": "Beruf und Bewerbung",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "cat": "Um eine Referenz bitten",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie bewerben sich um einen Ausbildungsplatz und brauchen eine Referenz von Ihrem früheren Chef. Sie und ein Freund / eine Freundin möchten die Anfrage planen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wie fragen wir? (E-Mail, Telefon)<br>Was sagen wir? (Bewerbungsfrist, Grund)<br>Wann fragen wir? (heute, morgen)",
+      "en": "You are applying for an apprenticeship and need a reference from your former boss. You and a friend would like to plan the request.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>How do we ask? (email, phone)<br>What do we say? (application deadline, reason)<br>When do we ask? (today, tomorrow)",
+      "uk": "Ви подаєте заявку на місце навчання й потребуєте рекомендації від вашого колишнього керівника. Ви та друг / подруга хочете спланувати прохання.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Як ми запитаємо? (електронна пошта, телефон)<br>Що ми скажемо? (термін подачі, причина)<br>Коли ми запитаємо? (сьогодні, завтра)",
+      "ru": "Вы подаёте заявку на место обучения и нуждаетесь в рекомендации от вашего бывшего руководителя. Вы и друг / подруга хотите спланировать просьбу.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Как мы спросим? (электронная почта, телефон)<br>Что мы скажем? (срок подачи, причина)<br>Когда мы спросим? (сегодня, завтра)"
+    },
+    "name_q": "de_m_mark",
+    "name_a": "de_w_julia",
     "q": {
-      "de": "<g>Hast</g> du deine Bewerbung schon <g>abgeschickt</g>?",
-      "en": "<g>Have</g> you already <g>sent</g> your application?",
-      "uk": "Ти вже <g>надіслав</g> своє резюме?",
-      "ru": "Ты уже <g>отправил</g> своё резюме?",
-      "gram": "perfekt"
+      "de": "Hallo Julia! Ich bewerbe mich um einen Ausbildungsplatz. Ich brauche noch eine Referenz von meinem früheren Chef. Ich hoffe, <g>dass</g> er mir <g>hilft</g>. Planst du das mit mir?",
+      "en": "Hi Julia! I'm applying for an apprenticeship. I still need a reference from my former boss. I hope <g>that</g> he <g>helps</g> me. Will you plan it with me?",
+      "uk": "Привіт, Юліє! Я подаю заявку на місце навчання. Мені ще потрібна рекомендація від мого колишнього керівника. Я сподіваюся, <g>що</g> він мені <g>допоможе</g>. Плануєш це зі мною?",
+      "ru": "Привет, Юлия! Я подаю заявку на место обучения. Мне ещё нужна рекомендация от моего бывшего руководителя. Я надеюсь, <g>что</g> он мне <g>поможет</g>. Планируешь это со мной?",
+      "gram": "dass_satz_wdh"
     },
     "a": {
-      "de": "Ja, die Firma schreibt, <g>dass</g> sie in einer Woche antwortet.",
-      "en": "Yes, the company writes <g>that</g> they will reply in a week.",
-      "uk": "Так, фірма пише, <g>що</g> відповість за тиждень.",
-      "ru": "Да, фирма пишет, <g>что</g> ответит через неделю.",
+      "de": "<r>Natürlich, gern.</r><br><r>Ich hätte einen Vorschlag:</r> Wir schreiben ihm eine E-Mail.<br><r>Was denkst du?</r>",
+      "en": "<r>Of course, gladly.</r><br><r>I have a suggestion:</r> we write him an email.<br><r>What do you think?</r>",
+      "uk": "<r>Звичайно, із задоволенням.</r><br><r>У мене є пропозиція:</r> напишемо йому електронного листа.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Конечно, с удовольствием.</r><br><r>У меня есть предложение:</r> напишем ему электронное письмо.<br><r>Что ты думаешь?</r>",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Hmm, ich weiß nicht so recht.</r> Ich glaube, <g>dass</g> er selten E-Mails <g>liest</g>.<br><r>Wie wäre es, wenn wir</r> ihn anrufen?",
+      "en": "<r>Hmm, I'm not so sure.</r> I think <g>that</g> he rarely <g>reads</g> emails.<br><r>How about if we</r> call him?",
+      "uk": "<r>Хм, я не зовсім упевнений.</r> Я думаю, <g>що</g> він рідко <g>читає</g> електронні листи.<br><r>Що, як ми</r> зателефонуємо йому?",
+      "ru": "<r>Хм, я не очень уверен.</r> Я думаю, <g>что</g> он редко <g>читает</g> электронные письма.<br><r>Как насчёт того, чтобы мы</r> позвоним ему?",
+      "gram": "dass_satz_wdh"
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Mein Vorschlag wäre, dass</r> du ihm die Bewerbungsfrist nennst.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>My suggestion would be that</r> you tell him the application deadline.<br><r>What do you think about that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Моя пропозиція —</r> ти назвеш йому термін подачі заявки.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Моё предложение —</r> ты назовёшь ему срок подачи заявки.<br><r>Что ты об этом скажешь?</r>",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Wollen wir nicht einfach</r> gleich morgen früh anrufen?",
+      "en": "<r>Agreed, that works well.</r><br><r>Why don't we just</r> call first thing tomorrow morning?",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Може, просто</r> зателефонуємо вже завтра зранку?",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Может, просто</r> позвоним уже завтра утром?",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir rufen ihn morgen früh an, und du nennst ihm die Bewerbungsfrist. Ich hoffe, <g>dass</g> er Ja <g>sagt</g>! <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We call him tomorrow morning, and you tell him the application deadline. I hope <g>that</g> he <g>says</g> yes! <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Телефонуємо йому завтра зранку, а ти називаєш йому термін подачі заявки. Я сподіваюся, <g>що</g> він <g>скаже</g> «так»! <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Звоним ему завтра утром, а ты называешь ему срок подачи заявки. Я надеюсь, <g>что</g> он <g>скажет</g> «да»! <r>До встречи!</r>",
       "gram": "dass_satz_wdh"
     }
   },
   {
     "id": "dlg_a22_020",
-    "cat": "Beruf und Bewerbung",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_mark",
+    "cat": "Einen Aushilfsjob für den Sommer suchen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie möchten im Sommer Geld verdienen und suchen einen Aushilfsjob. Sie und ein Freund / eine Freundin möchten zusammen suchen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wo suchen wir? (Internet, Aushang)<br>Welcher Job? (Einkaufszentrum, Babysitter)<br>Wann fangen wir an? (Monat)",
+      "en": "You would like to earn some money in summer and are looking for a temporary job. You and a friend would like to search together.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>Where do we look? (internet, notice board)<br>Which job? (shopping centre, babysitter)<br>When do we start? (month)",
+      "uk": "Ви хочете влітку заробити трохи грошей і шукаєте тимчасову роботу. Ви та друг / подруга хочете шукати разом.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Де ми шукаємо? (інтернет, оголошення)<br>Яка робота? (торговий центр, няня)<br>Коли ми починаємо? (місяць)",
+      "ru": "Вы хотите летом заработать немного денег и ищете временную работу. Вы и друг / подруга хотите искать вместе.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Где мы ищем? (интернет, объявления)<br>Какая работа? (торговый центр, няня)<br>Когда мы начинаем? (месяц)"
+    },
+    "name_q": "de_w_mia",
+    "name_a": "de_m_alex",
     "q": {
-      "de": "Was ist deine <g>größte</g> Stärke?",
-      "en": "What is your <g>greatest</g> strength?",
-      "uk": "Яка твоя <g>найбільша</g> сильна сторона?",
-      "ru": "Какая у тебя <g>самая сильная</g> сторона?",
-      "gram": "superlativ"
+      "de": "Hallo Alex! Im Sommer möchte ich etwas Geld verdienen. Ich suche einen Aushilfsjob. Suchst du mit mir?",
+      "en": "Hi Alex! In summer I'd like to earn some money. I'm looking for a temporary job. Will you search with me?",
+      "uk": "Привіт, Алексе! Влітку я хочу трохи заробити. Я шукаю тимчасову роботу. Шукатимеш зі мною?",
+      "ru": "Привет, Алекс! Летом я хочу немного заработать. Я ищу временную работу. Будешь искать со мной?",
+      "gram": ""
     },
     "a": {
-      "de": "Meine <g>größte</g> Stärke ist Genauigkeit, meine Schwäche ist Ungeduld.",
-      "en": "My <g>greatest</g> strength is precision, my weakness is impatience.",
-      "uk": "Моя <g>найбільша</g> сильна сторона — точність, а слабка — нетерплячість.",
-      "ru": "Моя <g>самая сильная</g> сторона — точность, а слабая — нетерпеливость.",
-      "gram": "superlativ"
+      "de": "<r>Natürlich, gern.</r><br><r>Ich hätte einen Vorschlag:</r> Wir schauen zuerst im Internet.<br><r>Was denkst du?</r>",
+      "en": "<r>Of course, gladly.</r><br><r>I have a suggestion:</r> we look on the internet first.<br><r>What do you think?</r>",
+      "uk": "<r>Звичайно, із задоволенням.</r><br><r>У мене є пропозиція:</r> спочатку пошукаємо в інтернеті.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Конечно, с удовольствием.</r><br><r>У меня есть предложение:</r> сначала поищем в интернете.<br><r>Что ты думаешь?</r>",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Ehrlich gesagt bin ich davon nicht so überzeugt.</r> Im Internet gibt es viele schlechte Angebote.<br><r>Wir könnten es doch so machen:</r> Wir schauen auch am Aushang im Supermarkt.<br><r>Passt dir das so?</r>",
+      "en": "<r>To be honest, I'm not so convinced.</r> There are many bad offers on the internet.<br><r>We could do it like this:</r> we also look at the notice board in the supermarket.<br><r>Does that work for you?</r>",
+      "uk": "<r>Чесно кажучи, я не дуже в цьому впевнена.</r> В інтернеті багато поганих пропозицій.<br><r>Можна зробити так:</r> подивимося ще й на дошці оголошень у супермаркеті.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Честно говоря, я не очень в этом убеждена.</r> В интернете много плохих предложений.<br><r>Можно сделать так:</r> посмотрим ещё и на доске объявлений в супермаркете.<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich würde vorschlagen, dass</r> wir uns für einen Job im Einkaufszentrum bewerben.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I would suggest that</r> we apply for a job in the shopping centre.<br><r>What do you think about that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб ми подали заявки на роботу в торговому центрі.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы мы подали заявки на работу в торговом центре.<br><r>Что ты об этом скажешь?</r>",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Wie wäre es, wenn wir</r> im Juli anfangen?",
+      "en": "<r>Agreed, that works well.</r><br><r>How about if we</r> start in July?",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Що, як ми</r> почнемо в липні?",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Как насчёт того, чтобы мы</r> начнём в июле?",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir schauen im Internet und am Aushang im Supermarkt, bewerben uns für einen Job im Einkaufszentrum und fangen im Juli an. <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We look on the internet and at the notice board in the supermarket, apply for a job in the shopping centre and start in July. <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Шукаємо в інтернеті й на дошці оголошень у супермаркеті, подаємо заявки на роботу в торговому центрі та починаємо в липні. <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Ищем в интернете и на доске объявлений в супермаркете, подаём заявки на работу в торговом центре и начинаем в июле. <r>До встречи!</r>",
+      "gram": ""
     }
   },
   {
     "id": "dlg_a22_021",
-    "cat": "Freundschaft und Haustiere",
-    "name_q": "de_w_anna",
-    "name_a": "de_m_david",
+    "cat": "Einen kranken Freund besuchen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Ein Freund liegt mit Grippe im Bett. Sie und ein Freund / eine Freundin möchten ihn besuchen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann besuchen wir ihn? (Tag, Uhrzeit)<br>Was bringen wir ihm mit? (Suppe, Zeitschrift)<br>Wer ruft vorher an? (du, ich)",
+      "en": "A friend is in bed with flu. You and a friend would like to visit him.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When do we visit him? (day, time)<br>What do we bring him? (soup, magazine)<br>Who calls beforehand? (you, me)",
+      "uk": "Друг лежить у ліжку з грипом. Ви та друг / подруга хочете його відвідати.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли ми його відвідаємо? (день, час)<br>Що ми йому принесемо? (суп, журнал)<br>Хто зателефонує заздалегідь? (ти, я)",
+      "ru": "Друг лежит в постели с гриппом. Вы и друг / подруга хотите его навестить.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда мы его навестим? (день, время)<br>Что мы ему принесём? (суп, журнал)<br>Кто позвонит заранее? (ты, я)"
+    },
+    "name_q": "de_m_max",
+    "name_a": "de_w_mia",
     "q": {
-      "de": "Warum vertraust du <g>ihr</g> so sehr?",
-      "en": "Why do you trust <g>her</g> so much?",
-      "uk": "Чому ти <g>їй</g> так довіряєш?",
-      "ru": "Почему ты <g>ей</g> так доверяешь?",
-      "gram": "dativ_verben"
+      "de": "Hallo Mia! Unser Freund liegt mit Grippe im Bett. Wir sollten <g>ihn</g> besuchen. Planst du das mit mir?",
+      "en": "Hi Mia! Our friend is in bed with flu. We should visit <g>him</g>. Will you plan it with me?",
+      "uk": "Привіт, Міє! Наш друг лежить із грипом. Нам варто <g>його</g> відвідати. Плануєш це зі мною?",
+      "ru": "Привет, Мия! Наш друг лежит с гриппом. Нам стоит <g>его</g> навестить. Планируешь это со мной?",
+      "gram": "personalpronomen_wdh"
     },
     "a": {
-      "de": "Ich vertraue ihr, <g>weil</g> sie immer ehrlich zu mir ist.",
-      "en": "I trust her <g>because</g> she is always honest with me.",
-      "uk": "Я їй довіряю, <g>бо</g> вона завжди зі мною чесна.",
-      "ru": "Я ей доверяю, <g>потому что</g> она всегда со мной честна.",
-      "gram": "weil_satz"
+      "de": "<r>Klar, kein Problem.</r><br><r>Wie wäre es, wenn wir</r> morgen Nachmittag zu ihm gehen?",
+      "en": "<r>Sure, no problem.</r><br><r>How about if we</r> go to his place tomorrow afternoon?",
+      "uk": "<r>Звісно, без проблем.</r><br><r>Що, як ми</r> завтра по обіді підемо до нього?",
+      "ru": "<r>Конечно, без проблем.</r><br><r>Как насчёт того, чтобы мы</r> завтра днём пойдём к нему?",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Das passt mir leider nicht so gut, weil</r> er morgen Nachmittag zum Arzt geht.<br><r>Wir könnten es doch so machen:</r> Wir besuchen ihn am Abend.<br><r>Passt dir das so?</r>",
+      "en": "<r>That doesn't suit me so well, I'm afraid, because</r> he is going to the doctor tomorrow afternoon.<br><r>We could do it like this:</r> we visit him in the evening.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це, на жаль, не дуже підходить, тому що</r> він завтра по обіді йде до лікаря.<br><r>Можна зробити так:</r> відвідаємо його ввечері.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это, к сожалению, не очень подходит, потому что</r> он завтра днём идёт к врачу.<br><r>Можно сделать так:</r> навестим его вечером.<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich schlage vor, dass</r> wir <g>ihm</g> eine Suppe mitbringen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I suggest that</r> we bring <g>him</g> some soup.<br><r>What do you think about that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб ми принесли <g>йому</g> суп.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы мы принесли <g>ему</g> суп.<br><r>Что ты об этом скажешь?</r>",
+      "gram": "personalpronomen_wdh"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Ich würde vorschlagen, dass</r> du <g>ihn</g> vorher anrufst.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>I would suggest that</r> you call <g>him</g> beforehand.<br><r>How do you see that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Я пропоную</r>, щоб ти зателефонувала <g>йому</g> заздалегідь.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Я предлагаю</r>, чтобы ты позвонила <g>ему</g> заранее.<br><r>Как ты на это смотришь?</r>",
+      "gram": "personalpronomen_wdh"
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir besuchen ihn morgen am Abend und bringen ihm eine Suppe mit, und ich rufe ihn vorher an. <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We visit him tomorrow evening and bring him some soup, and I call him beforehand. <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Відвідуємо його завтра ввечері й приносимо йому суп, а я телефоную йому заздалегідь. <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Навещаем его завтра вечером и приносим ему суп, а я звоню ему заранее. <r>До встречи!</r>",
+      "gram": ""
     }
   },
   {
     "id": "dlg_a22_022",
-    "cat": "Freundschaft und Haustiere",
-    "name_q": "de_w_anna",
-    "name_a": "de_m_david",
+    "cat": "Ein Foto mit dem Hund machen lassen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie und ein Mitbewohner / eine Mitbewohnerin möchten ein schönes Foto von sich und Ihrem Hund haben. Sie lassen es beim Fotografen machen.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann gehen wir? (Tag, Uhrzeit)<br>Was ziehen wir an? (weiß, bunt)<br>Wie bleibt der Hund ruhig? (Keks, Spielzeug)",
+      "en": "You and a flatmate would like a nice photo of yourselves and your dog. You are having it taken by a photographer.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When do we go? (day, time)<br>What do we wear? (white, colourful)<br>How do we keep the dog calm? (biscuit, toy)",
+      "uk": "Ви та ваш сусід / ваша сусідка по квартирі хочете гарне фото з вашим собакою. Ви замовляєте його в фотографа.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли ми йдемо? (день, час)<br>Що ми одягнемо? (біле, яскраве)<br>Як зробити, щоб собака був спокійний? (печиво, іграшка)",
+      "ru": "Вы и ваш сосед / ваша соседка по квартире хотите красивое фото с вашей собакой. Вы заказываете его у фотографа.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда мы идём? (день, время)<br>Что мы наденем? (белое, яркое)<br>Как сделать, чтобы собака была спокойной? (печенье, игрушка)"
+    },
+    "name_q": "de_m_alex",
+    "name_a": "de_w_julia",
     "q": {
-      "de": "Warum hast du <g>deinem Sohn</g> <g>ein Haustier</g> gekauft?",
-      "en": "Why did you buy <g>your son</g> <g>a pet</g>?",
-      "uk": "Чому ти купив <g>синові</g> <g>домашню тварину</g>?",
-      "ru": "Почему ты купил <g>сыну</g> <g>домашнее животное</g>?",
-      "gram": "dativ_akkusativ_verben"
+      "de": "Hallo Julia! Wir wollen ein schönes Foto von uns und dem Hund. Wir <g>lassen</g> es beim Fotografen <g>machen</g>. Planst du das mit mir?",
+      "en": "Hi Julia! We want a nice photo of us and the dog. We're <g>having</g> it <g>done</g> by a photographer. Will you plan it with me?",
+      "uk": "Привіт, Юліє! Ми хочемо гарне фото з нашим собакою. Ми <g>замовимо</g> його в фотографа. Плануєш це зі мною?",
+      "ru": "Привет, Юлия! Мы хотим красивое фото с нашей собакой. Мы <g>закажем</g> его у фотографа. Планируешь это со мной?",
+      "gram": "nebensatz_mit_damit"
     },
     "a": {
-      "de": "<g>Damit</g> er lernt, Verantwortung zu übernehmen.",
-      "en": "<g>So that</g> he learns to take responsibility.",
-      "uk": "<g>Щоб</g> він навчився брати на себе відповідальність.",
-      "ru": "<g>Чтобы</g> он научился брать на себя ответственность.",
+      "de": "<r>Klar, kein Problem.</r><br><r>Ich hätte einen Vorschlag:</r> Wir gehen am Samstag um elf Uhr.<br><r>Was denkst du?</r>",
+      "en": "<r>Sure, no problem.</r><br><r>I have a suggestion:</r> we go on Saturday at eleven o'clock.<br><r>What do you think?</r>",
+      "uk": "<r>Звісно, без проблем.</r><br><r>У мене є пропозиція:</r> йдемо в суботу об одинадцятій.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Конечно, без проблем.</r><br><r>У меня есть предложение:</r> идём в субботу в одиннадцать.<br><r>Что ты думаешь?</r>",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Ich würde vorschlagen, dass</r> wir beide etwas Weißes anziehen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>I would suggest that</r> we both wear something white.<br><r>What do you think about that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Я пропоную,</r> щоб ми обоє одягнули щось біле.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Я предлагаю,</r> чтобы мы оба надели что-нибудь белое.<br><r>Что ты об этом скажешь?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Wir könnten doch</r> dem Hund einen Keks geben, <g>damit</g> er ruhig <g>bleibt</g>.<br><r>Wie findest du das?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>We could</r> give the dog a biscuit <g>so that</g> he stays calm.<br><r>How do you like that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Ми могли б</r> дати собаці печиво, <g>щоб</g> вона була спокійна.<br><r>Як тобі це?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Мы могли бы</r> дать собаке печенье, <g>чтобы</g> она была спокойной.<br><r>Как тебе это?</r>",
+      "gram": "nebensatz_mit_damit"
+    },
+    "q2": {
+      "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> welchen Keks er mag.<br><r>Wie wäre es, wenn wir</r> ihm seinen Lieblingskeks mitbringen?",
+      "en": "<r>That's okay for me, but we'd still have to clarify</r> which biscuit he likes.<br><r>How about if we</r> bring him his favourite biscuit?",
+      "uk": "<r>Мене це влаштовує, але нам ще треба з'ясувати,</r> яке печиво він любить.<br><r>Що, як ми</r> візьмемо йому його улюблене печиво?",
+      "ru": "<r>Меня это устраивает, но нам ещё нужно выяснить,</r> какое печенье он любит.<br><r>Как насчёт того, чтобы мы</r> возьмём ему его любимое печенье?",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir gehen am Samstag um elf Uhr zum Fotografen, ziehen beide etwas Weißes an und bringen dem Hund seinen Lieblingskeks mit, <g>damit</g> er ruhig <g>bleibt</g>. <r>Ich freue mich schon darauf!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We go to the photographer on Saturday at eleven o'clock, both wear something white and bring the dog his favourite biscuit <g>so that</g> he stays calm. <r>I'm already looking forward to it!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Йдемо в суботу об одинадцятій до фотографа, обоє одягаємо щось біле й беремо собаці його улюблене печиво, <g>щоб</g> вона була спокійна. <r>Я вже з нетерпінням чекаю!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Идём в субботу в одиннадцать к фотографу, оба надеваем что-нибудь белое и берём собаке её любимое печенье, <g>чтобы</g> она была спокойной. <r>Я уже с нетерпением жду!</r>",
       "gram": "nebensatz_mit_damit"
     }
   },
   {
     "id": "dlg_a22_023",
-    "cat": "Freundschaft und Haustiere",
-    "name_q": "de_w_anna",
-    "name_a": "de_m_david",
+    "cat": "Eine Liste mit Lebensträumen schreiben",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Das Jahr geht bald zu Ende. Sie und ein Freund / eine Freundin möchten eine Liste mit Lebensträumen und wichtigen Zielen schreiben.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann treffen wir uns? (Tag, Uhrzeit)<br>Was kommt auf die Liste? (Familie, Gesundheit, Reise)<br>Wann sprechen wir wieder darüber? (nach einem Jahr)",
+      "en": "The year is coming to an end. You and a friend would like to write a list of life dreams and important goals.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When do we meet? (day, time)<br>What goes on the list? (family, health, travel)<br>When do we talk about it again? (after a year)",
+      "uk": "Рік скоро добігає кінця. Ви та друг / подруга хочете написати список життєвих мрій і важливих цілей.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли ми зустрінемося? (день, час)<br>Що потрапить у список? (родина, здоров'я, подорож)<br>Коли ми знову про це поговоримо? (через рік)",
+      "ru": "Год скоро подходит к концу. Вы и друг / подруга хотите написать список жизненных мечтаний и важных целей.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда мы встретимся? (день, время)<br>Что попадёт в список? (семья, здоровье, путешествие)<br>Когда мы снова об этом поговорим? (через год)"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_m_max",
     "q": {
-      "de": "<g>Lässt</g> du deinen Sohn den Hund allein <g>ausführen</g>?",
-      "en": "Do you <g>let</g> your son <g>walk</g> the dog alone?",
-      "uk": "Ти <g>дозволяєш</g> синові самому <g>вигулювати</g> собаку?",
-      "ru": "Ты <g>позволяешь</g> сыну самому <g>выгуливать</g> собаку?",
-      "gram": "verb_lassen"
+      "de": "Hallo Max! Das Jahr geht bald zu Ende. Ich möchte eine Liste mit meinen Lebensträumen schreiben. Machst du mit?",
+      "en": "Hi Max! The year is coming to an end. I'd like to write a list of my life dreams. Will you join in?",
+      "uk": "Привіт, Максе! Рік скоро добігає кінця. Я хочу написати список своїх життєвих мрій. Долучишся?",
+      "ru": "Привет, Макс! Год скоро подходит к концу. Я хочу написать список своих жизненных мечтаний. Присоединишься?",
+      "gram": ""
     },
     "a": {
-      "de": "Ja, ich <g>lasse</g> ihn das schon allein machen.",
-      "en": "Yes, I already <g>let</g> him do that alone.",
-      "uk": "Так, я вже <g>дозволяю</g> йому робити це самому.",
-      "ru": "Да, я уже <g>позволяю</g> ему делать это самому.",
-      "gram": "verb_lassen"
+      "de": "<r>Natürlich, gern.</r><br><r>Wie wäre es, wenn wir</r> uns am Sonntag treffen?",
+      "en": "<r>Of course, gladly.</r><br><r>How about if we</r> meet on Sunday?",
+      "uk": "<r>Звичайно, із задоволенням.</r><br><r>Що, як ми</r> зустрінемося в неділю?",
+      "ru": "<r>Конечно, с удовольствием.</r><br><r>Как насчёт того, чтобы мы</r> встретимся в воскресенье?",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Ich würde vorschlagen, dass</r> wir zuerst die Gesundheit und die Familie aufschreiben.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>I would suggest that</r> we write down health and family first.<br><r>What do you think about that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Я пропоную</r> спочатку записати здоров'я та родину.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Я предлагаю</r> сначала записать здоровье и семью.<br><r>Что ты об этом скажешь?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Grundsätzlich bin ich dafür, nur bin ich mir bei der Reihenfolge nicht sicher.</r> Für mich ist die Familie die Priorität.<br><r>Wir könnten es doch so machen:</r> Wir schreiben zuerst die Familie und dann die Gesundheit.<br><r>Passt dir das so?</r>",
+      "en": "<r>In principle I'm in favour, but I'm not sure about the order.</r> For me family is the priority.<br><r>We could do it like this:</r> we write family first and then health.<br><r>Does that work for you?</r>",
+      "uk": "<r>Загалом я за, але щодо порядку я не впевнений.</r> Для мене родина — це пріоритет.<br><r>Можна зробити так:</r> спочатку запишемо родину, а потім здоров'я.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>В целом я за, но насчёт порядка я не уверен.</r> Для меня семья — это приоритет.<br><r>Можно сделать так:</r> сначала запишем семью, а потом здоровье.<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich schlage vor, dass</r> wir uns in einem Jahr wieder treffen.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I suggest that</r> we meet again in a year.<br><r>How do you see that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб ми знову зустрілися через рік.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы мы снова встретились через год.<br><r>Как ты на это смотришь?</r>",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir treffen uns am Sonntag, schreiben zuerst die Familie und dann die Gesundheit auf und sprechen in einem Jahr wieder darüber. <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We meet on Sunday, write down family first and then health, and talk about it again in a year. <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Зустрічаємося в неділю, спочатку записуємо родину, а потім здоров'я та через рік знову про це говоримо. <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Встречаемся в воскресенье, сначала записываем семью, а потом здоровье и через год снова об этом говорим. <r>До встречи!</r>",
+      "gram": ""
     }
   },
   {
     "id": "dlg_a22_024",
-    "cat": "Freundschaft und Haustiere",
-    "name_q": "de_w_anna",
-    "name_a": "de_m_david",
+    "cat": "Ein Klassentreffen organisieren",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie vermissen Ihre alte Klasse. Sie und ein Freund / eine Freundin möchten ein Klassentreffen organisieren.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann? (Monat)<br>Wo? (Restaurant, Park)<br>Wen laden wir ein? (Klassenkameraden, Lehrerin)",
+      "en": "You miss your old class. You and a friend would like to organise a class reunion.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When? (month)<br>Where? (restaurant, park)<br>Whom do we invite? (classmates, teacher)",
+      "uk": "Ви сумуєте за своїм колишнім класом. Ви та друг / подруга хочете організувати зустріч однокласників.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли? (місяць)<br>Де? (ресторан, парк)<br>Кого ми запросимо? (однокласників, вчительку)",
+      "ru": "Вы скучаете по своему бывшему классу. Вы и друг / подруга хотите организовать встречу одноклассников.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда? (месяц)<br>Где? (ресторан, парк)<br>Кого мы пригласим? (одноклассников, учительницу)"
+    },
+    "name_q": "de_w_mia",
+    "name_a": "de_m_alex",
     "q": {
-      "de": "Wie <g>habt</g> ihr euch <g>kennengelernt</g>?",
-      "en": "How <g>did</g> you two <g>meet</g>?",
-      "uk": "Як ви <g>познайомилися</g>?",
-      "ru": "Как вы <g>познакомились</g>?",
-      "gram": "perfekt"
+      "de": "Hallo Alex! Ich vermisse unsere alte Klasse. Wollen wir ein Klassentreffen organisieren?",
+      "en": "Hi Alex! I miss our old class. Shall we organise a class reunion?",
+      "uk": "Привіт, Алексе! Я сумую за нашим колишнім класом. Організуємо зустріч однокласників?",
+      "ru": "Привет, Алекс! Я скучаю по нашему бывшему классу. Организуем встречу одноклассников?",
+      "gram": ""
     },
     "a": {
-      "de": "Wir haben uns im Park kennengelernt, <g>als</g> unsere Hunde zusammen gespielt haben.",
-      "en": "We met in the park <g>when</g> our dogs were playing together.",
-      "uk": "Ми познайомилися в парку, <g>коли</g> наші собаки гралися разом.",
-      "ru": "Мы познакомились в парке, <g>когда</g> наши собаки играли вместе.",
-      "gram": "als_wenn_schon_erst"
+      "de": "<r>Das gefällt mir sehr gut.</r><br><r>Ich hätte einen Vorschlag:</r> Wir treffen uns im Sommer.<br><r>Was denkst du?</r>",
+      "en": "<r>I like that a lot.</r><br><r>I have a suggestion:</r> we meet in summer.<br><r>What do you think?</r>",
+      "uk": "<r>Мені це дуже подобається.</r><br><r>У мене є пропозиція:</r> зустрінемося влітку.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Мне это очень нравится.</r><br><r>У меня есть предложение:</r> встретимся летом.<br><r>Что ты думаешь?</r>",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Das passt mir leider nicht so gut, weil</r> viele im Sommer im Urlaub sind.<br><r>Wir könnten es doch so machen:</r> Wir treffen uns im September.<br><r>Passt dir das so?</r>",
+      "en": "<r>That doesn't suit me so well, I'm afraid, because</r> many people are on holiday in summer.<br><r>We could do it like this:</r> we meet in September.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це, на жаль, не дуже підходить, тому що</r> багато хто влітку у відпустці.<br><r>Можна зробити так:</r> зустрінемося у вересні.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это, к сожалению, не очень подходит, потому что</r> многие летом в отпуске.<br><r>Можно сделать так:</r> встретимся в сентябре.<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Wollen wir nicht einfach</r> in einem Restaurant feiern?",
+      "en": "<r>Good idea, let's do that.</r><br><r>Why don't we just</r> celebrate in a restaurant?",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Може, просто</r> святкуватимемо в ресторані?",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Может, просто</r> будем праздновать в ресторане?",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Ich würde vorschlagen, dass</r> wir auch unsere Lehrerin einladen.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>I would suggest that</r> we also invite our teacher.<br><r>How do you see that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Я пропоную</r>, щоб ми запросили й нашу вчительку.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Я предлагаю</r>, чтобы мы пригласили и нашу учительницу.<br><r>Как ты на это смотришь?</r>",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir treffen uns im September in einem Restaurant und laden auch unsere Lehrerin ein. <r>Ich freue mich schon darauf!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We meet in September in a restaurant and also invite our teacher. <r>I'm already looking forward to it!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Зустрічаємося у вересні в ресторані й запрошуємо також нашу вчительку. <r>Я вже з нетерпінням чекаю!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Встречаемся в сентябре в ресторане и приглашаем также нашу учительницу. <r>Я уже с нетерпением жду!</r>",
+      "gram": ""
     }
   },
   {
     "id": "dlg_a22_025",
-    "cat": "Ämter und Behörden",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_david",
+    "cat": "Die neue Wohnung anmelden",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie sind umgezogen und müssen Ihre neue Wohnung beim Amt anmelden. Sie und ein Freund / eine Freundin möchten den Termin vorbereiten.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann gehen wir? (Tag, Uhrzeit)<br>Was nehmen wir mit? (Ausweis, Mietvertrag)<br>Was fragen wir? (Gebühr, Öffnungszeiten)",
+      "en": "You have moved and have to register your new flat at the office. You and a friend would like to prepare the appointment.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When do we go? (day, time)<br>What do we take with us? (ID, rental contract)<br>What do we ask? (fee, opening hours)",
+      "uk": "Ви переїхали й маєте зареєструвати нову квартиру в установі. Ви та друг / подруга хочете підготувати цей візит.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли ми йдемо? (день, час)<br>Що ми візьмемо з собою? (посвідчення, договір оренди)<br>Про що ми запитаємо? (збір, години роботи)",
+      "ru": "Вы переехали и должны зарегистрировать новую квартиру в учреждении. Вы и друг / подруга хотите подготовить этот визит.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда мы идём? (день, время)<br>Что мы возьмём с собой? (удостоверение, договор аренды)<br>О чём мы спросим? (сбор, часы работы)"
+    },
+    "name_q": "de_m_max",
+    "name_a": "de_w_anna",
     "q": {
-      "de": "Wissen Sie, <g>wo</g> sich das zuständige Amt befindet?",
-      "en": "Do you know <g>where</g> the responsible office is?",
-      "uk": "Ви знаєте, <g>де</g> знаходиться відповідна установа?",
-      "ru": "Вы знаете, <g>где</g> находится соответствующее учреждение?",
+      "de": "Hallo Anna! Ich bin letzten Monat umgezogen. Ich muss meine neue Wohnung anmelden, aber ich weiß nicht, <g>wo</g> das Bürgerbüro <g>ist</g>. Gehst du mit mir hin?",
+      "en": "Hi Anna! I moved last month. I have to register my new flat, but I don't know <g>where</g> the citizens' office <g>is</g>. Will you come with me?",
+      "uk": "Привіт, Анно! Минулого місяця я переїхав. Мені треба зареєструвати нову квартиру, але я не знаю, <g>де</g> <g>знаходиться</g> бюро для громадян. Підеш зі мною?",
+      "ru": "Привет, Анна! В прошлом месяце я переехал. Мне нужно зарегистрировать новую квартиру, но я не знаю, <g>где</g> <g>находится</g> бюро для граждан. Пойдёшь со мной?",
       "gram": "indirekter_fragesatz_fragewort"
     },
     "a": {
-      "de": "Ja, es ist gleich <g>neben dem Bahnhof</g>.",
-      "en": "Yes, it is right <g>next to the station</g>.",
-      "uk": "Так, вона одразу <g>біля вокзалу</g>.",
-      "ru": "Да, оно прямо <g>рядом с вокзалом</g>.",
-      "gram": "wechselpraepositionen"
+      "de": "<r>Natürlich, gern.</r><br><r>Wir könnten doch</r> am Dienstag um neun Uhr gehen.<br><r>Was denkst du?</r>",
+      "en": "<r>Of course, gladly.</r><br><r>We could</r> go on Tuesday at nine o'clock.<br><r>What do you think?</r>",
+      "uk": "<r>Звичайно, із задоволенням.</r><br><r>Ми могли б</r> піти у вівторок о дев'ятій.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Конечно, с удовольствием.</r><br><r>Мы могли бы</r> пойти во вторник в девять.<br><r>Что ты думаешь?</r>",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Das passt mir leider nicht so gut, weil</r> das Bürgerbüro dienstags erst um zehn Uhr aufmacht.<br><r>Wir könnten es doch so machen:</r> Wir gehen um zehn Uhr hin.<br><r>Passt dir das so?</r>",
+      "en": "<r>That doesn't suit me so well, I'm afraid, because</r> the citizens' office doesn't open until ten o'clock on Tuesdays.<br><r>We could do it like this:</r> we go there at ten o'clock.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це, на жаль, не дуже підходить, тому що</r> бюро для громадян по вівторках відчиняється лише о десятій.<br><r>Можна зробити так:</r> підемо туди о десятій.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это, к сожалению, не очень подходит, потому что</r> бюро для граждан по вторникам открывается только в десять.<br><r>Можно сделать так:</r> пойдём туда в десять.<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich schlage vor, dass</r> wir Ausweis und Mietvertrag mitnehmen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I suggest that</r> we take our ID and the rental contract.<br><r>What do you think about that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб ми взяли посвідчення та договір оренди.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы мы взяли удостоверение и договор аренды.<br><r>Что ты об этом скажешь?</r>",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Wir könnten doch</r> fragen, <g>wie viel</g> die Anmeldung <g>kostet</g>.<br><r>Wie findest du das?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>We could</r> ask <g>how much</g> the registration <g>costs</g>.<br><r>How do you like that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Ми могли б</r> запитати, <g>скільки</g> коштує реєстрація.<br><r>Як тобі це?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Мы могли бы</r> спросить, <g>сколько</g> стоит регистрация.<br><r>Как тебе это?</r>",
+      "gram": "indirekter_fragesatz_fragewort"
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir gehen am Dienstag um zehn Uhr hin, nehmen Ausweis und Mietvertrag mit und fragen, <g>wie viel</g> die Anmeldung <g>kostet</g>. <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We go there on Tuesday at ten o'clock, take our ID and the rental contract and ask <g>how much</g> the registration <g>costs</g>. <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Йдемо туди у вівторок о десятій, беремо посвідчення та договір оренди й питаємо, <g>скільки</g> коштує реєстрація. <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Идём туда во вторник в десять, берём удостоверение и договор аренды и спрашиваем, <g>сколько</g> стоит регистрация. <r>До встречи!</r>",
+      "gram": "indirekter_fragesatz_fragewort"
     }
   },
   {
     "id": "dlg_a22_026",
-    "cat": "Ämter und Behörden",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_david",
+    "cat": "Sich in der Fahrschule anmelden",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie möchten den Führerschein machen. Sie und ein Freund / eine Freundin möchten die Fahrschule besuchen und sich anmelden.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann gehen wir hin? (Tag, Uhrzeit)<br>Was fragen wir? (Kosten, Raten)<br>Was nehmen wir mit? (Ausweis, Passfoto)",
+      "en": "You would like to get your driving licence. You and a friend would like to visit the driving school and register.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When do we go? (day, time)<br>What do we ask? (costs, instalments)<br>What do we take with us? (ID, passport photo)",
+      "uk": "Ви хочете отримати водійські права. Ви та друг / подруга хочете піти в автошколу й записатися.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли ми йдемо? (день, час)<br>Про що ми запитаємо? (вартість, оплата частинами)<br>Що ми візьмемо з собою? (посвідчення, фото на документи)",
+      "ru": "Вы хотите получить водительские права. Вы и друг / подруга хотите пойти в автошколу и записаться.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда мы идём? (день, время)<br>О чём мы спросим? (стоимость, оплата частями)<br>Что мы возьмём с собой? (удостоверение, фото на документы)"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_w_mia",
     "q": {
-      "de": "Können Sie mir sagen, <g>ob</g> mein Führerschein hier gültig ist?",
-      "en": "Can you tell me <g>whether</g> my driving licence is valid here?",
-      "uk": "Чи можете ви сказати, <g>чи</g> дійсні тут мої водійські права?",
-      "ru": "Можете ли вы сказать, действительны <g>ли</g> здесь мои водительские права?",
+      "de": "Hallo Mia! Ich möchte endlich den Führerschein machen. Ich weiß nicht, <g>ob</g> ich dafür viel Geld <g>brauche</g>. Gehst du mit mir zur Fahrschule?",
+      "en": "Hi Mia! I finally want to get my driving licence. I don't know <g>whether</g> I need a lot of money for it. Will you come with me to the driving school?",
+      "uk": "Привіт, Міє! Я нарешті хочу отримати водійські права. Я не знаю, <g>чи</g> мені для цього <g>потрібно</g> багато грошей. Підеш зі мною в автошколу?",
+      "ru": "Привет, Мия! Я наконец хочу получить водительские права. Я не знаю, <g>нужно ли</g> мне для этого много денег. Пойдёшь со мной в автошколу?",
       "gram": "indirekter_fragesatz_ob"
     },
     "a": {
-      "de": "Ich weiß nicht genau, <g>ob</g> er gültig ist, fragen Sie bitte am Schalter.",
-      "en": "I don't know exactly <g>whether</g> it is valid, please ask at the counter.",
-      "uk": "Я точно не знаю, <g>чи</g> вони дійсні, запитайте, будь ласка, на стійці.",
-      "ru": "Я точно не знаю, действительны <g>ли</g> они, спросите, пожалуйста, у стойки.",
+      "de": "<r>Natürlich, gern.</r><br><r>Wie wäre es, wenn wir</r> am Freitag nach der Arbeit hingehen?",
+      "en": "<r>Of course, gladly.</r><br><r>How about if we</r> go there on Friday after work?",
+      "uk": "<r>Звичайно, із задоволенням.</r><br><r>Що, як ми</r> підемо туди в п'ятницю після роботи?",
+      "ru": "<r>Конечно, с удовольствием.</r><br><r>Как насчёт того, чтобы мы</r> пойдём туда в пятницу после работы?",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Das passt mir leider nicht so gut, weil</r> die Fahrschule freitags schon um vier Uhr schließt.<br><r>Wir könnten es doch so machen:</r> Wir gehen am Donnerstag.<br><r>Passt dir das so?</r>",
+      "en": "<r>That doesn't suit me so well, I'm afraid, because</r> the driving school already closes at four o'clock on Fridays.<br><r>We could do it like this:</r> we go on Thursday.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це, на жаль, не дуже підходить, тому що</r> автошкола по п'ятницях зачиняється вже о четвертій.<br><r>Можна зробити так:</r> підемо в четвер.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это, к сожалению, не очень подходит, потому что</r> автошкола по пятницам закрывается уже в четыре.<br><r>Можно сделать так:</r> пойдём в четверг.<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Wir könnten doch</r> fragen, <g>ob</g> man in Raten zahlen <g>kann</g>.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>We could</r> ask <g>whether</g> you can pay in instalments.<br><r>What do you think about that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Ми могли б</r> запитати, <g>чи</g> можна платити частинами.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Мы могли бы</r> спросить, <g>можно ли</g> платить частями.<br><r>Что ты об этом скажешь?</r>",
+      "gram": "indirekter_fragesatz_ob"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Ich würde vorschlagen, dass</r> ich Ausweis und Passfoto mitbringe.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>I would suggest that</r> I bring my ID and a passport photo.<br><r>How do you see that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Я пропоную</r>, щоб я приніс посвідчення та фото на документи.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Я предлагаю</r>, чтобы я принёс удостоверение и фото на документы.<br><r>Как ты на это смотришь?</r>",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir gehen am Donnerstag zur Fahrschule, fragen, <g>ob</g> man in Raten zahlen <g>kann</g>, und du bringst Ausweis und Passfoto mit. <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We go to the driving school on Thursday, ask <g>whether</g> you can pay in instalments, and you bring your ID and a passport photo. <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Йдемо в четвер в автошколу, питаємо, <g>чи</g> можна платити частинами, а ти береш посвідчення та фото на документи. <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Идём в четверг в автошколу, спрашиваем, <g>можно ли</g> платить частями, а ты берёшь удостоверение и фото на документы. <r>До встречи!</r>",
       "gram": "indirekter_fragesatz_ob"
     }
   },
   {
     "id": "dlg_a22_027",
-    "cat": "Ämter und Behörden",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_david",
+    "cat": "Eine Vollmacht für den Freund schreiben",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie haben nächste Woche keine Zeit für das Amt. Ein Freund / Eine Freundin soll Ihre Unterlagen einreichen. Sie möchten zusammen die Vollmacht vorbereiten.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann schreiben wir die Vollmacht? (Tag, Uhrzeit)<br>Was schreiben wir hinein? (Name, Datum, Unterschrift)<br>Wann reichst du die Unterlagen ein? (Tag)",
+      "en": "You have no time for the office next week. A friend is to hand in your documents. You would like to prepare the power of attorney together.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When do we write the power of attorney? (day, time)<br>What do we put in it? (name, date, signature)<br>When do you hand in the documents? (day)",
+      "uk": "Наступного тижня ви не маєте часу для установи. Друг / Подруга має подати ваші документи. Ви хочете разом підготувати довіреність.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли ми напишемо довіреність? (день, час)<br>Що ми в неї запишемо? (ім'я, дата, підпис)<br>Коли ти подаси документи? (день)",
+      "ru": "На следующей неделе у вас нет времени для учреждения. Друг / Подруга должен(на) подать ваши документы. Вы хотите вместе подготовить доверенность.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда мы напишем доверенность? (день, время)<br>Что мы в неё запишем? (имя, дата, подпись)<br>Когда ты подашь документы? (день)"
+    },
+    "name_q": "de_m_max",
+    "name_a": "de_m_alex",
     "q": {
-      "de": "Welche Unterlagen brauche ich für den Antrag?",
-      "en": "What documents do I need for the application?",
-      "uk": "Які документи мені потрібні для заяви?",
-      "ru": "Какие документы мне нужны для заявления?",
-      "gram": ""
+      "de": "Hallo Alex! Ich weiß nicht, <g>wann</g> ich nächste Woche Zeit <g>habe</g>. Kannst du die Unterlagen für mich beim Amt einreichen? Du brauchst dafür eine Vollmacht.",
+      "en": "Hi Alex! I don't know <g>when</g> I'll have time next week. Can you hand in the documents at the office for me? You need a power of attorney for that.",
+      "uk": "Привіт, Алексе! Я не знаю, <g>коли</g> наступного тижня матиму час. Ти можеш подати документи за мене в установі? Для цього тобі потрібна довіреність.",
+      "ru": "Привет, Алекс! Я не знаю, <g>когда</g> на следующей неделе у меня будет время. Ты можешь подать документы за меня в учреждении? Для этого тебе нужна доверенность.",
+      "gram": "indirekter_fragesatz_fragewort"
     },
     "a": {
-      "de": "Sie brauchen Ihren Ausweis und ein ausgefülltes Formular.",
-      "en": "You need your ID and a filled-out form.",
-      "uk": "Вам потрібен документ та заповнений бланк.",
-      "ru": "Вам нужен документ и заполненный бланк.",
+      "de": "<r>Klar, kein Problem.</r><br><r>Wir könnten doch</r> die Vollmacht heute Abend schreiben.<br><r>Was denkst du?</r>",
+      "en": "<r>Sure, no problem.</r><br><r>We could</r> write the power of attorney this evening.<br><r>What do you think?</r>",
+      "uk": "<r>Звісно, без проблем.</r><br><r>Ми могли б</r> написати довіреність сьогодні ввечері.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Конечно, без проблем.</r><br><r>Мы могли бы</r> написать доверенность сегодня вечером.<br><r>Что ты думаешь?</r>",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Hmm, ich weiß nicht so recht.</r> Ich bin erst um neun Uhr zu Hause.<br><r>Wie wäre es, wenn wir</r> sie morgen früh schreiben?",
+      "en": "<r>Hmm, I'm not so sure.</r> I'm not home until nine o'clock.<br><r>How about if we</r> write it tomorrow morning?",
+      "uk": "<r>Хм, я не зовсім упевнений.</r> Я буду вдома лише о дев'ятій.<br><r>Що, як ми</r> напишемо її завтра зранку?",
+      "ru": "<r>Хм, я не очень уверен.</r> Я буду дома только в девять.<br><r>Как насчёт того, чтобы мы</r> напишем её завтра утром?",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r> Ich frage dort, <g>wo</g> ich die Unterlagen <g>abgeben muss</g>.<br><r>Ich schlage vor, dass</r> wir Namen, Datum und Unterschrift aufschreiben.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Good idea, let's do that.</r> I'll ask there <g>where</g> I have to hand in the documents.<br><r>I suggest that</r> we write down names, date and signature.<br><r>What do you think about that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r> Я запитаю там, <g>де</g> мені <g>треба</g> здати документи.<br><r>Я пропоную</r>, щоб ми записали імена, дату й підпис.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r> Я спрошу там, <g>где</g> мне <g>нужно</g> сдать документы.<br><r>Я предлагаю</r>, чтобы мы записали имена, дату и подпись.<br><r>Что ты об этом скажешь?</r>",
+      "gram": "indirekter_fragesatz_fragewort"
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Ich würde vorschlagen, dass</r> du die Unterlagen am Mittwoch einreichst.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>I would suggest that</r> you hand in the documents on Wednesday.<br><r>How do you see that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Я пропоную</r>, щоб ти подав документи в середу.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Я предлагаю</r>, чтобы ты подал документы в среду.<br><r>Как ты на это смотришь?</r>",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir schreiben die Vollmacht morgen früh mit Namen, Datum und Unterschrift, und ich reiche die Unterlagen am Mittwoch ein. <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We write the power of attorney tomorrow morning with names, date and signature, and I hand in the documents on Wednesday. <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Пишемо довіреність завтра зранку з іменами, датою й підписом, а я подаю документи в середу. <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Пишем доверенность завтра утром с именами, датой и подписью, а я подаю документы в среду. <r>До встречи!</r>",
       "gram": ""
     }
   },
   {
     "id": "dlg_a22_028",
-    "cat": "Ämter und Behörden",
-    "name_q": "de_w_julia",
-    "name_a": "de_m_david",
+    "cat": "Kopien beglaubigen lassen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Sie brauchen für eine Bewerbung beglaubigte Kopien Ihrer Zeugnisse. Sie und ein Freund / eine Freundin möchten die Beglaubigung vorbereiten.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wo und wann lassen wir beglaubigen? (Rathaus, Donnerstag)<br>Wie viele Kopien? (zwei, fünf)<br>Wer bringt die Originale mit? (du, ich)",
+      "en": "For an application you need certified copies of your certificates. You and a friend would like to prepare the certification.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>Where and when do we have them certified? (town hall, Thursday)<br>How many copies? (two, five)<br>Who brings the originals? (you, me)",
+      "uk": "Для заяви вам потрібні засвідчені копії ваших свідоцтв. Ви та друг / подруга хочете підготувати засвідчення.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Де й коли ми засвідчимо? (ратуша, четвер)<br>Скільки копій? (дві, п'ять)<br>Хто принесе оригінали? (ти, я)",
+      "ru": "Для заявления вам нужны заверенные копии ваших свидетельств. Вы и друг / подруга хотите подготовить заверение.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Где и когда мы заверим? (ратуша, четверг)<br>Сколько копий? (две, пять)<br>Кто принесёт оригиналы? (ты, я)"
+    },
+    "name_q": "de_w_mia",
+    "name_a": "de_m_mark",
     "q": {
-      "de": "<g>Haben</g> Sie meine verlorene Tasche im Fundbüro <g>gefunden</g>?",
-      "en": "<g>Did</g> you <g>find</g> my lost bag at the lost-property office?",
-      "uk": "Ви <g>знайшли</g> мою загублену сумку в бюро знахідок?",
-      "ru": "Вы <g>нашли</g> мою потерянную сумку в бюро находок?",
-      "gram": "perfekt"
+      "de": "Hallo Mark! Für meine Bewerbung brauche ich beglaubigte Kopien von meinen Zeugnissen. Gehst du mit mir hin?",
+      "en": "Hi Mark! For my application I need certified copies of my certificates. Will you come with me?",
+      "uk": "Привіт, Марку! Для моєї заяви мені потрібні засвідчені копії моїх свідоцтв. Підеш зі мною?",
+      "ru": "Привет, Марк! Для моего заявления мне нужны заверенные копии моих свидетельств. Пойдёшь со мной?",
+      "gram": ""
     },
     "a": {
-      "de": "Ja, Ihre Tasche ist bei uns, Sie <g>können</g> sie heute <g>abholen</g>.",
-      "en": "Yes, your bag is with us, you <g>can</g> <g>pick it up</g> today.",
-      "uk": "Так, ваша сумка у нас, <g>можете</g> <g>забрати</g> її сьогодні.",
-      "ru": "Да, ваша сумка у нас, <g>можете</g> <g>забрать</g> её сегодня.",
-      "gram": "modalverben"
+      "de": "<r>Natürlich, gern.</r><br><r>Wir könnten doch</r> ins Rathaus gehen.<br><r>Was denkst du?</r>",
+      "en": "<r>Of course, gladly.</r><br><r>We could</r> go to the town hall.<br><r>What do you think?</r>",
+      "uk": "<r>Звичайно, із задоволенням.</r><br><r>Ми могли б</r> піти в ратушу.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Конечно, с удовольствием.</r><br><r>Мы могли бы</r> пойти в ратушу.<br><r>Что ты думаешь?</r>",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Das passt mir leider nicht so gut, weil</r> das Rathaus nur donnerstags Kopien beglaubigt.<br><r>Wir könnten es doch so machen:</r> Wir gehen am Donnerstag hin.<br><r>Passt dir das so?</r>",
+      "en": "<r>That doesn't suit me so well, I'm afraid, because</r> the town hall only certifies copies on Thursdays.<br><r>We could do it like this:</r> we go there on Thursday.<br><r>Does that work for you?</r>",
+      "uk": "<r>Мені це, на жаль, не дуже підходить, тому що</r> ратуша засвідчує копії лише по четвергах.<br><r>Можна зробити так:</r> підемо туди в четвер.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Мне это, к сожалению, не очень подходит, потому что</r> ратуша заверяет копии только по четвергам.<br><r>Можно сделать так:</r> пойдём туда в четверг.<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich schlage vor, dass</r> wir fünf Kopien machen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I suggest that</r> we make five copies.<br><r>What do you think about that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб ми зробили п'ять копій.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы мы сделали пять копий.<br><r>Что ты об этом скажешь?</r>",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Ich würde vorschlagen, dass</r> ich die Originale mitbringe.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>I would suggest that</r> I bring the originals.<br><r>How do you see that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Я пропоную</r>, щоб я принесла оригінали.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Я предлагаю</r>, чтобы я принесла оригиналы.<br><r>Как ты на это смотришь?</r>",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir gehen am Donnerstag ins Rathaus, lassen fünf Kopien beglaubigen, und du bringst die Originale mit. <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We go to the town hall on Thursday, have five copies certified, and you bring the originals. <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Йдемо в четвер у ратушу, засвідчуємо п'ять копій, а ти приносиш оригінали. <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Идём в четверг в ратушу, заверяем пять копий, а ты приносишь оригиналы. <r>До встречи!</r>",
+      "gram": ""
     }
   },
   {
     "id": "dlg_a22_029",
-    "cat": "Feste und Einladungen",
-    "name_q": "de_w_anna",
-    "name_a": "de_m_mark",
+    "cat": "Ein Abschlussfest nach dem Deutschkurs planen",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Ihr Deutschkurs endet bald. Sie und ein Kursteilnehmer / eine Kursteilnehmerin möchten ein Abschlussfest organisieren.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann feiern wir? (Tag, Uhrzeit)<br>Wo feiern wir? (Park, Kursraum)<br>Was bringen wir mit? (Essen, Getränke)",
+      "en": "Your German course will end soon. You and another course participant would like to organise a farewell party.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When do we celebrate? (day, time)<br>Where do we celebrate? (park, classroom)<br>What do we bring? (food, drinks)",
+      "uk": "Ваш курс німецької скоро закінчується. Ви та інший учасник / інша учасниця курсу хочете організувати прощальну вечірку.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли ми святкуємо? (день, час)<br>Де ми святкуємо? (парк, клас)<br>Що ми принесемо? (їжу, напої)",
+      "ru": "Ваш курс немецкого скоро заканчивается. Вы и другой участник / другая участница курса хотите организовать прощальную вечеринку.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда мы празднуем? (день, время)<br>Где мы празднуем? (парк, класс)<br>Что мы принесём? (еду, напитки)"
+    },
+    "name_q": "de_m_max",
+    "name_a": "de_w_mia",
     "q": {
-      "de": "Feiert ihr das Fest <g>im Garten</g> oder drinnen?",
-      "en": "Are you celebrating the party <g>in the garden</g> or inside?",
-      "uk": "Ви святкуєте свято <g>в саду</g> чи в приміщенні?",
-      "ru": "Вы празднуете <g>в саду</g> или в помещении?",
-      "gram": "wechselpraepositionen"
+      "de": "Hallo Mia! Unser Deutschkurs endet bald. Wollen wir ein Abschlussfest organisieren?",
+      "en": "Hi Mia! Our German course ends soon. Shall we organise a farewell party?",
+      "uk": "Привіт, Міє! Наш курс німецької скоро закінчується. Організуємо прощальну вечірку?",
+      "ru": "Привет, Мия! Наш курс немецкого скоро заканчивается. Организуем прощальную вечеринку?",
+      "gram": ""
     },
     "a": {
-      "de": "Wir feiern im Garten, <g>weil</g> das Wetter so schön ist.",
-      "en": "We are celebrating in the garden <g>because</g> the weather is so nice.",
-      "uk": "Ми святкуємо в саду, <g>тому що</g> погода така гарна.",
-      "ru": "Мы празднуем в саду, <g>потому что</g> погода такая хорошая.",
+      "de": "<r>Das gefällt mir sehr gut.</r><br><r>Ich hätte einen Vorschlag:</r> Wir feiern am letzten Kurstag, <g>weil</g> dann alle <g>da sind</g>.<br><r>Was denkst du?</r>",
+      "en": "<r>I like that a lot.</r><br><r>I have a suggestion:</r> we celebrate on the last day of the course <g>because</g> everyone is there then.<br><r>What do you think?</r>",
+      "uk": "<r>Мені це дуже подобається.</r><br><r>У мене є пропозиція:</r> святкуємо в останній день курсу, <g>тому що</g> тоді всі на місці.<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Мне это очень нравится.</r><br><r>У меня есть предложение:</r> празднуем в последний день курса, <g>потому что</g> тогда все на месте.<br><r>Что ты думаешь?</r>",
+      "gram": "nebensaetze_konnektoren_wdh"
+    },
+    "q1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Wollen wir nicht einfach</r> im Park feiern?",
+      "en": "<r>Agreed, that works well.</r><br><r>Why don't we just</r> celebrate in the park?",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Може, просто</r> святкуватимемо в парку?",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Может, просто</r> будем праздновать в парке?",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Hmm, ich weiß nicht so recht.</r> Im Park gibt es keine Tische.<br><r>Wir könnten es doch so machen:</r> Wir feiern im Kursraum. <g>Wenn</g> wir den Kursraum <g>nehmen</g>, haben wir immer Platz.<br><r>Passt dir das so?</r>",
+      "en": "<r>Hmm, I'm not so sure.</r> There are no tables in the park.<br><r>We could do it like this:</r> we celebrate in the classroom. <g>If</g> we <g>use</g> the classroom, we always have room.<br><r>Does that work for you?</r>",
+      "uk": "<r>Хм, я не зовсім упевнена.</r> У парку немає столів.<br><r>Можна зробити так:</r> святкуємо в класі. <g>Якщо</g> ми <g>візьмемо</g> клас, місця завжди вистачить.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Хм, я не очень уверена.</r> В парке нет столов.<br><r>Можно сделать так:</r> празднуем в классе. <g>Если</g> мы <g>возьмём</g> класс, места всегда хватит.<br><r>Тебе так подходит?</r>",
+      "gram": "nebensaetze_konnektoren_wdh"
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich würde vorschlagen, dass</r> jeder etwas aus seinem Land mitbringt.<br><r>Wie siehst du das?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I would suggest that</r> everyone brings something from their country.<br><r>How do you see that?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб кожен приніс щось зі своєї країни.<br><r>Як ти на це дивишся?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы каждый принёс что-нибудь из своей страны.<br><r>Как ты на это смотришь?</r>",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir feiern am letzten Kurstag im Kursraum, und jeder bringt etwas aus seinem Land mit, <g>damit</g> alle etwas Neues <g>probieren</g>. <r>Ich freue mich schon darauf!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We celebrate on the last day of the course in the classroom, and everyone brings something from their country <g>so that</g> everyone tries something new. <r>I'm already looking forward to it!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Святкуємо в останній день курсу в класі, а кожен приносить щось зі своєї країни, <g>щоб</g> усі <g>спробували</g> щось нове. <r>Я вже з нетерпінням чекаю!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Празднуем в последний день курса в классе, а каждый приносит что-нибудь из своей страны, <g>чтобы</g> все <g>попробовали</g> что-нибудь новое. <r>Я уже с нетерпением жду!</r>",
       "gram": "nebensaetze_konnektoren_wdh"
     }
   },
   {
     "id": "dlg_a22_030",
-    "cat": "Feste und Einladungen",
-    "name_q": "de_w_anna",
-    "name_a": "de_m_mark",
+    "cat": "Eine Glückwunschkarte für die Chefin schreiben",
+    "type": "Gemeinsam etwas planen",
+    "task": {
+      "de": "Die Chefin hat nächste Woche Geburtstag. Sie und ein Kollege / eine Kollegin möchten ihr eine Glückwunschkarte schreiben.<br><br>Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.<br><br>Diese Punkte helfen Ihnen:<br>Wann schreiben wir die Karte? (Tag, Uhrzeit)<br>Was schreiben wir? (Glückwunsch, gute Wünsche)<br>Wer unterschreibt? (Kollegen, Team)",
+      "en": "The boss has her birthday next week. You and a colleague would like to write her a greeting card.<br><br>Plan together with your conversation partner how you would like to do this.<br><br>These points will help you:<br>When do we write the card? (day, time)<br>What do we write? (congratulations, good wishes)<br>Who signs? (colleagues, team)",
+      "uk": "Наступного тижня в начальниці день народження. Ви та колега / колежанка хочете написати їй вітальну листівку.<br><br>Сплануйте разом зі своїм співрозмовником або співрозмовницею, як ви це зробите.<br><br>Ці пункти допоможуть вам:<br>Коли ми напишемо листівку? (день, час)<br>Що ми напишемо? (вітання, побажання)<br>Хто підписує? (колеги, команда)",
+      "ru": "На следующей неделе у начальницы день рождения. Вы и коллега / коллега-женщина хотите написать ей поздравительную открытку.<br><br>Спланируйте вместе со своим собеседником или собеседницей, как вы это сделаете.<br><br>Эти пункты помогут вам:<br>Когда мы напишем открытку? (день, время)<br>Что мы напишем? (поздравление, пожелания)<br>Кто подписывает? (коллеги, команда)"
+    },
+    "name_q": "de_m_david",
+    "name_a": "de_w_julia",
     "q": {
-      "de": "<g>Hast</g> du die Einladungen schon <g>verschickt</g>?",
-      "en": "<g>Have</g> you already <g>sent</g> the invitations?",
-      "uk": "Ти вже <g>розіслала</g> запрошення?",
-      "ru": "Ты уже <g>разослала</g> приглашения?",
-      "gram": "perfekt"
+      "de": "Hallo Julia! Die Chefin hat nächste Woche Geburtstag. Wir wollen ihr eine Glückwunschkarte schreiben. Planst du das mit mir?",
+      "en": "Hi Julia! The boss has her birthday next week. We want to write her a greeting card. Will you plan it with me?",
+      "uk": "Привіт, Юліє! Наступного тижня в начальниці день народження. Ми хочемо написати їй вітальну листівку. Плануєш це зі мною?",
+      "ru": "Привет, Юлия! На следующей неделе у начальницы день рождения. Мы хотим написать ей поздравительную открытку. Планируешь это со мной?",
+      "gram": ""
     },
     "a": {
-      "de": "Ja, ich habe sie früh geschickt, <g>damit</g> alle rechtzeitig planen können.",
-      "en": "Yes, I sent them early <g>so that</g> everyone can plan in time.",
-      "uk": "Так, я розіслала їх заздалегідь, <g>щоб</g> усі встигли спланувати.",
-      "ru": "Да, я разослала их заранее, <g>чтобы</g> все успели спланировать.",
-      "gram": "nebensaetze_konnektoren_wdh"
+      "de": "<r>Klar, kein Problem.</r><br><r>Wie wäre es, wenn wir</r> in der Mittagspause anfangen?",
+      "en": "<r>Sure, no problem.</r><br><r>How about if we</r> start during the lunch break?",
+      "uk": "<r>Звісно, без проблем.</r><br><r>Що, як ми</r> почнемо в обідню перерву?",
+      "ru": "<r>Конечно, без проблем.</r><br><r>Как насчёт того, чтобы мы</r> начнём в обеденный перерыв?",
+      "gram": ""
+    },
+    "q1": {
+      "de": "<r>Einverstanden, das passt gut.</r><br><r>Ich würde vorschlagen, dass</r> wir ihr viel Gesundheit und Glück wünschen.<br><r>Was meinst du dazu?</r>",
+      "en": "<r>Agreed, that works well.</r><br><r>I would suggest that</r> we wish her lots of health and happiness.<br><r>What do you think about that?</r>",
+      "uk": "<r>Домовились, це підходить.</r><br><r>Я пропоную</r> побажати їй багато здоров'я та щастя.<br><r>Що ти про це скажеш?</r>",
+      "ru": "<r>Договорились, это подходит.</r><br><r>Я предлагаю</r> пожелать ей много здоровья и счастья.<br><r>Что ты об этом скажешь?</r>",
+      "gram": ""
+    },
+    "a1": {
+      "de": "<r>Eigentlich schon, aber wäre es nicht besser, wenn</r> wir auch einen persönlichen Satz schreiben?<br><r>Ich hätte einen Vorschlag:</r> Wir schreiben: Danke für Ihre Hilfe im Team.<br><r>Wie findest du das?</r>",
+      "en": "<r>Actually yes, but wouldn't it be better if</r> we also wrote a personal sentence?<br><r>I have a suggestion:</r> we write: Thank you for your help in the team.<br><r>How do you like that?</r>",
+      "uk": "<r>Загалом так, але чи не краще було б,</r> якби ми написали ще й особисте речення?<br><r>У мене є пропозиція:</r> напишемо: дякуємо за вашу допомогу в команді.<br><r>Як тобі це?</r>",
+      "ru": "<r>Вообще да, но разве не лучше было бы,</r> если бы мы написали ещё и личное предложение?<br><r>У меня есть предложение:</r> напишем: спасибо за вашу помощь в команде.<br><r>Как тебе это?</r>",
+      "gram": ""
+    },
+    "q2": {
+      "de": "<r>Gute Idee, das machen wir.</r><br><r>Ich schlage vor, dass</r> alle Kollegen die Karte unterschreiben.<br><r>Passt dir das so?</r>",
+      "en": "<r>Good idea, let's do that.</r><br><r>I suggest that</r> all colleagues sign the card.<br><r>Does that work for you?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо.</r><br><r>Я пропоную</r>, щоб усі колеги підписали листівку.<br><r>Тобі так підходить?</r>",
+      "ru": "<r>Хорошая идея, так и сделаем.</r><br><r>Я предлагаю</r>, чтобы все коллеги подписали открытку.<br><r>Тебе так подходит?</r>",
+      "gram": ""
+    },
+    "a2": {
+      "de": "<r>Genau, das finde ich auch.</r> <r>Also, wir machen es so:</r> Wir schreiben die Karte in der Mittagspause, wünschen der Chefin viel Gesundheit und Glück, schreiben einen persönlichen Satz, und alle Kollegen unterschreiben sie. <r>Bis dann!</r>",
+      "en": "<r>Exactly, I think so too.</r> <r>So, here's what we'll do:</r> We write the card during the lunch break, wish the boss lots of health and happiness, write a personal sentence, and all colleagues sign it. <r>See you then!</r>",
+      "uk": "<r>Саме так, я теж так думаю.</r> <r>Отже, робимо так:</r> Пишемо листівку в обідню перерву, бажаємо начальниці багато здоров'я та щастя, пишемо особисте речення, і всі колеги її підписують. <r>До зустрічі!</r>",
+      "ru": "<r>Именно, я тоже так думаю.</r> <r>Итак, делаем так:</r> Пишем открытку в обеденный перерыв, желаем начальнице много здоровья и счастья, пишем личное предложение, и все коллеги её подписывают. <r>До встречи!</r>",
+      "gram": ""
     }
   },
   {
