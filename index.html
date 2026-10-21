@@ -359,7 +359,7 @@ if(location.protocol === 'https:'){
     'mova_consent_v1', CLOUD_FLAG,
   ];
   const CLOUD_BACKUP_EXCLUDE_PREFIX = [
-    'mova_ef_repair_v', 'mova_streak_migrated_v', 'mova_progress_schema_v', 'mova_sr_ob_skipped_',
+    'mova_ef_repair_v', 'mova_streak_migrated_v', 'mova_progress_schema_v', 'mova_sr_ob_skipped_', 'mova_sync_',
   ];
   window._cloudUser = null;
   let _cloudP = null;
@@ -375,6 +375,7 @@ if(location.protocol === 'https:'){
         window._cloudUser = user;
         try{ if(user) localStorage.setItem(CLOUD_FLAG,'1'); else localStorage.removeItem(CLOUD_FLAG); }catch(_){}
         if(typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI();
+        if(user) setTimeout(function(){ if(window.syncPull) window.syncPull(); }, 1200);   // авто-sync: перевірка при відкритті/вході
       });
       return {auth, db, A, F};
     })().catch(e => { _cloudP = null; throw e; });
@@ -440,37 +441,156 @@ if(location.protocol === 'https:'){
     }
     return out;
   }
+  // ── Авто-синхронізація (крок 1, без злиття) ──────────────────────
+  // Великий стиснутий знімок — backups/{uid}; крихітний індекс — sync/{uid} (rev, hash, зведення).
+  // При відкритті читаємо ЛИШЕ індекс; великий документ — тільки коли в хмарі новіша ревізія.
+  // «Є локальні зміни» = хеш знімка ≠ хеш на момент останньої синхронізації.
+  const S_REV='mova_sync_rev', S_HASH='mova_sync_hash', S_UID='mova_sync_uid', S_UNDO='mova_sync_undo';
+  const _ls = k => { try{ return localStorage.getItem(k); }catch(_){ return null; } };
+  const _lset = (k,v) => { try{ localStorage.setItem(k,v); }catch(_){} };
+  const _ua = navigator.userAgent;
+  const _deviceName = () => /iPhone|iPad/.test(_ua) ? 'iPhone/iPad' : /Android/.test(_ua) ? 'Android' : /Mac/.test(_ua) ? 'Mac' : /Windows/.test(_ua) ? 'Windows' : 'web';
+  async function _sha(str){
+    const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(str));
+    return Array.from(new Uint8Array(b)).map(x => x.toString(16).padStart(2,'0')).join('').slice(0,24);
+  }
+  async function _snapshot(){
+    const d = _cloudCollectBackupData(), o = {};
+    Object.keys(d).sort().forEach(k => { o[k] = d[k]; });
+    const json = JSON.stringify(o);
+    return { json, hash: await _sha(json), n: Object.keys(o).length };
+  }
+  function _summary(){
+    const j = k => { try{ return JSON.parse(_ls(k) || 'null') || {}; }catch(_){ return {}; } };
+    return { xp: j('mova_app_xp').total || 0, streak: j('mova_app_streak').streak || 0 };
+  }
+  const _b64 = u8 => { let s = ''; for(let i=0; i<u8.length; i+=0x8000) s += String.fromCharCode.apply(null, u8.subarray(i, i+0x8000)); return btoa(s); };
+  async function _pack(str){
+    if(typeof CompressionStream === 'undefined') return { data:str, format:'json' };
+    const buf = await new Response(new Blob([str]).stream().pipeThrough(new CompressionStream('gzip'))).arrayBuffer();
+    return { data:_b64(new Uint8Array(buf)), format:'gz' };
+  }
+  async function _unpack(d){
+    if(d.format !== 'gz') return d.data || '{}';
+    const bin = Uint8Array.from(atob(d.data), ch => ch.charCodeAt(0));
+    return await new Response(new Blob([bin]).stream().pipeThrough(new DecompressionStream('gzip'))).text();
+  }
+  const _refs = c => ({ big:c.F.doc(c.db,'backups',window._cloudUser.uid), idx:c.F.doc(c.db,'sync',window._cloudUser.uid) });
+  async function _cloudMeta(c, r){
+    const i = await c.F.getDoc(r.idx);
+    if(i.exists()) return i.data();
+    const b = await c.F.getDoc(r.big);               // старий ручний бекап без індексу
+    if(!b.exists()) return null;
+    const d = b.data();
+    return { rev:d.rev || 1, updatedAt:d.savedAtClient || 0, device:'?', keyCount:d.keyCount || 0 };
+  }
+  function _syncUidGuard(uid){
+    if(_ls(S_UID) !== uid){ _lset(S_UID, uid); try{ localStorage.removeItem(S_REV); localStorage.removeItem(S_HASH); }catch(_){} }
+  }
+  let _syncBusy = false, _syncTimer = null, _conflictOpen = false;
+  async function syncPush(opts){
+    opts = opts || {};
+    if(!window._cloudUser || _syncBusy) return false;
+    _syncBusy = true;
+    try{
+      const c = await ensureCloud(), r = _refs(c);
+      _syncUidGuard(window._cloudUser.uid);
+      const snap = await _snapshot();
+      if(!opts.force && snap.hash === _ls(S_HASH)) return true;      // нічого не змінилось — жодних запитів
+      const cloud = await _cloudMeta(c, r);
+      if(!opts.force && cloud && cloud.rev > (+_ls(S_REV) || 0)){ _syncBusy = false; await _syncConflict(c, r, cloud); return false; }
+      const rev = (cloud ? cloud.rev : 0) + 1, pk = await _pack(snap.json), now = Date.now();
+      await c.F.setDoc(r.big, { data:pk.data, format:pk.format, keyCount:snap.n, rev:rev, hash:snap.hash, savedAt:c.F.serverTimestamp(), savedAtClient:now });
+      await c.F.setDoc(r.idx, Object.assign({ rev:rev, hash:snap.hash, updatedAt:now, device:_deviceName(), keyCount:snap.n }, _summary()));
+      _lset(S_REV, String(rev)); _lset(S_HASH, snap.hash);
+      if(opts.notify){ window.notify?.('☁️ Збережено ('+snap.n+' записів)'); if(typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI(); }
+      return true;
+    }catch(e){ if(opts.notify) window.notify?.('⚠️ '+_cloudErrText(e)); else console.warn('sync push failed', e); return false; }
+    finally{ _syncBusy = false; }
+  }
+  async function _syncApply(c, r, cloud){
+    const b = await c.F.getDoc(r.big);
+    if(!b.exists()) return false;
+    const d = b.data(), data = JSON.parse(await _unpack(d) || '{}');
+    try{ _lset(S_UNDO, (await _snapshot()).json); }catch(_){}        // страховка: локальна копія перед перезаписом
+    Object.keys(data).forEach(k => {
+      if(CLOUD_BACKUP_EXCLUDE.includes(k) || CLOUD_BACKUP_EXCLUDE_PREFIX.some(p => k.startsWith(p))) return;
+      try{ localStorage.setItem(k, data[k]); }catch(_){}
+    });
+    const snap = await _snapshot();
+    _lset(S_REV, String(cloud.rev || d.rev || 1)); _lset(S_HASH, snap.hash);
+    window.notify?.('☁️ Прогрес оновлено з хмари — перезавантажую...');
+    setTimeout(() => location.reload(), 900);
+    return true;
+  }
+  async function syncPull(){
+    if(!window._cloudUser) return;
+    try{
+      const c = await ensureCloud(), r = _refs(c);
+      _syncUidGuard(window._cloudUser.uid);
+      const cloud = await _cloudMeta(c, r), snap = await _snapshot();
+      if(!cloud){ if(snap.n) await syncPush({ force:true }); return; }
+      const localRev = +_ls(S_REV) || 0, dirty = snap.hash !== _ls(S_HASH);
+      if(cloud.rev > localRev){
+        // чисто нове з хмари, або свіжий пристрій без прогресу — оновлюємо тихо; інакше питаємо
+        if((localRev > 0 && !dirty) || (localRev === 0 && !_summary().xp)) await _syncApply(c, r, cloud);
+        else await _syncConflict(c, r, cloud);
+      } else if(dirty) await syncPush();
+    }catch(e){ console.warn('sync pull failed', e); }
+  }
+  const _SX = {
+    uk:{ t:'Знайдено прогрес на іншому пристрої', cl:'У хмарі', lo:'На цьому пристрої', take:'Взяти з хмари', keep:'Залишити цей пристрій', later:'Пізніше', note:'Другий варіант замінить версію в хмарі.' },
+    de:{ t:'Fortschritt auf anderem Gerät gefunden', cl:'In der Cloud', lo:'Auf diesem Gerät', take:'Aus der Cloud übernehmen', keep:'Dieses Gerät behalten', later:'Später', note:'Die zweite Option ersetzt die Cloud-Version.' },
+    en:{ t:'Progress found on another device', cl:'In the cloud', lo:'On this device', take:'Use cloud version', keep:'Keep this device', later:'Later', note:'The second option replaces the cloud version.' },
+    ru:{ t:'Найден прогресс на другом устройстве', cl:'В облаке', lo:'На этом устройстве', take:'Взять из облака', keep:'Оставить это устройство', later:'Позже', note:'Второй вариант заменит версию в облаке.' }
+  };
+  function _syncConflict(c, r, cloud){
+    if(_conflictOpen) return Promise.resolve();
+    _conflictOpen = true;
+    const L = _SX[_ls('mova_ui_lang')] || _SX.de, me = _summary();
+    return new Promise(res => {
+      const ov = document.createElement('div');
+      ov.style.cssText = 'position:fixed;inset:0;z-index:99999;background:rgba(13,43,26,.72);display:flex;align-items:center;justify-content:center;padding:20px';
+      const box = document.createElement('div');
+      box.style.cssText = 'background:#fff;color:#1c1917;border-radius:16px;max-width:400px;width:100%;padding:22px;font:15px/1.5 -apple-system,Inter,sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.3)';
+      const card = (h, s) => '<div style="border:1px solid #e7e3dc;border-radius:12px;padding:10px 12px;margin:8px 0"><b>'+h+'</b><div style="color:#78716c;font-size:13px">'+s+'</div></div>';
+      const when = cloud.updatedAt ? new Date(cloud.updatedAt).toLocaleString() : '';
+      const cs = (cloud.xp != null) ? cloud.xp+' M · '+(cloud.streak || 0)+' 🔥' : (cloud.keyCount || 0)+' …';
+      box.innerHTML = '<div style="font-size:18px;font-weight:700;margin-bottom:6px">'+L.t+'</div>'
+        + card(L.cl+' · '+(cloud.device || '?'), when+'<br>'+cs)
+        + card(L.lo, me.xp+' M · '+me.streak+' 🔥')
+        + '<div style="color:#78716c;font-size:12px;margin:4px 0 12px">'+L.note+'</div>';
+      const close = () => { ov.remove(); _conflictOpen = false; res(); };
+      const btn = (txt, primary, fn) => {
+        const b = document.createElement('button'); b.textContent = txt;
+        b.style.cssText = 'display:block;width:100%;margin-top:8px;padding:13px;border:0;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;'
+          + (primary ? 'background:#c9a84c;color:#0d2b1a' : 'background:#f1ede4;color:#1c1917');
+        b.onclick = async () => { b.disabled = true; try{ await fn(); }catch(e){ console.warn(e); } close(); };
+        box.appendChild(b);
+      };
+      const cloudMore = (cloud.xp || 0) >= me.xp;
+      btn(L.take, cloudMore, () => _syncApply(c, r, cloud));
+      btn(L.keep, !cloudMore, () => syncPush({ force:true, notify:true }));
+      btn(L.later, false, () => {});
+      ov.appendChild(box); document.body.appendChild(ov);
+    });
+  }
+  window.syncPush = syncPush; window.syncPull = syncPull;
+  window.syncSoon = ms => { if(!window._cloudUser) return; clearTimeout(_syncTimer); _syncTimer = setTimeout(() => syncPush(), ms == null ? 20000 : ms); };
+  document.addEventListener('visibilitychange', () => { if(document.visibilityState === 'hidden' && window._cloudUser) syncPush(); });
+  window.addEventListener('online', () => { if(window._cloudUser) syncPull(); });
+  // Ручні кнопки (Debug) працюють поверх тієї ж схеми
   window.cloudBackup = async () => {
     if(!window._cloudUser){ window.notify?.('⚠️ Спершу увійдіть'); return; }
-    try{
-      const c = await ensureCloud();
-      const data = _cloudCollectBackupData();
-      // Firestore ліміт документа — 1MiB. Якщо колись впритул — розбити на кілька документів.
-      await c.F.setDoc(c.F.doc(c.db, 'backups', window._cloudUser.uid), {
-        data: JSON.stringify(data),
-        keyCount: Object.keys(data).length,
-        savedAt: c.F.serverTimestamp(),
-        savedAtClient: Date.now(),
-      });
-      window.notify?.('☁️ Збережено ('+Object.keys(data).length+' записів)');
-      if(typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI();
-    }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+    await syncPush({ force:true, notify:true });
   };
   window.cloudRestore = async () => {
     if(!window._cloudUser){ window.notify?.('⚠️ Спершу увійдіть'); return; }
     try{
-      const c = await ensureCloud();
-      const snap = await c.F.getDoc(c.F.doc(c.db, 'backups', window._cloudUser.uid));
-      if(!snap.exists()){ window.notify?.('⚠️ Бекапу ще немає'); return; }
-      const data = JSON.parse(snap.data().data || '{}');
-      // Перезаписуємо ЛИШЕ ключі з бекапу — пристрій-локальні кеші не чіпаємо.
-      Object.keys(data).forEach(key => {
-        if(CLOUD_BACKUP_EXCLUDE.includes(key)) return;
-        try{ localStorage.setItem(key, data[key]); }catch(_){}
-      });
-      window.notify?.('☁️ Відновлено ('+Object.keys(data).length+' записів) — перезавантажую...');
-      setTimeout(()=>location.reload(), 900);
-    }catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
+      const c = await ensureCloud(), r = _refs(c), cloud = await _cloudMeta(c, r);
+      if(!cloud){ window.notify?.('⚠️ Бекапу ще немає'); return; }
+      await _syncApply(c, r, cloud);
+    }catch(e){ window.notify?.('⚠️ '+_cloudErrText(e)); }
   };
   // Видалення акаунта (право на стирання, GDPR ст. 17; вимога Apple 5.1.1(v) і Google Play):
   // спершу хмарна копія прогресу, потім сам акаунт. Локальні дані на пристрої лишаються.
@@ -480,6 +600,7 @@ if(location.protocol === 'https:'){
       const u = c.auth.currentUser;
       if(!u){ window.notify?.('⚠️ Спершу увійдіть'); return false; }
       await c.F.deleteDoc(c.F.doc(c.db, 'backups', u.uid));
+      try{ await c.F.deleteDoc(c.F.doc(c.db, 'sync', u.uid)); }catch(_){}
       await c.A.deleteUser(u);
       window.notify?.('🗑️ Акаунт і хмарні дані видалено');
       return true;
@@ -5205,7 +5326,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '871-f8ae843';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -15285,6 +15406,7 @@ function _lrGoalLeft(node){
 }
 
 function _lrOfferNext(goToPath){
+  try{ if(window.syncSoon) window.syncSoon(); }catch(_){}   // авто-sync після уроку
   try{
     if(LF && LF.soloReturn) return false;
     _lpCurrentLessonCache = undefined;                 // свіжий розрахунок «наступного» після зарахування уроку
