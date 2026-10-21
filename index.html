@@ -2617,7 +2617,15 @@ body{
   background:var(--forest,#0d2b1a);color:#fff;font-size:18px;font-weight:700;
   font-family:'Inter',sans-serif;cursor:pointer;
   box-shadow:0 6px 18px rgba(13,43,26,.28);
-  animation: lrCtaPulse 2.2s ease-in-out 1s infinite;
+  position:relative;overflow:hidden;
+  animation: lrCtaNudge 3s ease-in-out 1s infinite;
+}
+/* Золотий «блиск», що пробігає по кнопці в тому ж ритмі, що й легкий «підстрибок». */
+.lr-cta-btn::after{
+  content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;pointer-events:none;
+  background:linear-gradient(105deg,transparent,rgba(232,201,106,.5),transparent);
+  transform:skewX(-20deg);
+  animation: lrCtaShine 3s ease-in-out 1s infinite;
 }
 .lr-cta-btn:active{ transform:scale(.98); }
 .lr-cta-skip{
@@ -2625,8 +2633,14 @@ body{
   color:var(--muted);font-family:'Inter',sans-serif;cursor:pointer;
 }
 @keyframes lrCtaIn{ from{opacity:0;transform:translateY(16px)} to{opacity:1;transform:none} }
-@keyframes lrCtaPulse{ 0%,100%{box-shadow:0 6px 18px rgba(13,43,26,.28)} 50%{box-shadow:0 6px 26px rgba(201,168,76,.55)} }
-@media (prefers-reduced-motion:reduce){ .lr-cta-btn{ animation:none; } .lr-cta{ animation:none; } }
+@keyframes lrCtaNudge{
+  0%,58%,100%{ transform:scale(1); box-shadow:0 6px 18px rgba(13,43,26,.28); }
+  68%{ transform:scale(1.045); box-shadow:0 8px 28px rgba(201,168,76,.6), 0 0 0 6px rgba(201,168,76,.28); }
+  78%{ transform:scale(.99); box-shadow:0 6px 20px rgba(201,168,76,.4), 0 0 0 12px rgba(201,168,76,0); }
+  88%{ transform:scale(1.02); }
+}
+@keyframes lrCtaShine{ 0%,55%{ left:-60%; } 85%,100%{ left:130%; } }
+@media (prefers-reduced-motion:reduce){ .lr-cta-btn{ animation:none; } .lr-cta-btn::after{ display:none; } .lr-cta{ animation:none; } }
 
 /* Вогонь на чистому CSS (без зовнішніх залежностей/мережі — раніше тут
    був Lottie з CDN, який міг просто не завантажитись при відсутній
@@ -2873,7 +2887,7 @@ body{
 .srow:last-child{border-bottom:none}
 .srow-label label{font-size:14px;font-weight:600}
 .srow-label small{font-size:14px;color:var(--muted);display:block;margin-top:1px}
-.srow select{border:1px solid var(--border);border-radius:8px;padding:6px 8px;font-size:14px;font-family:inherit;background:var(--soft);color:var(--ink);max-width:150px}
+.srow select{border:1px solid var(--border);border-radius:8px;padding:6px 8px;font-size:16px;font-family:inherit;background:var(--soft);color:var(--ink);max-width:150px}
 .srow-ctrl{display:flex;gap:7px;align-items:center;flex-shrink:0}
 .srow-ctrl input[type=range]{width:85px;accent-color:var(--gold)}
 .srow-ctrl span{font-size:14px;font-family:'Inter',monospace;color:var(--gold);min-width:34px;text-align:right}
@@ -5046,7 +5060,7 @@ body{
     </div>
     <div class="srow" id="region-row" style="display:none">
       <div class="srow-label"><label data-i18n="lbl_region">Bundesland</label><small data-i18n="sub_region">Für regionale Quizfragen</small></div>
-      <select id="region-select" onchange="setQuizRegion(this.value)" style="max-width:55%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--ink);font-size:14px"></select>
+      <select id="region-select" onchange="setQuizRegion(this.value)" style="max-width:55%;padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:var(--card);color:var(--ink);font-size:16px"></select>
     </div>
     <div class="srow">
       <div class="srow-label"><label data-i18n="lbl_dtchars">Sonderzeichen unter dem Feld</label><small data-i18n="sub_dtchars">ä ö ü ß in der Tipp-Übung</small></div>
@@ -5079,10 +5093,9 @@ body{
       <div class="srow-label"><label><i data-mi="cloud" class="mi-inline"></i>Хмарний бекап (тест)</label><small>Firebase email+пароль — експериментально, ручний бекап/відновлення, без авто-синхронізації між пристроями</small></div>
       <div id="cloud-auth-status" style="font-size:13px;color:var(--muted)"><i data-mi="lock" class="mi-inline"></i>Не увійшли</div>
       <div id="cloud-auth-form" style="display:flex;flex-direction:column;gap:6px">
-        <input type="email" id="cloud-email" placeholder="Email" autocomplete="email"
-          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
-        <input type="password" id="cloud-password" placeholder="Пароль (мін. 8: великі й малі літери, цифра, спецсимвол)" autocomplete="current-password"
-          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink)">
+        <input type="email" id="cloud-email" placeholder="Email" autocomplete="email" onfocus="_cloudMountPw()" onblur="_cloudUnmountPw()"
+          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:16px;background:var(--paper);color:var(--ink)">
+        <div id="cloud-pw-slot"></div>
         <div style="display:flex;gap:6px">
           <button class="btn btn-s" style="flex:1" onclick="debugCloudSignUp()">Зареєструватись</button>
           <button class="btn btn-s" style="flex:1" onclick="debugCloudSignIn()">Увійти</button>
@@ -5118,7 +5131,7 @@ body{
       <div id="story-custom-form" style="display:none;flex-direction:column;gap:10px;background:var(--soft);border:1px solid var(--border);border-radius:10px;padding:10px">
         <div style="display:flex;flex-direction:column;gap:2px">
           <select id="story-custom-topic" onchange="_storyCustomTopicChanged()"
-            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:14px;background:var(--paper);color:var(--ink);font-family:inherit"></select>
+            style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:16px;background:var(--paper);color:var(--ink);font-family:inherit"></select>
         </div>
         <!-- Завдання й «Можливі запитання» обраної теми зі STORY_TASK (лише
              для читання; заповнюється в _storyCustomShowTaskInfo()) -->
@@ -5192,7 +5205,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '866-af6f1ea';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6698,7 +6711,7 @@ const I18N = {
     card_new:'✨ Neue Karte',
     update_available:'🔄 Neue Version verfügbar – App neu laden',
     upd_title:'App aktualisiert', upd_body:'Die neue Version von MOVA ist installiert. Ein Neustart aktiviert alle Verbesserungen.', upd_btn:'Neu starten',
-    cta_b_control:'Nächste Lektion', cta_b_challenge:'Herausforderung angenommen', cta_b_support:'Machen wir zusammen', cta_b_motivation:'Noch eine Lektion', cta_skip:'Nicht jetzt',
+    cta_b_control:'Nächste Lektion', cta_b_challenge:'Herausforderung angenommen', cta_b_support:'Machen wir zusammen', cta_b_motivation:'Noch eine Lektion', cta_skip:'Nicht jetzt', cta_goal_module:'Nur noch 1 Lektion bis zum Abschluss dieses Moduls', cta_goal_chapter:'Nur noch 1 Lektion bis zum Abschluss dieses Kapitels', cta_b_goal:'Jetzt gleich',
     cta_h_challenge_1:'Die erste Lektion heute ist geschafft. Schaffst du noch eine?', cta_h_challenge_2:'Zwei Lektionen an einem Tag! Packst du die dritte?', cta_h_challenge_n:'Wow, schon die {n}. Lektion heute! Schaffst du noch eine?',
     cta_h_support_1:'Toller Start! Lass uns zusammen noch eine Lektion machen.', cta_h_support_2:'Schon die zweite Lektion heute – weiter so! Noch eine zusammen?', cta_h_support_n:'Wow, schon die {n}. Lektion heute! Lass uns noch eine machen.',
     cta_h_motivation_1:'Jede Lektion bringt dich näher zu sicherem Deutsch. Weiter geht’s?', cta_h_motivation_2:'Schon zwei Lektionen heute – Regelmäßigkeit zahlt sich aus! Noch eine?', cta_h_motivation_n:'Wow, die {n}. Lektion heute! So entsteht echter Fortschritt.',
@@ -6865,7 +6878,7 @@ const I18N = {
     card_new:'✨ Нова картка',
     update_available:'🔄 Доступна нова версія — перезавантажте додаток',
     upd_title:'Застосунок оновлено', upd_body:'Нова версія MOVA вже встановлена. Перезапуск активує всі покращення.', upd_btn:'Перезапустити',
-    cta_b_control:'Наступний урок', cta_b_challenge:'Приймаю виклик', cta_b_support:'Давай разом', cta_b_motivation:'Ще один урок', cta_skip:'Не зараз',
+    cta_b_control:'Наступний урок', cta_b_challenge:'Приймаю виклик', cta_b_support:'Давай разом', cta_b_motivation:'Ще один урок', cta_skip:'Не зараз', cta_goal_module:'Залишився всього 1 урок для завершення цього модуля', cta_goal_chapter:'Залишився всього 1 урок для завершення цієї глави', cta_b_goal:'Давай зараз',
     cta_h_challenge_1:'Перший урок за сьогодні вже є. Зможеш пройти ще один?', cta_h_challenge_2:'Два уроки за день! Спробуєш дотиснути третій?', cta_h_challenge_n:'Вау, це вже {n}-й урок сьогодні! Спробуєш ще один?',
     cta_h_support_1:'Чудовий початок! Давай пройдемо ще один урок разом.', cta_h_support_2:'Ти вже на другому уроці — так тримати! Давай ще один?', cta_h_support_n:'Вау, це вже {n}-й урок сьогодні! Давай пройдемо ще один.',
     cta_h_motivation_1:'Кожен урок наближає тебе до впевненої німецької. Продовжимо?', cta_h_motivation_2:'Вже два уроки сьогодні — регулярність дає результат! Ще один?', cta_h_motivation_n:'Вау, {n}-й урок сьогодні! Саме так будується справжній результат.',
@@ -7031,7 +7044,7 @@ const I18N = {
     card_new:'✨ New card',
     update_available:'🔄 New version available – reload the app',
     upd_title:'App updated', upd_body:'The new version of MOVA is installed. A restart activates all improvements.', upd_btn:'Restart',
-    cta_b_control:'Next lesson', cta_b_challenge:'Challenge accepted', cta_b_support:'Let’s do it together', cta_b_motivation:'One more lesson', cta_skip:'Not now',
+    cta_b_control:'Next lesson', cta_b_challenge:'Challenge accepted', cta_b_support:'Let’s do it together', cta_b_motivation:'One more lesson', cta_skip:'Not now', cta_goal_module:'Just 1 lesson left to finish this module', cta_goal_chapter:'Just 1 lesson left to finish this chapter', cta_b_goal:'Let’s do it now',
     cta_h_challenge_1:'First lesson of the day done. Can you do one more?', cta_h_challenge_2:'Two lessons in one day! Can you make it three?', cta_h_challenge_n:'Wow, that’s lesson #{n} today! Can you do one more?',
     cta_h_support_1:'Great start! Let’s do one more lesson together.', cta_h_support_2:'Already your second lesson today – keep it up! One more together?', cta_h_support_n:'Wow, that’s lesson #{n} today! Let’s do one more.',
     cta_h_motivation_1:'Every lesson brings you closer to confident German. Keep going?', cta_h_motivation_2:'Two lessons today – consistency pays off! One more?', cta_h_motivation_n:'Wow, lesson #{n} today! This is how real progress is built.',
@@ -7198,7 +7211,7 @@ const I18N = {
     card_new:'✨ Новая карточка',
     update_available:'🔄 Доступна новая версия — перезагрузите приложение',
     upd_title:'Приложение обновлено', upd_body:'Новая версия MOVA уже установлена. Перезапуск активирует все улучшения.', upd_btn:'Перезапустить',
-    cta_b_control:'Следующий урок', cta_b_challenge:'Принимаю вызов', cta_b_support:'Давай вместе', cta_b_motivation:'Ещё один урок', cta_skip:'Не сейчас',
+    cta_b_control:'Следующий урок', cta_b_challenge:'Принимаю вызов', cta_b_support:'Давай вместе', cta_b_motivation:'Ещё один урок', cta_skip:'Не сейчас', cta_goal_module:'Остался всего 1 урок до завершения этого модуля', cta_goal_chapter:'Остался всего 1 урок до завершения этой главы', cta_b_goal:'Давай сейчас',
     cta_h_challenge_1:'Первый урок за сегодня уже есть. Сможешь пройти ещё один?', cta_h_challenge_2:'Два урока за день! Попробуешь добить третий?', cta_h_challenge_n:'Вау, это уже {n}-й урок сегодня! Попробуешь ещё один?',
     cta_h_support_1:'Отличное начало! Давай пройдём ещё один урок вместе.', cta_h_support_2:'Ты уже на втором уроке — так держать! Давай ещё один?', cta_h_support_n:'Вау, это уже {n}-й урок сегодня! Давай пройдём ещё один.',
     cta_h_motivation_1:'Каждый урок приближает тебя к уверенному немецкому. Продолжим?', cta_h_motivation_2:'Уже два урока сегодня — регулярность даёт результат! Ещё один?', cta_h_motivation_n:'Вау, {n}-й урок сегодня! Так строится настоящий результат.',
@@ -9222,7 +9235,15 @@ function _sfxPlay(playFn){
     if(!created){ created = true; var c = _sfxGetCtx(); if(c && c.state !== 'running'){ c.resume().catch(function(){}); } return; }
     if(_sfxCtx && _sfxCtx.state !== 'running' && _sfxCtx.state !== 'closed'){ _sfxCtx.resume().catch(function(){}); }
   }
-  document.addEventListener('pointerup', onGesture, {capture:true, passive:true});
+  // Раніше слухали лише pointerup. Але при СВАЙПІ браузер віддає жест на скрол/
+  // свайп і шле pointercancel замість pointerup — тож resume() не викликався,
+  // і звук свайпу чекав на відновлення контексту (затримка). Тепер контекст
+  // «будимо» вже на початку жесту (pointerdown/touchstart — це дає фору на
+  // весь час свайпу) і повторно в кінці (touchend/pointerup/click — на iOS
+  // саме вони рахуються за user-gesture для аудіо).
+  ['pointerdown','touchstart','touchend','pointerup','click'].forEach(function(ev){
+    document.addEventListener(ev, onGesture, {capture:true, passive:true});
+  });
 })();
 // Одна коротка нота з м'якою атакою/спадом (щоб не клацало на межах).
 function _sfxTone(ctx, freq, startTime, duration, type, peakGain){
@@ -15245,6 +15266,24 @@ function _lrCtaReset(){
 
 // Показує CTA. Повертає true, якщо екран «тримається» й чекає на вибір користувача
 // (тоді автоповернення на шлях НЕ відбувається), false — якщо наступного уроку нема.
+// Скільки уроків лишилось до кінця глави/модуля вузла node. Повертає 'chapter' або 'module',
+// коли лишається РІВНО один (сам node), інакше null. Вузол мовлення необов'язковий і не
+// рахується (так само, як у _lpCounted).
+function _lrGoalLeft(node){
+  try{
+    if(!node || node.type === 'speech') return null;
+    var all = (typeof LESSONS !== 'undefined' ? LESSONS : []);
+    var left = function(inMod){
+      return all.filter(function(l){
+        return l.chapter === node.chapter && (!inMod || l.module === node.module) && !_lpCounted(l);
+      }).length;
+    };
+    if(left(false) === 1) return 'chapter';
+    if(left(true) === 1) return 'module';
+  }catch(e){}
+  return null;
+}
+
 function _lrOfferNext(goToPath){
   try{
     if(LF && LF.soloReturn) return false;
@@ -15258,23 +15297,25 @@ function _lrOfferNext(goToPath){
     var n = _mDailyCompleted();
     var bucket = n <= 1 ? '1' : (n === 2 ? '2' : 'n');
     var isCtl = variant === 'control';
+    var goal = _lrGoalLeft(node);   // 'chapter' | 'module' | null — лишився 1 урок до фінішу
 
     var msgEl = document.getElementById('lr-cta-msg');
     var subEl = document.getElementById('lr-cta-sub');
     var btn   = document.getElementById('lr-cta-btn');
     var skip  = document.getElementById('lr-cta-skip');
-    msgEl.textContent = isCtl ? '' : t('cta_h_' + variant + '_' + bucket).replace('{n}', n);
+    msgEl.textContent = goal ? t('cta_goal_' + goal) : (isCtl ? '' : t('cta_h_' + variant + '_' + bucket).replace('{n}', n));
     subEl.textContent = isCtl ? '' : t('cta_sub_' + kind);
-    msgEl.style.display = isCtl ? 'none' : '';
+    msgEl.style.display = (isCtl && !goal) ? 'none' : '';
     subEl.style.display = isCtl ? 'none' : '';
-    btn.textContent  = t('cta_b_' + variant);
+    btn.textContent  = goal ? t('cta_b_goal') : t('cta_b_' + variant);
     skip.textContent = t('cta_skip');
 
     var hint = document.getElementById('lr-continue-hint'); if(hint) hint.style.display = 'none';
     box.style.display = 'flex';
     box.style.animation = 'none'; void box.offsetWidth; box.style.animation = '';   // перезапуск появи
+    btn.style.animation = 'none'; void btn.offsetWidth; btn.style.animation = '';   // і анімації кнопки
 
-    var base = { cta_variant: variant, next_type: kind, lessons_completed_today: n };
+    var base = { cta_variant: variant, next_type: kind, lessons_completed_today: n, cta_goal: goal || 'none' };
     if(typeof window.mlog === 'function') window.mlog('lesson_cta_shown', base);
     if(typeof haptic !== 'undefined') haptic.light?.();
 
@@ -16730,6 +16771,11 @@ function dtShowCard(){
       inp.setAttribute('autocorrect','off');
       inp.setAttribute('autocapitalize','off');
       inp.setAttribute('spellcheck','false');
+      // Не логін/пароль для iOS AutoFill і менеджерів паролів
+      inp.setAttribute('name', 'dt-answer-' + (i+1));
+      inp.setAttribute('inputmode', 'text');
+      inp.setAttribute('data-lpignore','true'); inp.setAttribute('data-1p-ignore','true');
+      inp.setAttribute('data-bwignore','true'); inp.setAttribute('data-form-type','other');
       inp.setAttribute('enterkeyhint', i === dtState.answers.length - 1 ? 'done' : 'next');
       inp.setAttribute('aria-label', '#' + (i+1));
       // Ширина за довжиною відповіді (у ch) — щоб поле не «виказувало»
@@ -19052,6 +19098,42 @@ function debugCloudSignIn(){
   const pw    = document.getElementById('cloud-password')?.value;
   if(!email || !pw){ notify('⚠️ Введіть email і пароль'); return; }
   window.cloudSignIn?.(email, pw);
+}
+// Поле пароля існує в DOM лише поки користувач вводить дані для входу: постійно присутній
+// <input type="password"> змушує iOS вважати будь-яке текстове поле (напр. «Вписати слово»)
+// логіном і пропонувати Passwords/AutoFill.
+// iOS Safari збільшує сторінку при фокусі на полі зі шрифтом < 16px і потім не повертає
+// масштаб назад (додаток «не влізає в екран»). Страхувальна сітка для будь-яких полів:
+// піднімаємо шрифт до 16px ще на дотик (до фокусу) і на фокус.
+(function(){
+  function fix(e){
+    var el = e.target;
+    if(!el || !el.tagName || !/^(INPUT|TEXTAREA|SELECT)$/.test(el.tagName)) return;
+    if(/^(checkbox|radio|range|button|submit|file|hidden|color)$/.test(el.type)) return;
+    try{
+      var fs = parseFloat(getComputedStyle(el).fontSize);
+      if(fs && fs < 16) el.style.fontSize = '16px';
+    }catch(_){}
+  }
+  document.addEventListener('pointerdown', fix, {capture:true, passive:true});
+  document.addEventListener('focusin', fix, true);
+})();
+function _cloudMountPw(){
+  const slot = document.getElementById('cloud-pw-slot');
+  if(!slot || document.getElementById('cloud-password')) return;
+  const i = document.createElement('input');
+  i.type = 'password'; i.id = 'cloud-password';
+  i.setAttribute('autocomplete','current-password');
+  i.placeholder = 'Пароль (мін. 8: великі й малі літери, цифра, спецсимвол)';
+  i.style.cssText = 'width:100%;box-sizing:border-box;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:16px;background:var(--paper);color:var(--ink)';
+  i.onblur = _cloudUnmountPw;
+  slot.appendChild(i);
+}
+function _cloudUnmountPw(){
+  setTimeout(function(){
+    const p = document.getElementById('cloud-password'), a = document.activeElement;
+    if(p && !p.value && a !== p && !(a && a.id === 'cloud-email')) p.remove();
+  }, 300);
 }
 function debugCloudReset(){
   const email = document.getElementById('cloud-email')?.value.trim();
