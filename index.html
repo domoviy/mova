@@ -15,7 +15,7 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="MOVA">
 <title>MOVA — німецька для життя й роботи в Німеччині</title>
-<meta name="description" content="Слова, граматика й вправи на рівнях A2, B1 та B2 Beruf. Вчи німецьку з телефону: аудіо з носійною вимовою, живі діалоги, офлайн.">
+<meta name="description" content="Слова, граматика й вправи на рівнях A1, A2, B1 та B2 Beruf. Вчи німецьку з телефону: аудіо з носійною вимовою, живі діалоги, офлайн.">
 
 <!-- Open Graph — прев'ю посилання в месенджерах (WhatsApp, Telegram, Viber, Signal...).
      Важливо: ці теги СТАТИЧНІ — краулери месенджерів HTML не рендерять і JS не
@@ -31,7 +31,7 @@
 <meta property="og:site_name" content="MOVA">
 <meta property="og:url" content="https://mova.now/">
 <meta property="og:title" content="MOVA — німецька для життя й роботи в Німеччині">
-<meta property="og:description" content="Слова, граматика й вправи на рівнях A2, B1 та B2 Beruf: аудіо з носійною вимовою, живі діалоги, офлайн — просто з телефону.">
+<meta property="og:description" content="Слова, граматика й вправи на рівнях A1, A2, B1 та B2 Beruf: аудіо з носійною вимовою, живі діалоги, офлайн — просто з телефону.">
 <meta property="og:image" content="https://mova.now/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -41,7 +41,7 @@
      а не og:*, тому дублюємо ті самі значення. -->
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="MOVA — німецька для життя й роботи в Німеччині">
-<meta name="twitter:description" content="Слова, граматика й вправи на рівнях A2, B1 та B2 Beruf: аудіо з носійною вимовою, живі діалоги, офлайн — просто з телефону.">
+<meta name="twitter:description" content="Слова, граматика й вправи на рівнях A1, A2, B1 та B2 Beruf: аудіо з носійною вимовою, живі діалоги, офлайн — просто з телефону.">
 <meta name="twitter:image" content="https://mova.now/og-image.png">
 <link rel="manifest" href="manifest.json">
 <link rel="apple-touch-icon" href="icon-192.png">
@@ -3781,7 +3781,16 @@ body{
   background:var(--forest);color:#fff;font-weight:800;font-size:var(--fs-secondary);
   font-family:inherit;cursor:pointer;-webkit-tap-highlight-color:transparent;
 }
-.locked-modal-cta:active{opacity:.85;}
+/* Відгук на натискання: легке «втискання» + стан «зайнято» (кнопка «Перезапустити» в оновленні) */
+.locked-modal-cta{transition:transform .12s ease,opacity .15s ease}
+.locked-modal-cta:active{opacity:.85;transform:scale(.96)}
+.locked-modal-cta.is-busy{opacity:.75;transform:scale(.98);pointer-events:none}
+.upd-progress{height:5px;border-radius:3px;background:rgba(13,43,26,.12);overflow:hidden;margin-top:14px;opacity:0;transition:opacity .2s}
+.upd-progress.run{opacity:1}
+.upd-progress-bar{height:100%;width:0;border-radius:3px;background:linear-gradient(90deg,var(--gold),#e8c96a)}
+.upd-progress.run .upd-progress-bar{animation:updBar 2.6s cubic-bezier(.2,.7,.2,1) forwards}
+@keyframes updBar{0%{width:0}60%{width:78%}100%{width:94%}}
+@media (prefers-reduced-motion:reduce){.upd-progress.run .upd-progress-bar{animation:none;width:94%}}
 .locked-modal-cta-secondary{
   background:transparent;color:var(--ink);
   border:1.5px solid var(--border);margin-top:10px;
@@ -5332,7 +5341,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '876-813e299';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6837,7 +6846,7 @@ const I18N = {
     srs_new:'✨ neue Karte', srs_today:'📅 heute',
     card_new:'✨ Neue Karte',
     update_available:'🔄 Neue Version verfügbar – App neu laden',
-    upd_title:'App aktualisiert', upd_body:'Die neue Version von MOVA ist installiert. Ein Neustart aktiviert alle Verbesserungen.', upd_btn:'Neu starten',
+    upd_busy:'Wird neu gestartet…', upd_title:'App aktualisiert', upd_body:'Die neue Version von MOVA ist installiert. Ein Neustart aktiviert alle Verbesserungen.', upd_btn:'Neu starten',
     cta_b_control:'Nächste Lektion', cta_b_challenge:'Herausforderung angenommen', cta_b_support:'Machen wir zusammen', cta_b_motivation:'Noch eine Lektion', cta_skip:'Nicht jetzt', cta_goal_module:'Nur noch 1 Lektion bis zum Abschluss dieses Moduls', cta_goal_chapter:'Nur noch 1 Lektion bis zum Abschluss dieses Kapitels', cta_b_goal:'Jetzt gleich',
     cta_h_challenge_1:'Die erste Lektion heute ist geschafft. Schaffst du noch eine?', cta_h_challenge_2:'Zwei Lektionen an einem Tag! Packst du die dritte?', cta_h_challenge_n:'Wow, schon die {n}. Lektion heute! Schaffst du noch eine?',
     cta_h_support_1:'Toller Start! Lass uns zusammen noch eine Lektion machen.', cta_h_support_2:'Schon die zweite Lektion heute – weiter so! Noch eine zusammen?', cta_h_support_n:'Wow, schon die {n}. Lektion heute! Lass uns noch eine machen.',
@@ -7004,7 +7013,7 @@ const I18N = {
     srs_new:'✨ нова картка', srs_today:'📅 сьогодні',
     card_new:'✨ Нова картка',
     update_available:'🔄 Доступна нова версія — перезавантажте додаток',
-    upd_title:'Застосунок оновлено', upd_body:'Нова версія MOVA вже встановлена. Перезапуск активує всі покращення.', upd_btn:'Перезапустити',
+    upd_busy:'Перезапускаємо…', upd_title:'Застосунок оновлено', upd_body:'Нова версія MOVA вже встановлена. Перезапуск активує всі покращення.', upd_btn:'Перезапустити',
     cta_b_control:'Наступний урок', cta_b_challenge:'Приймаю виклик', cta_b_support:'Давай разом', cta_b_motivation:'Ще один урок', cta_skip:'Не зараз', cta_goal_module:'Залишився всього 1 урок для завершення цього модуля', cta_goal_chapter:'Залишився всього 1 урок для завершення цієї глави', cta_b_goal:'Давай зараз',
     cta_h_challenge_1:'Перший урок за сьогодні вже є. Зможеш пройти ще один?', cta_h_challenge_2:'Два уроки за день! Спробуєш дотиснути третій?', cta_h_challenge_n:'Вау, це вже {n}-й урок сьогодні! Спробуєш ще один?',
     cta_h_support_1:'Чудовий початок! Давай пройдемо ще один урок разом.', cta_h_support_2:'Ти вже на другому уроці — так тримати! Давай ще один?', cta_h_support_n:'Вау, це вже {n}-й урок сьогодні! Давай пройдемо ще один.',
@@ -7170,7 +7179,7 @@ const I18N = {
     srs_new:'✨ new card', srs_today:'📅 today',
     card_new:'✨ New card',
     update_available:'🔄 New version available – reload the app',
-    upd_title:'App updated', upd_body:'The new version of MOVA is installed. A restart activates all improvements.', upd_btn:'Restart',
+    upd_busy:'Restarting…', upd_title:'App updated', upd_body:'The new version of MOVA is installed. A restart activates all improvements.', upd_btn:'Restart',
     cta_b_control:'Next lesson', cta_b_challenge:'Challenge accepted', cta_b_support:'Let’s do it together', cta_b_motivation:'One more lesson', cta_skip:'Not now', cta_goal_module:'Just 1 lesson left to finish this module', cta_goal_chapter:'Just 1 lesson left to finish this chapter', cta_b_goal:'Let’s do it now',
     cta_h_challenge_1:'First lesson of the day done. Can you do one more?', cta_h_challenge_2:'Two lessons in one day! Can you make it three?', cta_h_challenge_n:'Wow, that’s lesson #{n} today! Can you do one more?',
     cta_h_support_1:'Great start! Let’s do one more lesson together.', cta_h_support_2:'Already your second lesson today – keep it up! One more together?', cta_h_support_n:'Wow, that’s lesson #{n} today! Let’s do one more.',
@@ -7337,7 +7346,7 @@ const I18N = {
     srs_new:'✨ новая карточка', srs_today:'📅 сегодня',
     card_new:'✨ Новая карточка',
     update_available:'🔄 Доступна новая версия — перезагрузите приложение',
-    upd_title:'Приложение обновлено', upd_body:'Новая версия MOVA уже установлена. Перезапуск активирует все улучшения.', upd_btn:'Перезапустить',
+    upd_busy:'Перезапускаем…', upd_title:'Приложение обновлено', upd_body:'Новая версия MOVA уже установлена. Перезапуск активирует все улучшения.', upd_btn:'Перезапустить',
     cta_b_control:'Следующий урок', cta_b_challenge:'Принимаю вызов', cta_b_support:'Давай вместе', cta_b_motivation:'Ещё один урок', cta_skip:'Не сейчас', cta_goal_module:'Остался всего 1 урок до завершения этого модуля', cta_goal_chapter:'Остался всего 1 урок до завершения этой главы', cta_b_goal:'Давай сейчас',
     cta_h_challenge_1:'Первый урок за сегодня уже есть. Сможешь пройти ещё один?', cta_h_challenge_2:'Два урока за день! Попробуешь добить третий?', cta_h_challenge_n:'Вау, это уже {n}-й урок сегодня! Попробуешь ещё один?',
     cta_h_support_1:'Отличное начало! Давай пройдём ещё один урок вместе.', cta_h_support_2:'Ты уже на втором уроке — так держать! Давай ещё один?', cta_h_support_n:'Вау, это уже {n}-й урок сегодня! Давай пройдём ещё один.',
@@ -27300,7 +27309,7 @@ function sbExamSubmit() {
 //     версія встановилась посеред уроку, показ відкладається до його завершення.
 //  3) Перезапуск — лише за кнопкою користувача (без мовчазного reload, який
 //     виглядав як збій анімації запуску).
-var _updatePending = false, _updatePoll = null, _updateWorker = null, _applyingUpdate = false;
+var _updatePending = false, _updatePoll = null, _updateWorker = null, _applyingUpdate = false, _updBusy = false;
 
 // Чи зараз іде урок або інша «сесія», яку не можна переривати
 function isLessonActive(){
@@ -27330,6 +27339,7 @@ function showUpdateModal(){
       '<div class="locked-modal-title">'+t('upd_title')+'</div>' +
       '<div class="locked-modal-body">'+t('upd_body')+'</div>' +
       '<button class="locked-modal-cta" onclick="applyUpdate()">'+t('upd_btn')+'</button>' +
+      '<div class="upd-progress" aria-hidden="true"><div class="upd-progress-bar"></div></div>' +
     '</div>';
   document.body.appendChild(overlay);
   try{ haptic.light(); }catch(e){}
@@ -27351,7 +27361,17 @@ function tryShowPendingUpdate(){
 
 // Кнопка «Перезапустити». Якщо нова версія ще у стані waiting (sw.js чекає команди) —
 // активуємо її саме зараз; інакше (стара схема з автоматичним skipWaiting) — просто reload.
+// Миттєвий візуальний відгук: кнопка «втиснута» й неактивна, текст «Перезапускаємо…», біжить смужка.
+function _updateBusyUI(){
+  var ov = document.getElementById('update-modal-overlay'); if(!ov) return;
+  var btn = ov.querySelector('.locked-modal-cta');
+  if(btn){ btn.disabled = true; btn.classList.add('is-busy'); btn.textContent = t('upd_busy'); }
+  var bar = ov.querySelector('.upd-progress'); if(bar) bar.classList.add('run');
+  try{ haptic.light(); }catch(e){}
+}
 function applyUpdate(){
+  if(_updBusy) return;            // повторні натискання ігноруємо
+  _updBusy = true; _updateBusyUI();
   var w = _updateWorker || (window._swReg && window._swReg.waiting);
   if(w){
     _applyingUpdate = true;
