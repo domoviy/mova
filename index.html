@@ -2748,14 +2748,16 @@ body{
   font-family:'Inter',sans-serif;cursor:pointer;
   box-shadow:0 6px 18px rgba(13,43,26,.28);
   position:relative;overflow:hidden;
-  animation: lrCtaNudge 3s ease-in-out 1s infinite;
+  /* Затримка ВІД'ЄМНА: цикл стартує «з середини», тож перший «підстрибок» — ≈1.1с після появи кнопки
+     (раніше ≈3с: користувач уже встигав вирішити, йти далі чи вийти). */
+  animation: lrCtaNudge 3s ease-in-out -0.9s infinite;
 }
 /* Золотий «блиск», що пробігає по кнопці в тому ж ритмі, що й легкий «підстрибок». */
 .lr-cta-btn::after{
   content:'';position:absolute;top:0;bottom:0;left:-60%;width:40%;pointer-events:none;
   background:linear-gradient(105deg,transparent,rgba(232,201,106,.5),transparent);
   transform:skewX(-20deg);
-  animation: lrCtaShine 3s ease-in-out 1s infinite;
+  animation: lrCtaShine 3s ease-in-out -0.9s infinite;
 }
 .lr-cta-btn:active{ transform:scale(.98); }
 .lr-cta-skip{
@@ -5352,7 +5354,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '885-78785bc';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -11199,10 +11201,7 @@ function matchHandleClick(btn){
 
     // Прогрес усього уроку — оновлюємо ЖИВЦЕМ, одразу по кожній парі
     // (не чекаючи завершення всього раунду matching).
-    if(LF && matchState._lfMode){
-      LF.unitProgress = { done: matchState.matched, total: roundSize };
-      lfRenderBar();
-    }
+    // (прибрано: «Знайди пару» в уроці — ОДИН крок, шкала не рухається по кожній парі)
 
     const mc = matchState.cards.find(c => c.card.id === sel.cardId);
     if(isLastPairNoChoice){
@@ -19634,9 +19633,7 @@ function lfRenderBar(){
     const totalWeight = weights.reduce((a,b)=>a+b, 0);
     const doneWeight = weights.slice(0, Math.min(LF.step, weights.length)).reduce((a,b)=>a+b, 0);
     const curStepWeight = weights[LF.step] ?? 1;
-    const curFrac = (LF.unitProgress && LF.unitProgress.total > 0)
-      ? Math.min(1, LF.unitProgress.done / LF.unitProgress.total)
-      : 0;
+    const curFrac = 0; // крок = 1 одиниця: смуга зсувається лише по завершенню кроку
     const pct = totalWeight > 0
       ? Math.round(((doneWeight + curFrac*curStepWeight) / totalWeight) * 100)
       : 0;
@@ -19679,6 +19676,9 @@ function lfRenderBar(){
 // репліки ОДНІЄЇ картки звичайного уроку (LF.dlgCard). Для решти кроків
 // вага завжди 1 — там немає такого розкиду "довжини" кроку.
 function _lfStepWeight(stepName){
+  // Кожен крок уроку (картки, пари, мовлення, діалог, плитки…) = рівно 1 крок,
+  // незалежно від кількості карток/пар/фраз/реплік усередині.
+  return 1;
   // Урок зі складом із планувальника: вага кроку = його «вартість» (≈ тривалість),
   // тож смуга прогресу рухається рівномірно за часом, а не за кількістю тапів.
   if(LF && LF.stepCost && LF.stepCost[stepName] != null) return LF.stepCost[stepName];
@@ -19915,7 +19915,7 @@ function lfStartMatching(poolOverride){
     // Кожна пара — окремий "юніт" для прогрес-бару всього уроку (як і
     // vocab/dlg/sb) — інакше бар стояв на місці всю вправу і стрибав
     // одразу на весь крок лише в самому кінці раунду.
-    LF.unitProgress = { done: 0, total: matchState.cards.length };
+    LF.unitProgress = null; // «Знайди пару» = один крок: без часткового прогресу по парах
     lfRenderBar(); // заодно оновлює назву кроку під вибрану версію
     const terms  = [...chosen].sort(()=>Math.random()-.5);
     const shorts = [...chosen].sort(()=>Math.random()-.5);
@@ -21972,8 +21972,11 @@ function lfLogAbandon(){
 // Якщо урок уже завершено (екран результату) — виходимо без питань.
 function lfRequestExit(){
   if(!LF || LF._recorded || LF.steps[LF.step] === 'result'){ exitLessonFlow(); return; }
-  var total = LF.steps.filter(function(x){ return x !== 'result'; }).length;
-  showLessonExitModal(Math.max(1, total - LF.step));
+  // Справжня кількість кроків, що лишилися: від поточного (якщо він ще не завершений)
+  // до останнього перед 'result'. «Знайди пару» (і запасний раунд) — по одному кроку.
+  var rest = LF.steps.slice(LF.step).filter(function(x){ return x !== 'result'; });
+  if(rest.length && LF.results && LF.results[rest[0]] != null) rest.shift();
+  showLessonExitModal(Math.max(1, rest.length));
 }
 
 // «Залишилося N кроків» з правильним відмінюванням (uk/ru: 1 / 2-4 / 5+)
