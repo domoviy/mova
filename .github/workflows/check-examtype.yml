@@ -1,0 +1,27 @@
+name: Check examType usage
+
+# Запускається лише вручну (Actions → Check examType usage → Run workflow).
+# Нічого не змінює в репозиторії й не впливає на mova.now.
+on:
+  workflow_dispatch:
+
+jobs:
+  search:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Search for examType / telc_DTB
+        run: |
+          RESULT=$(grep -rIn -o -E '.{0,60}(examType|telc_DTB).{0,60}' \
+            --exclude-dir=.git --exclude-dir=node_modules . || true)
+          {
+            echo '### Збіги examType / telc_DTB'
+            if [ -z "$RESULT" ]; then
+              echo 'Збігів немає.'
+            else
+              echo '```'
+              echo "$RESULT"
+              echo '```'
+            fi
+          } | tee -a "$GITHUB_STEP_SUMMARY"
