@@ -5261,6 +5261,10 @@ body{
       </div>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
+      <div class="srow-label"><label><i data-mi="trash" class="mi-inline"></i>Видалення профілю</label><small>Право на стирання даних (GDPR ст. 17): акаунт і хмарна копія + усі дані на цьому пристрої. Незворотно.</small></div>
+      <button id="debug-delete-profile" class="btn btn-s" style="color:#fff;background:var(--red);border-color:var(--red)" onclick="debugDeleteProfile()"><i data-mi="trash" class="mi-inline"></i>Видалити профіль повністю</button>
+    </div>
+    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
       <div class="srow-label"><label><i data-mi="tiles" class="mi-inline"></i>Вправи Vocab (тест)</label><small>Прямий доступ до вкладок, прибраних з основного UI</small></div>
       <div style="display:flex;flex-direction:column;gap:6px">
         <button class="btn btn-s" style="text-align:left" onclick="debugOpenVocabTab(5)"><i data-mi="quiz" class="mi-inline"></i>Квіз</button>
@@ -5354,7 +5358,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '886-3b217af';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -19321,6 +19325,123 @@ function debugCloudDelete(){
   if(!confirm('Видалити акаунт і хмарну копію прогресу назавжди? Локальні дані на цьому пристрої залишаться.')) return;
   Promise.resolve(window.cloudDeleteAccount?.()).then(()=>window._cloudRenderAuthUI?.());
 }
+// ── ПОВНЕ ВИДАЛЕННЯ ПРОФІЛЮ (GDPR ст. 17, Apple 5.1.1(v), Google Play) ──────────
+// Порядок важливий: СПЕРШУ хмара (акаунт + Firestore), і лише якщо вона видалена
+// (або акаунта немає) — стираємо локальні дані. Інакше при помилці (напр. потрібен
+// повторний вхід) користувач втратив би і локальний прогрес, і доступ до хмарного.
+async function debugDeleteProfile(){
+  if(!confirm('Видалити профіль повністю?\n\n• акаунт і хмарна копія прогресу (якщо ви увійшли)\n• увесь прогрес, налаштування й закладки на цьому пристрої\n• кеш аудіо та ідентифікатори аналітики\n\nЦе НЕЗВОРОТНО. Якщо ви реєструвались — спершу увійдіть в акаунт, інакше хмарна копія залишиться.')) return;
+  const btn = document.getElementById('debug-delete-profile');
+  if(btn) btn.disabled = true;
+  const done = function(){ if(btn) btn.disabled = false; };
+  try{
+    // 1) Чи є на цьому пристрої вхід в акаунт?
+    let c = null, user = null;
+    if(typeof window.cloudInit === 'function' && (window._cloudUser || localStorage.getItem('mova_cloud_active') === '1')){
+      c = await window.cloudInit();
+      try{ if(c.auth.authStateReady) await c.auth.authStateReady(); }catch(_){}
+      user = c.auth.currentUser;
+    }
+    // 2) Якщо так — просимо пароль і перевіряємо його (захист від видалення чужою людиною
+    //    на розблокованому пристрої). Невірний пароль/скасування — нічого не видаляємо.
+    if(user && user.email){
+      const pw = await _askPasswordModal(user.email);
+      if(pw === null){ done(); return; }
+      try{
+        await c.A.reauthenticateWithCredential(user, c.A.EmailAuthProvider.credential(user.email, pw));
+      }catch(e){
+        const code = e && e.code || '';
+        if(code === 'auth/wrong-password' || code === 'auth/invalid-credential' || code === 'auth/invalid-login-credentials') notify('⚠️ Невірний пароль. Нічого не видалено.');
+        else if(code === 'auth/too-many-requests') notify('⚠️ Забагато спроб. Спробуйте пізніше. Нічого не видалено.');
+        else notify('⚠️ '+(e && (e.message||code) || e));
+        done(); return;
+      }
+    }
+    // 3) Останнє підтвердження
+    if(!confirm('Остання перевірка: видалити все назавжди?')){ done(); return; }
+    // 4) Хмара — першою; при помилці локальні дані не чіпаємо
+    if(user){
+      notify('⏳ Видаляю акаунт…');
+      const ok = await window.cloudDeleteAccount();
+      if(!ok){ done(); return; }   // помилку вже показано
+    }
+    // 5) Локально: вимкнути аналітику (ID, cookie), стерти сховища, кеші, SW
+    notify('⏳ Видаляю дані на пристрої…');
+    try{ window.dispatchEvent(new CustomEvent('mova-consent', {detail:{analytics:false}})); }catch(_){}
+    await _wipeLocalProfile();
+    notify('🗑️ Профіль видалено');
+    setTimeout(function(){ location.replace(location.pathname || './'); }, 700);
+  }catch(e){
+    done();
+    notify('⚠️ '+(e && (e.message||e.code) || e));
+  }
+}
+// Модальне вікно з полем пароля (type=password, щоб не було видно символів, на відміну від prompt()).
+// Повертає Promise: рядок пароля або null, якщо користувач скасував.
+function _askPasswordModal(email){
+  return new Promise(function(resolve){
+    const ov = document.createElement('div');
+    ov.style.cssText = 'position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:20px';
+    const box = document.createElement('div');
+    box.style.cssText = 'background:var(--paper,#fff);color:var(--ink,#1c1917);border-radius:14px;padding:18px;max-width:340px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.35)';
+    const h = document.createElement('div');
+    h.style.cssText = 'font-weight:700;font-size:16px;margin-bottom:6px';
+    h.textContent = 'Підтвердіть паролем';
+    const t = document.createElement('div');
+    t.style.cssText = 'font-size:13px;color:var(--muted,#78716c);margin-bottom:10px;line-height:1.4';
+    t.textContent = 'Введіть пароль акаунту ' + email + ', щоб видалити профіль. Це незворотно.';
+    const inp = document.createElement('input');
+    inp.type = 'password'; inp.autocomplete = 'current-password'; inp.placeholder = 'Пароль';
+    inp.style.cssText = 'width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--border,#e7e3dc);border-radius:8px;font-size:16px;background:var(--paper,#fff);color:var(--ink,#1c1917)';
+    const row = document.createElement('div');
+    row.style.cssText = 'display:flex;gap:8px;margin-top:12px';
+    const cancel = document.createElement('button');
+    cancel.className = 'btn btn-s'; cancel.style.flex = '1'; cancel.textContent = 'Скасувати';
+    const ok = document.createElement('button');
+    ok.className = 'btn btn-s'; ok.style.cssText = 'flex:1;color:#fff;background:var(--red,#c0392b);border-color:var(--red,#c0392b)'; ok.textContent = 'Продовжити';
+    function close(v){ try{ ov.remove(); }catch(_){} resolve(v); }
+    cancel.onclick = function(){ close(null); };
+    ok.onclick = function(){ if(!inp.value){ inp.focus(); return; } close(inp.value); };
+    inp.onkeydown = function(e){ if(e.key === 'Enter') ok.onclick(); else if(e.key === 'Escape') cancel.onclick(); };
+    ov.onclick = function(e){ if(e.target === ov) close(null); };
+    row.appendChild(cancel); row.appendChild(ok);
+    box.appendChild(h); box.appendChild(t); box.appendChild(inp); box.appendChild(row);
+    ov.appendChild(box); document.body.appendChild(ov);
+    setTimeout(function(){ inp.focus(); }, 50);
+  });
+}
+async function _wipeLocalProfile(){
+  const withTimeout = (p, ms) => Promise.race([p, new Promise(r => setTimeout(r, ms))]);
+  try{ localStorage.clear(); }catch(_){}
+  try{ sessionStorage.clear(); }catch(_){}
+  try{   // cookie (у т.ч. _ga*), доступні з JS
+    document.cookie.split(';').forEach(function(ck){
+      const n = ck.split('=')[0].trim(); if(!n) return;
+      const exp = n + '=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/';
+      document.cookie = exp;
+      document.cookie = exp + '; domain=' + location.hostname;
+      document.cookie = exp + '; domain=.' + location.hostname.replace(/^www\./,'');
+    });
+  }catch(_){}
+  // IndexedDB (сюди ж Firebase кладе сесію входу та installation-id)
+  try{
+    if(indexedDB.databases){
+      const dbs = await withTimeout(indexedDB.databases(), 2000) || [];
+      await Promise.all(dbs.map(function(d){
+        return d && d.name ? withTimeout(new Promise(function(res){
+          const r = indexedDB.deleteDatabase(d.name);
+          r.onsuccess = r.onerror = r.onblocked = function(){ res(); };
+        }), 2000) : null;
+      }));
+    }
+  }catch(_){}
+  // Cache Storage (аудіо + app-shell) і service worker
+  try{ if(window.caches){ const ks = await withTimeout(caches.keys(), 2000) || []; await Promise.all(ks.map(function(k){ return caches.delete(k); })); } }catch(_){}
+  try{ if(navigator.serviceWorker){ const rs = await withTimeout(navigator.serviceWorker.getRegistrations(), 2000) || []; await Promise.all(rs.map(function(r){ return r.unregister(); })); } }catch(_){}
+  // Щоб жоден відкладений обробник (sync, збереження прогресу) не записав дані назад до перезавантаження
+  try{ Storage.prototype.setItem = function(){}; }catch(_){}
+  try{ localStorage.clear(); }catch(_){}
+}
 function debugCloudBackup(){
   if(!confirm('Зберегти поточний прогрес у хмару? Попередній бекап (якщо був) буде перезаписано.')) return;
   window.cloudBackup?.();
@@ -19633,7 +19754,11 @@ function lfRenderBar(){
     const totalWeight = weights.reduce((a,b)=>a+b, 0);
     const doneWeight = weights.slice(0, Math.min(LF.step, weights.length)).reduce((a,b)=>a+b, 0);
     const curStepWeight = weights[LF.step] ?? 1;
-    const curFrac = 0; // крок = 1 одиниця: смуга зсувається лише по завершенню кроку
+    // Крок важить 1, але ВСЕРЕДИНІ кроку смуга рухається (діалог, картки, мовлення, квіз…),
+    // інакше вона «застигає». «Знайди пару» unitProgress не виставляє — там стрибок по завершенню.
+    const curFrac = (LF.unitProgress && LF.unitProgress.total > 0)
+      ? Math.min(1, LF.unitProgress.done / LF.unitProgress.total)
+      : 0;
     const pct = totalWeight > 0
       ? Math.round(((doneWeight + curFrac*curStepWeight) / totalWeight) * 100)
       : 0;
