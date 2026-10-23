@@ -1,7 +1,7 @@
 {
   "name": "MOVA — Deutsch lernen",
   "short_name": "MOVA",
-  "description": "MOVA — вивчення німецької мови для іспитів telc (A2, B1, B2-Beruf)",
+  "description": "MOVA — німецька для життя й роботи в Німеччині: рівні A1, A2, B1, B2",
   "start_url": ".",
   "scope": ".",
   "display": "standalone",
