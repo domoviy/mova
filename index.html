@@ -2863,6 +2863,29 @@ body{
 /* Кнопки-посилання в налаштуваннях (Політика конфіденційності, Імпресум): напис на кнопці + стрілка */
 .ssec-note{font-size:13px;line-height:1.55;color:var(--muted);margin:2px 2px 14px}
 .ssec-note b{color:var(--warm);font-weight:600}
+/* ── Акаунт (вхід / реєстрація / хмарна копія): поля й кнопки в стилі застосунку ── */
+.acc-status{display:flex;align-items:center;gap:6px;font-size:14px;color:var(--muted);padding:2px 2px 12px;word-break:break-all}
+.acc-status .mi-inline{color:var(--gold);width:1.15em;height:1.15em;flex-shrink:0;vertical-align:-.2em}
+.acc-status b{color:var(--ink);font-weight:600}
+.acc-form,.acc-actions{display:flex;flex-direction:column;gap:10px}
+.acc-row{display:flex;gap:10px}
+.acc-field{width:100%;box-sizing:border-box;padding:12px 14px;border:1.5px solid var(--border);border-radius:10px;font-size:16px;font-family:inherit;background:var(--paper);color:var(--ink);outline:none;transition:border-color .15s,box-shadow .15s;-webkit-appearance:none;appearance:none}
+.acc-field::placeholder{color:var(--muted);opacity:.8}
+.acc-field:focus{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-dim)}
+.acc-btn{flex:1;display:flex;align-items:center;justify-content:center;gap:7px;padding:12px 10px;border-radius:10px;border:1.5px solid var(--border);background:var(--soft);color:var(--warm);font-size:15px;font-weight:600;font-family:inherit;line-height:1.2;text-align:center;cursor:pointer;touch-action:manipulation}
+.acc-btn .mi-inline{color:var(--gold);width:1.15em;height:1.15em;flex-shrink:0}
+.acc-btn:active{border-color:var(--gold);background:var(--gold-dim)}
+.acc-btn-primary{background:var(--forest);border-color:var(--forest);color:#fff}
+.acc-btn-primary .mi-inline{color:#fff}
+.acc-btn-primary:active{background:var(--leaf);border-color:var(--leaf)}
+.acc-btn-danger{background:var(--paper);color:var(--red);border-color:var(--border)}
+.acc-btn-danger .mi-inline{color:var(--red)}
+.acc-btn-danger:active{border-color:var(--red);background:rgba(192,57,43,.08)}
+.acc-btn-danger-solid{background:var(--red);border-color:var(--red);color:#fff}
+.acc-btn-danger-solid .mi-inline{color:#fff}
+.acc-btn-danger-solid:active{background:var(--red);border-color:var(--red);opacity:.85}
+.acc-btn-wide{width:100%;box-sizing:border-box;flex:none}
+.acc-btn:disabled{opacity:.55;pointer-events:none}
 .ssec-link-btn{display:flex;align-items:center;width:100%;font-weight:600}
 .ssec-link-btn > span{flex:1}
 .ssec-link-btn .mi-inline{color:var(--gold)}
@@ -5169,6 +5192,38 @@ body{
     </div>
     </div><!-- /ГРУПА 3 -->
 
+    <!-- ГРУПА: Акаунт (необов'язкова хмарна копія прогресу: вхід/реєстрація, збереження/відновлення, вихід, видалення) -->
+    <div class="ssec-group" id="settings-group-account">
+    <div class="ssec-group-title"><i data-mi="cloud" class=""></i><span data-i18n="grp_account">Konto</span><span class="ssec-group-line"></span></div>
+    <div class="ssec">
+      <p class="ssec-note" data-i18n="acc_note"></p>
+      <div id="cloud-auth-status" class="acc-status"><i data-mi="lock" class="mi-inline"></i><span data-i18n="acc_status_out">Nicht angemeldet</span></div>
+      <div id="cloud-auth-form" class="acc-form">
+        <input type="email" id="cloud-email" class="acc-field" data-i18n-ph="acc_email_ph" placeholder="E-Mail" autocomplete="email" onfocus="_cloudMountPw()" onblur="_cloudUnmountPw()">
+        <div id="cloud-pw-slot"></div>
+        <div class="acc-row">
+          <button type="button" class="acc-btn acc-btn-primary" onclick="debugCloudSignIn()" data-i18n="acc_signin">Anmelden</button>
+          <button type="button" class="acc-btn" onclick="debugCloudSignUp()" data-i18n="acc_signup">Registrieren</button>
+        </div>
+        <!-- ТИМЧАСОВО ПРИХОВАНО: відновлення пароля ще не працює. Щоб повернути — прибрати hidden і style="display:none". -->
+        <button type="button" id="cloud-reset-btn" class="acc-btn" hidden style="display:none" onclick="debugCloudReset()" data-i18n="acc_forgot">Passwort vergessen?</button>
+      </div>
+      <div id="cloud-signed-in-actions" class="acc-actions" style="display:none">
+        <div class="acc-row">
+          <button type="button" class="acc-btn acc-btn-primary" onclick="debugCloudBackup()"><i data-mi="upload" class="mi-inline"></i><span data-i18n="acc_backup">In Cloud sichern</span></button>
+          <button type="button" class="acc-btn" onclick="debugCloudRestore()"><i data-mi="download" class="mi-inline"></i><span data-i18n="acc_restore">Aus Cloud wiederherstellen</span></button>
+        </div>
+        <button type="button" class="acc-btn" onclick="window.cloudSignOut?.()" data-i18n="acc_signout">Abmelden</button>
+        <button type="button" class="acc-btn acc-btn-danger" onclick="debugCloudDelete()"><i data-mi="trash" class="mi-inline"></i><span data-i18n="acc_delete">Konto und Cloud-Daten löschen</span></button>
+      </div>
+    </div>
+    <div class="ssec">
+      <div class="srow-label"><label><i data-mi="trash" class="mi-inline"></i><span data-i18n="acc_wipe_title">Profil löschen</span></label></div>
+      <p class="ssec-note" data-i18n="acc_wipe_note" style="margin-top:6px"></p>
+      <button type="button" id="debug-delete-profile" class="acc-btn acc-btn-danger-solid acc-btn-wide" onclick="debugDeleteProfile()"><i data-mi="trash" class="mi-inline"></i><span data-i18n="acc_wipe_btn">Profil vollständig löschen</span></button>
+    </div>
+    </div><!-- /ГРУПА Акаунт -->
+
     <!-- ГРУПА: Конфіденційність (згода на аналітику + політика) -->
     <div class="ssec-group">
     <div class="ssec-group-title"><i data-mi="lock" class=""></i><span data-i18n="grp_privacy">Datenschutz</span><span class="ssec-group-line"></span></div>
@@ -5237,32 +5292,6 @@ body{
     <div class="srow">
       <div class="srow-label"><label><i data-mi="speaker" class="mi-inline"></i>Аудіо-кеш</label><small>Видалити всі завантажені аудіофайли</small></div>
       <button class="btn btn-s" onclick="clearAudioCache()"><i data-mi="trash" class="mi-inline"></i>Очистити кеш аудіо</button>
-    </div>
-    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label><i data-mi="cloud" class="mi-inline"></i>Хмарний бекап (тест)</label><small>Firebase email+пароль — експериментально, ручний бекап/відновлення, без авто-синхронізації між пристроями</small></div>
-      <div id="cloud-auth-status" style="font-size:13px;color:var(--muted)"><i data-mi="lock" class="mi-inline"></i>Не увійшли</div>
-      <div id="cloud-auth-form" style="display:flex;flex-direction:column;gap:6px">
-        <input type="email" id="cloud-email" placeholder="Email" autocomplete="email" onfocus="_cloudMountPw()" onblur="_cloudUnmountPw()"
-          style="padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:16px;background:var(--paper);color:var(--ink)">
-        <div id="cloud-pw-slot"></div>
-        <div style="display:flex;gap:6px">
-          <button class="btn btn-s" style="flex:1" onclick="debugCloudSignUp()">Зареєструватись</button>
-          <button class="btn btn-s" style="flex:1" onclick="debugCloudSignIn()">Увійти</button>
-        </div>
-        <button class="btn btn-s" style="font-size:12px" onclick="debugCloudReset()">Забули пароль?</button>
-      </div>
-      <div id="cloud-signed-in-actions" style="display:none;flex-direction:column;gap:6px">
-        <div style="display:flex;gap:6px">
-          <button class="btn btn-s" style="flex:1" onclick="debugCloudBackup()"><i data-mi="upload" class="mi-inline"></i>Зберегти в хмару</button>
-          <button class="btn btn-s" style="flex:1" onclick="debugCloudRestore()"><i data-mi="download" class="mi-inline"></i>Відновити з хмари</button>
-        </div>
-        <button class="btn btn-s" onclick="window.cloudSignOut?.()">Вийти з акаунту</button>
-        <button class="btn btn-s" style="color:var(--red)" onclick="debugCloudDelete()"><i data-mi="trash" class="mi-inline"></i>Видалити акаунт і хмарні дані</button>
-      </div>
-    </div>
-    <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
-      <div class="srow-label"><label><i data-mi="trash" class="mi-inline"></i>Видалення профілю</label><small>Право на стирання даних (GDPR ст. 17): акаунт і хмарна копія + усі дані на цьому пристрої. Незворотно.</small></div>
-      <button id="debug-delete-profile" class="btn btn-s" style="color:#fff;background:var(--red);border-color:var(--red)" onclick="debugDeleteProfile()"><i data-mi="trash" class="mi-inline"></i>Видалити профіль повністю</button>
     </div>
     <div class="srow" style="flex-direction:column;align-items:stretch;gap:8px">
       <div class="srow-label"><label><i data-mi="tiles" class="mi-inline"></i>Вправи Vocab (тест)</label><small>Прямий доступ до вкладок, прибраних з основного UI</small></div>
@@ -5358,7 +5387,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '889-28bd730';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6832,7 +6861,7 @@ const I18N = {
     streak_milestone_freeze:'🎁 +1 Streak-Schutz als Belohnung!',
     sec_sfx:'Soundeffekte', sub_sfx:'Bei richtig/falsch und beim Abschluss von Lektion, Modul und Kapitel',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
-    grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch',
+    grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch', grp_account:'Konto', acc_note:'Optional: Cloud-Sicherung deines Lernfortschritts (Frankfurt, EU), um ihn auf einem anderen Gerät wiederherzustellen. Die App funktioniert auch ohne Konto vollständig.', acc_status_out:'Nicht angemeldet', acc_status_in:'Angemeldet als', acc_email_ph:'E-Mail', acc_pw_ph:'Passwort (mind. 8: Groß-/Kleinbuchstaben, Zahl, Sonderzeichen)', acc_signin:'Anmelden', acc_signup:'Registrieren', acc_forgot:'Passwort vergessen?', acc_backup:'In Cloud sichern', acc_restore:'Aus Cloud wiederherstellen', acc_signout:'Abmelden', acc_delete:'Konto und Cloud-Daten löschen', acc_err_fields:'⚠️ Bitte E-Mail und Passwort eingeben', acc_err_pw_len:'⚠️ Passwort: mindestens 8 Zeichen', acc_confirm_delete:'Konto und Cloud-Sicherung endgültig löschen? Lokale Daten auf diesem Gerät bleiben erhalten.', acc_wipe_title:'Profil löschen', acc_wipe_note:'Recht auf Löschung (DSGVO Art. 17): Konto und Cloud-Sicherung (falls angemeldet) sowie alle Daten auf diesem Gerät. Nicht rückgängig zu machen.', acc_wipe_btn:'Profil vollständig löschen', wipe_confirm:'Profil vollständig löschen?\n\n• Konto und Cloud-Sicherung (falls angemeldet)\n• gesamter Fortschritt, alle Einstellungen und Favoriten auf diesem Gerät\n• Audio-Cache und Analytics-Kennungen\n\nDas ist UNWIDERRUFLICH. Falls du ein Konto hast, melde dich zuerst an, sonst bleibt die Cloud-Sicherung erhalten.', wipe_confirm_final:'Letzte Prüfung: wirklich alles endgültig löschen?', wipe_err_pw:'⚠️ Falsches Passwort. Nichts wurde gelöscht.', wipe_err_many:'⚠️ Zu viele Versuche. Bitte später erneut versuchen. Nichts wurde gelöscht.', wipe_busy_acc:'⏳ Konto wird gelöscht…', wipe_busy_local:'⏳ Daten auf dem Gerät werden gelöscht…', wipe_done:'🗑️ Profil gelöscht', wipe_pw_title:'Mit Passwort bestätigen', wipe_pw_text:'Gib das Passwort für {email} ein, um das Profil zu löschen. Das ist unwiderruflich.', wipe_pw_ph:'Passwort', wipe_cancel:'Abbrechen', wipe_continue:'Weiter',
     course_loading:'Kurs wird geladen: {course}', course_active:'{course} ist jetzt aktiv', course_error:'Kurs konnte nicht geladen werden',
     sec_debug:'Fehlersuche', sec_lang:'Sprache',
     lbl_region:'Bundesland', sub_region:'Für regionale Quizfragen', region_none:'Nicht gewählt (nur allgemeine Fragen)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Vorbereitung auf den Einbürgerungstest', lbl_dtchars:'Sonderzeichen unter dem Feld', sub_dtchars:'Zeile mit ä ö ü ß in der Tipp-Übung. „Auto“ blendet sie aus, sobald du Umlaute selbst tippst', opt_auto:'Auto', opt_always:'Immer',
@@ -7003,7 +7032,7 @@ const I18N = {
     streak_milestone_freeze:'🎁 +1 заморозка в нагороду!',
     sec_sfx:'Звукові ефекти', sub_sfx:'При відповідях та завершенні уроку, модуля, розділу',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
-    grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне',
+    grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне', grp_account:'Акаунт', acc_note:'Необов’язково: хмарна копія прогресу (Frankfurt, ЄС), щоб відновити його на іншому пристрої. Застосунок повністю працює й без акаунту.', acc_status_out:'Ви не увійшли', acc_status_in:'Ви увійшли як', acc_email_ph:'Email', acc_pw_ph:'Пароль (мін. 8: великі й малі літери, цифра, спецсимвол)', acc_signin:'Увійти', acc_signup:'Зареєструватись', acc_forgot:'Забули пароль?', acc_backup:'Зберегти в хмару', acc_restore:'Відновити з хмари', acc_signout:'Вийти з акаунту', acc_delete:'Видалити акаунт і хмарні дані', acc_err_fields:'⚠️ Введіть email і пароль', acc_err_pw_len:'⚠️ Пароль — мінімум 8 символів', acc_confirm_delete:'Видалити акаунт і хмарну копію прогресу назавжди? Локальні дані на цьому пристрої залишаться.', acc_wipe_title:'Видалення профілю', acc_wipe_note:'Право на стирання даних (GDPR ст. 17): акаунт і хмарна копія (якщо ви увійшли) + усі дані на цьому пристрої. Незворотно.', acc_wipe_btn:'Видалити профіль повністю', wipe_confirm:'Видалити профіль повністю?\n\n• акаунт і хмарна копія прогресу (якщо ви увійшли)\n• увесь прогрес, налаштування й закладки на цьому пристрої\n• кеш аудіо та ідентифікатори аналітики\n\nЦе НЕЗВОРОТНО. Якщо ви реєструвались — спершу увійдіть в акаунт, інакше хмарна копія залишиться.', wipe_confirm_final:'Остання перевірка: видалити все назавжди?', wipe_err_pw:'⚠️ Невірний пароль. Нічого не видалено.', wipe_err_many:'⚠️ Забагато спроб. Спробуйте пізніше. Нічого не видалено.', wipe_busy_acc:'⏳ Видаляю акаунт…', wipe_busy_local:'⏳ Видаляю дані на пристрої…', wipe_done:'🗑️ Профіль видалено', wipe_pw_title:'Підтвердіть паролем', wipe_pw_text:'Введіть пароль акаунту {email}, щоб видалити профіль. Це незворотно.', wipe_pw_ph:'Пароль', wipe_cancel:'Скасувати', wipe_continue:'Продовжити',
     course_loading:'Завантажуємо курс: {course}', course_active:'Курс «{course}» активний', course_error:'Не вдалося завантажити курс',
     sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
     lbl_region:'Федеральна земля', sub_region:'Для регіональних питань квізу', region_none:'Не обрано (лише загальні питання)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Підготовка до тесту на громадянство', lbl_dtchars:'Спецсимволи під полем', sub_dtchars:'Рядок із ä ö ü ß у вправі на письмо. «Авто» ховає його, коли ви самі набираєте умлаути', opt_auto:'Авто', opt_always:'Завжди',
@@ -7169,7 +7198,7 @@ const I18N = {
     streak_milestone_freeze:'🎁 +1 streak freeze as a reward!',
     sec_sfx:'Sound effects', sub_sfx:'On answers and when you finish a lesson, module or chapter',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
-    grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical',
+    grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical', grp_account:'Account', acc_note:'Optional: a cloud copy of your progress (Frankfurt, EU) so you can restore it on another device. The app works fully without an account.', acc_status_out:'Not signed in', acc_status_in:'Signed in as', acc_email_ph:'Email', acc_pw_ph:'Password (min. 8: upper & lower case, digit, symbol)', acc_signin:'Sign in', acc_signup:'Sign up', acc_forgot:'Forgot password?', acc_backup:'Back up to cloud', acc_restore:'Restore from cloud', acc_signout:'Sign out', acc_delete:'Delete account and cloud data', acc_err_fields:'⚠️ Enter email and password', acc_err_pw_len:'⚠️ Password must be at least 8 characters', acc_confirm_delete:'Permanently delete your account and cloud copy of your progress? Local data on this device will be kept.', acc_wipe_title:'Delete profile', acc_wipe_note:'Right to erasure (GDPR Art. 17): your account and cloud copy (if signed in) plus all data on this device. This cannot be undone.', acc_wipe_btn:'Delete profile completely', wipe_confirm:'Delete your profile completely?\n\n• account and cloud copy of your progress (if signed in)\n• all progress, settings and favorites on this device\n• audio cache and analytics identifiers\n\nThis is IRREVERSIBLE. If you have an account, sign in first, otherwise the cloud copy will remain.', wipe_confirm_final:'Final check: delete everything permanently?', wipe_err_pw:'⚠️ Wrong password. Nothing was deleted.', wipe_err_many:'⚠️ Too many attempts. Please try again later. Nothing was deleted.', wipe_busy_acc:'⏳ Deleting account…', wipe_busy_local:'⏳ Deleting data on this device…', wipe_done:'🗑️ Profile deleted', wipe_pw_title:'Confirm with your password', wipe_pw_text:'Enter the password for {email} to delete your profile. This cannot be undone.', wipe_pw_ph:'Password', wipe_cancel:'Cancel', wipe_continue:'Continue',
     course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
     sec_debug:'Debug', sec_lang:'Interface Language',
     lbl_region:'Federal state', sub_region:'For regional quiz questions', region_none:'Not selected (general questions only)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Naturalisation test preparation', lbl_dtchars:'Special characters row', sub_dtchars:'Row with ä ö ü ß in the typing exercise. “Auto” hides it once you type umlauts yourself', opt_auto:'Auto', opt_always:'Always',
@@ -7336,7 +7365,7 @@ const I18N = {
     streak_milestone_freeze:'🎁 +1 заморозка в награду!',
     sec_sfx:'Звуковые эффекты', sub_sfx:'При ответах и завершении урока, модуля, раздела',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
-    grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое',
+    grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое', grp_account:'Аккаунт', acc_note:'Необязательно: облачная копия прогресса (Frankfurt, ЕС), чтобы восстановить его на другом устройстве. Приложение полностью работает и без аккаунта.', acc_status_out:'Вы не вошли', acc_status_in:'Вы вошли как', acc_email_ph:'Email', acc_pw_ph:'Пароль (мин. 8: заглавные и строчные буквы, цифра, спецсимвол)', acc_signin:'Войти', acc_signup:'Зарегистрироваться', acc_forgot:'Забыли пароль?', acc_backup:'Сохранить в облако', acc_restore:'Восстановить из облака', acc_signout:'Выйти из аккаунта', acc_delete:'Удалить аккаунт и облачные данные', acc_err_fields:'⚠️ Введите email и пароль', acc_err_pw_len:'⚠️ Пароль — минимум 8 символов', acc_confirm_delete:'Удалить аккаунт и облачную копию прогресса навсегда? Локальные данные на этом устройстве останутся.', acc_wipe_title:'Удаление профиля', acc_wipe_note:'Право на удаление данных (GDPR ст. 17): аккаунт и облачная копия (если вы вошли) + все данные на этом устройстве. Необратимо.', acc_wipe_btn:'Удалить профиль полностью', wipe_confirm:'Удалить профиль полностью?\n\n• аккаунт и облачная копия прогресса (если вы вошли)\n• весь прогресс, настройки и закладки на этом устройстве\n• кэш аудио и идентификаторы аналитики\n\nЭто НЕОБРАТИМО. Если вы регистрировались — сначала войдите в аккаунт, иначе облачная копия останется.', wipe_confirm_final:'Последняя проверка: удалить всё навсегда?', wipe_err_pw:'⚠️ Неверный пароль. Ничего не удалено.', wipe_err_many:'⚠️ Слишком много попыток. Попробуйте позже. Ничего не удалено.', wipe_busy_acc:'⏳ Удаляю аккаунт…', wipe_busy_local:'⏳ Удаляю данные на устройстве…', wipe_done:'🗑️ Профиль удалён', wipe_pw_title:'Подтвердите паролем', wipe_pw_text:'Введите пароль аккаунта {email}, чтобы удалить профиль. Это необратимо.', wipe_pw_ph:'Пароль', wipe_cancel:'Отмена', wipe_continue:'Продолжить',
     course_loading:'Загружаем курс: {course}', course_active:'Курс «{course}» активен', course_error:'Не удалось загрузить курс',
     sec_debug:'Отладка', sec_lang:'Язык интерфейса',
     lbl_region:'Федеральная земля', sub_region:'Для региональных вопросов квиза', region_none:'Не выбрано (только общие вопросы)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Подготовка к тесту на гражданство', lbl_dtchars:'Спецсимволы под полем', sub_dtchars:'Строка с ä ö ü ß в упражнении на письмо. «Авто» скрывает её, когда вы сами набираете умлауты', opt_auto:'Авто', opt_always:'Всегда',
@@ -7578,6 +7607,8 @@ function applyI18n(){
   });
   // Тексти з розміткою (<b>) — окремим атрибутом data-i18n-html (рядки лише наші, не користувацькі)
   document.querySelectorAll('[data-i18n-html]').forEach(el=>{ el.innerHTML = t(el.dataset.i18nHtml); });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{ el.placeholder = t(el.dataset.i18nPh); });
+  if(typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI();   // статус «Ви увійшли / не увійшли» — динамічний
   // Атрибут title (підказка при наведенні) — той самий принцип,
   // окремим data-i18n-title, бо data-i18n змінює лише textContent.
   document.querySelectorAll('[data-i18n-title]').forEach(el=>{
@@ -8226,10 +8257,11 @@ function srSaveState(s){
   const toPersist = Object.assign({}, s);
   delete toPersist.streak;
   delete toPersist.lastSessionDate;
+  delete toPersist.examType;   // застаріле поле (ніде не читається) — прибираємо зі збереженого стану в існуючих користувачів
   try{ localStorage.setItem(srStorageKey(), JSON.stringify(toPersist)); }catch(e){}
 }
 function srDefaultState(){
-  return {examDate:null, examType:'telc_DTB_B2', cards:{}, subtestStats:{}, lastSessionDate:null, streak:0, dailyPlan:null, examHistory:[]};
+  return {examDate:null, cards:{}, subtestStats:{}, lastSessionDate:null, streak:0, dailyPlan:null, examHistory:[]};
 }
 
 // ── ОДНОРАЗОВА МІГРАЦІЯ СТАРИХ СИСТЕМ ОБЛІКУ В ЄДИНУ ─────────────
@@ -19258,11 +19290,12 @@ window._cloudRenderAuthUI = function(){
   if(!statusEl) return;
   const user = window._cloudUser;
   if(user){
-    statusEl.innerHTML = movaIcon('check','mi mi-inline')+'Увійшли як <b>'+user.email+'</b>';
+    const _em = String(user.email||'').replace(/[&<>"]/g, c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+    statusEl.innerHTML = movaIcon('check','mi mi-inline')+'<span>'+t('acc_status_in')+' <b>'+_em+'</b></span>';
     if(formEl) formEl.style.display = 'none';
     if(inEl)   inEl.style.display   = '';
   } else {
-    statusEl.innerHTML = movaIcon('lock','mi mi-inline')+'Не увійшли';
+    statusEl.innerHTML = movaIcon('lock','mi mi-inline')+'<span>'+t('acc_status_out')+'</span>';
     if(formEl) formEl.style.display = '';
     if(inEl)   inEl.style.display   = 'none';
   }
@@ -19270,14 +19303,14 @@ window._cloudRenderAuthUI = function(){
 function debugCloudSignUp(){
   const email = document.getElementById('cloud-email')?.value.trim();
   const pw    = document.getElementById('cloud-password')?.value;
-  if(!email || !pw){ notify('⚠️ Введіть email і пароль'); return; }
-  if(pw.length < 8){ notify('⚠️ Пароль — мінімум 8 символів'); return; }
+  if(!email || !pw){ notify(t('acc_err_fields')); return; }
+  if(pw.length < 8){ notify(t('acc_err_pw_len')); return; }
   window.cloudSignUp?.(email, pw);
 }
 function debugCloudSignIn(){
   const email = document.getElementById('cloud-email')?.value.trim();
   const pw    = document.getElementById('cloud-password')?.value;
-  if(!email || !pw){ notify('⚠️ Введіть email і пароль'); return; }
+  if(!email || !pw){ notify(t('acc_err_fields')); return; }
   window.cloudSignIn?.(email, pw);
 }
 // Поле пароля існує в DOM лише поки користувач вводить дані для входу: постійно присутній
@@ -19305,8 +19338,8 @@ function _cloudMountPw(){
   const i = document.createElement('input');
   i.type = 'password'; i.id = 'cloud-password';
   i.setAttribute('autocomplete','current-password');
-  i.placeholder = 'Пароль (мін. 8: великі й малі літери, цифра, спецсимвол)';
-  i.style.cssText = 'width:100%;box-sizing:border-box;padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:16px;background:var(--paper);color:var(--ink)';
+  i.placeholder = t('acc_pw_ph');
+  i.className = 'acc-field';
   i.onblur = _cloudUnmountPw;
   slot.appendChild(i);
 }
@@ -19322,7 +19355,7 @@ function debugCloudReset(){
   window.cloudResetPassword?.(email);
 }
 function debugCloudDelete(){
-  if(!confirm('Видалити акаунт і хмарну копію прогресу назавжди? Локальні дані на цьому пристрої залишаться.')) return;
+  if(!confirm(t('acc_confirm_delete'))) return;
   Promise.resolve(window.cloudDeleteAccount?.()).then(()=>window._cloudRenderAuthUI?.());
 }
 // ── ПОВНЕ ВИДАЛЕННЯ ПРОФІЛЮ (GDPR ст. 17, Apple 5.1.1(v), Google Play) ──────────
@@ -19330,7 +19363,7 @@ function debugCloudDelete(){
 // (або акаунта немає) — стираємо локальні дані. Інакше при помилці (напр. потрібен
 // повторний вхід) користувач втратив би і локальний прогрес, і доступ до хмарного.
 async function debugDeleteProfile(){
-  if(!confirm('Видалити профіль повністю?\n\n• акаунт і хмарна копія прогресу (якщо ви увійшли)\n• увесь прогрес, налаштування й закладки на цьому пристрої\n• кеш аудіо та ідентифікатори аналітики\n\nЦе НЕЗВОРОТНО. Якщо ви реєструвались — спершу увійдіть в акаунт, інакше хмарна копія залишиться.')) return;
+  if(!confirm(t('wipe_confirm'))) return;
   const btn = document.getElementById('debug-delete-profile');
   if(btn) btn.disabled = true;
   const done = function(){ if(btn) btn.disabled = false; };
@@ -19351,25 +19384,25 @@ async function debugDeleteProfile(){
         await c.A.reauthenticateWithCredential(user, c.A.EmailAuthProvider.credential(user.email, pw));
       }catch(e){
         const code = e && e.code || '';
-        if(code === 'auth/wrong-password' || code === 'auth/invalid-credential' || code === 'auth/invalid-login-credentials') notify('⚠️ Невірний пароль. Нічого не видалено.');
-        else if(code === 'auth/too-many-requests') notify('⚠️ Забагато спроб. Спробуйте пізніше. Нічого не видалено.');
+        if(code === 'auth/wrong-password' || code === 'auth/invalid-credential' || code === 'auth/invalid-login-credentials') notify(t('wipe_err_pw'));
+        else if(code === 'auth/too-many-requests') notify(t('wipe_err_many'));
         else notify('⚠️ '+(e && (e.message||code) || e));
         done(); return;
       }
     }
     // 3) Останнє підтвердження
-    if(!confirm('Остання перевірка: видалити все назавжди?')){ done(); return; }
+    if(!confirm(t('wipe_confirm_final'))){ done(); return; }
     // 4) Хмара — першою; при помилці локальні дані не чіпаємо
     if(user){
-      notify('⏳ Видаляю акаунт…');
+      notify(t('wipe_busy_acc'));
       const ok = await window.cloudDeleteAccount();
       if(!ok){ done(); return; }   // помилку вже показано
     }
     // 5) Локально: вимкнути аналітику (ID, cookie), стерти сховища, кеші, SW
-    notify('⏳ Видаляю дані на пристрої…');
+    notify(t('wipe_busy_local'));
     try{ window.dispatchEvent(new CustomEvent('mova-consent', {detail:{analytics:false}})); }catch(_){}
     await _wipeLocalProfile();
-    notify('🗑️ Профіль видалено');
+    notify(t('wipe_done'));
     setTimeout(function(){ location.replace(location.pathname || './'); }, 700);
   }catch(e){
     done();
@@ -19386,26 +19419,26 @@ function _askPasswordModal(email){
     box.style.cssText = 'background:var(--paper,#fff);color:var(--ink,#1c1917);border-radius:14px;padding:18px;max-width:340px;width:100%;box-shadow:0 10px 40px rgba(0,0,0,.35)';
     const h = document.createElement('div');
     h.style.cssText = 'font-weight:700;font-size:16px;margin-bottom:6px';
-    h.textContent = 'Підтвердіть паролем';
-    const t = document.createElement('div');
-    t.style.cssText = 'font-size:13px;color:var(--muted,#78716c);margin-bottom:10px;line-height:1.4';
-    t.textContent = 'Введіть пароль акаунту ' + email + ', щоб видалити профіль. Це незворотно.';
+    h.textContent = t('wipe_pw_title');
+    const tx = document.createElement('div');
+    tx.style.cssText = 'font-size:13px;color:var(--muted,#78716c);margin-bottom:12px;line-height:1.45';
+    tx.textContent = t('wipe_pw_text').replace('{email}', email);
     const inp = document.createElement('input');
-    inp.type = 'password'; inp.autocomplete = 'current-password'; inp.placeholder = 'Пароль';
-    inp.style.cssText = 'width:100%;box-sizing:border-box;padding:10px 12px;border:1px solid var(--border,#e7e3dc);border-radius:8px;font-size:16px;background:var(--paper,#fff);color:var(--ink,#1c1917)';
+    inp.type = 'password'; inp.autocomplete = 'current-password'; inp.placeholder = t('wipe_pw_ph');
+    inp.className = 'acc-field';
     const row = document.createElement('div');
-    row.style.cssText = 'display:flex;gap:8px;margin-top:12px';
+    row.style.cssText = 'display:flex;gap:10px;margin-top:14px';
     const cancel = document.createElement('button');
-    cancel.className = 'btn btn-s'; cancel.style.flex = '1'; cancel.textContent = 'Скасувати';
+    cancel.className = 'acc-btn'; cancel.textContent = t('wipe_cancel');
     const ok = document.createElement('button');
-    ok.className = 'btn btn-s'; ok.style.cssText = 'flex:1;color:#fff;background:var(--red,#c0392b);border-color:var(--red,#c0392b)'; ok.textContent = 'Продовжити';
+    ok.className = 'acc-btn acc-btn-danger-solid'; ok.textContent = t('wipe_continue');
     function close(v){ try{ ov.remove(); }catch(_){} resolve(v); }
     cancel.onclick = function(){ close(null); };
     ok.onclick = function(){ if(!inp.value){ inp.focus(); return; } close(inp.value); };
     inp.onkeydown = function(e){ if(e.key === 'Enter') ok.onclick(); else if(e.key === 'Escape') cancel.onclick(); };
     ov.onclick = function(e){ if(e.target === ov) close(null); };
     row.appendChild(cancel); row.appendChild(ok);
-    box.appendChild(h); box.appendChild(t); box.appendChild(inp); box.appendChild(row);
+    box.appendChild(h); box.appendChild(tx); box.appendChild(inp); box.appendChild(row);
     ov.appendChild(box); document.body.appendChild(ov);
     setTimeout(function(){ inp.focus(); }, 50);
   });

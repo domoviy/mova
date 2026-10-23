@@ -1,6 +1,6 @@
 // sw.js — Service Worker для MOVA PWA
 // CACHE_VERSION оновлюється автоматично GitHub Actions при кожному деплої
-const CACHE_VERSION = '889-28bd730';
+const CACHE_VERSION = '887-f310ec3';
 const CACHE_NAME = `mova-${CACHE_VERSION}`;
 // Аудіо (mp3) живе в ОКРЕМОМУ кеші без версії. CACHE_NAME змінюється на кожен деплой, а
 // activate нижче видаляє всі старі кеші — тож mp3 у ньому перекачувались би після кожного
@@ -43,6 +43,13 @@ self.addEventListener('activate', event => {
 // Fetch — Cache First для шрифтів і статики, Network First для решти
 self.addEventListener('fetch', event => {
   const url = new URL(event.request.url);
+
+  // Не втручаємось у те, що не є нашою статикою: POST/PUT (баг-репорти в Cloudflare Worker,
+  // Firebase Auth) і чужі домени (Firestore, googleapis, gtag тощо) — браузер обробляє їх сам,
+  // без кешування. Єдиний виняток — Firebase SDK з www.gstatic.com (версійні незмінні модулі
+  // firebasejs/<версія>/…): його, як і раніше, віддаємо з кешу, щоб офлайн-старт не ламався.
+  if (event.request.method !== 'GET') return;
+  if (url.origin !== self.location.origin && url.hostname !== 'www.gstatic.com') return;
 
   // Cache First: шрифти, іконки — рідко змінюються
   if (url.pathname.startsWith('/fonts/') || url.pathname.match(/\.(png|ico|webp)$/)) {
