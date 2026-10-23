@@ -2457,6 +2457,15 @@ body{
   font-family:inherit;flex-shrink:0;
 }
 .lf-exit:active{color:#fff;}
+/* 🐞 «Повідомити про помилку» в шапці уроку — видима на КОЖНОМУ кроці (вправи, мовлення, Story).
+   Окремий клас, не .lf-exit: код нижче шукає bar.querySelector('.lf-exit') для кнопки «✕». */
+.lf-hdr-bug{
+  background:none;border:none;color:rgba(255,255,255,.5);
+  cursor:pointer;padding:2px 6px;border-radius:6px;
+  font-family:inherit;flex-shrink:0;
+}
+.lf-hdr-bug:active{color:#fff;}
+.lf-hdr-bug .mi{ width:20px;height:20px; }
 .lf-steps{
   display:flex;
 }
@@ -4568,6 +4577,7 @@ body{
 <div id="lesson-flow-bar">
   <div class="lf-header">
     <div class="lf-title" id="lf-title"></div>
+    <button class="lf-hdr-bug" type="button" onclick="showBugReportModal()" title="Повідомити про помилку" data-i18n-title="bugreport_title" aria-label="Повідомити про помилку"><i data-mi="bug"></i></button>
     <button class="lf-exit" onclick="lfRequestExit()" title="Урок завершити"><i data-mi="cross"></i></button>
   </div>
   <div class="lf-steps" id="lf-steps"></div>
@@ -5342,7 +5352,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '884-cbc5927';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
