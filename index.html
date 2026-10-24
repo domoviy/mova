@@ -384,19 +384,21 @@ if(location.protocol === 'https:'){
   window.cloudInit = ensureCloud;
   if(localStorage.getItem(CLOUD_FLAG) === '1') ensureCloud().catch(e => console.warn('Cloud init failed:', e));
 
+  // Переклад береться зі словника інтерфейсу (t) — мова застосунку; без нього лишається ключ.
+  function _T(k){ try{ return (typeof t === 'function') ? t(k) : k; }catch(_){ return k; } }
   // Зрозумілі повідомлення замість англійських «Firebase: Error (auth/...)»
   function _cloudErrText(e){
     const code = (e && e.code) || '';
     const map = {
-      'auth/password-does-not-meet-requirements': 'Пароль занадто слабкий: мінімум 8 символів, велика й мала літери, цифра та спецсимвол',
-      'auth/weak-password': 'Пароль занадто слабкий',
-      'auth/email-already-in-use': 'Акаунт з таким email уже існує — спробуйте увійти або скинути пароль',
-      'auth/invalid-email': 'Некоректний email',
-      'auth/invalid-credential': 'Невірний email або пароль',
-      'auth/wrong-password': 'Невірний email або пароль',
-      'auth/user-not-found': 'Невірний email або пароль',
-      'auth/too-many-requests': 'Забагато спроб — спробуйте пізніше',
-      'auth/network-request-failed': 'Немає з’єднання з інтернетом'
+      'auth/password-does-not-meet-requirements': _T('cl_err_weak_policy'),
+      'auth/weak-password': _T('cl_err_weak'),
+      'auth/email-already-in-use': _T('cl_err_exists'),
+      'auth/invalid-email': _T('cl_err_email'),
+      'auth/invalid-credential': _T('cl_err_cred'),
+      'auth/wrong-password': _T('cl_err_cred'),
+      'auth/user-not-found': _T('cl_err_cred'),
+      'auth/too-many-requests': _T('cl_err_many'),
+      'auth/network-request-failed': _T('cl_err_net')
     };
     return map[code] || (e && (e.message || e.code)) || String(e);
   }
@@ -404,14 +406,14 @@ if(location.protocol === 'https:'){
     try{
       const c = await ensureCloud();
       await c.A.createUserWithEmailAndPassword(c.auth, email, password);
-      window.notify?.('✅ Акаунт створено');
+      window.notify?.(_T('cl_signed_up'));
     }catch(e){ window.notify?.('⚠️ '+_cloudErrText(e)); }
   };
   window.cloudSignIn = async (email, password) => {
     try{
       const c = await ensureCloud();
       await c.A.signInWithEmailAndPassword(c.auth, email, password);
-      window.notify?.('✅ Увійшли');
+      window.notify?.(_T('cl_signed_in'));
     }catch(e){ window.notify?.('⚠️ '+_cloudErrText(e)); }
   };
   // Скидання пароля. Лист приходить мовою інтерфейсу застосунку (de/uk/en/ru):
@@ -422,11 +424,11 @@ if(location.protocol === 'https:'){
       const c = await ensureCloud();
       try{ const l = localStorage.getItem('mova_ui_lang'); if(l) c.auth.languageCode = l; }catch(_){}
       await c.A.sendPasswordResetEmail(c.auth, email);
-      window.notify?.('📧 Якщо акаунт з таким email існує, ми надіслали лист для скидання пароля. Перевірте також «Спам»');
+      window.notify?.(_T('cl_reset_sent'));
     }catch(e){ window.notify?.('⚠️ '+_cloudErrText(e)); }
   };
   window.cloudSignOut = async () => {
-    try{ const c = await ensureCloud(); await c.A.signOut(c.auth); window.notify?.('👋 Вийшли'); }
+    try{ const c = await ensureCloud(); await c.A.signOut(c.auth); window.notify?.(_T('cl_signed_out')); }
     catch(e){ window.notify?.('⚠️ '+(e.message||e.code||e)); }
   };
   function _cloudCollectBackupData(){
@@ -503,7 +505,7 @@ if(location.protocol === 'https:'){
       await c.F.setDoc(r.big, { data:pk.data, format:pk.format, keyCount:snap.n, rev:rev, hash:snap.hash, savedAt:c.F.serverTimestamp(), savedAtClient:now });
       await c.F.setDoc(r.idx, Object.assign({ rev:rev, hash:snap.hash, updatedAt:now, device:_deviceName(), keyCount:snap.n }, _summary()));
       _lset(S_REV, String(rev)); _lset(S_HASH, snap.hash);
-      if(opts.notify){ window.notify?.('☁️ Збережено ('+snap.n+' записів)'); if(typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI(); }
+      if(opts.notify){ window.notify?.(_T('cl_saved').replace('{n}', snap.n)); if(typeof window._cloudRenderAuthUI === 'function') window._cloudRenderAuthUI(); }
       return true;
     }catch(e){ if(opts.notify) window.notify?.('⚠️ '+_cloudErrText(e)); else console.warn('sync push failed', e); return false; }
     finally{ _syncBusy = false; }
@@ -519,7 +521,7 @@ if(location.protocol === 'https:'){
     });
     const snap = await _snapshot();
     _lset(S_REV, String(cloud.rev || d.rev || 1)); _lset(S_HASH, snap.hash);
-    window.notify?.('☁️ Прогрес оновлено з хмари — перезавантажую...');
+    window.notify?.(_T('cl_restored'));
     setTimeout(() => location.reload(), 900);
     return true;
   }
@@ -581,14 +583,14 @@ if(location.protocol === 'https:'){
   window.addEventListener('online', () => { if(window._cloudUser) syncPull(); });
   // Ручні кнопки (Debug) працюють поверх тієї ж схеми
   window.cloudBackup = async () => {
-    if(!window._cloudUser){ window.notify?.('⚠️ Спершу увійдіть'); return; }
+    if(!window._cloudUser){ window.notify?.(_T('cl_need_login')); return; }
     await syncPush({ force:true, notify:true });
   };
   window.cloudRestore = async () => {
-    if(!window._cloudUser){ window.notify?.('⚠️ Спершу увійдіть'); return; }
+    if(!window._cloudUser){ window.notify?.(_T('cl_need_login')); return; }
     try{
       const c = await ensureCloud(), r = _refs(c), cloud = await _cloudMeta(c, r);
-      if(!cloud){ window.notify?.('⚠️ Бекапу ще немає'); return; }
+      if(!cloud){ window.notify?.(_T('cl_no_backup')); return; }
       await _syncApply(c, r, cloud);
     }catch(e){ window.notify?.('⚠️ '+_cloudErrText(e)); }
   };
@@ -598,14 +600,14 @@ if(location.protocol === 'https:'){
     try{
       const c = await ensureCloud();
       const u = c.auth.currentUser;
-      if(!u){ window.notify?.('⚠️ Спершу увійдіть'); return false; }
+      if(!u){ window.notify?.(_T('cl_need_login')); return false; }
       await c.F.deleteDoc(c.F.doc(c.db, 'backups', u.uid));
       try{ await c.F.deleteDoc(c.F.doc(c.db, 'sync', u.uid)); }catch(_){}
       await c.A.deleteUser(u);
-      window.notify?.('🗑️ Акаунт і хмарні дані видалено');
+      window.notify?.(_T('cl_deleted'));
       return true;
     }catch(e){
-      if(e && e.code === 'auth/requires-recent-login') window.notify?.('⚠️ Для безпеки увійдіть знову й повторіть видалення');
+      if(e && e.code === 'auth/requires-recent-login') window.notify?.(_T('cl_need_relogin'));
       else window.notify?.('⚠️ '+(e.message||e.code||e));
       return false;
     }
@@ -2886,6 +2888,12 @@ body{
 .acc-btn-danger-solid:active{background:var(--red);border-color:var(--red);opacity:.85}
 .acc-btn-wide{width:100%;box-sizing:border-box;flex:none}
 .acc-btn:disabled{opacity:.55;pointer-events:none}
+/* ── Власні діалоги замість confirm()/alert() ── */
+.mova-dlg-ov{position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:20px;animation:movaDlgFade .15s ease-out}
+.mova-dlg{background:var(--paper);color:var(--ink);border-radius:14px;padding:20px 18px 16px;max-width:360px;width:100%;box-sizing:border-box;box-shadow:0 10px 40px rgba(0,0,0,.35);max-height:85vh;overflow-y:auto}
+.mova-dlg-text{font-size:15px;line-height:1.5;white-space:pre-line;word-break:break-word}
+.mova-dlg-row{display:flex;gap:10px;margin-top:18px}
+@keyframes movaDlgFade{from{opacity:0}to{opacity:1}}
 .ssec-link-btn{display:flex;align-items:center;width:100%;font-weight:600}
 .ssec-link-btn > span{flex:1}
 .ssec-link-btn .mi-inline{color:var(--gold)}
@@ -5387,7 +5395,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '890-2cdc653';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6861,7 +6869,7 @@ const I18N = {
     streak_milestone_freeze:'🎁 +1 Streak-Schutz als Belohnung!',
     sec_sfx:'Soundeffekte', sub_sfx:'Bei richtig/falsch und beim Abschluss von Lektion, Modul und Kapitel',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
-    grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch', grp_account:'Konto', acc_note:'Optional: Cloud-Sicherung deines Lernfortschritts (Frankfurt, EU), um ihn auf einem anderen Gerät wiederherzustellen. Die App funktioniert auch ohne Konto vollständig.', acc_status_out:'Nicht angemeldet', acc_status_in:'Angemeldet als', acc_email_ph:'E-Mail', acc_pw_ph:'Passwort (mind. 8: Groß-/Kleinbuchstaben, Zahl, Sonderzeichen)', acc_signin:'Anmelden', acc_signup:'Registrieren', acc_forgot:'Passwort vergessen?', acc_backup:'In Cloud sichern', acc_restore:'Aus Cloud wiederherstellen', acc_signout:'Abmelden', acc_delete:'Konto und Cloud-Daten löschen', acc_err_fields:'⚠️ Bitte E-Mail und Passwort eingeben', acc_err_pw_len:'⚠️ Passwort: mindestens 8 Zeichen', acc_confirm_delete:'Konto und Cloud-Sicherung endgültig löschen? Lokale Daten auf diesem Gerät bleiben erhalten.', acc_wipe_title:'Profil löschen', acc_wipe_note:'Recht auf Löschung (DSGVO Art. 17): Konto und Cloud-Sicherung (falls angemeldet) sowie alle Daten auf diesem Gerät. Nicht rückgängig zu machen.', acc_wipe_btn:'Profil vollständig löschen', wipe_confirm:'Profil vollständig löschen?\n\n• Konto und Cloud-Sicherung (falls angemeldet)\n• gesamter Fortschritt, alle Einstellungen und Favoriten auf diesem Gerät\n• Audio-Cache und Analytics-Kennungen\n\nDas ist UNWIDERRUFLICH. Falls du ein Konto hast, melde dich zuerst an, sonst bleibt die Cloud-Sicherung erhalten.', wipe_confirm_final:'Letzte Prüfung: wirklich alles endgültig löschen?', wipe_err_pw:'⚠️ Falsches Passwort. Nichts wurde gelöscht.', wipe_err_many:'⚠️ Zu viele Versuche. Bitte später erneut versuchen. Nichts wurde gelöscht.', wipe_busy_acc:'⏳ Konto wird gelöscht…', wipe_busy_local:'⏳ Daten auf dem Gerät werden gelöscht…', wipe_done:'🗑️ Profil gelöscht', wipe_pw_title:'Mit Passwort bestätigen', wipe_pw_text:'Gib das Passwort für {email} ein, um das Profil zu löschen. Das ist unwiderruflich.', wipe_pw_ph:'Passwort', wipe_cancel:'Abbrechen', wipe_continue:'Weiter',
+    grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch', grp_account:'Konto', acc_note:'Optional: Cloud-Sicherung deines Lernfortschritts (Frankfurt, EU), um ihn auf einem anderen Gerät wiederherzustellen. Die App funktioniert auch ohne Konto vollständig.', acc_status_out:'Nicht angemeldet', acc_status_in:'Angemeldet als', acc_email_ph:'E-Mail', acc_pw_ph:'Passwort (mind. 8: Groß-/Kleinbuchstaben, Zahl, Sonderzeichen)', acc_signin:'Anmelden', acc_signup:'Registrieren', acc_forgot:'Passwort vergessen?', acc_backup:'In Cloud sichern', acc_restore:'Aus Cloud wiederherstellen', acc_signout:'Abmelden', acc_delete:'Konto und Cloud-Daten löschen', acc_err_fields:'⚠️ Bitte E-Mail und Passwort eingeben', acc_err_pw_len:'⚠️ Passwort: mindestens 8 Zeichen', acc_confirm_delete:'Konto und Cloud-Sicherung endgültig löschen? Lokale Daten auf diesem Gerät bleiben erhalten.', acc_wipe_title:'Profil löschen', acc_wipe_note:'Recht auf Löschung (DSGVO Art. 17): Konto und Cloud-Sicherung (falls angemeldet) sowie alle Daten auf diesem Gerät. Nicht rückgängig zu machen.', acc_wipe_btn:'Profil vollständig löschen', wipe_confirm:'Profil vollständig löschen?\n\n• Konto und Cloud-Sicherung (falls angemeldet)\n• gesamter Fortschritt, alle Einstellungen und Favoriten auf diesem Gerät\n• Audio-Cache und Analytics-Kennungen\n\nDas ist UNWIDERRUFLICH. Falls du ein Konto hast, melde dich zuerst an, sonst bleibt die Cloud-Sicherung erhalten.', wipe_confirm_final:'Letzte Prüfung: wirklich alles endgültig löschen?', wipe_err_pw:'⚠️ Falsches Passwort. Nichts wurde gelöscht.', wipe_err_many:'⚠️ Zu viele Versuche. Bitte später erneut versuchen. Nichts wurde gelöscht.', wipe_busy_acc:'⏳ Konto wird gelöscht…', wipe_busy_local:'⏳ Daten auf dem Gerät werden gelöscht…', wipe_done:'🗑️ Profil gelöscht', wipe_pw_title:'Mit Passwort bestätigen', wipe_pw_text:'Gib das Passwort für {email} ein, um das Profil zu löschen. Das ist unwiderruflich.', wipe_pw_ph:'Passwort', wipe_cancel:'Abbrechen', wipe_continue:'Weiter', dlg_ok:'OK', dlg_cancel:'Abbrechen', dlg_delete:'Löschen', dlg_delete_forever:'Endgültig löschen', dlg_restore:'Wiederherstellen', dlg_save:'Sichern', acc_confirm_backup:'In die Cloud sichern? Eine vorhandene Sicherung wird überschrieben.', acc_confirm_restore:'Fortschritt aus der Cloud wiederherstellen? Die lokalen Daten auf diesem Gerät werden ERSETZT und die App wird neu geladen.', cl_err_weak_policy:'Passwort zu schwach: mindestens 8 Zeichen, Groß- und Kleinbuchstaben, Zahl und Sonderzeichen', cl_err_weak:'Passwort zu schwach', cl_err_exists:'Ein Konto mit dieser E-Mail existiert bereits – melde dich an oder setze das Passwort zurück', cl_err_email:'Ungültige E-Mail-Adresse', cl_err_cred:'Falsche E-Mail oder falsches Passwort', cl_err_many:'Zu viele Versuche – bitte später erneut versuchen', cl_err_net:'Keine Internetverbindung', cl_signed_up:'✅ Konto erstellt', cl_signed_in:'✅ Angemeldet', cl_reset_sent:'📧 Falls ein Konto mit dieser E-Mail existiert, haben wir eine E-Mail zum Zurücksetzen gesendet. Prüfe auch den Spam-Ordner', cl_signed_out:'👋 Abgemeldet', cl_saved:'☁️ Gespeichert ({n} Einträge)', cl_restored:'☁️ Fortschritt aus der Cloud geladen – App wird neu gestartet...', cl_need_login:'⚠️ Bitte zuerst anmelden', cl_no_backup:'⚠️ Noch keine Sicherung vorhanden', cl_deleted:'🗑️ Konto und Cloud-Daten gelöscht', cl_need_relogin:'⚠️ Aus Sicherheitsgründen bitte erneut anmelden und das Löschen wiederholen', cl_enter_email:'⚠️ Bitte E-Mail eingeben, an die der Link zum Zurücksetzen gesendet wird',
     course_loading:'Kurs wird geladen: {course}', course_active:'{course} ist jetzt aktiv', course_error:'Kurs konnte nicht geladen werden',
     sec_debug:'Fehlersuche', sec_lang:'Sprache',
     lbl_region:'Bundesland', sub_region:'Für regionale Quizfragen', region_none:'Nicht gewählt (nur allgemeine Fragen)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Vorbereitung auf den Einbürgerungstest', lbl_dtchars:'Sonderzeichen unter dem Feld', sub_dtchars:'Zeile mit ä ö ü ß in der Tipp-Übung. „Auto“ blendet sie aus, sobald du Umlaute selbst tippst', opt_auto:'Auto', opt_always:'Immer',
@@ -7032,7 +7040,7 @@ const I18N = {
     streak_milestone_freeze:'🎁 +1 заморозка в нагороду!',
     sec_sfx:'Звукові ефекти', sub_sfx:'При відповідях та завершенні уроку, модуля, розділу',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
-    grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне', grp_account:'Акаунт', acc_note:'Необов’язково: хмарна копія прогресу (Frankfurt, ЄС), щоб відновити його на іншому пристрої. Застосунок повністю працює й без акаунту.', acc_status_out:'Ви не увійшли', acc_status_in:'Ви увійшли як', acc_email_ph:'Email', acc_pw_ph:'Пароль (мін. 8: великі й малі літери, цифра, спецсимвол)', acc_signin:'Увійти', acc_signup:'Зареєструватись', acc_forgot:'Забули пароль?', acc_backup:'Зберегти в хмару', acc_restore:'Відновити з хмари', acc_signout:'Вийти з акаунту', acc_delete:'Видалити акаунт і хмарні дані', acc_err_fields:'⚠️ Введіть email і пароль', acc_err_pw_len:'⚠️ Пароль — мінімум 8 символів', acc_confirm_delete:'Видалити акаунт і хмарну копію прогресу назавжди? Локальні дані на цьому пристрої залишаться.', acc_wipe_title:'Видалення профілю', acc_wipe_note:'Право на стирання даних (GDPR ст. 17): акаунт і хмарна копія (якщо ви увійшли) + усі дані на цьому пристрої. Незворотно.', acc_wipe_btn:'Видалити профіль повністю', wipe_confirm:'Видалити профіль повністю?\n\n• акаунт і хмарна копія прогресу (якщо ви увійшли)\n• увесь прогрес, налаштування й закладки на цьому пристрої\n• кеш аудіо та ідентифікатори аналітики\n\nЦе НЕЗВОРОТНО. Якщо ви реєструвались — спершу увійдіть в акаунт, інакше хмарна копія залишиться.', wipe_confirm_final:'Остання перевірка: видалити все назавжди?', wipe_err_pw:'⚠️ Невірний пароль. Нічого не видалено.', wipe_err_many:'⚠️ Забагато спроб. Спробуйте пізніше. Нічого не видалено.', wipe_busy_acc:'⏳ Видаляю акаунт…', wipe_busy_local:'⏳ Видаляю дані на пристрої…', wipe_done:'🗑️ Профіль видалено', wipe_pw_title:'Підтвердіть паролем', wipe_pw_text:'Введіть пароль акаунту {email}, щоб видалити профіль. Це незворотно.', wipe_pw_ph:'Пароль', wipe_cancel:'Скасувати', wipe_continue:'Продовжити',
+    grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне', grp_account:'Акаунт', acc_note:'Необов’язково: хмарна копія прогресу (Frankfurt, ЄС), щоб відновити його на іншому пристрої. Застосунок повністю працює й без акаунту.', acc_status_out:'Ви не увійшли', acc_status_in:'Ви увійшли як', acc_email_ph:'Email', acc_pw_ph:'Пароль (мін. 8: великі й малі літери, цифра, спецсимвол)', acc_signin:'Увійти', acc_signup:'Зареєструватись', acc_forgot:'Забули пароль?', acc_backup:'Зберегти в хмару', acc_restore:'Відновити з хмари', acc_signout:'Вийти з акаунту', acc_delete:'Видалити акаунт і хмарні дані', acc_err_fields:'⚠️ Введіть email і пароль', acc_err_pw_len:'⚠️ Пароль — мінімум 8 символів', acc_confirm_delete:'Видалити акаунт і хмарну копію прогресу назавжди? Локальні дані на цьому пристрої залишаться.', acc_wipe_title:'Видалення профілю', acc_wipe_note:'Право на стирання даних (GDPR ст. 17): акаунт і хмарна копія (якщо ви увійшли) + усі дані на цьому пристрої. Незворотно.', acc_wipe_btn:'Видалити профіль повністю', wipe_confirm:'Видалити профіль повністю?\n\n• акаунт і хмарна копія прогресу (якщо ви увійшли)\n• увесь прогрес, налаштування й закладки на цьому пристрої\n• кеш аудіо та ідентифікатори аналітики\n\nЦе НЕЗВОРОТНО. Якщо ви реєструвались — спершу увійдіть в акаунт, інакше хмарна копія залишиться.', wipe_confirm_final:'Остання перевірка: видалити все назавжди?', wipe_err_pw:'⚠️ Невірний пароль. Нічого не видалено.', wipe_err_many:'⚠️ Забагато спроб. Спробуйте пізніше. Нічого не видалено.', wipe_busy_acc:'⏳ Видаляю акаунт…', wipe_busy_local:'⏳ Видаляю дані на пристрої…', wipe_done:'🗑️ Профіль видалено', wipe_pw_title:'Підтвердіть паролем', wipe_pw_text:'Введіть пароль акаунту {email}, щоб видалити профіль. Це незворотно.', wipe_pw_ph:'Пароль', wipe_cancel:'Скасувати', wipe_continue:'Продовжити', dlg_ok:'OK', dlg_cancel:'Скасувати', dlg_delete:'Видалити', dlg_delete_forever:'Видалити назавжди', dlg_restore:'Відновити', dlg_save:'Зберегти', acc_confirm_backup:'Зберегти поточний прогрес у хмару? Попередню копію (якщо була) буде перезаписано.', acc_confirm_restore:'Відновити прогрес з хмари? Поточні локальні дані на цьому пристрої буде ЗАМІНЕНО збереженими в хмарі, і застосунок перезавантажиться.', cl_err_weak_policy:'Пароль занадто слабкий: мінімум 8 символів, велика й мала літери, цифра та спецсимвол', cl_err_weak:'Пароль занадто слабкий', cl_err_exists:'Акаунт з таким email уже існує — спробуйте увійти або скинути пароль', cl_err_email:'Некоректний email', cl_err_cred:'Невірний email або пароль', cl_err_many:'Забагато спроб — спробуйте пізніше', cl_err_net:'Немає з’єднання з інтернетом', cl_signed_up:'✅ Акаунт створено', cl_signed_in:'✅ Увійшли', cl_reset_sent:'📧 Якщо акаунт з таким email існує, ми надіслали лист для скидання пароля. Перевірте також «Спам»', cl_signed_out:'👋 Вийшли', cl_saved:'☁️ Збережено ({n} записів)', cl_restored:'☁️ Прогрес оновлено з хмари — перезавантажую...', cl_need_login:'⚠️ Спершу увійдіть', cl_no_backup:'⚠️ Бекапу ще немає', cl_deleted:'🗑️ Акаунт і хмарні дані видалено', cl_need_relogin:'⚠️ Для безпеки увійдіть знову й повторіть видалення', cl_enter_email:'⚠️ Введіть email, на який надіслати лист для скидання пароля',
     course_loading:'Завантажуємо курс: {course}', course_active:'Курс «{course}» активний', course_error:'Не вдалося завантажити курс',
     sec_debug:'Налагодження', sec_lang:'Мова інтерфейсу',
     lbl_region:'Федеральна земля', sub_region:'Для регіональних питань квізу', region_none:'Не обрано (лише загальні питання)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Підготовка до тесту на громадянство', lbl_dtchars:'Спецсимволи під полем', sub_dtchars:'Рядок із ä ö ü ß у вправі на письмо. «Авто» ховає його, коли ви самі набираєте умлаути', opt_auto:'Авто', opt_always:'Завжди',
@@ -7198,7 +7206,7 @@ const I18N = {
     streak_milestone_freeze:'🎁 +1 streak freeze as a reward!',
     sec_sfx:'Sound effects', sub_sfx:'On answers and when you finish a lesson, module or chapter',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
-    grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical', grp_account:'Account', acc_note:'Optional: a cloud copy of your progress (Frankfurt, EU) so you can restore it on another device. The app works fully without an account.', acc_status_out:'Not signed in', acc_status_in:'Signed in as', acc_email_ph:'Email', acc_pw_ph:'Password (min. 8: upper & lower case, digit, symbol)', acc_signin:'Sign in', acc_signup:'Sign up', acc_forgot:'Forgot password?', acc_backup:'Back up to cloud', acc_restore:'Restore from cloud', acc_signout:'Sign out', acc_delete:'Delete account and cloud data', acc_err_fields:'⚠️ Enter email and password', acc_err_pw_len:'⚠️ Password must be at least 8 characters', acc_confirm_delete:'Permanently delete your account and cloud copy of your progress? Local data on this device will be kept.', acc_wipe_title:'Delete profile', acc_wipe_note:'Right to erasure (GDPR Art. 17): your account and cloud copy (if signed in) plus all data on this device. This cannot be undone.', acc_wipe_btn:'Delete profile completely', wipe_confirm:'Delete your profile completely?\n\n• account and cloud copy of your progress (if signed in)\n• all progress, settings and favorites on this device\n• audio cache and analytics identifiers\n\nThis is IRREVERSIBLE. If you have an account, sign in first, otherwise the cloud copy will remain.', wipe_confirm_final:'Final check: delete everything permanently?', wipe_err_pw:'⚠️ Wrong password. Nothing was deleted.', wipe_err_many:'⚠️ Too many attempts. Please try again later. Nothing was deleted.', wipe_busy_acc:'⏳ Deleting account…', wipe_busy_local:'⏳ Deleting data on this device…', wipe_done:'🗑️ Profile deleted', wipe_pw_title:'Confirm with your password', wipe_pw_text:'Enter the password for {email} to delete your profile. This cannot be undone.', wipe_pw_ph:'Password', wipe_cancel:'Cancel', wipe_continue:'Continue',
+    grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical', grp_account:'Account', acc_note:'Optional: a cloud copy of your progress (Frankfurt, EU) so you can restore it on another device. The app works fully without an account.', acc_status_out:'Not signed in', acc_status_in:'Signed in as', acc_email_ph:'Email', acc_pw_ph:'Password (min. 8: upper & lower case, digit, symbol)', acc_signin:'Sign in', acc_signup:'Sign up', acc_forgot:'Forgot password?', acc_backup:'Back up to cloud', acc_restore:'Restore from cloud', acc_signout:'Sign out', acc_delete:'Delete account and cloud data', acc_err_fields:'⚠️ Enter email and password', acc_err_pw_len:'⚠️ Password must be at least 8 characters', acc_confirm_delete:'Permanently delete your account and cloud copy of your progress? Local data on this device will be kept.', acc_wipe_title:'Delete profile', acc_wipe_note:'Right to erasure (GDPR Art. 17): your account and cloud copy (if signed in) plus all data on this device. This cannot be undone.', acc_wipe_btn:'Delete profile completely', wipe_confirm:'Delete your profile completely?\n\n• account and cloud copy of your progress (if signed in)\n• all progress, settings and favorites on this device\n• audio cache and analytics identifiers\n\nThis is IRREVERSIBLE. If you have an account, sign in first, otherwise the cloud copy will remain.', wipe_confirm_final:'Final check: delete everything permanently?', wipe_err_pw:'⚠️ Wrong password. Nothing was deleted.', wipe_err_many:'⚠️ Too many attempts. Please try again later. Nothing was deleted.', wipe_busy_acc:'⏳ Deleting account…', wipe_busy_local:'⏳ Deleting data on this device…', wipe_done:'🗑️ Profile deleted', wipe_pw_title:'Confirm with your password', wipe_pw_text:'Enter the password for {email} to delete your profile. This cannot be undone.', wipe_pw_ph:'Password', wipe_cancel:'Cancel', wipe_continue:'Continue', dlg_ok:'OK', dlg_cancel:'Cancel', dlg_delete:'Delete', dlg_delete_forever:'Delete permanently', dlg_restore:'Restore', dlg_save:'Save', acc_confirm_backup:'Back up your progress to the cloud? An existing backup will be overwritten.', acc_confirm_restore:'Restore progress from the cloud? Local data on this device will be REPLACED with the cloud copy and the app will reload.', cl_err_weak_policy:'Password too weak: at least 8 characters, upper and lower case letters, a digit and a symbol', cl_err_weak:'Password too weak', cl_err_exists:'An account with this email already exists — try signing in or resetting your password', cl_err_email:'Invalid email address', cl_err_cred:'Wrong email or password', cl_err_many:'Too many attempts — please try again later', cl_err_net:'No internet connection', cl_signed_up:'✅ Account created', cl_signed_in:'✅ Signed in', cl_reset_sent:'📧 If an account with this email exists, we have sent a password reset email. Please also check your spam folder', cl_signed_out:'👋 Signed out', cl_saved:'☁️ Saved ({n} entries)', cl_restored:'☁️ Progress updated from the cloud — reloading...', cl_need_login:'⚠️ Please sign in first', cl_no_backup:'⚠️ No backup yet', cl_deleted:'🗑️ Account and cloud data deleted', cl_need_relogin:'⚠️ For security, please sign in again and repeat the deletion', cl_enter_email:'⚠️ Enter the email to send the password reset link to',
     course_loading:'Loading course: {course}', course_active:'{course} is now active', course_error:'Failed to load the course',
     sec_debug:'Debug', sec_lang:'Interface Language',
     lbl_region:'Federal state', sub_region:'For regional quiz questions', region_none:'Not selected (general questions only)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Naturalisation test preparation', lbl_dtchars:'Special characters row', sub_dtchars:'Row with ä ö ü ß in the typing exercise. “Auto” hides it once you type umlauts yourself', opt_auto:'Auto', opt_always:'Always',
@@ -7365,7 +7373,7 @@ const I18N = {
     streak_milestone_freeze:'🎁 +1 заморозка в награду!',
     sec_sfx:'Звуковые эффекты', sub_sfx:'При ответах и завершении урока, модуля, раздела',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
-    grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое', grp_account:'Аккаунт', acc_note:'Необязательно: облачная копия прогресса (Frankfurt, ЕС), чтобы восстановить его на другом устройстве. Приложение полностью работает и без аккаунта.', acc_status_out:'Вы не вошли', acc_status_in:'Вы вошли как', acc_email_ph:'Email', acc_pw_ph:'Пароль (мин. 8: заглавные и строчные буквы, цифра, спецсимвол)', acc_signin:'Войти', acc_signup:'Зарегистрироваться', acc_forgot:'Забыли пароль?', acc_backup:'Сохранить в облако', acc_restore:'Восстановить из облака', acc_signout:'Выйти из аккаунта', acc_delete:'Удалить аккаунт и облачные данные', acc_err_fields:'⚠️ Введите email и пароль', acc_err_pw_len:'⚠️ Пароль — минимум 8 символов', acc_confirm_delete:'Удалить аккаунт и облачную копию прогресса навсегда? Локальные данные на этом устройстве останутся.', acc_wipe_title:'Удаление профиля', acc_wipe_note:'Право на удаление данных (GDPR ст. 17): аккаунт и облачная копия (если вы вошли) + все данные на этом устройстве. Необратимо.', acc_wipe_btn:'Удалить профиль полностью', wipe_confirm:'Удалить профиль полностью?\n\n• аккаунт и облачная копия прогресса (если вы вошли)\n• весь прогресс, настройки и закладки на этом устройстве\n• кэш аудио и идентификаторы аналитики\n\nЭто НЕОБРАТИМО. Если вы регистрировались — сначала войдите в аккаунт, иначе облачная копия останется.', wipe_confirm_final:'Последняя проверка: удалить всё навсегда?', wipe_err_pw:'⚠️ Неверный пароль. Ничего не удалено.', wipe_err_many:'⚠️ Слишком много попыток. Попробуйте позже. Ничего не удалено.', wipe_busy_acc:'⏳ Удаляю аккаунт…', wipe_busy_local:'⏳ Удаляю данные на устройстве…', wipe_done:'🗑️ Профиль удалён', wipe_pw_title:'Подтвердите паролем', wipe_pw_text:'Введите пароль аккаунта {email}, чтобы удалить профиль. Это необратимо.', wipe_pw_ph:'Пароль', wipe_cancel:'Отмена', wipe_continue:'Продолжить',
+    grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое', grp_account:'Аккаунт', acc_note:'Необязательно: облачная копия прогресса (Frankfurt, ЕС), чтобы восстановить его на другом устройстве. Приложение полностью работает и без аккаунта.', acc_status_out:'Вы не вошли', acc_status_in:'Вы вошли как', acc_email_ph:'Email', acc_pw_ph:'Пароль (мин. 8: заглавные и строчные буквы, цифра, спецсимвол)', acc_signin:'Войти', acc_signup:'Зарегистрироваться', acc_forgot:'Забыли пароль?', acc_backup:'Сохранить в облако', acc_restore:'Восстановить из облака', acc_signout:'Выйти из аккаунта', acc_delete:'Удалить аккаунт и облачные данные', acc_err_fields:'⚠️ Введите email и пароль', acc_err_pw_len:'⚠️ Пароль — минимум 8 символов', acc_confirm_delete:'Удалить аккаунт и облачную копию прогресса навсегда? Локальные данные на этом устройстве останутся.', acc_wipe_title:'Удаление профиля', acc_wipe_note:'Право на удаление данных (GDPR ст. 17): аккаунт и облачная копия (если вы вошли) + все данные на этом устройстве. Необратимо.', acc_wipe_btn:'Удалить профиль полностью', wipe_confirm:'Удалить профиль полностью?\n\n• аккаунт и облачная копия прогресса (если вы вошли)\n• весь прогресс, настройки и закладки на этом устройстве\n• кэш аудио и идентификаторы аналитики\n\nЭто НЕОБРАТИМО. Если вы регистрировались — сначала войдите в аккаунт, иначе облачная копия останется.', wipe_confirm_final:'Последняя проверка: удалить всё навсегда?', wipe_err_pw:'⚠️ Неверный пароль. Ничего не удалено.', wipe_err_many:'⚠️ Слишком много попыток. Попробуйте позже. Ничего не удалено.', wipe_busy_acc:'⏳ Удаляю аккаунт…', wipe_busy_local:'⏳ Удаляю данные на устройстве…', wipe_done:'🗑️ Профиль удалён', wipe_pw_title:'Подтвердите паролем', wipe_pw_text:'Введите пароль аккаунта {email}, чтобы удалить профиль. Это необратимо.', wipe_pw_ph:'Пароль', wipe_cancel:'Отмена', wipe_continue:'Продолжить', dlg_ok:'OK', dlg_cancel:'Отмена', dlg_delete:'Удалить', dlg_delete_forever:'Удалить навсегда', dlg_restore:'Восстановить', dlg_save:'Сохранить', acc_confirm_backup:'Сохранить текущий прогресс в облако? Прежняя копия (если была) будет перезаписана.', acc_confirm_restore:'Восстановить прогресс из облака? Текущие локальные данные на этом устройстве будут ЗАМЕНЕНЫ данными из облака, и приложение перезагрузится.', cl_err_weak_policy:'Пароль слишком слабый: минимум 8 символов, заглавная и строчная буквы, цифра и спецсимвол', cl_err_weak:'Пароль слишком слабый', cl_err_exists:'Аккаунт с таким email уже существует — попробуйте войти или сбросить пароль', cl_err_email:'Некорректный email', cl_err_cred:'Неверный email или пароль', cl_err_many:'Слишком много попыток — попробуйте позже', cl_err_net:'Нет соединения с интернетом', cl_signed_up:'✅ Аккаунт создан', cl_signed_in:'✅ Вы вошли', cl_reset_sent:'📧 Если аккаунт с таким email существует, мы отправили письмо для сброса пароля. Проверьте также папку «Спам»', cl_signed_out:'👋 Вы вышли', cl_saved:'☁️ Сохранено ({n} записей)', cl_restored:'☁️ Прогресс обновлён из облака — перезагружаю...', cl_need_login:'⚠️ Сначала войдите', cl_no_backup:'⚠️ Резервной копии ещё нет', cl_deleted:'🗑️ Аккаунт и облачные данные удалены', cl_need_relogin:'⚠️ В целях безопасности войдите снова и повторите удаление', cl_enter_email:'⚠️ Введите email, на который отправить письмо для сброса пароля',
     course_loading:'Загружаем курс: {course}', course_active:'Курс «{course}» активен', course_error:'Не удалось загрузить курс',
     sec_debug:'Отладка', sec_lang:'Язык интерфейса',
     lbl_region:'Федеральная земля', sub_region:'Для региональных вопросов квиза', region_none:'Не выбрано (только общие вопросы)', course_Leben_in_Deutschland_title:'Leben in Deutschland', course_Leben_in_Deutschland_desc:'Подготовка к тесту на гражданство', lbl_dtchars:'Спецсимволы под полем', sub_dtchars:'Строка с ä ö ü ß в упражнении на письмо. «Авто» скрывает её, когда вы сами набираете умлауты', opt_auto:'Авто', opt_always:'Всегда',
@@ -14461,12 +14469,12 @@ function _examSimPlaySpeakStartBeep(){
   }catch(e){}
 }
 
-function removeCustomStoryTopicByIndex(i){
+async function removeCustomStoryTopicByIndex(i){
   var card = _getAllStoryCards()[i];
   if(!card || !card.custom) return;
   var pl = typeof primaryLang === 'function' ? primaryLang() : 'de';
   var label = (card.topic && (card.topic[pl] || card.topic.de)) || '';
-  if(!confirm('Видалити тему'+(label ? ' "'+label+'"' : '')+'?')) return;
+  if(!(await movaConfirm('Видалити тему'+(label ? ' "'+label+'"' : '')+'?', {danger:true, okText:t('dlg_delete')}))) return;
   deleteCustomStoryCard(card.id);
   // Аналітика: та сама метрика адопції, що й при додаванні (нижче) —
   // видалення одразу після створення означає "спробували й не
@@ -18131,8 +18139,7 @@ function spToggleRecord(){
 function spStartRecord(){
   const SR = spState.SR || window.SpeechRecognition || window.webkitSpeechRecognition;
   if(!SR){
-    alert(t('sp_not_supported'));
-    spOfferSkip();
+    movaAlert(t('sp_not_supported')).then(function(){ spOfferSkip(); });
     return;
   }
   if(spState.recording || spState._resetting) return;   // під час «жорсткого скидання» тапи ігноруємо
@@ -19351,11 +19358,11 @@ function _cloudUnmountPw(){
 }
 function debugCloudReset(){
   const email = document.getElementById('cloud-email')?.value.trim();
-  if(!email){ notify('⚠️ Введіть email, на який надіслати лист для скидання пароля'); return; }
+  if(!email){ notify(t('cl_enter_email')); return; }
   window.cloudResetPassword?.(email);
 }
-function debugCloudDelete(){
-  if(!confirm(t('acc_confirm_delete'))) return;
+async function debugCloudDelete(){
+  if(!(await movaConfirm(t('acc_confirm_delete'), {danger:true, okText:t('dlg_delete')}))) return;
   Promise.resolve(window.cloudDeleteAccount?.()).then(()=>window._cloudRenderAuthUI?.());
 }
 // ── ПОВНЕ ВИДАЛЕННЯ ПРОФІЛЮ (GDPR ст. 17, Apple 5.1.1(v), Google Play) ──────────
@@ -19363,7 +19370,7 @@ function debugCloudDelete(){
 // (або акаунта немає) — стираємо локальні дані. Інакше при помилці (напр. потрібен
 // повторний вхід) користувач втратив би і локальний прогрес, і доступ до хмарного.
 async function debugDeleteProfile(){
-  if(!confirm(t('wipe_confirm'))) return;
+  if(!(await movaConfirm(t('wipe_confirm'), {danger:true, okText:t('wipe_continue')}))) return;
   const btn = document.getElementById('debug-delete-profile');
   if(btn) btn.disabled = true;
   const done = function(){ if(btn) btn.disabled = false; };
@@ -19391,7 +19398,7 @@ async function debugDeleteProfile(){
       }
     }
     // 3) Останнє підтвердження
-    if(!confirm(t('wipe_confirm_final'))){ done(); return; }
+    if(!(await movaConfirm(t('wipe_confirm_final'), {danger:true, okText:t('dlg_delete_forever')}))){ done(); return; }
     // 4) Хмара — першою; при помилці локальні дані не чіпаємо
     if(user){
       notify(t('wipe_busy_acc'));
@@ -19409,6 +19416,39 @@ async function debugDeleteProfile(){
     notify('⚠️ '+(e && (e.message||e.code) || e));
   }
 }
+// ── Власні діалоги замість confirm()/alert() ─────────────────────────────────
+// movaConfirm(текст, {okText, cancelText, danger}) → Promise<boolean>
+// movaAlert(текст, {okText})                         → Promise<void>
+// Закриття Esc / тапом повз вікно = «Скасувати» (для небезпечних дій фокус одразу на «Скасувати»).
+function _movaDialog(text, o, isConfirm){
+  return new Promise(function(resolve){
+    o = o || {};
+    const ov = document.createElement('div'); ov.className = 'mova-dlg-ov';
+    const box = document.createElement('div'); box.className = 'mova-dlg';
+    box.setAttribute('role', isConfirm ? 'alertdialog' : 'dialog'); box.setAttribute('aria-modal', 'true');
+    const body = document.createElement('div'); body.className = 'mova-dlg-text'; body.textContent = String(text);
+    const row = document.createElement('div'); row.className = 'mova-dlg-row';
+    let cancel = null;
+    if(isConfirm){
+      cancel = document.createElement('button'); cancel.type = 'button'; cancel.className = 'acc-btn';
+      cancel.textContent = o.cancelText || t('dlg_cancel'); row.appendChild(cancel);
+    }
+    const ok = document.createElement('button'); ok.type = 'button';
+    ok.className = 'acc-btn ' + (o.danger ? 'acc-btn-danger-solid' : 'acc-btn-primary');
+    ok.textContent = o.okText || t('dlg_ok'); row.appendChild(ok);
+    function close(v){ document.removeEventListener('keydown', onKey, true); try{ ov.remove(); }catch(_){} resolve(v); }
+    function onKey(e){ if(e.key === 'Escape'){ e.preventDefault(); e.stopPropagation(); close(isConfirm ? false : undefined); } }
+    ok.onclick = function(){ close(isConfirm ? true : undefined); };
+    if(cancel) cancel.onclick = function(){ close(false); };
+    ov.onclick = function(e){ if(e.target === ov) close(isConfirm ? false : undefined); };
+    document.addEventListener('keydown', onKey, true);
+    box.appendChild(body); box.appendChild(row); ov.appendChild(box); document.body.appendChild(ov);
+    setTimeout(function(){ (o.danger && cancel ? cancel : ok).focus(); }, 30);
+  });
+}
+function movaConfirm(text, o){ return _movaDialog(text, o, true); }
+function movaAlert(text, o){ return _movaDialog(text, o, false); }
+
 // Модальне вікно з полем пароля (type=password, щоб не було видно символів, на відміну від prompt()).
 // Повертає Promise: рядок пароля або null, якщо користувач скасував.
 function _askPasswordModal(email){
@@ -19475,12 +19515,12 @@ async function _wipeLocalProfile(){
   try{ Storage.prototype.setItem = function(){}; }catch(_){}
   try{ localStorage.clear(); }catch(_){}
 }
-function debugCloudBackup(){
-  if(!confirm('Зберегти поточний прогрес у хмару? Попередній бекап (якщо був) буде перезаписано.')) return;
+async function debugCloudBackup(){
+  if(!(await movaConfirm(t('acc_confirm_backup'), {okText:t('dlg_save')}))) return;
   window.cloudBackup?.();
 }
-function debugCloudRestore(){
-  if(!confirm('Відновити прогрес з хмари? Поточні локальні дані на цьому пристрої буде ЗАМІНЕНО збереженими в хмарі, і застосунок перезавантажиться.')) return;
+async function debugCloudRestore(){
+  if(!(await movaConfirm(t('acc_confirm_restore'), {danger:true, okText:t('dlg_restore')}))) return;
   window.cloudRestore?.();
 }
 
@@ -19493,7 +19533,7 @@ function debugCloudRestore(){
 // Виправляє ситуацію, коли SW роздає старий JS з функцією startLesson
 // (без ліміту 5 карток) замість актуальної startLessonFlow.
 async function clearAudioCache(){
-  if(!confirm('Очистити весь кеш аудіофайлів? Доведеться завантажити їх знову.')) return;
+  if(!(await movaConfirm('Очистити весь кеш аудіофайлів? Доведеться завантажити їх знову.', {okText:t('dlg_delete')}))) return;
   // 1. Звільняємо blob URL-и, щоб уникнути memory leak, і чистимо in-memory кеші
   audioBlobCache.forEach(blobUrl=>{ try{ URL.revokeObjectURL(blobUrl); }catch(e){} });
   audioBlobCache.clear();
