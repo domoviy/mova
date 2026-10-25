@@ -557,10 +557,10 @@ if(location.protocol === 'https:'){
       box.style.cssText = 'background:#fff;color:#1c1917;border-radius:16px;max-width:400px;width:100%;padding:22px;font:15px/1.5 -apple-system,Inter,sans-serif;box-shadow:0 10px 40px rgba(0,0,0,.3)';
       const card = (h, s) => '<div style="border:1px solid #e7e3dc;border-radius:12px;padding:10px 12px;margin:8px 0"><b>'+h+'</b><div style="color:#78716c;font-size:13px">'+s+'</div></div>';
       const when = cloud.updatedAt ? new Date(cloud.updatedAt).toLocaleString() : '';
-      const cs = (cloud.xp != null) ? cloud.xp+' M · '+(cloud.streak || 0)+' 🔥' : (cloud.keyCount || 0)+' …';
+      const cs = (cloud.xp != null) ? cloud.xp+' M · '+(cloud.streak || 0)+' '+(typeof movaIcon==='function' ? movaIcon('flame','mi mi-inline') : '🔥') : (cloud.keyCount || 0)+' …';
       box.innerHTML = '<div style="font-size:18px;font-weight:700;margin-bottom:6px">'+L.t+'</div>'
         + card(L.cl+' · '+(cloud.device || '?'), when+'<br>'+cs)
-        + card(L.lo, me.xp+' M · '+me.streak+' 🔥')
+        + card(L.lo, me.xp+' M · '+me.streak+' '+(typeof movaIcon==='function' ? movaIcon('flame','mi mi-inline') : '🔥'))
         + '<div style="color:#78716c;font-size:12px;margin:4px 0 12px">'+L.note+'</div>';
       const close = () => { ov.remove(); _conflictOpen = false; res(); };
       const btn = (txt, primary, fn) => {
@@ -3490,7 +3490,7 @@ body{
   text-transform:uppercase;color:var(--muted);
 }
 .lf-dlg-exam-badge:first-child{ margin-top:0; }
-.lf-dlg-exam-icon{font-size:13px;flex-shrink:0;}
+.lf-dlg-exam-icon{font-size:13px;flex-shrink:0;display:inline-flex;align-items:center;}
 .lf-dlg-exam-label{flex:1;min-width:0;}
 .lf-dlg-exam-info{
   flex-shrink:0;width:18px;height:18px;border-radius:50%;
@@ -4461,7 +4461,7 @@ body{
   <button onclick="closeExamSimBriefing()" title="Закрити" data-i18n-title="exam_sim_close" style="position:absolute;top:calc(env(safe-area-inset-top,0px) + 16px);right:20px;background:none;border:none;color:rgba(255,255,255,.5);font-size:26px;cursor:pointer;line-height:1;padding:4px"><i data-mi="cross" class="mi-x22"></i></button>
   <div style="width:100%;max-width:380px;background:rgba(255,255,255,.07);border:1px solid rgba(201,168,76,.25);border-radius:24px;padding:28px 24px 24px;display:flex;flex-direction:column;align-items:center;gap:18px;max-height:80vh;overflow-y:auto">
     <div style="text-align:center">
-      <div style="font-size:36px;margin-bottom:10px">✍️</div>
+      <div style="font-size:36px;margin-bottom:10px"><i data-mi="pen" class="mi-inline"></i></div>
       <h2 style="color:#fff;font-size:var(--fs-emphasis);font-weight:800;letter-spacing:-.3px;line-height:1.15;overflow-wrap:anywhere;margin:0 0 6px" id="exam-sim-title">Forumsbeitrag</h2>
       <p id="exam-sim-subtitle" style="color:rgba(255,255,255,.65);font-size:var(--fs-tertiary);line-height:1.3;margin:0">Симуляція письмової частини іспиту</p>
     </div>
@@ -5029,7 +5029,7 @@ body{
       <!-- Exam -->
       <div id="sb-panel-exam" style="display:none">
         <div class="vplayer" style="margin-bottom:8px">
-          <div style="font-weight:700;color:var(--gold);font-size:var(--fs-tertiary)">📝 Prüfungssimulation</div>
+          <div style="font-weight:700;color:var(--gold);font-size:var(--fs-tertiary)"><i data-mi="pen" class="mi-inline"></i> Prüfungssimulation</div>
           <div class="fc-num" style="margin-left:auto;font-size:var(--fs-tertiary);font-weight:800;color:var(--ink)" id="sb-exam-timer">5:00</div>
         </div>
         <div class="mc-progress" id="sb-exam-dots"></div>
@@ -5387,7 +5387,7 @@ body{
 <!-- ══ COURSE SWITCH MODAL — показує прогрес завантаження курсу ══ -->
 <div id="course-switch-modal" style="display:none">
   <div class="cs-modal-box">
-    <div class="cs-modal-icon" id="cs-modal-icon">⏳</div>
+    <div class="cs-modal-icon" id="cs-modal-icon"><i data-mi="timer" class=""></i></div>
     <div class="cs-modal-title" id="cs-modal-title"></div>
   </div>
 </div>
@@ -5395,7 +5395,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '894-03ea2ef';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6617,7 +6617,7 @@ async function switchCourse(courseId, opts){
     // наступного відкриття Settings/Dashboard. Оновлюємо одразу.
     try{ srUpdateHeaderChip(); }catch(e){}
     try{ renderTempoRow(); }catch(e){}
-    notify((activeCourse?.emoji||'📚')+' '+(activeCourse ? courseTitle(activeCourse) : ''));
+    notify(activeCourse ? courseTitle(activeCourse) : '', activeCourse?.icon || 'book');
     csShowModal('done', activeCourse);
     csHideModalAfterAnim();
     // Після зміни курсу — одразу в лінію уроків нового курсу (а не
@@ -6742,6 +6742,21 @@ var MOVA_ICONS = {
   side_front: '<path opacity=".35" d="M8.5 8V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5"/><path d="M5.5 8h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/>',
   side_both: '<path d="M8.5 8V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5"/><path d="M5.5 8h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/>',
   side_back: '<path d="M8.5 8V6a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-2.5"/><path opacity=".35" d="M5.5 8h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-8a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2z"/>',
+  // ── Іконки для категорій курсів (поле i у базах): намальовані в стилі решти ──
+  phone: '<rect x="7" y="2.8" width="10" height="18.4" rx="2.4"/><path d="M11 18.2h2"/>',
+  laptop: '<rect x="5" y="5" width="14" height="10" rx="1.7"/><path d="M2.8 19h18.4"/>',
+  people: '<circle cx="9" cy="8.4" r="3"/><path d="M3.4 19.4c.5-3.2 2.9-5 5.6-5s5.1 1.8 5.6 5"/><circle cx="17.2" cy="9.4" r="2.4"/><path d="M16.4 14.6c2.4-.2 4.5 1.3 5 4"/>',
+  rocket: '<path d="M12 2.8c3 2.4 4.6 5.6 4.6 9.2l-2 3.4H9.4L7.4 12c0-3.6 1.6-6.8 4.6-9.2z"/><circle cx="12" cy="9.2" r="1.5"/><path d="M9.2 15.6 6.8 18.4l2.6-.6M14.8 15.6l2.4 2.8-2.6-.6M12 17.6v3.6"/>',
+  sparkles: '<path d="M10 4.8c.7 4 1.9 5.2 5.9 5.9-4 .7-5.2 1.9-5.9 5.9-.7-4-1.9-5.2-5.9-5.9 4-.7 5.2-1.9 5.9-5.9z"/><path d="M18.2 14.6c.3 1.8.9 2.4 2.7 2.7-1.8.3-2.4.9-2.7 2.7-.3-1.8-.9-2.4-2.7-2.7 1.8-.3 2.4-.9 2.7-2.7z"/><path d="M18.4 3.6v2.8M17 5h2.8"/>',
+  building: '<path d="M5 20.5V5.6C5 4.7 5.7 4 6.6 4h6.8c.9 0 1.6.7 1.6 1.6v14.9"/><path d="M3 20.5h18M15 10.4h3.4c.9 0 1.6.7 1.6 1.6v8.5"/><path d="M8.6 8h.01M11.4 8h.01M8.6 11.4h.01M11.4 11.4h.01M8.6 14.8h.01M11.4 14.8h.01"/>',
+  tent: '<path d="M2.8 20.2 12 4.2l9.2 16z"/><path d="M9.6 20.2 12 15.8l2.4 4.4"/>',
+  box: '<path d="M12 3.2 20 7.4v9.2l-8 4.2-8-4.2V7.4z"/><path d="M4 7.4l8 4.2 8-4.2M12 11.6v9.2"/>',
+  scissors: '<circle cx="6.4" cy="17.4" r="2.6"/><circle cx="17.6" cy="17.4" r="2.6"/><path d="M8.2 15.5 19 4M15.8 15.5 5 4"/>',
+  medical: '<rect x="3.6" y="3.6" width="16.8" height="16.8" rx="3.6"/><path d="M12 8v8M8 12h8"/>',
+  robot: '<rect x="5" y="8.2" width="14" height="10.6" rx="3.2"/><path d="M12 8.2V4.8M12 4.6h.01M9.4 12.6h.01M14.6 12.6h.01M9.8 15.6h4.4M3 12.4v3M21 12.4v3"/>',
+  airplane: '<path d="M12 2.8c1 0 1.7 1.2 1.7 2.8v4.4l7.5 4.4v2.2l-7.5-2.2v4.2l2.4 1.8v1.8L12 20.4l-4.1 1.8v-1.8l2.4-1.8v-4.2l-7.5 2.2v-2.2l7.5-4.4V5.6c0-1.6.7-2.8 1.7-2.8z"/>',
+  shield: '<path d="M12 3.2 19.6 6v5.6c0 4.6-3.2 7.9-7.6 9.2-4.4-1.3-7.6-4.6-7.6-9.2V6z"/>',
+  scales: '<path d="M12 4v16M7.2 20h9.6M5 7.2h14"/><path d="M5 7.2 2.4 13.6c0 1.4 1.2 2.4 2.6 2.4s2.6-1 2.6-2.4zM19 7.2l-2.6 6.4c0 1.4 1.2 2.4 2.6 2.4s2.6-1 2.6-2.4z"/>',
   // puzzle/arrow/ліва стрілка «назад» — back; список — list; мозок — brain
 };
 // "▶ Текст" з локалізованих рядків → монолінійна іконка play + текст.
@@ -6797,10 +6812,62 @@ function _iconizeText(msg){
     .replace(/\uD83D\uDD04/g, movaIcon('repeat','mi mi-inline'))        // 🔄
     .replace(/\u27A1\uFE0F?/g, movaIcon('arrowright','mi mi-inline')) // ➡
     .replace(/\uD83D\uDD00/g, movaIcon('shuffle','mi mi-inline'))     // 🔀
+    .replace(/\u26A0\uFE0F?/g, movaIcon('warn','mi mi-inline'))               // ⚠
+    .replace(/\u2601\uFE0F?/g, movaIcon('cloud','mi mi-inline'))              // ☁
+    .replace(/\uD83D\uDDD1\uFE0F?/g, movaIcon('trash','mi mi-inline'))        // 🗑
+    .replace(/[\u23F3\u23F0]/g, movaIcon('timer','mi mi-inline'))             // ⏳ ⏰
+    .replace(/[\uD83D][\uDCC5\uDDD3]\uFE0F?/g, movaIcon('calendar','mi mi-inline')) // 📅 🗓
+    .replace(/\uD83D\uDC51/g, movaIcon('crown','mi mi-inline'))               // 👑
+    .replace(/\uD83C\uDFC6/g, movaIcon('trophy','mi mi-inline'))              // 🏆
+    .replace(/\uD83C\uDF89/g, movaIcon('party','mi mi-inline'))               // 🎉
+    .replace(/\u2753/g, movaIcon('quiz','mi mi-inline'))                      // ❓
+    .replace(/\uD83D\uDCDD/g, movaIcon('pen','mi mi-inline'))                 // 📝
+    .replace(/\uD83D\uDC41\uFE0F?/g, movaIcon('eye','mi mi-inline'))          // 👁
+    .replace(/\uD83D\uDCCB/g, movaIcon('clipboard','mi mi-inline'))           // 📋
+    .replace(/[\uD83D][\uDCE7\uDCE8]/g, movaIcon('mail','mi mi-inline'))      // 📧 📨
+    .replace(/\uD83D\uDCE5/g, movaIcon('download','mi mi-inline'))            // 📥
+    .replace(/\u274C/g, movaIcon('cross','mi mi-inline'))                     // ❌
+    .replace(/\uD83E\uDDE9/g, movaIcon('puzzle','mi mi-inline'))              // 🧩
+    .replace(/\uD83D\uDD12/g, movaIcon('lock','mi mi-inline'))                // 🔒
+    .replace(/\uD83D\uDD13/g, movaIcon('unlock','mi mi-inline'))              // 🔓
+    .replace(/\uD83D\uDEE0\uFE0F?/g, movaIcon('wrench','mi mi-inline'))       // 🛠
+    .replace(/\uD83D\uDCBB/g, movaIcon('laptop','mi mi-inline'))  // 💻
+    .replace(/\uD83E\uDD1D/g, movaIcon('people','mi mi-inline'))  // 🤝
+    .replace(/\uD83D\uDE80/g, movaIcon('rocket','mi mi-inline'))  // 🚀
+    .replace(/\u2728/g, movaIcon('sparkles','mi mi-inline'))  // ✨
+    .replace(/\uD83C\uDFE2/g, movaIcon('building','mi mi-inline'))  // 🏢
+    .replace(/\uD83D\uDCF1/g, movaIcon('phone','mi mi-inline'))  // 📱
+    .replace(/\uD83C\uDFAA/g, movaIcon('tent','mi mi-inline'))  // 🎪
+    .replace(/\uD83D\uDCE6/g, movaIcon('box','mi mi-inline'))  // 📦
+    .replace(/\u2702\uFE0F?/g, movaIcon('scissors','mi mi-inline'))  // ✂
+    .replace(/\uD83C\uDFE5/g, movaIcon('medical','mi mi-inline'))  // 🏥
+    .replace(/\uD83E\uDD16/g, movaIcon('robot','mi mi-inline'))  // 🤖
+    .replace(/\u2708\uFE0F?/g, movaIcon('airplane','mi mi-inline'))  // ✈
+    .replace(/\uD83D\uDEE1\uFE0F?/g, movaIcon('shield','mi mi-inline'))  // 🛡
+    .replace(/\u2696\uFE0F?/g, movaIcon('scales','mi mi-inline'))  // ⚖
+    .replace(/\uD83D\uDCBC/g, movaIcon('briefcase','mi mi-inline'))  // 💼
+    .replace(/\uD83D\uDCAC/g, movaIcon('bubble','mi mi-inline'))  // 💬
+    .replace(/\u2709\uFE0F?/g, movaIcon('mail','mi mi-inline'))  // ✉
+    .replace(/\u270D\uFE0F?/g, movaIcon('pen','mi mi-inline'))  // ✍
+    .replace(/\uD83C\uDFAF/g, movaIcon('target','mi mi-inline'))  // 🎯
     .replace(/\uD83C\uDDE9\uD83C\uDDEA/g, movaFlag('de','mf-inline'))
     .replace(/\uD83C\uDDFA\uD83C\uDDE6/g, movaFlag('uk','mf-inline'))
     .replace(/\uD83C\uDDEC\uD83C\uDDE7/g, movaFlag('en','mf-inline'))
     .replace(/\uD83C\uDDF7\uD83C\uDDFA/g, movaFlag('ru','mf-inline'));
+}
+// ── Підпис категорії курсу ──────────────────────────────────────────────────
+// У базах: i — назва намальованої іконки (MOVA_ICONS); e — старе поле з емодзі (запасний варіант,
+// проходить через _iconizeText). <option> не вміє малювати SVG, тому для нього — лише назва.
+function catIconHtml(c){
+  if(!c) return '';
+  if(c.i && MOVA_ICONS[c.i]) return movaIcon(c.i,'mi mi-inline');
+  return c.e ? _iconizeText(c.e) : '';
+}
+function catLabelText(c){ return (c && (c[uiLang]||c.en||c.de)) || ''; }
+function catLabelHtml(c){
+  if(!c) return '';
+  var ic = catIconHtml(c), nm = _escapeHtmlText(catLabelText(c));
+  return ic ? ic + (ic.indexOf('<svg') === 0 ? '' : ' ') + nm : nm;
 }
 // Плашка оцінки картки («Повторимо завтра», «Через N дн.», «Завтра»): фірмові іконки
 // замість емодзі 🔄 🤔 ✅. q=1 «не знаю» → repeat, q=3 «не впевнений» → quiz (знак питання),
@@ -6866,7 +6933,7 @@ const I18N = {
     msg_freeze_no_m:'Nicht genug M-Punkte (benötigt: {cost} 𐌌)', msg_freeze_bought:'🧊 Streak-Schutz hinzugefügt!', msg_freeze_max:'Du hast bereits die maximale Anzahl an Streak-Schutz',
     msg_streak_broken:'Deine Serie ist abgerissen 😔 Wir starten neu — heute hast du schon den ersten Schritt gemacht!',
     streak_frozen_note:'🧊 Durch Streak-Schutz gerettet', streak_modal_close:'Verstanden',
-    streak_milestone_freeze:'🎁 +1 Streak-Schutz als Belohnung!',
+    streak_milestone_freeze:'🧊 +1 Streak-Schutz als Belohnung!',
     sec_sfx:'Soundeffekte', sub_sfx:'Bei richtig/falsch und beim Abschluss von Lektion, Modul und Kapitel',
     sec_goal_data:'Lernziel & Daten', sec_playback:'Wiedergabe', sec_course:'Kurs',
     grp_course_lang:'Kurs & Sprache', grp_progress_exam:'Fortschritt & Prüfung', grp_audio:'Wiedergabe', grp_technical:'Technisch', grp_account:'Konto', acc_note:'Optional: Cloud-Sicherung deines Lernfortschritts (Frankfurt, EU), um ihn auf einem anderen Gerät wiederherzustellen. Die App funktioniert auch ohne Konto vollständig.', acc_status_out:'Nicht angemeldet', acc_status_in:'Angemeldet als', acc_email_ph:'E-Mail', acc_pw_ph:'Passwort (mind. 8: Groß-/Kleinbuchstaben, Zahl, Sonderzeichen)', acc_signin:'Anmelden', acc_signup:'Registrieren', acc_forgot:'Passwort vergessen?', acc_backup:'In Cloud sichern', acc_restore:'Aus Cloud wiederherstellen', acc_signout:'Abmelden', acc_delete:'Konto und Cloud-Daten löschen', acc_err_fields:'⚠️ Bitte E-Mail und Passwort eingeben', acc_err_pw_len:'⚠️ Passwort: mindestens 8 Zeichen', acc_confirm_delete:'Konto und Cloud-Sicherung endgültig löschen? Lokale Daten auf diesem Gerät bleiben erhalten.', acc_wipe_title:'Profil löschen', acc_wipe_note:'Recht auf Löschung (DSGVO Art. 17): Konto und Cloud-Sicherung (falls angemeldet) sowie alle Daten auf diesem Gerät. Nicht rückgängig zu machen.', acc_wipe_btn:'Profil vollständig löschen', wipe_confirm:'Profil vollständig löschen?\n\n• Konto und Cloud-Sicherung (falls angemeldet)\n• gesamter Fortschritt, alle Einstellungen und Favoriten auf diesem Gerät\n• Audio-Cache und Analytics-Kennungen\n\nDas ist UNWIDERRUFLICH. Falls du ein Konto hast, melde dich zuerst an, sonst bleibt die Cloud-Sicherung erhalten.', wipe_confirm_final:'Letzte Prüfung: wirklich alles endgültig löschen?', wipe_err_pw:'⚠️ Falsches Passwort. Nichts wurde gelöscht.', wipe_err_many:'⚠️ Zu viele Versuche. Bitte später erneut versuchen. Nichts wurde gelöscht.', wipe_busy_acc:'⏳ Konto wird gelöscht…', wipe_busy_local:'⏳ Daten auf dem Gerät werden gelöscht…', wipe_done:'🗑️ Profil gelöscht', wipe_pw_title:'Mit Passwort bestätigen', wipe_pw_text:'Gib das Passwort für {email} ein, um das Profil zu löschen. Das ist unwiderruflich.', wipe_pw_ph:'Passwort', wipe_cancel:'Abbrechen', wipe_continue:'Weiter', dlg_ok:'OK', dlg_cancel:'Abbrechen', dlg_delete:'Löschen', dlg_delete_forever:'Endgültig löschen', dlg_restore:'Wiederherstellen', dlg_save:'Sichern', acc_confirm_backup:'In die Cloud sichern? Eine vorhandene Sicherung wird überschrieben.', acc_confirm_restore:'Fortschritt aus der Cloud wiederherstellen? Die lokalen Daten auf diesem Gerät werden ERSETZT und die App wird neu geladen.', cl_err_weak_policy:'Passwort zu schwach: mindestens 8 Zeichen, Groß- und Kleinbuchstaben, Zahl und Sonderzeichen', cl_err_weak:'Passwort zu schwach', cl_err_exists:'Ein Konto mit dieser E-Mail existiert bereits – melde dich an oder setze das Passwort zurück', cl_err_email:'Ungültige E-Mail-Adresse', cl_err_cred:'Falsche E-Mail oder falsches Passwort', cl_err_many:'Zu viele Versuche – bitte später erneut versuchen', cl_err_net:'Keine Internetverbindung', cl_signed_up:'✅ Konto erstellt', cl_signed_in:'✅ Angemeldet', cl_reset_sent:'📧 Falls ein Konto mit dieser E-Mail existiert, haben wir eine E-Mail zum Zurücksetzen gesendet. Prüfe auch den Spam-Ordner', cl_signed_out:'👋 Abgemeldet', cl_saved:'☁️ Gespeichert ({n} Einträge)', cl_restored:'☁️ Fortschritt aus der Cloud geladen – App wird neu gestartet...', cl_need_login:'⚠️ Bitte zuerst anmelden', cl_no_backup:'⚠️ Noch keine Sicherung vorhanden', cl_deleted:'🗑️ Konto und Cloud-Daten gelöscht', cl_need_relogin:'⚠️ Aus Sicherheitsgründen bitte erneut anmelden und das Löschen wiederholen', cl_enter_email:'⚠️ Bitte E-Mail eingeben, an die der Link zum Zurücksetzen gesendet wird',
@@ -7037,7 +7104,7 @@ const I18N = {
     msg_freeze_no_m:'Замало М-балів (потрібно {cost} 𐌌)', msg_freeze_bought:'🧊 Заморозку додано!', msg_freeze_max:'У тебе вже максимум заморозок',
     msg_streak_broken:'Стрік перервався 😔 Починаємо занову — але сьогодні ти вже зробив перший крок!',
     streak_frozen_note:'🧊 Врятовано заморозкою', streak_modal_close:'Зрозуміло',
-    streak_milestone_freeze:'🎁 +1 заморозка в нагороду!',
+    streak_milestone_freeze:'🧊 +1 заморозка в нагороду!',
     sec_sfx:'Звукові ефекти', sub_sfx:'При відповідях та завершенні уроку, модуля, розділу',
     sec_goal_data:'Ціль і дані', sec_playback:'Налаштування озвучування', sec_course:'Курс',
     grp_course_lang:'Курс і мова', grp_progress_exam:'Прогрес і іспит', grp_audio:'Озвучування', grp_technical:'Технічне', grp_account:'Акаунт', acc_note:'Необов’язково: хмарна копія прогресу (Frankfurt, ЄС), щоб відновити його на іншому пристрої. Застосунок повністю працює й без акаунту.', acc_status_out:'Ви не увійшли', acc_status_in:'Ви увійшли як', acc_email_ph:'Email', acc_pw_ph:'Пароль (мін. 8: великі й малі літери, цифра, спецсимвол)', acc_signin:'Увійти', acc_signup:'Зареєструватись', acc_forgot:'Забули пароль?', acc_backup:'Зберегти в хмару', acc_restore:'Відновити з хмари', acc_signout:'Вийти з акаунту', acc_delete:'Видалити акаунт і хмарні дані', acc_err_fields:'⚠️ Введіть email і пароль', acc_err_pw_len:'⚠️ Пароль — мінімум 8 символів', acc_confirm_delete:'Видалити акаунт і хмарну копію прогресу назавжди? Локальні дані на цьому пристрої залишаться.', acc_wipe_title:'Видалення профілю', acc_wipe_note:'Право на стирання даних (GDPR ст. 17): акаунт і хмарна копія (якщо ви увійшли) + усі дані на цьому пристрої. Незворотно.', acc_wipe_btn:'Видалити профіль повністю', wipe_confirm:'Видалити профіль повністю?\n\n• акаунт і хмарна копія прогресу (якщо ви увійшли)\n• увесь прогрес, налаштування й закладки на цьому пристрої\n• кеш аудіо та ідентифікатори аналітики\n\nЦе НЕЗВОРОТНО. Якщо ви реєструвались — спершу увійдіть в акаунт, інакше хмарна копія залишиться.', wipe_confirm_final:'Остання перевірка: видалити все назавжди?', wipe_err_pw:'⚠️ Невірний пароль. Нічого не видалено.', wipe_err_many:'⚠️ Забагато спроб. Спробуйте пізніше. Нічого не видалено.', wipe_busy_acc:'⏳ Видаляю акаунт…', wipe_busy_local:'⏳ Видаляю дані на пристрої…', wipe_done:'🗑️ Профіль видалено', wipe_pw_title:'Підтвердіть паролем', wipe_pw_text:'Введіть пароль акаунту {email}, щоб видалити профіль. Це незворотно.', wipe_pw_ph:'Пароль', wipe_cancel:'Скасувати', wipe_continue:'Продовжити', dlg_ok:'OK', dlg_cancel:'Скасувати', dlg_delete:'Видалити', dlg_delete_forever:'Видалити назавжди', dlg_restore:'Відновити', dlg_save:'Зберегти', acc_confirm_backup:'Зберегти поточний прогрес у хмару? Попередню копію (якщо була) буде перезаписано.', acc_confirm_restore:'Відновити прогрес з хмари? Поточні локальні дані на цьому пристрої буде ЗАМІНЕНО збереженими в хмарі, і застосунок перезавантажиться.', cl_err_weak_policy:'Пароль занадто слабкий: мінімум 8 символів, велика й мала літери, цифра та спецсимвол', cl_err_weak:'Пароль занадто слабкий', cl_err_exists:'Акаунт з таким email уже існує — спробуйте увійти або скинути пароль', cl_err_email:'Некоректний email', cl_err_cred:'Невірний email або пароль', cl_err_many:'Забагато спроб — спробуйте пізніше', cl_err_net:'Немає з’єднання з інтернетом', cl_signed_up:'✅ Акаунт створено', cl_signed_in:'✅ Увійшли', cl_reset_sent:'📧 Якщо акаунт з таким email існує, ми надіслали лист для скидання пароля. Перевірте також «Спам»', cl_signed_out:'👋 Вийшли', cl_saved:'☁️ Збережено ({n} записів)', cl_restored:'☁️ Прогрес оновлено з хмари — перезавантажую...', cl_need_login:'⚠️ Спершу увійдіть', cl_no_backup:'⚠️ Бекапу ще немає', cl_deleted:'🗑️ Акаунт і хмарні дані видалено', cl_need_relogin:'⚠️ Для безпеки увійдіть знову й повторіть видалення', cl_enter_email:'⚠️ Введіть email, на який надіслати лист для скидання пароля',
@@ -7203,7 +7270,7 @@ const I18N = {
     msg_freeze_no_m:'Not enough M points (needs {cost} 𐌌)', msg_freeze_bought:'🧊 Streak freeze added!', msg_freeze_max:'You already have the maximum freezes',
     msg_streak_broken:'Your streak broke 😔 Starting fresh — but you already took the first step today!',
     streak_frozen_note:'🧊 Saved by a freeze', streak_modal_close:'Got it',
-    streak_milestone_freeze:'🎁 +1 streak freeze as a reward!',
+    streak_milestone_freeze:'🧊 +1 streak freeze as a reward!',
     sec_sfx:'Sound effects', sub_sfx:'On answers and when you finish a lesson, module or chapter',
     sec_goal_data:'Goal & Data', sec_playback:'Playback Settings', sec_course:'Course',
     grp_course_lang:'Course & Language', grp_progress_exam:'Progress & Exam', grp_audio:'Playback', grp_technical:'Technical', grp_account:'Account', acc_note:'Optional: a cloud copy of your progress (Frankfurt, EU) so you can restore it on another device. The app works fully without an account.', acc_status_out:'Not signed in', acc_status_in:'Signed in as', acc_email_ph:'Email', acc_pw_ph:'Password (min. 8: upper & lower case, digit, symbol)', acc_signin:'Sign in', acc_signup:'Sign up', acc_forgot:'Forgot password?', acc_backup:'Back up to cloud', acc_restore:'Restore from cloud', acc_signout:'Sign out', acc_delete:'Delete account and cloud data', acc_err_fields:'⚠️ Enter email and password', acc_err_pw_len:'⚠️ Password must be at least 8 characters', acc_confirm_delete:'Permanently delete your account and cloud copy of your progress? Local data on this device will be kept.', acc_wipe_title:'Delete profile', acc_wipe_note:'Right to erasure (GDPR Art. 17): your account and cloud copy (if signed in) plus all data on this device. This cannot be undone.', acc_wipe_btn:'Delete profile completely', wipe_confirm:'Delete your profile completely?\n\n• account and cloud copy of your progress (if signed in)\n• all progress, settings and favorites on this device\n• audio cache and analytics identifiers\n\nThis is IRREVERSIBLE. If you have an account, sign in first, otherwise the cloud copy will remain.', wipe_confirm_final:'Final check: delete everything permanently?', wipe_err_pw:'⚠️ Wrong password. Nothing was deleted.', wipe_err_many:'⚠️ Too many attempts. Please try again later. Nothing was deleted.', wipe_busy_acc:'⏳ Deleting account…', wipe_busy_local:'⏳ Deleting data on this device…', wipe_done:'🗑️ Profile deleted', wipe_pw_title:'Confirm with your password', wipe_pw_text:'Enter the password for {email} to delete your profile. This cannot be undone.', wipe_pw_ph:'Password', wipe_cancel:'Cancel', wipe_continue:'Continue', dlg_ok:'OK', dlg_cancel:'Cancel', dlg_delete:'Delete', dlg_delete_forever:'Delete permanently', dlg_restore:'Restore', dlg_save:'Save', acc_confirm_backup:'Back up your progress to the cloud? An existing backup will be overwritten.', acc_confirm_restore:'Restore progress from the cloud? Local data on this device will be REPLACED with the cloud copy and the app will reload.', cl_err_weak_policy:'Password too weak: at least 8 characters, upper and lower case letters, a digit and a symbol', cl_err_weak:'Password too weak', cl_err_exists:'An account with this email already exists — try signing in or resetting your password', cl_err_email:'Invalid email address', cl_err_cred:'Wrong email or password', cl_err_many:'Too many attempts — please try again later', cl_err_net:'No internet connection', cl_signed_up:'✅ Account created', cl_signed_in:'✅ Signed in', cl_reset_sent:'📧 If an account with this email exists, we have sent a password reset email. Please also check your spam folder', cl_signed_out:'👋 Signed out', cl_saved:'☁️ Saved ({n} entries)', cl_restored:'☁️ Progress updated from the cloud — reloading...', cl_need_login:'⚠️ Please sign in first', cl_no_backup:'⚠️ No backup yet', cl_deleted:'🗑️ Account and cloud data deleted', cl_need_relogin:'⚠️ For security, please sign in again and repeat the deletion', cl_enter_email:'⚠️ Enter the email to send the password reset link to',
@@ -7370,7 +7437,7 @@ const I18N = {
     msg_freeze_no_m:'Недостаточно М-баллов (нужно {cost} 𐌌)', msg_freeze_bought:'🧊 Заморозку добавили!', msg_freeze_max:'У тебя уже максимум заморозок',
     msg_streak_broken:'Стрик прервался 😔 Начинаем заново — но сегодня ты уже сделал первый шаг!',
     streak_frozen_note:'🧊 Спасено заморозкой', streak_modal_close:'Понятно',
-    streak_milestone_freeze:'🎁 +1 заморозка в награду!',
+    streak_milestone_freeze:'🧊 +1 заморозка в награду!',
     sec_sfx:'Звуковые эффекты', sub_sfx:'При ответах и завершении урока, модуля, раздела',
     sec_goal_data:'Цель и данные', sec_playback:'Настройки озвучивания', sec_course:'Курс',
     grp_course_lang:'Курс и язык', grp_progress_exam:'Прогресс и экзамен', grp_audio:'Озвучивание', grp_technical:'Техническое', grp_account:'Аккаунт', acc_note:'Необязательно: облачная копия прогресса (Frankfurt, ЕС), чтобы восстановить его на другом устройстве. Приложение полностью работает и без аккаунта.', acc_status_out:'Вы не вошли', acc_status_in:'Вы вошли как', acc_email_ph:'Email', acc_pw_ph:'Пароль (мин. 8: заглавные и строчные буквы, цифра, спецсимвол)', acc_signin:'Войти', acc_signup:'Зарегистрироваться', acc_forgot:'Забыли пароль?', acc_backup:'Сохранить в облако', acc_restore:'Восстановить из облака', acc_signout:'Выйти из аккаунта', acc_delete:'Удалить аккаунт и облачные данные', acc_err_fields:'⚠️ Введите email и пароль', acc_err_pw_len:'⚠️ Пароль — минимум 8 символов', acc_confirm_delete:'Удалить аккаунт и облачную копию прогресса навсегда? Локальные данные на этом устройстве останутся.', acc_wipe_title:'Удаление профиля', acc_wipe_note:'Право на удаление данных (GDPR ст. 17): аккаунт и облачная копия (если вы вошли) + все данные на этом устройстве. Необратимо.', acc_wipe_btn:'Удалить профиль полностью', wipe_confirm:'Удалить профиль полностью?\n\n• аккаунт и облачная копия прогресса (если вы вошли)\n• весь прогресс, настройки и закладки на этом устройстве\n• кэш аудио и идентификаторы аналитики\n\nЭто НЕОБРАТИМО. Если вы регистрировались — сначала войдите в аккаунт, иначе облачная копия останется.', wipe_confirm_final:'Последняя проверка: удалить всё навсегда?', wipe_err_pw:'⚠️ Неверный пароль. Ничего не удалено.', wipe_err_many:'⚠️ Слишком много попыток. Попробуйте позже. Ничего не удалено.', wipe_busy_acc:'⏳ Удаляю аккаунт…', wipe_busy_local:'⏳ Удаляю данные на устройстве…', wipe_done:'🗑️ Профиль удалён', wipe_pw_title:'Подтвердите паролем', wipe_pw_text:'Введите пароль аккаунта {email}, чтобы удалить профиль. Это необратимо.', wipe_pw_ph:'Пароль', wipe_cancel:'Отмена', wipe_continue:'Продолжить', dlg_ok:'OK', dlg_cancel:'Отмена', dlg_delete:'Удалить', dlg_delete_forever:'Удалить навсегда', dlg_restore:'Восстановить', dlg_save:'Сохранить', acc_confirm_backup:'Сохранить текущий прогресс в облако? Прежняя копия (если была) будет перезаписана.', acc_confirm_restore:'Восстановить прогресс из облака? Текущие локальные данные на этом устройстве будут ЗАМЕНЕНЫ данными из облака, и приложение перезагрузится.', cl_err_weak_policy:'Пароль слишком слабый: минимум 8 символов, заглавная и строчная буквы, цифра и спецсимвол', cl_err_weak:'Пароль слишком слабый', cl_err_exists:'Аккаунт с таким email уже существует — попробуйте войти или сбросить пароль', cl_err_email:'Некорректный email', cl_err_cred:'Неверный email или пароль', cl_err_many:'Слишком много попыток — попробуйте позже', cl_err_net:'Нет соединения с интернетом', cl_signed_up:'✅ Аккаунт создан', cl_signed_in:'✅ Вы вошли', cl_reset_sent:'📧 Если аккаунт с таким email существует, мы отправили письмо для сброса пароля. Проверьте также папку «Спам»', cl_signed_out:'👋 Вы вышли', cl_saved:'☁️ Сохранено ({n} записей)', cl_restored:'☁️ Прогресс обновлён из облака — перезагружаю...', cl_need_login:'⚠️ Сначала войдите', cl_no_backup:'⚠️ Резервной копии ещё нет', cl_deleted:'🗑️ Аккаунт и облачные данные удалены', cl_need_relogin:'⚠️ В целях безопасности войдите снова и повторите удаление', cl_enter_email:'⚠️ Введите email, на который отправить письмо для сброса пароля',
@@ -7610,7 +7677,7 @@ function applyI18n(){
   document.querySelectorAll('[data-i18n]').forEach(el=>{
     const _v = t(el.dataset.i18n);
     // ★/☆ у підказках (напр. «Натискай ☆ на картці») — як намальована зірка
-    if(/[\u2605\u2606]/.test(_v) && !/</.test(_v)) el.innerHTML = _iconizeText(_v);
+    if(!/</.test(_v) && _iconizeText(_v).indexOf('<svg') !== -1) el.innerHTML = _iconizeText(_v);
     else el.textContent = _v;
   });
   // Тексти з розміткою (<b>) — окремим атрибутом data-i18n-html (рядки лише наші, не користувацькі)
@@ -8890,7 +8957,7 @@ function srRenderDailyPlan(){
       <div class="sr-plan-card">
         ${streakHtml}
         <button class="sr-plan-start" style="width:100%" onclick="_srStartCourseReview()">
-          ${typeof t==='function'?t('sr_all_done'):'🎉 Done!'}
+          ${_iconizeText(typeof t==='function'?t('sr_all_done'):'🎉 Done!')}
         </button>
       </div>`;
   }
@@ -10436,9 +10503,9 @@ function showView(id, opts){
 
 // ── SETTINGS ──────────────────────────────────────────────────
 let _notifTimer = null;
-function notify(msg){
+function notify(msg, icon){
   const e=document.getElementById('notif');
-  e.innerHTML=_iconizeText(msg);
+  e.innerHTML=(icon && MOVA_ICONS[icon] ? movaIcon(icon,'mi mi-inline')+' ' : '')+_iconizeText(msg);
   e.classList.add('show');
   // Довший текст читається довше (2,5–6 с); новий тост не гаситься таймером попереднього.
   clearTimeout(_notifTimer);
@@ -10470,7 +10537,7 @@ function initVocab(){initVocabFilters();applyVocabLangUI();updateVocabPlaySideBt
 function initVocabFilters(){
   if(typeof CATS === 'undefined') return; // курс ще не завантажено
   const sel=document.getElementById('vf-cat');if(!sel||sel.options.length>1)return;
-  CATS.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=c.e+' '+(c[uiLang]||c.en||c.de);sel.appendChild(o);});
+  CATS.forEach(c=>{const o=document.createElement('option');o.value=c.id;o.textContent=catLabelText(c);sel.appendChild(o);});
 }
 function buildVocabQueue(){
   if(typeof VOCAB === 'undefined' || !VOCAB?.length) return [];
@@ -10559,7 +10626,7 @@ function renderVocabCard(){
   if(V.mode==='srs'){
     const sd=srsLoad(v.id);
     if(!sd.dueDate){
-      srsBadgeHtml='<div class="fc-srs-badge fc-srs-new">'+t('card_new')+'</div>';
+      srsBadgeHtml='<div class="fc-srs-badge fc-srs-new">'+_iconizeText(t('card_new'))+'</div>';
     } else {
       const sdays=srsDaysUntil(v.id);
       const sef=(sd.ef||SRS_DEFAULT_EF).toFixed(1);
@@ -10572,7 +10639,7 @@ function renderVocabCard(){
   document.getElementById('fc-front-inner').innerHTML=`
     <div class="fc-header">
       <button class="fc-fav ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-front">${favIcon(fav)}</button>
-      <span class="fc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):v.cat}</span>
+      <span class="fc-cat">${cat?catLabelHtml(cat):_escapeHtmlText(v.cat)}</span>
     </div>
     <div class="fc-body">${termRows}</div>
     ${srsBadgeHtml}
@@ -10582,7 +10649,7 @@ function renderVocabCard(){
       <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-back">${favIcon(fav)}</button>
       <span class="fc-flag" style="font-size:15px">${F[primaryLang()]||F.de}</span>
       <span class="fc-back-term">${v.term?.[primaryLang()]||''}</span>
-      <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
+      <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?catIconHtml(cat):''}</span>
     </div>
     <div class="fc-body" style="padding-top:12px">${defRows}</div>
     <div class="fc-hint">${srsHintText}</div>`;
@@ -11296,7 +11363,7 @@ function matchShowResult(){
   const textEl  = document.getElementById('match-result-text');
   const result  = document.getElementById('match-result');
   if(scoreEl) scoreEl.textContent = good + '/' + matchState.cards.length + ' ✓';
-  if(textEl) textEl.textContent = perfect ? t('match_perfect') : t('match_good');
+  if(textEl) textEl.innerHTML = _iconizeText(perfect ? t('match_perfect') : t('match_good'));
 
   // Якщо в lesson flow → переходимо одразу без показу результату
   if(LF && matchState._lfMode){
@@ -11571,7 +11638,7 @@ function amShowResult(){
   const total = amState.cards.length, first = amState.firstTry.size;
   const result = document.getElementById('am-result'); if(!result) return;
   document.getElementById('am-score').textContent = first + '/' + total;
-  document.getElementById('am-result-text').textContent = first === total ? t('match_perfect') : t('match_good');
+  document.getElementById('am-result-text').innerHTML = _iconizeText(first === total ? t('match_perfect') : t('match_good'));
   const again = document.getElementById('am-btn-again'); if(again) again.textContent = t('match_again');
   const cardsBtn = document.getElementById('am-btn-cards'); if(cardsBtn) cardsBtn.textContent = t('match_cards');
   result.style.display = '';
@@ -13981,8 +14048,8 @@ function _examSimBuildEmailTaskHtml(card, pl){
   }
   var bossLabel   = EML_INTRO_LABELS.boss[pl]   || EML_INTRO_LABELS.boss.de;
   var clientLabel = EML_INTRO_LABELS.client[pl] || EML_INTRO_LABELS.client.de;
-  return renderMail(card.mail_boss, 'mail_boss', '👔', bossLabel) +
-         renderMail(card.mail_client, 'mail_client', '📨', clientLabel);
+  return renderMail(card.mail_boss, 'mail_boss', movaIcon('briefcase','mi mi-inline'), bossLabel) +
+         renderMail(card.mail_client, 'mail_client', movaIcon('mail','mi mi-inline'), clientLabel);
 }
 
 // Клік по одній з двох карток — обираємо тему, розгортаємо на весь
@@ -15267,7 +15334,7 @@ function showChapterCelebration(opts, onDone){
   var titleEl = document.getElementById('cc-title');
   var nameEl  = document.getElementById('cc-chapter-name');
   var hintEl  = document.getElementById('cc-hint');
-  if(titleEl) titleEl.textContent = t('chapter_complete_title');
+  if(titleEl) titleEl.innerHTML = _iconizeText(t('chapter_complete_title'));
   if(nameEl)  nameEl.textContent  = t('lp_chapter_prefix')+' '+opts.chapterNum+' · '+opts.chapterTitle;
   if(hintEl)  hintEl.textContent  = t('lr_continue_hint');
 
@@ -15340,7 +15407,7 @@ function showModuleCelebration(opts, onDone){
   var titleEl = document.getElementById('mc-title');
   var nameEl  = document.getElementById('mc-module-name');
   var hintEl  = document.getElementById('mc-hint');
-  if(titleEl) titleEl.textContent = t('module_complete_title');
+  if(titleEl) titleEl.innerHTML = _iconizeText(t('module_complete_title'));
   if(nameEl)  nameEl.textContent  = t('lp_chapter_prefix')+' '+opts.chapterNum+' · '+opts.moduleNum+'. '+opts.moduleTitle;
   if(hintEl)  hintEl.textContent  = t('lr_continue_hint');
 
@@ -15605,7 +15672,7 @@ function _lrShowStreakCard(streakResult, frozenDaysUsed){
   // нотатка, щоб користувач одразу зрозумів ЗВІДКИ взялась додаткова
   // заморозка, а не дізнавався про це лише випадково зайшовши в Settings.
   if(milestoneEl){
-    if(streakResult.milestoneFreezeGranted){ milestoneEl.textContent = t('streak_milestone_freeze'); milestoneEl.style.display = ''; }
+    if(streakResult.milestoneFreezeGranted){ milestoneEl.innerHTML = _iconizeText(t('streak_milestone_freeze')); milestoneEl.style.display = ''; }
     else milestoneEl.style.display = 'none';
   }
 
@@ -15928,7 +15995,7 @@ function mcShowResult(){
     <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border)">
       <div class="mc-result-score">${doneCount}/${mcState.cards.length} ✓</div>
       <p class="mc-result-praise">
-        ${doneCount===mcState.cards.length ? t('match_perfect') : t('match_good')}
+        ${_iconizeText(doneCount===mcState.cards.length ? t('match_perfect') : t('match_good'))}
       </p>
       ${LF && mcState._lfMode
         ? `<button class="btn" onclick="lfNextStep()" style="width:100%">${uiLang==='uk'?'Далі':uiLang==='en'?'Next':'Weiter'}</button>`
@@ -16843,7 +16910,7 @@ function defShowResult(){
   if(bankEl) bankEl.innerHTML = `
     <div style="text-align:center;padding:20px;background:var(--card);border-radius:16px;border:1px solid var(--border);width:100%">
       <div>${animIconBox('party',44)}</div>
-      <p class="mc-result-praise">${typeof t==='function'?t('match_perfect'):'Perfekt!'}</p>
+      <p class="mc-result-praise">${_iconizeText(typeof t==='function'?t('match_perfect'):'Perfekt!')}</p>
       <button class="btn" onclick="startDefFill()" style="margin-right:8px">Nochmal</button>
       <button class="btn" onclick="switchVocabTab(0)">Karten</button>
     </div>`;
@@ -18291,7 +18358,7 @@ function spTryStart(SR, mb, lbl, attempt){
     const msg = e.error === 'no-speech' ? t('sp_no_speech')
       : (e.error === 'not-allowed' || e.error === 'service-not-allowed') ? t('sp_mic_denied')
       : '❌ ' + t('sp_error');
-    if(lbl && !spState._resetting) lbl.textContent = msg;
+    if(lbl && !spState._resetting) lbl.innerHTML = _iconizeText(msg);
     if(e.error === 'not-allowed' || e.error === 'service-not-allowed') spOfferSkip();
   };
 
@@ -20300,7 +20367,7 @@ var _lfSBHandlers = {
       favBtn._lfFavHandlers = { ts: ts, te: te, cl: cl };
     }
     var catEl = document.getElementById('lf-unit-cat');
-    if(catEl) catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
+    if(catEl) catEl.innerHTML = cat ? catLabelHtml(cat) : _escapeHtmlText(card.cat);
 
     var hintEl = document.getElementById('lf-unit-hint');
     if(hintEl) hintEl.textContent = typeof t==='function' ? t('hint_srs_lesson') : '↑ Не знаю · ↓ Знаю';
@@ -20696,7 +20763,7 @@ var _lfDlgHandlers = {
       favBtn._lfFavHandlers = { ts: ts, te: te, cl: cl };
     }
     var catEl = document.getElementById('lf-unit-cat');
-    if(catEl) catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
+    if(catEl) catEl.innerHTML = cat ? catLabelHtml(cat) : _escapeHtmlText(card.cat);
 
     // Свайп для оцінки тут вимкнено (див. коментар біля SwipeManager.init
     // у lfRunUnitStep) — репліку розмови неприродно оцінювати жестом
@@ -20999,7 +21066,7 @@ var _lfFrmHandlers = {
     var catEl = document.getElementById('lf-unit-cat');
     if(catEl){
       var cat = typeof CATS!=='undefined' ? CATS.find(function(c){ return c.id===card.cat; }) : null;
-      catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : (card.cat||'');
+      catEl.innerHTML = cat ? catLabelHtml(cat) : _escapeHtmlText(card.cat||'');
     }
 
     // Так само, як у Dialogue: свайп тут вимкнено (див. lfRunUnitStep),
@@ -21022,7 +21089,7 @@ var _lfFrmHandlers = {
       text        = card.task?.[pl] || '';
       textTr      = ul !== pl ? (card.task?.[ul] || '') : '';
       audioField  = 'task';
-      eyebrowIcon = '📝';
+      eyebrowIcon = movaIcon('pen','mi mi-inline');
       eyebrowLabel = _lfBilingualLabel(card.topic, pl, ul);
     } else {
       var part = unit.part;
@@ -21323,7 +21390,7 @@ var _lfStoryHandlers = {
     var catEl = document.getElementById('lf-unit-cat');
     if(catEl){
       var cat = typeof CATS!=='undefined' ? CATS.find(function(c){ return c.id===card.cat; }) : null;
-      catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : (card.cat||'');
+      catEl.innerHTML = cat ? catLabelHtml(cat) : _escapeHtmlText(card.cat||'');
     }
 
     var hintEl = document.getElementById('lf-unit-hint');
@@ -21355,7 +21422,7 @@ var _lfStoryHandlers = {
       text        = taskOnly[pl] || '';
       textTr      = ul !== pl ? (taskOnly[ul] || '') : '';
       audioField  = null; // 'task' — без аудіо (див. getAudioText), нічого підсвічувати
-      eyebrowIcon = '🎤';
+      eyebrowIcon = movaIcon('mic','mi mi-inline');
       eyebrowLabel = _lfBilingualLabel(storyCardTopic(card) || {}, pl, ul);
     } else if(isQaQ || isQaA){
       // Питання/відповідь екзаменатора — без аудіо (див. getAudioText),
@@ -21364,7 +21431,7 @@ var _lfStoryHandlers = {
       text        = (qaItem && qaItem[pl]) || '';
       textTr      = ul !== pl ? ((qaItem && qaItem[ul]) || '') : '';
       audioField  = null;
-      eyebrowIcon = isQaQ ? '❓' : '💬';
+      eyebrowIcon = movaIcon(isQaQ ? 'quiz' : 'bubble','mi mi-inline');
       eyebrowLabel = _lfBilingualLabel(isQaQ ? STORY_QA_Q_LABEL : STORY_QA_A_LABEL, pl, ul) + ' ' + (unit.qIndex+1) + '/' + unit.qTotal;
     } else {
       var part = unit.part;
@@ -21620,7 +21687,7 @@ function _lfEmlRenderMailOrPart(body, unit){
     text        = mb[pl] || '';
     textTr      = ul !== pl ? (mb[ul] || '') : '';
     audioField  = 'mail_boss';
-    eyebrowIcon = '👔';
+    eyebrowIcon = movaIcon('briefcase','mi mi-inline');
     eyebrowLabel = _lfBilingualLabel(EML_INTRO_LABELS.boss, pl, ul);
     mailHeader  = { from: mb.von || '', subject: (mb.betreff && (mb.betreff[pl]||mb.betreff.de)) || '' };
   } else if(unit.kind === 'eml_client'){
@@ -21628,7 +21695,7 @@ function _lfEmlRenderMailOrPart(body, unit){
     text        = mc[pl] || '';
     textTr      = ul !== pl ? (mc[ul] || '') : '';
     audioField  = 'mail_client';
-    eyebrowIcon = '📨';
+    eyebrowIcon = movaIcon('mail','mi mi-inline');
     eyebrowLabel = _lfBilingualLabel(EML_INTRO_LABELS.client, pl, ul);
     mailHeader  = { from: mc.von || '', subject: (mc.betreff && (mc.betreff[pl]||mc.betreff.de)) || '' };
   } else { // eml_part
@@ -21786,7 +21853,7 @@ var _lfEmlHandlers = {
     var catEl = document.getElementById('lf-unit-cat');
     if(catEl){
       var cat = typeof CATS!=='undefined' ? CATS.find(function(c){ return c.id===card.cat; }) : null;
-      catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : (card.cat||'');
+      catEl.innerHTML = cat ? catLabelHtml(cat) : _escapeHtmlText(card.cat||'');
     }
     var hintEl = document.getElementById('lf-unit-hint');
     if(hintEl) hintEl.textContent = '';
@@ -23120,7 +23187,7 @@ var _lfVocabHandlers = {
       favBtn._lfFavHandlers = { ts: ts, te: te, cl: cl };
     }
     var catEl = document.getElementById('lf-unit-cat');
-    if(catEl) catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
+    if(catEl) catEl.innerHTML = cat ? catLabelHtml(cat) : _escapeHtmlText(card.cat);
 
     var hintEl = document.getElementById('lf-unit-hint');
     if(hintEl) hintEl.textContent = typeof t==='function' ? t('hint_srs_lesson') : '↑ Не знаю · ↓ Знаю';
@@ -24362,7 +24429,7 @@ function _quizShowResult(){
         <span class="quiz-score-of">${pct}%</span>
       </div>
       <div class="quiz-result-title">${t('quiz_score')}</div>
-      <div class="quiz-result-sub">${resultLabel}</div>
+      <div class="quiz-result-sub">${_iconizeText(resultLabel)}</div>
       <div class="quiz-result-btns">
         ${quizState._lfMode ? `
           <button class="lr-btn-primary" onclick="lfNextStep()">
@@ -24741,7 +24808,7 @@ function initDialogueFilters(){
   usedCats.forEach(catId=>{
     const c=CATS.find(x=>x.id===catId);
     const o=document.createElement('option');
-    o.value=catId; o.textContent=c?(c.e+' '+(c[uiLang]||c.en||c.de)):catId;
+    o.value=catId; o.textContent=c?catLabelText(c):catId;
     sel.appendChild(o);
   });
 }
@@ -24763,7 +24830,7 @@ function renderDialogueCard(){
   if(D.mode==='srs'){
     const sd=srsLoad(d.id);
     if(!sd.dueDate){
-      srsBadgeHtml='<div class="fc-srs-badge fc-srs-new">'+t('card_new')+'</div>';
+      srsBadgeHtml='<div class="fc-srs-badge fc-srs-new">'+_iconizeText(t('card_new'))+'</div>';
     } else {
       const sdays=srsDaysUntil(d.id);
       const sef=(sd.ef||SRS_DEFAULT_EF).toFixed(1);
@@ -24776,7 +24843,7 @@ function renderDialogueCard(){
   document.getElementById('dlg-fc-front-inner').innerHTML=`
     <div class="fc-header">
       <button class="fc-fav ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-front">${favIcon(fav)}</button>
-      <span class="fc-cat">${cat?cat.e+' '+(cat[uiLang]||cat.en||cat.de):d.cat}</span>
+      <span class="fc-cat">${cat?catLabelHtml(cat):_escapeHtmlText(d.cat)}</span>
     </div>
     <div class="fc-body">${qRows}</div>
     ${srsBadgeHtml}
@@ -24786,7 +24853,7 @@ function renderDialogueCard(){
       <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${d.id}" id="dlg-fc-fav-back">${favIcon(fav)}</button>
       <span class="fc-flag" style="font-size:15px">${F[primaryLang()]||F.de}</span>
       <span class="fc-back-term">${(d.q?.[primaryLang()]||'').length>40?(d.q?.[primaryLang()]||'').slice(0,40)+'…':(d.q?.[primaryLang()]||'')}</span>
-      <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?cat.e:''}</span>
+      <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?catIconHtml(cat):''}</span>
     </div>
     <div class="fc-body" style="padding-top:12px">${aRows}</div>
     <div class="fc-hint">${srsHintText}</div>`;
@@ -25434,7 +25501,7 @@ function debugOpenStory(topicIndex){
 // справа. onclickAttr — вже готовий рядок виклику (напр. "openFavCard(3)").
 function renderMiniCardRow(catId, title, sub, onclickAttr){
   const cat = typeof CATS!=='undefined' ? CATS.find(c=>c.id===catId) : null;
-  const catLabel = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : (catId||'');
+  const catLabel = cat ? catLabelHtml(cat) : _escapeHtmlText(catId||'');
   return `<div class="vocab-mini-card" onclick="${onclickAttr}">`+
     `<div class="vmc-body">`+
       `<div class="vmc-cat">${catLabel}</div>`+
@@ -25483,7 +25550,7 @@ function initDialogueChips(){
     const c=CATS.find(x=>x.id===catId);
     const btn=document.createElement('button');
     btn.className='chip';
-    btn.textContent=c?(c.e+' '+(c[uiLang]||c.en||c.de)):catId;
+    btn.innerHTML=c?catLabelHtml(c):_escapeHtmlText(catId);
     btn.onclick=()=>setDialogueCat(catId,btn);
     div.appendChild(btn);
   });
@@ -26122,7 +26189,7 @@ function initVocabChips(){
   const div=document.getElementById('vchips');if(!div)return;
   if(typeof CATS==='undefined')return;
   div.innerHTML='<button class="chip active" onclick="setVocabCat(\'all\',this)">Alle</button>';
-  CATS.forEach(c=>{const btn=document.createElement('button');btn.className='chip';btn.textContent=c.e+' '+(c[uiLang]||c.en||c.de);btn.onclick=()=>setVocabCat(c.id,btn);div.appendChild(btn);});
+  CATS.forEach(c=>{const btn=document.createElement('button');btn.className='chip';btn.innerHTML=catLabelHtml(c);btn.onclick=()=>setVocabCat(c.id,btn);div.appendChild(btn);});
 }
 function setVocabCat(id,btn){
   haptic.light();
@@ -26313,7 +26380,7 @@ function buildGrammarBonusPool(topicIds, eligibleCardIds){
 function buildGramCats(){
   if(typeof GRAMMAR==='undefined') return [];
   return GRAMMAR
-    .map(function(g){ return { id:g.id, e:'📘', de:g.title.de, en:g.title.en, uk:g.title.uk, ru:g.title.ru }; })
+    .map(function(g){ return { id:g.id, i:'grammar', e:'', de:g.title.de, en:g.title.en, uk:g.title.uk, ru:g.title.ru }; })
     .filter(function(cat){ return GRAM_CARDS.some(function(c){ return c.cat===cat.id; }); });
 }
 
@@ -26505,11 +26572,11 @@ function sbRenderCatChips() {
   var cats = sbCatsList();
   if (!el) return;
   el.innerHTML = '';
-  [{ id:'all', label:'Alle' }].concat(cats.map(function(c){ return { id:c.id, label:c.e+'\u00a0'+(c[uiLang]||c.en||c.de) }; }))
+  [{ id:'all', label:'Alle' }].concat(cats.map(function(c){ return { id:c.id, label:catLabelHtml(c) }; }))
     .forEach(function(item) {
       var b = document.createElement('button');
       b.className = 'chip' + (SB.catFilter === item.id ? ' active' : '');
-      b.textContent = item.label;
+      b.innerHTML = item.label;
       b.onclick = (function(id){ return function(){ sbSetCat(id, b); }; })(item.id);
       el.appendChild(b);
     });
@@ -26629,11 +26696,11 @@ function sbRenderLearn() {
 
   var langs = sbGetActiveLangs();  // порядок: de → en → uk → ru
   var cat   = (typeof SB_CATS!=='undefined' ? SB_CATS : []).find(function(c){ return c.id===card.cat; });
-  var catLabel = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
+  var catLabel = cat ? catLabelHtml(cat) : _escapeHtmlText(card.cat);
 
   // cat badge
   var catEl = document.getElementById('sb-fc-cat');
-  if (catEl) catEl.textContent = catLabel;
+  if (catEl) catEl.innerHTML = catLabel;
 
   sbUpdateLearnProgress();
 
@@ -27100,7 +27167,7 @@ function sbRenderPrac() {
       catEl.style.display = 'none';
     } else {
       catEl.style.display = '';
-      catEl.textContent = cat ? cat.e+' '+(cat[uiLang]||cat.en||cat.de) : card.cat;
+      catEl.innerHTML = cat ? catLabelHtml(cat) : _escapeHtmlText(card.cat);
     }
   }
 
