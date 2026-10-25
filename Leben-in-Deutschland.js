@@ -11,11 +11,11 @@ var AUDIO_CONFIG = {};   // аудіо для цього курсу поки н�
 
 // ── КАТЕГОРІЇ (QUIZ[].cat) ───────────────────────────────────
 var CATS = [
-  {id:'allgemein',   de:'Allgemeine Fragen',          en:'General questions',         uk:'Загальні питання',          ru:'Общие вопросы',             e:'📋'},  // тимчасово, доки питання не розкладені за темами нижче
-  {id:'demokratie',  de:'Leben in der Demokratie',   en:'Living in a democracy',     uk:'Життя в демократії',        ru:'Жизнь в демократии',        e:'🏛️'},
-  {id:'geschichte',  de:'Geschichte und Verantwortung', en:'History and responsibility', uk:'Історія і відповідальність', ru:'История и ответственность', e:'📜'},
-  {id:'gesellschaft',de:'Mensch und Gesellschaft',   en:'People and society',        uk:'Людина і суспільство',      ru:'Человек и общество',        e:'👥'},
-  {id:'region',      de:'Fragen zu meinem Bundesland', en:'Questions about my state', uk:'Питання про мою землю',     ru:'Вопросы о моей земле',      e:'📍'},
+  {id:'allgemein',   de:'Allgemeine Fragen',          en:'General questions',         uk:'Загальні питання',          ru:'Общие вопросы',             i:'clipboard', e:''},  // тимчасово, доки питання не розкладені за темами нижче
+  {id:'demokratie',  de:'Leben in der Demokratie',   en:'Living in a democracy',     uk:'Життя в демократії',        ru:'Жизнь в демократии',        i:'institution', e:''},
+  {id:'geschichte',  de:'Geschichte und Verantwortung', en:'History and responsibility', uk:'Історія і відповідальність', ru:'История и ответственность', i:'scroll', e:''},
+  {id:'gesellschaft',de:'Mensch und Gesellschaft',   en:'People and society',        uk:'Людина і суспільство',      ru:'Человек и общество',        i:'people', e:''},
+  {id:'region',      de:'Fragen zu meinem Bundesland', en:'Questions about my state', uk:'Питання про мою землю',     ru:'Вопросы о моей земле',      i:'pin', e:''},
 ];
 
 // ── РЕГІОНИ (федеральні землі) ───────────────────────────────

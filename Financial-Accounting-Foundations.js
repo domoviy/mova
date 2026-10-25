@@ -31,7 +31,7 @@ var AUDIO_CONFIG = {
 // ── КАТЕГОРІЇ ────────────────────────────────────────────────
 
 var CATS = [
-  {id:'Financial Accounting: Foundations', de:'Financial Accounting: Foundations', en:'Financial Accounting: Foundations', uk:'Financial Accounting: Foundations', ru:'Financial Accounting: Foundations', e:'💼'}
+  {id:'Financial Accounting: Foundations', de:'Financial Accounting: Foundations', en:'Financial Accounting: Foundations', uk:'Financial Accounting: Foundations', ru:'Financial Accounting: Foundations', i:'briefcase', e:''}
 ];
 
 // ── МОВИ ─────────────────────────────────────────────────────
@@ -41,7 +41,9 @@ var LC = {
   uk: {code:'uk-UA', ms:['Ostap','Polina']},
   ru: {code:'ru-RU', ms:['Irina','Pavel','Dmitry']}
 };
-var F  = {en:'🇬🇧', uk:'🇺🇦', de:'🇩🇪', ru:'🇷🇺'};
+var F  = (typeof movaFlag === 'function')   // прапори — намальовані (SVG), а не емодзі: їх не показують Windows і деякі Android
+  ? {en:movaFlag('en','mf-inline'), uk:movaFlag('uk','mf-inline'), de:movaFlag('de','mf-inline'), ru:movaFlag('ru','mf-inline')}
+  : {en:'EN', uk:'UK', de:'DE', ru:'RU'};
 var LN = {en:'English', uk:'Українська', de:'Deutsch', ru:'Русский'};
 
 // ── КАРТКИ ───────────────────────────────────────────────────
@@ -138,7 +140,8 @@ var QUIZ = [
 // додавайте за зразком нижче (закоментовано), коли буде готовий
 // граматичний матеріал курсу.
 var SB_CATS = [
-  // { id:"example_cat", de:"", en:"Example category", uk:"Приклад категорії", ru:"", e:"🚀" },
+  // i — назва намальованої іконки з MOVA_ICONS (напр. "rocket", "briefcase", "trend"); e залишайте порожнім ("")
+  // { id:"example_cat", de:"", en:"Example category", uk:"Приклад категорії", ru:"", i:"rocket", e:"" },
 ];
 
 var SPRACHBAUSTEINE = [
