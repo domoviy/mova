@@ -1078,7 +1078,7 @@ var CATS = [
     "en": "New neighbours",
     "uk": "Нові сусіди",
     "ru": "Новые соседи",
-    "e": "🏘️"
+    "i": "houses", "e": ""
   },
   {
     "id": "k2",
@@ -1086,7 +1086,7 @@ var CATS = [
     "en": "This is where I shop.",
     "uk": "Тут я роблю покупки.",
     "ru": "Здесь я делаю покупки.",
-    "e": "🛒"
+    "i": "cart", "e": ""
   },
   {
     "id": "k3",
@@ -1094,7 +1094,7 @@ var CATS = [
     "en": "We are here for you.",
     "uk": "Ми тут для вас.",
     "ru": "Мы здесь для вас.",
-    "e": "🏦"
+    "i": "institution", "e": ""
   },
   {
     "id": "k4",
@@ -1102,7 +1102,7 @@ var CATS = [
     "en": "Does it taste good?",
     "uk": "Смачно?",
     "ru": "Вкусно?",
-    "e": "🍽️"
+    "i": "dining", "e": ""
   },
   {
     "id": "k5",
@@ -1110,7 +1110,7 @@ var CATS = [
     "en": "Ah, that's how it is!",
     "uk": "Ах, ось як!",
     "ru": "Ах, вот как!",
-    "e": "🌍"
+    "i": "globe", "e": ""
   },
   {
     "id": "k6",
@@ -1118,7 +1118,7 @@ var CATS = [
     "en": "At the hospital",
     "uk": "У лікарні",
     "ru": "В больнице",
-    "e": "🏥"
+    "i": "medical", "e": ""
   },
   {
     "id": "k7",
@@ -1126,7 +1126,7 @@ var CATS = [
     "en": "Everything for the environment",
     "uk": "Все для довкілля",
     "ru": "Всё для окружающей среды",
-    "e": "🌱"
+    "i": "sprout", "e": ""
   },
   {
     "id": "k8",
@@ -1134,7 +1134,7 @@ var CATS = [
     "en": "In the mood for culture?",
     "uk": "Хочеш культури?",
     "ru": "Хочешь культуры?",
-    "e": "🎭"
+    "i": "theater", "e": ""
   },
   {
     "id": "k9",
@@ -1142,7 +1142,7 @@ var CATS = [
     "en": "A new job!",
     "uk": "Нова робота!",
     "ru": "Новая работа!",
-    "e": "💼"
+    "i": "briefcase", "e": ""
   },
   {
     "id": "k10",
@@ -1150,7 +1150,7 @@ var CATS = [
     "en": "Sport and exercise",
     "uk": "Спорт і рух",
     "ru": "Спорт и движение",
-    "e": "🏃"
+    "i": "ball", "e": ""
   },
   {
     "id": "k11",
@@ -1158,7 +1158,7 @@ var CATS = [
     "en": "Mothers, fathers, children",
     "uk": "Матері, батьки, діти",
     "ru": "Матери, отцы, дети",
-    "e": "👨‍👩‍👧"
+    "i": "family", "e": ""
   },
   {
     "id": "k12",
@@ -1166,7 +1166,7 @@ var CATS = [
     "en": "Settling into a career",
     "uk": "Влаштування в професії",
     "ru": "Становление в профессии",
-    "e": "👔"
+    "i": "shirt", "e": ""
   },
   {
     "id": "k13",
@@ -1174,7 +1174,7 @@ var CATS = [
     "en": "Volunteering",
     "uk": "Волонтерство",
     "ru": "Волонтёрство",
-    "e": "🤝"
+    "i": "people", "e": ""
   },
   {
     "id": "k14",
@@ -1182,7 +1182,7 @@ var CATS = [
     "en": "A new home",
     "uk": "Новий дім",
     "ru": "Новый дом",
-    "e": "🏠"
+    "i": "home", "e": ""
   },
   {
     "id": "k15",
@@ -1190,7 +1190,7 @@ var CATS = [
     "en": "Iʼm staying here.",
     "uk": "Я залишаюся тут.",
     "ru": "Я остаюсь здесь.",
-    "e": "🌍"
+    "i": "globe", "e": ""
   },
   {
     "id": "k16",
@@ -1198,7 +1198,7 @@ var CATS = [
     "en": "Weʼve earned this!",
     "uk": "Ми це заслужили!",
     "ru": "Мы это заслужили!",
-    "e": "🎉"
+    "i": "party", "e": ""
   }];
 
 var LC = {
@@ -1237,12 +1237,9 @@ var LC = {
     ]
   }
 };
-var F  = {
-  en: "🇬🇧",
-  uk: "🇺🇦",
-  de: "🇩🇪",
-  ru: "🇷🇺"
-};
+var F  = (typeof movaFlag === 'function')   // прапори — намальовані (SVG), а не емодзі: їх не показують Windows і деякі Android
+  ? {en: movaFlag('en','mf-inline'), uk: movaFlag('uk','mf-inline'), de: movaFlag('de','mf-inline'), ru: movaFlag('ru','mf-inline')}
+  : {en: "EN", uk: "UK", de: "DE", ru: "RU"};
 var LN = {
   en: "English",
   uk: "Українська",
@@ -59755,7 +59752,7 @@ var SB_CATS = [
     "en": "Polite requests (Subjunctive II): Could you …?",
     "uk": "Ввічливі прохання (Кон'юнктив II): Могли б Ви …?",
     "ru": "Вежливые просьбы (Конъюнктив II): Могли бы Вы …?",
-    "e": "🙏"
+    "i": "heart", "e": ""
   },
   {
     "id": "infinitiv_mit_zu",
@@ -59763,7 +59760,7 @@ var SB_CATS = [
     "en": "Infinitive with zu",
     "uk": "Інфінітив з zu",
     "ru": "Инфинитив с zu",
-    "e": "➡️"
+    "i": "arrowright", "e": ""
   },
   {
     "id": "sowohl_als_auch_weder_noch",
@@ -59771,7 +59768,7 @@ var SB_CATS = [
     "en": "both … and / neither … nor",
     "uk": "як … так і / ні … ні",
     "ru": "как … так и / ни … ни",
-    "e": "⚖️"
+    "i": "scales", "e": ""
   },
   {
     "id": "modalverben_wdh_b1",
@@ -59779,7 +59776,7 @@ var SB_CATS = [
     "en": "Review: modal verbs (stating rules)",
     "uk": "Повторення: модальні дієслова (формулювання правил)",
     "ru": "Повторение: модальные глаголы (формулирование правил)",
-    "e": "🔑"
+    "i": "key", "e": ""
   },
   {
     "id": "wechselpraepositionen_wdh_b1",
@@ -59787,7 +59784,7 @@ var SB_CATS = [
     "en": "Review: two-way prepositions",
     "uk": "Повторення: прийменники подвійного керування",
     "ru": "Повторение: предлоги двойного управления",
-    "e": "📍"
+    "i": "pin", "e": ""
   },
   {
     "id": "reflexivpronomen_akkusativ_wdh_b1",
@@ -59795,7 +59792,7 @@ var SB_CATS = [
     "en": "Review: reflexive pronouns (accusative)",
     "uk": "Повторення: зворотні займенники (знахідний)",
     "ru": "Повторение: возвратные местоимения (винительный)",
-    "e": "🪞"
+    "i": "mirror", "e": ""
   },
   {
     "id": "relativsatz_nominativ_sondern",
@@ -59803,7 +59800,7 @@ var SB_CATS = [
     "en": "Relative pronoun (nominative); sondern",
     "uk": "Займенник у називному відмінку; sondern",
     "ru": "Местоимение в именительном падеже; sondern",
-    "e": "🔗"
+    "i": "link", "e": ""
   },
   {
     "id": "relativsatz_akkusativ_b1",
@@ -59811,7 +59808,7 @@ var SB_CATS = [
     "en": "Relative pronoun (accusative)",
     "uk": "Займенник у знахідному відмінку",
     "ru": "Местоимение в винительном падеже",
-    "e": "🔗"
+    "i": "link", "e": ""
   },
   {
     "id": "modalverben_vermutung",
@@ -59819,7 +59816,7 @@ var SB_CATS = [
     "en": "Modal verbs expressing assumption",
     "uk": "Модальні дієслова для припущень",
     "ru": "Модальные глаголы для предположений",
-    "e": "🤔"
+    "i": "bulb", "e": ""
   },
   {
     "id": "genitiv",
@@ -59827,7 +59824,7 @@ var SB_CATS = [
     "en": "Genitive case",
     "uk": "Родовий відмінок",
     "ru": "Родительный падеж",
-    "e": "📑"
+    "i": "list", "e": ""
   },
   {
     "id": "nebensatz_mit_obwohl",
@@ -59835,7 +59832,7 @@ var SB_CATS = [
     "en": "Subordinate clause with obwohl (although)",
     "uk": "Підрядне речення з obwohl (хоча)",
     "ru": "Придаточное предложение с obwohl (хотя)",
-    "e": "🔄"
+    "i": "repeat", "e": ""
   },
   {
     "id": "konnektoren_wdh_b1",
@@ -59843,7 +59840,7 @@ var SB_CATS = [
     "en": "Review: connectors",
     "uk": "Повторення: конектори",
     "ru": "Повторение: коннекторы",
-    "e": "🧩"
+    "i": "puzzle", "e": ""
   },
   {
     "id": "praeteritum_wdh_b1",
@@ -59851,7 +59848,7 @@ var SB_CATS = [
     "en": "Review: simple past",
     "uk": "Повторення: претерит",
     "ru": "Повторение: претерит",
-    "e": "⏳"
+    "i": "timer", "e": ""
   },
   {
     "id": "deshalb_deswegen_trotzdem",
@@ -59859,7 +59856,7 @@ var SB_CATS = [
     "en": "deshalb / deswegen / trotzdem (therefore / nevertheless)",
     "uk": "deshalb / deswegen / trotzdem (тому / незважаючи на це)",
     "ru": "deshalb / deswegen / trotzdem (поэтому / несмотря на это)",
-    "e": "➡️"
+    "i": "arrowright", "e": ""
   },
   {
     "id": "genitiv_alternativen",
@@ -59867,7 +59864,7 @@ var SB_CATS = [
     "en": "Genitive and alternatives (von + dative)",
     "uk": "Родовий відмінок та альтернативи (von + давальний)",
     "ru": "Родительный падеж и альтернативы (von + дательный)",
-    "e": "📑"
+    "i": "list", "e": ""
   },
   {
     "id": "nebensatz_seit_seitdem",
@@ -59875,7 +59872,7 @@ var SB_CATS = [
     "en": "Subordinate clause with seit/seitdem (since)",
     "uk": "Підрядне речення з seit/seitdem (відколи)",
     "ru": "Придаточное предложение с seit/seitdem (с тех пор как)",
-    "e": "⏰"
+    "i": "timer", "e": ""
   },
   {
     "id": "verben_praep_personen_sachen",
@@ -59883,7 +59880,7 @@ var SB_CATS = [
     "en": "Verbs with prepositions: questions about people and things",
     "uk": "Дієслова з прийменниками: питання про осіб і речі",
     "ru": "Глаголы с предлогами: вопросы о людях и вещах",
-    "e": "🔗"
+    "i": "link", "e": ""
   },
   {
     "id": "nebensatz_mit_bis",
@@ -59891,7 +59888,7 @@ var SB_CATS = [
     "en": "Subordinate clause with bis (until)",
     "uk": "Підрядне речення з bis (доки)",
     "ru": "Придаточное предложение с bis (до тех пор как)",
-    "e": "⏳"
+    "i": "timer", "e": ""
   },
   {
     "id": "praepositionaladverbien_b1",
@@ -59899,7 +59896,7 @@ var SB_CATS = [
     "en": "Prepositional adverbs (worüber, darüber …)",
     "uk": "Прийменникові прислівники (worüber, darüber …)",
     "ru": "Предложные наречия (worüber, darüber …)",
-    "e": "🔗"
+    "i": "link", "e": ""
   },
   {
     "id": "futur_werden",
@@ -59907,7 +59904,7 @@ var SB_CATS = [
     "en": "Future tense: werden + infinitive",
     "uk": "Майбутній час: werden + інфінітив",
     "ru": "Будущее время: werden + инфинитив",
-    "e": "🔮"
+    "i": "sparkles", "e": ""
   },
   {
     "id": "nicht_nur_sondern_auch",
@@ -59915,7 +59912,7 @@ var SB_CATS = [
     "en": "not only … but also",
     "uk": "не тільки …, а й",
     "ru": "не только …, но и",
-    "e": "➕"
+    "i": "plus", "e": ""
   },
   {
     "id": "satz_mit_um_zu",
@@ -59923,7 +59920,7 @@ var SB_CATS = [
     "en": "Clauses with um … zu (in order to)",
     "uk": "Речення з um … zu (щоб)",
     "ru": "Предложения с um … zu (чтобы)",
-    "e": "🎯"
+    "i": "target", "e": ""
   },
   {
     "id": "nebensatz_mit_damit_wdh_b1",
@@ -59931,7 +59928,7 @@ var SB_CATS = [
     "en": "Review: subordinate clause with damit",
     "uk": "Повторення: речення з damit",
     "ru": "Повторение: предложение с damit",
-    "e": "🎯"
+    "i": "target", "e": ""
   },
   {
     "id": "passiv_praesens_b1",
@@ -59939,7 +59936,7 @@ var SB_CATS = [
     "en": "Passive voice (present)",
     "uk": "Пасив (теперішній час)",
     "ru": "Пассив (настоящее время)",
-    "e": "🔧"
+    "i": "wrench", "e": ""
   },
   {
     "id": "perfekt_wdh_b1",
@@ -59947,7 +59944,7 @@ var SB_CATS = [
     "en": "Review: present perfect",
     "uk": "Повторення: перфект",
     "ru": "Повторение: перфект",
-    "e": "⏳"
+    "i": "timer", "e": ""
   },
   {
     "id": "verben_mit_praep_wdh_b1",
@@ -59955,7 +59952,7 @@ var SB_CATS = [
     "en": "Review: verbs with prepositions",
     "uk": "Повторення: дієслова з прийменниками",
     "ru": "Повторение: глаголы с предлогами",
-    "e": "🔗"
+    "i": "link", "e": ""
   },
   {
     "id": "fragewoerter_wor_dar",
@@ -59963,7 +59960,7 @@ var SB_CATS = [
     "en": "Question words with wo(r)- and prepositional adverbs with da(r)-",
     "uk": "Питальні слова з wo(r)- і прийменникові прислівники з da(r)-",
     "ru": "Вопросительные слова с wo(r)- и предложные наречия с da(r)-",
-    "e": "❓"
+    "i": "quiz", "e": ""
   },
   {
     "id": "interesse_denn_eigentlich",
@@ -59971,7 +59968,7 @@ var SB_CATS = [
     "en": "Showing interest with denn and eigentlich",
     "uk": "Виявлення інтересу за допомогою denn і eigentlich",
     "ru": "Проявление интереса с помощью denn и eigentlich",
-    "e": "💬"
+    "i": "bubble", "e": ""
   }
 ];
 

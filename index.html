@@ -5395,7 +5395,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '895-b7eb3f1';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6757,6 +6757,38 @@ var MOVA_ICONS = {
   airplane: '<path d="M12 2.8c1 0 1.7 1.2 1.7 2.8v4.4l7.5 4.4v2.2l-7.5-2.2v4.2l2.4 1.8v1.8L12 20.4l-4.1 1.8v-1.8l2.4-1.8v-4.2l-7.5 2.2v-2.2l7.5-4.4V5.6c0-1.6.7-2.8 1.7-2.8z"/>',
   shield: '<path d="M12 3.2 19.6 6v5.6c0 4.6-3.2 7.9-7.6 9.2-4.4-1.3-7.6-4.6-7.6-9.2V6z"/>',
   scales: '<path d="M12 4v16M7.2 20h9.6M5 7.2h14"/><path d="M5 7.2 2.4 13.6c0 1.4 1.2 2.4 2.6 2.4s2.6-1 2.6-2.4zM19 7.2l-2.6 6.4c0 1.4 1.2 2.4 2.6 2.4s2.6-1 2.6-2.4z"/>',
+  // ── Іконки для категорій курсу A1 ──
+  hand: '<path d="M8 12.4V5.6a1.4 1.4 0 0 1 2.8 0V11M10.8 10.4V4.4a1.4 1.4 0 0 1 2.8 0v6.2M13.6 10.6V5.6a1.4 1.4 0 0 1 2.8 0V12M16.4 9.4a1.4 1.4 0 0 1 2.8 0v5.2c0 3.6-2.6 6.2-6 6.2h-.6c-2.1 0-3.5-.9-4.6-2.3l-3.4-4.3a1.5 1.5 0 0 1 2.3-1.9L8 14.4"/>',
+  contact: '<rect x="3" y="5" width="18" height="14" rx="2.4"/><circle cx="9" cy="11" r="2.1"/><path d="M5.8 16c.6-1.6 1.8-2.4 3.2-2.4s2.6.8 3.2 2.4M14.6 10h3.4M14.6 13.2h3.4"/>',
+  tag: '<path d="M3.4 12.6V4.8c0-.8.6-1.4 1.4-1.4h7.8l8 8a1.6 1.6 0 0 1 0 2.2l-7 7a1.6 1.6 0 0 1-2.2 0z"/><circle cx="8" cy="8" r="1.2"/>',
+  coffee: '<path d="M4.4 9.4h12v5a4.4 4.4 0 0 1-4.4 4.4H8.8a4.4 4.4 0 0 1-4.4-4.4z"/><path d="M16.4 10.6h1.2a2.6 2.6 0 0 1 0 5.2h-1.2M8 3.4v2.2M11.6 3.4v2.2M4.4 21.4h12"/>',
+  dining: '<path d="M7 3v8M4.4 3v5.2a2.6 2.6 0 0 0 5.2 0V3M7 11v10M17.4 21V3c-2.4 1.2-3.8 4-3.8 7.2 0 1.6 1.2 2.4 3.8 2.4"/>',
+  family: '<circle cx="6.5" cy="7.2" r="2.5"/><path d="M2.4 16.5c.4-2.7 2.2-4.2 4.1-4.2s3.7 1.5 4.1 4.2"/><circle cx="17.5" cy="7.2" r="2.5"/><path d="M13.4 16.5c.4-2.7 2.2-4.2 4.1-4.2s3.7 1.5 4.1 4.2"/><circle cx="12" cy="13" r="1.8"/><path d="M9.2 21c.3-2 1.2-3 2.8-3s2.5 1 2.8 3"/>',
+  ball: '<circle cx="12" cy="12" r="9"/><path d="M12 8.4l3.2 2.3-1.2 3.7h-4l-1.2-3.7z"/><path d="M12 8.4V3.2M15.2 10.7l4.6-1.5M14 14.4l2.8 3.8M10 14.4l-2.8 3.8M8.8 10.7 4.2 9.2"/>',
+  suitcase: '<rect x="5.4" y="7" width="13.2" height="12.8" rx="2.2"/><path d="M9.4 7V5.4c0-.8.6-1.4 1.4-1.4h2.4c.8 0 1.4.6 1.4 1.4V7M9.2 10.8v5.2M14.8 10.8v5.2"/>',
+  cake: '<path d="M4 20.4h16M5.4 20.4v-6.2c0-.8.6-1.4 1.4-1.4h10.4c.8 0 1.4.6 1.4 1.4v6.2M5.4 16.8c1.5 0 1.5 1.2 3 1.2s1.5-1.2 3-1.2 1.5 1.2 3 1.2 1.5-1.2 3-1.2M12 12.8V9.8M12 4.6c.9.9 1 1.7 0 2.6-1-.9-.9-1.7 0-2.6z"/>',
+  train: '<rect x="5.6" y="3.4" width="12.8" height="13" rx="3"/><path d="M5.6 10.4h12.8M9.2 16.4 7.4 20.4M14.8 16.4l1.8 4M9.2 13.4h.01M14.8 13.4h.01"/>',
+  stethoscope: '<path d="M6 3.6v5.4a4 4 0 0 0 8 0V3.6M4.6 3.6H8M12 3.6h3.4M10 13v1.6a4.4 4.4 0 0 0 8.8 0V13"/><circle cx="18.8" cy="11" r="2"/>',
+  bellhop: '<path d="M4 17.4h16M5.6 17.4a6.4 6.4 0 0 1 12.8 0M12 11V8.6M10 8.6h4M3.4 20.6h17.2"/>',
+  cart: '<path d="M3 4h2.6l2.1 10.4c.1.7.7 1.2 1.4 1.2h8c.7 0 1.3-.5 1.4-1.2L20 8H6.4"/><circle cx="9.6" cy="19.4" r="1.4"/><circle cx="17" cy="19.4" r="1.4"/>',
+  // ── Іконки для категорій курсу A2 ──
+  shirt: '<path d="M8.4 3.6 3 6.4l2 4 2.2-1v11h9.6v-11l2.2 1 2-4-5.4-2.8c-.4 1.4-1.8 2.2-3.6 2.2S8.8 5 8.4 3.6z"/>',
+  bus: '<rect x="4" y="3.6" width="16" height="14.4" rx="3"/><path d="M4 11h16M7.2 18v2.4M16.8 18v2.4M8 14.6h.01M16 14.6h.01"/>',
+  van: '<path d="M2.8 17.4V10c0-2.2 1.2-3.8 3.4-3.8h7.4c1.2 0 2.2.5 3 1.4l3.6 4.2c.6.6.8 1.2.8 2.2v3.4h-1.6M2.8 17.4h1.6M9.2 17.4h5.2"/><path d="M8.6 6.4V11M3.2 11h13.4"/><circle cx="7" cy="17.6" r="2.2"/><circle cx="17" cy="17.6" r="2.2"/>',
+  city: '<path d="M3 20.4h18M5 20.4V9.6h4.6v10.8M9.6 20.4V4.6h5.2v15.8M14.8 20.4v-8.2h4.2v8.2M12.2 8h.01M12.2 11.4h.01M12.2 14.8h.01M7.2 12.6h.01M7.2 16h.01"/>',
+  school: '<path d="M3 20.4h18M5 20.4V10.2M19 20.4V10.2M3.4 10.2 12 4l8.6 6.2zM9.6 20.4v-5.2h4.8v5.2M12 7.8h.01"/>',
+  institution: '<path d="M3 9.6 12 4l9 5.6zM5.6 12.6v4.6M10 12.6v4.6M14 12.6v4.6M18.4 12.6v4.6M3.4 20.4h17.2"/>',
+  bag: '<path d="M5.6 8h12.8l1 12.2H4.6z"/><path d="M8.8 8V6.4a3.2 3.2 0 0 1 6.4 0V8"/>',
+  hammer: '<path d="M12.2 6.4 16.8 3.6l3.8 3.8-2.8 4.6-2.2-2.2L7.6 18.6a2 2 0 0 1-2.8-2.8l8-8z"/>',
+  heart: '<path d="M12 20.4S3.6 15.2 3.6 9.2A4.6 4.6 0 0 1 12 6.8a4.6 4.6 0 0 1 8.4 2.4c0 6-8.4 11.2-8.4 11.2z"/>',
+  key: '<circle cx="8" cy="15.4" r="4.2"/><path d="M11 12.4 20.4 3M16.6 6.8l2.6 2.6M14 9.4l2 2"/>',
+  pin: '<path d="M12 21.2c-4-4.4-6.4-7.4-6.4-10.6a6.4 6.4 0 0 1 12.8 0c0 3.2-2.4 6.2-6.4 10.6z"/><circle cx="12" cy="10.6" r="2.2"/>',
+  palette: '<path d="M12 3.4a8.6 8.6 0 1 0 0 17.2c1.2 0 1.8-.8 1.8-1.7 0-.6-.3-1-.5-1.4-.3-.4-.5-.8-.5-1.3 0-1 .8-1.7 1.8-1.7H17c2.2 0 4-1.5 4-3.7 0-4.1-4-7.4-9-7.4z"/><path d="M7.8 11.6h.01M10.2 7.8h.01M14.6 7.8h.01"/>',
+  mirror: '<ellipse cx="12" cy="10" rx="5.6" ry="7"/><path d="M12 17v3.6M8.6 20.6h6.8"/>',
+  thought: '<path d="M8 15.4a3.6 3.6 0 0 1-.3-7.2 4.6 4.6 0 0 1 8.9-.6 3.9 3.9 0 0 1 .6 7.8z"/><path d="M8.6 18.6h.01M6 21h.01"/>',
+  // ── Іконки для категорій курсу B1 ──
+  houses: '<path d="M2.8 20.4V11.6l4.6-3.8 4.6 3.8v8.8M12 20.4v-6.6l4.6-3.8 4.6 3.8v6.6M2.4 20.4h19.2M6 20.4v-4M16.6 20.4v-3.2"/>',
+  theater: '<path d="M3.6 4.6h10v6.6a5 5 0 0 1-10 0z"/><path d="M6.4 8h.01M10.8 8h.01M6.6 11.2c.9 1 3.1 1 4 0"/><path d="M16.2 8h4.2v6.2a5 5 0 0 1-7.8 4.2"/><path d="M18 12.2h.01M17.6 15.2c.6.5 1.7.5 2.2 0"/>',
   // puzzle/arrow/ліва стрілка «назад» — back; список — list; мозок — brain
 };
 // "▶ Текст" з локалізованих рядків → монолінійна іконка play + текст.
@@ -6850,6 +6882,46 @@ function _iconizeText(msg){
     .replace(/\u2709\uFE0F?/g, movaIcon('mail','mi mi-inline'))  // ✉
     .replace(/\u270D\uFE0F?/g, movaIcon('pen','mi mi-inline'))  // ✍
     .replace(/\uD83C\uDFAF/g, movaIcon('target','mi mi-inline'))  // 🎯
+    .replace(/\uD83D\uDC68\u200D\uD83D\uDC69\u200D\uD83D\uDC67(?:\u200D\uD83D\uDC66)?\uFE0F?/g, movaIcon('family','mi mi-inline'))  // 👨‍👩‍👧
+    .replace(/\uD83D\uDC4B/g, movaIcon('hand','mi mi-inline'))  // 👋
+    .replace(/\uD83D\uDCC7/g, movaIcon('contact','mi mi-inline'))  // 📇
+    .replace(/\uD83C\uDFF7\uFE0F?/g, movaIcon('tag','mi mi-inline'))  // 🏷
+    .replace(/\u2615/g, movaIcon('coffee','mi mi-inline'))  // ☕
+    .replace(/\uD83C\uDF7D\uFE0F?/g, movaIcon('dining','mi mi-inline'))  // 🍽
+    .replace(/\u26BD/g, movaIcon('ball','mi mi-inline'))  // ⚽
+    .replace(/\uD83E\uDDF3/g, movaIcon('suitcase','mi mi-inline'))  // 🧳
+    .replace(/\uD83C\uDF82/g, movaIcon('cake','mi mi-inline'))  // 🎂
+    .replace(/\uD83D\uDE86/g, movaIcon('train','mi mi-inline'))  // 🚆
+    .replace(/\uD83E\uDE7A/g, movaIcon('stethoscope','mi mi-inline'))  // 🩺
+    .replace(/\uD83D\uDECE\uFE0F?/g, movaIcon('bellhop','mi mi-inline'))  // 🛎
+    .replace(/\uD83D\uDED2/g, movaIcon('cart','mi mi-inline'))  // 🛒
+    .replace(/\uD83C\uDFE0\uFE0F?/g, movaIcon('home','mi mi-inline'))  // 🏠
+    .replace(/\uD83C\uDF93/g, movaIcon('cap','mi mi-inline'))  // 🎓
+    .replace(/\uD83D\uDC55/g, movaIcon('shirt','mi mi-inline'))  // 👕
+    .replace(/\uD83D\uDE8C/g, movaIcon('bus','mi mi-inline'))  // 🚌
+    .replace(/\uD83D\uDE90/g, movaIcon('van','mi mi-inline'))  // 🚐
+    .replace(/\uD83C\uDFD9\uFE0F?/g, movaIcon('city','mi mi-inline'))  // 🏙
+    .replace(/\uD83C\uDFEB/g, movaIcon('school','mi mi-inline'))  // 🏫
+    .replace(/\uD83C\uDFDB\uFE0F?/g, movaIcon('institution','mi mi-inline'))  // 🏛
+    .replace(/\uD83D\uDECD\uFE0F?/g, movaIcon('bag','mi mi-inline'))  // 🛍
+    .replace(/\uD83D\uDD28/g, movaIcon('hammer','mi mi-inline'))  // 🔨
+    .replace(/\uD83D\uDD11/g, movaIcon('key','mi mi-inline'))  // 🔑
+    .replace(/\uD83D\uDCCD/g, movaIcon('pin','mi mi-inline'))  // 📍
+    .replace(/\uD83C\uDFA8/g, movaIcon('palette','mi mi-inline'))  // 🎨
+    .replace(/\uD83E\uDE9E/g, movaIcon('mirror','mi mi-inline'))  // 🪞
+    .replace(/\uD83D\uDCAD/g, movaIcon('thought','mi mi-inline'))  // 💭
+    .replace(/\u2764\uFE0F?/g, movaIcon('heart','mi mi-inline'))  // ❤
+    .replace(/\uD83C\uDFD8\uFE0F?/g, movaIcon('houses','mi mi-inline'))  // 🏘
+    .replace(/\uD83C\uDFAD/g, movaIcon('theater','mi mi-inline'))  // 🎭
+    .replace(/\uD83C\uDFE6/g, movaIcon('institution','mi mi-inline'))  // 🏦
+    .replace(/\uD83D\uDC54/g, movaIcon('shirt','mi mi-inline'))  // 👔
+    .replace(/\uD83D\uDD2E/g, movaIcon('sparkles','mi mi-inline'))  // 🔮
+    .replace(/\u2795/g, movaIcon('plus','mi mi-inline'))  // ➕
+    .replace(/\uD83C\uDF0D/g, movaIcon('globe','mi mi-inline'))  // 🌍
+    .replace(/\uD83C\uDF31/g, movaIcon('sprout','mi mi-inline'))  // 🌱
+    .replace(/\uD83D\uDCD1/g, movaIcon('list','mi mi-inline'))  // 📑
+    .replace(/\uD83D\uDD27/g, movaIcon('wrench','mi mi-inline'))  // 🔧
+    .replace(/\uD83D\uDD17/g, movaIcon('link','mi mi-inline'))  // 🔗
     .replace(/\uD83C\uDDE9\uD83C\uDDEA/g, movaFlag('de','mf-inline'))
     .replace(/\uD83C\uDDFA\uD83C\uDDE6/g, movaFlag('uk','mf-inline'))
     .replace(/\uD83C\uDDEC\uD83C\uDDE7/g, movaFlag('en','mf-inline'))
@@ -12615,7 +12687,7 @@ function renderLernpfad(opts){
       // Без слів "Розділ"/"Модуль" — просто номер + назва з обох боків
       // роздільника "›", компактніше й легше сканується оком, ніж
       // повторення тих самих службових слів щоразу.
-      locEl.innerHTML = `📍 <b>${curLesson.chapter}.</b> ${chTitle}`
+      locEl.innerHTML = `${movaIcon('pin','mi mi-inline')}<b>${curLesson.chapter}.</b> ${chTitle}`
         + `<span class="sep">›</span><b>${curLesson.module}.</b> ${modTitle}`;
     }
     // Прогрес МОДУЛЯ — сума по всіх вузлах з тим самим _parentModuleId

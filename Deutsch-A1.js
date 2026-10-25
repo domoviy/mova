@@ -29,22 +29,22 @@ var AUDIO_CONFIG = {
 // ── КАТЕГОРІЇ (по одній на главу книги) ──────────────────────
 
 var CATS = [
-  {id:'Willkommen', de:'Herzlich willkommen!', en:'Welcome!', uk:'Ласкаво просимо!', ru:'Добро пожаловать!', e:'👋'},
-  {id:'Kontakte', de:'Kontakte und Co.', en:'Contacts and more', uk:'Контакти та інше', ru:'Контакты и прочее', e:'📇'},
-  {id:'Dinge', de:'Wie heißt das auf Deutsch?', en:'What is that called in German?', uk:'Як це буде німецькою?', ru:'Как это по-немецки?', e:'🏷️'},
-  {id:'Café', de:'Einen Kaffee, bitte.', en:'A coffee, please.', uk:'Каву, будь ласка.', ru:'Кофе, пожалуйста.', e:'☕'},
-  {id:'Woche', de:'Die Woche von Familie Berger', en:'The Berger family\'s week', uk:'Тиждень родини Бергер', ru:'Неделя семьи Бергер', e:'📅'},
-  {id:'Essen', de:'Das schmeckt gut!', en:'Tastes good!', uk:'Смачно!', ru:'Вкусно!', e:'🍽️'},
-  {id:'Familie', de:'Meine Familie und ich', en:'My family and I', uk:'Моя сімʼя і я', ru:'Моя семья и я', e:'👨‍👩‍👧'},
-  {id:'Wohnen', de:'Hier wohnen wir.', en:'This is where we live.', uk:'Ось де ми живемо.', ru:'Здесь мы живём.', e:'🏠'},
-  {id:'Freizeit', de:'Endlich Freizeit!', en:'Free time at last!', uk:'Нарешті вільний час!', ru:'Наконец-то свободное время!', e:'⚽'},
-  {id:'Neu hier', de:'Neu hier?', en:'New here?', uk:'Ви тут недавно?', ru:'Вы здесь недавно?', e:'🧳'},
-  {id:'Feste', de:'Alles Gute!', en:'All the best!', uk:'Усього найкращого!', ru:'Всего наилучшего!', e:'🎂'},
-  {id:'Unterwegs', de:'Unterwegs', en:'On the go', uk:'У дорозі', ru:'В пути', e:'🚆'},
-  {id:'Gesundheit', de:'Gute Besserung!', en:'Get well soon!', uk:'Швидкого одужання!', ru:'Скорейшего выздоровления!', e:'🩺'},
-  {id:'Service', de:'Was kann ich für Sie tun?', en:'What can I do for you?', uk:'Чим я можу вам допомогти?', ru:'Чем я могу вам помочь?', e:'🛎️'},
-  {id:'Lernen', de:'Ein Leben lang lernen', en:'Lifelong learning', uk:'Навчання протягом усього життя', ru:'Учёба на протяжении всей жизни', e:'🎓'},
-  {id:'Märkte', de:'Märkte', en:'Markets', uk:'Ринки', ru:'Рынки', e:'🛒'}
+  {id:'Willkommen', de:'Herzlich willkommen!', en:'Welcome!', uk:'Ласкаво просимо!', ru:'Добро пожаловать!', i:'hand', e:''},
+  {id:'Kontakte', de:'Kontakte und Co.', en:'Contacts and more', uk:'Контакти та інше', ru:'Контакты и прочее', i:'contact', e:''},
+  {id:'Dinge', de:'Wie heißt das auf Deutsch?', en:'What is that called in German?', uk:'Як це буде німецькою?', ru:'Как это по-немецки?', i:'tag', e:''},
+  {id:'Café', de:'Einen Kaffee, bitte.', en:'A coffee, please.', uk:'Каву, будь ласка.', ru:'Кофе, пожалуйста.', i:'coffee', e:''},
+  {id:'Woche', de:'Die Woche von Familie Berger', en:'The Berger family\'s week', uk:'Тиждень родини Бергер', ru:'Неделя семьи Бергер', i:'calendar', e:''},
+  {id:'Essen', de:'Das schmeckt gut!', en:'Tastes good!', uk:'Смачно!', ru:'Вкусно!', i:'dining', e:''},
+  {id:'Familie', de:'Meine Familie und ich', en:'My family and I', uk:'Моя сімʼя і я', ru:'Моя семья и я', i:'family', e:''},
+  {id:'Wohnen', de:'Hier wohnen wir.', en:'This is where we live.', uk:'Ось де ми живемо.', ru:'Здесь мы живём.', i:'home', e:''},
+  {id:'Freizeit', de:'Endlich Freizeit!', en:'Free time at last!', uk:'Нарешті вільний час!', ru:'Наконец-то свободное время!', i:'ball', e:''},
+  {id:'Neu hier', de:'Neu hier?', en:'New here?', uk:'Ви тут недавно?', ru:'Вы здесь недавно?', i:'suitcase', e:''},
+  {id:'Feste', de:'Alles Gute!', en:'All the best!', uk:'Усього найкращого!', ru:'Всего наилучшего!', i:'cake', e:''},
+  {id:'Unterwegs', de:'Unterwegs', en:'On the go', uk:'У дорозі', ru:'В пути', i:'train', e:''},
+  {id:'Gesundheit', de:'Gute Besserung!', en:'Get well soon!', uk:'Швидкого одужання!', ru:'Скорейшего выздоровления!', i:'stethoscope', e:''},
+  {id:'Service', de:'Was kann ich für Sie tun?', en:'What can I do for you?', uk:'Чим я можу вам допомогти?', ru:'Чем я могу вам помочь?', i:'bellhop', e:''},
+  {id:'Lernen', de:'Ein Leben lang lernen', en:'Lifelong learning', uk:'Навчання протягом усього життя', ru:'Учёба на протяжении всей жизни', i:'cap', e:''},
+  {id:'Märkte', de:'Märkte', en:'Markets', uk:'Ринки', ru:'Рынки', i:'cart', e:''}
 ];
 
 
