@@ -1469,6 +1469,20 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
         # "одні й ті самі файли постійно генеруються": файл видалявся
         # через збій git-кроку, і на НАСТУПНОМУ запуску знову вважався
         # відсутнім — попри те, що текст/голос жодного разу не змінювались.
+        # Перевірка даних ДО звернення до Edge TTS: кирилиця в німецькому
+        # тексті (напр. "щоб" замість "um", "і" замість "und") — це помилка в
+        # базі, а не збій мережі. Рушій тихо пропускає такі слова, перевірка
+        # цілісності бачить "обрив", ретраї марні, а 10 таких карток поспіль
+        # зупиняли весь прогін як "rate-limit". Тут — пропускаємо з чітким
+        # повідомленням і НЕ рахуємо в consecutive_failures.
+        if task["lang"] == "de" and re.search(r'[\u0400-\u04FF]', task["cleaned"]):
+            print(f"🚫 ПОМИЛКА ДАНИХ (кирилиця в німецькому тексті) для {task['mkey']}: '{task['cleaned']}' — пропущено, виправте базу", flush=True)
+            async with lock:
+                stats["failed"] = stats.get("failed", 0) + 1
+                stats["failed_mkeys"] = stats.get("failed_mkeys", [])
+                stats["failed_mkeys"].append(task["mkey"])
+            return
+
         last_error = None
         synthesized = False
         for attempt in range(1, RETRY_ATTEMPTS + 1):
