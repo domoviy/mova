@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="index,follow">
+<title>MOVA – Support &amp; Kontakt / Підтримка і контакти / Support &amp; contact / Поддержка и контакты</title>
+<style>
+  :root{--bg:#f8f5ee;--ink:#1c1917;--muted:#78716c;--card:#fff;--line:#e7e3dc;--forest:#0d2b1a;--ph:#fff3b0}
+  @media (prefers-color-scheme:dark){:root{--bg:#14110f;--ink:#ece8e1;--muted:#a8a29e;--card:#1d1a17;--line:#352f2a;--forest:#c9a84c;--ph:#5b4a00}}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+  main{max-width:760px;margin:0 auto;padding:0 18px 60px}
+  .topbar{position:sticky;top:0;z-index:10;display:flex;align-items:center;justify-content:space-between;gap:12px;background:var(--bg);padding:calc(10px + env(safe-area-inset-top,0px)) 0 10px;margin-bottom:8px}
+  .langbar{display:flex;gap:8px}
+  .langbar button{padding:6px 8px;border-radius:10px;border:1.5px solid var(--line);background:var(--card);cursor:pointer;opacity:.55;line-height:0}
+  .langbar svg{display:block;width:30px;height:21px;border-radius:4px;box-shadow:0 0 0 1px rgba(0,0,0,.16)}
+  body[data-lang=de] #b-de,body[data-lang=uk] #b-uk,body[data-lang=en] #b-en,body[data-lang=ru] #b-ru{opacity:1;border-color:var(--forest);box-shadow:0 0 0 1px var(--forest)}
+  .closebtn{width:40px;height:40px;padding:0;flex-shrink:0;border-radius:50%;border:1.5px solid var(--line);background:var(--card);color:var(--ink);cursor:pointer;display:flex;align-items:center;justify-content:center}
+  .closebtn svg{width:18px;height:18px}
+  h1{font-size:26px;margin:.2em 0}
+  h2{font-size:18px;margin:1.6em 0 .3em;padding-top:.4em;border-top:1px solid var(--line)}
+  p,li{margin:.4em 0}
+  ul{padding-left:1.2em}
+  .meta{color:var(--muted);font-size:14px}
+  mark.ph{background:var(--ph);color:inherit;padding:0 3px;border-radius:3px}
+  table{border-collapse:collapse;width:100%;font-size:14px;margin:.6em 0}
+  th,td{border:1px solid var(--line);padding:6px 8px;text-align:left;vertical-align:top}
+  th{background:var(--card)}
+  p[id]{scroll-margin-top:72px}
+  .lang{display:none}
+  body[data-lang=de] .lang[lang=de],body[data-lang=uk] .lang[lang=uk],body[data-lang=en] .lang[lang=en],body[data-lang=ru] .lang[lang=ru]{display:block}
+</style>
+</head>
+<body data-lang="de">
+<main>
+<div class="topbar">
+  <div class="langbar" role="group" aria-label="Language">
+    <button id="b-de" type="button" onclick="setLang('de')" aria-label="Deutsch" title="Deutsch"><svg viewBox="0 0 28 20" aria-hidden="true" focusable="false"><rect width="28" height="6.7" fill="#1f1f1f"/><rect y="6.6" width="28" height="6.8" fill="#d6402f"/><rect y="13.3" width="28" height="6.7" fill="#f2b830"/></svg></button>
+    <button id="b-uk" type="button" onclick="setLang('uk')" aria-label="Українська" title="Українська"><svg viewBox="0 0 28 20" aria-hidden="true" focusable="false"><rect width="28" height="10.1" fill="#2f6bb6"/><rect y="10" width="28" height="10" fill="#f4c62e"/></svg></button>
+    <button id="b-en" type="button" onclick="setLang('en')" aria-label="English" title="English"><svg viewBox="0 0 28 20" aria-hidden="true" focusable="false"><rect width="28" height="20" fill="#24408e"/><path d="M0 0 28 20M28 0 0 20" stroke="#fff" stroke-width="4.2"/><path d="M0 0 28 20M28 0 0 20" stroke="#cf2e3a" stroke-width="1.5"/><path d="M14 0v20M0 10h28" stroke="#fff" stroke-width="6.6"/><path d="M14 0v20M0 10h28" stroke="#cf2e3a" stroke-width="3.6"/></svg></button>
+    <button id="b-ru" type="button" onclick="setLang('ru')" aria-label="Русский" title="Русский"><svg viewBox="0 0 28 20" aria-hidden="true" focusable="false"><rect width="28" height="6.7" fill="#f6f6f4"/><rect y="6.6" width="28" height="6.8" fill="#2e58a8"/><rect y="13.3" width="28" height="6.7" fill="#d5382f"/></svg></button>
+  </div>
+  <button type="button" class="closebtn" aria-label="Close" title="Close" onclick="closePage()"><svg viewBox="0 0 18 18" aria-hidden="true" focusable="false"><path d="M3 3l12 12M15 3L3 15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></button>
+</div>
+
+<!-- ═══════════════════════════ DEUTSCH ═══════════════════════════ -->
+<div class="lang" lang="de">
+<h1>Support &amp; Kontakt</h1>
+<p class="meta">MOVA – Sprachlern-App · Stand: 26.10.2026 · Rechtsverbindlich ist die deutsche Fassung.</p>
+
+<h2>1. Kontakt</h2>
+<p>Bei Fragen, Fehlern oder Verbesserungsvorschlägen schreiben Sie uns:</p>
+<p>Yaroslav Butenko<br>Ob. Hauptstraße 4, 85461 Bockhorn, Deutschland<br>E-Mail: <a href="mailto:mova.now.app@gmail.com">mova.now.app@gmail.com</a></p>
+<p>Damit wir schnell helfen können, nennen Sie bitte Ihr Gerät und Betriebssystem, bei der Web-App den Browser, die Version der App (ganz unten in den Einstellungen) und eine kurze Beschreibung des Problems – gern mit Screenshot (ohne persönliche Daten).</p>
+<h2>2. Häufige Fragen</h2>
+<p><strong>Wie installiere ich MOVA auf dem Startbildschirm?</strong><br>iPhone/iPad (Safari): Teilen → „Zum Home-Bildschirm“. Android (Chrome): Menü ⋮ → „App installieren“ bzw. „Zum Startbildschirm hinzufügen“.</p>
+<p><strong>Funktioniert MOVA offline?</strong><br>Bereits geladene Lektionen und Audiodateien sind auf Ihrem Gerät gespeichert und auch ohne Internet nutzbar. Neue Inhalte und Audio müssen einmal mit Internetverbindung geladen werden.</p>
+<p><strong>Mein Lernfortschritt ist weg oder ich wechsle das Gerät.</strong><br>Der Fortschritt liegt lokal auf Ihrem Gerät. Mit einem (optionalen) Konto können Sie ihn sichern: Einstellungen → Konto → „In Cloud sichern“. Auf dem neuen Gerät anmelden und „Aus Cloud wiederherstellen“ wählen. Wenn Sie Browserdaten löschen, ohne vorher zu sichern, geht der lokale Fortschritt verloren.</p>
+<p><strong>Wie lösche ich mein Konto oder meine Daten?</strong><br>Einstellungen → Konto: „Konto und Cloud-Daten löschen“ oder „Profil vollständig löschen“. Einzelheiten stehen in der <a href="privacy.html?lang=de#konto-loeschen">Datenschutzerklärung</a>.</p>
+<p><strong>Ich habe mein Passwort vergessen.</strong><br>Das automatische Zurücksetzen ist in der App derzeit nicht verfügbar. Schreiben Sie uns bitte an die oben genannte E-Mail-Adresse.</p>
+<p><strong>Der Ton funktioniert nicht.</strong><br>Prüfen Sie Lautstärke und (beim iPhone) den Stumm-Schalter sowie Ihre Internetverbindung und laden Sie die Seite neu. Besteht das Problem weiter, schreiben Sie uns.</p>
+<p><strong>Die Spracherkennung funktioniert nicht.</strong><br>Erlauben Sie den Mikrofonzugriff in den Browser-Einstellungen. Nicht jeder Browser unterstützt Spracherkennung; am besten funktionieren aktuelle Versionen von Chrome oder Safari. Die Sprachverarbeitung übernimmt der Dienst Ihres Geräts bzw. Browsers (siehe Datenschutzerklärung).</p>
+<p><strong>Wie widerrufe ich die Einwilligung zur Nutzungsstatistik?</strong><br>Einstellungen → Datenschutz → „Nutzungsstatistik“ ausschalten.</p>
+<p><a href="privacy.html?lang=de" onclick="location.replace(this.href);return false">Datenschutzerklärung</a> · <a href="terms.html?lang=de" onclick="location.replace(this.href);return false">Nutzungsbedingungen</a> · <a href="impressum.html?lang=de" onclick="location.replace(this.href);return false">Impressum</a></p>
+</div>
+
+<!-- ═══════════════════════════ УКРАЇНСЬКА ═══════════════════════════ -->
+<div class="lang" lang="uk">
+<h1>Підтримка і контакти</h1>
+<p class="meta">MOVA – застосунок для вивчення мови · Станом на 26.10.2026 · Юридично обов’язковою є німецька версія.</p>
+
+<h2>1. Контакти</h2>
+<p>Якщо маєте питання, помітили помилку або хочете запропонувати покращення, напишіть нам:</p>
+<p>Yaroslav Butenko<br>Ob. Hauptstraße 4, 85461 Bockhorn, Deutschland<br>E-Mail: <a href="mailto:mova.now.app@gmail.com">mova.now.app@gmail.com</a></p>
+<p>Щоб ми швидше допомогли, вкажіть, будь ласка, пристрій і операційну систему, браузер (для веб-застосунку), версію застосунку (внизу в налаштуваннях) та коротко опишіть проблему — за можливості зі скриншотом (без персональних даних).</p>
+<h2>2. Часті питання</h2>
+<p><strong>Як встановити MOVA на головний екран?</strong><br>iPhone/iPad (Safari): «Поділитися» → «На екран Додому». Android (Chrome): меню ⋮ → «Установити застосунок» або «Додати на головний екран».</p>
+<p><strong>Чи працює MOVA без інтернету?</strong><br>Уроки й аудіо, які вже завантажились, зберігаються на пристрої й доступні офлайн. Нові матеріали та аудіо потрібно один раз завантажити з інтернетом.</p>
+<p><strong>Зник прогрес або я змінюю пристрій.</strong><br>Прогрес зберігається локально на пристрої. З (необов’язковим) акаунтом його можна зберегти: Налаштування → Акаунт → «Зберегти в хмару». На новому пристрої увійдіть і оберіть «Відновити з хмари». Якщо очистити дані браузера без збереження, локальний прогрес буде втрачено.</p>
+<p><strong>Як видалити акаунт або дані?</strong><br>Налаштування → Акаунт: «Видалити акаунт і хмарні дані» або «Видалити профіль повністю». Подробиці — у <a href="privacy.html?lang=uk#vydalennia-akaunta">політиці конфіденційності</a>.</p>
+<p><strong>Я забув(-ла) пароль.</strong><br>Автоматичне скидання пароля в застосунку наразі недоступне. Напишіть нам на адресу електронної пошти вище.</p>
+<p><strong>Не працює звук.</strong><br>Перевірте гучність і (на iPhone) перемикач беззвучного режиму, а також з’єднання з інтернетом, і перезавантажте сторінку. Якщо проблема лишається, напишіть нам.</p>
+<p><strong>Не працює розпізнавання мовлення.</strong><br>Дозвольте доступ до мікрофона в налаштуваннях браузера. Не всі браузери підтримують розпізнавання мовлення; найкраще працюють актуальні версії Chrome або Safari. Обробку голосу виконує служба вашого пристрою чи браузера (див. політику конфіденційності).</p>
+<p><strong>Як відкликати згоду на статистику використання?</strong><br>Налаштування → Конфіденційність → вимкніть «Статистика використання».</p>
+<p><a href="privacy.html?lang=uk" onclick="location.replace(this.href);return false">Політика конфіденційності</a> · <a href="terms.html?lang=uk" onclick="location.replace(this.href);return false">Умови використання</a> · <a href="impressum.html?lang=uk" onclick="location.replace(this.href);return false">Імпресум (Impressum)</a></p>
+</div>
+
+<!-- ═══════════════════════════ ENGLISH ═══════════════════════════ -->
+<div class="lang" lang="en">
+<h1>Support &amp; contact</h1>
+<p class="meta">MOVA – language learning app · Last updated: 26 Oct 2026 · The German version is legally binding.</p>
+
+<h2>1. Contact</h2>
+<p>If you have a question, found a bug or have a suggestion, write to us:</p>
+<p>Yaroslav Butenko<br>Ob. Hauptstraße 4, 85461 Bockhorn, Deutschland<br>E-Mail: <a href="mailto:mova.now.app@gmail.com">mova.now.app@gmail.com</a></p>
+<p>To help you quickly, please tell us your device and operating system, the browser (for the web app), the app version (at the bottom of the settings) and a short description of the problem – with a screenshot if possible (without personal data).</p>
+<h2>2. Frequently asked questions</h2>
+<p><strong>How do I install MOVA on my home screen?</strong><br>iPhone/iPad (Safari): Share → “Add to Home Screen”. Android (Chrome): menu ⋮ → “Install app” or “Add to Home screen”.</p>
+<p><strong>Does MOVA work offline?</strong><br>Lessons and audio files that have already been loaded are stored on your device and work without internet. New content and audio must be loaded once with an internet connection.</p>
+<p><strong>My progress is gone, or I am switching devices.</strong><br>Your progress is stored locally on your device. With an (optional) account you can back it up: Settings → Account → “Back up to cloud”. On the new device, sign in and choose “Restore from cloud”. If you clear your browser data without a backup, the local progress is lost.</p>
+<p><strong>How do I delete my account or my data?</strong><br>Settings → Account: “Delete account and cloud data” or “Delete profile completely”. Details are in the <a href="privacy.html?lang=en#delete-account">privacy policy</a>.</p>
+<p><strong>I forgot my password.</strong><br>Automatic password reset is currently not available in the app. Please write to us at the email address above.</p>
+<p><strong>There is no sound.</strong><br>Check the volume and (on iPhone) the silent switch, check your internet connection and reload the page. If the problem persists, write to us.</p>
+<p><strong>Speech recognition does not work.</strong><br>Allow microphone access in your browser settings. Not every browser supports speech recognition; current versions of Chrome or Safari work best. Speech is processed by the service of your device or browser (see the privacy policy).</p>
+<p><strong>How do I withdraw consent to usage statistics?</strong><br>Settings → Privacy → switch off “Usage statistics”.</p>
+<p><a href="privacy.html?lang=en" onclick="location.replace(this.href);return false">Privacy policy</a> · <a href="terms.html?lang=en" onclick="location.replace(this.href);return false">Terms of use</a> · <a href="impressum.html?lang=en" onclick="location.replace(this.href);return false">Legal notice (Impressum)</a></p>
+</div>
+
+<!-- ═══════════════════════════ РУССКИЙ ═══════════════════════════ -->
+<div class="lang" lang="ru">
+<h1>Поддержка и контакты</h1>
+<p class="meta">MOVA – приложение для изучения языка · По состоянию на 26.10.2026 · Юридически обязательной является немецкая версия.</p>
+
+<h2>1. Контакты</h2>
+<p>Если у вас есть вопрос, вы заметили ошибку или хотите предложить улучшение, напишите нам:</p>
+<p>Yaroslav Butenko<br>Ob. Hauptstraße 4, 85461 Bockhorn, Deutschland<br>E-Mail: <a href="mailto:mova.now.app@gmail.com">mova.now.app@gmail.com</a></p>
+<p>Чтобы мы помогли быстрее, укажите, пожалуйста, устройство и операционную систему, браузер (для веб-приложения), версию приложения (внизу в настройках) и коротко опишите проблему — по возможности со скриншотом (без персональных данных).</p>
+<h2>2. Частые вопросы</h2>
+<p><strong>Как установить MOVA на главный экран?</strong><br>iPhone/iPad (Safari): «Поделиться» → «На экран Домой». Android (Chrome): меню ⋮ → «Установить приложение» или «Добавить на главный экран».</p>
+<p><strong>Работает ли MOVA без интернета?</strong><br>Уроки и аудио, которые уже загрузились, хранятся на устройстве и доступны офлайн. Новые материалы и аудио нужно один раз загрузить при наличии интернета.</p>
+<p><strong>Пропал прогресс или я меняю устройство.</strong><br>Прогресс хранится локально на устройстве. С (необязательным) аккаунтом его можно сохранить: Настройки → Аккаунт → «Сохранить в облако». На новом устройстве войдите и выберите «Восстановить из облака». Если очистить данные браузера без сохранения, локальный прогресс будет потерян.</p>
+<p><strong>Как удалить аккаунт или данные?</strong><br>Настройки → Аккаунт: «Удалить аккаунт и облачные данные» или «Удалить профиль полностью». Подробности — в <a href="privacy.html?lang=ru#udalenie-akkaunta">политике конфиденциальности</a>.</p>
+<p><strong>Я забыл(-а) пароль.</strong><br>Автоматический сброс пароля в приложении сейчас недоступен. Напишите нам на адрес электронной почты выше.</p>
+<p><strong>Не работает звук.</strong><br>Проверьте громкость и (на iPhone) переключатель беззвучного режима, а также подключение к интернету, и перезагрузите страницу. Если проблема остаётся, напишите нам.</p>
+<p><strong>Не работает распознавание речи.</strong><br>Разрешите доступ к микрофону в настройках браузера. Не все браузеры поддерживают распознавание речи; лучше всего работают актуальные версии Chrome или Safari. Обработку голоса выполняет служба вашего устройства или браузера (см. политику конфиденциальности).</p>
+<p><strong>Как отозвать согласие на статистику использования?</strong><br>Настройки → Конфиденциальность → выключите «Статистика использования».</p>
+<p><a href="privacy.html?lang=ru" onclick="location.replace(this.href);return false">Политика конфиденциальности</a> · <a href="terms.html?lang=ru" onclick="location.replace(this.href);return false">Условия использования</a> · <a href="impressum.html?lang=ru" onclick="location.replace(this.href);return false">Импрессум (Impressum)</a></p>
+</div>
+
+</main>
+<script>
+  function closePage(){
+    if(history.length > 1){ history.back(); return; }
+    try{ window.close(); }catch(e){}
+    setTimeout(function(){ location.href = './'; }, 200);   // вкладка не закрилась → повертаємось у застосунок
+  }
+  document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closePage(); });
+  function setLang(l){
+    if(['de','uk','en','ru'].indexOf(l) < 0) l = 'de';
+    document.body.setAttribute('data-lang', l);
+    document.documentElement.setAttribute('lang', l);
+    try{ history.replaceState(null, '', '?lang=' + l + location.hash); }catch(e){}
+  }
+  (function(){
+    var q = (location.search.match(/[?&]lang=([a-z]{2})/) || [])[1];
+    var n = (navigator.language || 'de').slice(0, 2).toLowerCase();
+    var byHash = undefined;
+    setLang(q || byHash || (n === 'uk' ? 'uk' : n === 'en' ? 'en' : n === 'ru' ? 'ru' : 'de'));
+    var target = location.hash.length > 1 && document.getElementById(location.hash.slice(1));
+    if(target) setTimeout(function(){ target.scrollIntoView(); }, 0);   // блок мови був прихований під час завантаження — прокручуємо вручну
+  })();
+</script>
+</body>
+</html>
