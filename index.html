@@ -1479,6 +1479,9 @@ body{
 .mi{ width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round;display:block;flex-shrink:0; }
 /* в потоці тексту (чіпи "▶ Почати", заголовки): іконка як перший "символ" рядка */
 .mi.mi-fill{ fill:currentColor; }
+.mi.mi-dot-ok{ color:#27ae60; }
+.mi.mi-dot-mid{ color:var(--gold); }
+.mi.mi-dot-bad{ color:var(--red); }
 /* ══ АНІМОВАНІ ІКОНКИ ЗАВЕРШЕННЯ (movaAnimIcon) ═══════════════════════
    Ті самі монолінійні іконки, що й скрізь, але з \"життям\": контури
    домальовуються по черзі (miDraw), акценти спалахують (miPop) і
@@ -5395,7 +5398,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '906-6ba3aba';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6791,6 +6794,11 @@ var MOVA_ICONS = {
   theater: '<path d="M3.6 4.6h10v6.6a5 5 0 0 1-10 0z"/><path d="M6.4 8h.01M10.8 8h.01M6.6 11.2c.9 1 3.1 1 4 0"/><path d="M16.2 8h4.2v6.2a5 5 0 0 1-7.8 4.2"/><path d="M18 12.2h.01M17.6 15.2c.6.5 1.7.5 2.2 0"/>',
   // ── Іконка для категорії «Історія» (Leben in Deutschland) ──
   scroll: '<path d="M8.4 3.6h9.2a2 2 0 0 1 2 2v12a2.4 2.4 0 0 1-2.4 2.4H6.4"/><path d="M8.4 3.6a2 2 0 0 0-2 2v12.2"/><path d="M6.4 20.4a2.4 2.4 0 0 1-2.4-2.4v-1.4h2.4"/><path d="M10.6 8.4h5.2M10.6 11.8h5.2M10.6 15.2h3"/>',
+  // ── Статусні значки: сумне обличчя, кольорова крапка (колір задають класи mi-dot-*), сирена, спалах ──
+  sad: '<circle cx="12" cy="12" r="9"/><path d="M8.8 10h.01M15.2 10h.01M8.6 16.4c.9-1.4 2.2-2.1 3.4-2.1s2.5.7 3.4 2.1"/>',
+  dot: '<circle cx="12" cy="12" r="6.2"/>',
+  siren: '<path d="M7 17.2v-4.4a5 5 0 0 1 10 0v4.4"/><path d="M5 17.2h14M4.2 20.6h15.6M12 3v1.8M4.6 6l1.3 1.3M19.4 6l-1.3 1.3M3 12.4h1.6M19.4 12.4H21M9.6 13a2.4 2.4 0 0 1 1.8-2.2"/>',
+  burst: '<path d="M12 2.6l2.2 4.6 4.8-1.8-1.6 4.9 4.6 1.9-4.6 2.1 1.8 4.8-4.8-1.4L12 22l-2.4-4.3-4.8 1.4 1.8-4.8-4.6-2.1 4.6-1.9L5 5.4l4.8 1.8z"/>',
   // puzzle/arrow/ліва стрілка «назад» — back; список — list; мозок — brain
 };
 // "▶ Текст" з локалізованих рядків → монолінійна іконка play + текст.
@@ -6926,6 +6934,13 @@ function _iconizeText(msg){
     .replace(/\uD83D\uDD17/g, movaIcon('link','mi mi-inline'))  // 🔗
     .replace(/\uD83D\uDCDC/g, movaIcon('scroll','mi mi-inline'))  // 📜
     .replace(/\uD83D\uDC65/g, movaIcon('people','mi mi-inline'))  // 👥
+    .replace(/\uD83D\uDE14/g, movaIcon('sad','mi mi-inline'))  // 😔
+    .replace(/\uD83D\uDD25/g, movaIcon('flame','mi mi-inline'))  // 🔥
+    .replace(/\uD83D\uDFE2/g, movaIcon('dot','mi mi-inline mi-fill mi-dot-ok'))  // 🟢
+    .replace(/\uD83D\uDFE1/g, movaIcon('dot','mi mi-inline mi-fill mi-dot-mid'))  // 🟡
+    .replace(/\uD83D\uDD34/g, movaIcon('dot','mi mi-inline mi-fill mi-dot-bad'))  // 🔴
+    .replace(/\uD83D\uDEA8/g, movaIcon('siren','mi mi-inline'))  // 🚨
+    .replace(/\uD83D\uDCA5/g, movaIcon('burst','mi mi-inline'))  // 💥
     .replace(/\uD83C\uDDE9\uD83C\uDDEA/g, movaFlag('de','mf-inline'))
     .replace(/\uD83C\uDDFA\uD83C\uDDE6/g, movaFlag('uk','mf-inline'))
     .replace(/\uD83C\uDDEC\uD83C\uDDE7/g, movaFlag('en','mf-inline'))
@@ -9082,7 +9097,7 @@ function srUpdateHeaderChip(){
     return;
   }
   chip.style.display = 'flex';
-  chip.textContent = um.emoji + ' ' + um.daysLeft + ' ' + srDaysWord(um.daysLeft);
+  chip.innerHTML = _iconizeText(um.emoji + ' ' + um.daysLeft + ' ' + srDaysWord(um.daysLeft));
 }
 
 function selectOnboardExamDate(){
@@ -9173,9 +9188,9 @@ function srRenderDashboard(){
     if(lbl) lbl.textContent = {'de':'Prüfungstermin','uk':'Дата іспиту','en':'Exam date','ru':'Дата экзамена'}[uiLang]||'Prüfungstermin';
     const mode = srGetUrgency(_st.examDate);
     const mlbl = document.getElementById('sr-settings-mode-lbl');
-    if(mlbl) mlbl.textContent = mode.daysLeft!==null
+    if(mlbl) mlbl.innerHTML = _iconizeText(mode.daysLeft!==null
       ? `${mode.emoji} ${t('sr_mode_'+mode.id)}` + (mode.id === 'done' ? '' : ` · ${mode.daysLeft} ${srDaysWord(mode.daysLeft)}`)
-      : t('sr_no_date_dashboard');
+      : t('sr_no_date_dashboard'));
   }catch(e){}
   const rowsEl = document.getElementById('sr-dashboard-rows');
   const learnedEl = document.getElementById('sr-dash-learned-txt');
@@ -19930,6 +19945,52 @@ function quizPickRegion(done){
   document.body.appendChild(ov);
 }
 
+// ── Єдиний підрахунок прогресу уроку ─────────────────────────────────────────
+// Смуга зверху (lfRenderBar) і діалог виходу (lfRequestExit) беруть числа ЗВІДСИ, тож завжди збігаються.
+// Одиниця = те, що користувач «проходить» тапом: картка (термін / значення), репліка діалогу, блок
+// форумного допису чи листа, питання квізу, фраза вимови. Решта кроків (пари, плитки, граматика…)
+// важить 1: вони не мають часткового прогресу — смуга стрибає, коли крок завершено.
+function _lfRecordUnits(){
+  if(!LF) return;
+  var cur = LF.steps[LF.step];
+  if(cur && LF.unitProgress && LF.unitProgress.total > 0){
+    LF._unitsSeen = LF._unitsSeen || {};
+    LF._unitsSeen[cur] = LF.unitProgress.total;     // точне число — запамʼятовуємо, щоб смуга не «стрибала назад» на наступному кроці
+  }
+}
+function _lfStepUnits(step){
+  if(LF && LF._unitsSeen && LF._unitsSeen[step] > 0) return LF._unitsSeen[step];
+  try{
+    if(step === 'cards' && LF.cards && LF.cards.length){
+      var pl = primaryLang();
+      return Math.max(1, LF.cards.reduce(function(n,c){ return n + 1 + ((c && c.def && c.def[pl]) ? 1 : 0); }, 0));
+    }
+    if(step === 'dlg_learn'){
+      if(LF.dlgCards && LF.dlgCards.length) return Math.max(1, _dlgCardsToUnits(LF.dlgCards).length);
+      if(LF.dlgCard) return Math.max(1, _dlgCardTurns(LF.dlgCard).length);
+    }
+    if(step === 'frm_learn' && LF.frmCards && LF.frmCards.length) return Math.max(1, _frmCardsToUnits(LF.frmCards).length);
+    if(step === 'eml_learn' && LF.emlCards && LF.emlCards.length) return Math.max(1, _emlCardsToUnits(LF.emlCards).length);
+  }catch(e){}
+  return 1;
+}
+// → {total, done}: total — усі одиниці уроку (без екрана результату), done — уже пройдені
+function _lfProgressNumbers(){
+  if(!LF) return {total:0, done:0};
+  _lfRecordUnits();
+  var rel = LF.steps.filter(function(x){ return x !== 'result'; });
+  var units = rel.map(_lfStepUnits);
+  var total = units.reduce(function(a,b){ return a + b; }, 0);
+  var idx = Math.min(LF.step, units.length);
+  var done = units.slice(0, idx).reduce(function(a,b){ return a + b; }, 0);
+  var cur = rel[LF.step];
+  if(cur !== undefined){
+    if(LF.results && LF.results[cur] != null) done += units[LF.step];            // крок уже завершено, перехід ще не відбувся
+    else if(LF.unitProgress && LF.unitProgress.total > 0) done += Math.min(LF.unitProgress.done, units[LF.step]);
+  }
+  return {total: total, done: Math.min(done, total)};
+}
+
 function lfRenderBar(){
   if(!LF) return;
   const bar = document.getElementById('lesson-flow-bar');
@@ -19965,19 +20026,9 @@ function lfRenderBar(){
   // надалі 1 — там немає такого розкиду "довжини" кроку.
   const stepsEl = document.getElementById('lf-steps');
   if(stepsEl){
-    const relevantSteps = LF.steps.filter(s=>s!=='result');
-    const weights = relevantSteps.map(_lfStepWeight);
-    const totalWeight = weights.reduce((a,b)=>a+b, 0);
-    const doneWeight = weights.slice(0, Math.min(LF.step, weights.length)).reduce((a,b)=>a+b, 0);
-    const curStepWeight = weights[LF.step] ?? 1;
-    // Крок важить 1, але ВСЕРЕДИНІ кроку смуга рухається (діалог, картки, мовлення, квіз…),
-    // інакше вона «застигає». «Знайди пару» unitProgress не виставляє — там стрибок по завершенню.
-    const curFrac = (LF.unitProgress && LF.unitProgress.total > 0)
-      ? Math.min(1, LF.unitProgress.done / LF.unitProgress.total)
-      : 0;
-    const pct = totalWeight > 0
-      ? Math.round(((doneWeight + curFrac*curStepWeight) / totalWeight) * 100)
-      : 0;
+    // Той самий підрахунок, що й у діалозі виходу (_lfProgressNumbers): пройдені одиниці / усі одиниці.
+    const _pn = _lfProgressNumbers();
+    const pct = _pn.total > 0 ? Math.round((_pn.done / _pn.total) * 100) : 0;
     stepsEl.innerHTML =
       '<div class="lf-pb"><div class="lf-pbf" id="lf-pbf" style="width:'+pct+'%"></div></div>';
   }
@@ -20105,6 +20156,7 @@ function lfGoStep(stepIdx){
   // «Далі» / перехід між кроками уроку: якщо це був крок «Вимова» — вимкнути мікрофон (no-op в інших випадках)
   if(typeof spExit === 'function') spExit();
   LF.step = stepIdx;
+  _lfRecordUnits();
   LF.unitProgress = null; // скидаємо — кожен крок сам встановлює, якщо unit-based (напр. vocab)
   lfRenderBar();
 
@@ -22313,19 +22365,9 @@ function lfLogAbandon(){
 // Якщо урок уже завершено (екран результату) — виходимо без питань.
 function lfRequestExit(){
   if(!LF || LF._recorded || LF.steps[LF.step] === 'result'){ exitLessonFlow(); return; }
-  // Справжня кількість кроків, що лишилися: від поточного (якщо він ще не завершений)
-  // до останнього перед 'result'. «Знайди пару» (і запасний раунд) — по одному кроку.
-  var rest = LF.steps.slice(LF.step).filter(function(x){ return x !== 'result'; });
-  var curDone = !!(LF.results && LF.results[LF.steps[LF.step]] != null);
-  if(rest.length && curDone) rest.shift();
-  // Той самий облік, що й у смузі прогресу (lfRenderBar): поточний крок зарахований
-  // ЧАСТКОВО (картки, речення, фрази… — частка виконаних одиниць), а не «ціле, поки не
-  // завершено». Інакше смуга вже майже повна, а в діалозі досі стільки ж кроків, скільки на старті.
-  var left = rest.length;
-  if(!curDone && rest.length && LF.unitProgress && LF.unitProgress.total > 0){
-    left = rest.length - Math.min(1, LF.unitProgress.done / LF.unitProgress.total);
-  }
-  showLessonExitModal(Math.max(1, Math.round(left)));
+  // «Залишилося N кроків» = усього − пройдено, ті самі числа, що рухають смугу зверху (_lfProgressNumbers).
+  var _pn = _lfProgressNumbers();
+  showLessonExitModal(Math.max(1, _pn.total - _pn.done));
 }
 
 // «Залишилося N кроків» з правильним відмінюванням (uk/ru: 1 / 2-4 / 5+)
@@ -27655,8 +27697,8 @@ function sbExamSubmit() {
   var scoreEl=document.getElementById('sb-exam-score-num');
   scoreEl.textContent=correct+'/'+total;
   scoreEl.style.color=pct>=0.83?'#27ae60':pct>=0.5?'var(--gold)':'var(--red)';
-  document.getElementById('sb-exam-score-label').textContent=
-    pct>=0.83?'✅ Bereit für die Prüfung!':pct>=0.5?'🟡 Fast! Noch üben.':'🔴 Mehr Übung nötig.';
+  document.getElementById('sb-exam-score-label').innerHTML=_iconizeText(
+    pct>=0.83?'✅ Bereit für die Prüfung!':pct>=0.5?'🟡 Fast! Noch üben.':'🔴 Mehr Übung nötig.');
 
   var s=sbLoadState(); if(!s.examResults) s.examResults=[];
   s.examResults.push({date:new Date().toISOString().slice(0,10),score:correct,total:total});
