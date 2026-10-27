@@ -4620,7 +4620,7 @@ body{
   <div class="lf-header">
     <div class="lf-title" id="lf-title"></div>
     <button class="lf-hdr-bug" type="button" onclick="showBugReportModal()" title="Повідомити про помилку" data-i18n-title="bugreport_title" aria-label="Повідомити про помилку"><i data-mi="bug"></i></button>
-    <button class="lf-exit" onclick="lfRequestExit()" title="Урок завершити"><i data-mi="cross"></i></button>
+    <button class="lf-exit" onclick="lfRequestExit()" title="Завершити урок" data-i18n-title="lf_exit_tip"><i data-mi="cross"></i></button>
   </div>
   <div class="lf-steps" id="lf-steps"></div>
   <div class="lf-step-label"><span id="lf-step-name"></span></div>
@@ -4731,7 +4731,7 @@ body{
           <button class="vplay" id="vplaybtn" onclick="toggleVocabListenMode()"><i data-mi="play"></i></button>
           <button class="vstop" onclick="stopVocabListenMode()"><i data-mi="stop"></i></button>
           <button class="vseq smart" id="vshuffle-btn" onclick="cycleVocabMode()"><i data-mi="brain"></i></button>
-          <button class="vlang-btn" id="vplayboth-btn" onclick="cycleVocabPlaySide()" title="Передня / обидві / задня"><i data-mi="side_front"></i></button>
+          <button class="vlang-btn" id="vplayboth-btn" onclick="cycleVocabPlaySide()" title="Передня / обидві / задня" data-i18n-title="vplay_side_tip"><i data-mi="side_front"></i></button>
           <div class="vlang-grp">
             <button class="vlang-btn on"  id="vlcard-de" onclick="toggleVocabLang('de')"><i data-flag="de"></i>DE</button>
             <button class="vlang-btn on"  id="vlcard-en" onclick="toggleVocabLang('en')"><i data-flag="en"></i>EN</button>
@@ -5406,7 +5406,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '915-cc879b7';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6642,7 +6642,7 @@ async function switchCourse(courseId, opts){
     if(!opts.noLangSteps) await ensureCourseLangChoices();
   }catch(e){
     console.error('switchCourse error:', e);
-    notify('⚠️ Курс не вдалося завантажити');
+    notify('⚠️ ' + t('course_load_failed'));
     csShowModal('error', targetCourse);
     setTimeout(csHideModal, 1800);
   }
@@ -7159,7 +7159,7 @@ const I18N = {
     bugreport_submit:'Senden',
     bugreport_submitting:'Wird gesendet…',
     bugreport_privacy_note:'Gesendet werden: Übungskontext, Ihr Kommentar, technische Geräteinformationen und eine zufällige Installations-ID – keine Namen oder E-Mail-Adressen.',
-     grp_privacy:'Datenschutz', lbl_analytics:'Nutzungsstatistik', sub_analytics:'Google Firebase Analytics – nur mit Ihrer Einwilligung', txt_analytics_info:'Es handelt sich nur um Nutzungsstatistik, <b>ohne Ihren Namen oder Ihre E-Mail-Adresse</b>: gewählter Kurs, Oberflächensprache, Lektionsschritte (gestartet, abgeschlossen, abgebrochen) und Gerätetyp. Dafür nutzen wir Google Firebase Analytics: Eine zufällige Nutzer-ID sowie Geräte- und Nutzungsdaten werden an Google übertragen. Die Erfassung erfolgt nur mit Ihrer Einwilligung; die App funktioniert auch ohne sie vollständig.', lbl_privacy_policy:'Datenschutzerklärung', btn_open:'Öffnen', lbl_impressum:'Impressum', lbl_terms:'Nutzungsbedingungen', lbl_support:'Support & Kontakt',
+     grp_privacy:'Datenschutz', lbl_analytics:'Nutzungsstatistik', sub_analytics:'Google Firebase Analytics – nur mit Ihrer Einwilligung', txt_analytics_info:'Es handelt sich nur um Nutzungsstatistik, <b>ohne Ihren Namen oder Ihre E-Mail-Adresse</b>: gewählter Kurs, Oberflächensprache, Lektionsschritte (gestartet, abgeschlossen, abgebrochen) und Gerätetyp. Dafür nutzen wir Google Firebase Analytics: Eine zufällige Nutzer-ID sowie Geräte- und Nutzungsdaten werden an Google übertragen. Die Erfassung erfolgt nur mit Ihrer Einwilligung; die App funktioniert auch ohne sie vollständig.', lbl_privacy_policy:'Datenschutzerklärung', btn_open:'Öffnen', lbl_impressum:'Impressum', lbl_terms:'Nutzungsbedingungen', lbl_support:'Support & Kontakt', lf_exit_tip:'Lektion beenden', vplay_side_tip:'Vorderseite / beide / Rückseite', course_load_failed:'Der Kurs konnte nicht geladen werden', srs_days_abbr:'T',
     bugreport_notify_ok:'Danke, der Bericht wurde gesendet',
     bugreport_notify_queued:'Kein Netz — wird später gesendet',
     bugtype_translation:'Schlechte Übersetzung',
@@ -7325,7 +7325,7 @@ const I18N = {
     bugreport_submit:'Надіслати',
     bugreport_submitting:'Надсилаємо…',
     bugreport_privacy_note:'Надсилається: контекст вправи, ваш коментар, технічна інформація про пристрій і випадковий ідентифікатор встановлення — без імен чи email.',
-     grp_privacy:'Конфіденційність', lbl_analytics:'Статистика використання', sub_analytics:'Google Firebase Analytics — лише за вашою згодою', txt_analytics_info:'Це лише статистика користування, <b>без вашого імені та e-mail</b>: обраний курс, мова інтерфейсу, етапи уроків (розпочато, завершено, перервано) і тип пристрою. Для цього використовується Google Firebase Analytics: до Google передаються випадковий ідентифікатор, дані про пристрій і використання. Збір працює лише за вашою згодою, а застосунок повністю працює й без неї.', lbl_privacy_policy:'Політика конфіденційності', btn_open:'Відкрити', lbl_impressum:'Імпресум (Impressum)', lbl_terms:'Умови використання', lbl_support:'Підтримка і контакти',
+     grp_privacy:'Конфіденційність', lbl_analytics:'Статистика використання', sub_analytics:'Google Firebase Analytics — лише за вашою згодою', txt_analytics_info:'Це лише статистика користування, <b>без вашого імені та e-mail</b>: обраний курс, мова інтерфейсу, етапи уроків (розпочато, завершено, перервано) і тип пристрою. Для цього використовується Google Firebase Analytics: до Google передаються випадковий ідентифікатор, дані про пристрій і використання. Збір працює лише за вашою згодою, а застосунок повністю працює й без неї.', lbl_privacy_policy:'Політика конфіденційності', btn_open:'Відкрити', lbl_impressum:'Імпресум (Impressum)', lbl_terms:'Умови використання', lbl_support:'Підтримка і контакти', lf_exit_tip:'Завершити урок', vplay_side_tip:'Передня / обидві / задня', course_load_failed:'Курс не вдалося завантажити', srs_days_abbr:'д',
     bugreport_notify_ok:'Дякуємо, звіт надіслано',
     bugreport_notify_queued:'Мережі нема — надішлемо пізніше',
     bugtype_translation:'Поганий переклад',
@@ -7492,7 +7492,7 @@ const I18N = {
     bugreport_submit:'Submit',
     bugreport_submitting:'Sending…',
     bugreport_privacy_note:'Sent: exercise context, your comment, technical device info and a random installation ID – no names or email addresses.',
-     grp_privacy:'Privacy', lbl_analytics:'Usage statistics', sub_analytics:'Google Firebase Analytics – only with your consent', txt_analytics_info:'This is only usage statistics, <b>without your name or e-mail address</b>: selected course, interface language, lesson steps (started, completed, abandoned) and device type. We use Google Firebase Analytics: a random user ID plus device and usage data are sent to Google. Collection happens only with your consent, and the app works fully without it.', lbl_privacy_policy:'Privacy policy', btn_open:'Open', lbl_impressum:'Legal notice (Impressum)', lbl_terms:'Terms of use', lbl_support:'Support & contact',
+     grp_privacy:'Privacy', lbl_analytics:'Usage statistics', sub_analytics:'Google Firebase Analytics – only with your consent', txt_analytics_info:'This is only usage statistics, <b>without your name or e-mail address</b>: selected course, interface language, lesson steps (started, completed, abandoned) and device type. We use Google Firebase Analytics: a random user ID plus device and usage data are sent to Google. Collection happens only with your consent, and the app works fully without it.', lbl_privacy_policy:'Privacy policy', btn_open:'Open', lbl_impressum:'Legal notice (Impressum)', lbl_terms:'Terms of use', lbl_support:'Support & contact', lf_exit_tip:'End lesson', vplay_side_tip:'Front / both / back', course_load_failed:'The course could not be loaded', srs_days_abbr:'d',
     bugreport_notify_ok:'Thanks, your report was sent',
     bugreport_notify_queued:'No network — we\'ll send it later',
     bugtype_translation:'Bad translation',
@@ -7658,7 +7658,7 @@ const I18N = {
     bugreport_submit:'Отправить',
     bugreport_submitting:'Отправляем…',
     bugreport_privacy_note:'Отправляется: контекст упражнения, ваш комментарий, техническая информация об устройстве и случайный идентификатор установки — без имён и email.',
-     grp_privacy:'Конфиденциальность', lbl_analytics:'Статистика использования', sub_analytics:'Google Firebase Analytics — только с вашего согласия', txt_analytics_info:'Это только статистика использования, <b>без вашего имени и e-mail</b>: выбранный курс, язык интерфейса, этапы уроков (начато, завершено, прервано) и тип устройства. Для этого используется Google Firebase Analytics: в Google передаются случайный идентификатор, данные об устройстве и использовании. Сбор работает только с вашего согласия, а приложение полностью работает и без него.', lbl_privacy_policy:'Политика конфиденциальности', btn_open:'Открыть', lbl_impressum:'Импрессум (Impressum)', lbl_terms:'Условия использования', lbl_support:'Поддержка и контакты',
+     grp_privacy:'Конфиденциальность', lbl_analytics:'Статистика использования', sub_analytics:'Google Firebase Analytics — только с вашего согласия', txt_analytics_info:'Это только статистика использования, <b>без вашего имени и e-mail</b>: выбранный курс, язык интерфейса, этапы уроков (начато, завершено, прервано) и тип устройства. Для этого используется Google Firebase Analytics: в Google передаются случайный идентификатор, данные об устройстве и использовании. Сбор работает только с вашего согласия, а приложение полностью работает и без него.', lbl_privacy_policy:'Политика конфиденциальности', btn_open:'Открыть', lbl_impressum:'Импрессум (Impressum)', lbl_terms:'Условия использования', lbl_support:'Поддержка и контакты', lf_exit_tip:'Завершить урок', vplay_side_tip:'Передняя / обе / задняя', course_load_failed:'Не удалось загрузить курс', srs_days_abbr:'д',
     bugreport_notify_ok:'Спасибо, отчёт отправлен',
     bugreport_notify_queued:'Нет сети — отправим позже',
     bugtype_translation:'Плохой перевод',
@@ -10730,8 +10730,8 @@ function renderVocabCard(){
       const sdays=srsDaysUntil(v.id);
       const sef=(sd.ef||SRS_DEFAULT_EF).toFixed(1);
       srsBadgeHtml=sdays===0
-        ? '<div class="fc-srs-badge fc-srs-due">📅 сьогодні · EF '+sef+'</div>'
-        : '<div class="fc-srs-badge">📅 +'+sdays+'д · EF '+sef+'</div>';
+        ? '<div class="fc-srs-badge fc-srs-due">'+_iconizeText(t('srs_today'))+' · EF '+sef+'</div>'
+        : '<div class="fc-srs-badge">'+_iconizeText('📅')+' +'+sdays+t('srs_days_abbr')+' · EF '+sef+'</div>';
     }
   }
   const srsHintText = t('hint_srs');
@@ -10977,10 +10977,10 @@ function srsSwipe(q){
   // Показуємо фідбек
   const days = result.interval;
   const emoji = srsHintIcon(q);
-  const _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
-  const _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
-  const _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
-  const _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
+  const _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow','ru':'Повторим завтра'}[uiLang]||'Morgen wiederholen';
+  const _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow','ru':'Завтра'}[uiLang]||'Morgen';
+  const _in  = {'de':'In ','uk':'Через ','en':'In ','ru':'Через '}[uiLang]||'In ';
+  const _day = {'de':' Tg.','uk':" дн.",'en':' d.','ru':' дн.'}[uiLang]||' Tg.';
   const label = q===1
     ? _rep
     : q===3
@@ -16004,7 +16004,7 @@ function mcShowCard(){
   // Питання — завжди targetText() = term[primaryLang()] (що вивчаємо)
   document.getElementById('mc-q-term').textContent = targetText(card);
   document.getElementById('mc-q-label').textContent =
-    uiLang==='de' ? 'Was bedeutet das?' : uiLang==='uk' ? 'Що це означає?' : 'What does this mean?';
+    uiLang==='de' ? 'Was bedeutet das?' : uiLang==='uk' ? 'Що це означає?' : uiLang==='ru' ? 'Что это значит?' : 'What does this mean?';
 
   // 4 варіанти: 1 правильний + 3 дистрактори з тієї ж категорії
   const correct = nativeText(card);
@@ -16097,7 +16097,7 @@ function mcShowResult(){
         ${_iconizeText(doneCount===mcState.cards.length ? t('match_perfect') : t('match_good'))}
       </p>
       ${LF && mcState._lfMode
-        ? `<button class="btn" onclick="lfNextStep()" style="width:100%">${uiLang==='uk'?'Далі':uiLang==='en'?'Next':'Weiter'}</button>`
+        ? `<button class="btn" onclick="lfNextStep()" style="width:100%">${uiLang==='uk'?'Далі':uiLang==='ru'?'Далее':uiLang==='en'?'Next':'Weiter'}</button>`
         : `<button class="btn" onclick="startMultipleChoice()" style="margin-right:8px">${t('match_again')}</button>
            <button class="btn" onclick="switchVocabTab(0)">${t('match_cards')}</button>`
       }
@@ -16667,19 +16667,20 @@ function tilesShowResultModal(isOk, correctStr){
   const greatLabels = {
     uk: 'Чудово! Так тримати!',
     de: 'Super! Weiter so!',
-    en: 'Excellent! Keep it up!'
+    en: 'Excellent! Keep it up!',
+    ru: 'Отлично! Так держать!'
   };
 
   const btnLabel = isOk
     ? (greatLabels[uiLang] || greatLabels.en || greatLabels.de)
-    : (uiLang==='uk' ? 'Зрозуміло' : uiLang==='en' ? 'Got it' : 'Verstanden');
+    : (uiLang==='uk'?'Зрозуміло':uiLang==='ru'?'Понятно':uiLang==='en'?'Got it':'Verstanden');
 
   overlay.innerHTML = `
     <div class="tiles-result-sheet ${isOk?'ok':'nok'}">
       <div class="tiles-result-icon">${movaIcon(isOk ? 'check' : 'cross')}</div>
       <div class="tiles-result-label">${isOk
-        ? (uiLang==='uk'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!')
-        : (uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')
+        ? (uiLang==='uk'?'Правильно!':uiLang==='ru'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!')
+        : (uiLang==='uk'?'Неправильно':uiLang==='ru'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')
       }</div>
       <div class="tiles-result-correct">${correctStr}</div>
       <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action" style="visibility:hidden">
@@ -16960,10 +16961,10 @@ function defShowResultModal(isOk, fullSentence){
   const overlay = document.createElement('div');
   overlay.id = 'tiles-result-overlay';
   overlay.className = 'tiles-result-overlay';
-  const greatLabels = { uk:'Чудово! Так тримати!', de:'Super! Weiter so!', en:'Excellent! Keep it up!' };
+  const greatLabels = { uk:'Чудово! Так тримати!', de:'Super! Weiter so!', en:'Excellent! Keep it up!', ru:'Отлично! Так держать!' };
   const btnLabel = isOk
     ? (greatLabels[uiLang] || greatLabels.en || greatLabels.de)
-    : (uiLang==='uk'?'Зрозуміло':uiLang==='en'?'Got it':'Verstanden');
+    : (uiLang==='uk'?'Зрозуміло':uiLang==='ru'?'Понятно':uiLang==='en'?'Got it':'Verstanden');
   // Повне речення з виділенням правильних слів золотим
   const lang = defGetDisplayLang();
   const rawHtml = defState.current?.def?.[lang] || fullSentence;
@@ -16983,7 +16984,7 @@ function defShowResultModal(isOk, fullSentence){
   overlay.innerHTML = `
     <div class="tiles-result-sheet ${isOk?'ok':'nok'}">
       <div class="tiles-result-icon">${movaIcon(isOk?'check':'cross')}</div>
-      <div class="tiles-result-label">${isOk?(uiLang==='uk'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!'):(uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')}</div>
+      <div class="tiles-result-label">${isOk?(uiLang==='uk'?'Правильно!':uiLang==='ru'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!'):(uiLang==='uk'?'Неправильно':uiLang==='ru'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')}</div>
       <div class="tiles-result-correct" style="line-height:1.3;text-align:center"><div class="tiles-result-sentence-text" data-audio-field="def">${highlighted}</div>${translationHtml}</div>
       <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action" style="visibility:hidden">${btnLabel}</button>
     </div>`;
@@ -17295,10 +17296,10 @@ function dtShowResultModal(isOk, given, oks){
   const overlay = document.createElement('div');
   overlay.id = 'tiles-result-overlay';
   overlay.className = 'tiles-result-overlay';
-  const greatLabels = { uk:'Чудово! Так тримати!', de:'Super! Weiter so!', en:'Excellent! Keep it up!' };
+  const greatLabels = { uk:'Чудово! Так тримати!', de:'Super! Weiter so!', en:'Excellent! Keep it up!', ru:'Отлично! Так держать!' };
   const btnLabel = isOk
     ? (greatLabels[uiLang] || greatLabels.en || greatLabels.de)
-    : (uiLang==='uk'?'Зрозуміло':uiLang==='en'?'Got it':'Verstanden');
+    : (uiLang==='uk'?'Зрозуміло':uiLang==='ru'?'Понятно':uiLang==='en'?'Got it':'Verstanden');
   const lang = defGetDisplayLang();
   const rawHtml = dtState.current?.def?.[lang] || dtState.fullSentence;
   const highlighted = rawHtml
@@ -17316,14 +17317,14 @@ function dtShowResultModal(isOk, given, oks){
   if(!isOk){
     const wrong = given.map((g,i) => oks[i] ? '' : _escapeHtmlText(g)).filter(Boolean);
     if(wrong.length){
-      const lbl = uiLang==='uk' ? 'Ваша відповідь' : uiLang==='en' ? 'Your answer' : 'Ihre Antwort';
+      const lbl = uiLang==='uk'?'Ваша відповідь':uiLang==='ru'?'Ваш ответ':uiLang==='en'?'Your answer':'Ihre Antwort';
       mineHtml = `<div style="margin-top:8px;font-size:13px;opacity:.75;text-decoration:line-through">${lbl}: ${wrong.join(', ')}</div>`;
     }
   }
   overlay.innerHTML = `
     <div class="tiles-result-sheet ${isOk?'ok':'nok'}">
       <div class="tiles-result-icon">${movaIcon(isOk?'check':'cross')}</div>
-      <div class="tiles-result-label">${isOk?(uiLang==='uk'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!'):(uiLang==='uk'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')}</div>
+      <div class="tiles-result-label">${isOk?(uiLang==='uk'?'Правильно!':uiLang==='ru'?'Правильно!':uiLang==='en'?'Correct!':'Richtig!'):(uiLang==='uk'?'Неправильно':uiLang==='ru'?'Неправильно':uiLang==='en'?'Wrong':'Falsch')}</div>
       <div class="tiles-result-correct" style="line-height:1.3;text-align:center"><div class="tiles-result-sentence-text" data-audio-field="def">${highlighted}</div>${translationHtml}${mineHtml}</div>
       <button class="tiles-result-btn ${isOk?'ok':'nok'}" id="tiles-result-action" style="visibility:hidden">${btnLabel}</button>
     </div>`;
@@ -19819,20 +19820,20 @@ function _lfSetStepName(el, stepKey, text, iconOverride){
 }
 
 const LF_STEP_LABELS = {
-  cards:    {de:'Karten',         uk:'Картки',             en:'Cards'},
-  def:      {de:'Lückentext',     uk:'Доповни речення',    en:'Fill-in'},
-  matching: {de:'Paare',          uk:'Пари',               en:'Pairs'},
-  choice:   {de:'Auswahl',        uk:'Вибір',              en:'Choice'},
-  tiles:    {de:'Bilde Satz / Ausdruck', uk:'Склади речення / вираз', en:'Build sentence / phrase'},
+  cards:    {de:'Karten',         uk:'Картки',             en:'Cards', ru:'Карточки'},
+  def:      {de:'Lückentext',     uk:'Доповни речення',    en:'Fill-in', ru:'Дополни предложения'},
+  matching: {de:'Paare',          uk:'Пари',               en:'Pairs', ru:'Пары'},
+  choice:   {de:'Auswahl',        uk:'Вибір',              en:'Choice', ru:'Выбор'},
+  tiles:    {de:'Bilde Satz / Ausdruck', uk:'Склади речення / вираз', en:'Build sentence / phrase', ru:'Составь предложение / выражение'},
   deftype:  {de:'Wort eintippen',  uk:'Впиши слово',        en:'Type the word', ru:'Впиши слово'},
-  quiz:     {de:'Quiz',           uk:'Квіз',               en:'Quiz'},
-  sb_learn: {de:'Sprachbaustein', uk:'Мовна конструкція',  en:'Language Pattern'},
-  dlg_learn:{de:'Dialogue',       uk:'Dialogue',           en:'Dialogue'},
-  frm_learn:{de:'Forumsbeitrag',  uk:'Допис на форумі',    en:'Forum post'},
-  eml_learn:{de:'E-Mail',         uk:'E-Mail',             en:'E-Mail'},
-  sb_prac:  {de:'Grammatik',       uk:'Граматика',          en:'Grammar'},
+  quiz:     {de:'Quiz',           uk:'Квіз',               en:'Quiz', ru:'Квиз'},
+  sb_learn: {de:'Sprachbaustein', uk:'Мовна конструкція',  en:'Language Pattern', ru:'Языковая конструкция'},
+  dlg_learn:{de:'Dialog',         uk:'Діалог',           en:'Dialogue', ru:'Диалог'},
+  frm_learn:{de:'Forumsbeitrag',  uk:'Допис на форумі',    en:'Forum post', ru:'Пост на форуме'},
+  eml_learn:{de:'E-Mail',         uk:'E-Mail',             en:'E-Mail', ru:'E-Mail'},
+  sb_prac:  {de:'Grammatik',       uk:'Граматика',          en:'Grammar', ru:'Грамматика'},
   speech:   {de:'Aussprache',      uk:'Вимова',             en:'Pronunciation', ru:'Произношение'},
-  result:   {de:'Ergebnis',       uk:'Результат',          en:'Result'},
+  result:   {de:'Ergebnis',       uk:'Результат',          en:'Result', ru:'Результат'},
 };
 
 function startLessonFlow(lessonId){
@@ -20576,7 +20577,7 @@ var _lfSBHandlers = {
 
   onSwipeUp: function(unit){
     srsRate(unit.cardId, 1);
-    var _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
+    var _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow','ru':'Повторим завтра'}[uiLang]||'Morgen wiederholen';
     showSrsHint(srsHintIcon(1), _rep, 1, 'lf-unit-card');
   },
 
@@ -20584,9 +20585,9 @@ var _lfSBHandlers = {
     srsRate(unit.cardId, 5);
     var d = srsLoad(unit.cardId);
     var days = d.interval || 1;
-    var _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
-    var _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
-    var _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
+    var _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow','ru':'Завтра'}[uiLang]||'Morgen';
+    var _in  = {'de':'In ','uk':'Через ','en':'In ','ru':'Через '}[uiLang]||'In ';
+    var _day = {'de':' Tg.','uk':" дн.",'en':' d.','ru':' дн.'}[uiLang]||' Tg.';
     var label = days===1 ? _tmr : _in+days+_day;
     showSrsHint(srsHintIcon(5), label, 5, 'lf-unit-card');
   },
@@ -23456,7 +23457,7 @@ var _lfVocabHandlers = {
   onSwipeUp: function(unit){
     var side = unit.side === 'term' ? undefined : unit.side;
     srsRate(unit.cardId, 1, side);
-    var _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
+    var _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow','ru':'Повторим завтра'}[uiLang]||'Morgen wiederholen';
     showSrsHint(srsHintIcon(1), _rep, 1, 'lf-unit-card');
   },
 
@@ -23465,9 +23466,9 @@ var _lfVocabHandlers = {
     srsRate(unit.cardId, 5, side);
     var d = srsLoad(unit.cardId, side);
     var days = d.interval || 1;
-    var _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
-    var _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
-    var _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
+    var _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow','ru':'Завтра'}[uiLang]||'Morgen';
+    var _in  = {'de':'In ','uk':'Через ','en':'In ','ru':'Через '}[uiLang]||'In ';
+    var _day = {'de':' Tg.','uk':" дн.",'en':' d.','ru':' дн.'}[uiLang]||' Tg.';
     var label = days===1 ? _tmr : _in+days+_day;
     showSrsHint(srsHintIcon(5), label, 5, 'lf-unit-card');
   },
@@ -24312,12 +24313,12 @@ function _quizShowEmpty(){
     lessonId: 'l01',  // опційно
     region: 'BY',     // опційно: id з REGIONS (рядок або масив); без нього — для всіх
     img: 'q001.png',  // опційно: картинка питання (img/&lt;id курсу&gt;/)
-    question: { de:'Was ist ...?', uk:'Що таке ...?', en:'What is ...?' },
+    question: { de:'Was ist ...?', uk:'Що таке ...?', en:'What is ...?', ru:'Что такое ...?' },
     answers: [
-      { de:'...', uk:'...', en:'...', correct:true },
-      { de:'...', uk:'...', en:'...', img:'a2.png' },  // img — опційно
-      { de:'...', uk:'...', en:'...' },
-      { de:'...', uk:'...', en:'...' },
+      { de:'...', uk:'...', en:'...', ru:'...', correct:true },
+      { de:'...', uk:'...', en:'...', ru:'...', img:'a2.png' },  // img — опційно
+      { de:'...', uk:'...', en:'...', ru:'...' },
+      { de:'...', uk:'...', en:'...', ru:'...' },
     ]
   }
 ];</pre>
@@ -24559,7 +24560,7 @@ function _quizShowResult(){
       <div class="quiz-result-btns">
         ${quizState._lfMode ? `
           <button class="lr-btn-primary" onclick="lfNextStep()">
-            ${uiLang==='uk'?'Далі до результату':uiLang==='en'?'Continue':'Weiter'}
+            ${uiLang==='uk'?'Далі до результату':uiLang==='ru'?'Далее к результату':uiLang==='en'?'Continue':'Weiter'}
           </button>` : `
           <button class="lr-btn-primary" onclick="startQuiz()">
             ${t('quiz_again')}
@@ -24961,8 +24962,8 @@ function renderDialogueCard(){
       const sdays=srsDaysUntil(d.id);
       const sef=(sd.ef||SRS_DEFAULT_EF).toFixed(1);
       srsBadgeHtml = sdays===0
-        ? '<div class="fc-srs-badge fc-srs-due">📅 сьогодні · EF '+sef+'</div>'
-        : '<div class="fc-srs-badge">📅 +'+sdays+'д · EF '+sef+'</div>';
+        ? '<div class="fc-srs-badge fc-srs-due">'+_iconizeText(t('srs_today'))+' · EF '+sef+'</div>'
+        : '<div class="fc-srs-badge">'+_iconizeText('📅')+' +'+sdays+t('srs_days_abbr')+' · EF '+sef+'</div>';
     }
   }
   const srsHintText = t('hint_srs');
@@ -25071,10 +25072,10 @@ function dlgSrsSwipe(q){
 
   const days=result.interval;
   const emoji = srsHintIcon(q);
-  const _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow'}[uiLang]||'Morgen wiederholen';
-  const _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow'}[uiLang]||'Morgen';
-  const _in  = {'de':'In ','uk':'Через ','en':'In '}[uiLang]||'In ';
-  const _day = {'de':' Tg.','uk':" дн.",'en':' d.'}[uiLang]||' Tg.';
+  const _rep = {'de':'Morgen wiederholen','uk':'Повторимо завтра','en':'Repeat tomorrow','ru':'Повторим завтра'}[uiLang]||'Morgen wiederholen';
+  const _tmr = {'de':'Morgen','uk':'Завтра','en':'Tomorrow','ru':'Завтра'}[uiLang]||'Morgen';
+  const _in  = {'de':'In ','uk':'Через ','en':'In ','ru':'Через '}[uiLang]||'In ';
+  const _day = {'de':' Tg.','uk':" дн.",'en':' d.','ru':' дн.'}[uiLang]||' Tg.';
   const label = q===1 ? _rep : q===3 ? _in+days+_day : (days===1 ? _tmr : _in+days+_day);
   showSrsHint(emoji, label, q, 'dlg-fc-area');
 
@@ -27462,8 +27463,8 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   // Explanation always in UI language; result label in UI language
   var explLang = typeof uiLang !== 'undefined' ? uiLang : 'de';
   var expl=sbL(card.explanation, explLang).replace(/„([^"]+)"/g,'<strong>„$1"</strong>');
-  var resultOk  = explLang==='uk'?'Правильно!':explLang==='en'?'Correct!':'Richtig!';
-  var resultFail= explLang==='uk'?'Неправильно — правильно: ':explLang==='en'?'Wrong — correct: ':'Falsch — richtig: ';
+  var resultOk  = explLang==='uk'?'Правильно!':explLang==='ru'?'Правильно!':explLang==='en'?'Correct!':'Richtig!';
+  var resultFail= explLang==='uk'?'Неправильно — правильно: ':explLang==='ru'?'Неправильно — правильно: ':explLang==='en'?'Wrong — correct: ':'Falsch — richtig: ';
 
   // Показ фідбеку (модалка в уроці / inline-блок у самостійній практиці)
   // винесено в окрему функцію — викликається лише ПІСЛЯ того, як дограє

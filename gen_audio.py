@@ -1552,6 +1552,7 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
                 stats["failed"] = stats.get("failed", 0) + 1
                 stats["failed_mkeys"] = stats.get("failed_mkeys", [])
                 stats["failed_mkeys"].append(task["mkey"])
+                stats.setdefault("failed_reasons", {})[task["mkey"]] = str(last_error)
                 stats["consecutive_failures"] = stats.get("consecutive_failures", 0) + 1
                 # Fail-fast: N провалів ПІДРЯД (без жодного успіху між
                 # ними) — швидше за все, не проблема тексту, а Microsoft
@@ -2431,6 +2432,7 @@ async def main():
         print(f"⚠️  Не вдалося згенерувати {stats['failed']} файл(ів) навіть після {RETRY_ATTEMPTS} спроб — запустіть скрипт ще раз, він доробить лише їх:", flush=True)
         for mkey in stats["failed_mkeys"]:
             print(f"   · {mkey}", flush=True)
+            print(f"       причина: {stats.get('failed_reasons', {}).get(mkey, '—')}", flush=True)
         sys.exit(1)
 
 if __name__ == "__main__":
