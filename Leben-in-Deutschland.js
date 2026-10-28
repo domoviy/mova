@@ -199,7 +199,7 @@ var QUIZ = [
       { de: "die Menschen das Wahlrecht haben.", en: "", uk: "", ru: "" },
       { de: "hier Meinungsfreiheit gilt.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "<b>Meinungsfreiheit</b> ist ein Grundrecht. Sie steht in Artikel 5 Absatz 1 des Grundgesetzes:<br><br>„Jeder hat das Recht, <b>seine Meinung in Wort, Schrift und Bild frei zu äußern</b> und zu verbreiten und sich aus allgemein zugänglichen Quellen ungehindert zu unterrichten.“<br><br>Deshalb darf man in Deutschland auch offen Kritik an der Regierung üben. Religionsfreiheit (Art. 4 GG) schützt den Glauben, das Wahlrecht (Art. 38 GG) die Teilnahme an Wahlen – beides erklärt nicht das Recht, die Regierung offen zu kritisieren.", en: "", uk: "<b>Свобода слова</b> — основне право. Вона закріплена в статті 5, абзац 1 Основного закону (Grundgesetz):<br><br>«Кожен має право <b>вільно висловлювати свою думку усно, письмово та в зображеннях</b> і поширювати її, а також без перешкод отримувати інформацію із загальнодоступних джерел».<br><br>Тому в Німеччині можна відкрито критикувати уряд. Свобода віросповідання (ст. 4) захищає віру, а виборче право (ст. 38) — участь у виборах; жодне з них не є підставою для права відкрито критикувати уряд.", ru: "" }
+    expl: { de: "<b>Meinungsfreiheit</b> ist ein Grundrecht. Sie steht in Artikel 5 Absatz 1 des Grundgesetzes:<br><br>„Jeder hat das Recht, <b>seine Meinung in Wort, Schrift und Bild frei zu äußern</b> und zu verbreiten und sich aus allgemein zugänglichen Quellen ungehindert zu unterrichten.“<br><br>Deshalb darf man in Deutschland auch offen Kritik an der Regierung üben. Religionsfreiheit (Art. 4 GG) schützt den Glauben, das Wahlrecht (Art. 38 GG) die Teilnahme an Wahlen – beides erklärt nicht das Recht, die Regierung offen zu kritisieren.", en: "<b>Freedom of expression</b> is a basic right. It is set out in Article 5, paragraph 1 of the Basic Law (Grundgesetz):<br><br>“Everyone has the right <b>freely to express and disseminate their opinion in speech, writing and pictures</b> and to inform themselves without hindrance from generally accessible sources.”<br><br>That is why in Germany you may also openly criticise the government. Freedom of religion (Art. 4 GG) protects belief, and the right to vote (Art. 38 GG) protects taking part in elections – neither explains the right to openly criticise the government.", uk: "<b>Свобода слова</b> — основне право. Вона закріплена в статті 5, абзац 1 Основного закону (Grundgesetz):<br><br>«Кожен має право <b>вільно висловлювати свою думку усно, письмово та в зображеннях</b> і поширювати її, а також без перешкод отримувати інформацію із загальнодоступних джерел».<br><br>Тому в Німеччині можна відкрито критикувати уряд. Свобода віросповідання (ст. 4) захищає віру, а виборче право (ст. 38) — участь у виборах; жодне з них не є підставою для права відкрито критикувати уряд.", ru: "<b>Свобода слова</b> — основное право. Она закреплена в статье 5, абзац 1 Основного закона (Grundgesetz):<br><br>«Каждый имеет право <b>свободно выражать и распространять своё мнение устно, письменно и в изображениях</b>, а также беспрепятственно получать информацию из общедоступных источников».<br><br>Поэтому в Германии можно открыто критиковать правительство. Свобода вероисповедания (ст. 4) защищает веру, а избирательное право (ст. 38) — участие в выборах; ни то, ни другое не является основанием для права открыто критиковать правительство." },
   },
   {
     id: "lid_002",
@@ -212,7 +212,7 @@ var QUIZ = [
       { de: "Politikunterricht teilnimmt.", en: "", uk: "", ru: "" },
       { de: "Sprachunterricht teilnimmt.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Bis zum 14. Lebensjahr entscheiden die Eltern</b>, ob ihr Kind am <b>Religionsunterricht</b> teilnimmt. Das folgt aus der Religionsfreiheit (Art. 4 GG) und dem Gesetz über die religiöse Kindererziehung. Ab 14 Jahren entscheidet das Kind selbst.<br><br>Geschichts-, Politik- und Sprachunterricht sind normale Schulfächer. Hier können Eltern nicht entscheiden, ob ihr Kind teilnimmt.", en: "<b>Until the age of 14, the parents decide</b> whether their child takes part in <b>religious education</b>. This follows from freedom of religion (Art. 4 GG) and the law on the religious upbringing of children. From the age of 14, the child decides alone.<br><br>History, politics and language classes are normal school subjects. Parents cannot decide whether their child takes part in them.", uk: "<b>До 14 років рішення ухвалюють батьки</b>: чи ходитиме дитина на <b>уроки релігії</b>. Це випливає зі свободи віросповідання (ст. 4 GG) і закону про релігійне виховання дітей. З 14 років дитина вирішує сама.<br><br>Історія, політика та мови — звичайні шкільні предмети. Тут батьки не можуть вирішувати, чи відвідуватиме їх дитина.", ru: "<b>До 14 лет решение принимают родители</b>: будет ли ребёнок ходить на <b>уроки религии</b>. Это вытекает из свободы вероисповедания (ст. 4 GG) и закона о религиозном воспитании детей. С 14 лет ребёнок решает сам.<br><br>История, политика и языки — обычные школьные предметы. Здесь родители не могут решать, будет ли ребёнок их посещать." },
   },
   {
     id: "lid_003",
@@ -225,7 +225,7 @@ var QUIZ = [
       { de: "Nur Deutsche müssen die Gesetze befolgen.", en: "", uk: "", ru: "" },
       { de: "Die Gerichte machen die Gesetze.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In einem <b>Rechtsstaat</b> gelten die Gesetze <b>für alle – auch für den Staat selbst</b>. Regierung und Verwaltung dürfen nur nach Recht und Gesetz handeln (Art. 20 Abs. 3 GG).<br><br>Falsch sind: „Der Staat muss sich nicht an Gesetze halten“ (das wäre Willkür) und „nur Deutsche“ (die Gesetze gelten für alle Menschen im Land). Die Gesetze macht das Parlament, nicht die Gerichte – die Gerichte wenden sie an.", en: "In a <b>state governed by the rule of law</b>, the laws apply <b>to everyone – including the state itself</b>. The government and the administration may act only according to law and justice (Art. 20 para. 3 GG).<br><br>Wrong are: “The state does not have to obey the laws” (that would be arbitrary rule) and “only Germans” (the laws apply to all people in the country). Laws are made by parliament, not by the courts – the courts apply them.", uk: "У <b>правовій державі</b> закони діють <b>для всіх — і для самої держави</b>. Уряд і адміністрація мають право діяти лише згідно з правом і законом (ст. 20 абз. 3 GG).<br><br>Неправильні варіанти: «Держава не мусить дотримуватися законів» (це була б сваволя) і «лише німці» (закони діють для всіх людей у країні). Закони ухвалює парламент, а не суди — суди їх застосовують.", ru: "В <b>правовом государстве</b> законы действуют <b>для всех — и для самого государства</b>. Правительство и администрация вправе действовать только в соответствии с правом и законом (ст. 20 абз. 3 GG).<br><br>Неправильные варианты: «Государство не обязано соблюдать законы» (это был бы произвол) и «только немцы» (законы действуют для всех людей в стране). Законы принимает парламент, а не суды — суды их применяют." },
   },
   {
     id: "lid_004",
@@ -238,7 +238,7 @@ var QUIZ = [
       { de: "Meinungsfreiheit", en: "", uk: "", ru: "", correct: true },
       { de: "Selbstjustiz", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Meinungsfreiheit</b> ist ein Grundrecht (Art. 5 GG). Jeder darf seine Meinung frei sagen und schreiben.<br><br>Waffenbesitz ist kein Grundrecht, sondern streng gesetzlich geregelt. Das „Faustrecht“ (Recht des Stärkeren) und die Selbstjustiz sind verboten: Nur der Staat darf Gewalt anwenden und Strafen verhängen.", en: "<b>Freedom of expression</b> is a basic right (Art. 5 GG). Everyone may freely say and write their opinion.<br><br>Owning weapons is not a basic right but is strictly regulated by law. “Might makes right” (the right of the strongest) and taking the law into your own hands are forbidden: only the state may use force and impose punishments.", uk: "<b>Свобода слова</b> — основне право (ст. 5 GG). Кожен може вільно висловлювати й писати свою думку.<br><br>Володіння зброєю — не основне право, а суворо врегульоване законом. «Кулачне право» (право сильнішого) і самосуд заборонені: застосовувати силу й призначати покарання може лише держава.", ru: "<b>Свобода слова</b> — основное право (ст. 5 GG). Каждый может свободно высказывать и писать своё мнение.<br><br>Владение оружием — не основное право, а строго регулируется законом. «Кулачное право» (право сильного) и самосуд запрещены: применять силу и назначать наказания может только государство." },
   },
   {
     id: "lid_005",
@@ -251,7 +251,7 @@ var QUIZ = [
       { de: "Die Wählerin/der Wähler darf bei der Wahl weder beeinflusst noch zu einer bestimmten Stimmabgabe gezwungen werden und keine Nachteile durch die Wahl haben.", en: "", uk: "", ru: "", correct: true },
       { de: "Alle wahlberechtigten Personen müssen wählen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "„Frei“ bedeutet: Die Wählerin/der Wähler entscheidet <b>ohne Druck, Zwang und Drohung</b> und hat <b>keine Nachteile</b> durch die Wahl (Art. 38 GG: Wahlen sind allgemein, unmittelbar, frei, gleich und geheim).<br><br>Stimmenkauf ist verboten. Eine Wahlpflicht gibt es in Deutschland nicht. Auch das Wahlrecht hängt nicht davon ab, ob jemand schon einmal im Gefängnis war.", en: "“Free” means: the voter decides <b>without pressure, coercion or threats</b> and suffers <b>no disadvantages</b> because of the vote (Art. 38 GG: elections are universal, direct, free, equal and secret).<br><br>Buying votes is forbidden. There is no compulsory voting in Germany. The right to vote also does not depend on whether someone has ever been in prison.", uk: "«Вільні» означає: виборець вирішує <b>без тиску, примусу й погроз</b> і <b>не зазнає жодних негативних наслідків</b> через свій вибір (ст. 38 GG: вибори загальні, безпосередні, вільні, рівні й таємні).<br><br>Купувати голоси заборонено. Обовʼязкового голосування в Німеччині немає. Право голосу також не залежить від того, чи сиділа людина колись у вʼязниці.", ru: "«Свободные» означает: избиратель решает <b>без давления, принуждения и угроз</b> и <b>не имеет никаких неблагоприятных последствий</b> из-за своего выбора (ст. 38 GG: выборы всеобщие, прямые, свободные, равные и тайные).<br><br>Покупать голоса запрещено. Обязательного голосования в Германии нет. Право голоса также не зависит от того, сидел ли человек когда-нибудь в тюрьме." },
   },
   {
     id: "lid_006",
@@ -264,7 +264,7 @@ var QUIZ = [
       { de: "Deutsches Gesetz", en: "", uk: "", ru: "" },
       { de: "Grundgesetz", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die deutsche Verfassung heißt <b>Grundgesetz</b>. Es trat am 23. Mai 1949 in Kraft und gilt seit 1990 für das ganze wiedervereinigte Deutschland.<br><br>„Volksgesetz“, „Bundesgesetz“ und „Deutsches Gesetz“ sind keine Namen der Verfassung. „Bundesverfassung“ heißt die Verfassung in Österreich und in der Schweiz.", en: "The German constitution is called the <b>Basic Law</b>, in German “Grundgesetz”. It came into force on 23 May 1949 and has applied to the whole of reunified Germany since 1990.<br><br>“Volksgesetz”, “Bundesgesetz” and “Deutsches Gesetz” are not names of the constitution. “Bundesverfassung” is the name of the constitution in Austria and Switzerland.", uk: "Німецька конституція називається <b>Основний закон</b>, німецькою «Grundgesetz». Вона набула чинності 23 травня 1949 року і з 1990 року діє для всієї воззʼєднаної Німеччини.<br><br>«Volksgesetz», «Bundesgesetz» і «Deutsches Gesetz» — не назви конституції. «Bundesverfassung» — назва конституції в Австрії та Швейцарії.", ru: "Германская конституция называется <b>Основной закон</b>, по-немецки «Grundgesetz». Она вступила в силу 23 мая 1949 года и с 1990 года действует для всей воссоединённой Германии.<br><br>«Volksgesetz», «Bundesgesetz» и «Deutsches Gesetz» — не названия конституции. «Bundesverfassung» — название конституции в Австрии и Швейцарии." },
   },
   {
     id: "lid_007",
@@ -277,7 +277,7 @@ var QUIZ = [
       { de: "Arbeit", en: "", uk: "", ru: "" },
       { de: "Wohnung", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Grundgesetz garantiert die <b>Glaubens- und Gewissensfreiheit</b> (Art. 4 GG). Jeder darf glauben oder nicht glauben und frei nach seinem Gewissen leben.<br><br>Unterhaltung, Arbeit und Wohnung sind keine Grundrechte. Der Staat garantiert zwar die freie Berufswahl (Art. 12 GG), aber keinen Arbeitsplatz und keine Wohnung.", en: "The Basic Law guarantees <b>freedom of belief and conscience</b> (Art. 4 GG). Everyone may believe or not believe and live freely according to their conscience.<br><br>Entertainment, work and housing are not basic rights. The state does guarantee free choice of occupation (Art. 12 GG), but not a job or an apartment.", uk: "Основний закон гарантує <b>свободу віри та совісті</b> (ст. 4 GG). Кожен може вірити чи не вірити і вільно жити за своїм сумлінням.<br><br>Розваги, робота й житло — не основні права. Держава гарантує вільний вибір професії (ст. 12 GG), але не робоче місце і не квартиру.", ru: "Основной закон гарантирует <b>свободу веры и совести</b> (ст. 4 GG). Каждый может верить или не верить и свободно жить по своей совести.<br><br>Развлечения, работа и жильё — не основные права. Государство гарантирует свободный выбор профессии (ст. 12 GG), но не рабочее место и не квартиру." },
   },
   {
     id: "lid_008",
@@ -290,7 +290,7 @@ var QUIZ = [
       { de: "Jeder Mensch darf seine Meinung sagen.", en: "", uk: "", ru: "" },
       { de: "Alle sind vor dem Gesetz gleich.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Im Grundgesetz steht, dass alle Menschen <b>vor dem Gesetz gleich</b> sind (Art. 3 GG). Das bedeutet gleiche Rechte, aber nicht <b>gleich viel Geld</b>. Deshalb steht dieser Satz nicht im Grundgesetz.<br><br>Die anderen drei Sätze stehen sinngemäß dort: die Menschenwürde (Art. 1), die Meinungsfreiheit (Art. 5) und die Gleichheit vor dem Gesetz (Art. 3).", en: "The Basic Law says that all people are <b>equal before the law</b> (Art. 3 GG). That means equal rights, but not <b>the same amount of money</b>. That is why this sentence is not in the Basic Law.<br><br>The other three sentences are there in substance: human dignity (Art. 1), freedom of expression (Art. 5) and equality before the law (Art. 3).", uk: "В Основному законі сказано, що всі люди <b>рівні перед законом</b> (ст. 3 GG). Це означає рівні права, але не <b>однакову кількість грошей</b>. Тому цього речення в Основному законі немає.<br><br>Інші три речення там є за змістом: людська гідність (ст. 1), свобода слова (ст. 5) і рівність перед законом (ст. 3).", ru: "В Основном законе сказано, что все люди <b>равны перед законом</b> (ст. 3 GG). Это означает равные права, но не <b>одинаковое количество денег</b>. Поэтому этого предложения в Основном законе нет.<br><br>Остальные три предложения там есть по смыслу: человеческое достоинство (ст. 1), свобода слова (ст. 5) и равенство перед законом (ст. 3)." },
   },
   {
     id: "lid_009",
@@ -303,7 +303,7 @@ var QUIZ = [
       { de: "Asyl", en: "", uk: "", ru: "", correct: true },
       { de: "Meinungsfreiheit", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das <b>Asylrecht</b> (Art. 16a GG) schützt Menschen, die in ihrer Heimat politisch verfolgt werden. Deutsche brauchen dieses Recht nicht, deshalb gilt es nur für Ausländerinnen und Ausländer.<br><br>Menschenwürde, Meinungsfreiheit und der Schutz der Familie gelten dagegen auch für Deutsche – und für alle anderen Menschen in Deutschland.", en: "The <b>right of asylum</b> (Art. 16a GG) protects people who are politically persecuted in their home country. Germans do not need this right, so it applies only to foreigners.<br><br>Human dignity, freedom of expression and the protection of the family, on the other hand, also apply to Germans – and to all other people in Germany.", uk: "<b>Право на притулок</b> (ст. 16a GG) захищає людей, яких переслідують у рідній країні з політичних причин. Німцям це право не потрібне, тому воно стосується лише іноземців.<br><br>Людська гідність, свобода слова й захист родини, навпаки, стосуються і німців — і всіх інших людей у Німеччині.", ru: "<b>Право на убежище</b> (ст. 16a GG) защищает людей, которых преследуют на родине по политическим причинам. Немцам это право не нужно, поэтому оно относится только к иностранцам.<br><br>Человеческое достоинство, свобода слова и защита семьи, напротив, относятся и к немцам — и ко всем остальным людям в Германии." },
   },
   {
     id: "lid_010",
@@ -316,7 +316,7 @@ var QUIZ = [
       { de: "die Todesstrafe", en: "", uk: "", ru: "" },
       { de: "die Geldstrafe", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Eine <b>Geldstrafe</b> ist eine normale Strafe im deutschen Strafrecht und mit dem Grundgesetz vereinbar.<br><br>Prügelstrafe und Folter verletzen die <b>Menschenwürde</b> (Art. 1 GG). Die <b>Todesstrafe</b> ist abgeschafft (Art. 102 GG: „Die Todesstrafe ist abgeschafft.“).", en: "A <b>fine</b> is a normal punishment in German criminal law and is compatible with the Basic Law.<br><br>Corporal punishment and torture violate <b>human dignity</b> (Art. 1 GG). The <b>death penalty</b> has been abolished (Art. 102 GG: “The death penalty is abolished.”).", uk: "<b>Грошовий штраф</b> — звичайне покарання в німецькому кримінальному праві, сумісне з Основним законом.<br><br>Тілесні покарання й тортури порушують <b>людську гідність</b> (ст. 1 GG). <b>Смертну кару</b> скасовано (ст. 102 GG: «Смертну кару скасовано»).", ru: "<b>Денежный штраф</b> — обычное наказание в немецком уголовном праве, совместимое с Основным законом.<br><br>Телесные наказания и пытки нарушают <b>человеческое достоинство</b> (ст. 1 GG). <b>Смертная казнь</b> отменена (ст. 102 GG: «Смертная казнь отменена»)." },
   },
   {
     id: "lid_011",
@@ -329,7 +329,7 @@ var QUIZ = [
       { de: "Gesetzbuch", en: "", uk: "", ru: "" },
       { de: "Verfassungsvertrag", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Verfassung der Bundesrepublik heißt <b>Grundgesetz</b>. Der Name sollte 1949 zeigen, dass es zunächst nur eine vorläufige Grundlage für Westdeutschland war. Heute ist es die dauerhafte Verfassung für ganz Deutschland.<br><br>„Bundesverfassung“ ist der Name in Österreich und der Schweiz. Ein „Gesetzbuch“ ist eine Sammlung von Gesetzen, zum Beispiel das Bürgerliche Gesetzbuch (BGB).", en: "The constitution of the Federal Republic is called the <b>Basic Law</b>, in German “Grundgesetz”. In 1949 the name was meant to show that it was at first only a provisional basis for West Germany. Today it is the permanent constitution for the whole of Germany.<br><br>“Bundesverfassung” is the name used in Austria and Switzerland. A “Gesetzbuch” is a collection of laws, for example the Civil Code (BGB).", uk: "Конституція Федеративної Республіки називається <b>Основний закон</b>, німецькою «Grundgesetz». У 1949 році така назва мала показати, що спершу це була лише тимчасова основа для Західної Німеччини. Сьогодні це постійна конституція для всієї Німеччини.<br><br>«Bundesverfassung» — назва в Австрії та Швейцарії. «Gesetzbuch» — це збірка законів, наприклад Цивільний кодекс (BGB).", ru: "Конституция Федеративной Республики называется <b>Основной закон</b>, по-немецки «Grundgesetz». В 1949 году такое название должно было показать, что сначала это была лишь временная основа для Западной Германии. Сегодня это постоянная конституция для всей Германии.<br><br>«Bundesverfassung» — название в Австрии и Швейцарии. «Gesetzbuch» — это сборник законов, например Гражданский кодекс (BGB)." },
   },
   {
     id: "lid_012",
@@ -342,7 +342,7 @@ var QUIZ = [
       { de: "Nein, denn die Pressefreiheit ist ein Grundrecht. Sie kann nicht abgeschafft werden.", en: "", uk: "", ru: "", correct: true },
       { de: "Nein, denn nur der Bundesrat kann die Pressefreiheit abschaffen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Nein.</b> Die Pressefreiheit ist ein <b>Grundrecht</b> (Art. 5 GG). Kein Grundrecht darf in seinem Wesensgehalt angetastet werden (Art. 19 Abs. 2 GG). Auch eine Mehrheit im Bundestag kann die Pressefreiheit deshalb nicht abschaffen.<br><br>Die Zwei-Drittel-Mehrheit ist zwar für Änderungen des Grundgesetzes nötig, sie erlaubt aber nicht, ein Grundrecht abzuschaffen. Der Bundesrat kann das ebenfalls nicht allein entscheiden.", en: "<b>No.</b> Freedom of the press is a <b>basic right</b> (Art. 5 GG). No basic right may be infringed in its essential content (Art. 19 para. 2 GG). So even a majority in the Bundestag cannot abolish freedom of the press.<br><br>A two-thirds majority is needed for amendments to the Basic Law, but it does not allow a basic right to be abolished. The Bundesrat cannot decide this alone either.", uk: "<b>Ні.</b> Свобода преси — <b>основне право</b> (ст. 5 GG). Жодне основне право не можна зачіпати в його суті (ст. 19 абз. 2 GG). Тому навіть більшість у Бундестазі не може скасувати свободу преси.<br><br>Більшість у дві третини потрібна для змін до Основного закону, але вона не дозволяє скасувати основне право. Бундесрат теж не може вирішити це самостійно.", ru: "<b>Нет.</b> Свобода прессы — <b>основное право</b> (ст. 5 GG). Ни одно основное право нельзя затрагивать в его сути (ст. 19 абз. 2 GG). Поэтому даже большинство в Бундестаге не может отменить свободу прессы.<br><br>Большинство в две трети нужно для изменений Основного закона, но оно не позволяет отменить основное право. Бундесрат тоже не может решить это самостоятельно." },
   },
   {
     id: "lid_013",
@@ -355,7 +355,7 @@ var QUIZ = [
       { de: "alle Parteien, die bei der letzten Wahl die 5%-Hürde erreichen konnten.", en: "", uk: "", ru: "" },
       { de: "alle Abgeordneten, die nicht zu der Regierungspartei/den Regierungsparteien gehören.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Opposition</b> sind alle Abgeordneten und Parteien im Parlament, die <b>nicht an der Regierung beteiligt</b> sind. Sie kontrollieren die Regierung und kritisieren sie.<br><br>Die Regierungsparteien sind das Gegenteil der Opposition. Die größte Fraktion kann zur Regierung gehören. Die 5%-Hürde entscheidet nur, ob eine Partei überhaupt ins Parlament kommt.", en: "The <b>opposition</b> consists of all members and parties in parliament who are <b>not part of the government</b>. They monitor the government and criticise it.<br><br>The governing parties are the opposite of the opposition. The largest parliamentary group can be part of the government. The 5% threshold only decides whether a party gets into parliament at all.", uk: "<b>Опозиція</b> — це всі депутати й партії в парламенті, які <b>не входять до уряду</b>. Вони контролюють уряд і критикують його.<br><br>Урядові партії — протилежність опозиції. Найбільша фракція може входити до уряду. Пʼятивідсотковий барʼєр лише визначає, чи потрапить партія до парламенту взагалі.", ru: "<b>Оппозиция</b> — это все депутаты и партии в парламенте, которые <b>не входят в правительство</b>. Они контролируют правительство и критикуют его.<br><br>Правящие партии — противоположность оппозиции. Крупнейшая фракция может входить в правительство. Пятипроцентный барьер лишь определяет, попадёт ли партия в парламент вообще." },
   },
   {
     id: "lid_014",
@@ -368,7 +368,7 @@ var QUIZ = [
       { de: "Nazi-, Hamas- oder Islamischer Staat-Symbole öffentlich tragen darf.", en: "", uk: "", ru: "" },
       { de: "meine Meinung nur dann äußern darf, solange ich der Regierung nicht widerspreche.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Meinungsfreiheit heißt: Ich darf meine Meinung <b>frei äußern</b>, zum Beispiel im Internet – auch Kritik an der Regierung ist erlaubt (Art. 5 GG).<br><br>Die Freiheit hat Grenzen: Beleidigungen sind strafbar, und Symbole von Nationalsozialisten oder verbotenen Organisationen darf man nicht öffentlich zeigen. Man muss der Regierung aber nicht zustimmen.", en: "Freedom of expression means: I may <b>express my opinion freely</b>, for example on the internet – criticism of the government is also allowed (Art. 5 GG).<br><br>This freedom has limits: insults are punishable, and symbols of the Nazis or of banned organisations may not be shown in public. But you do not have to agree with the government.", uk: "Свобода слова означає: я можу <b>вільно висловлювати свою думку</b>, наприклад в інтернеті — критика уряду теж дозволена (ст. 5 GG).<br><br>Ця свобода має межі: образи караються, а символи нацистів чи заборонених організацій не можна публічно демонструвати. Але погоджуватися з урядом не обовʼязково.", ru: "Свобода слова означает: я могу <b>свободно высказывать своё мнение</b>, например в интернете — критика правительства тоже разрешена (ст. 5 GG).<br><br>У этой свободы есть пределы: оскорбления наказуемы, а символы нацистов или запрещённых организаций нельзя публично демонстрировать. Но соглашаться с правительством необязательно." },
   },
   {
     id: "lid_015",
@@ -381,7 +381,7 @@ var QUIZ = [
       { de: "freie Berufswahl", en: "", uk: "", ru: "" },
       { de: "Arbeit im Ausland", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Grundgesetz <b>verbietet Zwangsarbeit</b> (Art. 12 Abs. 2 und 3 GG). Niemand darf zu einer bestimmten Arbeit gezwungen werden.<br><br>Die freie Berufswahl ist ein Grundrecht, und Arbeit im Ausland ist erlaubt. Militärdienst ist im Grundgesetz möglich (Wehrpflicht); er ist in Deutschland aber seit 2011 ausgesetzt.", en: "The Basic Law <b>forbids forced labour</b> (Art. 12 paras. 2 and 3 GG). Nobody may be forced to do a particular job.<br><br>Free choice of occupation is a basic right, and working abroad is allowed. Military service is possible under the Basic Law (conscription), but it has been suspended in Germany since 2011.", uk: "Основний закон <b>забороняє примусову працю</b> (ст. 12 абз. 2 і 3 GG). Нікого не можна змушувати виконувати певну роботу.<br><br>Вільний вибір професії — основне право, а робота за кордоном дозволена. Військова служба в Основному законі можлива (призов), але в Німеччині вона призупинена з 2011 року.", ru: "Основной закон <b>запрещает принудительный труд</b> (ст. 12 абз. 2 и 3 GG). Никого нельзя принуждать к определённой работе.<br><br>Свободный выбор профессии — основное право, а работа за границей разрешена. Военная служба в Основном законе возможна (призыв), но в Германии она приостановлена с 2011 года." },
   },
   {
     id: "lid_016",
@@ -394,7 +394,7 @@ var QUIZ = [
       { de: "bei Diskussionen über Religionen", en: "", uk: "", ru: "" },
       { de: "bei Kritik am Staat", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Meinungsfreiheit hat Grenzen, zum Beispiel beim <b>Schutz der persönlichen Ehre</b> (Art. 5 Abs. 2 GG). Wer öffentlich <b>falsche Behauptungen über einzelne Personen</b> verbreitet, kann dafür bestraft werden (Verleumdung, üble Nachrede).<br><br>Kritik an der Bundesregierung, am Staat und Diskussionen über Religionen sind dagegen erlaubt.", en: "Freedom of expression has limits, for example in the <b>protection of personal honour</b> (Art. 5 para. 2 GG). Anyone who publicly spreads <b>false claims about individual people</b> can be punished for it (defamation, slander).<br><br>Criticism of the federal government, of the state and discussions about religions are allowed.", uk: "Свобода слова має межі, наприклад у <b>захисті особистої честі</b> (ст. 5 абз. 2 GG). Хто публічно поширює <b>неправдиві твердження про окремих людей</b>, може бути за це покараний (наклеп, зведення наклепу).<br><br>Критика федерального уряду, держави та дискусії про релігії, навпаки, дозволені.", ru: "Свобода слова имеет пределы, например в <b>защите личной чести</b> (ст. 5 абз. 2 GG). Кто публично распространяет <b>ложные утверждения об отдельных людях</b>, может быть за это наказан (клевета, злословие).<br><br>Критика федерального правительства, государства и дискуссии о религиях, напротив, разрешены." },
   },
   {
     id: "lid_017",
@@ -407,7 +407,7 @@ var QUIZ = [
       { de: "Versammlungsfreiheit der Einwohnerinnen und Einwohner.", en: "", uk: "", ru: "" },
       { de: "Ungleichbehandlung der Bürgerinnen und Bürger durch den Staat.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Nach Art. 3 GG sind alle Menschen vor dem Gesetz gleich. Deshalb verbieten die Gesetze die <b>Ungleichbehandlung</b> der Bürgerinnen und Bürger durch den Staat (Diskriminierung).<br><br>Meinungsfreiheit, Versammlungsfreiheit und das Recht auf Petitionen sind dagegen Grundrechte. Sie sind erlaubt und geschützt.", en: "According to Art. 3 GG, all people are equal before the law. That is why the laws forbid the <b>unequal treatment</b> of citizens by the state (discrimination).<br><br>Freedom of expression, freedom of assembly and the right to petition, on the other hand, are basic rights. They are allowed and protected.", uk: "Відповідно до ст. 3 GG, усі люди рівні перед законом. Тому закони забороняють <b>нерівне ставлення</b> держави до громадян (дискримінацію).<br><br>Свобода слова, свобода зібрань і право на петиції, навпаки, є основними правами. Вони дозволені й захищені.", ru: "Согласно ст. 3 GG, все люди равны перед законом. Поэтому законы запрещают <b>неравное обращение</b> государства с гражданами (дискриминацию).<br><br>Свобода слова, свобода собраний и право на петиции, напротив, являются основными правами. Они разрешены и защищены." },
   },
   {
     id: "lid_018",
@@ -420,7 +420,7 @@ var QUIZ = [
       { de: "Religionsfreiheit", en: "", uk: "", ru: "" },
       { de: "Meinungsfreiheit", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Artikel 1 des Grundgesetzes beginnt mit dem wichtigsten Satz: „<b>Die Würde des Menschen ist unantastbar.</b>“ Das ist die <b>Menschenwürde</b>.<br><br>Das Recht auf Leben steht in Art. 2, die Religionsfreiheit in Art. 4 und die Meinungsfreiheit in Art. 5.", en: "Article 1 of the Basic Law begins with the most important sentence: “<b>Human dignity shall be inviolable.</b>” This is <b>human dignity</b>.<br><br>The right to life is in Art. 2, freedom of religion in Art. 4 and freedom of expression in Art. 5.", uk: "Стаття 1 Основного закону починається найважливішим реченням: «<b>Людська гідність недоторканна.</b>» Це і є <b>людська гідність</b>.<br><br>Право на життя міститься в ст. 2, свобода віросповідання — у ст. 4, а свобода слова — у ст. 5.", ru: "Статья 1 Основного закона начинается с важнейшего предложения: «<b>Человеческое достоинство неприкосновенно.</b>» Это и есть <b>человеческое достоинство</b>.<br><br>Право на жизнь содержится в ст. 2, свобода вероисповедания — в ст. 4, а свобода слова — в ст. 5." },
   },
   {
     id: "lid_019",
@@ -433,7 +433,7 @@ var QUIZ = [
       { de: "Man darf sich für eine andere Religion entscheiden.", en: "", uk: "", ru: "" },
       { de: "Man darf sich in der Öffentlichkeit nur leicht bekleidet bewegen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Freizügigkeit</b> bedeutet, dass man <b>seinen Wohnort frei wählen</b> und in ganz Deutschland umziehen darf (Art. 11 GG).<br><br>Den Beruf zu wechseln, ist die Berufsfreiheit (Art. 12 GG). Eine andere Religion zu wählen, gehört zur Religionsfreiheit (Art. 4 GG). Mit Kleidung hat das Wort nichts zu tun.", en: "<b>Freedom of movement</b>, in German “Freizügigkeit”, means that you may <b>freely choose your place of residence</b> and move anywhere in Germany (Art. 11 GG).<br><br>Changing jobs is freedom of occupation (Art. 12 GG). Choosing a different religion belongs to freedom of religion (Art. 4 GG). The word has nothing to do with clothing.", uk: "<b>Свобода пересування</b>, німецькою «Freizügigkeit», означає, що можна <b>вільно обирати місце проживання</b> і переїжджати по всій Німеччині (ст. 11 GG).<br><br>Зміна професії — це свобода професії (ст. 12 GG). Вибір іншої релігії належить до свободи віросповідання (ст. 4 GG). До одягу це слово жодного стосунку не має.", ru: "<b>Свобода передвижения</b>, по-немецки «Freizügigkeit», означает, что можно <b>свободно выбирать место жительства</b> и переезжать по всей Германии (ст. 11 GG).<br><br>Смена профессии — это свобода профессии (ст. 12 GG). Выбор другой религии относится к свободе вероисповедания (ст. 4 GG). К одежде это слово не имеет никакого отношения." },
   },
   {
     id: "lid_020",
@@ -446,7 +446,7 @@ var QUIZ = [
       { de: "gesetzestreu.", en: "", uk: "", ru: "" },
       { de: "verfassungswidrig.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Eine Partei, die eine <b>Diktatur</b> errichten will, kämpft gegen die freiheitliche demokratische Grundordnung. Sie ist <b>verfassungswidrig</b> (Art. 21 Abs. 2 GG). Nur das Bundesverfassungsgericht kann eine solche Partei verbieten.<br><br>Tolerant, rechtsstaatlich orientiert oder gesetzestreu ist eine Partei nicht, wenn sie die Demokratie abschaffen will.", en: "A party that wants to set up a <b>dictatorship</b> is fighting against the free democratic basic order. It is <b>unconstitutional</b> (Art. 21 para. 2 GG). Only the Federal Constitutional Court can ban such a party.<br><br>A party is not tolerant, oriented towards the rule of law or law-abiding if it wants to abolish democracy.", uk: "Партія, яка хоче встановити <b>диктатуру</b>, бореться проти вільного демократичного ладу. Вона <b>неконституційна</b> (ст. 21 абз. 2 GG). Лише Федеральний конституційний суд може заборонити таку партію.<br><br>Партія не є толерантною, орієнтованою на правову державу чи законослухняною, якщо хоче скасувати демократію.", ru: "Партия, которая хочет установить <b>диктатуру</b>, борется против свободного демократического строя. Она <b>неконституционна</b> (ст. 21 абз. 2 GG). Только Федеральный конституционный суд может запретить такую партию.<br><br>Партия не является толерантной, ориентированной на правовое государство или законопослушной, если хочет отменить демократию." },
   },
   {
     id: "lid_021",
@@ -459,7 +459,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_021_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_021_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wappen der Bundesrepublik Deutschland zeigt den <b>Bundesadler</b>: einen schwarzen Adler mit roten Krallen und roter Zunge auf goldgelbem Hintergrund.<br><br>Die anderen Wappen zeigen andere Tiere oder andere Farben. Sie sind nicht das Bundeswappen.", en: "The coat of arms of the Federal Republic of Germany shows the <b>federal eagle</b>: a black eagle with red claws and a red tongue on a golden-yellow background.<br><br>The other coats of arms show other animals or other colours. They are not the federal coat of arms.", uk: "Герб Федеративної Республіки Німеччина зображує <b>федерального орла</b>: чорного орла з червоними кігтями та червоним язиком на золотисто-жовтому тлі.<br><br>Інші герби зображують інших тварин або мають інші кольори. Це не федеральний герб.", ru: "Герб Федеративной Республики Германия изображает <b>федерального орла</b>: чёрного орла с красными когтями и красным языком на золотисто-жёлтом фоне.<br><br>Другие гербы изображают других животных или имеют другие цвета. Это не федеральный герб." },
   },
   {
     id: "lid_022",
@@ -472,7 +472,7 @@ var QUIZ = [
       { de: "Republik", en: "", uk: "", ru: "", correct: true },
       { de: "Fürstentum", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Deutschland ist eine <b>Republik</b>: Das Staatsoberhaupt, die Bundespräsidentin/der Bundespräsident, wird nicht geerbt, sondern gewählt.<br><br>In einer Monarchie ist das Staatsoberhaupt ein Königshaus. Ein Fürstentum (zum Beispiel Liechtenstein) hat einen Fürsten. In einer Diktatur gibt es keine freien Wahlen.", en: "Germany is a <b>republic</b>: the head of state, the Federal President, is not inherited but elected.<br><br>In a monarchy the head of state comes from a royal family. A principality (for example Liechtenstein) has a prince. In a dictatorship there are no free elections.", uk: "Німеччина — <b>республіка</b>: глава держави, федеральний президент/федеральна президентка, не успадковується, а обирається.<br><br>У монархії главою держави є представник королівського дому. У князівстві (наприклад, Ліхтенштейн) є князь. У диктатурі вільних виборів немає.", ru: "Германия — <b>республика</b>: глава государства, федеральный президент, не наследуется, а избирается.<br><br>В монархии главой государства является представитель королевского дома. В княжестве (например, Лихтенштейн) есть князь. В диктатуре свободных выборов нет." },
   },
   {
     id: "lid_023",
@@ -485,7 +485,7 @@ var QUIZ = [
       { de: "selbstständig mit einer eigenen Firma tätig.", en: "", uk: "", ru: "" },
       { de: "bei einer Firma oder Behörde beschäftigt.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die meisten Erwerbstätigen sind <b>Arbeitnehmerinnen und Arbeitnehmer</b>. Sie sind bei einer <b>Firma oder Behörde angestellt</b>. Nur etwa jede zehnte Person arbeitet selbstständig.<br><br>Ehrenamtliche Arbeit ist unbezahlt und keine Erwerbstätigkeit. Nur wenige arbeiten in kleinen Familienunternehmen.", en: "Most people in work are <b>employees</b>. They are <b>employed by a company or public authority</b>. Only about one in ten people is self-employed.<br><br>Voluntary work is unpaid and is not gainful employment. Only a few work in small family businesses.", uk: "Більшість працюючих — <b>найняті працівники</b>. Вони <b>працюють у фірмі чи установі</b>. Лише приблизно кожен десятий працює на себе.<br><br>Волонтерська робота неоплачувана і не вважається трудовою діяльністю. Лише деякі працюють у невеликих сімейних підприємствах.", ru: "Большинство работающих — <b>наёмные работники</b>. Они <b>работают в фирме или в учреждении</b>. Лишь примерно каждый десятый работает на себя.<br><br>Волонтёрская работа неоплачиваема и не считается трудовой деятельностью. Лишь немногие работают в небольших семейных предприятиях." },
   },
   {
     id: "lid_024",
@@ -498,7 +498,7 @@ var QUIZ = [
       { de: "16", en: "", uk: "", ru: "", correct: true },
       { de: "17", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundesrepublik hat <b>16 Bundesländer</b>, darunter die drei Stadtstaaten Berlin, Hamburg und Bremen. Seit der Wiedervereinigung 1990 sind es 16.<br><br>Die Zahlen 14, 15 und 17 sind falsch.", en: "The Federal Republic has <b>16 federal states</b>, including the three city-states of Berlin, Hamburg and Bremen. Since reunification in 1990 there have been 16.<br><br>The numbers 14, 15 and 17 are wrong.", uk: "У Федеративній Республіці <b>16 федеральних земель</b>, серед них три міста-землі: Берлін, Гамбург і Бремен. Після воззʼєднання 1990 року їх 16.<br><br>Числа 14, 15 і 17 неправильні.", ru: "В Федеративной Республике <b>16 федеральных земель</b>, среди них три города-земли: Берлин, Гамбург и Бремен. После воссоединения 1990 года их 16.<br><br>Числа 14, 15 и 17 неправильные." },
   },
   {
     id: "lid_025",
@@ -511,7 +511,7 @@ var QUIZ = [
       { de: "Mecklenburg-Vorpommern", en: "", uk: "", ru: "" },
       { de: "Sachsen-Anhalt", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Elsass-Lothringen</b> ist kein Bundesland. Es gehörte von 1871 bis 1918 zum Deutschen Reich, heute liegt das Elsass in Frankreich.<br><br>Nordrhein-Westfalen, Mecklenburg-Vorpommern und Sachsen-Anhalt sind Bundesländer der Bundesrepublik.", en: "<b>Alsace-Lorraine</b> is not a federal state. It belonged to the German Empire from 1871 to 1918; today Alsace is in France.<br><br>North Rhine-Westphalia, Mecklenburg-Vorpommern and Saxony-Anhalt are federal states of the Federal Republic.", uk: "<b>Ельзас-Лотарингія</b> не є федеральною землею. З 1871 по 1918 рік вона належала Німецькій імперії, а сьогодні Ельзас — у Франції.<br><br>Північний Рейн-Вестфалія, Мекленбург-Передня Померанія й Саксонія-Ангальт — федеральні землі Федеративної Республіки.", ru: "<b>Эльзас-Лотарингия</b> не является федеральной землёй. С 1871 по 1918 год она принадлежала Германской империи, а сегодня Эльзас находится во Франции.<br><br>Северный Рейн-Вестфалия, Мекленбург-Передняя Померания и Саксония-Анхальт — федеральные земли Федеративной Республики." },
   },
   {
     id: "lid_026",
@@ -524,7 +524,7 @@ var QUIZ = [
       { de: "eine kapitalistische und soziale Monarchie.", en: "", uk: "", ru: "" },
       { de: "ein sozialer und sozialistischer Bundesstaat.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Im Grundgesetz steht in Art. 20: Deutschland ist ein <b>demokratischer und sozialer Bundesstaat</b>. „Bundesstaat“ heißt: Der Bund und die 16 Länder teilen sich die Macht.<br><br>Deutschland ist keine kommunistische Republik, keine Monarchie und kein sozialistischer Staat. Diese Staatsformen gibt es hier nicht.", en: "The Basic Law says in Art. 20: Germany is a <b>democratic and social federal state</b>. “Federal state” means: the Federation and the 16 states share power.<br><br>Germany is not a communist republic, not a monarchy and not a socialist state. These forms of state do not exist here.", uk: "В Основному законі в ст. 20 сказано: Німеччина — <b>демократична й соціальна федеративна держава</b>. «Федеративна держава» означає: федерація та 16 земель розділяють владу.<br><br>Німеччина — не комуністична республіка, не монархія і не соціалістична держава. Таких форм держави тут немає.", ru: "В Основном законе в ст. 20 сказано: Германия — <b>демократическое и социальное федеративное государство</b>. «Федеративное государство» означает: федерация и 16 земель делят власть.<br><br>Германия — не коммунистическая республика, не монархия и не социалистическое государство. Таких форм государства здесь нет." },
   },
   {
     id: "lid_027",
@@ -537,7 +537,7 @@ var QUIZ = [
       { de: "eine Diktatur.", en: "", uk: "", ru: "" },
       { de: "eine Monarchie.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Deutschland ist ein <b>Bundesstaat</b>: Es besteht aus dem Bund und 16 Bundesländern. Die Länder haben eigene Aufgaben und eigene Regierungen.<br><br>Deutschland ist weder ein sozialistischer Staat (wie die DDR) noch eine Diktatur noch eine Monarchie.", en: "Germany is a <b>federation</b>: it consists of the Federation and 16 federal states. The states have their own responsibilities and their own governments.<br><br>Germany is neither a socialist state (like the GDR), nor a dictatorship, nor a monarchy.", uk: "Німеччина — <b>федеративна держава</b>: вона складається з федерації та 16 федеральних земель. Землі мають власні завдання та власні уряди.<br><br>Німеччина — не соціалістична держава (як НДР), не диктатура і не монархія.", ru: "Германия — <b>федеративное государство</b>: она состоит из федерации и 16 федеральных земель. Земли имеют собственные задачи и собственные правительства.<br><br>Германия — не социалистическое государство (как ГДР), не диктатура и не монархия." },
   },
   {
     id: "lid_028",
@@ -550,7 +550,7 @@ var QUIZ = [
       { de: "das wahlberechtigte Volk", en: "", uk: "", ru: "", correct: true },
       { de: "die Verwaltung", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Abgeordneten des Bundestages wählt das <b>wahlberechtigte Volk</b>, also alle Bürgerinnen und Bürger, die wählen dürfen. Alle Staatsgewalt geht vom Volk aus (Art. 20 Abs. 2 GG).<br><br>Das Militär, die Wirtschaft und die Verwaltung wählen keine Abgeordneten.", en: "The members of the Bundestag are elected by the <b>people entitled to vote</b>, that is, all citizens who may vote. All state authority comes from the people (Art. 20 para. 2 GG).<br><br>The military, business and the administration do not elect members of parliament.", uk: "Депутатів Бундестагу обирає <b>народ, який має право голосу</b>, тобто всі громадяни, які можуть голосувати. Уся державна влада виходить від народу (ст. 20 абз. 2 GG).<br><br>Військові, економіка й адміністрація депутатів не обирають.", ru: "Депутатов Бундестага избирает <b>народ, имеющий право голоса</b>, то есть все граждане, которые могут голосовать. Вся государственная власть исходит от народа (ст. 20 абз. 2 GG).<br><br>Военные, экономика и администрация депутатов не избирают." },
   },
   {
     id: "lid_029",
@@ -563,7 +563,7 @@ var QUIZ = [
       { de: "Bär", en: "", uk: "", ru: "" },
       { de: "Pferd", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wappentier der Bundesrepublik ist der <b>Adler</b> (Bundesadler).<br><br>Löwe, Bär und Pferd sind Wappentiere anderer Staaten oder von Bundesländern. Der Bär steht zum Beispiel für Berlin, das Pferd für Niedersachsen.", en: "The heraldic animal of the Federal Republic is the <b>eagle</b> (federal eagle).<br><br>The lion, the bear and the horse are heraldic animals of other states or of federal states. The bear stands for Berlin, for example, and the horse for Lower Saxony.", uk: "Геральдична тварина Федеративної Республіки — <b>орел</b> (федеральний орел).<br><br>Лев, ведмідь і кінь — геральдичні тварини інших держав або федеральних земель. Ведмідь, наприклад, символізує Берлін, а кінь — Нижню Саксонію.", ru: "Геральдическое животное Федеративной Республики — <b>орёл</b> (федеральный орёл).<br><br>Лев, медведь и лошадь — геральдические животные других государств или федеральных земель. Медведь, например, символизирует Берлин, а лошадь — Нижнюю Саксонию." },
   },
   {
     id: "lid_030",
@@ -576,7 +576,7 @@ var QUIZ = [
       { de: "Meinungsfreiheit", en: "", uk: "", ru: "" },
       { de: "verschiedene Parteien", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Pressezensur</b> gibt es in einer Demokratie nicht: Im Grundgesetz steht „Eine Zensur findet nicht statt“ (Art. 5 GG). Die Presse ist frei.<br><br>Regelmäßige Wahlen, Meinungsfreiheit und verschiedene Parteien sind typische Merkmale einer Demokratie.", en: "<b>Press censorship</b> does not exist in a democracy: the Basic Law says “There shall be no censorship” (Art. 5 GG). The press is free.<br><br>Regular elections, freedom of expression and several parties are typical features of a democracy.", uk: "<b>Цензури преси</b> в демократії немає: в Основному законі сказано «Цензури не існує» (ст. 5 GG). Преса вільна.<br><br>Регулярні вибори, свобода слова та різні партії — типові ознаки демократії.", ru: "<b>Цензуры прессы</b> в демократии нет: в Основном законе сказано «Цензуры не существует» (ст. 5 GG). Пресса свободна.<br><br>Регулярные выборы, свобода слова и разные партии — типичные признаки демократии." },
   },
   {
     id: "lid_031",
@@ -589,7 +589,7 @@ var QUIZ = [
       { de: "Ministerium.", en: "", uk: "", ru: "" },
       { de: "Fraktion.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Eine <b>Koalition</b> ist ein Bündnis von Parteien. Wenn keine Partei allein die Mehrheit hat, arbeiten mehrere Parteien zusammen und bilden gemeinsam die Regierung.<br><br>Ein Ministerium ist ein Teil der Regierung. Eine Fraktion sind die Abgeordneten einer Partei im Parlament. „Einheit“ ist hier kein Begriff für ein Bündnis.", en: "A <b>coalition</b> is an alliance of parties. If no party has a majority on its own, several parties work together and form the government jointly.<br><br>A ministry is part of the government. A parliamentary group is made up of the members of one party in parliament. “Einheit” means “unity”, and that is not a term for an alliance here.", uk: "<b>Коаліція</b> — це союз партій. Якщо жодна партія не має більшості самостійно, кілька партій співпрацюють і разом формують уряд.<br><br>Міністерство — частина уряду. Фракція — це депутати однієї партії в парламенті. «Einheit» означає «єдність», а це тут не термін для союзу.", ru: "<b>Коалиция</b> — это союз партий. Если ни одна партия не имеет большинства самостоятельно, несколько партий сотрудничают и вместе формируют правительство.<br><br>Министерство — часть правительства. Фракция — это депутаты одной партии в парламенте. «Einheit» означает «единство», а это здесь не термин для союза." },
   },
   {
     id: "lid_032",
@@ -602,7 +602,7 @@ var QUIZ = [
       { de: "Presse", en: "", uk: "", ru: "", correct: true },
       { de: "Rechtsprechung", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die staatlichen Gewalten sind <b>Gesetzgebung</b> (Parlament), <b>Regierung</b> (Verwaltung) und <b>Rechtsprechung</b> (Gerichte). Die <b>Presse</b> gehört nicht dazu: Sie ist unabhängig vom Staat. Man nennt sie manchmal „vierte Gewalt“, aber sie ist keine staatliche Gewalt.", en: "The state powers are <b>legislation</b> (parliament), <b>government</b> (administration) and <b>the judiciary</b> (courts). The <b>press</b> does not belong to them: it is independent of the state. It is sometimes called the “fourth estate”, but it is not a state power.", uk: "Державні гілки влади — це <b>законодавча</b> (парламент), <b>виконавча</b> (уряд, адміністрація) і <b>судова</b> (суди). <b>Преса</b> до них не належить: вона незалежна від держави. Її іноді називають «четвертою владою», але це не державна влада.", ru: "Государственные ветви власти — это <b>законодательная</b> (парламент), <b>исполнительная</b> (правительство, администрация) и <b>судебная</b> (суды). <b>Пресса</b> к ним не относится: она независима от государства. Её иногда называют «четвёртой властью», но это не государственная власть." },
   },
   {
     id: "lid_033",
@@ -615,7 +615,7 @@ var QUIZ = [
       { de: "ist der Staat abhängig von den Religionsgemeinschaften.", en: "", uk: "", ru: "" },
       { de: "bilden Staat und Religionsgemeinschaften eine Einheit.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Deutschland sind <b>Staat und Religionsgemeinschaften getrennt</b>. Es gibt keine Staatskirche (Art. 140 GG). Der Staat ist neutral und schreibt niemandem eine Religion vor.<br><br>Die anderen Aussagen sind falsch: Die Religionsgemeinschaften sind nicht der Staat, und der Staat ist nicht von ihnen abhängig.", en: "In Germany, <b>the state and religious communities are separate</b>. There is no state church (Art. 140 GG). The state is neutral and does not prescribe any religion for anyone.<br><br>The other statements are wrong: religious communities are not the state, and the state is not dependent on them.", uk: "У Німеччині <b>держава й релігійні громади відокремлені</b>. Державної церкви немає (ст. 140 GG). Держава нейтральна і нікому не приписує жодної релігії.<br><br>Інші твердження неправильні: релігійні громади — не держава, і держава від них не залежить.", ru: "В Германии <b>государство и религиозные общины отделены</b>. Государственной церкви нет (ст. 140 GG). Государство нейтрально и никому не предписывает никакой религии.<br><br>Остальные утверждения неправильные: религиозные общины — не государство, и государство от них не зависит." },
   },
   {
     id: "lid_034",
@@ -628,7 +628,7 @@ var QUIZ = [
       { de: "eine Monarchie", en: "", uk: "", ru: "", correct: true },
       { de: "ein Sozialstaat", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Deutschland ist <b>keine Monarchie</b>. Es ist eine Republik und eine Demokratie, ein Rechtsstaat und ein Sozialstaat. Das Staatsoberhaupt ist die gewählte Bundespräsidentin/der gewählte Bundespräsident, nicht ein König oder eine Königin, die das Amt erben.", en: "Germany is <b>not a monarchy</b>. It is a republic and a democracy, a state governed by the rule of law and a welfare state. The head of state is the elected Federal President, not a king or a queen who inherits the office.", uk: "Німеччина — <b>не монархія</b>. Це республіка й демократія, правова та соціальна держава. Глава держави — обраний федеральний президент/обрана федеральна президентка, а не король чи королева, які успадковують посаду.", ru: "Германия — <b>не монархия</b>. Это республика и демократия, правовое и социальное государство. Глава государства — избранный федеральный президент, а не король или королева, которые наследуют должность." },
   },
   {
     id: "lid_035",
@@ -641,7 +641,7 @@ var QUIZ = [
       { de: "Spendengeldern", en: "", uk: "", ru: "" },
       { de: "Vereinsbeiträgen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Sozialversicherung wird vor allem durch <b>Sozialabgaben</b> finanziert. Das sind Beiträge, die Arbeitnehmerinnen/Arbeitnehmer und Arbeitgeberinnen/Arbeitgeber vom Lohn zahlen.<br><br>Die Kirchensteuer bekommen die Kirchen. Spenden und Vereinsbeiträge sind freiwillig und gehören nicht zur Sozialversicherung.", en: "The social insurance system is mainly financed by <b>social contributions</b>. These are payments that employees and employers make from wages.<br><br>Church tax goes to the churches. Donations and club fees are voluntary and are not part of social insurance.", uk: "Соціальне страхування фінансується переважно за рахунок <b>соціальних внесків</b>. Це внески, які працівники й роботодавці сплачують із заробітної плати.<br><br>Церковний податок отримують церкви. Пожертви й членські внески до товариств добровільні й не належать до соціального страхування.", ru: "Социальное страхование финансируется главным образом за счёт <b>социальных взносов</b>. Это взносы, которые работники и работодатели платят с заработной платы.<br><br>Церковный налог получают церкви. Пожертвования и членские взносы в объединениях добровольны и не относятся к социальному страхованию." },
   },
   {
     id: "lid_036",
@@ -654,7 +654,7 @@ var QUIZ = [
       { de: "die Gebäudeversicherung", en: "", uk: "", ru: "" },
       { de: "die Haftpflichtversicherung", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>Krankenversicherung</b> schafft soziale Sicherheit: Sie bezahlt die Behandlung, wenn man krank wird. Sie gehört zur Sozialversicherung.<br><br>Auto-, Gebäude- und Haftpflichtversicherung schützen vor Sachschäden oder Schadenersatz. Sie sind private Versicherungen und keine soziale Sicherung.", en: "<b>Health insurance</b> creates social security: it pays for treatment when you fall ill. It is part of social insurance.<br><br>Car, building and liability insurance protect against damage to property or compensation claims. They are private insurances and not social security.", uk: "<b>Медичне страхування</b> створює соціальну захищеність: воно оплачує лікування, коли людина хворіє. Воно належить до соціального страхування.<br><br>Автомобільне, будинкове страхування та страхування відповідальності захищають від матеріальної шкоди чи вимог про відшкодування. Це приватні страхування, а не соціальне забезпечення.", ru: "<b>Медицинское страхование</b> создаёт социальную защищённость: оно оплачивает лечение, когда человек заболевает. Оно относится к социальному страхованию.<br><br>Автомобильное, имущественное страхование и страхование ответственности защищают от материального ущерба или требований о возмещении. Это частные страховки, а не социальное обеспечение." },
   },
   {
     id: "lid_037",
@@ -667,7 +667,7 @@ var QUIZ = [
       { de: "Senatorin/Senator", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Bundeslandes heißt meistens <b>Ministerpräsidentin/Ministerpräsident</b>.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Nur die Stadtstaaten haben andere Namen: In Berlin heißt das Amt „Regierende Bürgermeisterin/Regierender Bürgermeister“, in Hamburg „Erste Bürgermeisterin/Erster Bürgermeister“ und in Bremen „Präsident des Senats“. Senatorinnen und Senatoren sind dort die Ministerinnen und Minister.", en: "The head of government of a federal state is usually called <b>Minister-President</b>, in German “Ministerpräsident/Ministerpräsidentin”.<br><br>“Prime minister” is used in other countries, for example in Great Britain. Only the city-states have other names: in Berlin the head of government is called “Regierender Bürgermeister”, that is, Governing Mayor, in Hamburg “Erster Bürgermeister”, that is, First Mayor, and in Bremen “Präsident des Senats”, that is, President of the Senate. Senators there are the ministers.", uk: "Керівник уряду федеральної землі здебільшого називається <b>міністр-президент/міністр-президентка</b>, німецькою «Ministerpräsident/Ministerpräsidentin».<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. Лише міста-землі мають інші назви: у Берліні керівник уряду називається «Regierender Bürgermeister», тобто правлячий бургомістр, у Гамбурзі — «Erster Bürgermeister», тобто перший бургомістр, а в Бремені — «Präsident des Senats», тобто президент Сенату. Сенатори там — це міністри.", ru: "Глава правительства федеральной земли чаще всего называется <b>министр-президент</b>, по-немецки «Ministerpräsident/Ministerpräsidentin».<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. Только города-земли имеют другие названия: в Берлине глава правительства называется «Regierender Bürgermeister», то есть правящий бургомистр, в Гамбурге — «Erster Bürgermeister», то есть первый бургомистр, а в Бремене — «Präsident des Senats», то есть президент Сената. Сенаторы там — это министры." },
   },
   {
     id: "lid_038",
@@ -680,7 +680,7 @@ var QUIZ = [
       { de: "Staatenbund.", en: "", uk: "", ru: "" },
       { de: "Zentralstaat.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Deutschland ist ein <b>Bundesstaat</b>: ein Staat, der aus Bundesländern besteht.<br><br>Ein <b>Staatenbund</b> ist ein loser Zusammenschluss selbstständiger Staaten. Der <b>Staatenverbund</b> ist ein Begriff für die Europäische Union. Ein <b>Zentralstaat</b> wird nur von einer Hauptstadt aus regiert, wie zum Beispiel Frankreich.", en: "Germany is a <b>federation</b>, in German “Bundesstaat”: a state made up of federal states.<br><br>A <b>confederation</b>, in German “Staatenbund”, is a loose union of independent states. The <b>union of states</b>, in German “Staatenverbund”, is a term for the European Union. A <b>centralised state</b>, in German “Zentralstaat”, is governed only from one capital, for example France.", uk: "Німеччина — <b>федеративна держава</b>, німецькою «Bundesstaat»: держава, що складається з федеральних земель.<br><br><b>Конфедерація</b>, німецькою «Staatenbund», — це вільний союз самостійних держав. <b>Союз держав</b>, німецькою «Staatenverbund», — поняття для Європейського Союзу. <b>Унітарна держава</b>, німецькою «Zentralstaat», управляється лише з однієї столиці, як, наприклад, Франція.", ru: "Германия — <b>федеративное государство</b>, по-немецки «Bundesstaat»: государство, состоящее из федеральных земель.<br><br><b>Конфедерация</b>, по-немецки «Staatenbund», — это свободный союз самостоятельных государств. <b>Союз государств</b>, по-немецки «Staatenverbund», — понятие для Европейского союза. <b>Унитарное государство</b>, по-немецки «Zentralstaat», управляется только из одной столицы, например Франция." },
   },
   {
     id: "lid_039",
@@ -693,7 +693,7 @@ var QUIZ = [
       { de: "eine eigene Armee", en: "", uk: "", ru: "" },
       { de: "eine eigene Regierung", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Jedes Bundesland hat <b>eine eigene Regierung</b> (Landesregierung) und ein eigenes Parlament (Landtag).<br><br>Außenpolitik, Armee und Währung sind Aufgaben des Bundes: Es gibt nur eine Bundeswehr, den Euro und eine Außenministerin/einen Außenminister für ganz Deutschland.", en: "Every federal state has <b>its own government</b> and its own parliament, the Landtag.<br><br>Foreign policy, the army and the currency are tasks of the Federation: there is only one Bundeswehr, one euro and one foreign minister for the whole of Germany.", uk: "Кожна федеральна земля має <b>власний уряд</b> і власний парламент — ландтаг.<br><br>Зовнішня політика, армія й валюта — завдання федерації: є лише один Бундесвер, одне євро й один міністр закордонних справ для всієї Німеччини.", ru: "Каждая федеральная земля имеет <b>собственное правительство</b> и собственный парламент — ландтаг.<br><br>Внешняя политика, армия и валюта — задачи федерации: есть только один бундесвер, одно евро и один министр иностранных дел для всей Германии." },
   },
   {
     id: "lid_040",
@@ -706,7 +706,7 @@ var QUIZ = [
       { de: "Freude schöner Götterfunken …", en: "", uk: "", ru: "" },
       { de: "Deutschland einig Vaterland …", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Nationalhymne beginnt mit „<b>Einigkeit und Recht und Freiheit</b>“. Das ist die dritte Strophe des Deutschlandliedes.<br><br>„Völker, hört die Signale“ ist die Internationale, ein Lied der Arbeiterbewegung. „Freude schöner Götterfunken“ ist die „Ode an die Freude“, die Hymne der Europäischen Union. „Deutschland einig Vaterland“ stammt aus der Hymne der DDR.", en: "The national anthem begins with “<b>Einigkeit und Recht und Freiheit</b>”, which means “unity and justice and freedom”. This is the third verse of the Deutschlandlied.<br><br>“Völker, hört die Signale” is the Internationale, a song of the labour movement. “Freude schöner Götterfunken” is the “Ode to Joy”, the anthem of the European Union. “Deutschland einig Vaterland” comes from the anthem of the GDR.", uk: "Національний гімн починається словами «<b>Einigkeit und Recht und Freiheit</b>», тобто «єдність, право і свобода». Це третя строфа Deutschlandlied.<br><br>«Völker, hört die Signale» — це «Інтернаціонал», пісня робітничого руху. «Freude schöner Götterfunken» — «Ода до радості», гімн Європейського Союзу. «Deutschland einig Vaterland» походить із гімну НДР.", ru: "Государственный гимн начинается словами «<b>Einigkeit und Recht und Freiheit</b>», то есть «единство, право и свобода». Это третья строфа Deutschlandlied.<br><br>«Völker, hört die Signale» — это «Интернационал», песня рабочего движения. «Freude schöner Götterfunken» — «Ода к радости», гимн Европейского союза. «Deutschland einig Vaterland» происходит из гимна ГДР." },
   },
   {
     id: "lid_041",
@@ -719,7 +719,7 @@ var QUIZ = [
       { de: "um politische Demonstrationen zu verhindern", en: "", uk: "", ru: "" },
       { de: "um wirtschaftlichen Wettbewerb anzuregen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In einer Demokratie gibt es <b>mehrere Parteien</b>, damit <b>die unterschiedlichen Meinungen und Interessen</b> der Bürgerinnen und Bürger vertreten werden. Jeder kann so eine Partei wählen, die zu seiner Meinung passt.<br><br>Mehrere Parteien sollen nicht Demonstrationen verhindern, Bestechung begrenzen oder die Wirtschaft anregen. Das ist nicht der Zweck der Parteienvielfalt.", en: "In a democracy there are <b>several parties</b> so that <b>the different opinions and interests</b> of the citizens are represented. Everyone can thus vote for a party that fits their opinion.<br><br>Several parties are not meant to prevent demonstrations, limit bribery or stimulate the economy. That is not the purpose of having many parties.", uk: "У демократії є <b>кілька партій</b>, щоб були представлені <b>різні думки та інтереси</b> громадян. Так кожен може проголосувати за партію, яка відповідає його поглядам.<br><br>Кілька партій потрібні не для того, щоб перешкоджати демонстраціям, обмежувати хабарництво чи стимулювати економіку. Це не мета багатопартійності.", ru: "В демократии существует <b>несколько партий</b>, чтобы были представлены <b>разные мнения и интересы</b> граждан. Так каждый может проголосовать за партию, которая соответствует его взглядам.<br><br>Несколько партий нужны не для того, чтобы препятствовать демонстрациям, ограничивать взяточничество или стимулировать экономику. Это не цель многопартийности." },
   },
   {
     id: "lid_042",
@@ -732,7 +732,7 @@ var QUIZ = [
       { de: "die Gerichte", en: "", uk: "", ru: "" },
       { de: "die Polizei", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Neue Gesetze <b>beschließt das Parlament</b> (in Deutschland der Bundestag, bei Länderthemen der Landtag). Das ist die Aufgabe der Gesetzgebung.<br><br>Die Regierung führt die Gesetze aus, die Gerichte wenden sie an und die Polizei sorgt dafür, dass man sie einhält.", en: "New laws are <b>passed by parliament</b> (in Germany the Bundestag, for state matters the Landtag). This is the task of the legislature.<br><br>The government carries out the laws, the courts apply them and the police make sure they are obeyed.", uk: "Нові закони <b>ухвалює парламент</b> (у Німеччині — Бундестаг, у питаннях земель — ландтаг). Це завдання законодавчої влади.<br><br>Уряд виконує закони, суди їх застосовують, а поліція стежить за їх дотриманням.", ru: "Новые законы <b>принимает парламент</b> (в Германии — Бундестаг, по вопросам земель — ландтаг). Это задача законодательной власти.<br><br>Правительство исполняет законы, суды их применяют, а полиция следит за их соблюдением." },
   },
   {
     id: "lid_043",
@@ -745,7 +745,7 @@ var QUIZ = [
       { de: "wenn sie Kritik am Staatsoberhaupt äußert", en: "", uk: "", ru: "" },
       { de: "wenn ihr Programm eine neue Richtung vorschlägt", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Eine Partei kann in Deutschland verboten werden, wenn sie <b>gegen die Verfassung kämpft</b>, also die freiheitliche demokratische Grundordnung abschaffen will (Art. 21 Abs. 2 GG). Das entscheidet das Bundesverfassungsgericht.<br><br>Hohe Kosten im Wahlkampf, Kritik am Staatsoberhaupt und neue politische Ideen sind kein Grund für ein Verbot.", en: "A party can be banned in Germany if it <b>fights against the constitution</b>, that is, if it wants to abolish the free democratic basic order (Art. 21 para. 2 GG). The Federal Constitutional Court decides this.<br><br>High campaign costs, criticism of the head of state and new political ideas are no reason for a ban.", uk: "Партію в Німеччині можна заборонити, якщо вона <b>воює проти конституції</b>, тобто хоче скасувати вільний демократичний лад (ст. 21 абз. 2 GG). Це вирішує Федеральний конституційний суд.<br><br>Високі витрати на виборчу кампанію, критика глави держави та нові політичні ідеї не є підставою для заборони.", ru: "Партию в Германии можно запретить, если она <b>борется против конституции</b>, то есть хочет отменить свободный демократический строй (ст. 21 абз. 2 GG). Это решает Федеральный конституционный суд.<br><br>Высокие расходы на избирательную кампанию, критика главы государства и новые политические идеи не являются основанием для запрета." },
   },
   {
     id: "lid_044",
@@ -758,7 +758,7 @@ var QUIZ = [
       { de: "Landtagsabgeordnete", en: "", uk: "", ru: "" },
       { de: "Bundestagsabgeordnete", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundespräsidentin/den Bundespräsidenten wählen die Bürgerinnen und Bürger <b>nicht direkt</b>. Sie/Er wird von der <b>Bundesversammlung</b> gewählt (Art. 54 GG).<br><br>Die Abgeordneten des EU-Parlaments, der Landtage und des Bundestages wählen die Bürgerinnen und Bürger direkt.", en: "Citizens do <b>not elect the Federal President directly</b>. The Federal President is elected by the <b>Federal Convention</b> (Art. 54 GG).<br><br>Members of the EU Parliament, of the Landtage and of the Bundestag are elected directly by the citizens.", uk: "Громадяни <b>не обирають федерального президента/федеральну президентку безпосередньо</b>. Його/її обирають <b>Федеральні збори</b> (ст. 54 GG).<br><br>Депутатів Європарламенту, ландтагів і Бундестагу громадяни обирають безпосередньо.", ru: "Граждане <b>не избирают федерального президента напрямую</b>. Его избирает <b>Федеральное собрание</b> (ст. 54 GG).<br><br>Депутатов Европарламента, ландтагов и Бундестага граждане избирают напрямую." },
   },
   {
     id: "lid_045",
@@ -771,7 +771,7 @@ var QUIZ = [
       { de: "Hausratsversicherung", en: "", uk: "", ru: "" },
       { de: "Haftpflicht- und Feuerversicherung", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Pflegeversicherung gehört zur <b>Sozialversicherung</b>. Zu ihr gehören die Kranken-, Renten-, Arbeitslosen-, Unfall- und Pflegeversicherung. Die Pflegeversicherung gibt es seit 1995 und hilft, wenn jemand Pflege braucht.<br><br>Hausrat-, Haftpflicht- und Feuerversicherung sind private Versicherungen.", en: "Long-term care insurance belongs to <b>social insurance</b>. This also includes health, pension, unemployment and accident insurance. Long-term care insurance has existed since 1995 and helps when someone needs care.<br><br>Household contents, liability and fire insurance are private insurances.", uk: "Страхування на випадок потреби в догляді належить до <b>соціального страхування</b>. До нього належать також медичне, пенсійне, страхування на випадок безробіття та від нещасних випадків. Страхування догляду існує з 1995 року і допомагає, коли людині потрібен догляд.<br><br>Страхування домашнього майна, відповідальності та від пожежі — приватні страхування.", ru: "Страхование на случай нуждаемости в уходе относится к <b>социальному страхованию</b>. К нему относятся также медицинское, пенсионное, страхование по безработице и от несчастных случаев. Страхование ухода существует с 1995 года и помогает, когда человеку нужен уход.<br><br>Страхование домашнего имущества, ответственности и от пожара — частные страховки." },
   },
   {
     id: "lid_046",
@@ -784,7 +784,7 @@ var QUIZ = [
       { de: "Er versorgt alle Einwohnerinnen und Einwohner kostenlos mit Zeitungen.", en: "", uk: "", ru: "" },
       { de: "Er produziert Autos und Busse.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Zu den Aufgaben des Staates gehört die <b>öffentliche Infrastruktur</b>, zum Beispiel Straßen und Schulen.<br><br>Lebensmittel, Kleidung, Autos und Busse stellen Unternehmen her und verkaufen sie – das ist Marktwirtschaft. Zeitungen sind unabhängig vom Staat (Pressefreiheit).", en: "One of the tasks of the state is <b>public infrastructure</b>, for example roads and schools.<br><br>Food, clothing, cars and buses are made and sold by companies – that is the market economy. Newspapers are independent of the state (freedom of the press).", uk: "До завдань держави належить <b>публічна інфраструктура</b>, наприклад дороги й школи.<br><br>Продукти харчування, одяг, автомобілі та автобуси виробляють і продають підприємства — це ринкова економіка. Газети незалежні від держави (свобода преси).", ru: "К задачам государства относится <b>общественная инфраструктура</b>, например дороги и школы.<br><br>Продукты питания, одежду, автомобили и автобусы производят и продают предприятия — это рыночная экономика. Газеты независимы от государства (свобода прессы)." },
   },
   {
     id: "lid_047",
@@ -797,7 +797,7 @@ var QUIZ = [
       { de: "Er unterstützt Museen.", en: "", uk: "", ru: "" },
       { de: "Er fördert Sportlerinnen und Sportler.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Staat bezahlt <b>keine Urlaubsreisen</b>. Das ist keine Aufgabe des Staates.<br><br>Der Staat zahlt aber Kindergeld, unterstützt Museen (Kulturförderung) und fördert Sportlerinnen und Sportler (Sportförderung).", en: "The state pays for <b>no holiday trips</b>. That is not a task of the state.<br><br>The state does pay child benefit, supports museums (support for culture) and promotes athletes (support for sport).", uk: "Держава <b>не оплачує відпусток і подорожей</b>. Це не завдання держави.<br><br>Але держава виплачує допомогу на дітей, підтримує музеї (підтримка культури) і сприяє спортсменам (підтримка спорту).", ru: "Государство <b>не оплачивает отпускных поездок</b>. Это не задача государства.<br><br>Но государство выплачивает пособие на детей, поддерживает музеи (поддержка культуры) и содействует спортсменам (поддержка спорта)." },
   },
   {
     id: "lid_048",
@@ -810,7 +810,7 @@ var QUIZ = [
       { de: "die Bürgerversammlung", en: "", uk: "", ru: "", correct: true },
       { de: "die Regierung", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Verfassungsorgane sind Bundestag, Bundesrat, Bundespräsident/in, Bundesregierung und Bundesverfassungsgericht. Eine <b>Bürgerversammlung</b> gehört nicht dazu. Sie findet nur auf lokaler Ebene statt, zum Beispiel in einer Gemeinde.", en: "The constitutional bodies are the Bundestag, the Bundesrat, the Federal President, the Federal Government and the Federal Constitutional Court. A <b>citizens’ assembly</b> is not one of them. It takes place only at local level, for example in a municipality.", uk: "До конституційних органів належать Бундестаг, Бундесрат, федеральний президент/федеральна президентка, федеральний уряд і Федеральний конституційний суд. <b>Збори громадян</b> до них не належать. Вони проходять лише на місцевому рівні, наприклад у громаді.", ru: "К конституционным органам относятся Бундестаг, Бундесрат, федеральный президент, федеральное правительство и Федеральный конституционный суд. <b>Собрание граждан</b> к ним не относится. Оно проходит только на местном уровне, например в муниципалитете." },
   },
   {
     id: "lid_049",
@@ -823,7 +823,7 @@ var QUIZ = [
       { de: "das Familienministerium", en: "", uk: "", ru: "" },
       { de: "die Universitäten", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Schulpolitik bestimmen die <b>Bundesländer</b>. Das nennt man <b>Kulturhoheit der Länder</b>. Deshalb sind die Schulen und Lehrpläne in den Ländern unterschiedlich.<br><br>Lehrkräfte und Universitäten setzen die Schulpolitik um, sie bestimmen sie aber nicht. Ein Familienministerium (Bund) ist für Familienpolitik zuständig, nicht für die Schulen.", en: "School policy is decided by the <b>federal states</b>. This is called the <b>cultural sovereignty of the states</b>. That is why schools and curricula differ from state to state.<br><br>Teachers and universities carry out school policy, but they do not decide it. A family ministry (federal) is responsible for family policy, not for schools.", uk: "Шкільну політику визначають <b>федеральні землі</b>. Це називається <b>культурним суверенітетом земель</b>. Тому школи й навчальні плани в землях різні.<br><br>Вчителі та університети здійснюють шкільну політику, але не визначають її. Міністерство у справах сімʼї (федеральне) відповідає за політику щодо сімʼї, а не за школи.", ru: "Школьную политику определяют <b>федеральные земли</b>. Это называется <b>культурным суверенитетом земель</b>. Поэтому школы и учебные планы в землях разные.<br><br>Учителя и университеты осуществляют школьную политику, но не определяют её. Министерство по делам семьи (федеральное) отвечает за семейную политику, а не за школы." },
   },
   {
     id: "lid_050",
@@ -836,7 +836,7 @@ var QUIZ = [
       { de: "gelenkte Zentralwirtschaft.", en: "", uk: "", ru: "" },
       { de: "Planwirtschaft.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Wirtschaftsform Deutschlands heißt <b>soziale Marktwirtschaft</b>. Sie verbindet freien Wettbewerb mit sozialer Sicherheit. Der Staat greift ein, damit Schwächere geschützt werden.<br><br>Zentral- oder Planwirtschaft bedeutet, dass der Staat alles plant. Das gab es zum Beispiel in der DDR.", en: "The form of economy in Germany is called the <b>social market economy</b>. It combines free competition with social security. The state intervenes to protect the weaker.<br><br>A centrally planned economy means that the state plans everything. That existed in the GDR, for example.", uk: "Форма економіки Німеччини називається <b>соціальна ринкова економіка</b>. Вона поєднує вільну конкуренцію із соціальною захищеністю. Держава втручається, щоб захистити слабших.<br><br>Централізована планова економіка означає, що держава все планує. Таке було, наприклад, в НДР.", ru: "Форма экономики Германии называется <b>социальная рыночная экономика</b>. Она сочетает свободную конкуренцию с социальной защищённостью. Государство вмешивается, чтобы защитить более слабых.<br><br>Централизованная плановая экономика означает, что государство всё планирует. Такое было, например, в ГДР." },
   },
   {
     id: "lid_051",
@@ -849,7 +849,7 @@ var QUIZ = [
       { de: "Menschen von einer Privatpolizei ohne Grund verhaftet werden.", en: "", uk: "", ru: "", correct: true },
       { de: "jemand ein Verbrechen begeht und deshalb verhaftet wird.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In einem Rechtsstaat dürfen Menschen <b>nicht ohne Grund von einer Privatpolizei verhaftet werden</b>. Verhaftungen dürfen nur die staatliche Polizei und Gerichte nach den Gesetzen anordnen.<br><br>Kritik an der Regierung, friedliche Demonstrationen und die Verhaftung nach einem Verbrechen sind in einem Rechtsstaat normal und erlaubt.", en: "In a state governed by the rule of law, people may <b>not be arrested without reason by a private police force</b>. Only the state police and the courts may order arrests, in accordance with the law.<br><br>Criticism of the government, peaceful demonstrations and arrest after a crime are normal and allowed in a state governed by the rule of law.", uk: "У правовій державі людей <b>не можна арештовувати без причини приватною поліцією</b>. Арешти можуть наказувати лише державна поліція та суди згідно із законами.<br><br>Критика уряду, мирні демонстрації та арешт після злочину є нормальними й дозволеними у правовій державі.", ru: "В правовом государстве людей <b>нельзя арестовывать без причины частной полицией</b>. Аресты могут назначать только государственная полиция и суды в соответствии с законами.<br><br>Критика правительства, мирные демонстрации и арест после преступления являются нормальными и разрешёнными в правовом государстве." },
   },
   {
     id: "lid_052",
@@ -862,7 +862,7 @@ var QUIZ = [
       { de: "preußischen König aus.", en: "", uk: "", ru: "" },
       { de: "Bundesverfassungsgericht aus.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Volkssouveränität</b> bedeutet: <b>Alle Staatsgewalt geht vom Volke aus</b> (Art. 20 Abs. 2 GG). Das Volk wählt Abgeordnete, und diese üben die Macht für das Volk aus.<br><br>Der Bundestag und das Bundesverfassungsgericht haben ihre Macht vom Volk. Einen preußischen König gibt es nicht mehr.", en: "<b>Popular sovereignty</b> means: <b>All state authority comes from the people</b> (Art. 20 para. 2 GG). The people elect members of parliament, and they exercise power on behalf of the people.<br><br>The Bundestag and the Federal Constitutional Court derive their power from the people. A Prussian king no longer exists.", uk: "<b>Народний суверенітет</b> означає: <b>уся державна влада виходить від народу</b> (ст. 20 абз. 2 GG). Народ обирає депутатів, а вони здійснюють владу від імені народу.<br><br>Бундестаг і Федеральний конституційний суд отримують свою владу від народу. Прусського короля більше немає.", ru: "<b>Народный суверенитет</b> означает: <b>вся государственная власть исходит от народа</b> (ст. 20 абз. 2 GG). Народ избирает депутатов, а они осуществляют власть от имени народа.<br><br>Бундестаг и Федеральный конституционный суд получают свою власть от народа. Прусского короля больше нет." },
   },
   {
     id: "lid_053",
@@ -875,7 +875,7 @@ var QUIZ = [
       { de: "Die Bürgerinnen und Bürger entscheiden über Gesetze.", en: "", uk: "", ru: "" },
       { de: "Der Staat muss die Gesetze einhalten.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In einem <b>Rechtsstaat</b> muss sich der <b>Staat selbst an die Gesetze halten</b>. Auch Regierung und Behörden handeln nur nach Recht und Gesetz.<br><br>„Rechtsstaat“ hat nichts mit „rechten“ Parteien zu tun. Gesetze beschließen die gewählten Abgeordneten, nicht alle Bürgerinnen und Bürger direkt.", en: "In a <b>state governed by the rule of law</b>, the <b>state itself must obey the laws</b>. The government and authorities also act only according to law and justice.<br><br>“Rechtsstaat” has nothing to do with “right-wing” parties. Laws are passed by the elected members of parliament, not directly by all citizens.", uk: "У <b>правовій державі</b> <b>сама держава мусить дотримуватися законів</b>. Уряд і органи влади теж діють лише згідно з правом і законом.<br><br>«Rechtsstaat» не має нічого спільного з «правими» партіями. Закони ухвалюють обрані депутати, а не всі громадяни безпосередньо.", ru: "В <b>правовом государстве</b> <b>само государство должно соблюдать законы</b>. Правительство и органы власти тоже действуют только в соответствии с правом и законом.<br><br>«Rechtsstaat» не имеет ничего общего с «правыми» партиями. Законы принимают избранные депутаты, а не все граждане напрямую." },
   },
   {
     id: "lid_054",
@@ -888,7 +888,7 @@ var QUIZ = [
       { de: "Exekutive", en: "", uk: "", ru: "" },
       { de: "Direktive", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die drei staatlichen Gewalten sind <b>Legislative</b> (Gesetzgebung), <b>Exekutive</b> (Regierung und Verwaltung) und <b>Judikative</b> (Rechtsprechung). „<b>Direktive</b>“ ist keine Gewalt. Das Wort bedeutet „Anweisung“ oder „Richtlinie“.", en: "The three state powers are the <b>legislature</b>, the <b>executive</b> (government and administration) and the <b>judiciary</b>. “<b>Direktive</b>” is not a power. The word means “instruction” or “guideline”.", uk: "Три державні гілки влади — це <b>законодавча</b>, <b>виконавча</b> (уряд і адміністрація) та <b>судова</b>. «<b>Direktive</b>» — не гілка влади. Це слово означає «вказівка» або «директива».", ru: "Три государственные ветви власти — это <b>законодательная</b>, <b>исполнительная</b> (правительство и администрация) и <b>судебная</b>. «<b>Direktive</b>» — не ветвь власти. Это слово означает «указание» или «директива»." },
   },
   {
     id: "lid_055",
@@ -903,7 +903,7 @@ var QUIZ = [
       { de: "das Bundesratsgebäude in Berlin", en: "", uk: "", ru: "" },
       { de: "das Bundeskanzleramt in Berlin", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Bild zeigt das <b>Reichstagsgebäude in Berlin</b> mit seiner Glaskuppel. Dort tagt der <b>Deutsche Bundestag</b>.<br><br>Das Bundesverfassungsgericht sitzt in Karlsruhe. Das Bundesratsgebäude und das Bundeskanzleramt stehen zwar auch in Berlin, sehen aber anders aus.", en: "The picture shows the <b>Reichstag building in Berlin</b> with its glass dome. The <b>German Bundestag</b> meets there.<br><br>The Federal Constitutional Court sits in Karlsruhe. The Bundesrat building and the Federal Chancellery are also in Berlin, but they look different.", uk: "На зображенні — <b>будівля Рейхстагу в Берліні</b> зі скляним куполом. Там засідає <b>німецький Бундестаг</b>.<br><br>Федеральний конституційний суд міститься в Карлсруе. Будівля Бундесрату та Федеральна канцелярія теж стоять у Берліні, але виглядають інакше.", ru: "На изображении — <b>здание Рейхстага в Берлине</b> со стеклянным куполом. Там заседает <b>немецкий Бундестаг</b>.<br><br>Федеральный конституционный суд находится в Карлсруэ. Здание Бундесрата и Федеральная канцелярия тоже стоят в Берлине, но выглядят иначе." },
   },
   {
     id: "lid_056",
@@ -916,7 +916,7 @@ var QUIZ = [
       { de: "Finanzamt", en: "", uk: "", ru: "" },
       { de: "Auswärtiges Amt", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das <b>Ordnungsamt</b> gehört zur Gemeindeverwaltung. Es kümmert sich um die öffentliche Ordnung in der Stadt, zum Beispiel um Parkverstöße.<br><br>Ein Pfarramt gehört zur Kirche, das Finanzamt zur staatlichen Steuerverwaltung der Länder und das Auswärtige Amt zur Bundesregierung.", en: "The <b>public order office</b> is part of the municipal administration. It looks after public order in the town, for example parking offences.<br><br>A parish office belongs to the church, the tax office to the state tax administration of the federal states, and the Federal Foreign Office to the federal government.", uk: "<b>Відділ громадського порядку</b> належить до адміністрації громади. Він відповідає за громадський порядок у місті, наприклад за порушення правил паркування.<br><br>Парафіяльна канцелярія належить до церкви, податкова інспекція — до державної податкової адміністрації земель, а Федеральне міністерство закордонних справ — до федерального уряду.", ru: "<b>Отдел общественного порядка</b> относится к администрации муниципалитета. Он отвечает за общественный порядок в городе, например за нарушения правил парковки.<br><br>Приходская канцелярия относится к церкви, налоговая инспекция — к государственной налоговой администрации земель, а Федеральное министерство иностранных дел — к федеральному правительству." },
   },
   {
     id: "lid_057",
@@ -929,7 +929,7 @@ var QUIZ = [
       { de: "eine ehemalige Bundeskanzlerin/ein ehemaliger Bundeskanzler", en: "", uk: "", ru: "" },
       { de: "eine Abgeordnete/ein Abgeordneter der stärksten Fraktion", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Bundestag wählt seine Präsidentin/seinen Präsidenten (Art. 40 GG). Meistens ist das <b>eine Abgeordnete/ein Abgeordneter der stärksten Fraktion</b>. Das ist eine politische Tradition.<br><br>Das Alter, das größte Bundesland oder ein früheres Amt als Bundeskanzlerin/Bundeskanzler spielen dafür keine Rolle.", en: "The Bundestag elects its President (Art. 40 GG). Usually this is <b>a member of the largest parliamentary group</b>. That is a political tradition.<br><br>Age, the largest federal state or a former office as Federal Chancellor play no role in this.", uk: "Бундестаг обирає свого президента/свою президентку (ст. 40 GG). Здебільшого це <b>депутат/депутатка найбільшої фракції</b>. Це політична традиція.<br><br>Вік, найбільша федеральна земля чи колишня посада федерального канцлера/федеральної канцлерки тут ролі не відіграють.", ru: "Бундестаг избирает своего президента (ст. 40 GG). Как правило, это <b>депутат от крупнейшей фракции</b>. Это политическая традиция.<br><br>Возраст, крупнейшая федеральная земля или прежняя должность федерального канцлера здесь роли не играют." },
   },
   {
     id: "lid_058",
@@ -942,7 +942,7 @@ var QUIZ = [
       { de: "die Bundesratspräsidentin/der Bundesratspräsident", en: "", uk: "", ru: "" },
       { de: "die Bundestagspräsidentin/der Bundestagspräsident", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Die Bundespräsidentin/der Bundespräsident</b> ernennt die Ministerinnen und Minister – auf Vorschlag der Bundeskanzlerin/des Bundeskanzlers (Art. 64 GG).<br><br>Die Präsidentin/der Präsident des Bundestages, des Bundesrates oder des Bundesverfassungsgerichts hat dafür keine Aufgabe.", en: "<b>The Federal President</b> appoints the ministers – on the proposal of the Federal Chancellor (Art. 64 GG).<br><br>The President of the Bundestag, of the Bundesrat or of the Federal Constitutional Court has no role in this.", uk: "<b>Федеральний президент/федеральна президентка</b> призначає міністрів — за пропозицією федерального канцлера/федеральної канцлерки (ст. 64 GG).<br><br>Президент Бундестагу, Бундесрату чи Федерального конституційного суду тут ніякої ролі не має.", ru: "<b>Федеральный президент</b> назначает министров — по предложению федерального канцлера (ст. 64 GG).<br><br>Президент Бундестага, Бундесрата или Федерального конституционного суда не имеет к этому никакого отношения." },
   },
   {
     id: "lid_059",
@@ -955,7 +955,7 @@ var QUIZ = [
       { de: "vor etwa 1150 Jahren", en: "", uk: "", ru: "" },
       { de: "vor etwa 1700 Jahren", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der älteste Nachweis für jüdisches Leben auf dem Gebiet des heutigen Deutschlands stammt aus dem Jahr <b>321</b>: Kaiser Konstantin erlaubte damals in einem Edikt Juden in der Stadt Köln, Ämter zu übernehmen. Das ist <b>vor etwa 1700 Jahren</b>.<br><br>2021 feierte Deutschland deshalb „1700 Jahre jüdisches Leben in Deutschland“.", en: "The oldest evidence of Jewish life on the territory of present-day Germany dates from the year <b>321</b>: in an edict, Emperor Constantine then allowed Jews in the city of Cologne to hold offices. That is <b>about 1,700 years ago</b>.<br><br>In 2021 Germany therefore celebrated “1,700 years of Jewish life in Germany”.", uk: "Найстаріше свідчення єврейського життя на території сучасної Німеччини походить із <b>321</b> року: імператор Костянтин тоді в едикті дозволив євреям у місті Кельн обіймати посади. Це було <b>близько 1700 років тому</b>.<br><br>У 2021 році Німеччина тому відзначала «1700 років єврейського життя в Німеччині».", ru: "Древнейшее свидетельство еврейской жизни на территории современной Германии относится к <b>321</b> году: император Константин тогда в эдикте разрешил евреям в городе Кёльн занимать должности. Это было <b>около 1700 лет назад</b>.<br><br>В 2021 году Германия поэтому отмечала «1700 лет еврейской жизни в Германии»." },
   },
   {
     id: "lid_060",
@@ -968,7 +968,7 @@ var QUIZ = [
       { de: "Direktive.", en: "", uk: "", ru: "" },
       { de: "Judikative.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bundestag und Bundesrat machen die Gesetze. Sie gehören deshalb zur <b>Legislative</b> (Gesetzgebung).<br><br>Die Exekutive führt die Gesetze aus (Regierung und Verwaltung), die Judikative spricht Recht (Gerichte). „Direktive“ ist keine staatliche Gewalt.", en: "The Bundestag and the Bundesrat make the laws. They therefore belong to the <b>legislature</b>.<br><br>The executive carries out the laws (government and administration), the judiciary applies the law (courts). “Direktive” is not a state power.", uk: "Бундестаг і Бундесрат ухвалюють закони. Тому вони належать до <b>законодавчої влади</b>.<br><br>Виконавча влада виконує закони (уряд і адміністрація), судова влада застосовує право (суди). «Direktive» — не державна гілка влади.", ru: "Бундестаг и Бундесрат принимают законы. Поэтому они относятся к <b>законодательной власти</b>.<br><br>Исполнительная власть исполняет законы (правительство и администрация), судебная власть применяет право (суды). «Direktive» — не государственная ветвь власти." },
   },
   {
     id: "lid_061",
@@ -981,7 +981,7 @@ var QUIZ = [
       { de: "Die Interessenverbände üben die Souveränität zusammen mit der Regierung aus.", en: "", uk: "", ru: "" },
       { de: "Die Staatsgewalt geht vom Volke aus.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Volkssouveränität</b> bedeutet: <b>Die Staatsgewalt geht vom Volke aus</b> (Art. 20 Abs. 2 GG). Das Volk wählt das Parlament und bestimmt so, wer regiert.<br><br>Ein König/eine Königin herrscht in einer Monarchie. Das Bundesverfassungsgericht steht nicht über der Verfassung, es schützt sie. Interessenverbände üben keine Souveränität aus.", en: "<b>Popular sovereignty</b> means: <b>State authority comes from the people</b> (Art. 20 para. 2 GG). The people elect parliament and in this way decide who governs.<br><br>A king or queen rules in a monarchy. The Federal Constitutional Court does not stand above the constitution, it protects it. Interest groups do not exercise sovereignty.", uk: "<b>Народний суверенітет</b> означає: <b>державна влада виходить від народу</b> (ст. 20 абз. 2 GG). Народ обирає парламент і так вирішує, хто керує.<br><br>У монархії править король або королева. Федеральний конституційний суд не стоїть над конституцією, а захищає її. Групи інтересів не здійснюють суверенітету.", ru: "<b>Народный суверенитет</b> означает: <b>государственная власть исходит от народа</b> (ст. 20 абз. 2 GG). Народ избирает парламент и так решает, кто правит.<br><br>В монархии правит король или королева. Федеральный конституционный суд не стоит над конституцией, а защищает её. Группы интересов не осуществляют суверенитета." },
   },
   {
     id: "lid_062",
@@ -994,7 +994,7 @@ var QUIZ = [
       { de: "Europawahl", en: "", uk: "", ru: "" },
       { de: "Bundestagswahl", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wenn das Parlament eines Bundeslandes gewählt wird, heißt das <b>Landtagswahl</b>. Das Landesparlament heißt in den meisten Ländern „Landtag“.<br><br>Die Kommunalwahl wählt die Gemeinde- oder Stadträte, die Europawahl das EU-Parlament und die Bundestagswahl den Bundestag.", en: "When the parliament of a federal state is elected, it is called a <b>state election</b>, in German “Landtagswahl”. In most states the state parliament is called the “Landtag”.<br><br>The local election chooses the municipal or town councils, the European election the EU Parliament and the federal election the Bundestag.", uk: "Коли обирають парламент федеральної землі, це називається <b>вибори до ландтагу</b>, німецькою «Landtagswahl». У більшості земель парламент землі називається «Landtag».<br><br>На місцевих виборах обирають ради громад або міські ради, на виборах до Європарламенту — Європейський парламент, а на виборах до Бундестагу — Бундестаг.", ru: "Когда избирают парламент федеральной земли, это называется <b>выборы в ландтаг</b>, по-немецки «Landtagswahl». В большинстве земель парламент земли называется «Landtag».<br><br>На местных выборах избирают советы муниципалитетов или городские советы, на выборах в Европарламент — Европейский парламент, а на выборах в Бундестаг — Бундестаг." },
   },
   {
     id: "lid_063",
@@ -1007,7 +1007,7 @@ var QUIZ = [
       { de: "das Finanzamt", en: "", uk: "", ru: "" },
       { de: "die Ministerien", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>Gerichte</b> gehören zur Judikative (Rechtsprechung), nicht zur Exekutive.<br><br>Polizei, Finanzamt und Ministerien gehören zur Exekutive: Sie führen die Gesetze aus und verwalten das Land.", en: "The <b>courts</b> belong to the judiciary, not to the executive.<br><br>The police, the tax office and the ministries belong to the executive: they carry out the laws and administer the country.", uk: "<b>Суди</b> належать до судової влади, а не до виконавчої.<br><br>Поліція, податкова інспекція та міністерства належать до виконавчої влади: вони виконують закони й управляють країною.", ru: "<b>Суды</b> относятся к судебной власти, а не к исполнительной.<br><br>Полиция, налоговая инспекция и министерства относятся к исполнительной власти: они исполняют законы и управляют страной." },
   },
   {
     id: "lid_064",
@@ -1020,7 +1020,7 @@ var QUIZ = [
       { de: "16 Kantone.", en: "", uk: "", ru: "" },
       { de: "Bund, Länder und Kommunen.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Deutschland hat drei Ebenen: <b>Bund, Länder und Kommunen</b> (Gemeinden und Städte).<br><br>Vier Besatzungszonen gab es nach 1945. Einen Oststaat und einen Weststaat gab es von 1949 bis 1990 (DDR und Bundesrepublik). „Kantone“ heißen die Teile der Schweiz.", en: "Germany has three levels: <b>the Federation, the states and the local authorities</b> (municipalities and towns).<br><br>There were four occupation zones after 1945. An eastern and a western state existed from 1949 to 1990 (the GDR and the Federal Republic). “Cantons” is the name of the parts of Switzerland.", uk: "У Німеччині три рівні: <b>федерація, землі та громади</b> (громади й міста).<br><br>Чотири окупаційні зони були після 1945 року. Східна й західна держави існували з 1949 по 1990 рік (НДР і Федеративна Республіка). «Кантонами» називають частини Швейцарії.", ru: "В Германии три уровня: <b>федерация, земли и муниципалитеты</b> (общины и города).<br><br>Четыре оккупационные зоны были после 1945 года. Восточное и западное государства существовали с 1949 по 1990 год (ГДР и Федеративная Республика). «Кантонами» называют части Швейцарии." },
   },
   {
     id: "lid_065",
@@ -1033,7 +1033,7 @@ var QUIZ = [
       { de: "die Bundeskanzlerin/den Bundeskanzler zu wählen.", en: "", uk: "", ru: "" },
       { de: "das Bundeskabinett zu bilden.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Bundeskabinett (die Regierung) <b>bildet die Bundeskanzlerin/der Bundeskanzler</b>. Sie/Er schlägt die Ministerinnen und Minister vor, die Bundespräsidentin/der Bundespräsident ernennt sie. Das ist keine Aufgabe des Bundestages.<br><br>Der Bundestag beschließt Gesetze, kontrolliert die Regierung und wählt die Bundeskanzlerin/den Bundeskanzler.", en: "The Federal Cabinet (the government) is <b>formed by the Federal Chancellor</b>. The Chancellor proposes the ministers and the Federal President appoints them. This is not a task of the Bundestag.<br><br>The Bundestag passes laws, monitors the government and elects the Federal Chancellor.", uk: "Федеральний кабінет (уряд) <b>формує федеральний канцлер/федеральна канцлерка</b>. Він/Вона пропонує міністрів, а федеральний президент/федеральна президентка призначає їх. Це не завдання Бундестагу.<br><br>Бундестаг ухвалює закони, контролює уряд і обирає федерального канцлера/федеральну канцлерку.", ru: "Федеральный кабинет (правительство) <b>формирует федеральный канцлер</b>. Он предлагает министров, а федеральный президент назначает их. Это не задача Бундестага.<br><br>Бундестаг принимает законы, контролирует правительство и избирает федерального канцлера." },
   },
   {
     id: "lid_066",
@@ -1046,7 +1046,7 @@ var QUIZ = [
       { de: "Nürnberg und Stuttgart", en: "", uk: "", ru: "" },
       { de: "Worms und Speyer", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die größten jüdischen Gemeinden in Deutschland gibt es heute in <b>Berlin und München</b>.<br><br>Worms und Speyer sind historisch wichtig. Dort lebten schon im Mittelalter bedeutende jüdische Gemeinden. Heute sind sie aber viel kleiner als die Gemeinden in Berlin und München.", en: "The largest Jewish communities in Germany today are in <b>Berlin and Munich</b>.<br><br>Worms and Speyer are historically important. Significant Jewish communities lived there as early as the Middle Ages. Today, however, they are much smaller than the communities in Berlin and Munich.", uk: "Найбільші єврейські громади в Німеччині сьогодні — у <b>Берліні та Мюнхені</b>.<br><br>Вормс і Шпеєр історично важливі. Там уже в Середньовіччі жили значні єврейські громади. Але сьогодні вони набагато менші, ніж громади в Берліні та Мюнхені.", ru: "Крупнейшие еврейские общины в Германии сегодня находятся в <b>Берлине и Мюнхене</b>.<br><br>Вормс и Шпайер исторически важны. Там уже в Средневековье жили значительные еврейские общины. Но сегодня они гораздо меньше, чем общины в Берлине и Мюнхене." },
   },
   {
     id: "lid_067",
@@ -1059,7 +1059,7 @@ var QUIZ = [
       { de: "Wirtschaftspolitik", en: "", uk: "", ru: "" },
       { de: "Schulpolitik", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Schulpolitik</b> ist vor allem Aufgabe der Bundesländer (Kulturhoheit der Länder). Deshalb sind Schulsysteme und Lehrpläne in den Ländern verschieden.<br><br>Verteidigungspolitik und Außenpolitik macht der Bund. Auch die Wirtschaftspolitik liegt überwiegend beim Bund.", en: "<b>School policy</b> is mainly the responsibility of the federal states (cultural sovereignty of the states). That is why school systems and curricula differ from state to state.<br><br>Defence policy and foreign policy are made by the Federation. Economic policy, too, is largely in the hands of the Federation.", uk: "<b>Шкільна політика</b> — це передусім завдання федеральних земель (культурний суверенітет земель). Тому шкільні системи та навчальні плани в землях різні.<br><br>Політику оборони й зовнішню політику здійснює федерація. Економічна політика також здебільшого належить федерації.", ru: "<b>Школьная политика</b> — это прежде всего задача федеральных земель (культурный суверенитет земель). Поэтому школьные системы и учебные планы в землях разные.<br><br>Политику обороны и внешнюю политику осуществляет федерация. Экономическая политика также в основном относится к федерации." },
   },
   {
     id: "lid_068",
@@ -1072,7 +1072,7 @@ var QUIZ = [
       { de: "weil es in den Bundesländern verschiedene Schulen gibt", en: "", uk: "", ru: "" },
       { de: "weil es nach dem Grundgesetz seine Aufgabe ist", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Im Grundgesetz steht: „Das gesamte Schulwesen steht unter der Aufsicht des Staates“ (Art. 7 Abs. 1 GG). Der Staat kontrolliert die Schulen, <b>weil es nach dem Grundgesetz seine Aufgabe ist</b>.<br><br>Es gibt in Deutschland auch private Schulen. Dass die Länder verschiedene Schulen haben, ist nicht der Grund für die Aufsicht.", en: "The Basic Law says: “The entire school system shall be under the supervision of the state” (Art. 7 para. 1 GG). The state supervises the schools <b>because under the Basic Law it is its task</b>.<br><br>There are also private schools in Germany. The fact that the states have different schools is not the reason for the supervision.", uk: "В Основному законі сказано: «Уся система шкільної освіти перебуває під наглядом держави» (ст. 7 абз. 1 GG). Держава контролює школи, <b>тому що за Основним законом це її завдання</b>.<br><br>У Німеччині є також приватні школи. Те, що в землях різні школи, не є причиною нагляду.", ru: "В Основном законе сказано: «Вся система школьного образования находится под надзором государства» (ст. 7 абз. 1 GG). Государство контролирует школы, <b>потому что по Основному закону это его задача</b>.<br><br>В Германии есть и частные школы. То, что в землях разные школы, не является причиной надзора." },
   },
   {
     id: "lid_069",
@@ -1085,7 +1085,7 @@ var QUIZ = [
       { de: "Gemeinden", en: "", uk: "", ru: "", correct: true },
       { de: "Bezirksämter", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Deutschland hat drei Ebenen: Bund, Länder und <b>Gemeinden</b>. Die Gemeinde ist die unterste politische Stufe, zum Beispiel eine Stadt oder ein Dorf.<br><br>Landräte leiten einen Landkreis. Dieser liegt über den Gemeinden. Stadträte sind Gremien in einer Stadt, Bezirksämter gibt es innerhalb großer Städte.", en: "Germany has three levels: the Federation, the states and the <b>municipalities</b>. The municipality is the lowest political level, for example a town or a village.<br><br>District administrators head a rural district. This lies above the municipalities. Town councils are bodies within a town, and district offices exist within large cities.", uk: "У Німеччині три рівні: федерація, землі та <b>громади</b>. Громада — найнижчий політичний рівень, наприклад місто чи село.<br><br>Ландрати очолюють район. Він розташований над громадами. Міські ради — це органи в місті, а районні управління є всередині великих міст.", ru: "В Германии три уровня: федерация, земли и <b>муниципалитеты</b>. Муниципалитет — самый низкий политический уровень, например город или деревня.<br><br>Ландраты возглавляют район. Он находится над муниципалитетами. Городские советы — это органы в городе, а районные управления существуют внутри крупных городов." },
   },
   {
     id: "lid_070",
@@ -1100,7 +1100,7 @@ var QUIZ = [
       { de: "Sie/Er wählt die Ministerinnen/Minister aus.", en: "", uk: "", ru: "" },
       { de: "Sie/Er schlägt die Kanzlerin/den Kanzler zur Wahl vor.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundespräsidentin/der Bundespräsident <b>schlägt dem Bundestag die Kanzlerin/den Kanzler zur Wahl vor</b> (Art. 63 GG) und ernennt sie/ihn nach der Wahl. Auf dem Foto von 1974 übergibt Gustav Heinemann die Ernennungsurkunde an Helmut Schmidt.<br><br>Die Regierungsgeschäfte führt die Bundeskanzlerin/der Bundeskanzler. Die Regierungspartei kontrolliert die Opposition nicht, und die Minister schlägt die Kanzlerin/der Kanzler vor.", en: "The Federal President <b>proposes the Chancellor to the Bundestag for election</b> (Art. 63 GG) and appoints them after the election. In the 1974 photo, Gustav Heinemann hands the certificate of appointment to Helmut Schmidt.<br><br>The Federal Chancellor conducts the business of government. The governing party does not monitor the opposition, and the ministers are proposed by the Chancellor.", uk: "Федеральний президент/федеральна президентка <b>пропонує Бундестагу кандидатуру канцлера/канцлерки для обрання</b> (ст. 63 GG) і після виборів призначає його/її. На фото 1974 року Густав Гайнеман вручає Гельмуту Шмідту грамоту про призначення.<br><br>Поточні справи уряду веде федеральний канцлер/федеральна канцлерка. Урядова партія не контролює опозицію, а міністрів пропонує канцлер/канцлерка.", ru: "Федеральный президент <b>предлагает Бундестагу кандидатуру канцлера для избрания</b> (ст. 63 GG) и после выборов назначает его. На фото 1974 года Густав Хайнеман вручает Гельмуту Шмидту грамоту о назначении.<br><br>Текущие дела правительства ведёт федеральный канцлер. Правящая партия не контролирует оппозицию, а министров предлагает канцлер." },
   },
   {
     id: "lid_071",
@@ -1113,7 +1113,7 @@ var QUIZ = [
       { de: "auf Schloss Bellevue, dem Amtssitz der Bundespräsidentin/des Bundespräsidenten, um Staatsgäste zu empfangen.", en: "", uk: "", ru: "" },
       { de: "in Berlin, weil sich dort das Bundeskanzleramt und der Bundestag befinden.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundeskanzlerin/der Bundeskanzler arbeitet meistens in <b>Berlin</b>. Dort sind das Bundeskanzleramt und der Bundestag. Berlin ist seit 1990 Hauptstadt, Regierung und Parlament sind 1999 von Bonn nach Berlin umgezogen.<br><br>Bonn war bis 1990 die Hauptstadt der alten Bundesrepublik. Schloss Meseberg ist ein Gästehaus der Bundesregierung. Schloss Bellevue ist der Amtssitz der Bundespräsidentin/des Bundespräsidenten, nicht der Kanzlerin/des Kanzlers.", en: "The Federal Chancellor usually works in <b>Berlin</b>. The Federal Chancellery and the Bundestag are there. Berlin has been the capital since 1990, and the government and parliament moved from Bonn to Berlin in 1999.<br><br>Bonn was the capital of the old Federal Republic until 1990. Schloss Meseberg is a guest house of the federal government. Schloss Bellevue is the official residence of the Federal President, not of the Chancellor.", uk: "Федеральний канцлер/федеральна канцлерка здебільшого працює в <b>Берліні</b>. Там розташовані Федеральна канцелярія та Бундестаг. Берлін є столицею з 1990 року, а уряд і парламент переїхали з Бонна до Берліна 1999 року.<br><br>Бонн був столицею старої Федеративної Республіки до 1990 року. Замок Меземберг — гостьовий будинок федерального уряду. Замок Бельвю — офіційна резиденція федерального президента/федеральної президентки, а не канцлера/канцлерки.", ru: "Федеральный канцлер обычно работает в <b>Берлине</b>. Там находятся Федеральная канцелярия и Бундестаг. Берлин является столицей с 1990 года, а правительство и парламент переехали из Бонна в Берлин в 1999 году.<br><br>Бонн был столицей старой Федеративной Республики до 1990 года. Замок Мезеберг — гостевой дом федерального правительства. Замок Бельвю — официальная резиденция федерального президента, а не канцлера." },
   },
   {
     id: "lid_072",
@@ -1126,7 +1126,7 @@ var QUIZ = [
       { de: "Ursula von der Leyen", en: "", uk: "", ru: "" },
       { de: "Friedrich Merz", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bundeskanzler ist seit Mai 2025 <b>Friedrich Merz</b> (CDU).<br><br>Gerhard Schröder war Bundeskanzler von 1998 bis 2005, Angela Merkel von 2005 bis 2021. Ursula von der Leyen war Bundesministerin und ist heute Präsidentin der Europäischen Kommission.", en: "Federal Chancellor since May 2025 is <b>Friedrich Merz</b> (CDU).<br><br>Gerhard Schröder was Federal Chancellor from 1998 to 2005, Angela Merkel from 2005 to 2021. Ursula von der Leyen was a federal minister and is now President of the European Commission.", uk: "Федеральним канцлером із травня 2025 року є <b>Фрідріх Мерц</b> (CDU).<br><br>Ґергард Шрьодер був федеральним канцлером з 1998 по 2005 рік, Ангела Меркель — з 2005 по 2021. Урсула фон дер Ляєн була федеральною міністеркою, а сьогодні є президенткою Європейської комісії.", ru: "Федеральным канцлером с мая 2025 года является <b>Фридрих Мерц</b> (CDU).<br><br>Герхард Шрёдер был федеральным канцлером с 1998 по 2005 год, Ангела Меркель — с 2005 по 2021. Урсула фон дер Ляйен была федеральным министром, а сегодня является президентом Европейской комиссии." },
   },
   {
     id: "lid_073",
@@ -1139,7 +1139,7 @@ var QUIZ = [
       { de: "Bündnis 90/Die Grünen und SPD.", en: "", uk: "", ru: "" },
       { de: "Die Linke und CDU/CSU.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Nach der Bundestagswahl im Februar 2025 sind <b>CDU/CSU und AfD</b> die beiden größten Fraktionen im Bundestag. Die SPD ist die drittgrößte Fraktion.<br><br>Die anderen genannten Paare enthalten Parteien, die weniger Abgeordnete haben.", en: "After the federal election in February 2025, <b>CDU/CSU and AfD</b> are the two largest parliamentary groups in the Bundestag. The SPD is the third-largest group.<br><br>The other pairs mentioned contain parties that have fewer members of parliament.", uk: "Після виборів до Бундестагу в лютому 2025 року <b>CDU/CSU та AfD</b> — дві найбільші фракції в Бундестагу. SPD — третя за величиною фракція.<br><br>Інші згадані пари містять партії, які мають менше депутатів.", ru: "После выборов в Бундестаг в феврале 2025 года <b>CDU/CSU и AfD</b> — две крупнейшие фракции в Бундестаге. SPD — третья по величине фракция.<br><br>Другие упомянутые пары содержат партии, у которых меньше депутатов." },
   },
   {
     id: "lid_074",
@@ -1152,7 +1152,7 @@ var QUIZ = [
       { de: "Bundestag", en: "", uk: "", ru: "", correct: true },
       { de: "Bundesgerichtshof", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Parlament für ganz Deutschland ist der <b>Bundestag</b>. Er sitzt in Berlin.<br><br>Die Bundesversammlung wählt nur die Bundespräsidentin/den Bundespräsidenten. Die Volkskammer war das Parlament der DDR. Der Bundesgerichtshof ist ein oberstes Gericht.", en: "The parliament for the whole of Germany is the <b>Bundestag</b>. It sits in Berlin.<br><br>The Federal Convention elects only the Federal President. The Volkskammer was the parliament of the GDR. The Federal Court of Justice is a supreme court.", uk: "Парламент для всієї Німеччини — це <b>Бундестаг</b>. Він засідає в Берліні.<br><br>Федеральні збори обирають лише федерального президента/федеральну президентку. Народна палата була парламентом НДР. Федеральний верховний суд — найвищий суд.", ru: "Парламент для всей Германии — это <b>Бундестаг</b>. Он заседает в Берлине.<br><br>Федеральное собрание избирает только федерального президента. Народная палата была парламентом ГДР. Федеральный верховный суд — высший суд." },
   },
   {
     id: "lid_075",
@@ -1165,7 +1165,7 @@ var QUIZ = [
       { de: "Bodo Ramelow", en: "", uk: "", ru: "" },
       { de: "Joachim Gauck", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Staatsoberhaupt ist der Bundespräsident <b>Frank-Walter Steinmeier</b> (seit 2017).<br><br>Joachim Gauck war Bundespräsident von 2012 bis 2017. Bärbel Bas und Bodo Ramelow sind bekannte Politiker (SPD und Die Linke), aber nicht Staatsoberhaupt.", en: "The head of state is Federal President <b>Frank-Walter Steinmeier</b> (since 2017).<br><br>Joachim Gauck was Federal President from 2012 to 2017. Bärbel Bas and Bodo Ramelow are well-known politicians (SPD and Die Linke), but not head of state.", uk: "Главою держави є федеральний президент <b>Франк-Вальтер Штайнмаєр</b> (з 2017 року).<br><br>Йоахім Ґаук був федеральним президентом з 2012 по 2017 рік. Бербель Бас і Бодо Рамельов — відомі політики (SPD і Die Linke), але не глави держави.", ru: "Главой государства является федеральный президент <b>Франк-Вальтер Штайнмайер</b> (с 2017 года).<br><br>Йоахим Гаук был федеральным президентом с 2012 по 2017 год. Бербель Бас и Бодо Рамелов — известные политики (SPD и Die Linke), но не главы государства." },
   },
   {
     id: "lid_076",
@@ -1178,7 +1178,7 @@ var QUIZ = [
       { de: "Christlicher Deutscher Umweltschutz", en: "", uk: "", ru: "" },
       { de: "Christlich Demokratische Union", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>CDU</b> steht für <b>Christlich Demokratische Union</b>. Die Partei wurde nach dem Zweiten Weltkrieg gegründet. „Christlich“ verweist auf die christlichen Werte, „Demokratisch“ auf die Demokratie und „Union“ auf den Zusammenschluss. Die CDU ist die Schwesterpartei der CSU.<br><br>Die anderen Namen gibt es nicht.", en: "<b>CDU</b> stands for <b>Christlich Demokratische Union</b>, in English the Christian Democratic Union. The party was founded after the Second World War. “Christlich” refers to Christian values, “Demokratisch” to democracy and “Union” to the coming together of different groups. The CDU is the sister party of the CSU.<br><br>The other names do not exist.", uk: "<b>CDU</b> означає <b>Christlich Demokratische Union</b>, тобто Християнсько-демократичний союз. Партію було засновано після Другої світової війни. «Christlich» вказує на християнські цінності, «Demokratisch» — на демократію, а «Union» — на обʼєднання. CDU — сестринська партія CSU.<br><br>Інших назв не існує.", ru: "<b>CDU</b> означает <b>Christlich Demokratische Union</b>, то есть Христианско-демократический союз. Партия была основана после Второй мировой войны. «Christlich» указывает на христианские ценности, «Demokratisch» — на демократию, а «Union» — на объединение. CDU — сестринская партия CSU.<br><br>Других названий не существует." },
   },
   {
     id: "lid_077",
@@ -1191,7 +1191,7 @@ var QUIZ = [
       { de: "eine deutsche Bürgerinitiative", en: "", uk: "", ru: "" },
       { de: "die deutsche Armee", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>Bundeswehr</b> ist die <b>deutsche Armee</b>. Sie verteidigt das Land und gehört zum Bund.<br><br>Die Polizei ist in Deutschland vor allem Sache der Länder. Ein Hafen oder eine Bürgerinitiative ist die Bundeswehr nicht.", en: "The <b>Bundeswehr</b> is the <b>German army</b>. It defends the country and belongs to the Federation.<br><br>In Germany the police are mainly a matter for the states. The Bundeswehr is neither a harbour nor a citizens’ initiative.", uk: "<b>Бундесвер</b> — це <b>німецька армія</b>. Вона захищає країну й належить федерації.<br><br>Поліція в Німеччині здебільшого перебуває у віданні земель. Бундесвер — не порт і не ініціатива громадян.", ru: "<b>Бундесвер</b> — это <b>немецкая армия</b>. Она защищает страну и относится к федерации.<br><br>Полиция в Германии в основном находится в ведении земель. Бундесвер — не порт и не гражданская инициатива." },
   },
   {
     id: "lid_078",
@@ -1204,7 +1204,7 @@ var QUIZ = [
       { de: "Sozialdemokratische Partei Deutschlands", en: "", uk: "", ru: "", correct: true },
       { de: "Sozialgerechte Partei Deutschlands", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>SPD</b> heißt <b>Sozialdemokratische Partei Deutschlands</b>. Sie ist eine der ältesten Parteien in Deutschland. Ihre Wurzeln gehen bis ins Jahr 1863 zurück.<br><br>Die anderen Namen gibt es nicht.", en: "<b>SPD</b> stands for <b>Sozialdemokratische Partei Deutschlands</b>, in English the Social Democratic Party of Germany. It is one of the oldest parties in Germany. Its roots go back to the year 1863.<br><br>The other names do not exist.", uk: "<b>SPD</b> означає <b>Sozialdemokratische Partei Deutschlands</b>, тобто Соціал-демократична партія Німеччини. Це одна з найстаріших партій у Німеччині. Її коріння сягають 1863 року.<br><br>Інших назв не існує.", ru: "<b>SPD</b> означает <b>Sozialdemokratische Partei Deutschlands</b>, то есть Социал-демократическая партия Германии. Это одна из старейших партий в Германии. Её корни восходят к 1863 году.<br><br>Других названий не существует." },
   },
   {
     id: "lid_079",
@@ -1217,7 +1217,7 @@ var QUIZ = [
       { de: "Führende Demokratische Partei", en: "", uk: "", ru: "" },
       { de: "Freie Demokratische Partei", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>FDP</b> steht für <b>Freie Demokratische Partei</b>. Sie ist eine liberale Partei und wurde 1948 gegründet. Jeder Buchstabe steht für ein Wort des Namens: Freie – Demokratische – Partei.<br><br>Die anderen Namen gibt es nicht.", en: "<b>FDP</b> stands for <b>Freie Demokratische Partei</b>, in English the Free Democratic Party. It is a liberal party and was founded in 1948. Each letter stands for one word of the name: Freie – Demokratische – Partei.<br><br>The other names do not exist.", uk: "<b>FDP</b> означає <b>Freie Demokratische Partei</b>, тобто Вільна демократична партія. Це ліберальна партія, заснована 1948 року. Кожна літера означає одне слово назви: Freie – Demokratische – Partei.<br><br>Інших назв не існує.", ru: "<b>FDP</b> означает <b>Freie Demokratische Partei</b>, то есть Свободная демократическая партия. Это либеральная партия, основанная в 1948 году. Каждая буква означает одно слово названия: Freie – Demokratische – Partei.<br><br>Других названий не существует." },
   },
   {
     id: "lid_080",
@@ -1230,7 +1230,7 @@ var QUIZ = [
       { de: "Bundesverfassungsgericht", en: "", uk: "", ru: "", correct: true },
       { de: "Verwaltungsgericht", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das <b>Bundesverfassungsgericht</b> in Karlsruhe legt das Grundgesetz aus und schützt die Verfassung. Es entscheidet zum Beispiel, ob ein Gesetz mit dem Grundgesetz vereinbar ist.<br><br>Das Amtsgericht und das Oberlandesgericht sind Gerichte für normale Streitfälle und Strafsachen. Das Verwaltungsgericht entscheidet Streit mit Behörden.", en: "The <b>Federal Constitutional Court</b> in Karlsruhe interprets the Basic Law and protects the constitution. For example, it decides whether a law is compatible with the Basic Law.<br><br>The local court and the higher regional court are courts for ordinary disputes and criminal cases. The administrative court decides disputes with public authorities.", uk: "<b>Федеральний конституційний суд</b> у Карлсруе тлумачить Основний закон і захищає конституцію. Наприклад, він вирішує, чи відповідає закон Основному закону.<br><br>Окружний суд і вищий земельний суд — це суди для звичайних спорів і кримінальних справ. Адміністративний суд вирішує спори з органами влади.", ru: "<b>Федеральный конституционный суд</b> в Карлсруэ толкует Основной закон и защищает конституцию. Например, он решает, соответствует ли закон Основному закону.<br><br>Участковый суд и высший земельный суд — это суды для обычных споров и уголовных дел. Административный суд решает споры с органами власти." },
   },
   {
     id: "lid_081",
@@ -1243,7 +1243,7 @@ var QUIZ = [
       { de: "das Volk", en: "", uk: "", ru: "" },
       { de: "der Bundestag", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundeskanzlerin/den Bundeskanzler wählt der <b>Bundestag</b> (Art. 63 GG).<br><br>Die Bundesversammlung wählt nur die Bundespräsidentin/den Bundespräsidenten. Der Bundesrat und das Volk wählen die Kanzlerin/den Kanzler nicht. Das Volk wählt nur die Abgeordneten des Bundestages.", en: "The Federal Chancellor is elected by the <b>Bundestag</b> (Art. 63 GG).<br><br>The Federal Convention elects only the Federal President. The Bundesrat and the people do not elect the Chancellor. The people elect only the members of the Bundestag.", uk: "Федерального канцлера/федеральну канцлерку обирає <b>Бундестаг</b> (ст. 63 GG).<br><br>Федеральні збори обирають лише федерального президента/федеральну президентку. Бундесрат і народ канцлера/канцлерку не обирають. Народ обирає лише депутатів Бундестагу.", ru: "Федерального канцлера избирает <b>Бундестаг</b> (ст. 63 GG).<br><br>Федеральное собрание избирает только федерального президента. Бундесрат и народ канцлера не избирают. Народ избирает только депутатов Бундестага." },
   },
   {
     id: "lid_082",
@@ -1256,7 +1256,7 @@ var QUIZ = [
       { de: "die Bundesratspräsidentin/der Bundesratspräsident", en: "", uk: "", ru: "" },
       { de: "die Bundeskanzlerin/der Bundeskanzler", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das <b>Bundeskabinett</b> besteht aus der Kanzlerin/dem Kanzler und den Ministerinnen und Ministern. Die <b>Bundeskanzlerin/der Bundeskanzler leitet</b> es und bestimmt die Richtlinien der Politik (Art. 65 GG).<br><br>Die Präsidentinnen/Präsidenten von Bundestag, Bundesrat und Bundesrepublik gehören nicht zum Kabinett.", en: "The <b>Federal Cabinet</b> consists of the Chancellor and the ministers. The <b>Federal Chancellor leads</b> it and sets the guidelines of policy (Art. 65 GG).<br><br>The Presidents of the Bundestag, the Bundesrat and the Federal Republic are not part of the Cabinet.", uk: "<b>Федеральний кабінет</b> складається з канцлера/канцлерки та міністрів. <b>Федеральний канцлер/федеральна канцлерка очолює</b> його й визначає основні напрями політики (ст. 65 GG).<br><br>Президенти Бундестагу, Бундесрату та Федеративної Республіки до кабінету не входять.", ru: "<b>Федеральный кабинет</b> состоит из канцлера и министров. <b>Федеральный канцлер возглавляет</b> его и определяет основные направления политики (ст. 65 GG).<br><br>Президенты Бундестага, Бундесрата и Федеративной Республики в кабинет не входят." },
   },
   {
     id: "lid_083",
@@ -1269,7 +1269,7 @@ var QUIZ = [
       { de: "der Bundestag", en: "", uk: "", ru: "", correct: true },
       { de: "die Bundesregierung", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundeskanzlerin/den Bundeskanzler wählt der <b>Bundestag</b>. Die Abgeordneten stimmen darüber ab (Art. 63 GG).<br><br>Das Volk wählt nur die Abgeordneten. Die Bundesversammlung wählt die Bundespräsidentin/den Bundespräsidenten. Die Bundesregierung ist die Regierung, die von der Kanzlerin/vom Kanzler geführt wird.", en: "The Federal Chancellor is elected by the <b>Bundestag</b>. The members of parliament vote on it (Art. 63 GG).<br><br>The people elect only the members of parliament. The Federal Convention elects the Federal President. The Federal Government is the government led by the Chancellor.", uk: "Федерального канцлера/федеральну канцлерку обирає <b>Бундестаг</b>. Депутати голосують за це (ст. 63 GG).<br><br>Народ обирає лише депутатів. Федеральні збори обирають федерального президента/федеральну президентку. Федеральний уряд — це уряд, який очолює канцлер/канцлерка.", ru: "Федерального канцлера избирает <b>Бундестаг</b>. Депутаты голосуют за это (ст. 63 GG).<br><br>Народ избирает только депутатов. Федеральное собрание избирает федерального президента. Федеральное правительство — это правительство, которое возглавляет канцлер." },
   },
   {
     id: "lid_084",
@@ -1282,7 +1282,7 @@ var QUIZ = [
       { de: "repräsentiert das Land.", en: "", uk: "", ru: "", correct: true },
       { de: "überwacht die Einhaltung der Gesetze.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundespräsidentin/der Bundespräsident ist das Staatsoberhaupt und <b>repräsentiert das Land</b> im Inland und im Ausland. Sie/Er unterschreibt zum Beispiel die Gesetze und empfängt Staatsgäste.<br><br>Regiert wird das Land von der Bundesregierung. Gesetze entwirft und beschließt das Parlament. Die Einhaltung der Gesetze überwachen Gerichte und Behörden.", en: "The Federal President is the head of state and <b>represents the country</b> at home and abroad. For example, the President signs the laws and receives state guests.<br><br>The country is governed by the Federal Government. Laws are drafted and passed by parliament. Courts and authorities monitor compliance with the laws.", uk: "Федеральний президент/федеральна президентка — глава держави і <b>представляє країну</b> всередині країни та за кордоном. Він/Вона, наприклад, підписує закони й приймає державних гостей.<br><br>Країною керує федеральний уряд. Закони розробляє й ухвалює парламент. За дотриманням законів стежать суди й органи влади.", ru: "Федеральный президент — глава государства и <b>представляет страну</b> внутри страны и за рубежом. Он, например, подписывает законы и принимает государственных гостей.<br><br>Страной управляет федеральное правительство. Законы разрабатывает и принимает парламент. За соблюдением законов следят суды и органы власти." },
   },
   {
     id: "lid_085",
@@ -1295,7 +1295,7 @@ var QUIZ = [
       { de: "die Regierungsvertreter der Bundesländer", en: "", uk: "", ru: "", correct: true },
       { de: "die Parteimitglieder", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Im <b>Bundesrat</b> sitzen <b>Vertreterinnen und Vertreter der Landesregierungen</b> (Art. 51 GG). So wirken die Bundesländer an der Politik des Bundes mit.<br><br>Die Abgeordneten des Bundestages sind im Bundestag. Die Ministerinnen und Minister bilden die Bundesregierung. Parteimitglieder sind nicht automatisch im Bundesrat.", en: "The <b>Bundesrat</b> consists of <b>representatives of the state governments</b> (Art. 51 GG). In this way the federal states take part in the policy of the Federation.<br><br>The members of the Bundestag sit in the Bundestag. The ministers form the Federal Government. Party members are not automatically in the Bundesrat.", uk: "У <b>Бундесраті</b> засідають <b>представники урядів земель</b> (ст. 51 GG). Так федеральні землі беруть участь у політиці федерації.<br><br>Депутати Бундестагу засідають у Бундестазі. Міністри утворюють федеральний уряд. Члени партій автоматично до Бундесрату не входять.", ru: "В <b>Бундесрате</b> заседают <b>представители правительств земель</b> (ст. 51 GG). Так федеральные земли участвуют в политике федерации.<br><br>Депутаты Бундестага заседают в Бундестаге. Министры образуют федеральное правительство. Члены партий автоматически в Бундесрат не входят." },
   },
   {
     id: "lid_086",
@@ -1308,7 +1308,7 @@ var QUIZ = [
       { de: "das Bundesparlament", en: "", uk: "", ru: "" },
       { de: "das Bundesverfassungsgericht", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundespräsidentin/den Bundespräsidenten wählt die <b>Bundesversammlung</b> (Art. 54 GG). Sie besteht aus den Mitgliedern des Bundestages und der gleichen Zahl von Mitgliedern, die die Landesparlamente wählen.<br><br>Der Bundesrat, das „Bundesparlament“ (Bundestag) und das Bundesverfassungsgericht wählen die Bundespräsidentin/den Bundespräsidenten nicht.", en: "The Federal President is elected by the <b>Federal Convention</b> (Art. 54 GG). It consists of the members of the Bundestag and an equal number of members elected by the state parliaments.<br><br>The Bundesrat, the “federal parliament” (the Bundestag) and the Federal Constitutional Court do not elect the Federal President.", uk: "Федерального президента/федеральну президентку обирають <b>Федеральні збори</b> (ст. 54 GG). Вони складаються з членів Бундестагу та такої самої кількості членів, яких обирають парламенти земель.<br><br>Бундесрат, «федеральний парламент» (Бундестаг) і Федеральний конституційний суд федерального президента/федеральну президентку не обирають.", ru: "Федерального президента избирает <b>Федеральное собрание</b> (ст. 54 GG). Оно состоит из членов Бундестага и такого же числа членов, которых избирают парламенты земель.<br><br>Бундесрат, «федеральный парламент» (Бундестаг) и Федеральный конституционный суд федерального президента не избирают." },
   },
   {
     id: "lid_087",
@@ -1321,7 +1321,7 @@ var QUIZ = [
       { de: "die Bundesratspräsidentin/der Bundesratspräsident", en: "", uk: "", ru: "" },
       { de: "die Bundestagspräsidentin/der Bundestagspräsident", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Staatsoberhaupt ist die <b>Bundespräsidentin/der Bundespräsident</b>. Sie/Er repräsentiert Deutschland.<br><br>Die Bundeskanzlerin/der Bundeskanzler ist das Oberhaupt der Regierung, aber nicht des Staates. Die Präsidentinnen/Präsidenten von Bundesrat und Bundestag leiten diese Organe.", en: "The head of state is the <b>Federal President</b>. The President represents Germany.<br><br>The Federal Chancellor is the head of the government, but not of the state. The Presidents of the Bundesrat and the Bundestag lead those bodies.", uk: "Главою держави є <b>федеральний президент/федеральна президентка</b>. Він/Вона представляє Німеччину.<br><br>Федеральний канцлер/федеральна канцлерка — голова уряду, але не держави. Президенти Бундесрату й Бундестагу очолюють ці органи.", ru: "Главой государства является <b>федеральный президент</b>. Он представляет Германию.<br><br>Федеральный канцлер — глава правительства, но не государства. Президенты Бундесрата и Бундестага возглавляют эти органы." },
   },
   {
     id: "lid_088",
@@ -1334,7 +1334,7 @@ var QUIZ = [
       { de: "bestimmt, wer im Bundesrat sitzt.", en: "", uk: "", ru: "" },
       { de: "schlägt die Regierungschefinnen/Regierungschefs der Länder vor.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die parlamentarische <b>Opposition kontrolliert die Regierung</b>. Sie kritisiert die Politik und stellt Fragen an die Regierung.<br><br>Wer Ministerin/Minister wird, schlägt die Kanzlerin/der Kanzler vor. Im Bundesrat sitzen Vertreter der Landesregierungen. Die Regierungschefs der Länder bestimmen die Landesparlamente.", en: "The parliamentary <b>opposition monitors the government</b>. It criticises policy and asks the government questions.<br><br>Who becomes a minister is proposed by the Chancellor. The Bundesrat consists of representatives of the state governments. The heads of government of the states do not determine the state parliaments.", uk: "Парламентська <b>опозиція контролює уряд</b>. Вона критикує політику й ставить питання уряду.<br><br>Хто стане міністром, пропонує канцлер/канцлерка. У Бундесраті засідають представники урядів земель. Керівники урядів земель не визначають парламенти земель.", ru: "Парламентская <b>оппозиция контролирует правительство</b>. Она критикует политику и задаёт вопросы правительству.<br><br>Кто станет министром, предлагает канцлер. В Бундесрате заседают представители правительств земель. Руководители правительств земель не определяют парламенты земель." },
   },
   {
     id: "lid_089",
@@ -1347,7 +1347,7 @@ var QUIZ = [
       { de: "Fraktion", en: "", uk: "", ru: "", correct: true },
       { de: "Opposition", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Vereinigung von Abgeordneten einer Partei im Parlament heißt <b>Fraktion</b>.<br><br>Ein Verband vertritt Interessen außerhalb des Parlaments. Der Ältestenrat ist ein Gremium des Bundestages. Die Opposition sind alle Abgeordneten, die nicht zur Regierung gehören.", en: "The association of members of a party in parliament is called a <b>parliamentary group</b>.<br><br>An association represents interests outside parliament. The Council of Elders is a body of the Bundestag. The opposition is all members of parliament who are not part of the government.", uk: "Обʼєднання депутатів однієї партії в парламенті називається <b>фракція</b>.<br><br>Обʼєднання представляє інтереси поза парламентом. Рада старійшин — орган Бундестагу. Опозиція — це всі депутати, які не входять до уряду.", ru: "Объединение депутатов одной партии в парламенте называется <b>фракция</b>.<br><br>Объединение представляет интересы вне парламента. Совет старейшин — орган Бундестага. Оппозиция — это все депутаты, которые не входят в правительство." },
   },
   {
     id: "lid_090",
@@ -1360,7 +1360,7 @@ var QUIZ = [
       { de: "den Bundestag.", en: "", uk: "", ru: "" },
       { de: "die Bundesregierung.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundesländer wirken über den <b>Bundesrat</b> an der Gesetzgebung des Bundes mit (Art. 50 GG). Dort sitzen Vertreterinnen und Vertreter der Landesregierungen.<br><br>Die Bundesversammlung wählt nur die Bundespräsidentin/den Bundespräsidenten. Bundestag und Bundesregierung sind Organe des Bundes.", en: "The federal states take part in federal legislation through the <b>Bundesrat</b> (Art. 50 GG). Representatives of the state governments sit there.<br><br>The Federal Convention elects only the Federal President. The Bundestag and the Federal Government are bodies of the Federation.", uk: "Федеральні землі беруть участь у законодавстві федерації через <b>Бундесрат</b> (ст. 50 GG). Там засідають представники урядів земель.<br><br>Федеральні збори обирають лише федерального президента/федеральну президентку. Бундестаг і федеральний уряд — органи федерації.", ru: "Федеральные земли участвуют в законодательстве федерации через <b>Бундесрат</b> (ст. 50 GG). Там заседают представители правительств земель.<br><br>Федеральное собрание избирает только федерального президента. Бундестаг и федеральное правительство — органы федерации." },
   },
   {
     id: "lid_091",
@@ -1373,7 +1373,7 @@ var QUIZ = [
       { de: "schwieriger, wenn dadurch die Mehrheit im Bundesrat verändert wird.", en: "", uk: "", ru: "", correct: true },
       { de: "leichter, wenn es sich um ein reiches Bundesland handelt.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wenn eine Landesregierung wechselt, kann sich die <b>Mehrheit im Bundesrat verändern</b>. Dort sitzen die Vertreter der Landesregierungen. Hat die Bundesregierung dort keine Mehrheit mehr, wird das Regieren <b>schwieriger</b>, weil viele Gesetze der Zustimmung des Bundesrates bedürfen.<br><br>Die Mehrheit im Bundestag ändert sich durch Landeswahlen nicht, denn der Bundestag wird direkt gewählt.", en: "When a state government changes, <b>the majority in the Bundesrat can change</b>. The representatives of the state governments sit there. If the Federal Government no longer has a majority there, governing becomes <b>more difficult</b>, because many laws need the consent of the Bundesrat.<br><br>The majority in the Bundestag does not change because of state elections, since the Bundestag is elected directly.", uk: "Коли уряд землі змінюється, <b>більшість у Бундесраті може змінитися</b>. Там засідають представники урядів земель. Якщо федеральний уряд більше не має там більшості, керувати країною стає <b>складніше</b>, адже багато законів потребують згоди Бундесрату.<br><br>Більшість у Бундестазі через вибори в землях не змінюється, бо Бундестаг обирають безпосередньо.", ru: "Когда правительство земли меняется, <b>большинство в Бундесрате может измениться</b>. Там заседают представители правительств земель. Если у федерального правительства там больше нет большинства, управлять страной становится <b>сложнее</b>, ведь многие законы требуют согласия Бундесрата.<br><br>Большинство в Бундестаге из-за выборов в землях не меняется, потому что Бундестаг избирают напрямую." },
   },
   {
     id: "lid_092",
@@ -1386,7 +1386,7 @@ var QUIZ = [
       { de: "Christlich Sozialer Unternehmerverband", en: "", uk: "", ru: "" },
       { de: "Christlich Soziale Union", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>CSU</b> heißt <b>Christlich-Soziale Union</b>. Sie ist die Schwesterpartei der CDU und tritt nur in Bayern an. Im Bundestag bilden CDU und CSU eine gemeinsame Fraktion.<br><br>Die anderen Namen sind falsch.", en: "<b>CSU</b> stands for <b>Christlich-Soziale Union</b>, in English the Christian Social Union. It is the sister party of the CDU and stands for election only in Bavaria. In the Bundestag, CDU and CSU form a joint parliamentary group.<br><br>The other names are wrong.", uk: "<b>CSU</b> означає <b>Christlich-Soziale Union</b>, тобто Християнсько-соціальний союз. Це сестринська партія CDU, яка балотується лише в Баварії. У Бундестазі CDU і CSU утворюють спільну фракцію.<br><br>Інші назви неправильні.", ru: "<b>CSU</b> означает <b>Christlich-Soziale Union</b>, то есть Христианско-социальный союз. Это сестринская партия CDU, которая баллотируется только в Баварии. В Бундестаге CDU и CSU образуют общую фракцию.<br><br>Другие названия неправильные." },
   },
   {
     id: "lid_093",
@@ -1399,7 +1399,7 @@ var QUIZ = [
       { de: "größer ist das Risiko, eine Koalition bilden zu müssen.", en: "", uk: "", ru: "" },
       { de: "mehr Sitze erhält die Partei im Parlament.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Mit der <b>Zweitstimme</b> wählt man eine Partei. Je mehr Zweitstimmen eine Partei bekommt, <b>desto mehr Sitze erhält sie im Parlament</b>.<br><br>Mit der Erststimme wählt man eine Kandidatin/einen Kandidaten im Wahlkreis. Die Zweitstimmen bestimmen die Zahl der Sitze für jede Partei.", en: "With the <b>second vote</b> you vote for a party. The more second votes a party gets, <b>the more seats it receives in parliament</b>.<br><br>With the first vote you vote for a candidate in your constituency. The second votes determine the number of seats for each party.", uk: "За допомогою <b>другого голосу</b> обирають партію. Чим більше других голосів отримує партія, <b>тим більше місць вона має в парламенті</b>.<br><br>Першим голосом обирають кандидата/кандидатку у виборчому окрузі. Другі голоси визначають кількість місць для кожної партії.", ru: "С помощью <b>второго голоса</b> избирают партию. Чем больше вторых голосов получает партия, <b>тем больше мест она имеет в парламенте</b>.<br><br>Первым голосом избирают кандидата в избирательном округе. Вторые голоса определяют количество мест для каждой партии." },
   },
   {
     id: "lid_094",
@@ -1412,7 +1412,7 @@ var QUIZ = [
       { de: "21", en: "", uk: "", ru: "" },
       { de: "23", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bei der Bundestagswahl darf man ab <b>18 Jahren</b> wählen (Art. 38 GG).<br><br>16 Jahre gelten bei der Europawahl und bei einigen Landtags- und Kommunalwahlen. 21 und 23 Jahre sind kein Wahlalter in Deutschland mehr.", en: "In the federal election you may vote from the age of <b>18</b> (Art. 38 GG).<br><br>The age of 16 applies in the European election and in some state and local elections. 21 and 23 are no longer a voting age in Germany.", uk: "На виборах до Бундестагу голосувати можна з <b>18 років</b> (ст. 38 GG).<br><br>16 років діє на виборах до Європарламенту та на деяких виборах до ландтагів і місцевих виборах. 21 і 23 роки більше не є віком для голосування в Німеччині.", ru: "На выборах в Бундестаг голосовать можно с <b>18 лет</b> (ст. 38 GG).<br><br>16 лет действует на выборах в Европарламент и на некоторых выборах в ландтаги и местных выборах. 21 и 23 года больше не являются возрастом для голосования в Германии." },
   },
   {
     id: "lid_095",
@@ -1425,7 +1425,7 @@ var QUIZ = [
       { de: "Schweigepflicht", en: "", uk: "", ru: "" },
       { de: "Religionspflicht", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Für die meisten Kinder gilt die <b>Schulpflicht</b>. Sie müssen ab etwa sechs Jahren zur Schule gehen.<br><br>Eine Wahlpflicht gibt es nicht, und niemand muss eine Religion haben. Die Schweigepflicht gilt für bestimmte Berufe, zum Beispiel für Ärztinnen und Ärzte.", en: "<b>Compulsory schooling</b> applies to most children. They have to go to school from about the age of six.<br><br>There is no compulsory voting, and nobody has to have a religion. The duty of confidentiality applies to certain professions, for example doctors.", uk: "Для більшості дітей діє <b>обовʼязкова шкільна освіта</b>. Вони мусять ходити до школи приблизно з шести років.<br><br>Обовʼязкового голосування немає, і ніхто не зобовʼязаний мати релігію. Обовʼязок зберігати таємницю діє для певних професій, наприклад для лікарів.", ru: "Для большинства детей действует <b>обязательное школьное образование</b>. Они должны ходить в школу примерно с шести лет.<br><br>Обязательного голосования нет, и никто не обязан иметь религию. Обязанность хранить тайну действует для определённых профессий, например для врачей." },
   },
   {
     id: "lid_096",
@@ -1438,7 +1438,7 @@ var QUIZ = [
       { de: "gar nicht, Holocaustleugnung ist erlaubt", en: "", uk: "", ru: "" },
       { de: "mit Freiheitsstrafe bis zu fünf Jahren oder mit Geldstrafe", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Holocaustleugnung ist in Deutschland verboten. Sie ist <b>Volksverhetzung</b> (§ 130 Strafgesetzbuch). Dafür gibt es eine <b>Freiheitsstrafe bis zu fünf Jahren oder eine Geldstrafe</b>.<br><br>Die Meinungsfreiheit erlaubt es nicht, den Holocaust zu leugnen. Soziale Leistungen werden nicht gekürzt, und Sozialstunden sind hier keine Strafe.", en: "Holocaust denial is forbidden in Germany. It is <b>incitement to hatred</b> (Section 130 of the Criminal Code). The penalty is <b>imprisonment of up to five years or a fine</b>.<br><br>Freedom of expression does not allow denying the Holocaust. Social benefits are not cut, and community service is not a punishment here.", uk: "Заперечення Голокосту в Німеччині заборонене. Це <b>розпалювання ненависті</b> (§ 130 Кримінального кодексу). За це передбачено <b>позбавлення волі на строк до пʼяти років або грошовий штраф</b>.<br><br>Свобода слова не дозволяє заперечувати Голокост. Соціальні виплати не скорочують, а громадські роботи тут не є покаранням.", ru: "Отрицание Холокоста в Германии запрещено. Это <b>разжигание ненависти</b> (§ 130 Уголовного кодекса). За это предусмотрено <b>лишение свободы на срок до пяти лет или денежный штраф</b>.<br><br>Свобода слова не позволяет отрицать Холокост. Социальные выплаты не сокращают, а общественные работы здесь не являются наказанием." },
   },
   {
     id: "lid_097",
@@ -1451,7 +1451,7 @@ var QUIZ = [
       { de: "Kindergeld", en: "", uk: "", ru: "" },
       { de: "Wohngeld", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wer fest angestellt ist, zahlt automatisch <b>Sozialversicherung</b>. Die Beiträge werden direkt vom Lohn abgezogen.<br><br>Sozialhilfe, Kindergeld und Wohngeld bezahlt man nicht, man bekommt sie als Leistung vom Staat.", en: "Anyone in permanent employment pays <b>social insurance</b> automatically. The contributions are deducted directly from wages.<br><br>Social assistance, child benefit and housing benefit are not paid by you – you receive them as benefits from the state.", uk: "Хто працює за постійним наймом, автоматично сплачує <b>соціальне страхування</b>. Внески утримуються безпосередньо із заробітної плати.<br><br>Соціальну допомогу, допомогу на дітей і житлову допомогу не сплачують — їх отримують як виплати від держави.", ru: "Кто работает по постоянному найму, автоматически платит <b>социальное страхование</b>. Взносы удерживаются непосредственно из заработной платы.<br><br>Социальное пособие, пособие на детей и жилищное пособие не платят — их получают как выплаты от государства." },
   },
   {
     id: "lid_098",
@@ -1464,7 +1464,7 @@ var QUIZ = [
       { de: "muss die Bundespräsidentin/der Bundespräsident zuvor ihr/sein Einverständnis geben.", en: "", uk: "", ru: "" },
       { de: "dürfen die Wählerinnen/Wähler dieser Abgeordneten noch einmal wählen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wenn Abgeordnete die Fraktion wechseln, <b>kann die Regierung ihre Mehrheit verlieren</b>. Die Abgeordneten sind frei (Art. 38 GG) und nur ihrem Gewissen unterworfen. Sie behalten ihr Mandat.<br><br>Sie dürfen weiter an allen Sitzungen teilnehmen. Die Bundespräsidentin/der Bundespräsident muss nicht zustimmen, und es gibt keine neue Wahl.", en: "When members of parliament change their parliamentary group, <b>the government can lose its majority</b>. Members of parliament are free (Art. 38 GG) and subject only to their conscience. They keep their seat.<br><br>They may continue to take part in all sessions. The Federal President does not have to agree, and there is no new election.", uk: "Якщо депутати змінюють фракцію, <b>уряд може втратити більшість</b>. Депутати вільні (ст. 38 GG) і підпорядковані лише своєму сумлінню. Вони зберігають свій мандат.<br><br>Вони можуть і далі брати участь у всіх засіданнях. Згоди федерального президента/федеральної президентки не потрібно, і нових виборів не буде.", ru: "Если депутаты меняют фракцию, <b>правительство может потерять большинство</b>. Депутаты свободны (ст. 38 GG) и подчиняются только своей совести. Они сохраняют свой мандат.<br><br>Они могут и дальше участвовать во всех заседаниях. Согласия федерального президента не требуется, и новых выборов не будет." },
   },
   {
     id: "lid_099",
@@ -1477,7 +1477,7 @@ var QUIZ = [
       { de: "alle Staatsangehörigen", en: "", uk: "", ru: "" },
       { de: "nur Arbeitgeberinnen/Arbeitgeber", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Sozialversicherungen bezahlen <b>Arbeitgeberinnen/Arbeitgeber und Arbeitnehmerinnen/Arbeitnehmer</b> gemeinsam. Die Beiträge für Kranken-, Renten-, Arbeitslosen- und Pflegeversicherung teilen sich beide. Die Unfallversicherung zahlt allein die Arbeitgeberin/der Arbeitgeber.<br><br>Nicht nur eine Seite zahlt, und es zahlen auch nicht alle Staatsangehörigen.", en: "Social insurance is paid by <b>employers and employees</b> together. They share the contributions for health, pension, unemployment and long-term care insurance. Accident insurance is paid by the employer alone.<br><br>It is not only one side that pays, and not all nationals pay either.", uk: "Соціальне страхування сплачують <b>роботодавці й працівники</b> разом. Внески на медичне, пенсійне, страхування на випадок безробіття та догляду вони ділять між собою. Страхування від нещасних випадків сплачує лише роботодавець/роботодавиця.<br><br>Платить не лише одна сторона, і не всі громадяни теж платять.", ru: "Социальное страхование оплачивают <b>работодатели и работники</b> вместе. Взносы на медицинское, пенсионное, страхование по безработице и по уходу они делят между собой. Страхование от несчастных случаев оплачивает только работодатель.<br><br>Платит не только одна сторона, и не все граждане тоже платят." },
   },
   {
     id: "lid_100",
@@ -1490,7 +1490,7 @@ var QUIZ = [
       { de: "die Arbeitslosenversicherung", en: "", uk: "", ru: "" },
       { de: "die Pflegeversicherung", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>Lebensversicherung</b> ist eine private Vorsorge. Man schließt sie freiwillig bei einer Versicherungsfirma ab. Sie gehört nicht zur gesetzlichen Sozialversicherung.<br><br>Zur gesetzlichen Sozialversicherung gehören die Kranken-, Pflege-, Renten-, Arbeitslosen- und Unfallversicherung.", en: "<b>Life insurance</b> is private provision. You take it out voluntarily with an insurance company. It is not part of statutory social insurance.<br><br>Statutory social insurance includes health, long-term care, pension, unemployment and accident insurance.", uk: "<b>Страхування життя</b> — це приватне забезпечення на майбутнє. Його укладають добровільно зі страховою компанією. Воно не належить до державного соціального страхування.<br><br>До державного соціального страхування належать медичне, догляду, пенсійне, на випадок безробіття та від нещасних випадків.", ru: "<b>Страхование жизни</b> — это частное обеспечение на будущее. Его заключают добровольно со страховой компанией. Оно не относится к государственному социальному страхованию.<br><br>К государственному социальному страхованию относятся медицинское, по уходу, пенсионное, по безработице и от несчастных случаев." },
   },
   {
     id: "lid_101",
@@ -1503,7 +1503,7 @@ var QUIZ = [
       { de: "Rentnerinnen und Rentner.", en: "", uk: "", ru: "" },
       { de: "Arbeitgeberinnen und Arbeitgeber.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Gewerkschaften</b> vertreten die Interessen der <b>Arbeitnehmerinnen und Arbeitnehmer</b>. Sie verhandeln zum Beispiel über Löhne und Arbeitszeiten.<br><br>Die Arbeitgeberinnen und Arbeitgeber haben ihre eigenen Verbände (Arbeitgeberverbände). Für Jugendliche sowie Rentnerinnen und Rentner sind Gewerkschaften nicht die typische Interessenvertretung.", en: "<b>Trade unions</b> represent the interests of <b>employees</b>. For example, they negotiate wages and working hours.<br><br>Employers have their own associations (employers’ federations). Trade unions are not the typical representation for young people, or for pensioners.", uk: "<b>Профспілки</b> представляють інтереси <b>працівників</b>. Вони, наприклад, ведуть переговори про зарплати й робочий час.<br><br>Роботодавці мають власні обʼєднання (союзи роботодавців). Профспілки — не типове представництво для молоді чи пенсіонерів.", ru: "<b>Профсоюзы</b> представляют интересы <b>работников</b>. Они, например, ведут переговоры о зарплатах и рабочем времени.<br><br>У работодателей есть собственные объединения (союзы работодателей). Профсоюзы — не типичное представительство для молодёжи или пенсионеров." },
   },
   {
     id: "lid_102",
@@ -1516,7 +1516,7 @@ var QUIZ = [
       { de: "Vaterländischen Verdienstorden", en: "", uk: "", ru: "" },
       { de: "Ehrentitel „Held der Deutschen Demokratischen Republik“", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Mit dem <b>Bundesverdienstkreuz</b> ehrt die Bundesrepublik Menschen, die sich besonders verdient gemacht haben, zum Beispiel in Politik, Wirtschaft, Kultur oder im sozialen Bereich.<br><br>Der Bundesadler ist das Wappentier der Bundesrepublik. Der „Vaterländische Verdienstorden“ und der Ehrentitel „Held der DDR“ waren Auszeichnungen der DDR.", en: "With the <b>Federal Cross of Merit</b> (Bundesverdienstkreuz) the Federal Republic honours people who have rendered special service, for example in politics, business, culture or the social sphere.<br><br>The federal eagle is the heraldic animal of the Federal Republic. The “Patriotic Order of Merit” and the honorary title “Hero of the GDR” were awards of the GDR.", uk: "<b>Федеральним хрестом заслуг</b> Федеративна Республіка вшановує людей, які мають особливі заслуги, наприклад у політиці, економіці, культурі чи соціальній сфері.<br><br>Федеральний орел — геральдична тварина Федеративної Республіки. «Патріотичний орден заслуг» і почесне звання «Герой НДР» були нагородами НДР.", ru: "<b>Федеральным крестом за заслуги</b> Федеративная Республика чествует людей, имеющих особые заслуги, например в политике, экономике, культуре или социальной сфере.<br><br>Федеральный орёл — геральдическое животное Федеративной Республики. «Патриотический орден за заслуги» и почётное звание «Герой ГДР» были наградами ГДР." },
   },
   {
     id: "lid_103",
@@ -1529,7 +1529,7 @@ var QUIZ = [
       { de: "von CSU, Die LINKE und Bündnis 90/Die Grünen in einer Regierung", en: "", uk: "", ru: "" },
       { de: "der Bundestagsfraktionen von CDU und SPD", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>Ampelkoalition</b> war eine Regierung aus <b>SPD, FDP und Bündnis 90/Die Grünen</b>. Die Parteifarben Rot, Gelb und Grün sind wie die Farben einer Ampel. Diese Regierung gab es von 2021 bis 2024.<br><br>CDU und CSU sind keine Koalition, sondern eine Fraktionsgemeinschaft. Die anderen Kombinationen heißen anders, zum Beispiel „Große Koalition“ (CDU/CSU und SPD).", en: "The <b>traffic-light coalition</b> was a government made up of <b>SPD, FDP and Bündnis 90/Die Grünen</b>. The party colours red, yellow and green are like the colours of a traffic light. This government existed from 2021 to 2024.<br><br>CDU and CSU are not a coalition but a joint parliamentary group. The other combinations have other names, for example “grand coalition” (CDU/CSU and SPD).", uk: "<b>Коаліція «світлофор»</b> була урядом із <b>SPD, FDP та Bündnis 90/Die Grünen</b>. Кольори партій — червоний, жовтий і зелений — як кольори світлофора. Цей уряд існував з 2021 по 2024 рік.<br><br>CDU і CSU — не коаліція, а спільна фракція. Інші комбінації мають інші назви, наприклад «велика коаліція» (CDU/CSU та SPD).", ru: "<b>Коалиция «светофор»</b> была правительством из <b>SPD, FDP и Bündnis 90/Die Grünen</b>. Цвета партий — красный, жёлтый и зелёный — как цвета светофора. Это правительство существовало с 2021 по 2024 год.<br><br>CDU и CSU — не коалиция, а общая фракция. Другие комбинации имеют другие названия, например «большая коалиция» (CDU/CSU и SPD)." },
   },
   {
     id: "lid_104",
@@ -1542,7 +1542,7 @@ var QUIZ = [
       { de: "Die Frau erledigt private Sachen während der Arbeitszeit.", en: "", uk: "", ru: "" },
       { de: "Die Frau bekommt ein Kind und ihr Chef weiß das.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Eine Frau darf nicht entlassen werden, weil sie <b>ein Kind bekommt</b>. Schwangere und junge Mütter haben nach dem Mutterschutzgesetz einen besonderen <b>Kündigungsschutz</b>.<br><br>Wiederholtes Zuspätkommen oder private Dinge in der Arbeitszeit können dagegen Gründe für eine Kündigung sein. Auch eine lange Krankheit kann unter bestimmten Bedingungen dazu führen.", en: "A woman may not be dismissed because she <b>is expecting a child</b>. Under the Maternity Protection Act, pregnant women and new mothers have special <b>protection against dismissal</b>.<br><br>Repeatedly arriving late or doing private things during working hours, on the other hand, can be grounds for dismissal. A long illness can also lead to it under certain conditions.", uk: "Жінку не можна звільняти за те, що вона <b>народжує дитину</b>. За Законом про захист материнства вагітні й молоді матері мають особливий <b>захист від звільнення</b>.<br><br>Натомість повторні запізнення чи особисті справи в робочий час можуть бути причинами звільнення. Тривала хвороба за певних умов також може до цього призвести.", ru: "Женщину нельзя увольнять за то, что она <b>рожает ребёнка</b>. По Закону о защите материнства беременные и молодые матери имеют особую <b>защиту от увольнения</b>.<br><br>Зато повторные опоздания или личные дела в рабочее время могут быть причинами увольнения. Длительная болезнь при определённых условиях также может к этому привести." },
   },
   {
     id: "lid_105",
@@ -1555,7 +1555,7 @@ var QUIZ = [
       { de: "Sie geben Zwischenergebnisse an die Medien weiter.", en: "", uk: "", ru: "" },
       { de: "Sie zählen die Stimmen nach dem Ende der Wahl.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wahlhelferinnen und Wahlhelfer arbeiten im Wahllokal. Sie <b>zählen nach dem Ende der Wahl die Stimmen</b> aus.<br><br>Die Wahl ist geheim, deshalb geht jede Person allein in die Wahlkabine. Die Wahlbenachrichtigungen schreibt die Gemeinde. Zwischenergebnisse darf man nicht vor dem Ende der Wahl weitergeben.", en: "Election helpers work in the polling station. They <b>count the votes after the election closes</b>.<br><br>The vote is secret, so each person goes into the voting booth alone. The polling cards are sent by the municipality. Interim results may not be passed on before the end of the election.", uk: "Виборчі помічники працюють на виборчій дільниці. Вони <b>підраховують голоси після закінчення голосування</b>.<br><br>Голосування таємне, тому кожна особа заходить до кабінки сама. Повідомлення про вибори надсилає громада. Проміжні результати не можна передавати до завершення голосування.", ru: "Помощники на выборах работают на избирательном участке. Они <b>подсчитывают голоса после окончания голосования</b>.<br><br>Голосование тайное, поэтому каждый человек заходит в кабинку один. Уведомления о выборах рассылает муниципалитет. Промежуточные результаты нельзя передавать до окончания голосования." },
   },
   {
     id: "lid_106",
@@ -1568,7 +1568,7 @@ var QUIZ = [
       { de: "Sie geben Zwischenergebnisse an Journalisten weiter.", en: "", uk: "", ru: "" },
       { de: "Sie zählen die Stimmen nach dem Ende der Wahl.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wahlhelferinnen und Wahlhelfer arbeiten ehrenamtlich im Wahllokal. Ihre Aufgabe ist es, <b>nach dem Ende der Wahl die Stimmen zu zählen</b>.<br><br>Die Wahl ist geheim, deshalb geht jede Person allein in die Wahlkabine. Die Benachrichtigungen mit dem Wahllokal verschickt die Gemeinde. Zwischenergebnisse gibt man nicht an Journalistinnen und Journalisten weiter.", en: "Election helpers work on a voluntary basis in the polling station. Their task is <b>to count the votes after the election closes</b>.<br><br>The vote is secret, so each person goes into the voting booth alone. The municipality sends out the notifications with the polling station. Interim results are not passed on to journalists.", uk: "Виборчі помічники працюють на виборчій дільниці на громадських засадах. Їхнє завдання — <b>підраховувати голоси після закінчення голосування</b>.<br><br>Голосування таємне, тому кожна особа заходить до кабінки сама. Повідомлення з виборчою дільницею надсилає громада. Проміжні результати журналістам не передають.", ru: "Помощники на выборах работают на избирательном участке на общественных началах. Их задача — <b>подсчитывать голоса после окончания голосования</b>.<br><br>Голосование тайное, поэтому каждый человек заходит в кабинку один. Уведомления с избирательным участком рассылает муниципалитет. Промежуточные результаты журналистам не передают." },
   },
   {
     id: "lid_107",
@@ -1581,7 +1581,7 @@ var QUIZ = [
       { de: "6 Jahre", en: "", uk: "", ru: "" },
       { de: "8 Jahre", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Bundestag wird für <b>4 Jahre</b> gewählt (Art. 39 GG). Das nennt man Wahlperiode. Danach gibt es eine neue Bundestagswahl.<br><br>2, 6 und 8 Jahre sind keine Wahlperiode des Bundestages.", en: "The Bundestag is elected for <b>4 years</b> (Art. 39 GG). This is called the legislative term. After that there is a new federal election.<br><br>2, 6 and 8 years are not a legislative term of the Bundestag.", uk: "Бундестаг обирають на <b>4 роки</b> (ст. 39 GG). Це називається каденцією. Після цього проходять нові вибори до Бундестагу.<br><br>2, 6 і 8 років — не каденція Бундестагу.", ru: "Бундестаг избирают на <b>4 года</b> (ст. 39 GG). Это называется созывом. После этого проходят новые выборы в Бундестаг.<br><br>2, 6 и 8 лет — не созыв Бундестага." },
   },
   {
     id: "lid_108",
@@ -1594,7 +1594,7 @@ var QUIZ = [
       { de: "seit mindestens 3 Jahren in der Bundesrepublik Deutschland lebt.", en: "", uk: "", ru: "" },
       { de: "Bürgerin/Bürger der Bundesrepublik Deutschland ist und mindestens 21 Jahre alt ist.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bei der Bundestagswahl darf wählen, wer <b>deutsche Staatsbürgerin/deutscher Staatsbürger</b> und <b>mindestens 18 Jahre alt</b> ist (Art. 38 GG).<br><br>Nicht ausreichend ist es, nur in Deutschland zu wohnen. Mehrere Jahre Aufenthalt braucht man nicht. 21 Jahre waren früher das Mindestalter, heute gilt 18.", en: "In the federal election, people may vote if they are <b>German citizens</b> and <b>at least 18 years old</b> (Art. 38 GG).<br><br>Merely living in Germany is not enough. Several years of residence are not required. 21 used to be the minimum age; today it is 18.", uk: "На виборах до Бундестагу може голосувати той, хто є <b>громадянином/громадянкою Німеччини</b> і <b>має щонайменше 18 років</b> (ст. 38 GG).<br><br>Просто жити в Німеччині недостатньо. Кількох років перебування не потрібно. Раніше мінімальний вік становив 21 рік, тепер — 18.", ru: "На выборах в Бундестаг может голосовать тот, кто является <b>гражданином Германии</b> и <b>достиг не менее 18 лет</b> (ст. 38 GG).<br><br>Просто жить в Германии недостаточно. Нескольких лет пребывания не требуется. Раньше минимальный возраст составлял 21 год, теперь — 18." },
   },
   {
     id: "lid_109",
@@ -1607,7 +1607,7 @@ var QUIZ = [
       { de: "alle fünf Jahre", en: "", uk: "", ru: "" },
       { de: "alle sechs Jahre", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundestagswahl findet normalerweise <b>alle vier Jahre</b> statt. Das Grundgesetz legt die Wahlperiode auf vier Jahre fest (Art. 39 GG).<br><br>Drei, fünf oder sechs Jahre sind kein Wahlrhythmus für den Bundestag.", en: "The federal election normally takes place <b>every four years</b>. The Basic Law sets the legislative term at four years (Art. 39 GG).<br><br>Three, five or six years are not an election cycle for the Bundestag.", uk: "Вибори до Бундестагу зазвичай проходять <b>кожні чотири роки</b>. Основний закон визначає каденцію в чотири роки (ст. 39 GG).<br><br>Три, пʼять чи шість років — не виборчий цикл Бундестагу.", ru: "Выборы в Бундестаг обычно проходят <b>каждые четыре года</b>. Основной закон определяет срок созыва в четыре года (ст. 39 GG).<br><br>Три, пять или шесть лет — не избирательный цикл Бундестага." },
   },
   {
     id: "lid_110",
@@ -1620,7 +1620,7 @@ var QUIZ = [
       { de: "4 Jahre", en: "", uk: "", ru: "", correct: true },
       { de: "5 Jahre", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Bundestag wird für <b>4 Jahre</b> gewählt (Art. 39 GG). Danach ist wieder Wahl.<br><br>Der Bundespräsident wird dagegen für 5 Jahre gewählt. 2, 3 und 5 Jahre sind für den Bundestag falsch.", en: "The Bundestag is elected for <b>4 years</b> (Art. 39 GG). After that there is another election.<br><br>The Federal President, on the other hand, is elected for 5 years. 2, 3 and 5 years are wrong for the Bundestag.", uk: "Бундестаг обирають на <b>4 роки</b> (ст. 39 GG). Після цього знову проходять вибори.<br><br>Федерального президента/федеральну президентку, навпаки, обирають на 5 років. 2, 3 і 5 років для Бундестагу неправильні.", ru: "Бундестаг избирают на <b>4 года</b> (ст. 39 GG). После этого снова проходят выборы.<br><br>Федерального президента, напротив, избирают на 5 лет. 2, 3 и 5 лет для Бундестага неверны." },
   },
   {
     id: "lid_111",
@@ -1633,7 +1633,7 @@ var QUIZ = [
       { de: "eine Diskussion über die Politik Israels", en: "", uk: "", ru: "" },
       { de: "der öffentliche Aufruf zur Vernichtung Israels", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Verboten ist der <b>öffentliche Aufruf zur Vernichtung Israels</b>. Das ist Volksverhetzung und kann bestraft werden.<br><br>Dagegen sind Kritik an der Politik Israels, eine Diskussion darüber und das Aufhängen einer israelischen Flagge auf dem eigenen Grundstück erlaubt. Das gehört zur Meinungsfreiheit.", en: "What is forbidden is the <b>public call for the destruction of Israel</b>. That is incitement to hatred and can be punished.<br><br>Criticism of Israel’s policy, a discussion about it and hanging an Israeli flag on your own property, on the other hand, are allowed. That is part of freedom of expression.", uk: "Заборонено <b>публічно закликати до знищення Ізраїлю</b>. Це розпалювання ненависті, і за це можуть покарати.<br><br>Натомість критика політики Ізраїлю, дискусія про неї та вивішування ізраїльського прапора на власній ділянці дозволені. Це належить до свободи слова.", ru: "Запрещено <b>публично призывать к уничтожению Израиля</b>. Это разжигание ненависти, и за это могут наказать.<br><br>Зато критика политики Израиля, дискуссия о ней и вывешивание израильского флага на собственном участке разрешены. Это относится к свободе слова." },
   },
   {
     id: "lid_112",
@@ -1646,7 +1646,7 @@ var QUIZ = [
       { de: "berufsbezogen.", en: "", uk: "", ru: "" },
       { de: "geschlechtsabhängig.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wahlen in Deutschland sind <b>geheim</b>: Niemand muss sagen, wen er gewählt hat. Jede Person wählt allein in der Wahlkabine (Art. 38 GG).<br><br>Die Wahl ist auch allgemein, das heißt unabhängig von Beruf oder Geschlecht. „Speziell“, „berufsbezogen“ und „geschlechtsabhängig“ passen nicht zu den Wahlgrundsätzen.", en: "Elections in Germany are <b>secret</b>: nobody has to say whom they voted for. Each person votes alone in the voting booth (Art. 38 GG).<br><br>The election is also universal, that is, independent of occupation or gender. “Special”, “occupation-related” and “gender-dependent” do not fit the electoral principles.", uk: "Вибори в Німеччині <b>таємні</b>: ніхто не мусить говорити, за кого проголосував. Кожна особа голосує сама в кабінці (ст. 38 GG).<br><br>Вибори також загальні, тобто не залежать від професії чи статі. «Особливі», «професійні» та «залежні від статі» не відповідають принципам виборів.", ru: "Выборы в Германии <b>тайные</b>: никто не обязан говорить, за кого проголосовал. Каждый человек голосует один в кабинке (ст. 38 GG).<br><br>Выборы также всеобщие, то есть не зависят от профессии или пола. «Особые», «профессиональные» и «зависящие от пола» не соответствуют принципам выборов." },
   },
   {
     id: "lid_113",
@@ -1659,7 +1659,7 @@ var QUIZ = [
       { de: "die meisten Stimmen bei den Arbeiterinnen/Arbeitern bekommen hat.", en: "", uk: "", ru: "" },
       { de: "die meisten Erststimmen für ihre Kanzlerkandidatin/ihren Kanzlerkandidaten erhalten hat.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wahlen gewinnt die Partei, die <b>die meisten Stimmen bekommt</b>. Für die Sitze im Bundestag zählen die Zweitstimmen.<br><br>Ob Männer oder Frauen, Arbeiterinnen und Arbeiter oder Kanzlerkandidatinnen und -kandidaten gewählt werden, entscheidet nicht. Jede Stimme zählt gleich viel.", en: "Elections are won by the party that <b>gets the most votes</b>. For seats in the Bundestag, the second votes count.<br><br>Whether men or women, workers or candidates for chancellor are elected does not decide it. Every vote counts equally.", uk: "Вибори виграє партія, яка <b>отримує найбільше голосів</b>. Для місць у Бундестазі враховують другі голоси.<br><br>Чи обирають чоловіків чи жінок, робітників чи кандидатів на посаду канцлера, нічого не вирішує. Кожен голос має однакову вагу.", ru: "Выборы выигрывает партия, которая <b>получает больше всего голосов</b>. Для мест в Бундестаге учитываются вторые голоса.<br><br>Выбирают ли мужчин или женщин, рабочих или кандидатов в канцлеры, ничего не решает. Каждый голос имеет одинаковый вес." },
   },
   {
     id: "lid_114",
@@ -1672,7 +1672,7 @@ var QUIZ = [
       { de: "ein Zwang.", en: "", uk: "", ru: "" },
       { de: "eine Last.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Teilnahme an demokratischen Wahlen ist <b>ein Recht</b>. Jede wahlberechtigte Person darf wählen, muss es aber nicht. Eine Wahlpflicht gibt es in Deutschland nicht.<br><br>Pflicht, Zwang oder Last passen nicht, denn niemand wird zur Wahl gezwungen.", en: "Taking part in democratic elections is <b>a right</b>. Every person entitled to vote may vote, but does not have to. There is no compulsory voting in Germany.<br><br>Duty, compulsion or burden do not fit, because nobody is forced to vote.", uk: "Участь у демократичних виборах — це <b>право</b>. Кожна особа з правом голосу може голосувати, але не мусить. Обовʼязкового голосування в Німеччині немає.<br><br>Обовʼязок, примус чи тягар не підходять, бо до голосування нікого не змушують.", ru: "Участие в демократических выборах — это <b>право</b>. Каждый человек с правом голоса может голосовать, но не обязан. Обязательного голосования в Германии нет.<br><br>Обязанность, принуждение или бремя не подходят, потому что к голосованию никого не принуждают." },
   },
   {
     id: "lid_115",
@@ -1685,7 +1685,7 @@ var QUIZ = [
       { de: "Man kann wählen.", en: "", uk: "", ru: "", correct: true },
       { de: "Man muss zur Auszählung der Stimmen gehen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Aktives Wahlrecht</b> bedeutet: Man <b>darf wählen</b>.<br><br>Gewählt werden zu können heißt „passives Wahlrecht“. Eine Pflicht, wählen zu gehen oder bei der Auszählung zu helfen, gibt es nicht.", en: "<b>Active voting rights</b> mean: you <b>may vote</b>.<br><br>Being able to be elected is called “passive voting rights”. There is no duty to go and vote or to help with the counting.", uk: "<b>Активне виборче право</b> означає: людина <b>може голосувати</b>.<br><br>Можливість бути обраним називається «пасивним виборчим правом». Обовʼязку йти на вибори чи допомагати з підрахунком немає.", ru: "<b>Активное избирательное право</b> означает: человек <b>может голосовать</b>.<br><br>Возможность быть избранным называется «пассивным избирательным правом». Обязанности идти на выборы или помогать с подсчётом нет." },
   },
   {
     id: "lid_116",
@@ -1698,7 +1698,7 @@ var QUIZ = [
       { de: "aktiver Wahlkampf.", en: "", uk: "", ru: "" },
       { de: "aktives Wahlrecht.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wenn man wählen darf, hat man das <b>aktive Wahlrecht</b>. Wer gewählt werden darf, hat das passive Wahlrecht.<br><br>Wahlkampagne und Wahlkampf bedeuten die Werbung der Parteien vor der Wahl. Das Wahlverfahren beschreibt, wie die Wahl abläuft.", en: "If you may vote, you have <b>active voting rights</b>. Whoever may be elected has passive voting rights.<br><br>Election campaign and campaigning mean the parties’ advertising before the election. The voting procedure describes how the election is run.", uk: "Якщо людина може голосувати, вона має <b>активне виборче право</b>. Хто може бути обраним, має пасивне виборче право.<br><br>Виборча кампанія та передвиборна боротьба означають рекламу партій перед виборами. Порядок голосування описує, як проходять вибори.", ru: "Если человек может голосовать, у него есть <b>активное избирательное право</b>. Кто может быть избранным, имеет пассивное избирательное право.<br><br>Избирательная кампания и предвыборная борьба означают рекламу партий перед выборами. Порядок голосования описывает, как проходят выборы." },
   },
   {
     id: "lid_117",
@@ -1711,7 +1711,7 @@ var QUIZ = [
       { de: "5%", en: "", uk: "", ru: "", correct: true },
       { de: "6%", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Parteien müssen mindestens <b>5 %</b> der Zweitstimmen bekommen, um in den Bundestag zu kommen. Das nennt man <b>5%-Hürde</b>.<br><br>Mit weniger als 5 % kommt eine Partei in der Regel nicht in den Bundestag. 3, 4 und 6 % sind falsch.", en: "Parties must get at least <b>5%</b> of the second votes to enter the Bundestag. This is called the <b>5% threshold</b>.<br><br>With less than 5%, a party generally does not get into the Bundestag. 3, 4 and 6% are wrong.", uk: "Партії мусять отримати щонайменше <b>5 %</b> других голосів, щоб потрапити до Бундестагу. Це називається <b>пʼятивідсотковим барʼєром</b>.<br><br>Із меншою кількістю голосів, ніж 5 %, партія, як правило, до Бундестагу не потрапляє. 3, 4 і 6 % неправильні.", ru: "Партии должны получить не менее <b>5 %</b> вторых голосов, чтобы попасть в Бундестаг. Это называется <b>пятипроцентным барьером</b>.<br><br>С менее чем 5 % партия, как правило, в Бундестаг не попадает. 3, 4 и 6 % неправильные." },
   },
   {
     id: "lid_118",
@@ -1724,7 +1724,7 @@ var QUIZ = [
       { de: "nur religiöse Menschen", en: "", uk: "", ru: "" },
       { de: "alle Menschen", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bei den jüdischen <b>Makkabi</b>-Sportvereinen darf <b>jede und jeder</b> Mitglied werden. Die Vereine stehen allen Menschen offen, unabhängig von Nationalität oder Religion.<br><br>Es gibt keine Beschränkung auf Deutsche, Israelis oder religiöse Menschen.", en: "In the Jewish <b>Maccabi</b> sports clubs, <b>everyone</b> may become a member. The clubs are open to all people, regardless of nationality or religion.<br><br>There is no restriction to Germans, Israelis or religious people.", uk: "У єврейських спортивних клубах <b>«Макабі»</b> членом може стати <b>кожен</b>. Клуби відкриті для всіх людей незалежно від національності чи релігії.<br><br>Обмеження лише для німців, ізраїльтян чи віруючих немає.", ru: "В еврейских спортивных клубах <b>«Маккаби»</b> членом может стать <b>каждый</b>. Клубы открыты для всех людей независимо от национальности или религии.<br><br>Ограничения только для немцев, израильтян или верующих нет." },
   },
   {
     id: "lid_119",
@@ -1737,7 +1737,7 @@ var QUIZ = [
       { de: "Jede Person kann ohne Zwang entscheiden, ob sie wählen möchte und wen sie wählen möchte.", en: "", uk: "", ru: "", correct: true },
       { de: "Ich kann frei entscheiden, wo ich wählen gehen möchte.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "„Frei“ bedeutet: <b>Jede Person entscheidet ohne Zwang</b>, ob sie wählen geht und wen sie wählt (Art. 38 GG).<br><br>Nicht alle Straftäterinnen und Straftäter dürfen nicht wählen: Nur in seltenen Ausnahmefällen entzieht ein Gericht das Wahlrecht. Das Wahllokal steht auf der Wahlbenachrichtigung, man kann es nicht frei auswählen. Wahlen sind sonntags, deshalb muss die Arbeitgeberin/der Arbeitgeber nicht freigeben.", en: "“Free” means: <b>each person decides without coercion</b> whether to vote and whom to vote for (Art. 38 GG).<br><br>It is not true that all offenders may not vote: only in rare exceptional cases does a court withdraw the right to vote. The polling station is shown on the polling card and cannot be chosen freely. Elections are on Sundays, so the employer does not have to give time off.", uk: "«Вільні» означає: <b>кожна особа вирішує без примусу</b>, чи йти голосувати й за кого (ст. 38 GG).<br><br>Неправда, що всім правопорушникам голосувати не можна: лише у рідкісних виняткових випадках суд позбавляє виборчого права. Виборча дільниця зазначена в повідомленні про вибори, її не можна вільно обирати. Вибори проходять у неділю, тому роботодавець/роботодавиця не мусить звільняти від роботи.", ru: "«Свободные» означает: <b>каждый человек решает без принуждения</b>, идти ли голосовать и за кого (ст. 38 GG).<br><br>Неправда, что всем правонарушителям голосовать нельзя: лишь в редких исключительных случаях суд лишает избирательного права. Избирательный участок указан в уведомлении о выборах, его нельзя свободно выбирать. Выборы проходят по воскресеньям, поэтому работодатель не обязан освобождать от работы." },
   },
   {
     id: "lid_120",
@@ -1750,7 +1750,7 @@ var QUIZ = [
       { de: "Mehrheits- und Verhältniswahlrecht.", en: "", uk: "", ru: "", correct: true },
       { de: "allgemeines Männerwahlrecht.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das deutsche Wahlsystem ist ein <b>Mehrheits- und Verhältniswahlrecht</b>. Mit der Erststimme wird in jedem Wahlkreis gewählt, wer die meisten Stimmen hat (Mehrheitswahl). Mit der Zweitstimme wählt man eine Partei. Die Sitze werden nach dem Verhältnis der Zweitstimmen verteilt (Verhältniswahl).<br><br>Das Zensuswahlrecht und das Dreiklassenwahlrecht hingen vom Vermögen ab und gehören zur Geschichte. Das allgemeine Männerwahlrecht schloss Frauen aus.", en: "The German electoral system is a <b>combined majority and proportional system</b>. With the first vote, whoever has the most votes in each constituency is elected (majority vote). With the second vote you vote for a party. Seats are distributed according to the proportion of second votes (proportional representation).<br><br>The census-based franchise and the three-class franchise depended on property and belong to history. The general male franchise excluded women.", uk: "Німецька виборча система — це <b>мажоритарно-пропорційна система</b>. Першим голосом у кожному виборчому окрузі обирають того, хто має найбільше голосів (мажоритарні вибори). Другим голосом обирають партію. Місця розподіляють за співвідношенням других голосів (пропорційні вибори).<br><br>Цензове виборче право й виборче право за трьома класами залежали від майна й належать до історії. Загальне виборче право для чоловіків виключало жінок.", ru: "Германская избирательная система — это <b>мажоритарно-пропорциональная система</b>. Первым голосом в каждом избирательном округе избирают того, у кого больше всего голосов (мажоритарные выборы). Вторым голосом избирают партию. Места распределяют по соотношению вторых голосов (пропорциональные выборы).<br><br>Цензовое избирательное право и избирательное право по трём классам зависели от имущества и относятся к истории. Всеобщее избирательное право для мужчин исключало женщин." },
   },
   {
     id: "lid_121",
@@ -1763,7 +1763,7 @@ var QUIZ = [
       { de: "Basiswert.", en: "", uk: "", ru: "" },
       { de: "Richtlinie.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Mindestgrenze für den Einzug in den Bundestag heißt <b>5%-Hürde</b>. Eine Partei braucht mindestens 5 % der Zweitstimmen.<br><br>„Zulassungsgrenze“, „Basiswert“ und „Richtlinie“ sind keine Begriffe des deutschen Wahlrechts.", en: "The minimum limit for entering the Bundestag is called the <b>5% threshold</b>. A party needs at least 5% of the second votes.<br><br>“Admission limit”, “base value” and “guideline” are not terms of German electoral law.", uk: "Мінімальна межа для проходження до Бундестагу називається <b>пʼятивідсотковим барʼєром</b>. Партії потрібно щонайменше 5 % других голосів.<br><br>«Межа допуску», «базове значення» та «директива» не є термінами німецького виборчого права.", ru: "Минимальная граница для прохождения в Бундестаг называется <b>пятипроцентным барьером</b>. Партии нужно не менее 5 % вторых голосов.<br><br>«Граница допуска», «базовое значение» и «директива» не являются терминами немецкого избирательного права." },
   },
   {
     id: "lid_122",
@@ -1776,7 +1776,7 @@ var QUIZ = [
       { de: "geschlossen, gleich, sicher.", en: "", uk: "", ru: "" },
       { de: "sicher, offen, freiwillig.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wahlen in Deutschland sind <b>frei, gleich und geheim</b> (Art. 38 GG). Außerdem sind sie allgemein und unmittelbar.<br><br>Die anderen Gruppen sind falsch. „Offen“ und „geschlossen“ widersprechen dem Wahlgeheimnis, „sicher“ und „freiwillig“ sind keine Wahlgrundsätze.", en: "Elections in Germany are <b>free, equal and secret</b> (Art. 38 GG). They are also universal and direct.<br><br>The other groups are wrong. “Open” and “closed” contradict the secrecy of the ballot, and “safe” and “voluntary” are not electoral principles.", uk: "Вибори в Німеччині <b>вільні, рівні й таємні</b> (ст. 38 GG). Крім того, вони загальні й безпосередні.<br><br>Інші групи неправильні. «Відкриті» й «закриті» суперечать таємниці голосування, а «безпечні» та «добровільні» не є принципами виборів.", ru: "Выборы в Германии <b>свободные, равные и тайные</b> (ст. 38 GG). Кроме того, они всеобщие и прямые.<br><br>Другие группы неправильные. «Открытые» и «закрытые» противоречат тайне голосования, а «безопасные» и «добровольные» не являются принципами выборов." },
   },
   {
     id: "lid_123",
@@ -1789,7 +1789,7 @@ var QUIZ = [
       { de: "Mindestanteil an Wählerstimmen, um ins Parlament zu kommen", en: "", uk: "", ru: "", correct: true },
       { de: "Anwesenheitskontrolle im Bundesrat für Abstimmungen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>5%-Hürde</b> ist der <b>Mindestanteil an Wählerstimmen</b>, den eine Partei braucht, um ins Parlament zu kommen.<br><br>Mit einer Abstimmungsregel im Parlament oder mit der Anwesenheit im Bundestag oder Bundesrat hat sie nichts zu tun.", en: "The <b>5% threshold</b> is the <b>minimum share of votes</b> a party needs to get into parliament.<br><br>It has nothing to do with a voting rule in parliament or with attendance in the Bundestag or Bundesrat.", uk: "<b>Пʼятивідсотковий барʼєр</b> — це <b>мінімальна частка голосів</b>, потрібна партії, щоб потрапити до парламенту.<br><br>Він не має нічого спільного з правилом голосування в парламенті чи з присутністю в Бундестазі або Бундесраті.", ru: "<b>Пятипроцентный барьер</b> — это <b>минимальная доля голосов</b>, необходимая партии, чтобы попасть в парламент.<br><br>Он не имеет ничего общего с правилом голосования в парламенте или с присутствием в Бундестаге или Бундесрате." },
   },
   {
     id: "lid_124",
@@ -1802,7 +1802,7 @@ var QUIZ = [
       { de: "des Parlaments für Deutschland.", en: "", uk: "", ru: "", correct: true },
       { de: "der Bundespräsidentin/des Bundespräsidenten.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bei der Bundestagswahl wählen die Bürgerinnen und Bürger das <b>Parlament für ganz Deutschland</b>.<br><br>Die Bundeskanzlerin/den Bundeskanzler wählt der Bundestag. Die Landesparlamente werden bei Landtagswahlen gewählt. Die Bundespräsidentin/den Bundespräsidenten wählt die Bundesversammlung.", en: "In the federal election, citizens elect the <b>parliament for the whole of Germany</b>.<br><br>The Federal Chancellor is elected by the Bundestag. State parliaments are elected in state elections. The Federal President is elected by the Federal Convention.", uk: "На виборах до Бундестагу громадяни обирають <b>парламент для всієї Німеччини</b>.<br><br>Федерального канцлера/федеральну канцлерку обирає Бундестаг. Парламенти земель обирають на виборах до ландтагів. Федерального президента/федеральну президентку обирають Федеральні збори.", ru: "На выборах в Бундестаг граждане избирают <b>парламент для всей Германии</b>.<br><br>Федерального канцлера избирает Бундестаг. Парламенты земель избирают на выборах в ландтаги. Федерального президента избирает Федеральное собрание." },
   },
   {
     id: "lid_125",
@@ -1815,7 +1815,7 @@ var QUIZ = [
       { de: "im Land bestehende Gesetze beizubehalten.", en: "", uk: "", ru: "" },
       { de: "den Armen mehr Macht zu geben.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Regelmäßige Wahlen machen es möglich, dass die Wählermehrheit <b>die Regierung wechseln</b> kann. Demokratische Macht gilt immer nur auf Zeit.<br><br>Niemand wird zur Wahl gezwungen. Wahlen sollen auch nicht verhindern, dass Gesetze sich ändern, und sie geben nicht bestimmten Gruppen mehr Macht: Jede Stimme zählt gleich.", en: "Regular elections make it possible for the majority of voters to <b>change the government</b>. Democratic power is always granted only for a limited time.<br><br>Nobody is forced to vote. Elections are also not meant to prevent laws from changing, and they do not give particular groups more power: every vote counts equally.", uk: "Регулярні вибори дають змогу більшості виборців <b>змінити уряд</b>. Демократична влада завжди діє лише обмежений час.<br><br>До голосування нікого не змушують. Вибори також не мають перешкоджати зміні законів і не дають певним групам більше влади: кожен голос має однакову вагу.", ru: "Регулярные выборы позволяют большинству избирателей <b>сменить правительство</b>. Демократическая власть всегда действует лишь ограниченное время.<br><br>К голосованию никого не принуждают. Выборы также не должны препятствовать изменению законов и не дают определённым группам больше власти: каждый голос имеет одинаковый вес." },
   },
   {
     id: "lid_126",
@@ -1828,7 +1828,7 @@ var QUIZ = [
       { de: "eine Benachrichtigung von der Bundesversammlung", en: "", uk: "", ru: "" },
       { de: "eine Benachrichtigung vom Pfarramt", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Vor einer Wahl bekommt man von der <b>Gemeinde</b> eine <b>Wahlbenachrichtigung</b>. Darauf stehen das Wahllokal und die Informationen zur Briefwahl.<br><br>Eine Wahlerlaubnis von der Bundespräsidentin/vom Bundespräsidenten oder Post von der Bundesversammlung oder vom Pfarramt gibt es nicht.", en: "Before an election you receive a <b>polling card</b> from the <b>municipality</b>. It shows the polling station and information about postal voting.<br><br>There is no voting permit from the Federal President, and no letter from the Federal Convention or the parish office.", uk: "Перед виборами <b>громада</b> надсилає <b>повідомлення про вибори</b>. У ньому вказані виборча дільниця й інформація про голосування поштою.<br><br>Дозволу на голосування від федерального президента/федеральної президентки не буває, як і листів від Федеральних зборів чи парафіяльної канцелярії.", ru: "Перед выборами <b>муниципалитет</b> присылает <b>уведомление о выборах</b>. В нём указаны избирательный участок и информация о голосовании по почте.<br><br>Разрешения на голосование от федерального президента не бывает, как и писем от Федерального собрания или приходской канцелярии." },
   },
   {
     id: "lid_127",
@@ -1841,7 +1841,7 @@ var QUIZ = [
       { de: "viele kleine Parteien die Regierungsbildung erschweren.", en: "", uk: "", ru: "", correct: true },
       { de: "die kleinen Parteien nicht so viel Geld haben, um die Politikerinnen und Politiker zu bezahlen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>5%-Hürde</b> soll verhindern, dass im Parlament sehr viele kleine Parteien sitzen. Dann wäre es <b>schwieriger, eine Regierung zu bilden</b>. In der Weimarer Republik war das ein Problem.<br><br>Ähnliche Programme, Orientierungsprobleme der Wählerinnen und Wähler oder fehlendes Geld sind nicht der Grund für die Hürde.", en: "The <b>5% threshold</b> is meant to prevent very many small parties from sitting in parliament. It would then be <b>more difficult to form a government</b>. In the Weimar Republic that was a problem.<br><br>Similar programmes, voters’ difficulties in finding their way or lack of money are not the reason for the threshold.", uk: "<b>Пʼятивідсотковий барʼєр</b> має запобігти тому, щоб у парламенті засідало дуже багато малих партій. Тоді було б <b>складніше сформувати уряд</b>. У Веймарській республіці це було проблемою.<br><br>Схожі програми, труднощі виборців з орієнтацією або брак грошей не є причиною барʼєру.", ru: "<b>Пятипроцентный барьер</b> должен предотвращать то, чтобы в парламенте заседало очень много малых партий. Тогда было бы <b>сложнее сформировать правительство</b>. В Веймарской республике это было проблемой.<br><br>Похожие программы, трудности избирателей с ориентацией или нехватка денег не являются причиной барьера." },
   },
   {
     id: "lid_128",
@@ -1854,7 +1854,7 @@ var QUIZ = [
       { de: "Botschafterinnen/Botschafter.", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentinnen/Ministerpräsidenten.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Parlamentsmitglieder, die die Bürgerinnen und Bürger wählen, heißen <b>Abgeordnete</b>.<br><br>Kanzlerinnen/Kanzler und Ministerpräsidentinnen/Ministerpräsidenten sind Regierungschefs. Botschafterinnen/Botschafter vertreten ihr Land im Ausland.", en: "Members of parliament who are elected by the citizens are called <b>members of parliament</b> (Abgeordnete).<br><br>Chancellors and minister-presidents are heads of government. Ambassadors represent their country abroad.", uk: "Членів парламенту, яких обирають громадяни, називають <b>депутатами</b>.<br><br>Канцлери та міністри-президенти — керівники урядів. Посли представляють свою країну за кордоном.", ru: "Членов парламента, которых избирают граждане, называют <b>депутатами</b>.<br><br>Канцлеры и министры-президенты — руководители правительств. Послы представляют свою страну за рубежом." },
   },
   {
     id: "lid_129",
@@ -1867,7 +1867,7 @@ var QUIZ = [
       { de: "der Bundestag.", en: "", uk: "", ru: "", correct: true },
       { de: "die Bundespräsidentin/der Bundespräsident.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Vom Volk wird in Deutschland <b>der Bundestag</b> gewählt. Alle wahlberechtigten Bürgerinnen und Bürger wählen die Abgeordneten direkt.<br><br>Die Kanzlerin/den Kanzler wählt der Bundestag. Die Ministerpräsidentin/den Ministerpräsidenten wählt der Landtag. Die Bundespräsidentin/den Bundespräsidenten wählt die Bundesversammlung.", en: "In Germany the people elect <b>the Bundestag</b>. All citizens entitled to vote elect the members of parliament directly.<br><br>The Chancellor is elected by the Bundestag. The minister-president is elected by the Landtag. The Federal President is elected by the Federal Convention.", uk: "У Німеччині народ обирає <b>Бундестаг</b>. Усі громадяни з правом голосу безпосередньо обирають депутатів.<br><br>Канцлера/канцлерку обирає Бундестаг. Міністра-президента/міністра-президентку обирає ландтаг. Федерального президента/федеральну президентку обирають Федеральні збори.", ru: "В Германии народ избирает <b>Бундестаг</b>. Все граждане с правом голоса напрямую избирают депутатов.<br><br>Канцлера избирает Бундестаг. Министра-президента избирает ландтаг. Федерального президента избирает Федеральное собрание." },
   },
   {
     id: "lid_130",
@@ -1881,7 +1881,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Ein Stimmzettel ist nur gültig, wenn <b>klar erkennbar ist, was die Wählerin/der Wähler wählen will</b>. Man macht ein Kreuz bei der <b>Erststimme</b> (Kandidatin/Kandidat im Wahlkreis) und eines bei der <b>Zweitstimme</b> (Partei).<br><br>Ungültig ist ein Stimmzettel, wenn mehr als ein Kreuz in derselben Spalte steht, wenn Namen durchgestrichen oder Bemerkungen darauf geschrieben sind. Dann ist der Wille der Wählerin/des Wählers nicht eindeutig.", en: "A ballot paper is valid only if it is <b>clear what the voter wants to vote for</b>. You make one cross for the <b>first vote</b> (candidate in the constituency) and one for the <b>second vote</b> (party).<br><br>A ballot paper is invalid if there is more than one cross in the same column, or if names are crossed out or remarks are written on it. Then the voter’s intention is not clear.", uk: "Виборчий бюлетень дійсний лише тоді, коли <b>чітко видно, що виборець хоче обрати</b>. Ставлять один хрестик біля <b>першого голосу</b> (кандидат/кандидатка в окрузі) і один біля <b>другого голосу</b> (партія).<br><br>Бюлетень недійсний, якщо в одній колонці більше одного хрестика або якщо імена закреслено чи на ньому є зауваження. Тоді воля виборця/виборчині неоднозначна.", ru: "Избирательный бюллетень действителен только тогда, когда <b>чётко видно, что избиратель хочет выбрать</b>. Ставят один крестик у <b>первого голоса</b> (кандидат в округе) и один у <b>второго голоса</b> (партия).<br><br>Бюллетень недействителен, если в одной колонке больше одного крестика или если имена зачёркнуты либо на нём есть пометки. Тогда воля избирателя неоднозначна." },
   },
   {
     id: "lid_131",
@@ -1894,7 +1894,7 @@ var QUIZ = [
       { de: "das Oberhaupt einer Gemeinde.", en: "", uk: "", ru: "", correct: true },
       { de: "die/der Vorsitzende einer Partei.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Eine Bürgermeisterin/ein Bürgermeister ist <b>das Oberhaupt einer Gemeinde</b>. Sie/Er leitet die Gemeindeverwaltung und vertritt die Gemeinde.<br><br>Mit der Leitung einer Schule, einer Bank oder einer Partei hat das Amt nichts zu tun.", en: "A mayor is <b>the head of a municipality</b>. The mayor leads the municipal administration and represents the municipality.<br><br>The office has nothing to do with running a school, a bank or a party.", uk: "Бургомістр/бургомістерка — це <b>очільник громади</b>. Він/Вона керує адміністрацією громади та представляє громаду.<br><br>Ця посада не має нічого спільного з керівництвом школою, банком чи партією.", ru: "Бургомистр — это <b>глава муниципалитета</b>. Он руководит администрацией муниципалитета и представляет муниципалитет.<br><br>Эта должность не имеет ничего общего с руководством школой, банком или партией." },
   },
   {
     id: "lid_132",
@@ -1907,7 +1907,7 @@ var QUIZ = [
       { de: "Sie arbeiten in der Bundesregierung.", en: "", uk: "", ru: "" },
       { de: "Sie arbeiten in einem Krankenhaus und verdienen dabei Geld.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Ehrenamtlich</b> arbeiten heißt: <b>freiwillig und unbezahlt</b>, zum Beispiel in einem Verein, in der Freiwilligen Feuerwehr oder in einem Verband.<br><br>Soldatinnen/Soldaten, die Bundesregierung und die Arbeit im Krankenhaus werden bezahlt.", en: "Working <b>on a voluntary basis</b> means: <b>freely and unpaid</b>, for example in a club, in the volunteer fire brigade or in an association.<br><br>Soldiers, the federal government and work in a hospital are paid.", uk: "Працювати <b>на громадських засадах</b> означає: <b>добровільно й безоплатно</b>, наприклад у товаристві, у добровільній пожежній охороні чи в обʼєднанні.<br><br>Солдатам, федеральному уряду та роботі в лікарні платять.", ru: "Работать <b>на общественных началах</b> означает: <b>добровольно и безвозмездно</b>, например в объединении, в добровольной пожарной охране или в союзе.<br><br>Солдатам, федеральному правительству и работе в больнице платят." },
   },
   {
     id: "lid_133",
@@ -1920,7 +1920,7 @@ var QUIZ = [
       { de: "Man kann am Wahltag telefonisch seine Stimme abgeben.", en: "", uk: "", ru: "" },
       { de: "Kinder ab dem Alter von 14 Jahren dürfen wählen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Man kann <b>durch Briefwahl</b> wählen, wenn man am Wahltag nicht ins Wahllokal gehen kann. Dazu beantragt man die Unterlagen vorher bei der Gemeinde.<br><br>Jede Person muss selbst wählen: Man darf nicht für andere mitwählen. Telefonisch zu wählen ist nicht möglich. Kinder dürfen mit 14 nicht wählen.", en: "You can vote <b>by postal vote</b> if you cannot go to the polling station on election day. To do so, you request the documents beforehand from the municipality.<br><br>Every person must vote for themselves: you may not vote on behalf of others. Voting by telephone is not possible. Children may not vote at 14.", uk: "Голосувати можна <b>поштою</b>, якщо в день виборів не вдається прийти на дільницю. Для цього документи заздалегідь замовляють у громаді.<br><br>Кожна особа мусить голосувати сама: за інших голосувати не можна. Голосування телефоном неможливе. Діти у 14 років голосувати не можуть.", ru: "Голосовать можно <b>по почте</b>, если в день выборов не удаётся прийти на участок. Для этого документы заранее запрашивают в муниципалитете.<br><br>Каждый человек должен голосовать сам: за других голосовать нельзя. Голосование по телефону невозможно. Дети в 14 лет голосовать не могут." },
   },
   {
     id: "lid_134",
@@ -1933,7 +1933,7 @@ var QUIZ = [
       { de: "Ich wende mich an das Finanzamt, weil ich als Steuerzahlerin/Steuerzahler ein Recht auf die Buslinie habe.", en: "", uk: "", ru: "" },
       { de: "Ich schreibe einen Brief an das Forstamt der Gemeinde.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Mit einer <b>Bürgerinitiative</b> können Bürgerinnen und Bürger gemeinsam etwas erreichen, was sie in ihrer Gemeinde ändern wollen. Man kann sich einer Initiative anschließen oder selbst eine gründen.<br><br>Ein Sportverein oder ein Brief an das Forstamt (zuständig für den Wald) hilft nicht. Das Finanzamt ist für Steuern zuständig, und Steuerzahlen gibt kein Recht auf eine Buslinie.", en: "With a <b>citizens’ initiative</b>, citizens can work together to achieve something they want to change in their municipality. You can join an initiative or start one yourself.<br><br>A sports club or a letter to the forestry office (responsible for the forest) does not help. The tax office is responsible for taxes, and paying taxes does not give a right to a bus line.", uk: "За допомогою <b>громадянської ініціативи</b> громадяни можуть разом досягти того, що хочуть змінити у своїй громаді. Можна приєднатися до ініціативи або створити власну.<br><br>Спортивний клуб чи лист до лісового управління (відповідає за ліс) не допоможуть. Податкова інспекція відповідає за податки, а сплата податків не дає права на автобусний маршрут.", ru: "С помощью <b>гражданской инициативы</b> граждане могут вместе добиться того, что хотят изменить в своём муниципалитете. Можно присоединиться к инициативе или создать собственную.<br><br>Спортивный клуб или письмо в лесное управление (отвечает за лес) не помогут. Налоговая инспекция отвечает за налоги, а уплата налогов не даёт права на автобусный маршрут." },
   },
   {
     id: "lid_135",
@@ -1946,7 +1946,7 @@ var QUIZ = [
       { de: "Selbstständige", en: "", uk: "", ru: "" },
       { de: "Arbeitnehmerinnen und Arbeitnehmer", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Gewerkschaften</b> vertreten die <b>Arbeitnehmerinnen und Arbeitnehmer</b>. Sie verhandeln zum Beispiel über Löhne und Arbeitsbedingungen.<br><br>Unternehmen haben dafür Arbeitgeberverbände. Selbstständige haben keine Arbeitgeberin/keinen Arbeitgeber und gehören meist keiner Gewerkschaft an.", en: "<b>Trade unions</b> represent <b>employees</b>. For example, they negotiate wages and working conditions.<br><br>Companies have employers’ federations for this. Self-employed people have no employer and mostly do not belong to a trade union.", uk: "<b>Профспілки</b> представляють <b>працівників</b>. Вони, наприклад, ведуть переговори про зарплати й умови праці.<br><br>Підприємства мають для цього союзи роботодавців. Самозайняті не мають роботодавця і здебільшого не належать до профспілки.", ru: "<b>Профсоюзы</b> представляют <b>работников</b>. Они, например, ведут переговоры о зарплатах и условиях труда.<br><br>У предприятий для этого есть союзы работодателей. У самозанятых нет работодателя, и они в основном не состоят в профсоюзе." },
   },
   {
     id: "lid_136",
@@ -1959,7 +1959,7 @@ var QUIZ = [
       { de: "Problemen mit den Nachbarinnen/Nachbarn.", en: "", uk: "", ru: "" },
       { de: "Schwierigkeiten nach einem Verkehrsunfall.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bei einer <b>ungerechtfertigten Kündigung</b> geht man zum <b>Arbeitsgericht</b>. Es ist für Streit zwischen Arbeitnehmerinnen/Arbeitnehmern und Arbeitgeberinnen/Arbeitgebern zuständig.<br><br>Streit um die Nebenkostenabrechnung, mit den Nachbarinnen/Nachbarn oder nach einem Verkehrsunfall gehört nicht zum Arbeitsrecht, sondern zu anderen Gerichten (zum Beispiel dem Amtsgericht).", en: "In the case of <b>unfair dismissal</b>, you go to the <b>labour court</b>. It is responsible for disputes between employees and employers.<br><br>Disputes about the service-charge statement, with the neighbours or after a traffic accident do not belong to labour law but to other courts (for example the local court).", uk: "У разі <b>незаконного звільнення</b> звертаються до <b>трудового суду</b>. Він розглядає спори між працівниками та роботодавцями.<br><br>Спори щодо розрахунку додаткових витрат за житло, із сусідами чи після ДТП належать не до трудового права, а до інших судів (наприклад, до окружного суду).", ru: "В случае <b>неправомерного увольнения</b> обращаются в <b>трудовой суд</b>. Он рассматривает споры между работниками и работодателями.<br><br>Споры по расчёту дополнительных расходов на жильё, с соседями или после ДТП относятся не к трудовому праву, а к другим судам (например, к участковому суду)." },
   },
   {
     id: "lid_137",
@@ -1972,7 +1972,7 @@ var QUIZ = [
       { de: "das Arbeitsgericht", en: "", uk: "", ru: "", correct: true },
       { de: "das Amtsgericht", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Für Konflikte in der Arbeitswelt ist das <b>Arbeitsgericht</b> zuständig, zum Beispiel bei Streit um Kündigung oder Lohn.<br><br>Das Familiengericht entscheidet über Ehe und Kinder, das Strafgericht über Straftaten. Das Amtsgericht ist für andere zivilrechtliche Streitigkeiten zuständig.", en: "The <b>labour court</b> is responsible for conflicts in the world of work, for example disputes about dismissal or pay.<br><br>The family court decides on marriage and children, the criminal court on crimes. The local court is responsible for other civil disputes.", uk: "<b>Трудовий суд</b> розглядає конфлікти у сфері праці, наприклад спори про звільнення чи оплату.<br><br>Сімейний суд вирішує питання шлюбу й дітей, кримінальний суд — щодо злочинів. Окружний суд розглядає інші цивільні спори.", ru: "<b>Трудовой суд</b> рассматривает конфликты в сфере труда, например споры об увольнении или оплате.<br><br>Семейный суд решает вопросы брака и детей, уголовный суд — по преступлениям. Участковый суд рассматривает другие гражданские споры." },
   },
   {
     id: "lid_138",
@@ -1985,7 +1985,7 @@ var QUIZ = [
       { de: "Kündigungsschutzklage erheben", en: "", uk: "", ru: "", correct: true },
       { de: "die Arbeitgeberin/den Arbeitgeber bei der Polizei anzeigen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Gegen eine ungerechtfertigte Kündigung kann man eine <b>Kündigungsschutzklage</b> beim Arbeitsgericht erheben. Dafür hat man nur drei Wochen Zeit.<br><br>Einfach weiterzuarbeiten oder freundlich zu sein, ändert nichts. Ein Mahnverfahren ist für offene Geldforderungen. Eine Anzeige bei der Polizei hilft nicht, weil eine Kündigung keine Straftat ist.", en: "Against unfair dismissal you can bring an <b>action for protection against dismissal</b> at the labour court. You have only three weeks to do so.<br><br>Simply continuing to work or being friendly changes nothing. A dunning procedure is for outstanding money claims. A report to the police does not help, because a dismissal is not a crime.", uk: "Проти незаконного звільнення можна подати <b>позов про захист від звільнення</b> до трудового суду. На це є лише три тижні.<br><br>Просто продовжувати працювати чи бути привітним нічого не змінює. Наказове провадження — для непогашених грошових вимог. Заява до поліції не допоможе, бо звільнення не є злочином.", ru: "Против неправомерного увольнения можно подать <b>иск о защите от увольнения</b> в трудовой суд. На это есть только три недели.<br><br>Просто продолжать работать или быть приветливым ничего не меняет. Приказное производство — для непогашенных денежных требований. Заявление в полицию не поможет, потому что увольнение не является преступлением." },
   },
   {
     id: "lid_139",
@@ -1998,7 +1998,7 @@ var QUIZ = [
       { de: "eine andere Meinung als die der Regierung vertritt.", en: "", uk: "", ru: "" },
       { de: "sein Auto falsch geparkt hat und es abgeschleppt wird.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Einen Prozess vor Gericht gibt es, wenn jemand <b>eine Straftat begangen hat und angeklagt wird</b>.<br><br>Ein Religionswechsel und eine andere politische Meinung sind erlaubt. Falsch parken ist höchstens eine Ordnungswidrigkeit und führt nicht automatisch zu einem Prozess.", en: "There is a trial in court when someone <b>has committed a crime and is charged</b>.<br><br>Changing religion and having a different political opinion are allowed. Parking illegally is at most an administrative offence and does not automatically lead to a trial.", uk: "Судовий процес проходить, коли хтось <b>скоїв злочин і його обвинувачують</b>.<br><br>Зміна релігії та інша політична думка дозволені. Неправильне паркування — щонайбільше адміністративне порушення і автоматично не веде до судового процесу.", ru: "Судебный процесс проходит, когда кто-то <b>совершил преступление и его обвиняют</b>.<br><br>Смена религии и другое политическое мнение разрешены. Неправильная парковка — самое большее административное нарушение и автоматически не ведёт к судебному процессу." },
   },
   {
     id: "lid_140",
@@ -2011,7 +2011,7 @@ var QUIZ = [
       { de: "stellt Urkunden aus.", en: "", uk: "", ru: "" },
       { de: "verteidigt die Angeklagte/den Angeklagten.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Eine <b>Schöffin/ein Schöffe</b> ist eine ehrenamtliche Richterin/ein ehrenamtlicher Richter. Sie/Er <b>entscheidet zusammen mit den Berufsrichterinnen und Berufsrichtern über Schuld und Strafe</b>.<br><br>Rechtlichen Rat gibt eine Rechtsanwältin/ein Rechtsanwalt. Urkunden stellen Behörden oder Notarinnen/Notare aus. Die Angeklagte/den Angeklagten verteidigt die Verteidigerin/der Verteidiger.", en: "A <b>lay judge</b>, in German “Schöffin/Schöffe”, is a volunteer judge. The lay judge <b>decides together with the professional judges on guilt and punishment</b>.<br><br>Legal advice is given by a lawyer. Documents are issued by authorities or notaries. The defendant is defended by the defence counsel.", uk: "<b>Суддя-засідатель</b>, німецькою «Schöffin/Schöffe», — це суддя-волонтер. Він/Вона <b>разом із професійними суддями вирішує питання про вину та покарання</b>.<br><br>Юридичну пораду дає адвокат/адвокатка. Документи видають органи влади або нотаріуси. Обвинуваченого/обвинувачену захищає захисник/захисниця.", ru: "<b>Судья-заседатель</b>, по-немецки «Schöffin/Schöffe», — это судья-волонтёр. Он <b>вместе с профессиональными судьями решает вопрос о вине и наказании</b>.<br><br>Юридический совет даёт адвокат. Документы выдают органы власти или нотариусы. Обвиняемого защищает защитник." },
   },
   {
     id: "lid_141",
@@ -2024,7 +2024,7 @@ var QUIZ = [
       { de: "eine Schöffin/ein Schöffe", en: "", uk: "", ru: "" },
       { de: "eine Staatsanwältin/ein Staatsanwalt", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Eine <b>Rechtsanwältin/ein Rechtsanwalt</b> berät bei Rechtsfragen und vertritt die Person vor Gericht.<br><br>Die Richterin/der Richter spricht das Urteil, die Schöffin/der Schöffe urteilt ehrenamtlich mit. Die Staatsanwältin/der Staatsanwalt vertritt die Anklage für den Staat.", en: "A <b>lawyer</b> advises on legal questions and represents the person in court.<br><br>The judge pronounces the verdict, and the lay judge helps to judge on a voluntary basis. The public prosecutor represents the prosecution on behalf of the state.", uk: "<b>Адвокат/адвокатка</b> консультує з юридичних питань і представляє людину в суді.<br><br>Суддя виносить вирок, суддя-засідатель/суддя-засідателька бере участь у вирішенні справи на громадських засадах. Прокурор/прокурорка представляє обвинувачення від імені держави.", ru: "<b>Адвокат</b> консультирует по юридическим вопросам и представляет человека в суде.<br><br>Судья выносит приговор, судья-заседатель участвует в рассмотрении дела на общественных началах. Прокурор представляет обвинение от имени государства." },
   },
   {
     id: "lid_142",
@@ -2037,7 +2037,7 @@ var QUIZ = [
       { de: "ändert Gesetze.", en: "", uk: "", ru: "" },
       { de: "betreut Jugendliche vor Gericht.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Hauptaufgabe einer Richterin/eines Richters ist es, <b>an einem Gericht Urteile zu sprechen</b>.<br><br>Vor Gericht vertritt eine Rechtsanwältin/ein Rechtsanwalt die Bürgerinnen und Bürger. Gesetze ändert das Parlament. Jugendliche vor Gericht betreut zum Beispiel die Jugendgerichtshilfe.", en: "The main task of a judge is <b>to pronounce judgments at a court</b>.<br><br>In court, a lawyer represents the citizens. Laws are changed by parliament. Young people in court are supported, for example, by the youth court assistance service.", uk: "Головне завдання судді — <b>виносити вироки в суді</b>.<br><br>У суді громадян представляє адвокат/адвокатка. Закони змінює парламент. Молодь у суді підтримує, наприклад, служба допомоги неповнолітнім у судах.", ru: "Главная задача судьи — <b>выносить приговоры в суде</b>.<br><br>В суде граждан представляет адвокат. Законы изменяет парламент. Молодёжь в суде поддерживает, например, служба помощи несовершеннолетним в судах." },
   },
   {
     id: "lid_143",
@@ -2050,7 +2050,7 @@ var QUIZ = [
       { de: "Operative.", en: "", uk: "", ru: "" },
       { de: "Legislative.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Richterinnen und Richter gehören zur <b>Judikative</b>, der rechtsprechenden Gewalt.<br><br>Die Exekutive führt Gesetze aus, die Legislative beschließt sie. „Operative“ ist keine staatliche Gewalt.", en: "Judges belong to the <b>judiciary</b>, the power that administers justice.<br><br>The executive carries out laws, the legislature passes them. “Operative” is not a state power.", uk: "Судді належать до <b>судової влади</b>, тобто гілки, яка здійснює правосуддя.<br><br>Виконавча влада виконує закони, законодавча — ухвалює їх. «Operative» — не державна гілка влади.", ru: "Судьи относятся к <b>судебной власти</b>, то есть ветви, которая осуществляет правосудие.<br><br>Исполнительная власть исполняет законы, законодательная — принимает их. «Operative» — не государственная ветвь власти." },
   },
   {
     id: "lid_144",
@@ -2063,7 +2063,7 @@ var QUIZ = [
       { de: "planenden Gewalt.", en: "", uk: "", ru: "" },
       { de: "gesetzgebenden Gewalt.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Richterinnen und Richter gehören zur <b>rechtsprechenden Gewalt</b> (Judikative).<br><br>Die vollziehende Gewalt ist die Exekutive (Regierung, Verwaltung), die gesetzgebende Gewalt ist die Legislative (Parlament). Eine „planende Gewalt“ gibt es nicht.", en: "Judges belong to the <b>judicial power</b> (the judiciary).<br><br>The executive power is the executive (government, administration), the legislative power is the legislature (parliament). A “planning power” does not exist.", uk: "Судді належать до <b>судової влади</b>.<br><br>Виконавча влада — це уряд і адміністрація, законодавча влада — це парламент. «Планувальної влади» не існує.", ru: "Судьи относятся к <b>судебной власти</b>.<br><br>Исполнительная власть — это правительство и администрация, законодательная власть — это парламент. «Планирующей власти» не существует." },
   },
   {
     id: "lid_145",
@@ -2076,7 +2076,7 @@ var QUIZ = [
       { de: "Presse", en: "", uk: "", ru: "" },
       { de: "Legislative", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Gewaltenteilung hat drei Teile. Richterinnen und Richter arbeiten für die <b>Judikative</b> (Rechtsprechung).<br><br>Die Exekutive führt die Gesetze aus, die Legislative beschließt sie. Die Presse gehört nicht zu den staatlichen Gewalten.", en: "The separation of powers has three parts. Judges work for the <b>judiciary</b> (the administration of justice).<br><br>The executive carries out the laws, the legislature passes them. The press is not one of the state powers.", uk: "Поділ влади має три частини. Судді працюють на <b>судову владу</b> (правосуддя).<br><br>Виконавча влада виконує закони, законодавча — ухвалює їх. Преса не належить до державних гілок влади.", ru: "Разделение властей имеет три части. Судьи работают на <b>судебную власть</b> (правосудие).<br><br>Исполнительная власть исполняет законы, законодательная — принимает их. Пресса не относится к государственным ветвям власти." },
   },
   {
     id: "lid_146",
@@ -2089,7 +2089,7 @@ var QUIZ = [
       { de: "Protokoll", en: "", uk: "", ru: "" },
       { de: "Prozess", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Ein Verfahren vor Gericht nennt man <b>Prozess</b>.<br><br>Eine Prozedur ist ein Vorgehen, ein Protokoll ist eine Niederschrift, ein Programm ist ein Plan. Für ein Gerichtsverfahren benutzt man diese Wörter nicht.", en: "A proceeding in court is called a <b>trial</b>.<br><br>A procedure is a way of going about something, a protocol is a written record, a programme is a plan. These words are not used for court proceedings.", uk: "Судове провадження називається <b>процес</b>.<br><br>«Prozedur» — це спосіб дій, «Protokoll» — письмовий запис, «Programm» — план. Для судового провадження ці слова не вживають.", ru: "Судебное производство называется <b>процесс</b>.<br><br>«Prozedur» — это способ действий, «Protokoll» — письменная запись, «Programm» — план. Для судебного производства эти слова не употребляют." },
   },
   {
     id: "lid_147",
@@ -2102,7 +2102,7 @@ var QUIZ = [
       { de: "Pläne erstellen", en: "", uk: "", ru: "" },
       { de: "Gesetze erlassen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Arbeit von Richterinnen und Richtern ist es, <b>Recht zu sprechen</b>: Sie entscheiden bei Streit und sprechen Urteile.<br><br>Regieren tun Regierungen, Pläne erstellen Verwaltungen, und Gesetze erlässt das Parlament.", en: "The work of judges is <b>to administer justice</b>: they decide disputes and pronounce judgments.<br><br>Governments govern, administrations draw up plans, and laws are passed by parliament.", uk: "Робота суддів — <b>здійснювати правосуддя</b>: вони вирішують спори й виносять вироки.<br><br>Керують уряди, плани складають адміністрації, а закони ухвалює парламент.", ru: "Работа судей — <b>осуществлять правосудие</b>: они решают споры и выносят приговоры.<br><br>Управляют правительства, планы составляют администрации, а законы принимает парламент." },
   },
   {
     id: "lid_148",
@@ -2115,7 +2115,7 @@ var QUIZ = [
       { de: "die Gesetze zu beschließen", en: "", uk: "", ru: "" },
       { de: "die Einhaltung von Gesetzen zu überwachen", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Polizei <b>überwacht die Einhaltung der Gesetze</b> und schützt die Bürgerinnen und Bürger.<br><br>Das Land verteidigt die Bundeswehr. Die Gesetze beschließt das Parlament. Bürgerinnen und Bürger abzuhören ist keine normale Aufgabe der Polizei: Das ist nur in Ausnahmefällen mit richterlicher Erlaubnis erlaubt.", en: "The police <b>monitor compliance with the laws</b> and protect citizens.<br><br>The country is defended by the Bundeswehr. Laws are passed by parliament. Eavesdropping on citizens is not a normal task of the police: it is allowed only in exceptional cases with a judge’s permission.", uk: "Поліція <b>стежить за дотриманням законів</b> і захищає громадян.<br><br>Країну захищає Бундесвер. Закони ухвалює парламент. Прослуховування громадян — не звичайне завдання поліції: це дозволено лише у виняткових випадках за дозволом судді.", ru: "Полиция <b>следит за соблюдением законов</b> и защищает граждан.<br><br>Страну защищает бундесвер. Законы принимает парламент. Прослушивание граждан — не обычная задача полиции: это разрешено только в исключительных случаях с разрешения судьи." },
   },
   {
     id: "lid_149",
@@ -2128,7 +2128,7 @@ var QUIZ = [
       { de: "den Holocaust leugnen", en: "", uk: "", ru: "", correct: true },
       { de: "gegen Juden Fußball spielen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wer <b>den Holocaust leugnet</b>, verhält sich antisemitisch: Er verharmlost den Massenmord an den Jüdinnen und Juden. Das ist in Deutschland außerdem strafbar.<br><br>Ein jüdisches Fest zu besuchen oder mit Juden Fußball zu spielen, ist normal. Auch Kritik an der israelischen Regierung ist nicht automatisch antisemitisch.", en: "Anyone who <b>denies the Holocaust</b> behaves in an antisemitic way: they downplay the mass murder of Jewish people. In Germany it is also a punishable offence.<br><br>Attending a Jewish festival or playing football with Jewish people is normal. Criticism of the Israeli government is also not automatically antisemitic.", uk: "Хто <b>заперечує Голокост</b>, поводиться антисемітськи: він применшує масове вбивство євреїв. У Німеччині це до того ж карається законом.<br><br>Відвідувати єврейське свято чи грати з євреями у футбол — нормально. Критика ізраїльського уряду також не є автоматично антисемітською.", ru: "Кто <b>отрицает Холокост</b>, ведёт себя антисемитски: он преуменьшает массовое убийство евреев. В Германии это к тому же наказуемо.<br><br>Посещать еврейский праздник или играть с евреями в футбол — нормально. Критика израильского правительства также не является автоматически антисемитской." },
   },
   {
     id: "lid_150",
@@ -2141,7 +2141,7 @@ var QUIZ = [
       { de: "ein Mitglied eines Gemeinderats.", en: "", uk: "", ru: "" },
       { de: "eine Person, die Jura studiert hat.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Eine Gerichtsschöffin/ein Gerichtsschöffe ist <b>eine ehrenamtliche Richterin/ein ehrenamtlicher Richter</b>. Sie/Er sitzt in Strafprozessen zusammen mit Berufsrichterinnen und Berufsrichtern und entscheidet mit. Dafür braucht man kein Jurastudium.<br><br>Sie/Er ist weder die Stellvertretung des Stadtoberhaupts noch Mitglied eines Gemeinderats.", en: "A lay judge at a court is <b>a volunteer judge</b>. The lay judge sits together with professional judges in criminal trials and takes part in the decision. No law degree is needed for this.<br><br>A lay judge is neither the deputy of the mayor nor a member of a municipal council.", uk: "Суддя-засідатель у суді — це <b>суддя-волонтер/суддя-волонтерка</b>. Він/Вона сидить у кримінальних процесах разом із професійними суддями й бере участь у вирішенні справи. Для цього не потрібна юридична освіта.<br><br>Він/Вона не заступник міського голови і не член ради громади.", ru: "Судья-заседатель в суде — это <b>судья-волонтёр</b>. Он сидит в уголовных процессах вместе с профессиональными судьями и участвует в принятии решения. Для этого не нужно юридическое образование.<br><br>Он не заместитель главы города и не член совета муниципалитета." },
   },
   {
     id: "lid_151",
@@ -2154,7 +2154,7 @@ var QUIZ = [
       { de: "die Bundesrepublik Deutschland", en: "", uk: "", ru: "" },
       { de: "die USA", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>DDR</b> baute die Mauer in Berlin. Der Bau begann am 13. August 1961. Die DDR wollte damit verhindern, dass ihre Bürgerinnen und Bürger in den Westen fliehen.<br><br>Großbritannien, die USA und die Bundesrepublik haben die Mauer nicht gebaut.", en: "The <b>GDR</b> built the Wall in Berlin. Construction began on 13 August 1961. The GDR wanted to stop its citizens from fleeing to the West.<br><br>Great Britain, the USA and the Federal Republic did not build the Wall.", uk: "<b>НДР</b> збудувала мур у Берліні. Будівництво почалося 13 серпня 1961 року. НДР хотіла завадити своїм громадянам тікати на Захід.<br><br>Велика Британія, США та Федеративна Республіка мур не будували.", ru: "<b>ГДР</b> построила стену в Берлине. Строительство началось 13 августа 1961 года. ГДР хотела помешать своим гражданам бежать на Запад.<br><br>Великобритания, США и Федеративная Республика стену не строили." },
   },
   {
     id: "lid_152",
@@ -2167,7 +2167,7 @@ var QUIZ = [
       { de: "1933 bis 1945", en: "", uk: "", ru: "", correct: true },
       { de: "1945 bis 1989", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Nationalsozialisten waren von <b>1933 bis 1945</b> an der Macht. Sie begann am 30. Januar 1933, als Adolf Hitler Reichskanzler wurde. Sie endete 1945 mit dem Ende des Zweiten Weltkriegs.<br><br>1918 bis 1923 war die schwierige Anfangszeit der Weimarer Republik, und von 1945 bis 1989 war Deutschland geteilt.", en: "The National Socialists were in power from <b>1933 to 1945</b>. It began on 30 January 1933, when Adolf Hitler became Reich Chancellor. It ended in 1945 with the end of the Second World War.<br><br>1918 to 1923 was the difficult early period of the Weimar Republic, and from 1945 to 1989 Germany was divided.", uk: "Націонал-соціалісти були при владі з <b>1933 по 1945 рік</b>. Це почалося 30 січня 1933 року, коли Адольф Гітлер став рейхсканцлером. Це скінчилося 1945 року разом із закінченням Другої світової війни.<br><br>З 1918 по 1923 рік був складний початковий період Веймарської республіки, а з 1945 по 1989 рік Німеччина була поділена.", ru: "Национал-социалисты были у власти с <b>1933 по 1945 год</b>. Это началось 30 января 1933 года, когда Адольф Гитлер стал рейхсканцлером. Это закончилось в 1945 году вместе с окончанием Второй мировой войны.<br><br>С 1918 по 1923 год был сложный начальный период Веймарской республики, а с 1945 по 1989 год Германия была разделена." },
   },
   {
     id: "lid_153",
@@ -2180,7 +2180,7 @@ var QUIZ = [
       { de: "Wahl von Konrad Adenauer zum Bundeskanzler", en: "", uk: "", ru: "" },
       { de: "Ende des Zweiten Weltkriegs in Europa", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Am <b>8. Mai 1945</b> endete der Zweite Weltkrieg in Europa: Deutschland kapitulierte bedingungslos.<br><br>Hitler starb schon am 30. April 1945. Die Berliner Mauer wurde erst 1961 gebaut. Konrad Adenauer wurde 1949 zum Bundeskanzler gewählt.", en: "On <b>8 May 1945</b> the Second World War in Europe ended: Germany surrendered unconditionally.<br><br>Hitler had already died on 30 April 1945. The Berlin Wall was not built until 1961. Konrad Adenauer was elected Federal Chancellor in 1949.", uk: "<b>8 травня 1945 року</b> Друга світова війна в Європі закінчилася: Німеччина беззастережно капітулювала.<br><br>Гітлер помер уже 30 квітня 1945 року. Берлінський мур збудували лише 1961 року. Конрад Аденауер став федеральним канцлером 1949 року.", ru: "<b>8 мая 1945 года</b> Вторая мировая война в Европе закончилась: Германия безоговорочно капитулировала.<br><br>Гитлер умер уже 30 апреля 1945 года. Берлинскую стену построили лишь в 1961 году. Конрад Аденауэр стал федеральным канцлером в 1949 году." },
   },
   {
     id: "lid_154",
@@ -2193,7 +2193,7 @@ var QUIZ = [
       { de: "1949", en: "", uk: "", ru: "" },
       { de: "1961", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Zweite Weltkrieg war in Europa <b>1945</b> zu Ende (8. Mai).<br><br>1933 kamen die Nationalsozialisten an die Macht, 1949 wurden die Bundesrepublik und die DDR gegründet, und 1961 wurde die Berliner Mauer gebaut.", en: "The Second World War in Europe ended in <b>1945</b> (8 May).<br><br>In 1933 the National Socialists came to power, in 1949 the Federal Republic and the GDR were founded, and in 1961 the Berlin Wall was built.", uk: "Друга світова війна в Європі закінчилася <b>1945 року</b> (8 травня).<br><br>1933 року до влади прийшли націонал-соціалісти, 1949 року було засновано Федеративну Республіку й НДР, а 1961 року збудовано Берлінський мур.", ru: "Вторая мировая война в Европе закончилась в <b>1945 году</b> (8 мая).<br><br>В 1933 году к власти пришли национал-социалисты, в 1949 году были основаны Федеративная Республика и ГДР, а в 1961 году построена Берлинская стена." },
   },
   {
     id: "lid_155",
@@ -2206,7 +2206,7 @@ var QUIZ = [
       { de: "1933 bis 1945", en: "", uk: "", ru: "", correct: true },
       { de: "1949 bis 1963", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Nationalsozialisten waren von <b>1933 bis 1945</b> in Deutschland an der Macht.<br><br>Die anderen Zeiträume passen nicht: 1888 bis 1918 war das Kaiserreich, 1949 bis 1963 war zum Beispiel die Zeit von Bundeskanzler Adenauer.", en: "The National Socialists were in power in Germany from <b>1933 to 1945</b>.<br><br>The other periods do not fit: 1888 to 1918 was the German Empire, and 1949 to 1963, for example, was the time of Chancellor Adenauer.", uk: "Націонал-соціалісти були при владі в Німеччині з <b>1933 по 1945 рік</b>.<br><br>Інші періоди не підходять: з 1888 по 1918 рік була імперія, а з 1949 по 1963 рік, наприклад, — час канцлера Аденауера.", ru: "Национал-социалисты были у власти в Германии с <b>1933 по 1945 год</b>.<br><br>Другие периоды не подходят: с 1888 по 1918 год была империя, а с 1949 по 1963 год, например, — время канцлера Аденауэра." },
   },
   {
     id: "lid_156",
@@ -2219,7 +2219,7 @@ var QUIZ = [
       { de: "1933", en: "", uk: "", ru: "", correct: true },
       { de: "1936", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Adolf Hitler wurde <b>1933</b> Reichskanzler: Am 30. Januar 1933 ernannte ihn der Reichspräsident Hindenburg. Danach bauten die Nationalsozialisten schnell eine Diktatur auf.", en: "Adolf Hitler became Reich Chancellor in <b>1933</b>: on 30 January 1933 Reich President Hindenburg appointed him. After that, the National Socialists quickly built up a dictatorship.", uk: "Адольф Гітлер став рейхсканцлером <b>1933 року</b>: 30 січня 1933 року його призначив рейхспрезидент Гінденбург. Після цього націонал-соціалісти швидко збудували диктатуру.", ru: "Адольф Гитлер стал рейхсканцлером в <b>1933 году</b>: 30 января 1933 года его назначил рейхспрезидент Гинденбург. После этого национал-социалисты быстро построили диктатуру." },
   },
   {
     id: "lid_157",
@@ -2232,7 +2232,7 @@ var QUIZ = [
       { de: "eine Monarchie.", en: "", uk: "", ru: "" },
       { de: "ein Fürstentum.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Nationalsozialisten errichteten 1933 in Deutschland eine <b>Diktatur</b>. Es gab keine freien Wahlen, keine Meinungsfreiheit und andere Parteien wurden verboten.<br><br>Einen demokratischen Staat, eine Monarchie oder ein Fürstentum gab es unter Hitler nicht.", en: "In 1933 the National Socialists set up a <b>dictatorship</b> in Germany. There were no free elections, no freedom of expression, and other parties were banned.<br><br>There was no democratic state, monarchy or principality under Hitler.", uk: "1933 року націонал-соціалісти встановили в Німеччині <b>диктатуру</b>. Не було вільних виборів, свободи слова, а інші партії заборонили.<br><br>Демократичної держави, монархії чи князівства за Гітлера не було.", ru: "В 1933 году национал-социалисты установили в Германии <b>диктатуру</b>. Не было свободных выборов, свободы слова, а другие партии запретили.<br><br>Демократического государства, монархии или княжества при Гитлере не было." },
   },
   {
     id: "lid_158",
@@ -2245,7 +2245,7 @@ var QUIZ = [
       { de: "Monarchie.", en: "", uk: "", ru: "" },
       { de: "Räterepublik.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das „Dritte Reich“ war die <b>Diktatur</b> der Nationalsozialisten von 1933 bis 1945.<br><br>Eine Demokratie und eine Monarchie waren es nicht. Eine Räterepublik gab es kurz nach dem Ersten Weltkrieg, zum Beispiel 1919 in Bayern.", en: "The “Third Reich” was the National Socialists’ <b>dictatorship</b> from 1933 to 1945.<br><br>It was neither a democracy nor a monarchy. A council republic existed briefly after the First World War, for example in Bavaria in 1919.", uk: "«Третій рейх» був <b>диктатурою</b> націонал-соціалістів з 1933 по 1945 рік.<br><br>Це була не демократія й не монархія. Республіка рад існувала недовго після Першої світової війни, наприклад 1919 року в Баварії.", ru: "«Третий рейх» был <b>диктатурой</b> национал-социалистов с 1933 по 1945 год.<br><br>Это была не демократия и не монархия. Советская республика существовала недолго после Первой мировой войны, например в 1919 году в Баварии." },
   },
   {
     id: "lid_159",
@@ -2258,7 +2258,7 @@ var QUIZ = [
       { de: "willkürliche Verhaftungen", en: "", uk: "", ru: "" },
       { de: "Verfolgung von Juden", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In der Zeit des Nationalsozialismus gab es <b>keine freien Wahlen</b>. Die Nationalsozialisten kontrollierten alles, und nur eine Partei war erlaubt.<br><br>Dagegen gab es Pressezensur, willkürliche Verhaftungen und die Verfolgung von Jüdinnen und Juden.", en: "In the period of National Socialism there were <b>no free elections</b>. The National Socialists controlled everything, and only one party was allowed.<br><br>There was, however, press censorship, arbitrary arrests and the persecution of Jewish people.", uk: "За часів націонал-соціалізму <b>вільних виборів не було</b>. Націонал-соціалісти контролювали все, а дозволена була лише одна партія.<br><br>Натомість були цензура преси, свавільні арешти та переслідування євреїв.", ru: "Во времена национал-социализма <b>свободных выборов не было</b>. Национал-социалисты контролировали всё, а разрешена была только одна партия.<br><br>Зато были цензура прессы, произвольные аресты и преследование евреев." },
   },
   {
     id: "lid_160",
@@ -2271,7 +2271,7 @@ var QUIZ = [
       { de: "der Vietnamkrieg", en: "", uk: "", ru: "" },
       { de: "der Golfkrieg", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der <b>Zweite Weltkrieg</b> dauerte von 1939 bis 1945. Er begann am 1. September 1939 mit dem deutschen Angriff auf Polen.<br><br>Der Erste Weltkrieg war von 1914 bis 1918. Der Vietnamkrieg und der Golfkrieg gehören nicht zu den Weltkriegen.", en: "The <b>Second World War</b> lasted from 1939 to 1945. It began on 1 September 1939 with the German attack on Poland.<br><br>The First World War was from 1914 to 1918. The Vietnam War and the Gulf War are not world wars.", uk: "<b>Друга світова війна</b> тривала з 1939 по 1945 рік. Вона почалася 1 вересня 1939 року нападом Німеччини на Польщу.<br><br>Перша світова війна була з 1914 по 1918 рік. Війна у Вʼєтнамі та війна в Перській затоці не є світовими війнами.", ru: "<b>Вторая мировая война</b> длилась с 1939 по 1945 год. Она началась 1 сентября 1939 года нападением Германии на Польшу.<br><br>Первая мировая война была с 1914 по 1918 год. Война во Вьетнаме и война в Персидском заливе не являются мировыми войнами." },
   },
   {
     id: "lid_161",
@@ -2284,7 +2284,7 @@ var QUIZ = [
       { de: "der allgemeinen Religionsfreiheit", en: "", uk: "", ru: "" },
       { de: "der Entwicklung der Demokratie", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der NS-Staat betrieb eine Politik des <b>staatlichen Rassismus</b>: Menschen wurden wegen ihrer Herkunft oder Religion verfolgt, besonders Jüdinnen und Juden. Das führte zum Holocaust.<br><br>Meinungsfreiheit, Religionsfreiheit und Demokratie gab es im NS-Staat nicht.", en: "The Nazi state pursued a policy of <b>state racism</b>: people were persecuted because of their origin or religion, especially Jewish people. That led to the Holocaust.<br><br>There was no freedom of expression, freedom of religion or democracy in the Nazi state.", uk: "Нацистська держава проводила політику <b>державного расизму</b>: людей переслідували за походження чи релігію, особливо євреїв. Це призвело до Голокосту.<br><br>Свободи слова, свободи віросповідання й демократії в нацистській державі не було.", ru: "Нацистское государство проводило политику <b>государственного расизма</b>: людей преследовали за происхождение или религию, особенно евреев. Это привело к Холокосту.<br><br>Свободы слова, свободы вероисповедания и демократии в нацистском государстве не было." },
   },
   {
     id: "lid_162",
@@ -2297,7 +2297,7 @@ var QUIZ = [
       { de: "den Aufbau der Wehrmacht.", en: "", uk: "", ru: "" },
       { de: "das Attentat auf Hitler am 20. Juli 1944.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Claus Schenk Graf von Stauffenberg wurde durch das <b>Attentat auf Hitler am 20. Juli 1944</b> bekannt. Er gehörte zum militärischen Widerstand. Das Attentat scheiterte, und Stauffenberg wurde noch am selben Tag erschossen.<br><br>Die anderen Antworten haben nichts mit ihm zu tun.", en: "Claus Schenk Graf von Stauffenberg became known for the <b>assassination attempt on Hitler on 20 July 1944</b>. He belonged to the military resistance. The attempt failed, and Stauffenberg was shot the same day.<br><br>The other answers have nothing to do with him.", uk: "Клаус Шенк граф фон Штауфенберг став відомим завдяки <b>замаху на Гітлера 20 липня 1944 року</b>. Він належав до військового Опору. Замах не вдався, і Штауфенберга розстріляли того ж дня.<br><br>Інші відповіді не мають до нього жодного стосунку.", ru: "Клаус Шенк граф фон Штауффенберг стал известен благодаря <b>покушению на Гитлера 20 июля 1944 года</b>. Он принадлежал к военному Сопротивлению. Покушение не удалось, и Штауффенберга расстреляли в тот же день.<br><br>Другие ответы не имеют к нему никакого отношения." },
   },
   {
     id: "lid_163",
@@ -2310,7 +2310,7 @@ var QUIZ = [
       { de: "1938", en: "", uk: "", ru: "", correct: true },
       { de: "1945", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Im Jahr <b>1938</b> zerstörten die Nationalsozialisten Synagogen und jüdische Geschäfte. Das geschah in der Nacht vom 9. auf den 10. November 1938 (Novemberpogrome).<br><br>1925 und 1930 waren noch vor der NS-Herrschaft. 1945 endete der Krieg.", en: "In <b>1938</b> the National Socialists destroyed synagogues and Jewish shops. That happened during the night of 9 to 10 November 1938 (the November pogroms).<br><br>1925 and 1930 were before Nazi rule. In 1945 the war ended.", uk: "<b>1938 року</b> націонал-соціалісти руйнували синагоги та єврейські крамниці. Це сталося в ніч з 9 на 10 листопада 1938 року (листопадові погроми).<br><br>1925 і 1930 роки були ще до нацистського панування. 1945 року війна закінчилася.", ru: "В <b>1938 году</b> национал-социалисты разрушали синагоги и еврейские магазины. Это произошло в ночь с 9 на 10 ноября 1938 года (ноябрьские погромы).<br><br>1925 и 1930 годы были ещё до нацистского господства. В 1945 году война закончилась." },
   },
   {
     id: "lid_164",
@@ -2323,7 +2323,7 @@ var QUIZ = [
       { de: "Jüdische Geschäfte und Synagogen werden durch Nationalsozialisten und ihre Anhänger zerstört.", en: "", uk: "", ru: "", correct: true },
       { de: "Hitler wird Reichspräsident und lässt alle Parteien verbieten.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Am <b>9. November 1938</b> zerstörten die Nationalsozialisten und ihre Anhänger jüdische Geschäfte und Synagogen (Novemberpogrome).<br><br>Der Zweite Weltkrieg begann erst am 1. September 1939 mit dem Angriff auf Polen. Die beiden anderen Antworten sind falsch.", en: "On <b>9 November 1938</b> the National Socialists and their followers destroyed Jewish shops and synagogues (the November pogroms).<br><br>The Second World War began only on 1 September 1939 with the attack on Poland. The two other answers are wrong.", uk: "<b>9 листопада 1938 року</b> націонал-соціалісти та їхні прихильники руйнували єврейські крамниці й синагоги (листопадові погроми).<br><br>Друга світова війна почалася лише 1 вересня 1939 року нападом на Польщу. Дві інші відповіді неправильні.", ru: "<b>9 ноября 1938 года</b> национал-социалисты и их сторонники разрушали еврейские магазины и синагоги (ноябрьские погромы).<br><br>Вторая мировая война началась лишь 1 сентября 1939 года нападением на Польшу. Два других ответа неправильные." },
   },
   {
     id: "lid_165",
@@ -2336,7 +2336,7 @@ var QUIZ = [
       { de: "Helmut Schmidt", en: "", uk: "", ru: "" },
       { de: "Willy Brandt", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der erste Bundeskanzler der Bundesrepublik war <b>Konrad Adenauer</b> (CDU). Er regierte von 1949 bis 1963.<br><br>Kurt Georg Kiesinger, Willy Brandt und Helmut Schmidt waren später Bundeskanzler.", en: "The first Federal Chancellor of the Federal Republic was <b>Konrad Adenauer</b> (CDU). He governed from 1949 to 1963.<br><br>Kurt Georg Kiesinger, Willy Brandt and Helmut Schmidt were Federal Chancellors later.", uk: "Першим федеральним канцлером Федеративної Республіки був <b>Конрад Аденауер</b> (CDU). Він керував з 1949 по 1963 рік.<br><br>Курт Георг Кізінґер, Віллі Брандт і Гельмут Шмідт були федеральними канцлерами пізніше.", ru: "Первым федеральным канцлером Федеративной Республики был <b>Конрад Аденауэр</b> (CDU). Он правил с 1949 по 1963 год.<br><br>Курт Георг Кизингер, Вилли Брандт и Гельмут Шмидт были федеральными канцлерами позже." },
   },
   {
     id: "lid_166",
@@ -2349,7 +2349,7 @@ var QUIZ = [
       { de: "bei den Anti-Atomkraft-Demonstrationen 1985 in der Bundesrepublik Deutschland", en: "", uk: "", ru: "" },
       { de: "bei den Montagsdemonstrationen 1989 in der DDR", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "„<b>Wir sind das Volk</b>“ riefen die Menschen bei den <b>Montagsdemonstrationen 1989 in der DDR</b>. Sie forderten Freiheit und Demokratie. Diese friedliche Revolution führte zum Mauerfall.<br><br>Der Arbeiteraufstand war 1953, die Proteste in der Bundesrepublik 1968 und 1985 hatten andere Themen und Rufe.", en: "“<b>Wir sind das Volk</b>”, which means “We are the people”, was the cry of people at the <b>Monday demonstrations in 1989 in the GDR</b>. They demanded freedom and democracy. This peaceful revolution led to the fall of the Wall.<br><br>The workers’ uprising was in 1953, and the protests in the Federal Republic in 1968 and 1985 had other themes and slogans.", uk: "«<b>Wir sind das Volk</b>», тобто «Ми — народ», скандували люди на <b>понеділкових демонстраціях 1989 року в НДР</b>. Вони вимагали свободи й демократії. Ця мирна революція призвела до падіння муру.<br><br>Повстання робітників було 1953 року, а протести у Федеративній Республіці 1968 і 1985 років мали інші теми й гасла.", ru: "«<b>Wir sind das Volk</b>», то есть «Мы — народ», кричали люди на <b>понедельничных демонстрациях 1989 года в ГДР</b>. Они требовали свободы и демократии. Эта мирная революция привела к падению стены.<br><br>Восстание рабочих было в 1953 году, а протесты в Федеративной Республике в 1968 и 1985 годах имели другие темы и лозунги." },
   },
   {
     id: "lid_167",
@@ -2362,7 +2362,7 @@ var QUIZ = [
       { de: "USA, Sowjetunion, Spanien, Portugal", en: "", uk: "", ru: "" },
       { de: "USA, Sowjetunion, Großbritannien, Frankreich", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Nach 1945 waren die vier Besatzungsmächte die <b>USA, die Sowjetunion, Großbritannien und Frankreich</b>. Sie teilten Deutschland in vier Zonen auf.<br><br>Polen, Schweden, Italien, Japan, Spanien und Portugal waren keine Besatzungsmächte.", en: "After 1945 the four occupying powers were the <b>USA, the Soviet Union, Great Britain and France</b>. They divided Germany into four zones.<br><br>Poland, Sweden, Italy, Japan, Spain and Portugal were not occupying powers.", uk: "Після 1945 року чотирма окупаційними державами були <b>США, Радянський Союз, Велика Британія та Франція</b>. Вони поділили Німеччину на чотири зони.<br><br>Польща, Швеція, Італія, Японія, Іспанія та Португалія окупаційними державами не були.", ru: "После 1945 года четырьмя оккупирующими державами были <b>США, Советский Союз, Великобритания и Франция</b>. Они разделили Германию на четыре зоны.<br><br>Польша, Швеция, Италия, Япония, Испания и Португалия оккупирующими державами не были." },
   },
   {
     id: "lid_168",
@@ -2375,7 +2375,7 @@ var QUIZ = [
       { de: "Frankreich", en: "", uk: "", ru: "" },
       { de: "Japan", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Japan</b> war keine Besatzungsmacht in Deutschland. Japan war im Zweiten Weltkrieg mit Deutschland verbündet.<br><br>Die USA, die Sowjetunion und Frankreich besetzten Zonen in Deutschland, ebenso Großbritannien.", en: "<b>Japan</b> was not an occupying power in Germany. Japan was allied with Germany in the Second World War.<br><br>The USA, the Soviet Union and France occupied zones in Germany, as did Great Britain.", uk: "<b>Японія</b> не була окупаційною державою в Німеччині. У Другій світовій війні Японія була союзницею Німеччини.<br><br>США, Радянський Союз і Франція окупували зони в Німеччині, як і Велика Британія.", ru: "<b>Япония</b> не была оккупирующей державой в Германии. Во Второй мировой войне Япония была союзницей Германии.<br><br>США, Советский Союз и Франция оккупировали зоны в Германии, как и Великобритания." },
   },
   {
     id: "lid_169",
@@ -2388,7 +2388,7 @@ var QUIZ = [
       { de: "1949", en: "", uk: "", ru: "", correct: true },
       { de: "1951", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundesrepublik Deutschland wurde <b>1949</b> gegründet. Am 23. Mai 1949 trat das Grundgesetz in Kraft.<br><br>1939 begann der Zweite Weltkrieg, 1945 endete er. 1951 gibt es keinen solchen Anlass.", en: "The Federal Republic of Germany was founded in <b>1949</b>. On 23 May 1949 the Basic Law came into force.<br><br>The Second World War began in 1939 and ended in 1945. There was no such occasion in 1951.", uk: "Федеративну Республіку Німеччина було засновано <b>1949 року</b>. 23 травня 1949 року набув чинності Основний закон.<br><br>Друга світова війна почалася 1939 року й закінчилася 1945 року. 1951 року такої події не було.", ru: "Федеративная Республика Германия была основана в <b>1949 году</b>. 23 мая 1949 года вступил в силу Основной закон.<br><br>Вторая мировая война началась в 1939 году и закончилась в 1945 году. В 1951 году такого события не было." },
   },
   {
     id: "lid_170",
@@ -2401,7 +2401,7 @@ var QUIZ = [
       { de: "Pressefreiheit", en: "", uk: "", ru: "" },
       { de: "den Schutz der Menschenwürde", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In der Zeit des Nationalsozialismus gab es das <b>Verbot von Parteien</b>: Nach 1933 war nur noch die NSDAP erlaubt.<br><br>Freie Entfaltung der Persönlichkeit, Pressefreiheit und der Schutz der Menschenwürde gab es in der Diktatur nicht.", en: "In the period of National Socialism there was the <b>ban on parties</b>: after 1933 only the NSDAP was allowed.<br><br>Free development of the personality, freedom of the press and the protection of human dignity did not exist in the dictatorship.", uk: "За часів націонал-соціалізму діяла <b>заборона партій</b>: після 1933 року дозволена була лише NSDAP.<br><br>Вільного розвитку особистості, свободи преси та захисту людської гідності в диктатурі не було.", ru: "Во времена национал-социализма действовал <b>запрет партий</b>: после 1933 года разрешена была только NSDAP.<br><br>Свободного развития личности, свободы прессы и защиты человеческого достоинства в диктатуре не было." },
   },
   {
     id: "lid_171",
@@ -2414,7 +2414,7 @@ var QUIZ = [
       { de: "richtet sich nach der Nachfrage im Ausland.", en: "", uk: "", ru: "" },
       { de: "richtet sich nach Angebot und Nachfrage, aber der Staat sorgt für einen sozialen Ausgleich.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Soziale Marktwirtschaft</b> bedeutet: Die Wirtschaft richtet sich nach <b>Angebot und Nachfrage</b>, aber der <b>Staat sorgt für sozialen Ausgleich</b>, zum Beispiel durch Sozialversicherung.<br><br>Nur Angebot und Nachfrage wäre eine freie Marktwirtschaft. Wenn der Staat alles plant, ist es Planwirtschaft.", en: "<b>Social market economy</b> means: the economy follows <b>supply and demand</b>, but <b>the state ensures social balance</b>, for example through social insurance.<br><br>Supply and demand alone would be a free market economy. If the state plans everything, it is a centrally planned economy.", uk: "<b>Соціальна ринкова економіка</b> означає: економіка керується <b>попитом і пропозицією</b>, але <b>держава дбає про соціальну рівновагу</b>, наприклад через соціальне страхування.<br><br>Лише попит і пропозиція були б вільною ринковою економікою. Якщо держава все планує, це планова економіка.", ru: "<b>Социальная рыночная экономика</b> означает: экономика ориентируется на <b>спрос и предложение</b>, но <b>государство заботится о социальном равновесии</b>, например через социальное страхование.<br><br>Только спрос и предложение были бы свободной рыночной экономикой. Если государство всё планирует, это плановая экономика." },
   },
   {
     id: "lid_172",
@@ -2427,7 +2427,7 @@ var QUIZ = [
       { de: "britischen Besatzungszone", en: "", uk: "", ru: "" },
       { de: "sowjetischen Besatzungszone", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die DDR wurde in der <b>sowjetischen Besatzungszone</b> gegründet, im Osten Deutschlands. Das war am 7. Oktober 1949.<br><br>Die anderen Zonen gehörten zu den Westmächten und wurden die Bundesrepublik.", en: "The GDR was founded in the <b>Soviet occupation zone</b>, in the east of Germany. That was on 7 October 1949.<br><br>The other zones belonged to the Western powers and became the Federal Republic.", uk: "НДР було засновано в <b>радянській окупаційній зоні</b>, на сході Німеччини. Це було 7 жовтня 1949 року.<br><br>Інші зони належали західним державам і стали Федеративною Республікою.", ru: "ГДР была основана в <b>советской оккупационной зоне</b>, на востоке Германии. Это было 7 октября 1949 года.<br><br>Другие зоны принадлежали западным державам и стали Федеративной Республикой." },
   },
   {
     id: "lid_173",
@@ -2440,7 +2440,7 @@ var QUIZ = [
       { de: "der Europäischen Union (EU).", en: "", uk: "", ru: "", correct: true },
       { de: "des Warschauer Pakts.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundesrepublik Deutschland ist ein <b>Gründungsmitglied der Europäischen Union</b> – ihrer Vorläufer, der Europäischen Wirtschaftsgemeinschaft (1957).<br><br>Die NATO wurde 1949 gegründet, Deutschland trat 1955 bei. Den Vereinten Nationen trat Deutschland erst 1973 bei. Der Warschauer Pakt war ein Bündnis des Ostblocks.", en: "The Federal Republic of Germany is a <b>founding member of the European Union</b> – of its predecessor, the European Economic Community (1957).<br><br>NATO was founded in 1949, and Germany joined in 1955. Germany joined the United Nations only in 1973. The Warsaw Pact was an alliance of the Eastern Bloc.", uk: "Федеративна Республіка Німеччина є <b>країною-засновницею Європейського Союзу</b> — його попередника, Європейського економічного співтовариства (1957).<br><br>НАТО було засновано 1949 року, а Німеччина вступила до нього 1955 року. До Організації Обʼєднаних Націй Німеччина вступила лише 1973 року. Варшавський договір був союзом Східного блоку.", ru: "Федеративная Республика Германия является <b>страной — основательницей Европейского союза</b> — его предшественника, Европейского экономического сообщества (1957).<br><br>НАТО было основано в 1949 году, а Германия вступила в него в 1955 году. В Организацию Объединённых Наций Германия вступила лишь в 1973 году. Варшавский договор был союзом Восточного блока." },
   },
   {
     id: "lid_174",
@@ -2453,7 +2453,7 @@ var QUIZ = [
       { de: "1953", en: "", uk: "", ru: "" },
       { de: "1956", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die DDR wurde <b>1949</b> gegründet, am 7. Oktober 1949 in der sowjetischen Besatzungszone. Die Bundesrepublik war schon im Mai 1949 gegründet worden.<br><br>Die anderen Jahre sind falsch. 1953 war der Aufstand in der DDR.", en: "The GDR was founded in <b>1949</b>, on 7 October 1949, in the Soviet occupation zone. The Federal Republic had already been founded in May 1949.<br><br>The other years are wrong. 1953 was the uprising in the GDR.", uk: "НДР було засновано <b>1949 року</b>, 7 жовтня 1949 року в радянській окупаційній зоні. Федеративну Республіку було засновано ще в травні 1949 року.<br><br>Інші роки неправильні. 1953 року було повстання в НДР.", ru: "ГДР была основана в <b>1949 году</b>, 7 октября 1949 года в советской оккупационной зоне. Федеративная Республика была основана ещё в мае 1949 года.<br><br>Другие годы неправильные. В 1953 году было восстание в ГДР." },
   },
   {
     id: "lid_175",
@@ -2466,7 +2466,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "" },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Nach dem Zweiten Weltkrieg gab es <b>vier</b> Besatzungszonen: die amerikanische, die britische, die französische und die sowjetische.<br><br>Drei, fünf oder sechs Zonen gab es nicht.", en: "After the Second World War there were <b>four</b> occupation zones: the American, the British, the French and the Soviet one.<br><br>There were not three, five or six zones.", uk: "Після Другої світової війни було <b>чотири</b> окупаційні зони: американська, британська, французька й радянська.<br><br>Трьох, пʼяти чи шести зон не було.", ru: "После Второй мировой войны было <b>четыре</b> оккупационные зоны: американская, британская, французская и советская.<br><br>Трёх, пяти или шести зон не было." },
   },
   {
     id: "lid_176",
@@ -2480,7 +2480,7 @@ var QUIZ = [
       { de: "1=Großbritannien, 2=Sowjetunion, 3=USA, 4=Frankreich", en: "", uk: "", ru: "", correct: true },
       { de: "1=Großbritannien, 2=USA, 3=Sowjetunion, 4=Frankreich", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Deutschland wurde 1945 in vier Zonen aufgeteilt: <b>Großbritannien</b> bekam den Nordwesten, die <b>Sowjetunion</b> den Osten, die <b>USA</b> den Süden und <b>Frankreich</b> den Südwesten.<br><br>Die anderen Antworten stellen die Länder an falsche Stellen der Karte.", en: "Germany was divided into four zones in 1945: <b>Great Britain</b> received the north-west, the <b>Soviet Union</b> the east, the <b>USA</b> the south and <b>France</b> the south-west.<br><br>The other answers put the countries in the wrong places on the map.", uk: "1945 року Німеччину поділили на чотири зони: <b>Велика Британія</b> отримала північний захід, <b>Радянський Союз</b> — схід, <b>США</b> — південь, а <b>Франція</b> — південний захід.<br><br>Інші відповіді ставлять країни на неправильні місця на карті.", ru: "В 1945 году Германию разделили на четыре зоны: <b>Великобритания</b> получила северо-запад, <b>Советский Союз</b> — восток, <b>США</b> — юг, а <b>Франция</b> — юго-запад.<br><br>Другие ответы ставят страны на неправильные места на карте." },
   },
   {
     id: "lid_177",
@@ -2493,7 +2493,7 @@ var QUIZ = [
       { de: "Dresden", en: "", uk: "", ru: "" },
       { de: "Frankfurt/Oder", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Berlin</b> wurde nach 1945 in vier Sektoren aufgeteilt, obwohl es mitten in der sowjetischen Zone lag. Drei Sektoren wurden West-Berlin, der sowjetische Sektor war Ost-Berlin.<br><br>München, Dresden und Frankfurt (Oder) wurden nicht in Sektoren geteilt.", en: "<b>Berlin</b> was divided into four sectors after 1945, although it lay in the middle of the Soviet zone. Three sectors became West Berlin; the Soviet sector was East Berlin.<br><br>Munich, Dresden and Frankfurt (Oder) were not divided into sectors.", uk: "<b>Берлін</b> після 1945 року поділили на чотири сектори, хоча він лежав посеред радянської зони. Три сектори стали Західним Берліном, радянський сектор був Східним Берліном.<br><br>Мюнхен, Дрезден і Франкфурт-на-Одері на сектори не ділили.", ru: "<b>Берлин</b> после 1945 года разделили на четыре сектора, хотя он лежал посреди советской зоны. Три сектора стали Западным Берлином, советский сектор был Восточным Берлином.<br><br>Мюнхен, Дрезден и Франкфурт-на-Одере на секторы не делили." },
   },
   {
     id: "lid_178",
@@ -2506,7 +2506,7 @@ var QUIZ = [
       { de: "Für Großbritannien war die Versorgung über die Luftbrücke schneller.", en: "", uk: "", ru: "" },
       { de: "Die Sowjetunion unterbrach den gesamten Verkehr auf dem Landwege.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Sowjetunion sperrte 1948 <b>alle Land- und Wasserwege nach West-Berlin</b> (Berlin-Blockade). Deshalb versorgten die Westalliierten die Menschen mit Flugzeugen.<br><br>Die Luftbrücke war nicht billiger oder schneller. Sie war die einzige Möglichkeit, West-Berlin zu versorgen.", en: "In 1948 the Soviet Union blocked <b>all land and water routes to West Berlin</b> (the Berlin Blockade). That is why the Western Allies supplied the people by aeroplane.<br><br>The airlift was not cheaper or faster. It was the only way to supply West Berlin.", uk: "1948 року Радянський Союз перекрив <b>усі сухопутні й водні шляхи до Західного Берліна</b> (Берлінська блокада). Тому західні союзники постачали людей літаками.<br><br>Повітряний міст не був дешевшим чи швидшим. Це був єдиний спосіб постачання Західного Берліна.", ru: "В 1948 году Советский Союз перекрыл <b>все сухопутные и водные пути в Западный Берлин</b> (Берлинская блокада). Поэтому западные союзники снабжали людей самолётами.<br><br>Воздушный мост не был дешевле или быстрее. Это был единственный способ снабжения Западного Берлина." },
   },
   {
     id: "lid_179",
@@ -2519,7 +2519,7 @@ var QUIZ = [
       { de: "mit dem Rückzug der Deutschen aus den besetzten Gebieten", en: "", uk: "", ru: "" },
       { de: "durch eine Revolution in Deutschland", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Zweite Weltkrieg in Europa endete offiziell durch die <b>bedingungslose Kapitulation Deutschlands</b> am 8. Mai 1945.<br><br>Hitlers Tod am 30. April 1945 beendete den Krieg noch nicht. Es gab weder einen Rückzug aus den besetzten Gebieten noch eine Revolution in Deutschland.", en: "The Second World War in Europe officially ended with Germany’s <b>unconditional surrender</b> on 8 May 1945.<br><br>Hitler’s death on 30 April 1945 did not yet end the war. There was neither a withdrawal from the occupied territories nor a revolution in Germany.", uk: "Друга світова війна в Європі офіційно закінчилася <b>беззастережною капітуляцією Німеччини</b> 8 травня 1945 року.<br><br>Смерть Гітлера 30 квітня 1945 року ще не завершила війну. Не було ні виведення військ з окупованих територій, ні революції в Німеччині.", ru: "Вторая мировая война в Европе официально закончилась <b>безоговорочной капитуляцией Германии</b> 8 мая 1945 года.<br><br>Смерть Гитлера 30 апреля 1945 года ещё не закончила войну. Не было ни вывода войск с оккупированных территорий, ни революции в Германии." },
   },
   {
     id: "lid_180",
@@ -2532,7 +2532,7 @@ var QUIZ = [
       { de: "Konrad Adenauer.", en: "", uk: "", ru: "", correct: true },
       { de: "Gerhard Schröder.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der erste Bundeskanzler war <b>Konrad Adenauer</b> (1949 bis 1963).<br><br>Ludwig Erhard folgte ihm 1963. Willy Brandt war von 1969 bis 1974 Bundeskanzler, Gerhard Schröder von 1998 bis 2005.", en: "The first Federal Chancellor was <b>Konrad Adenauer</b> (1949 to 1963).<br><br>Ludwig Erhard followed him in 1963. Willy Brandt was Federal Chancellor from 1969 to 1974, and Gerhard Schröder from 1998 to 2005.", uk: "Першим федеральним канцлером був <b>Конрад Аденауер</b> (з 1949 по 1963 рік).<br><br>Людвіг Ерхард наступив після нього 1963 року. Віллі Брандт був федеральним канцлером з 1969 по 1974 рік, а Ґергард Шрьодер — з 1998 по 2005.", ru: "Первым федеральным канцлером был <b>Конрад Аденауэр</b> (с 1949 по 1963 год).<br><br>Людвиг Эрхард сменил его в 1963 году. Вилли Брандт был федеральным канцлером с 1969 по 1974 год, а Герхард Шрёдер — с 1998 по 2005." },
   },
   {
     id: "lid_181",
@@ -2547,7 +2547,7 @@ var QUIZ = [
       { de: "Er zeigte seine Demut vor dem Warschauer Pakt.", en: "", uk: "", ru: "" },
       { de: "Er sprach ein Gebet am Grab des Unbekannten Soldaten.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Willy Brandt kniete 1970 am Denkmal für die Opfer des Warschauer Ghettos. Damit <b>bat er Polen und die polnischen Juden um Vergebung</b> für die Verbrechen der Deutschen im Zweiten Weltkrieg.<br><br>Er unterwarf sich weder den Alliierten noch dem Warschauer Pakt und betete auch nicht am Grab des Unbekannten Soldaten.", en: "In 1970 Willy Brandt knelt at the memorial to the victims of the Warsaw Ghetto. With this he <b>asked Poland and the Polish Jews for forgiveness</b> for the crimes of the Germans in the Second World War.<br><br>He did not submit to the Allies or to the Warsaw Pact, nor did he pray at the Tomb of the Unknown Soldier.", uk: "1970 року Віллі Брандт став навколішки перед памʼятником жертвам Варшавського ґетто. Цим він <b>попросив вибачення в Польщі та польських євреїв</b> за злочини німців у Другій світовій війні.<br><br>Він не підкорявся ні союзникам, ні Варшавському договору й не молився на могилі невідомого солдата.", ru: "В 1970 году Вилли Брандт встал на колени перед памятником жертвам Варшавского гетто. Этим он <b>попросил прощения у Польши и польских евреев</b> за преступления немцев во Второй мировой войне.<br><br>Он не подчинялся ни союзникам, ни Варшавскому договору и не молился на могиле неизвестного солдата." },
   },
   {
     id: "lid_182",
@@ -2560,7 +2560,7 @@ var QUIZ = [
       { de: "Synagoge", en: "", uk: "", ru: "", correct: true },
       { de: "Kirche", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das jüdische Gebetshaus heißt <b>Synagoge</b>.<br><br>Eine Basilika und eine Kirche sind christliche Gotteshäuser, eine Moschee ist ein Gebetshaus der Muslime.", en: "The Jewish house of prayer is called a <b>synagogue</b>.<br><br>A basilica and a church are Christian places of worship, and a mosque is a house of prayer for Muslims.", uk: "Єврейський молитовний дім називається <b>синагога</b>.<br><br>Базиліка й церква — християнські храми, а мечеть — молитовний дім мусульман.", ru: "Еврейский молитвенный дом называется <b>синагога</b>.<br><br>Базилика и церковь — христианские храмы, а мечеть — молитвенный дом мусульман." },
   },
   {
     id: "lid_183",
@@ -2573,7 +2573,7 @@ var QUIZ = [
       { de: "70er Jahre", en: "", uk: "", ru: "" },
       { de: "80er Jahre", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das „<b>Wirtschaftswunder</b>“ war in den <b>50er Jahren</b>. Die Wirtschaft in der Bundesrepublik wuchs damals sehr schnell, und es gab viel Arbeit.<br><br>In den 40er Jahren lag Deutschland nach dem Krieg in Trümmern. Die 70er und 80er Jahre waren keine Zeit eines solchen Wunders.", en: "The “<b>economic miracle</b>” was in the <b>1950s</b>. The economy of the Federal Republic grew very fast at that time, and there was plenty of work.<br><br>In the 1940s Germany lay in ruins after the war. The 1970s and 1980s were not a time of such a miracle.", uk: "«<b>Економічне диво</b>», німецькою «Wirtschaftswunder», припало на <b>50-ті роки</b>. Економіка Федеративної Республіки тоді дуже швидко зростала, і було багато роботи.<br><br>У 40-х роках Німеччина лежала в руїнах після війни. 70-ті та 80-ті роки не були часом такого дива.", ru: "«<b>Экономическое чудо</b>», по-немецки «Wirtschaftswunder», пришлось на <b>50-е годы</b>. Экономика Федеративной Республики тогда очень быстро росла, и было много работы.<br><br>В 40-х годах Германия лежала в руинах после войны. 70-е и 80-е годы не были временем такого чуда." },
   },
   {
     id: "lid_184",
@@ -2586,7 +2586,7 @@ var QUIZ = [
       { de: "ein Vorschlag der Bundesregierung", en: "", uk: "", ru: "" },
       { de: "ein Vorschlag der UdSSR", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Staat Israel wurde auf der Grundlage einer <b>Resolution der Vereinten Nationen</b> gegründet. Die UNO beschloss 1947 den Teilungsplan für Palästina. Israel erklärte seine Unabhängigkeit am 14. Mai 1948.<br><br>Die anderen Möglichkeiten sind falsch: Weder die Bundesregierung noch die UdSSR gaben die rechtliche Grundlage.", en: "The State of Israel was founded on the basis of a <b>resolution of the United Nations</b>. In 1947 the UN decided on the partition plan for Palestine. Israel declared its independence on 14 May 1948.<br><br>The other possibilities are wrong: neither the Federal Government nor the USSR provided the legal basis.", uk: "Державу Ізраїль було засновано на підставі <b>резолюції Організації Обʼєднаних Націй</b>. 1947 року ООН ухвалила план поділу Палестини. Ізраїль проголосив незалежність 14 травня 1948 року.<br><br>Інші варіанти неправильні: ні федеральний уряд, ні СРСР не давали правової основи.", ru: "Государство Израиль было основано на основании <b>резолюции Организации Объединённых Наций</b>. В 1947 году ООН приняла план раздела Палестины. Израиль провозгласил независимость 14 мая 1948 года.<br><br>Другие варианты неправильные: ни федеральное правительство, ни СССР не давали правового основания." },
   },
   {
     id: "lid_185",
@@ -2599,7 +2599,7 @@ var QUIZ = [
       { de: "Nazi-Deutschlands gegen die Alliierten", en: "", uk: "", ru: "" },
       { de: "Europas gegen die USA", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der „<b>Eiserne Vorhang</b>“ war ein Bild für die Abschottung des <b>Warschauer Pakts gegen den Westen</b>. Er trennte Europa im Kalten Krieg in Ost und West, mitten durch Deutschland.<br><br>Er trennte nicht Nord- und Süddeutschland oder Nazi-Deutschland von den Alliierten.", en: "The “<b>Iron Curtain</b>” was an image for the sealing off of the <b>Warsaw Pact from the West</b>. It divided Europe into East and West during the Cold War, right through Germany.<br><br>It did not separate northern and southern Germany, or Nazi Germany from the Allies.", uk: "«<b>Залізна завіса</b>» була образом ізоляції <b>Варшавського договору від Заходу</b>. Вона поділяла Європу в час холодної війни на Схід і Захід, просто через Німеччину.<br><br>Вона не розділяла північ і південь Німеччини чи нацистську Німеччину та союзників.", ru: "«<b>Железный занавес</b>» был образом изоляции <b>Варшавского договора от Запада</b>. Он разделял Европу во время холодной войны на Восток и Запад, прямо через Германию.<br><br>Он не разделял север и юг Германии или нацистскую Германию и союзников." },
   },
   {
     id: "lid_186",
@@ -2612,7 +2612,7 @@ var QUIZ = [
       { de: "20. Juli", en: "", uk: "", ru: "" },
       { de: "9. November", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Aufstand in der DDR war am <b>17. Juni 1953</b>. In der Bundesrepublik war der 17. Juni lange ein Feiertag („Tag der deutschen Einheit“).<br><br>Der 1. Mai ist der Tag der Arbeit, der 20. Juli erinnert an das Attentat auf Hitler und der 9. November an den Mauerfall und die Pogrome von 1938.", en: "The uprising in the GDR was on <b>17 June 1953</b>. In the Federal Republic, 17 June was for a long time a public holiday (“Day of German Unity”).<br><br>1 May is Labour Day, 20 July commemorates the assassination attempt on Hitler, and 9 November the fall of the Wall and the pogroms of 1938.", uk: "Повстання в НДР відбулося <b>17 червня 1953 року</b>. У Федеративній Республіці 17 червня довго було святковим днем («День німецької єдності»).<br><br>1 травня — День праці, 20 липня нагадує про замах на Гітлера, а 9 листопада — про падіння муру та погроми 1938 року.", ru: "Восстание в ГДР произошло <b>17 июня 1953 года</b>. В Федеративной Республике 17 июня долгое время был праздничным днём («День немецкого единства»).<br><br>1 мая — День труда, 20 июля напоминает о покушении на Гитлера, а 9 ноября — о падении стены и погромах 1938 года." },
   },
   {
     id: "lid_187",
@@ -2626,7 +2626,7 @@ var QUIZ = [
       { de: "„Drittes Reich“", en: "", uk: "", ru: "" },
       { de: "DDR", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die schwarz-rot-goldene Flagge mit <b>Hammer, Zirkel und Ährenkranz</b> war die Flagge der <b>DDR</b>.<br><br>Die Bundesrepublik hat die schwarz-rot-goldene Flagge ohne Wappen. Preußen und das „Dritte Reich“ hatten andere Flaggen.", en: "The black-red-gold flag with a <b>hammer, compass and wreath of ears of grain</b> was the flag of the <b>GDR</b>.<br><br>The Federal Republic has the black-red-gold flag without an emblem. Prussia and the “Third Reich” had different flags.", uk: "Чорно-червоно-золотий прапор із <b>молотом, циркулем і вінком із колосся</b> був прапором <b>НДР</b>.<br><br>Федеративна Республіка має чорно-червоно-золотий прапор без герба. Пруссія та «Третій рейх» мали інші прапори.", ru: "Чёрно-красно-золотой флаг с <b>молотом, циркулем и венком из колосьев</b> был флагом <b>ГДР</b>.<br><br>У Федеративной Республики чёрно-красно-золотой флаг без герба. У Пруссии и «Третьего рейха» были другие флаги." },
   },
   {
     id: "lid_188",
@@ -2639,7 +2639,7 @@ var QUIZ = [
       { de: "1959", en: "", uk: "", ru: "" },
       { de: "1961", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Mauer in Berlin wurde <b>1961</b> gebaut, am 13. August 1961. Die DDR wollte damit verhindern, dass noch mehr Menschen in den Westen fliehen.<br><br>1953 war der Aufstand in der DDR. 1956 und 1959 wurde noch keine Mauer gebaut.", en: "The Wall in Berlin was built in <b>1961</b>, on 13 August 1961. The GDR wanted to prevent even more people from fleeing to the West.<br><br>1953 was the uprising in the GDR. In 1956 and 1959 no wall had been built yet.", uk: "Мур у Берліні було збудовано <b>1961 року</b>, 13 серпня 1961 року. НДР хотіла завадити тому, щоб ще більше людей тікало на Захід.<br><br>1953 року було повстання в НДР. 1956 і 1959 року муру ще не було.", ru: "Стена в Берлине была построена в <b>1961 году</b>, 13 августа 1961 года. ГДР хотела помешать тому, чтобы ещё больше людей бежало на Запад.<br><br>В 1953 году было восстание в ГДР. В 1956 и 1959 годах стены ещё не было." },
   },
   {
     id: "lid_189",
@@ -2652,7 +2652,7 @@ var QUIZ = [
       { de: "1961", en: "", uk: "", ru: "", correct: true },
       { de: "1990", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die DDR baute die Mauer in Berlin <b>1961</b>, am 13. August. Sie sollte die Flucht aus der DDR in den Westen verhindern.<br><br>1919 war die Weimarer Republik, 1933 kamen die Nationalsozialisten an die Macht, 1990 wurde Deutschland wiedervereinigt.", en: "The GDR built the Wall in Berlin in <b>1961</b>, on 13 August. It was meant to prevent people from fleeing from the GDR to the West.<br><br>1919 was the Weimarer Republic, in 1933 the National Socialists came to power, and in 1990 Germany was reunified.", uk: "НДР збудувала мур у Берліні <b>1961 року</b>, 13 серпня. Він мав завадити втечі з НДР на Захід.<br><br>1919 року була Веймарська республіка, 1933 року до влади прийшли націонал-соціалісти, а 1990 року Німеччину воззʼєднали.", ru: "ГДР построила стену в Берлине в <b>1961 году</b>, 13 августа. Она должна была помешать бегству из ГДР на Запад.<br><br>В 1919 году была Веймарская республика, в 1933 году к власти пришли национал-социалисты, а в 1990 году Германию воссоединили." },
   },
   {
     id: "lid_190",
@@ -2665,7 +2665,7 @@ var QUIZ = [
       { de: "Dritte Deutsche Republik", en: "", uk: "", ru: "" },
       { de: "Deutsche Demokratische Republik", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>DDR</b> steht für <b>Deutsche Demokratische Republik</b>. So hieß der sozialistische Staat im Osten Deutschlands von 1949 bis 1990. Er nannte sich „demokratisch“, war aber keine freie Demokratie: Es gab keine freien Wahlen.<br><br>Die anderen Namen gibt es nicht.", en: "<b>GDR</b> stands for <b>Deutsche Demokratische Republik</b>, in English the German Democratic Republic. That was the name of the socialist state in the east of Germany from 1949 to 1990. It called itself “democratic”, but it was not a free democracy: there were no free elections.<br><br>The other names do not exist.", uk: "<b>НДР</b> означає <b>Deutsche Demokratische Republik</b>, тобто Німецька Демократична Республіка. Так називалася соціалістична держава на сході Німеччини з 1949 по 1990 рік. Вона називала себе «демократичною», але не була вільною демократією: вільних виборів не було.<br><br>Інших назв не існує.", ru: "<b>ГДР</b> означает <b>Deutsche Demokratische Republik</b>, то есть Германская Демократическая Республика. Так называлось социалистическое государство на востоке Германии с 1949 по 1990 год. Оно называло себя «демократическим», но не было свободной демократией: свободных выборов не было.<br><br>Других названий не существует." },
   },
   {
     id: "lid_191",
@@ -2678,7 +2678,7 @@ var QUIZ = [
       { de: "1992", en: "", uk: "", ru: "" },
       { de: "1995", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Mauer in Berlin wurde <b>1989</b> geöffnet, am 9. November 1989. Die Menschen in der DDR hatten monatelang friedlich demonstriert.<br><br>1987, 1992 und 1995 sind nicht richtig. 1990 wurde Deutschland wiedervereinigt.", en: "The Wall in Berlin was opened in <b>1989</b>, on 9 November 1989. People in the GDR had demonstrated peacefully for months.<br><br>1987, 1992 and 1995 are not correct. In 1990 Germany was reunified.", uk: "Мур у Берліні було відкрито <b>1989 року</b>, 9 листопада 1989 року. Люди в НДР місяцями мирно демонстрували.<br><br>1987, 1992 і 1995 роки неправильні. 1990 року Німеччину воззʼєднали.", ru: "Стена в Берлине была открыта в <b>1989 году</b>, 9 ноября 1989 года. Люди в ГДР месяцами мирно демонстрировали.<br><br>1987, 1992 и 1995 годы неправильные. В 1990 году Германию воссоединили." },
   },
   {
     id: "lid_192",
@@ -2691,7 +2691,7 @@ var QUIZ = [
       { de: "Saarland", en: "", uk: "", ru: "" },
       { de: "Hessen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Brandenburg</b> gehörte früher zur DDR.<br><br>Bayern, das Saarland und Hessen lagen in der Bundesrepublik, also im Westen. Zur DDR gehörten die heutigen Länder Brandenburg, Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt und Thüringen sowie Ost-Berlin.", en: "<b>Brandenburg</b> used to belong to the GDR.<br><br>Bavaria, Saarland and Hesse were in the Federal Republic, that is, in the West. The GDR consisted of today’s states of Brandenburg, Mecklenburg-Vorpommern, Saxony, Saxony-Anhalt and Thuringia, as well as East Berlin.", uk: "<b>Бранденбург</b> раніше належав до НДР.<br><br>Баварія, Саар і Гессен були у Федеративній Республіці, тобто на Заході. До НДР належали нинішні землі Бранденбург, Мекленбург-Передня Померанія, Саксонія, Саксонія-Ангальт і Тюрингія, а також Східний Берлін.", ru: "<b>Бранденбург</b> раньше принадлежал ГДР.<br><br>Бавария, Саар и Гессен были в Федеративной Республике, то есть на Западе. К ГДР относились нынешние земли Бранденбург, Мекленбург-Передняя Померания, Саксония, Саксония-Анхальт и Тюрингия, а также Восточный Берлин." },
   },
   {
     id: "lid_193",
@@ -2704,7 +2704,7 @@ var QUIZ = [
       { de: "durch eine Mauer geteilt.", en: "", uk: "", ru: "", correct: true },
       { de: "nur mit dem Flugzeug erreichbar.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Von 1961 bis 1989 war Berlin <b>durch eine Mauer geteilt</b>: in Ost-Berlin und West-Berlin.<br><br>Berlin hatte Bürgermeister, war kein eigener Staat und war auch auf dem Landweg erreichbar, wenn auch nur über bestimmte Transitstrecken.", en: "From 1961 to 1989 Berlin was <b>divided by a wall</b>: into East Berlin and West Berlin.<br><br>Berlin had mayors, was not a separate state and could also be reached overland, although only via certain transit routes.", uk: "З 1961 по 1989 рік Берлін був <b>розділений муром</b>: на Східний і Західний Берлін.<br><br>У Берліні були бургомістри, він не був окремою державою й був доступний також по суші, хоча й лише через певні транзитні маршрути.", ru: "С 1961 по 1989 год Берлин был <b>разделён стеной</b>: на Восточный и Западный Берлин.<br><br>В Берлине были бургомистры, он не был отдельным государством и был доступен также по суше, хотя и только по определённым транзитным маршрутам." },
   },
   {
     id: "lid_194",
@@ -2717,7 +2717,7 @@ var QUIZ = [
       { de: "Bundesländer.", en: "", uk: "", ru: "" },
       { de: "Städte.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Am 3. Oktober feiert man den <b>Tag der Deutschen Einheit</b>. An diesem Tag im Jahr 1990 wurden die DDR und die Bundesrepublik wiedervereinigt.<br><br>„Nation“, „Bundesländer“ oder „Städte“ passen nicht zu diesem Feiertag.", en: "On 3 October people celebrate the <b>Day of German Unity</b>. On this day in 1990, the GDR and the Federal Republic were reunified.<br><br>“Nation”, “federal states” or “cities” do not fit this holiday.", uk: "3 жовтня відзначають <b>День німецької єдності</b>. Цього дня 1990 року НДР і Федеративну Республіку воззʼєднали.<br><br>«Нація», «федеральні землі» чи «міста» до цього свята не підходять.", ru: "3 октября отмечают <b>День немецкого единства</b>. В этот день в 1990 году ГДР и Федеративную Республику воссоединили.<br><br>«Нация», «федеральные земли» или «города» к этому празднику не подходят." },
   },
   {
     id: "lid_195",
@@ -2730,7 +2730,7 @@ var QUIZ = [
       { de: "Nordrhein-Westfalen", en: "", uk: "", ru: "" },
       { de: "Saarland", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Sachsen-Anhalt</b> gehörte früher zur DDR.<br><br>Hessen, Nordrhein-Westfalen und das Saarland lagen in der Bundesrepublik, also im Westen.", en: "<b>Saxony-Anhalt</b> used to belong to the GDR.<br><br>Hesse, North Rhine-Westphalia and Saarland were in the Federal Republic, that is, in the West.", uk: "<b>Саксонія-Ангальт</b> раніше належала до НДР.<br><br>Гессен, Північний Рейн-Вестфалія та Саар були у Федеративній Республіці, тобто на Заході.", ru: "<b>Саксония-Анхальт</b> раньше принадлежала ГДР.<br><br>Гессен, Северный Рейн-Вестфалия и Саар были в Федеративной Республике, то есть на Западе." },
   },
   {
     id: "lid_196",
@@ -2743,7 +2743,7 @@ var QUIZ = [
       { de: "von einer Monarchie zur Sozialdemokratie.", en: "", uk: "", ru: "" },
       { de: "von einem religiösen Staat zu einem kommunistischen Staat.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Als „<b>Wende</b>“ bezeichnet man die Veränderung im Herbst 1989: Die DDR änderte sich politisch <b>von einer Diktatur zur Demokratie</b>. Die Menschen setzten freie Wahlen und Reisefreiheit durch.<br><br>Die DDR war weder eine Monarchie noch ein religiöser Staat und hatte keine liberale Marktwirtschaft.", en: "The “<b>Wende</b>” is the name for the change in autumn 1989: the GDR changed politically <b>from a dictatorship to a democracy</b>. People won free elections and freedom to travel.<br><br>The GDR was neither a monarchy nor a religious state, and it did not have a liberal market economy.", uk: "«<b>Wende</b>», тобто «поворот», — так називають зміну осені 1989 року: НДР політично змінилася <b>від диктатури до демократії</b>. Люди домоглися вільних виборів і свободи пересування.<br><br>НДР не була ні монархією, ні релігійною державою і не мала ліберальної ринкової економіки.", ru: "«<b>Wende</b>», то есть «поворот», — так называют перемену осени 1989 года: ГДР политически изменилась <b>от диктатуры к демократии</b>. Люди добились свободных выборов и свободы передвижения.<br><br>ГДР не была ни монархией, ни религиозным государством и не имела либеральной рыночной экономики." },
   },
   {
     id: "lid_197",
@@ -2756,7 +2756,7 @@ var QUIZ = [
       { de: "Bayern", en: "", uk: "", ru: "" },
       { de: "Bremen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Thüringen</b> gehörte früher zur DDR.<br><br>Hessen, Bayern und Bremen lagen im Westen, in der Bundesrepublik.", en: "<b>Thuringia</b> used to belong to the GDR.<br><br>Hesse, Bavaria and Bremen were in the West, in the Federal Republic.", uk: "<b>Тюрингія</b> раніше належала до НДР.<br><br>Гессен, Баварія та Бремен були на Заході, у Федеративній Республіці.", ru: "<b>Тюрингия</b> раньше принадлежала ГДР.<br><br>Гессен, Бавария и Бремен были на Западе, в Федеративной Республике." },
   },
   {
     id: "lid_198",
@@ -2769,7 +2769,7 @@ var QUIZ = [
       { de: "Sachsen", en: "", uk: "", ru: "", correct: true },
       { de: "Baden-Württemberg", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Sachsen</b> gehörte früher zur DDR.<br><br>Bayern, Niedersachsen und Baden-Württemberg lagen in der Bundesrepublik, also im Westen.", en: "<b>Saxony</b> used to belong to the GDR.<br><br>Bavaria, Lower Saxony and Baden-Württemberg were in the Federal Republic, that is, in the West.", uk: "<b>Саксонія</b> раніше належала до НДР.<br><br>Баварія, Нижня Саксонія та Баден-Вюртемберг були у Федеративній Республіці, тобто на Заході.", ru: "<b>Саксония</b> раньше принадлежала ГДР.<br><br>Бавария, Нижняя Саксония и Баден-Вюртемберг были в Федеративной Республике, то есть на Западе." },
   },
   {
     id: "lid_199",
@@ -2782,7 +2782,7 @@ var QUIZ = [
       { de: "eine regierende Partei.", en: "", uk: "", ru: "" },
       { de: "das Ministerium für Volksbildung.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Mit „<b>Stasi</b>“ meinte man in der DDR das <b>Ministerium für Staatssicherheit</b>. Es war der Geheimdienst der DDR und überwachte die Bürgerinnen und Bürger.<br><br>Das Parlament war die Volkskammer. Die regierende Partei war die SED. Das Ministerium für Volksbildung war für die Schulen zuständig.", en: "In the GDR, “<b>Stasi</b>” meant the <b>Ministry for State Security</b>. It was the secret service of the GDR and spied on its citizens.<br><br>The parliament was the Volkskammer. The ruling party was the SED. The Ministry of Education was responsible for the schools.", uk: "У НДР під «<b>Stasi</b>» розуміли <b>Міністерство державної безпеки</b>. Це була спецслужба НДР, яка стежила за громадянами.<br><br>Парламентом була Народна палата. Правлячою партією була SED. Міністерство народної освіти відповідало за школи.", ru: "В ГДР под «<b>Stasi</b>» понимали <b>Министерство государственной безопасности</b>. Это была спецслужба ГДР, которая следила за гражданами.<br><br>Парламентом была Народная палата. Правящей партией была SED. Министерство народного образования отвечало за школы." },
   },
   {
     id: "lid_200",
@@ -2795,7 +2795,7 @@ var QUIZ = [
       { de: "Mecklenburg-Vorpommern", en: "", uk: "", ru: "", correct: true },
       { de: "Saarland", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Mecklenburg-Vorpommern</b> gehörte früher zur DDR. Es liegt im Nordosten Deutschlands.<br><br>Hessen, Schleswig-Holstein und das Saarland gehörten zur Bundesrepublik, also zum Westen.", en: "<b>Mecklenburg-Vorpommern</b> used to belong to the GDR. It lies in the north-east of Germany.<br><br>Hesse, Schleswig-Holstein and Saarland belonged to the Federal Republic, that is, to the West.", uk: "<b>Мекленбург-Передня Померанія</b> раніше належала до НДР. Вона розташована на північному сході Німеччини.<br><br>Гессен, Шлезвіг-Гольштейн і Саар належали до Федеративної Республіки, тобто до Заходу.", ru: "<b>Мекленбург-Передняя Померания</b> раньше принадлежала ГДР. Она расположена на северо-востоке Германии.<br><br>Гессен, Шлезвиг-Гольштейн и Саар принадлежали Федеративной Республике, то есть Западу." },
   },
   {
     id: "lid_201",
@@ -2808,7 +2808,7 @@ var QUIZ = [
       { de: "Bayern, Baden-Württemberg, Rheinland-Pfalz, Thüringen, Sachsen", en: "", uk: "", ru: "" },
       { de: "Sachsen, Thüringen, Hessen, Niedersachen, Brandenburg", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Zur früheren DDR gehörten die fünf Länder <b>Mecklenburg-Vorpommern, Brandenburg, Sachsen, Sachsen-Anhalt und Thüringen</b>. Sie sind nach der Wiedervereinigung als „neue Bundesländer“ zur Bundesrepublik gekommen.<br><br>In den anderen Listen stehen auch Länder aus dem Westen wie Niedersachsen, Nordrhein-Westfalen, Hessen, Schleswig-Holstein, Bayern, Baden-Württemberg oder Rheinland-Pfalz.", en: "The former GDR consisted of the five states <b>Mecklenburg-Vorpommern, Brandenburg, Saxony, Saxony-Anhalt and Thuringia</b>. After reunification they joined the Federal Republic as the “new federal states”.<br><br>The other lists also contain states from the West, such as Lower Saxony, North Rhine-Westphalia, Hesse, Schleswig-Holstein, Bavaria, Baden-Württemberg or Rhineland-Palatinate.", uk: "До колишньої НДР належали пʼять земель: <b>Мекленбург-Передня Померанія, Бранденбург, Саксонія, Саксонія-Ангальт і Тюрингія</b>. Після воззʼєднання вони стали частиною Федеративної Республіки як «нові федеральні землі».<br><br>В інших переліках є також землі із Заходу, як-от Нижня Саксонія, Північний Рейн-Вестфалія, Гессен, Шлезвіг-Гольштейн, Баварія, Баден-Вюртемберг чи Рейнланд-Пфальц.", ru: "К бывшей ГДР относились пять земель: <b>Мекленбург-Передняя Померания, Бранденбург, Саксония, Саксония-Анхальт и Тюрингия</b>. После воссоединения они вошли в Федеративную Республику как «новые федеральные земли».<br><br>В других списках есть также земли с Запада, например Нижняя Саксония, Северный Рейн-Вестфалия, Гессен, Шлезвиг-Гольштейн, Бавария, Баден-Вюртемберг или Рейнланд-Пфальц." },
   },
   {
     id: "lid_202",
@@ -2821,7 +2821,7 @@ var QUIZ = [
       { de: "zur NATO", en: "", uk: "", ru: "" },
       { de: "zu den blockfreien Staaten", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die DDR gehörte im Kalten Krieg zum <b>Warschauer Pakt</b>, dem Militärbündnis des Ostblocks unter Führung der Sowjetunion.<br><br>Die Westmächte und die NATO waren das westliche Lager. Die Bundesrepublik gehörte dazu. Die DDR war nicht blockfrei.", en: "In the Cold War the GDR belonged to the <b>Warsaw Pact</b>, the military alliance of the Eastern Bloc under the leadership of the Soviet Union.<br><br>The Western powers and NATO were the Western camp. The Federal Republic belonged to it. The GDR was not non-aligned.", uk: "У холодній війні НДР належала до <b>Варшавського договору</b> — військового союзу Східного блоку під проводом Радянського Союзу.<br><br>Західні держави й НАТО були західним табором. Федеративна Республіка належала до нього. НДР не була позаблоковою.", ru: "В холодной войне ГДР входила в <b>Варшавский договор</b> — военный союз Восточного блока под руководством Советского Союза.<br><br>Западные державы и НАТО были западным лагерем. Федеративная Республика входила в него. ГДР не была внеблоковой." },
   },
   {
     id: "lid_203",
@@ -2834,7 +2834,7 @@ var QUIZ = [
       { de: "Angebot und Nachfrage", en: "", uk: "", ru: "" },
       { de: "Kapitalismus", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wirtschaftssystem der DDR war die <b>Planwirtschaft</b>: Der Staat plante, was produziert wurde und was es kostete.<br><br>Marktwirtschaft und Kapitalismus mit Angebot und Nachfrage gab es in der DDR nicht. Das war das System der Bundesrepublik.", en: "The economic system of the GDR was the <b>planned economy</b>: the state planned what was produced and what it cost.<br><br>The market economy and capitalism with supply and demand did not exist in the GDR. That was the system of the Federal Republic.", uk: "Економічною системою НДР була <b>планова економіка</b>: держава планувала, що виробляти і скільки це коштує.<br><br>Ринкової економіки й капіталізму з попитом і пропозицією в НДР не було. Це була система Федеративної Республіки.", ru: "Экономической системой ГДР была <b>плановая экономика</b>: государство планировало, что производить и сколько это стоит.<br><br>Рыночной экономики и капитализма со спросом и предложением в ГДР не было. Это была система Федеративной Республики." },
   },
   {
     id: "lid_204",
@@ -2847,7 +2847,7 @@ var QUIZ = [
       { de: "Die westlichen Bundesländer sind der DDR beigetreten.", en: "", uk: "", ru: "" },
       { de: "Die DDR hat die Bundesrepublik Deutschland besetzt.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Am 3. Oktober 1990 sind die <b>fünf östlichen Bundesländer der Bundesrepublik beigetreten</b>. So wurden beide Teile Deutschlands zu einem Staat.<br><br>Die Bundesrepublik hat die DDR nicht besetzt. Die westlichen Länder sind nicht der DDR beigetreten, und die DDR hat die Bundesrepublik nicht besetzt.", en: "On 3 October 1990 the <b>five eastern federal states joined the Federal Republic</b>. In this way both parts of Germany became one state.<br><br>The Federal Republic did not occupy the GDR. The western states did not join the GDR, and the GDR did not occupy the Federal Republic.", uk: "3 жовтня 1990 року <b>пʼять східних федеральних земель приєдналися до Федеративної Республіки</b>. Так обидві частини Німеччини стали однією державою.<br><br>Федеративна Республіка не окупувала НДР. Західні землі не приєднувалися до НДР, а НДР не окупувала Федеративну Республіку.", ru: "3 октября 1990 года <b>пять восточных федеральных земель присоединились к Федеративной Республике</b>. Так обе части Германии стали одним государством.<br><br>Федеративная Республика не оккупировала ГДР. Западные земли не присоединялись к ГДР, а ГДР не оккупировала Федеративную Республику." },
   },
   {
     id: "lid_205",
@@ -2860,7 +2860,7 @@ var QUIZ = [
       { de: "zur OPEC.", en: "", uk: "", ru: "" },
       { de: "zur Europäischen Verteidigungsgemeinschaft.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Durch den Beitritt der DDR gehören die neuen Bundesländer seit 1990 auch <b>zur Europäischen Union</b> (damals Europäische Gemeinschaft), denn sie sind ein Teil der Bundesrepublik.<br><br>Der Warschauer Pakt wurde 1991 aufgelöst. Die OPEC ist eine Organisation erdölfördernder Länder, und die Europäische Verteidigungsgemeinschaft gab es nie.", en: "Through the accession of the GDR, the new federal states have also belonged to the <b>European Union</b> (then the European Community) since 1990, because they are part of the Federal Republic.<br><br>The Warsaw Pact was dissolved in 1991. OPEC is an organisation of oil-producing countries, and the European Defence Community never existed.", uk: "Через приєднання НДР нові федеральні землі з 1990 року належать також до <b>Європейського Союзу</b> (тоді Європейське співтовариство), бо вони — частина Федеративної Республіки.<br><br>Варшавський договір розпустили 1991 року. ОПЕК — організація країн-експортерів нафти, а Європейської оборонної спільноти ніколи не існувало.", ru: "Благодаря присоединению ГДР новые федеральные земли с 1990 года относятся также к <b>Европейскому союзу</b> (тогда Европейское сообщество), потому что они — часть Федеративной Республики.<br><br>Варшавский договор распустили в 1991 году. ОПЕК — организация стран-экспортёров нефти, а Европейского оборонного сообщества никогда не существовало." },
   },
   {
     id: "lid_206",
@@ -2873,7 +2873,7 @@ var QUIZ = [
       { de: "an Verkehrstote", en: "", uk: "", ru: "" },
       { de: "an bekannte jüdische Musiker", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Stolpersteine</b> sind kleine Gedenksteine im Gehweg. Sie erinnern an die <b>Opfer des Nationalsozialismus</b> und liegen vor den Häusern, in denen die Menschen zuletzt gelebt haben. Der Künstler Gunter Demnig hat die Idee entwickelt.<br><br>An Politikerinnen und Politiker, Verkehrstote oder jüdische Musikerinnen und Musiker erinnern sie nicht.", en: "<b>Stolpersteine</b>, that is “stumbling stones”, are small memorial stones set in the pavement. They commemorate the <b>victims of National Socialism</b> and lie in front of the houses where the people last lived. The artist Gunter Demnig developed the idea.<br><br>They do not commemorate politicians, road-accident victims or Jewish musicians.", uk: "<b>Stolpersteine</b>, тобто «камені спотикання», — це маленькі памʼятні камені в тротуарі. Вони нагадують про <b>жертв націонал-соціалізму</b> і лежать перед будинками, де ці люди жили востаннє. Ідею розробив художник Ґунтер Демніґ.<br><br>Вони не нагадують про політиків, загиблих у ДТП чи єврейських музикантів.", ru: "<b>Stolpersteine</b>, то есть «камни преткновения», — это маленькие памятные камни в тротуаре. Они напоминают о <b>жертвах национал-социализма</b> и лежат перед домами, где эти люди жили в последний раз. Идею разработал художник Гюнтер Демниг.<br><br>Они не напоминают о политиках, погибших в ДТП или еврейских музыкантах." },
   },
   {
     id: "lid_207",
@@ -2886,7 +2886,7 @@ var QUIZ = [
       { de: "im Warschauer Pakt", en: "", uk: "", ru: "", correct: true },
       { de: "im Europabündnis", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die DDR war Mitglied im <b>Warschauer Pakt</b> (1955 bis 1991), dem Militärbündnis des Ostblocks.<br><br>Die NATO war das westliche Bündnis. Der Rheinbund war ein Bündnis aus der Zeit Napoleons. Ein „Europabündnis“ gab es in diesem Sinn nicht.", en: "The GDR was a member of the <b>Warsaw Pact</b> (1955 to 1991), the military alliance of the Eastern Bloc.<br><br>NATO was the Western alliance. The Confederation of the Rhine was an alliance from the time of Napoleon. A “European alliance” in this sense did not exist.", uk: "НДР була членом <b>Варшавського договору</b> (з 1955 по 1991 рік) — військового союзу Східного блоку.<br><br>НАТО було західним союзом. Рейнський союз був обʼєднанням часів Наполеона. «Європейського союзу» в такому розумінні не існувало.", ru: "ГДР была членом <b>Варшавского договора</b> (с 1955 по 1991 год) — военного союза Восточного блока.<br><br>НАТО было западным союзом. Рейнский союз был объединением времён Наполеона. «Европейского союза» в таком смысле не существовало." },
   },
   {
     id: "lid_208",
@@ -2899,7 +2899,7 @@ var QUIZ = [
       { de: "der Geheimdienst der DDR", en: "", uk: "", ru: "", correct: true },
       { de: "ein deutscher Sportverein während des Zweiten Weltkrieges", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>Stasi</b> war der <b>Geheimdienst der DDR</b>. Der Name steht für „Ministerium für Staatssicherheit“. Die Stasi überwachte die Menschen und verfolgte Kritikerinnen und Kritiker der DDR.<br><br>Der Geheimdienst im „Dritten Reich“ war die Gestapo. Die Stasi war weder ein Sportverein noch eine Gedenkstätte.", en: "The <b>Stasi</b> was the <b>secret service of the GDR</b>. The name stands for “Ministerium für Staatssicherheit”, the Ministry for State Security. The Stasi spied on people and persecuted critics of the GDR.<br><br>The secret service in the “Third Reich” was the Gestapo. The Stasi was neither a sports club nor a memorial site.", uk: "<b>Stasi</b> була <b>спецслужбою НДР</b>. Назва означає «Ministerium für Staatssicherheit», тобто Міністерство державної безпеки. Stasi стежила за людьми й переслідувала критиків НДР.<br><br>Спецслужбою в «Третьому рейху» було гестапо. Stasi не була ні спортивним клубом, ні меморіалом.", ru: "<b>Stasi</b> была <b>спецслужбой ГДР</b>. Название означает «Ministerium für Staatssicherheit», то есть Министерство государственной безопасности. Stasi следила за людьми и преследовала критиков ГДР.<br><br>Спецслужбой в «Третьем рейхе» было гестапо. Stasi не была ни спортивным клубом, ни мемориалом." },
   },
   {
     id: "lid_209",
@@ -2912,7 +2912,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_209_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_209_a4.png", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wappen der DDR zeigt <b>Hammer und Zirkel im Ährenkranz</b>. Der Hammer steht für die Arbeiterschaft, der Zirkel für die Intelligenz und der Ährenkranz für die Bauern.<br><br>Die anderen Wappen sind nicht das DDR-Wappen.", en: "The coat of arms of the GDR shows a <b>hammer and compass in a wreath of ears of grain</b>. The hammer stands for the workers, the compass for the intelligentsia and the wreath of ears of grain for the farmers.<br><br>The other coats of arms are not the GDR coat of arms.", uk: "Герб НДР зображує <b>молот і циркуль у вінку з колосся</b>. Молот символізує робітників, циркуль — інтелігенцію, а вінок із колосся — селян.<br><br>Інші герби — не герб НДР.", ru: "Герб ГДР изображает <b>молот и циркуль в венке из колосьев</b>. Молот символизирует рабочих, циркуль — интеллигенцию, а венок из колосьев — крестьян.<br><br>Другие гербы — не герб ГДР." },
   },
   {
     id: "lid_210",
@@ -2925,7 +2925,7 @@ var QUIZ = [
       { de: "der 1. SED-Parteitag", en: "", uk: "", ru: "" },
       { de: "der erste Besuch Fidel Castros", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Am <b>17. Juni 1953</b> gab es in der DDR <b>landesweite Streiks und einen Volksaufstand</b>. Die Menschen protestierten gegen höhere Arbeitsnormen und gegen die Regierung. Sowjetische Truppen schlugen den Aufstand nieder.<br><br>Die anderen Ereignisse haben an diesem Tag nicht stattgefunden.", en: "On <b>17 June 1953</b> there were <b>nationwide strikes and a popular uprising</b> in the GDR. People protested against higher work quotas and against the government. Soviet troops put down the uprising.<br><br>The other events did not take place on that day.", uk: "<b>17 червня 1953 року</b> в НДР відбулися <b>загальнокраїнні страйки та народне повстання</b>. Люди протестували проти вищих норм виробітку та проти уряду. Радянські війська придушили повстання.<br><br>Інші події цього дня не відбувалися.", ru: "<b>17 июня 1953 года</b> в ГДР произошли <b>общенациональные забастовки и народное восстание</b>. Люди протестовали против повышения норм выработки и против правительства. Советские войска подавили восстание.<br><br>Другие события в этот день не происходили." },
   },
   {
     id: "lid_211",
@@ -2938,7 +2938,7 @@ var QUIZ = [
       { de: "Michail Gorbatschow", en: "", uk: "", ru: "" },
       { de: "Ludwig Erhard", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Willy Brandt</b> steht für die „Ostverträge“. Als Bundeskanzler (1969 bis 1974) verbesserte er mit seiner Ostpolitik die Beziehungen zur Sowjetunion, zu Polen und zur DDR. Dafür bekam er 1971 den Friedensnobelpreis.<br><br>Helmut Kohl gilt als „Kanzler der Einheit“, Michail Gorbatschow führte die Sowjetunion, und Ludwig Erhard stand für das Wirtschaftswunder.", en: "<b>Willy Brandt</b> stands for the “Ostverträge” (the Eastern treaties). As Federal Chancellor (1969 to 1974) he improved relations with the Soviet Union, Poland and the GDR through his Ostpolitik. He received the Nobel Peace Prize for this in 1971.<br><br>Helmut Kohl is regarded as the “Chancellor of Unity”, Mikhail Gorbachev led the Soviet Union, and Ludwig Erhard stood for the economic miracle.", uk: "<b>Віллі Брандт</b> уособлює «Ostverträge», тобто східні договори. Будучи федеральним канцлером (з 1969 по 1974 рік), він своєю Ostpolitik, тобто східною політикою, покращив відносини з Радянським Союзом, Польщею та НДР. За це він отримав 1971 року Нобелівську премію миру.<br><br>Гельмута Коля вважають «канцлером єдності», Михайло Горбачов очолював Радянський Союз, а Людвіг Ерхард уособлював економічне диво.", ru: "<b>Вилли Брандт</b> олицетворяет «Ostverträge», то есть восточные договоры. Будучи федеральным канцлером (с 1969 по 1974 год), он своей Ostpolitik, то есть восточной политикой, улучшил отношения с Советским Союзом, Польшей и ГДР. За это он получил в 1971 году Нобелевскую премию мира.<br><br>Гельмута Коля считают «канцлером единства», Михаил Горбачёв возглавлял Советский Союз, а Людвиг Эрхард олицетворял экономическое чудо." },
   },
   {
     id: "lid_212",
@@ -2951,7 +2951,7 @@ var QUIZ = [
       { de: "Bundesrepublik Deutschland", en: "", uk: "", ru: "", correct: true },
       { de: "Bundesbezirk Deutschland", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der volle Name ist <b>Bundesrepublik Deutschland</b>. Das steht auch im Grundgesetz. „Bundes-“ zeigt, dass Deutschland aus dem Bund und 16 Ländern besteht.<br><br>„Bundesstaat“, „Bundesländer“ und „Bundesbezirk“ sind keine Teile des Namens.", en: "The full name is <b>Bundesrepublik Deutschland</b>, in English the Federal Republic of Germany. This is also in the Basic Law. “Bundes-” shows that Germany consists of the Federation and 16 states.<br><br>“Bundesstaat”, “Bundesländer” and “Bundesbezirk” are not parts of the name.", uk: "Повна назва — <b>Bundesrepublik Deutschland</b>, тобто Федеративна Республіка Німеччина. Це також записано в Основному законі. «Bundes-» показує, що Німеччина складається з федерації та 16 земель.<br><br>«Bundesstaat», «Bundesländer» і «Bundesbezirk» не є частинами назви.", ru: "Полное название — <b>Bundesrepublik Deutschland</b>, то есть Федеративная Республика Германия. Это также записано в Основном законе. «Bundes-» показывает, что Германия состоит из федерации и 16 земель.<br><br>«Bundesstaat», «Bundesländer» и «Bundesbezirk» не являются частями названия." },
   },
   {
     id: "lid_213",
@@ -2964,7 +2964,7 @@ var QUIZ = [
       { de: "84 Millionen", en: "", uk: "", ru: "", correct: true },
       { de: "90 Millionen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Deutschland hat rund <b>84 Millionen</b> Einwohnerinnen und Einwohner. Es ist das bevölkerungsreichste Land der EU.<br><br>70, 78 und 90 Millionen stimmen nicht.", en: "Germany has about <b>84 million</b> inhabitants. It is the most populous country in the EU.<br><br>70, 78 and 90 million are not correct.", uk: "У Німеччині проживає близько <b>84 мільйонів</b> людей. Це найбільш населена країна ЄС.<br><br>70, 78 і 90 мільйонів неправильні.", ru: "В Германии проживает около <b>84 миллионов</b> человек. Это самая населённая страна ЕС.<br><br>70, 78 и 90 миллионов неправильные." },
   },
   {
     id: "lid_214",
@@ -2977,7 +2977,7 @@ var QUIZ = [
       { de: "schwarz-rot-grün", en: "", uk: "", ru: "" },
       { de: "schwarz-gelb-rot", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Farben der deutschen Flagge sind <b>schwarz-rot-gold</b> (Art. 22 GG).<br><br>Die anderen Farbkombinationen sind falsch. Schwarz-gelb-rot sind zum Beispiel die Farben Belgiens.", en: "The colours of the German flag are <b>black-red-gold</b> (Art. 22 GG).<br><br>The other colour combinations are wrong. Black-yellow-red, for example, are the colours of Belgium.", uk: "Кольори німецького прапора — <b>чорний-червоний-золотий</b> (ст. 22 GG).<br><br>Інші комбінації кольорів неправильні. Чорний-жовтий-червоний, наприклад, — кольори Бельгії.", ru: "Цвета немецкого флага — <b>чёрный-красный-золотой</b> (ст. 22 GG).<br><br>Другие комбинации цветов неправильные. Чёрный-жёлтый-красный, например, — цвета Бельгии." },
   },
   {
     id: "lid_215",
@@ -2990,7 +2990,7 @@ var QUIZ = [
       { de: "Konrad Adenauer", en: "", uk: "", ru: "" },
       { de: "Helmut Schmidt", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Helmut Kohl</b> wird als „Kanzler der Deutschen Einheit“ bezeichnet. Er war von 1982 bis 1998 Bundeskanzler, und in seiner Zeit wurde Deutschland 1990 wiedervereinigt.<br><br>Gerhard Schröder, Konrad Adenauer und Helmut Schmidt waren in anderen Zeiten Bundeskanzler.", en: "<b>Helmut Kohl</b> is called the “Chancellor of German Unity”. He was Federal Chancellor from 1982 to 1998, and during his time Germany was reunified in 1990.<br><br>Gerhard Schröder, Konrad Adenauer and Helmut Schmidt were Federal Chancellors at other times.", uk: "<b>Гельмута Коля</b> називають «канцлером німецької єдності». Він був федеральним канцлером з 1982 по 1998 рік, і за його часів 1990 року Німеччину воззʼєднали.<br><br>Ґергард Шрьодер, Конрад Аденауер і Гельмут Шмідт були федеральними канцлерами в інші часи.", ru: "<b>Гельмута Коля</b> называют «канцлером немецкого единства». Он был федеральным канцлером с 1982 по 1998 год, и при нём в 1990 году Германию воссоединили.<br><br>Герхард Шрёдер, Конрад Аденауэр и Гельмут Шмидт были федеральными канцлерами в другое время." },
   },
   {
     id: "lid_216",
@@ -3005,7 +3005,7 @@ var QUIZ = [
       { de: "der Reichsadler", en: "", uk: "", ru: "" },
       { de: "die Reichskrone", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Im Plenarsaal des Bundestages hängt der <b>Bundesadler</b>, das Wappentier der Bundesrepublik. Er wird auch „Fette Henne“ genannt.<br><br>Der Reichsadler und die Reichskrone stehen für die Zeit des Kaiserreichs oder die frühere Zeit. Eine Berliner Fahne ist dort nicht zu sehen.", en: "In the Bundestag’s plenary chamber hangs the <b>federal eagle</b>, the heraldic animal of the Federal Republic. It is also nicknamed “Fette Henne”, that is “fat hen”.<br><br>The imperial eagle and the imperial crown stand for the time of the Empire or earlier times. A Berlin flag cannot be seen there.", uk: "У пленарній залі Бундестагу висить <b>федеральний орел</b> — геральдична тварина Федеративної Республіки. Його також жартівливо називають «Fette Henne», тобто «товста курка».<br><br>Імперський орел і імперська корона символізують часи імперії чи ще давніші часи. Берлінського прапора там не видно.", ru: "В пленарном зале Бундестага висит <b>федеральный орёл</b> — геральдическое животное Федеративной Республики. Его также в шутку называют «Fette Henne», то есть «жирная курица».<br><br>Имперский орёл и имперская корона символизируют времена империи или ещё более давние времена. Берлинского флага там не видно." },
   },
   {
     id: "lid_217",
@@ -3018,7 +3018,7 @@ var QUIZ = [
       { de: "1945 bis 1961", en: "", uk: "", ru: "" },
       { de: "1949 bis 1990", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die DDR gab es von <b>1949 bis 1990</b>. Sie wurde am 7. Oktober 1949 gegründet und trat am 3. Oktober 1990 der Bundesrepublik bei.<br><br>1919 bis 1927 war die Weimarer Republik, 1933 bis 1945 die NS-Zeit. 1945 bis 1961 ist kein Zeitraum der DDR.", en: "The GDR existed from <b>1949 to 1990</b>. It was founded on 7 October 1949 and joined the Federal Republic on 3 October 1990.<br><br>1919 to 1927 was the Weimar Republic, 1933 to 1945 the Nazi period. 1945 to 1961 is not a period of the GDR.", uk: "НДР існувала з <b>1949 по 1990 рік</b>. Її було засновано 7 жовтня 1949 року, а 3 жовтня 1990 року вона приєдналася до Федеративної Республіки.<br><br>З 1919 по 1927 рік була Веймарська республіка, з 1933 по 1945 рік — нацистський період. З 1945 по 1961 рік — не період НДР.", ru: "ГДР существовала с <b>1949 по 1990 год</b>. Она была основана 7 октября 1949 года, а 3 октября 1990 года присоединилась к Федеративной Республике.<br><br>С 1919 по 1927 год была Веймарская республика, с 1933 по 1945 год — нацистский период. С 1945 по 1961 год — не период ГДР." },
   },
   {
     id: "lid_218",
@@ -3031,7 +3031,7 @@ var QUIZ = [
       { de: "6", en: "", uk: "", ru: "" },
       { de: "7", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bei der Wiedervereinigung kamen <b>fünf</b> neue Bundesländer dazu: Brandenburg, Mecklenburg-Vorpommern, Sachsen, Sachsen-Anhalt und Thüringen. Dazu kam das vereinigte Berlin.<br><br>4, 6 und 7 sind falsch.", en: "At reunification <b>five</b> new federal states were added: Brandenburg, Mecklenburg-Vorpommern, Saxony, Saxony-Anhalt and Thuringia. In addition there was the united Berlin.<br><br>4, 6 and 7 are wrong.", uk: "Під час воззʼєднання додалося <b>пʼять</b> нових федеральних земель: Бранденбург, Мекленбург-Передня Померанія, Саксонія, Саксонія-Ангальт і Тюрингія. До них додався обʼєднаний Берлін.<br><br>4, 6 і 7 неправильні.", ru: "При воссоединении добавилось <b>пять</b> новых федеральных земель: Бранденбург, Мекленбург-Передняя Померания, Саксония, Саксония-Анхальт и Тюрингия. К ним добавился объединённый Берлин.<br><br>4, 6 и 7 неправильные." },
   },
   {
     id: "lid_219",
@@ -3044,7 +3044,7 @@ var QUIZ = [
       { de: "1971", en: "", uk: "", ru: "" },
       { de: "1990", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundesrepublik hat die Grenzen von heute seit <b>1990</b>. Durch die Wiedervereinigung und den Zwei-plus-Vier-Vertrag wurden sie endgültig festgelegt.<br><br>Vor 1990 gab es zum Beispiel zwei deutsche Staaten, die Bundesrepublik und die DDR.", en: "The Federal Republic has had today’s borders since <b>1990</b>. Through reunification and the Two Plus Four Treaty they were finally fixed.<br><br>Before 1990 there were, for example, two German states, the Federal Republic and the GDR.", uk: "Федеративна Республіка має нинішні кордони з <b>1990 року</b>. Через воззʼєднання та Договір «два плюс чотири» їх остаточно закріпили.<br><br>До 1990 року були, наприклад, дві німецькі держави — Федеративна Республіка та НДР.", ru: "У Федеративной Республики нынешние границы с <b>1990 года</b>. Благодаря воссоединению и Договору «два плюс четыре» они были окончательно закреплены.<br><br>До 1990 года было, например, два немецких государства — Федеративная Республика и ГДР." },
   },
   {
     id: "lid_220",
@@ -3057,7 +3057,7 @@ var QUIZ = [
       { de: "an die Wiedervereinigung Deutschlands", en: "", uk: "", ru: "" },
       { de: "an die Opfer des Nationalsozialismus (Tag der Befreiung des Vernichtungslagers Auschwitz)", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Am 27. Januar erinnert man an die <b>Opfer des Nationalsozialismus</b>. An diesem Tag im Jahr 1945 wurde das Vernichtungslager Auschwitz befreit.<br><br>Das Ende des Zweiten Weltkriegs in Europa war am 8. Mai, das Grundgesetz trat am 23. Mai in Kraft, und die Wiedervereinigung feiert man am 3. Oktober.", en: "On 27 January people remember the <b>victims of National Socialism</b>. On this day in 1945 the Auschwitz extermination camp was liberated.<br><br>The end of the Second World War in Europe was on 8 May, the Basic Law came into force on 23 May, and reunification is celebrated on 3 October.", uk: "27 січня згадують <b>жертв націонал-соціалізму</b>. Цього дня 1945 року було звільнено табір смерті Аушвіц.<br><br>Кінець Другої світової війни в Європі був 8 травня, Основний закон набув чинності 23 травня, а воззʼєднання відзначають 3 жовтня.", ru: "27 января вспоминают <b>жертв национал-социализма</b>. В этот день в 1945 году был освобождён лагерь смерти Аушвиц.<br><br>Конец Второй мировой войны в Европе был 8 мая, Основной закон вступил в силу 23 мая, а воссоединение отмечают 3 октября." },
   },
   {
     id: "lid_221",
@@ -3070,7 +3070,7 @@ var QUIZ = [
       { de: "Deutsche können ohne Passkontrolle in jedes Land reisen.", en: "", uk: "", ru: "" },
       { de: "Deutsche können in jedem Land mit dem Euro bezahlen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Schengener Abkommen bedeutet: In <b>viele Länder Europas kann man ohne Passkontrolle reisen</b>, weil es an den Grenzen innerhalb des Schengen-Raums normalerweise keine festen Kontrollen gibt.<br><br>Nicht alle Menschen können ohne Kontrolle einreisen, denn an den Außengrenzen wird kontrolliert. Das Abkommen gilt nicht für jedes Land der Welt. Mit dem Euro hat es nichts zu tun.", en: "The Schengen Agreement means: <b>you can travel to many countries in Europe without passport checks</b>, because there are normally no fixed checks at the borders within the Schengen area.<br><br>Not everyone can enter without checks, because checks are carried out at the external borders. The agreement does not apply to every country in the world. It has nothing to do with the euro.", uk: "Шенгенська угода означає: <b>до багатьох країн Європи можна подорожувати без паспортного контролю</b>, бо на кордонах усередині Шенгенської зони зазвичай немає постійних перевірок.<br><br>Не всі люди можуть вʼїжджати без перевірки, адже на зовнішніх кордонах проводять контроль. Угода діє не для кожної країни світу. До євро вона не має жодного стосунку.", ru: "Шенгенское соглашение означает: <b>в многие страны Европы можно ездить без паспортного контроля</b>, потому что на границах внутри Шенгенской зоны обычно нет постоянных проверок.<br><br>Не все люди могут въезжать без проверки, ведь на внешних границах проводится контроль. Соглашение действует не для каждой страны мира. К евро оно не имеет никакого отношения." },
   },
   {
     id: "lid_222",
@@ -3083,7 +3083,7 @@ var QUIZ = [
       { de: "Spanien", en: "", uk: "", ru: "" },
       { de: "Schweiz", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>Schweiz</b> ist ein Nachbarland von Deutschland. Deutschlands Nachbarn sind Dänemark, Polen, Tschechien, Österreich, die Schweiz, Frankreich, Luxemburg, Belgien und die Niederlande.<br><br>Ungarn, Portugal und Spanien grenzen nicht an Deutschland.", en: "<b>Switzerland</b> is a neighbouring country of Germany. Germany’s neighbours are Denmark, Poland, the Czech Republic, Austria, Switzerland, France, Luxembourg, Belgium and the Netherlands.<br><br>Hungary, Portugal and Spain do not border Germany.", uk: "<b>Швейцарія</b> — сусідня країна Німеччини. Сусіди Німеччини — Данія, Польща, Чехія, Австрія, Швейцарія, Франція, Люксембург, Бельгія та Нідерланди.<br><br>Угорщина, Португалія та Іспанія з Німеччиною не межують.", ru: "<b>Швейцария</b> — соседняя страна Германии. Соседи Германии — Дания, Польша, Чехия, Австрия, Швейцария, Франция, Люксембург, Бельгия и Нидерланды.<br><br>Венгрия, Португалия и Испания с Германией не граничат." },
   },
   {
     id: "lid_223",
@@ -3096,7 +3096,7 @@ var QUIZ = [
       { de: "Polen", en: "", uk: "", ru: "", correct: true },
       { de: "Griechenland", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Polen</b> ist ein Nachbarland von Deutschland und liegt im Osten.<br><br>Rumänien, Bulgarien und Griechenland sind weiter weg und grenzen nicht an Deutschland.", en: "<b>Poland</b> is a neighbouring country of Germany and lies in the east.<br><br>Romania, Bulgaria and Greece are further away and do not border Germany.", uk: "<b>Польща</b> — сусідня країна Німеччини й розташована на сході.<br><br>Румунія, Болгарія та Греція далі й з Німеччиною не межують.", ru: "<b>Польша</b> — соседняя страна Германии и расположена на востоке.<br><br>Румыния, Болгария и Греция дальше и с Германией не граничат." },
   },
   {
     id: "lid_224",
@@ -3109,7 +3109,7 @@ var QUIZ = [
       { de: "Einheitliche Union", en: "", uk: "", ru: "" },
       { de: "Euro Union", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>EU</b> bedeutet <b>Europäische Union</b>. Sie ist ein Zusammenschluss von 27 europäischen Staaten, die politisch und wirtschaftlich eng zusammenarbeiten, zum Beispiel mit einem gemeinsamen Binnenmarkt.<br><br>Die anderen Bezeichnungen sind falsch.", en: "<b>EU</b> means <b>European Union</b>, in German “Europäische Union”. It is an association of 27 European states that work closely together politically and economically, for example with a common single market.<br><br>The other designations are wrong.", uk: "<b>ЄС</b> означає <b>Європейський Союз</b>, німецькою «Europäische Union». Це обʼєднання 27 європейських держав, які тісно співпрацюють у політиці та економіці, наприклад мають спільний внутрішній ринок.<br><br>Інші назви неправильні.", ru: "<b>ЕС</b> означает <b>Европейский союз</b>, по-немецки «Europäische Union». Это объединение 27 европейских государств, которые тесно сотрудничают в политике и экономике, например имеют общий внутренний рынок.<br><br>Другие названия неправильные." },
   },
   {
     id: "lid_225",
@@ -3122,7 +3122,7 @@ var QUIZ = [
       { de: "Spanien", en: "", uk: "", ru: "" },
       { de: "Österreich", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In <b>Österreich</b> gibt es eine große deutschsprachige Bevölkerung. Deutsch ist dort Amtssprache. Auch in der Schweiz und in Liechtenstein spricht man Deutsch.<br><br>In Tschechien, Norwegen und Spanien ist Deutsch keine Landessprache.", en: "In <b>Austria</b> there is a large German-speaking population. German is the official language there. German is also spoken in Switzerland and Liechtenstein.<br><br>In the Czech Republic, Norway and Spain German is not a national language.", uk: "В <b>Австрії</b> проживає багато німецькомовного населення. Німецька там — офіційна мова. Німецькою розмовляють також у Швейцарії та Ліхтенштейні.<br><br>У Чехії, Норвегії та Іспанії німецька не є національною мовою.", ru: "В <b>Австрии</b> проживает большое немецкоязычное население. Немецкий там — официальный язык. На немецком говорят также в Швейцарии и Лихтенштейне.<br><br>В Чехии, Норвегии и Испании немецкий не является национальным языком." },
   },
   {
     id: "lid_226",
@@ -3135,7 +3135,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_226_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_226_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Flagge der Europäischen Union ist <b>blau mit zwölf goldenen Sternen im Kreis</b>. Die Sterne stehen für Einheit und Vollkommenheit, nicht für die Zahl der Mitgliedstaaten.<br><br>Die anderen Flaggen haben andere Farben oder Muster.", en: "The flag of the European Union is <b>blue with twelve golden stars in a circle</b>. The stars stand for unity and perfection, not for the number of member states.<br><br>The other flags have other colours or patterns.", uk: "Прапор Європейського Союзу — <b>синій із дванадцятьма золотими зірками по колу</b>. Зірки символізують єдність і досконалість, а не кількість держав-членів.<br><br>Інші прапори мають інші кольори чи візерунки.", ru: "Флаг Европейского союза — <b>синий с двенадцатью золотыми звёздами по кругу</b>. Звёзды символизируют единство и совершенство, а не число государств-членов.<br><br>Другие флаги имеют другие цвета или узоры." },
   },
   {
     id: "lid_227",
@@ -3148,7 +3148,7 @@ var QUIZ = [
       { de: "Norwegen", en: "", uk: "", ru: "" },
       { de: "Schweden", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Dänemark</b> ist ein Nachbarland von Deutschland und liegt im Norden.<br><br>Finnland, Norwegen und Schweden grenzen nicht an Deutschland.", en: "<b>Denmark</b> is a neighbouring country of Germany and lies in the north.<br><br>Finland, Norway and Sweden do not border Germany.", uk: "<b>Данія</b> — сусідня країна Німеччини й розташована на півночі.<br><br>Фінляндія, Норвегія та Швеція з Німеччиною не межують.", ru: "<b>Дания</b> — соседняя страна Германии и расположена на севере.<br><br>Финляндия, Норвегия и Швеция с Германией не граничат." },
   },
   {
     id: "lid_228",
@@ -3161,7 +3161,7 @@ var QUIZ = [
       { de: "Deutsche Wiedervereinigung", en: "", uk: "", ru: "", correct: true },
       { de: "Europäische Gemeinschaft", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Beitritt der DDR zur Bundesrepublik 1990 heißt <b>Deutsche Wiedervereinigung</b>. Am 3. Oktober 1990 wurde die Einheit Deutschlands vollendet.<br><br>Die NATO-Osterweiterung und die EU-Osterweiterung sind andere Ereignisse. Die „Europäische Gemeinschaft“ ist ein Vorläufer der EU.", en: "The accession of the GDR to the Federal Republic in 1990 is called <b>German reunification</b>. On 3 October 1990 the unity of Germany was completed.<br><br>NATO enlargement to the east and EU enlargement to the east are other events. The “European Community” is a predecessor of the EU.", uk: "Приєднання НДР до Федеративної Республіки 1990 року називається <b>німецьке воззʼєднання</b>. 3 жовтня 1990 року єдність Німеччини було завершено.<br><br>Розширення НАТО на схід і розширення ЄС на схід — інші події. «Європейське співтовариство» — попередник ЄС.", ru: "Присоединение ГДР к Федеративной Республике в 1990 году называется <b>немецкое воссоединение</b>. 3 октября 1990 года единство Германии было завершено.<br><br>Расширение НАТО на восток и расширение ЕС на восток — другие события. «Европейское сообщество» — предшественник ЕС." },
   },
   {
     id: "lid_229",
@@ -3174,7 +3174,7 @@ var QUIZ = [
       { de: "Norwegen", en: "", uk: "", ru: "" },
       { de: "Luxemburg", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Luxemburg</b> ist ein Nachbarland von Deutschland und liegt im Westen.<br><br>Spanien, Bulgarien und Norwegen grenzen nicht an Deutschland.", en: "<b>Luxembourg</b> is a neighbouring country of Germany and lies in the west.<br><br>Spain, Bulgaria and Norway do not border Germany.", uk: "<b>Люксембург</b> — сусідня країна Німеччини й розташований на заході.<br><br>Іспанія, Болгарія та Норвегія з Німеччиною не межують.", ru: "<b>Люксембург</b> — соседняя страна Германии и расположен на западе.<br><br>Испания, Болгария и Норвегия с Германией не граничат." },
   },
   {
     id: "lid_230",
@@ -3187,7 +3187,7 @@ var QUIZ = [
       { de: "7 Jahre.", en: "", uk: "", ru: "" },
       { de: "8 Jahre.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Europäische Parlament wird alle <b>5 Jahre</b> gewählt. Zuletzt war die Europawahl im Jahr 2024.<br><br>6, 7 und 8 Jahre stimmen nicht.", en: "The European Parliament is elected every <b>5 years</b>. The most recent European election was in 2024.<br><br>6, 7 and 8 years are not correct.", uk: "Європейський парламент обирають кожні <b>5 років</b>. Останні вибори до Європарламенту були 2024 року.<br><br>6, 7 і 8 років неправильні.", ru: "Европейский парламент избирают каждые <b>5 лет</b>. Последние выборы в Европарламент были в 2024 году.<br><br>6, 7 и 8 лет неправильные." },
   },
   {
     id: "lid_231",
@@ -3200,7 +3200,7 @@ var QUIZ = [
       { de: "Damit sind europäische Auswanderinnen und Auswanderer in den USA gemeint.", en: "", uk: "", ru: "" },
       { de: "Der Begriff meint den Zusammenschluss europäischer Staaten zur EU.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Europäische Integration</b> bedeutet den <b>Zusammenschluss europäischer Staaten zur EU</b>. Die Staaten arbeiten politisch und wirtschaftlich eng zusammen.<br><br>Mit Einwanderung oder Auswanderung hat der Begriff nichts zu tun.", en: "<b>European integration</b> means the <b>coming together of European states in the EU</b>. The states work closely together politically and economically.<br><br>The term has nothing to do with immigration or emigration.", uk: "<b>Європейська інтеграція</b> означає <b>обʼєднання європейських держав в ЄС</b>. Держави тісно співпрацюють у політиці й економіці.<br><br>Це поняття не має нічого спільного з імміграцією чи еміграцією.", ru: "<b>Европейская интеграция</b> означает <b>объединение европейских государств в ЕС</b>. Государства тесно сотрудничают в политике и экономике.<br><br>Это понятие не имеет ничего общего с иммиграцией или эмиграцией." },
   },
   {
     id: "lid_232",
@@ -3213,7 +3213,7 @@ var QUIZ = [
       { de: "die Abgeordneten des Europäischen Parlaments", en: "", uk: "", ru: "", correct: true },
       { de: "die europäische Verfassung", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bei der Europawahl werden die <b>Abgeordneten des Europäischen Parlaments</b> gewählt.<br><br>Die Europäische Kommission wird nicht direkt gewählt. Über den Beitritt neuer Länder entscheiden die Mitgliedstaaten. Eine europäische Verfassung wird bei der Wahl nicht gewählt.", en: "In the European election, the <b>members of the European Parliament</b> are elected.<br><br>The European Commission is not elected directly. The member states decide on the accession of new countries. A European constitution is not voted on in the election.", uk: "На виборах до Європарламенту обирають <b>депутатів Європейського парламенту</b>.<br><br>Європейську комісію безпосередньо не обирають. Про вступ нових країн вирішують держави-члени. Європейську конституцію на цих виборах не обирають.", ru: "На выборах в Европарламент избирают <b>депутатов Европейского парламента</b>.<br><br>Европейскую комиссию напрямую не избирают. О вступлении новых стран решают государства-члены. Европейскую конституцию на этих выборах не избирают." },
   },
   {
     id: "lid_233",
@@ -3226,7 +3226,7 @@ var QUIZ = [
       { de: "Griechenland", en: "", uk: "", ru: "" },
       { de: "Portugal", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Tschechien</b> ist ein Nachbarland von Deutschland und liegt im Osten.<br><br>Bulgarien, Griechenland und Portugal grenzen nicht an Deutschland.", en: "The <b>Czech Republic</b> is a neighbouring country of Germany and lies in the east.<br><br>Bulgaria, Greece and Portugal do not border Germany.", uk: "<b>Чехія</b> — сусідня країна Німеччини й розташована на сході.<br><br>Болгарія, Греція та Португалія з Німеччиною не межують.", ru: "<b>Чехия</b> — соседняя страна Германии и расположена на востоке.<br><br>Болгария, Греция и Португалия с Германией не граничат." },
   },
   {
     id: "lid_234",
@@ -3239,7 +3239,7 @@ var QUIZ = [
       { de: "Berlin", en: "", uk: "", ru: "" },
       { de: "Straßburg", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Europäische Parlament hat einen Sitz in <b>Straßburg</b> (Frankreich). Dort finden die Plenarsitzungen statt.<br><br>In London, Paris und Berlin ist kein Sitz des Parlaments.", en: "The European Parliament has a seat in <b>Strasbourg</b> (France). The plenary sessions take place there.<br><br>There is no seat of the Parliament in London, Paris or Berlin.", uk: "Європейський парламент має місце розташування в <b>Страсбурзі</b> (Франція). Там проходять пленарні засідання.<br><br>У Лондоні, Парижі та Берліні резиденції парламенту немає.", ru: "Европейский парламент имеет место заседаний в <b>Страсбурге</b> (Франция). Там проходят пленарные заседания.<br><br>В Лондоне, Париже и Берлине резиденции парламента нет." },
   },
   {
     id: "lid_235",
@@ -3254,7 +3254,7 @@ var QUIZ = [
       { de: "Frieden und Sicherheit in den Ländern der EU", en: "", uk: "", ru: "", correct: true },
       { de: "einheitliche Feiertage in den Ländern der EU", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Treffen von Mitterrand und Kohl in Verdun zeigt das Ziel der EU: <b>Frieden und Sicherheit in den Ländern der EU</b>. Frankreich und Deutschland waren in beiden Weltkriegen Gegner und sind heute Partner. Der Ort Verdun war ein Schlachtfeld.<br><br>Reisefreiheit und einheitliche Feiertage waren dabei nicht das Thema. Auch England war nicht das Thema.", en: "The meeting of Mitterrand and Kohl in Verdun shows the aim of the EU: <b>peace and security in the countries of the EU</b>. France and Germany were enemies in both world wars and are partners today. The place Verdun was a battlefield.<br><br>Freedom to travel and uniform public holidays were not the subject. England was not the subject either.", uk: "Зустріч Міттерана та Коля у Вердені показує мету ЄС: <b>мир і безпека в країнах ЄС</b>. Франція та Німеччина були противниками в обох світових війнах, а сьогодні вони партнери. Місце Верден було полем битви.<br><br>Свобода пересування та єдині святкові дні не були темою. Англія теж не була темою.", ru: "Встреча Миттерана и Коля в Вердене показывает цель ЕС: <b>мир и безопасность в странах ЕС</b>. Франция и Германия были противниками в обеих мировых войнах, а сегодня они партнёры. Место Верден было полем боя.<br><br>Свобода передвижения и единые праздничные дни не были темой. Англия тоже не была темой." },
   },
   {
     id: "lid_236",
@@ -3267,7 +3267,7 @@ var QUIZ = [
       { de: "25", en: "", uk: "", ru: "" },
       { de: "27", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die EU hat heute <b>27 Mitgliedstaaten</b>. Seit dem Austritt Großbritanniens (Brexit) 2020 sind es 27.<br><br>21, 23 und 25 sind falsch.", en: "The EU today has <b>27 member states</b>. Since the departure of Great Britain (Brexit) in 2020 there have been 27.<br><br>21, 23 and 25 are wrong.", uk: "Нині ЄС має <b>27 держав-членів</b>. Після виходу Великої Британії (Brexit) 2020 року їх 27.<br><br>21, 23 і 25 неправильні.", ru: "Сейчас ЕС имеет <b>27 государств-членов</b>. После выхода Великобритании (Brexit) в 2020 году их 27.<br><br>21, 23 и 25 неправильные." },
   },
   {
     id: "lid_237",
@@ -3280,7 +3280,7 @@ var QUIZ = [
       { de: "Verpflichtung Deutschlands zu Reparationsleistungen", en: "", uk: "", ru: "" },
       { de: "Festlegung der Oder-Neiße-Linie als Ostgrenze", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In den <b>Römischen Verträgen</b> von 1957 gründeten Deutschland, Frankreich, Italien und die Benelux-Länder die <b>Europäische Wirtschaftsgemeinschaft (EWG)</b>. Sie ist ein Vorläufer der EU.<br><br>Der NATO-Beitritt, die Reparationen und die Oder-Neiße-Linie hatten nichts mit den Römischen Verträgen zu tun.", en: "In the <b>Treaties of Rome</b> of 1957, Germany, France, Italy and the Benelux countries founded the <b>European Economic Community (EEC)</b>. It is a predecessor of the EU.<br><br>NATO membership, reparations and the Oder-Neisse line had nothing to do with the Treaties of Rome.", uk: "У <b>Римських договорах</b> 1957 року Німеччина, Франція, Італія та країни Бенілюксу заснували <b>Європейське економічне співтовариство (ЄЕС)</b>. Воно є попередником ЄС.<br><br>Вступ до НАТО, репарації та лінія Одер — Нейсе не мали нічого спільного з Римськими договорами.", ru: "В <b>Римских договорах</b> 1957 года Германия, Франция, Италия и страны Бенилюкса основали <b>Европейское экономическое сообщество (ЕЭС)</b>. Оно является предшественником ЕС.<br><br>Вступление в НАТО, репарации и линия Одер — Нейсе не имели ничего общего с Римскими договорами." },
   },
   {
     id: "lid_238",
@@ -3293,7 +3293,7 @@ var QUIZ = [
       { de: "Rom, Bern und Wien", en: "", uk: "", ru: "" },
       { de: "Bonn, Zürich und Mailand", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Europäische Parlament arbeitet in <b>Straßburg, Luxemburg und Brüssel</b>.<br><br>In Paris, London, Den Haag, Rom, Bern, Wien, Bonn, Zürich und Mailand hat es keinen Arbeitsort.", en: "The European Parliament works in <b>Strasbourg, Luxembourg and Brussels</b>.<br><br>It has no place of work in Paris, London, The Hague, Rome, Bern, Vienna, Bonn, Zurich or Milan.", uk: "Європейський парламент працює в <b>Страсбурзі, Люксембурзі та Брюсселі</b>.<br><br>У Парижі, Лондоні, Гаазі, Римі, Берні, Відні, Бонні, Цюриху та Мілані місця роботи в нього немає.", ru: "Европейский парламент работает в <b>Страсбурге, Люксембурге и Брюсселе</b>.<br><br>В Париже, Лондоне, Гааге, Риме, Берне, Вене, Бонне, Цюрихе и Милане места работы у него нет." },
   },
   {
     id: "lid_239",
@@ -3306,7 +3306,7 @@ var QUIZ = [
       { de: "durch die „Pariser Verträge“", en: "", uk: "", ru: "" },
       { de: "durch die „Londoner Verträge“", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Bundesrepublik schloss sich durch die <b>Römischen Verträge</b> (1957) mit anderen Staaten zur Europäischen Wirtschaftsgemeinschaft zusammen.<br><br>Die „Hamburger“, „Pariser“ und „Londoner Verträge“ sind andere Abkommen oder erfundene Namen.", en: "Through the <b>Treaties of Rome</b> (1957), the Federal Republic joined other states to form the European Economic Community.<br><br>The “Hamburg”, “Paris” and “London Treaties” are other agreements or invented names.", uk: "Через <b>Римські договори</b> (1957) Федеративна Республіка разом з іншими державами обʼєдналася в Європейське економічне співтовариство.<br><br>«Гамбурзькі», «Паризькі» та «Лондонські договори» — інші угоди або вигадані назви.", ru: "Через <b>Римские договоры</b> (1957) Федеративная Республика вместе с другими государствами объединилась в Европейское экономическое сообщество.<br><br>«Гамбургские», «Парижские» и «Лондонские договоры» — другие соглашения или вымышленные названия." },
   },
   {
     id: "lid_240",
@@ -3319,7 +3319,7 @@ var QUIZ = [
       { de: "2002", en: "", uk: "", ru: "", correct: true },
       { de: "2005", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Mit dem Euro in bar bezahlt man seit dem <b>1. Januar 2002</b>. Der Euro als Buchgeld wurde schon 1999 eingeführt.<br><br>1995, 1998 und 2005 sind falsch.", en: "People have paid in euro cash since <b>1 January 2002</b>. The euro as book money had already been introduced in 1999.<br><br>1995, 1998 and 2005 are wrong.", uk: "Готівкою в євро розраховуються з <b>1 січня 2002 року</b>. Євро як безготівкові гроші запровадили ще 1999 року.<br><br>1995, 1998 і 2005 роки неправильні.", ru: "Наличными в евро расплачиваются с <b>1 января 2002 года</b>. Евро как безналичные деньги ввели ещё в 1999 году.<br><br>1995, 1998 и 2005 годы неправильные." },
   },
   {
     id: "lid_241",
@@ -3332,7 +3332,7 @@ var QUIZ = [
       { de: "Sie muss nichts tun, denn sie bekommt automatisch Elterngeld.", en: "", uk: "", ru: "" },
       { de: "Sie muss das Arbeitsamt um Erlaubnis bitten.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Um Elterngeld zu bekommen, muss Frau Seger <b>einen Antrag bei der Elterngeldstelle stellen</b>. Das Elterngeld bekommt man nicht automatisch.<br><br>Die Krankenkasse und das Arbeitsamt sind nicht dafür zuständig, und man muss auch keine Erlaubnis einholen.", en: "To receive parental allowance, Ms Seger must <b>submit an application to the parental allowance office</b>. Parental allowance is not paid automatically.<br><br>The health insurance fund and the employment office are not responsible, and no permission needs to be obtained.", uk: "Щоб отримати допомогу по догляду за дитиною, пані Зеґер мусить <b>подати заяву до відділу, який виплачує допомогу по догляду за дитиною</b>. Цю допомогу автоматично не виплачують.<br><br>Лікарняна каса та біржа праці не відповідають за це, і дозволу отримувати не потрібно.", ru: "Чтобы получить пособие по уходу за ребёнком, госпоже Зегер нужно <b>подать заявление в отдел, который выплачивает пособие по уходу за ребёнком</b>. Это пособие автоматически не выплачивают.<br><br>Больничная касса и биржа труда за это не отвечают, и разрешения получать не нужно." },
   },
   {
     id: "lid_242",
@@ -3345,7 +3345,7 @@ var QUIZ = [
       { de: "die Eltern/die Erziehungsberechtigten", en: "", uk: "", ru: "", correct: true },
       { de: "die Schulen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Ob ein Kind in den Kindergarten geht, entscheiden die <b>Eltern oder Erziehungsberechtigten</b>. Der Kindergarten ist freiwillig.<br><br>Erst die Schule ist Pflicht. Der Staat, die Länder oder die Schulen entscheiden nicht darüber.", en: "Whether a child goes to kindergarten is decided by the <b>parents or legal guardians</b>. Kindergarten is voluntary.<br><br>Only school is compulsory. The state, the federal states or the schools do not decide on it.", uk: "Чи ходитиме дитина до дитячого садка, вирішують <b>батьки або законні представники</b>. Дитячий садок добровільний.<br><br>Лише школа обовʼязкова. Держава, землі чи школи цього не вирішують.", ru: "Ходит ли ребёнок в детский сад, решают <b>родители или законные представители</b>. Детский сад добровольный.<br><br>Только школа обязательна. Государство, земли или школы этого не решают." },
   },
   {
     id: "lid_243",
@@ -3358,7 +3358,7 @@ var QUIZ = [
       { de: "Sie können gar nichts tun, denn Demonstrationen sind in Deutschland grundsätzlich verboten.", en: "", uk: "", ru: "" },
       { de: "Maik und Sybille müssen einen neuen Verein gründen, weil nur Vereine demonstrieren dürfen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wer eine Demonstration unter freiem Himmel machen will, <b>muss sie anmelden</b>, meistens bei der Gemeinde oder der Polizei. Das Versammlungsrecht ist ein Grundrecht (Art. 8 GG).<br><br>Man darf nicht immer und überall demonstrieren. Demonstrationen sind aber nicht verboten, und man braucht keinen Verein.", en: "Anyone who wants to hold a demonstration in the open air <b>must register it</b>, usually with the municipality or the police. The right of assembly is a basic right (Art. 8 GG).<br><br>You may not demonstrate always and everywhere. But demonstrations are not forbidden, and you do not need a club.", uk: "Хто хоче провести демонстрацію просто неба, <b>мусить її зареєструвати</b>, здебільшого в громаді чи поліції. Право на зібрання — основне право (ст. 8 GG).<br><br>Демонструвати завжди й скрізь не можна. Але демонстрації не заборонені, і товариство для цього не потрібне.", ru: "Кто хочет провести демонстрацию под открытым небом, <b>должен её зарегистрировать</b>, как правило в муниципалитете или полиции. Право на собрания — основное право (ст. 8 GG).<br><br>Демонстрировать всегда и везде нельзя. Но демонстрации не запрещены, и объединение для этого не нужно." },
   },
   {
     id: "lid_244",
@@ -3371,7 +3371,7 @@ var QUIZ = [
       { de: "die Prokura", en: "", uk: "", ru: "" },
       { de: "eine Gesellenprüfung", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Für ein Studium an einer Universität braucht man normalerweise das <b>Abitur</b> (allgemeine Hochschulreife).<br><br>Ein Diplom ist ein Studienabschluss. Die Prokura ist eine Vollmacht im Handel, und die Gesellenprüfung ist der Abschluss einer Berufsausbildung.", en: "For studying at a university you normally need the <b>Abitur</b> (the general higher-education entrance qualification).<br><br>A diploma is a university degree. Prokura is a commercial power of attorney, and the journeyman’s examination is the end of vocational training.", uk: "Для навчання в університеті зазвичай потрібен <b>Abitur</b> — атестат про загальну вищу освіту.<br><br>Diplom — це диплом про закінчення вишу. Prokura — комерційна довіреність, а іспит на звання підмайстра є завершенням професійного навчання.", ru: "Для обучения в университете обычно нужен <b>Abitur</b> — аттестат о общем высшем образовании.<br><br>Diplom — это диплом об окончании вуза. Prokura — коммерческая доверенность, а экзамен на звание подмастерья является завершением профессионального обучения." },
   },
   {
     id: "lid_245",
@@ -3384,7 +3384,7 @@ var QUIZ = [
       { de: "Sofie (35 Jahre) und Lisa (40 Jahre)", en: "", uk: "", ru: "" },
       { de: "Anne (13 Jahre) und Tim (25 Jahre)", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Anne (13) und Tim (25)</b> dürfen nicht als Paar zusammenleben. Anne ist ein Kind, und sexuelle Handlungen mit Kindern unter 14 Jahren sind in Deutschland verboten und strafbar.<br><br>Die anderen Paare sind Erwachsene. Das Alter, ein gleiches Geschlecht oder ein Altersunterschied von Erwachsenen sind kein Problem.", en: "<b>Anne (13) and Tim (25)</b> may not live together as a couple. Anne is a child, and sexual acts with children under 14 are forbidden and punishable in Germany.<br><br>The other couples are adults. Age, the same sex or an age difference between adults are not a problem.", uk: "<b>Анна (13) і Тім (25)</b> не можуть жити разом як пара. Анна — дитина, а сексуальні дії з дітьми до 14 років у Німеччині заборонені й караються законом.<br><br>Інші пари складаються з дорослих. Вік, стать чи різниця у віці між дорослими не є проблемою.", ru: "<b>Анна (13) и Тим (25)</b> не могут жить вместе как пара. Анна — ребёнок, а сексуальные действия с детьми до 14 лет в Германии запрещены и наказуемы.<br><br>Остальные пары состоят из взрослых. Возраст, одинаковый пол или разница в возрасте между взрослыми не являются проблемой." },
   },
   {
     id: "lid_246",
@@ -3397,7 +3397,7 @@ var QUIZ = [
       { de: "19", en: "", uk: "", ru: "" },
       { de: "21", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Deutschland ist man mit <b>18 Jahren</b> volljährig. Dann darf man zum Beispiel allein Verträge abschließen und bei der Bundestagswahl wählen.<br><br>16, 19 und 21 sind kein Alter der Volljährigkeit.", en: "In Germany you are of full age at <b>18</b>. Then you may, for example, enter into contracts on your own and vote in the federal election.<br><br>16, 19 and 21 are not the age of majority.", uk: "У Німеччині повнолітніми стають у <b>18 років</b>. Тоді можна, наприклад, самостійно укладати договори й голосувати на виборах до Бундестагу.<br><br>16, 19 і 21 — не вік повноліття.", ru: "В Германии совершеннолетними становятся в <b>18 лет</b>. Тогда можно, например, самостоятельно заключать договоры и голосовать на выборах в Бундестаг.<br><br>16, 19 и 21 — не возраст совершеннолетия." },
   },
   {
     id: "lid_247",
@@ -3410,7 +3410,7 @@ var QUIZ = [
       { de: "Geburtsvorbereitung", en: "", uk: "", ru: "" },
       { de: "Wochenbett", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der besondere Schutz vor und nach der Geburt heißt <b>Mutterschutz</b>. Er schützt die Frau zum Beispiel vor Kündigung und vor gefährlicher Arbeit.<br><br>Elternzeit ist die Auszeit nach der Geburt zur Kinderbetreuung. Geburtsvorbereitung ist ein Kurs, und das Wochenbett ist die Zeit nach der Geburt.", en: "The special protection before and after birth is called <b>maternity protection</b>. It protects the woman, for example, from dismissal and from dangerous work.<br><br>Parental leave is time off after the birth to look after the child. Antenatal preparation is a course, and the postpartum period is the time after the birth.", uk: "Особливий захист до й після пологів називається <b>захистом материнства</b>. Він захищає жінку, наприклад, від звільнення й небезпечної роботи.<br><br>Відпустка по догляду за дитиною — це перерва після народження для догляду за дитиною. Підготовка до пологів — курс, а післяпологовий період — це час після народження.", ru: "Особая защита до и после родов называется <b>защитой материнства</b>. Она защищает женщину, например, от увольнения и опасной работы.<br><br>Отпуск по уходу за ребёнком — это перерыв после рождения для ухода за ребёнком. Подготовка к родам — курс, а послеродовой период — это время после рождения." },
   },
   {
     id: "lid_248",
@@ -3423,7 +3423,7 @@ var QUIZ = [
       { de: "der Großeltern.", en: "", uk: "", ru: "" },
       { de: "der Schulen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Erziehung der Kinder ist vor allem Aufgabe <b>der Eltern</b>. Im Grundgesetz steht: Pflege und Erziehung sind das natürliche Recht der Eltern (Art. 6 GG). Der Staat wacht nur darüber.<br><br>Der Staat, die Großeltern und die Schulen unterstützen die Eltern, sind aber nicht hauptverantwortlich.", en: "The upbringing of children is above all the task of <b>the parents</b>. The Basic Law says: care and upbringing are the natural right of the parents (Art. 6 GG). The state only watches over it.<br><br>The state, the grandparents and the schools support the parents, but they are not mainly responsible.", uk: "Виховання дітей — це насамперед завдання <b>батьків</b>. В Основному законі сказано: догляд і виховання — природне право батьків (ст. 6 GG). Держава лише наглядає за цим.<br><br>Держава, бабусі й дідусі та школи підтримують батьків, але не несуть основної відповідальності.", ru: "Воспитание детей — это прежде всего задача <b>родителей</b>. В Основном законе сказано: уход и воспитание — естественное право родителей (ст. 6 GG). Государство лишь наблюдает за этим.<br><br>Государство, бабушки и дедушки и школы поддерживают родителей, но не несут основной ответственности." },
   },
   {
     id: "lid_249",
@@ -3436,7 +3436,7 @@ var QUIZ = [
       { de: "die Verwandten", en: "", uk: "", ru: "" },
       { de: "die Schulen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Hauptverantwortlich für die Kindererziehung sind <b>die Eltern</b> (Art. 6 GG).<br><br>Der Staat, die Verwandten und die Schulen helfen, tragen aber nicht die Hauptverantwortung.", en: "The main responsibility for bringing up children lies with <b>the parents</b> (Art. 6 GG).<br><br>The state, relatives and the schools help, but they do not bear the main responsibility.", uk: "Основна відповідальність за виховання дітей лежить на <b>батьках</b> (ст. 6 GG).<br><br>Держава, родичі та школи допомагають, але не несуть основної відповідальності.", ru: "Основная ответственность за воспитание детей лежит на <b>родителях</b> (ст. 6 GG).<br><br>Государство, родственники и школы помогают, но не несут основной ответственности." },
   },
   {
     id: "lid_250",
@@ -3449,7 +3449,7 @@ var QUIZ = [
       { de: "eine Frau ist.", en: "", uk: "", ru: "" },
       { de: "Mitglied einer Partei ist.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die besten Chancen auf einen gut bezahlten Arbeitsplatz hat, wer <b>gut ausgebildet</b> ist. Wichtig sind Schulabschluss, Berufsausbildung oder Studium und Weiterbildung.<br><br>Religion, Geschlecht und Parteimitgliedschaft dürfen bei der Einstellung keine Rolle spielen. Das verbietet die Diskriminierung (Art. 3 GG).", en: "The best chances of a well-paid job go to those who are <b>well trained</b>. A school-leaving certificate, vocational training or a degree and further training are important.<br><br>Religion, gender and party membership must play no role in hiring. Discrimination is forbidden (Art. 3 GG).", uk: "Найкращі шанси на добре оплачувану роботу має той, хто <b>добре підготовлений</b>. Важливі шкільний атестат, професійне навчання чи вища освіта та підвищення кваліфікації.<br><br>Релігія, стать і партійна приналежність не повинні відігравати ролі під час найму. Дискримінація заборонена (ст. 3 GG).", ru: "Лучшие шансы на хорошо оплачиваемую работу имеет тот, кто <b>хорошо подготовлен</b>. Важны школьный аттестат, профессиональное обучение или высшее образование и повышение квалификации.<br><br>Религия, пол и партийная принадлежность не должны играть роли при найме. Дискриминация запрещена (ст. 3 GG)." },
   },
   {
     id: "lid_251",
@@ -3462,7 +3462,7 @@ var QUIZ = [
       { de: "kann man dafür nicht bestraft werden.", en: "", uk: "", ru: "" },
       { de: "kann man dafür bestraft werden.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wer in Deutschland ein Kind schlägt, <b>kann dafür bestraft werden</b>. Kinder haben ein Recht auf gewaltfreie Erziehung (§ 1631 BGB). Schläge sind Körperverletzung.<br><br>Das ist keine private Familienangelegenheit, die niemanden etwas angeht. Der Staat schützt die Kinder.", en: "Anyone who hits a child in Germany <b>can be punished for it</b>. Children have a right to a non-violent upbringing (Section 1631 of the Civil Code). Hitting is bodily harm.<br><br>It is not a private family matter that is nobody else’s business. The state protects children.", uk: "Хто в Німеччині бʼє дитину, <b>може бути за це покараний</b>. Діти мають право на виховання без насильства (§ 1631 Цивільного кодексу). Побиття — це тілесне ушкодження.<br><br>Це не приватна сімейна справа, яка нікого не стосується. Держава захищає дітей.", ru: "Кто в Германии бьёт ребёнка, <b>может быть за это наказан</b>. Дети имеют право на воспитание без насилия (§ 1631 Гражданского кодекса). Побои — это телесное повреждение.<br><br>Это не частное семейное дело, которое никого не касается. Государство защищает детей." },
   },
   {
     id: "lid_252",
@@ -3475,7 +3475,7 @@ var QUIZ = [
       { de: "darf man nicht wieder heiraten, wenn man einmal verheiratet war.", en: "", uk: "", ru: "" },
       { de: "darf eine Frau nicht wieder heiraten, wenn ihr Mann gestorben ist.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Deutschland darf man <b>nur mit einer Partnerin/einem Partner gleichzeitig verheiratet</b> sein. Mehrere Ehen gleichzeitig (Bigamie) sind strafbar.<br><br>Nach einer Scheidung oder wenn der Ehepartner gestorben ist, darf man wieder heiraten.", en: "In Germany you may be <b>married to only one partner at a time</b>. Several marriages at the same time (bigamy) are punishable.<br><br>After a divorce or if the spouse has died, you may marry again.", uk: "У Німеччині можна бути <b>одруженим лише з однією особою водночас</b>. Кілька шлюбів одночасно (бігамія) караються законом.<br><br>Після розлучення або якщо чоловік/дружина помер(ла), можна одружитися знову.", ru: "В Германии можно состоять <b>в браке только с одним партнёром одновременно</b>. Несколько браков одновременно (бигамия) наказуемы.<br><br>После развода или если супруг умер, можно снова вступить в брак." },
   },
   {
     id: "lid_253",
@@ -3488,7 +3488,7 @@ var QUIZ = [
       { de: "beim Ordnungsamt", en: "", uk: "", ru: "" },
       { de: "beim Gewerbeamt", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Beim Umzug meldet man sich beim <b>Einwohnermeldeamt</b> an, meistens innerhalb von zwei Wochen (Meldepflicht).<br><br>Das Standesamt ist für Heirat und Geburten zuständig. Das Ordnungsamt kümmert sich um die öffentliche Ordnung, das Gewerbeamt um die Anmeldung eines Gewerbes.", en: "When you move house, you register at the <b>residents’ registration office</b>, usually within two weeks (registration obligation).<br><br>The registry office is responsible for marriages and births. The public order office looks after public order, and the trade office after registering a business.", uk: "Під час переїзду реєструються у <b>відділі реєстрації місця проживання</b>, здебільшого протягом двох тижнів (обовʼязок реєстрації).<br><br>РАЦС відповідає за шлюби й народження. Відділ громадського порядку відповідає за громадський порядок, а відділ торгівлі — за реєстрацію підприємницької діяльності.", ru: "При переезде регистрируются в <b>отделе регистрации по месту жительства</b>, как правило в течение двух недель (обязанность регистрации).<br><br>ЗАГС отвечает за браки и рождения. Отдел общественного порядка отвечает за общественный порядок, а отдел торговли — за регистрацию предпринимательской деятельности." },
   },
   {
     id: "lid_254",
@@ -3501,7 +3501,7 @@ var QUIZ = [
       { de: "Das Besuchsrecht für die Kinder gilt ein Jahr.", en: "", uk: "", ru: "" },
       { de: "Die Ehegatten führen mindestens ein Jahr getrennt ihr eigenes Leben. Danach ist die Scheidung möglich.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Trennungsjahr</b> bedeutet: Die Ehegatten <b>leben mindestens ein Jahr getrennt</b> und führen ihr eigenes Leben. Danach kann man in der Regel geschieden werden.<br><br>Mit der Dauer des Scheidungsprozesses, der Ehedauer oder dem Besuchsrecht hat das Wort nichts zu tun.", en: "<b>Separation year</b> means: the spouses <b>live apart for at least one year</b> and lead their own lives. After that they can normally be divorced.<br><br>The word has nothing to do with the length of the divorce proceedings, the length of the marriage or visiting rights.", uk: "<b>Рік роздільного проживання</b> означає: подружжя <b>живе окремо щонайменше один рік</b> і веде власне життя. Після цього, як правило, можна розлучитися.<br><br>Це слово не має нічого спільного з тривалістю розлучення, тривалістю шлюбу чи правом на відвідування.", ru: "<b>Год раздельного проживания</b> означает: супруги <b>живут раздельно не менее одного года</b> и ведут собственную жизнь. После этого, как правило, можно развестись.<br><br>Это слово не имеет ничего общего с продолжительностью развода, продолжительностью брака или правом на посещения." },
   },
   {
     id: "lid_255",
@@ -3514,7 +3514,7 @@ var QUIZ = [
       { de: "Jugendamt.", en: "", uk: "", ru: "", correct: true },
       { de: "Gesundheitsamt.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bei Erziehungsproblemen helfen Eltern das <b>Jugendamt</b>. Dort gibt es Beratung und Unterstützung für Familien.<br><br>Das Ordnungsamt, das Schulamt und das Gesundheitsamt haben andere Aufgaben.", en: "In the case of problems with bringing up children, the <b>youth welfare office</b> helps parents. There is advice and support for families there.<br><br>The public order office, the school authority and the public health office have other tasks.", uk: "У разі проблем із вихованням батькам допомагає <b>служба у справах дітей і молоді</b>. Там надають консультації та підтримку сімʼям.<br><br>Відділ громадського порядку, шкільне управління та відділ охорони здоровʼя мають інші завдання.", ru: "При проблемах с воспитанием родителям помогает <b>служба по делам детей и молодёжи</b>. Там предоставляют консультации и поддержку семьям.<br><br>Отдел общественного порядка, школьное управление и отдел здравоохранения имеют другие задачи." },
   },
   {
     id: "lid_256",
@@ -3527,7 +3527,7 @@ var QUIZ = [
       { de: "eine Genehmigung des Einwohnermeldeamts", en: "", uk: "", ru: "" },
       { de: "eine Gaststättenerlaubnis von der zuständigen Behörde", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Ein Restaurant braucht <b>eine Gaststättenerlaubnis von der zuständigen Behörde</b>. Sie wird zum Beispiel vom Ordnungsamt oder Gewerbeamt erteilt. So wird geprüft, ob Hygiene- und Sicherheitsvorschriften beachtet werden.<br><br>Die Polizei, Parteien und das Einwohnermeldeamt sind dafür nicht zuständig.", en: "A restaurant needs <b>a licence from the responsible authority</b>. It is issued, for example, by the public order office or the trade office. This checks whether hygiene and safety rules are observed.<br><br>The police, parties and the residents’ registration office are not responsible for this.", uk: "Ресторанові потрібен <b>дозвіл від компетентного органу</b>. Його видає, наприклад, відділ громадського порядку чи відділ торгівлі. Так перевіряють, чи дотримано правил гігієни та безпеки.<br><br>Поліція, партії та відділ реєстрації місця проживання за це не відповідають.", ru: "Ресторану нужно <b>разрешение от компетентного органа</b>. Его выдаёт, например, отдел общественного порядка или отдел торговли. Так проверяют, соблюдены ли правила гигиены и безопасности.<br><br>Полиция, партии и отдел регистрации по месту жительства за это не отвечают." },
   },
   {
     id: "lid_257",
@@ -3540,7 +3540,7 @@ var QUIZ = [
       { de: "einer Hauptschule.", en: "", uk: "", ru: "" },
       { de: "einer Privatuniversität.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Abitur kann man als Erwachsene/Erwachsener an einem <b>Abendgymnasium</b> nachholen (zweiter Bildungsweg). Man lernt am Abend und kann tagsüber arbeiten.<br><br>An einer Hochschule oder Privatuniversität studiert man erst mit dem Abitur. In der Hauptschule macht man einen niedrigeren Abschluss.", en: "You can catch up on the Abitur as an adult at an <b>evening grammar school</b> (the second route to education). You study in the evening and can work during the day.<br><br>At a university or private university you study only with the Abitur. In the Hauptschule you get a lower qualification.", uk: "Abitur дорослі можуть здобути пізніше у <b>вечірній гімназії</b> (другий освітній шлях). Навчаються ввечері, а вдень можна працювати.<br><br>У виші чи приватному університеті навчаються лише з Abitur. У базовій школі «Hauptschule» здобувають нижчий рівень освіти.", ru: "Abitur взрослые могут получить позже в <b>вечерней гимназии</b> (второй образовательный путь). Учатся вечером, а днём можно работать.<br><br>В вузе или частном университете учатся только с Abitur. В базовой школе «Hauptschule» получают более низкий уровень образования." },
   },
   {
     id: "lid_258",
@@ -3553,7 +3553,7 @@ var QUIZ = [
       { de: "Es bezahlt das Kindergeld an die Eltern.", en: "", uk: "", ru: "" },
       { de: "Es kontrolliert, ob das Kind einen Kindergarten besucht.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Jugendamt <b>kann ein Kind aus der Familie nehmen</b>, wenn das Kind geschlagen wird oder hungern muss. Das nennt man Inobhutnahme. So schützt der Staat das Kindeswohl.<br><br>Das Jugendamt entscheidet nicht über die Schule, zahlt das Kindergeld nicht (das macht die Familienkasse) und kontrolliert nicht den Kindergartenbesuch.", en: "The youth welfare office <b>can take a child out of the family</b> if the child is being beaten or has to go hungry. This is called taking into care. In this way the state protects the child’s welfare.<br><br>The youth welfare office does not decide about school, does not pay child benefit (the family benefits office does that) and does not check kindergarten attendance.", uk: "Служба у справах дітей і молоді <b>може забрати дитину з родини</b>, якщо дитину бʼють або вона голодує. Це називається взяттям під опіку. Так держава захищає добробут дитини.<br><br>Ця служба не вирішує питань школи, не виплачує допомоги на дітей (це робить сімейна каса) і не контролює відвідування дитячого садка.", ru: "Служба по делам детей и молодёжи <b>может забрать ребёнка из семьи</b>, если ребёнка бьют или он голодает. Это называется взятием под опеку. Так государство защищает благополучие ребёнка.<br><br>Эта служба не решает вопросы школы, не выплачивает пособие на детей (это делает семейная касса) и не контролирует посещение детского сада." },
   },
   {
     id: "lid_259",
@@ -3566,7 +3566,7 @@ var QUIZ = [
       { de: "Steuererklärung.", en: "", uk: "", ru: "" },
       { de: "Krankenversicherung.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das <b>Berufsinformationszentrum (BIZ)</b> der Bundesagentur für Arbeit hilft bei der Berufswahl und bei der <b>Lehrstellensuche</b>.<br><br>Zur Rentenberechnung berät die Rentenversicherung, bei der Steuererklärung das Finanzamt oder eine Steuerberaterin/ein Steuerberater, und bei der Krankenversicherung die Krankenkasse.", en: "The <b>Careers Information Centre (BIZ)</b> of the Federal Employment Agency helps with choosing a career and with <b>finding an apprenticeship</b>.<br><br>The pension insurance advises on pension calculation, the tax office or a tax adviser on tax returns, and the health insurance fund on health insurance.", uk: "<b>Центр інформації про професії (BIZ)</b> Федерального агентства з питань праці допомагає з вибором професії та <b>пошуком місця навчання</b>.<br><br>З розрахунку пенсії консультує пенсійне страхування, із податкової декларації — податкова інспекція чи податковий консультант/податкова консультантка, а з медичного страхування — лікарняна каса.", ru: "<b>Центр информации о профессиях (BIZ)</b> Федерального агентства по труду помогает с выбором профессии и <b>поиском места обучения</b>.<br><br>По расчёту пенсии консультирует пенсионное страхование, по налоговой декларации — налоговая инспекция или налоговый консультант, а по медицинскому страхованию — больничная касса." },
   },
   {
     id: "lid_260",
@@ -3579,7 +3579,7 @@ var QUIZ = [
       { de: "Anspruch auf Schulgeld.", en: "", uk: "", ru: "" },
       { de: "Anwesenheitspflicht.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Deutschland gilt die Schulpflicht, deshalb haben Kinder <b>Anwesenheitspflicht</b>: Sie müssen zur Schule gehen.<br><br>Unbegrenzte Freizeit und freie Fächerwahl gibt es nicht. Öffentliche Schulen kosten kein Schulgeld.", en: "In Germany compulsory schooling applies, so children have a <b>duty of attendance</b>: they have to go to school.<br><br>There is no unlimited free time and no free choice of subjects. Public schools do not charge school fees.", uk: "У Німеччині діє обовʼязкова шкільна освіта, тому діти мають <b>обовʼязок відвідувати школу</b>: вони мусять ходити до школи.<br><br>Необмеженого вільного часу й вільного вибору предметів немає. Державні школи не стягують плати за навчання.", ru: "В Германии действует обязательное школьное образование, поэтому дети обязаны <b>посещать школу</b>: они должны ходить в школу.<br><br>Неограниченного свободного времени и свободного выбора предметов нет. Государственные школы не берут платы за обучение." },
   },
   {
     id: "lid_261",
@@ -3592,7 +3592,7 @@ var QUIZ = [
       { de: "einer Hauptschule.", en: "", uk: "", ru: "" },
       { de: "einer Privatuniversität.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Abitur kann man auch mit 30 Jahren an einem <b>Abendgymnasium</b> nachholen.<br><br>Eine Hochschule oder Privatuniversität setzt das Abitur voraus. In der Hauptschule macht man einen niedrigeren Abschluss.", en: "You can also catch up on the Abitur at 30 at an <b>evening grammar school</b>.<br><br>A university or private university requires the Abitur. In the Hauptschule you get a lower qualification.", uk: "Abitur можна здобути пізніше й у 30 років у <b>вечірній гімназії</b>.<br><br>Виш чи приватний університет вимагає Abitur. У базовій школі «Hauptschule» здобувають нижчий рівень освіти.", ru: "Abitur можно получить позже и в 30 лет в <b>вечерней гимназии</b>.<br><br>Вуз или частный университет требует Abitur. В базовой школе «Hauptschule» получают более низкий уровень образования." },
   },
   {
     id: "lid_262",
@@ -3605,7 +3605,7 @@ var QUIZ = [
       { de: "Niemand darf gegen Personen klagen, wenn sie benachteiligt wurden.", en: "", uk: "", ru: "" },
       { de: "Es ist für alle Gesetz, benachteiligten Gruppen jährlich Geld zu spenden.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Gleichbehandlung bedeutet: <b>Niemand darf</b> zum Beispiel wegen einer Behinderung <b>benachteiligt werden</b>. Das steht im Allgemeinen Gleichbehandlungsgesetz (AGG).<br><br>Man darf andere nicht aus persönlichen Gründen benachteiligen, und man darf klagen, wenn man benachteiligt wurde. Eine jährliche Spendenpflicht gibt es nicht.", en: "Equal treatment means: <b>nobody may</b>, for example because of a disability, <b>be disadvantaged</b>. This is in the General Equal Treatment Act (AGG).<br><br>You may not disadvantage others for personal reasons, and you may sue if you have been disadvantaged. There is no annual duty to donate.", uk: "Рівне ставлення означає: <b>нікого не можна</b>, наприклад через інвалідність, <b>дискримінувати</b>. Це закріплено в Загальному законі про рівне ставлення (AGG).<br><br>Не можна ставити інших у гірше становище з особистих причин, а якщо тебе дискримінували, можна подати до суду. Щорічного обовʼязку жертвувати немає.", ru: "Равное обращение означает: <b>никого нельзя</b>, например из-за инвалидности, <b>ставить в неблагоприятное положение</b>. Это закреплено в Общем законе о равном обращении (AGG).<br><br>Нельзя ставить других в неблагоприятное положение по личным причинам, а если тебя ущемили, можно подать в суд. Ежегодной обязанности жертвовать нет." },
   },
   {
     id: "lid_263",
@@ -3618,7 +3618,7 @@ var QUIZ = [
       { de: "teilen die Strafe mit ihren Eltern.", en: "", uk: "", ru: "" },
       { de: "werden nicht bestraft.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Ab 14 Jahren sind Jugendliche strafmündig: Wenn sie gegen Strafgesetze verstoßen, <b>werden sie bestraft</b>. Für sie gilt aber das Jugendstrafrecht, das auf Erziehung zielt.<br><br>Sie werden nicht wie Erwachsene behandelt, und die Eltern teilen die Strafe nicht. Es ist falsch, dass sie nicht bestraft werden.", en: "From the age of 14, young people are criminally responsible: if they break criminal laws, <b>they are punished</b>. However, juvenile criminal law applies to them, which aims at education.<br><br>They are not treated like adults, and the parents do not share the punishment. It is wrong that they are not punished.", uk: "З 14 років підлітки підлягають кримінальній відповідальності: якщо вони порушують кримінальні закони, <b>їх карають</b>. Але до них застосовують ювенальне кримінальне право, яке націлене на виховання.<br><br>До них ставляться не так, як до дорослих, і батьки не розділяють покарання. Неправильно, що їх не карають.", ru: "С 14 лет подростки подлежат уголовной ответственности: если они нарушают уголовные законы, <b>их наказывают</b>. Но к ним применяют ювенальное уголовное право, которое нацелено на воспитание.<br><br>К ним относятся не так, как ко взрослым, и родители не делят наказание. Неправильно, что их не наказывают." },
   },
   {
     id: "lid_264",
@@ -3631,7 +3631,7 @@ var QUIZ = [
       { de: "beim Oktoberfest", en: "", uk: "", ru: "" },
       { de: "an Pfingsten", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Am <b>Rosenmontag</b> tragen Menschen im Karneval (Fasching) bunte Kostüme und Masken.<br><br>Der 1. Mai ist der Tag der Arbeit. Beim Oktoberfest trägt man oft Tracht, und Pfingsten ist ein christliches Fest.", en: "On <b>Rose Monday</b>, in German “Rosenmontag”, people wear colourful costumes and masks at carnival.<br><br>1 May is Labour Day. At the Oktoberfest people often wear traditional costume, and Pentecost is a Christian festival.", uk: "У <b>Rosenmontag</b>, тобто «трояндовий понеділок», люди на карнавалі вдягають різнокольорові костюми й маски.<br><br>1 травня — День праці. На Октоберфесті часто носять народний одяг, а Пʼятидесятниця — християнське свято.", ru: "В <b>Rosenmontag</b>, то есть «розовый понедельник», люди на карнавале надевают разноцветные костюмы и маски.<br><br>1 мая — День труда. На Октоберфесте часто носят народную одежду, а Пятидесятница — христианский праздник." },
   },
   {
     id: "lid_265",
@@ -3644,7 +3644,7 @@ var QUIZ = [
       { de: "zur Agentur für Arbeit", en: "", uk: "", ru: "" },
       { de: "zum Standesamt", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wer heiraten möchte, geht zuerst zum <b>Standesamt</b>. Dort meldet man die Eheschließung an.<br><br>Das Einwohnermeldeamt ist für den Wohnsitz zuständig, das Ordnungsamt für die öffentliche Ordnung und die Agentur für Arbeit für Arbeit und Arbeitslosigkeit.", en: "Anyone who wants to get married goes first to the <b>registry office</b>. There you register the marriage.<br><br>The residents’ registration office is responsible for your place of residence, the public order office for public order, and the employment agency for work and unemployment.", uk: "Хто хоче одружитися, спершу йде до <b>РАЦСу</b>. Там подають заяву про одруження.<br><br>Відділ реєстрації місця проживання відповідає за місце проживання, відділ громадського порядку — за громадський порядок, а агентство праці — за роботу й безробіття.", ru: "Кто хочет вступить в брак, сначала идёт в <b>ЗАГС</b>. Там подают заявление о заключении брака.<br><br>Отдел регистрации по месту жительства отвечает за место жительства, отдел общественного порядка — за общественный порядок, а агентство по труду — за работу и безработицу." },
   },
   {
     id: "lid_266",
@@ -3657,7 +3657,7 @@ var QUIZ = [
       { de: "um 0 Uhr, Mitternacht", en: "", uk: "", ru: "" },
       { de: "um 22 Uhr", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die gesetzliche Nachtruhe beginnt <b>um 22 Uhr</b>. Dann muss es leise sein, bis zum Morgen.<br><br>Sonnenuntergang, der Schlaf der Nachbarinnen und Nachbarn und Mitternacht sind keine Regeln für die Nachtruhe.", en: "The statutory night’s rest begins <b>at 10 p.m.</b> Then it has to be quiet until morning.<br><br>Sunset, the neighbours’ sleep and midnight are not rules for the night’s rest.", uk: "Законний нічний спокій починається <b>о 22:00</b>. Тоді має бути тихо до ранку.<br><br>Захід сонця, сон сусідів і північ не є правилами нічного спокою.", ru: "Законный ночной покой начинается <b>в 22:00</b>. Тогда должно быть тихо до утра.<br><br>Закат, сон соседей и полночь не являются правилами ночного покоя." },
   },
   {
     id: "lid_267",
@@ -3670,7 +3670,7 @@ var QUIZ = [
       { de: "Sie können zur Polizei gehen und die Tochter anzeigen.", en: "", uk: "", ru: "" },
       { de: "Sie suchen einen anderen Mann für die Tochter.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Tochter ist 22 und damit volljährig. Sie darf selbst entscheiden, mit wem sie lebt. Die Eltern <b>müssen ihre Entscheidung respektieren</b>.<br><br>Die Eltern dürfen sie nicht zurückholen und nicht anzeigen, denn es ist keine Straftat. Sie dürfen auch keinen Mann für sie aussuchen.", en: "The daughter is 22 and therefore of full age. She may decide for herself whom she lives with. The parents <b>must respect her decision</b>.<br><br>The parents may not bring her back and may not report her, because it is not a crime. They may also not choose a husband for her.", uk: "Дочці 22 роки, тож вона повнолітня. Вона сама може вирішувати, з ким жити. Батьки <b>мусять поважати її рішення</b>.<br><br>Батьки не можуть повернути її силою і не можуть подати на неї заяву, бо це не злочин. Вони також не можуть добирати їй чоловіка.", ru: "Дочери 22 года, поэтому она совершеннолетняя. Она сама может решать, с кем жить. Родители <b>должны уважать её решение</b>.<br><br>Родители не могут вернуть её силой и не могут подать на неё заявление, потому что это не преступление. Они также не могут подбирать ей мужа." },
   },
   {
     id: "lid_268",
@@ -3683,7 +3683,7 @@ var QUIZ = [
       { de: "Sie muss den Führerschein in dem Land machen, in dem man ihre Sprache spricht.", en: "", uk: "", ru: "" },
       { de: "Sie kann die Theorie-Prüfung vielleicht in ihrer Muttersprache machen. Es gibt mehr als zehn Sprachen zur Auswahl.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Sie kann die <b>Theorieprüfung vielleicht in ihrer Muttersprache</b> machen. Es gibt die Prüfung in mehr als zehn Sprachen.<br><br>Man muss nicht zehn Jahre in Deutschland leben und kann den Führerschein auch ohne perfektes Deutsch machen. Die Prüfung muss man nicht im Herkunftsland machen.", en: "She <b>may be able to take the theory test in her mother tongue</b>. The test is available in more than ten languages.<br><br>You do not have to live in Germany for ten years, and you can also get a driving licence without perfect German. You do not have to take the test in your country of origin.", uk: "Вона <b>може мати змогу скласти теоретичний іспит рідною мовою</b>. Іспит доступний більш ніж десятьма мовами.<br><br>Не треба жити в Німеччині десять років, і водійське посвідчення можна отримати й без досконалої німецької. Іспит не обовʼязково складати в країні походження.", ru: "Она <b>может иметь возможность сдать теоретический экзамен на родном языке</b>. Экзамен доступен более чем на десяти языках.<br><br>Не нужно жить в Германии десять лет, и водительские права можно получить и без безупречного немецкого. Экзамен не обязательно сдавать в стране происхождения." },
   },
   {
     id: "lid_269",
@@ -3696,7 +3696,7 @@ var QUIZ = [
       { de: "einen Kindergartenplatz.", en: "", uk: "", ru: "", correct: true },
       { de: "einen Ferienpass.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Ab dem Alter von drei Jahren hat ein Kind <b>einen Anspruch auf einen Kindergartenplatz</b>. Das ist ein Rechtsanspruch.<br><br>Taschengeld, einen Sportvereinsplatz oder einen Ferienpass gibt es nicht als gesetzlichen Anspruch.", en: "From the age of three, a child has <b>a right to a kindergarten place</b>. That is a legal entitlement.<br><br>Pocket money, a place in a sports club or a holiday pass are not a legal entitlement.", uk: "З трьох років дитина має <b>право на місце в дитячому садку</b>. Це юридично закріплене право.<br><br>Кишенькові гроші, місце в спортивному клубі чи канікулярна картка не є законним правом.", ru: "С трёх лет ребёнок имеет <b>право на место в детском саду</b>. Это юридически закреплённое право.<br><br>Карманные деньги, место в спортивном клубе или каникулярная карта не являются законным правом." },
   },
   {
     id: "lid_270",
@@ -3709,7 +3709,7 @@ var QUIZ = [
       { de: "zur Weiterbildung.", en: "", uk: "", ru: "", correct: true },
       { de: "nur für Rentnerinnen und Rentner.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>Volkshochschule</b> ist eine Einrichtung zur <b>Weiterbildung</b>. Dort können Erwachsene Kurse besuchen, zum Beispiel Sprachen oder Computer.<br><br>Sie ist nicht für den Religionsunterricht und nicht nur für Jugendliche oder Rentnerinnen und Rentner da, sondern für alle Altersgruppen.", en: "The <b>adult education centre</b>, in German “Volkshochschule”, is an institution for <b>further education</b>. Adults can attend courses there, for example in languages or computing.<br><br>It is not for religious education, and not only for young people or pensioners, but for all age groups.", uk: "<b>Народний університет</b>, німецькою «Volkshochschule», — це заклад для <b>підвищення кваліфікації й освіти дорослих</b>. Там дорослі можуть відвідувати курси, наприклад мов чи компʼютера.<br><br>Він не призначений для релігійного навчання і не лише для молоді чи пенсіонерів, а для всіх вікових груп.", ru: "<b>Народный университет</b>, по-немецки «Volkshochschule», — это учреждение для <b>повышения квалификации и образования взрослых</b>. Там взрослые могут посещать курсы, например языков или компьютера.<br><br>Он не предназначен для религиозного обучения и не только для молодёжи или пенсионеров, а для всех возрастных групп." },
   },
   {
     id: "lid_271",
@@ -3722,7 +3722,7 @@ var QUIZ = [
       { de: "sich mit Masken und Kostümen verkleiden", en: "", uk: "", ru: "" },
       { de: "Kürbisse vor die Tür stellen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Zu Weihnachten schmückt man in Deutschland einen <b>Tannenbaum</b> (Weihnachtsbaum).<br><br>Bunte Eier versteckt man zu Ostern, Kostüme und Masken trägt man im Karneval, und Kürbisse vor der Tür gehören zu Halloween.", en: "At Christmas people in Germany decorate a <b>fir tree</b> (Christmas tree).<br><br>Coloured eggs are hidden at Easter, costumes and masks are worn at carnival, and pumpkins outside the door belong to Halloween.", uk: "На Різдво в Німеччині прикрашають <b>ялинку</b> (різдвяну ялинку).<br><br>Кольорові яйця ховають на Великдень, костюми й маски вдягають на карнавалі, а гарбузи перед дверима належать до Гелловіна.", ru: "На Рождество в Германии украшают <b>ёлку</b> (рождественскую ёлку).<br><br>Цветные яйца прячут на Пасху, костюмы и маски надевают на карнавале, а тыквы перед дверью относятся к Хэллоуину." },
   },
   {
     id: "lid_272",
@@ -3735,7 +3735,7 @@ var QUIZ = [
       { de: "Ein alleinerziehender Vater lebt mit seinen zwei Kindern zusammen.", en: "", uk: "", ru: "" },
       { de: "Ein Mann ist mit zwei Frauen zur selben Zeit verheiratet.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Nicht erlaubt ist es, <b>mit zwei Frauen zur selben Zeit verheiratet zu sein</b>. Das ist Bigamie.<br><br>Erlaubt sind Patchwork-Familien (geschiedene Eltern mit neuen Partnern), gleichgeschlechtliche Paare und alleinerziehende Väter oder Mütter.", en: "What is not allowed is <b>being married to two women at the same time</b>. That is bigamy.<br><br>What is allowed: patchwork families (divorced parents with new partners), same-sex couples and single fathers or mothers.", uk: "Не дозволено <b>бути одруженим з двома жінками водночас</b>. Це бігамія.<br><br>Дозволені патчворк-сімʼї (розлучені батьки з новими партнерами), одностатеві пари й батьки чи матері-одинаки.", ru: "Не разрешается <b>быть женатым на двух женщинах одновременно</b>. Это бигамия.<br><br>Разрешены патчворк-семьи (разведённые родители с новыми партнёрами), однополые пары и отцы или матери-одиночки." },
   },
   {
     id: "lid_273",
@@ -3748,7 +3748,7 @@ var QUIZ = [
       { de: "zum Einwohnermeldeamt.", en: "", uk: "", ru: "" },
       { de: "zum Jugendamt.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bei Erziehungsproblemen geht man zum <b>Jugendamt</b>. Es berät und unterstützt Familien.<br><br>Die Ärztin/der Arzt, das Gesundheitsamt und das Einwohnermeldeamt haben andere Aufgaben.", en: "For problems with bringing up children, you go to the <b>youth welfare office</b>. It advises and supports families.<br><br>The doctor, the public health office and the residents’ registration office have other tasks.", uk: "У разі проблем із вихованням звертаються до <b>служби у справах дітей і молоді</b>. Вона консультує й підтримує сімʼї.<br><br>Лікар/лікарка, відділ охорони здоровʼя та відділ реєстрації місця проживання мають інші завдання.", ru: "При проблемах с воспитанием обращаются в <b>службу по делам детей и молодёжи</b>. Она консультирует и поддерживает семьи.<br><br>Врач, отдел здравоохранения и отдел регистрации по месту жительства имеют другие задачи." },
   },
   {
     id: "lid_274",
@@ -3761,7 +3761,7 @@ var QUIZ = [
       { de: "die Schweigepflicht", en: "", uk: "", ru: "" },
       { de: "die Meinungsfreiheit", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wer absichtlich einen fremden Brief öffnet, verletzt das <b>Briefgeheimnis</b>. Es steht im Grundgesetz (Art. 10 GG) und schützt Briefe, Post und Telekommunikation.<br><br>Die Schweigepflicht gilt für bestimmte Berufe, und ein „Schweigerecht“ ist hier kein Begriff. Mit der Meinungsfreiheit hat das nichts zu tun.", en: "Anyone who deliberately opens someone else’s letter violates the <b>secrecy of correspondence</b>. It is in the Basic Law (Art. 10 GG) and protects letters, post and telecommunications.<br><br>The duty of confidentiality applies to certain professions, and a “Schweigerecht” is not a term here. This has nothing to do with freedom of expression.", uk: "Хто навмисно відкриває чужий лист, порушує <b>таємницю листування</b>. Вона закріплена в Основному законі (ст. 10 GG) і захищає листи, пошту та телекомунікації.<br><br>Обовʼязок зберігати таємницю діє для певних професій, а «Schweigerecht» тут не є поняттям. До свободи слова це не має стосунку.", ru: "Кто намеренно вскрывает чужое письмо, нарушает <b>тайну переписки</b>. Она закреплена в Основном законе (ст. 10 GG) и защищает письма, почту и телекоммуникации.<br><br>Обязанность хранить тайну действует для определённых профессий, а «Schweigerecht» здесь не является понятием. К свободе слова это не имеет отношения." },
   },
   {
     id: "lid_275",
@@ -3774,7 +3774,7 @@ var QUIZ = [
       { de: "die Einwilligung der Kinder", en: "", uk: "", ru: "" },
       { de: "die Unterstützung einer Anwältin/eines Anwalts", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Für eine Ehescheidung braucht man <b>die Unterstützung einer Anwältin/eines Anwalts</b>. Mindestens ein Ehegatte muss sich vor dem Familiengericht anwaltlich vertreten lassen.<br><br>Die Einwilligung der Eltern oder Kinder und ein ärztliches Attest sind nicht nötig.", en: "For a divorce you need <b>the support of a lawyer</b>. At least one spouse must be represented by a lawyer before the family court.<br><br>The consent of the parents or children and a medical certificate are not necessary.", uk: "Для розлучення потрібна <b>підтримка адвоката/адвокатки</b>. Принаймні один із подружжя мусить мати адвоката/адвокатку в сімейному суді.<br><br>Згода батьків чи дітей та медична довідка не потрібні.", ru: "Для развода нужна <b>поддержка адвоката</b>. Как минимум один из супругов должен иметь адвоката в семейном суде.<br><br>Согласие родителей или детей и медицинская справка не нужны." },
   },
   {
     id: "lid_276",
@@ -3787,7 +3787,7 @@ var QUIZ = [
       { de: "Ich drohe der Person.", en: "", uk: "", ru: "" },
       { de: "Ich kann mich bei der Behördenleiterin/beim Behördenleiter beschweren.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Wenn man in einer Behörde schlecht behandelt wird, kann man sich <b>bei der Behördenleiterin/beim Behördenleiter beschweren</b>.<br><br>Man ist nicht machtlos und muss sich schlechte Behandlung nicht gefallen lassen. Drohungen sind falsch und strafbar.", en: "If you are treated badly in an authority, you can <b>complain to the head of the authority</b>.<br><br>You are not powerless and do not have to put up with bad treatment. Threats are wrong and punishable.", uk: "Якщо в установі з вами погано поводяться, можна <b>поскаржитися керівникові/керівниці установи</b>.<br><br>Ви не безсилі й не мусите миритися з поганим ставленням. Погрози неправильні й караються законом.", ru: "Если в учреждении с вами плохо обращаются, можно <b>пожаловаться руководителю учреждения</b>.<br><br>Вы не бессильны и не обязаны мириться с плохим обращением. Угрозы неправильны и наказуемы." },
   },
   {
     id: "lid_277",
@@ -3800,7 +3800,7 @@ var QUIZ = [
       { de: "keine Erfahrungen in diesem Beruf hat.", en: "", uk: "", ru: "" },
       { de: "Mutter ist.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Es ist <b>Diskriminierung</b>, wenn die Frau die Stelle nur deshalb nicht bekommt, weil sie <b>Mutter ist</b>. Das verbietet das Gleichbehandlungsgesetz (AGG).<br><br>Fehlende Englischkenntnisse, zu hohe Gehaltsvorstellungen oder keine Berufserfahrung sind sachliche Gründe. Sie sind keine Diskriminierung.", en: "It is <b>discrimination</b> if the woman does not get the job only because she <b>is a mother</b>. The General Equal Treatment Act (AGG) forbids this.<br><br>Lack of English skills, salary expectations that are too high or no work experience are objective reasons. They are not discrimination.", uk: "Це <b>дискримінація</b>, якщо жінка не отримує посаду лише тому, що вона <b>мати</b>. Це забороняє Загальний закон про рівне ставлення (AGG).<br><br>Відсутність знань англійської, надто високі очікування щодо зарплати чи відсутність досвіду роботи — обʼєктивні причини. Це не дискримінація.", ru: "Это <b>дискриминация</b>, если женщина не получает должность только потому, что она <b>мать</b>. Это запрещает Общий закон о равном обращении (AGG).<br><br>Отсутствие знаний английского, слишком высокие ожидания по зарплате или отсутствие опыта работы — объективные причины. Это не дискриминация." },
   },
   {
     id: "lid_278",
@@ -3813,7 +3813,7 @@ var QUIZ = [
       { de: "zu hohe Gehaltsvorstellungen hat.", en: "", uk: "", ru: "" },
       { de: "kein Englisch spricht.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Es ist <b>Diskriminierung</b>, wenn der Mann die Stelle nur deshalb nicht bekommt, weil er <b>im Rollstuhl sitzt</b>. Eine Behinderung darf kein Grund für eine Ablehnung sein (AGG). Als Buchhalter kann er sitzend arbeiten.<br><br>Fehlende Erfahrung, zu hohe Gehaltsvorstellungen oder fehlende Englischkenntnisse sind sachliche Gründe.", en: "It is <b>discrimination</b> if the man does not get the job only because he <b>uses a wheelchair</b>. A disability must not be a reason for rejection (AGG). As an accountant he can work seated.<br><br>Lack of experience, salary expectations that are too high or lack of English skills are objective reasons.", uk: "Це <b>дискримінація</b>, якщо чоловік не отримує посаду лише тому, що він <b>користується інвалідним візком</b>. Інвалідність не може бути причиною відмови (AGG). Бухгалтером він може працювати сидячи.<br><br>Відсутність досвіду, надто високі очікування щодо зарплати чи відсутність знань англійської — обʼєктивні причини.", ru: "Это <b>дискриминация</b>, если мужчина не получает должность только потому, что он <b>пользуется инвалидной коляской</b>. Инвалидность не может быть причиной отказа (AGG). Бухгалтером он может работать сидя.<br><br>Отсутствие опыта, слишком высокие ожидания по зарплате или отсутствие знаний английского — объективные причины." },
   },
   {
     id: "lid_279",
@@ -3826,7 +3826,7 @@ var QUIZ = [
       { de: "Regeln, an die sich alle Bewohnerinnen und Bewohner halten müssen.", en: "", uk: "", ru: "", correct: true },
       { de: "die Adresse des nächsten Ordnungsamtes.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Eine <b>Hausordnung</b> nennt <b>Regeln, an die sich alle Bewohnerinnen und Bewohner halten müssen</b>, zum Beispiel Ruhezeiten oder Treppenhausreinigung.<br><br>Sie nennt keine Regeln für öffentliche Verkehrsmittel, keine Liste aller Mieter und keine Adresse des Ordnungsamtes.", en: "A <b>house rules</b> notice lists <b>rules that all residents must follow</b>, for example quiet hours or cleaning the stairwell.<br><br>It does not give rules for public transport, a list of all tenants or the address of the public order office.", uk: "<b>Правила внутрішнього розпорядку будинку</b> містять <b>правила, яких мають дотримуватися всі мешканці</b>, наприклад години тиші чи прибирання сходової клітки.<br><br>Вони не містять правил для громадського транспорту, списку всіх орендарів чи адреси відділу громадського порядку.", ru: "<b>Правила внутреннего распорядка дома</b> содержат <b>правила, которых должны придерживаться все жильцы</b>, например часы тишины или уборку лестничной клетки.<br><br>Они не содержат правил для общественного транспорта, списка всех арендаторов или адреса отдела общественного порядка." },
   },
   {
     id: "lid_280",
@@ -3839,7 +3839,7 @@ var QUIZ = [
       { de: "Einspruch einlegen.", en: "", uk: "", ru: "", correct: true },
       { de: "warten, bis ein anderer Bescheid kommt.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Gegen einen falschen Steuerbescheid muss man <b>Einspruch einlegen</b>. Dafür gibt es eine Frist von einem Monat.<br><br>Wer nichts macht, wird weiter den falschen Betrag zahlen müssen. Den Bescheid wegzuwerfen oder auf einen anderen zu warten, ändert nichts.", en: "Against an incorrect tax assessment you must <b>lodge an objection</b>. There is a time limit of one month.<br><br>If you do nothing, you will still have to pay the wrong amount. Throwing the assessment away or waiting for another one changes nothing.", uk: "Проти неправильного податкового повідомлення потрібно <b>подати заперечення</b>. На це є строк у один місяць.<br><br>Якщо нічого не робити, доведеться й далі сплачувати неправильну суму. Викинути повідомлення чи чекати на інше нічого не змінює.", ru: "Против неправильного налогового уведомления нужно <b>подать возражение</b>. На это есть срок в один месяц.<br><br>Если ничего не делать, придётся и дальше платить неправильную сумму. Выбросить уведомление или ждать другого ничего не меняет." },
   },
   {
     id: "lid_281",
@@ -3852,7 +3852,7 @@ var QUIZ = [
       { de: "Versammlungsfreiheit", en: "", uk: "", ru: "" },
       { de: "Freizügigkeit", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Es wird das Recht auf <b>Gleichbehandlung</b> verletzt. Niemand darf wegen seiner Hautfarbe benachteiligt werden (Art. 3 GG).<br><br>Meinungsfreiheit, Versammlungsfreiheit und Freizügigkeit sind andere Grundrechte, die hier nicht betroffen sind.", en: "The right to <b>equal treatment</b> is being violated. Nobody may be disadvantaged because of their skin colour (Art. 3 GG).<br><br>Freedom of expression, freedom of assembly and freedom of movement are other basic rights that are not affected here.", uk: "Порушується право на <b>рівне ставлення</b>. Нікого не можна ставити в гірше становище через колір шкіри (ст. 3 GG).<br><br>Свобода слова, свобода зібрань і свобода пересування — інші основні права, які тут не порушені.", ru: "Нарушается право на <b>равное обращение</b>. Никого нельзя ставить в неблагоприятное положение из-за цвета кожи (ст. 3 GG).<br><br>Свобода слова, свобода собраний и свобода передвижения — другие основные права, которые здесь не затронуты." },
   },
   {
     id: "lid_282",
@@ -3865,7 +3865,7 @@ var QUIZ = [
       { de: "Bibliotheksaufsicht", en: "", uk: "", ru: "" },
       { de: "Lehrerin/Lehrer", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Deutsche Staatsbürgerinnen und Staatsbürger müssen das Ehrenamt <b>Wahlhelferin/Wahlhelfer</b> übernehmen, wenn sie dazu aufgefordert werden. Nur mit einem wichtigen Grund kann man das ablehnen.<br><br>Trainerin/Trainer, Bibliotheksaufsicht oder Lehrerin/Lehrer sind freiwillige Tätigkeiten.", en: "German citizens must take on the voluntary office of <b>election helper</b> if they are asked to. You can refuse only with an important reason.<br><br>Coach, library supervisor or teacher are voluntary activities.", uk: "Громадяни Німеччини мусять прийняти почесну посаду <b>виборчого помічника/виборчої помічниці</b>, якщо їх про це просять. Відмовитися можна лише з поважної причини.<br><br>Тренер/тренерка, наглядач/наглядачка в бібліотеці чи вчитель/вчителька — добровільні заняття.", ru: "Граждане Германии обязаны принять почётную должность <b>помощника на выборах</b>, если их об этом просят. Отказаться можно только по уважительной причине.<br><br>Тренер, надзиратель в библиотеке или учитель — добровольные занятия." },
   },
   {
     id: "lid_283",
@@ -3878,7 +3878,7 @@ var QUIZ = [
       { de: "Ich schicke die Rechnung an die Behörde zurück.", en: "", uk: "", ru: "" },
       { de: "Ich gehe mit der Rechnung zum Finanzamt.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bei einer falschen Rechnung von einer Behörde <b>legt man Widerspruch bei der Behörde ein</b>.<br><br>Die Rechnung liegen zu lassen bringt Nachteile, weil Fristen laufen. Sie einfach zurückzuschicken ist kein rechtlicher Widerspruch. Das Finanzamt ist für andere Dinge zuständig.", en: "In the case of an incorrect bill from an authority, you <b>lodge an objection with the authority</b>.<br><br>Letting the bill lie has disadvantages, because deadlines are running. Simply sending it back is not a legal objection. The tax office is responsible for other matters.", uk: "У разі неправильного рахунку від органу влади <b>подають скаргу до самого органу</b>.<br><br>Залишити рахунок без руху невигідно, бо спливають строки. Просто повернути його — це не юридичне оскарження. Податкова інспекція відповідає за інші питання.", ru: "При неправильном счёте от органа власти <b>подают возражение в сам орган</b>.<br><br>Оставить счёт без движения невыгодно, потому что истекают сроки. Просто вернуть его — это не юридическое возражение. Налоговая инспекция отвечает за другие вопросы." },
   },
   {
     id: "lid_284",
@@ -3891,7 +3891,7 @@ var QUIZ = [
       { de: "Kinder lernen in der Schule alles, was im Beruf wichtig ist. Nach der Schule muss man nicht weiter lernen.", en: "", uk: "", ru: "" },
       { de: "Alle müssen früher aufhören zu arbeiten, weil sich alles ändert.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Anforderungen im Beruf ändern sich schnell. Deshalb müssen <b>Erwachsene auch nach der Ausbildung immer weiter lernen</b> (Weiterbildung, lebenslanges Lernen).<br><br>Es ist nicht egal, was man lernt, und die Schule vermittelt nicht alles fürs ganze Berufsleben. Man muss nicht früher aufhören zu arbeiten.", en: "Job requirements change quickly. That is why <b>adults must keep learning even after their training</b> (further training, lifelong learning).<br><br>It is not irrelevant what you learn, and school does not provide everything for a whole working life. You do not have to stop working earlier.", uk: "Вимоги до професій швидко змінюються. Тому <b>дорослі мусять учитися й після закінчення навчання</b> (підвищення кваліфікації, навчання впродовж життя).<br><br>Не байдуже, чого саме вчишся, і школа не дає всього на все професійне життя. Припиняти працювати раніше не потрібно.", ru: "Требования к профессиям быстро меняются. Поэтому <b>взрослые должны учиться и после окончания обучения</b> (повышение квалификации, обучение в течение всей жизни).<br><br>Не всё равно, чему именно учишься, и школа не даёт всего на всю профессиональную жизнь. Прекращать работать раньше не нужно." },
   },
   {
     id: "lid_285",
@@ -3904,7 +3904,7 @@ var QUIZ = [
       { de: "Beiträge zur Renten- und Krankenversicherung", en: "", uk: "", ru: "" },
       { de: "Umsatzsteuer", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die <b>Umsatzsteuer</b> wird nicht vom Gehalt abgezogen. Man zahlt sie beim Einkaufen, sie ist im Preis enthalten.<br><br>Lohnsteuer und die Beiträge zur Arbeitslosen-, Renten- und Krankenversicherung zieht die Arbeitgeberin/der Arbeitgeber direkt vom Gehalt ab.", en: "<b>Value-added tax</b>, in German “Umsatzsteuer”, is not deducted from your salary. You pay it when you shop; it is included in the price.<br><br>Wage tax and the contributions to unemployment, pension and health insurance are deducted directly from the salary by the employer.", uk: "<b>Податок на додану вартість</b>, німецькою «Umsatzsteuer», не утримують із зарплати. Його сплачують під час покупок, він включений у ціну.<br><br>Податок із заробітної плати та внески на страхування від безробіття, пенсійне й медичне роботодавець/роботодавиця утримує безпосередньо із зарплати.", ru: "<b>Налог на добавленную стоимость</b>, по-немецки «Umsatzsteuer», не удерживают из зарплаты. Его платят при покупках, он включён в цену.<br><br>Подоходный налог и взносы на страхование по безработице, пенсионное и медицинское работодатель удерживает непосредственно из зарплаты." },
   },
   {
     id: "lid_286",
@@ -3917,7 +3917,7 @@ var QUIZ = [
       { de: "die Betriebsgruppe", en: "", uk: "", ru: "" },
       { de: "das Betriebsmanagement", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der <b>Betriebsrat</b> vertritt die Arbeitnehmerinnen und Arbeitnehmer in einer Firma. Er hilft bei Problemen mit der Arbeitgeberin/dem Arbeitgeber. Die Beschäftigten wählen ihn.<br><br>Eine Betriebsprüferin/ein Betriebsprüfer kontrolliert für das Finanzamt, und das Management gehört zur Leitung der Firma.", en: "The <b>works council</b>, in German “Betriebsrat”, represents the employees in a company. It helps with problems with the employer. The employees elect it.<br><br>A company inspector checks on behalf of the tax office, and the management belongs to the leadership of the company.", uk: "<b>Рада працівників підприємства</b>, німецькою «Betriebsrat», представляє працівників у фірмі. Вона допомагає з проблемами з роботодавцем/роботодавицею. Її обирають працівники.<br><br>Перевіряючий/перевіряюча підприємство діє від імені податкової інспекції, а менеджмент належить до керівництва фірми.", ru: "<b>Совет работников предприятия</b>, по-немецки «Betriebsrat», представляет работников в фирме. Он помогает при проблемах с работодателем. Его избирают работники.<br><br>Проверяющий предприятие действует от имени налоговой инспекции, а менеджмент относится к руководству фирмы." },
   },
   {
     id: "lid_287",
@@ -3930,7 +3930,7 @@ var QUIZ = [
       { de: "die Kündigungsfrist", en: "", uk: "", ru: "", correct: true },
       { de: "die Versicherungspflicht", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Beim Beenden eines Arbeitsverhältnisses muss man die <b>Kündigungsfrist</b> beachten. Sie steht im Arbeitsvertrag oder im Gesetz.<br><br>Gehaltszahlung, Arbeitszeit und Versicherungspflicht sind andere Themen.", en: "When ending an employment relationship you must observe the <b>notice period</b>. It is in the employment contract or in the law.<br><br>Payment of salary, working hours and compulsory insurance are other topics.", uk: "Припиняючи трудові відносини, потрібно дотримуватися <b>строку попередження про звільнення</b>. Його зазначено в трудовому договорі або в законі.<br><br>Виплата зарплати, робочий час і обовʼязкове страхування — інші теми.", ru: "При прекращении трудовых отношений нужно соблюдать <b>срок предупреждения об увольнении</b>. Он указан в трудовом договоре или в законе.<br><br>Выплата зарплаты, рабочее время и обязательное страхование — другие темы." },
   },
   {
     id: "lid_288",
@@ -3943,7 +3943,7 @@ var QUIZ = [
       { de: "aus dem Grundgesetz der Bundesrepublik Deutschland", en: "", uk: "", ru: "" },
       { de: "aus der christlichen Tradition", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Deutschlands besondere Verantwortung für Israel kommt <b>aus den nationalsozialistischen Verbrechen gegen Juden</b>, vor allem aus dem Holocaust.<br><br>Die Mitgliedschaft in der EU, das Grundgesetz oder die christliche Tradition sind nicht der Grund.", en: "Germany’s special responsibility for Israel comes <b>from the National Socialist crimes against Jews</b>, above all from the Holocaust.<br><br>Membership of the EU, the Basic Law or the Christian tradition are not the reason.", uk: "Особлива відповідальність Німеччини за Ізраїль походить <b>зі злочинів націонал-соціалістів проти євреїв</b>, передусім із Голокосту.<br><br>Членство в ЄС, Основний закон чи християнська традиція не є причиною.", ru: "Особая ответственность Германии за Израиль происходит <b>из преступлений национал-социалистов против евреев</b>, прежде всего из Холокоста.<br><br>Членство в ЕС, Основной закон или христианская традиция не являются причиной." },
   },
   {
     id: "lid_289",
@@ -3956,7 +3956,7 @@ var QUIZ = [
       { de: "er eine dunkle Haut hat.", en: "", uk: "", ru: "", correct: true },
       { de: "er keine Erfahrungen im Beruf hat.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Es ist <b>Diskriminierung</b>, wenn er die Stelle nur wegen seiner <b>dunklen Haut</b> nicht bekommt. Die Hautfarbe darf kein Grund für eine Ablehnung sein (Art. 3 GG, AGG).<br><br>Zu geringe Deutschkenntnisse, hohe Gehaltsvorstellungen oder fehlende Berufserfahrung sind sachliche Gründe.", en: "It is <b>discrimination</b> if he does not get the job only because of his <b>dark skin</b>. Skin colour must not be a reason for rejection (Art. 3 GG, AGG).<br><br>Insufficient German skills, high salary expectations or lack of work experience are objective reasons.", uk: "Це <b>дискримінація</b>, якщо він не отримує посаду лише через свою <b>темну шкіру</b>. Колір шкіри не може бути причиною відмови (ст. 3 GG, AGG).<br><br>Недостатнє знання німецької, високі очікування щодо зарплати чи відсутність досвіду роботи — обʼєктивні причини.", ru: "Это <b>дискриминация</b>, если он не получает должность только из-за своей <b>тёмной кожи</b>. Цвет кожи не может быть причиной отказа (ст. 3 GG, AGG).<br><br>Недостаточное знание немецкого, высокие ожидания по зарплате или отсутствие опыта работы — объективные причины." },
   },
   {
     id: "lid_290",
@@ -3969,7 +3969,7 @@ var QUIZ = [
       { de: "das Gerät ungefragt austauschen", en: "", uk: "", ru: "" },
       { de: "die Garantie verlängern", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Einen kaputten Fernseher kann man <b>reklamieren</b>: Man meldet den Mangel dem Verkäufer und verlangt Reparatur, Austausch oder das Geld zurück.<br><br>Eine Anzeige ist für Straftaten, ein ungefragter Austausch und das Verlängern der Garantie sind keine Möglichkeiten für Käuferinnen und Käufer.", en: "A broken television can be <b>complained about</b>: you report the defect to the seller and demand repair, replacement or your money back.<br><br>A criminal report is for crimes, and replacing it without asking or extending the guarantee are not options for buyers.", uk: "Зламаний телевізор можна <b>рекламувати</b>: повідомляють продавця про дефект і вимагають ремонту, заміни чи повернення грошей.<br><br>Заява до поліції — для злочинів, а самостійна заміна без запиту чи продовження гарантії не є можливостями для покупців.", ru: "Сломанный телевизор можно <b>рекламировать</b>: сообщают продавцу о дефекте и требуют ремонта, замены или возврата денег.<br><br>Заявление в полицию — для преступлений, а самостоятельная замена без запроса или продление гарантии не являются возможностями для покупателей." },
   },
   {
     id: "lid_291",
@@ -3982,7 +3982,7 @@ var QUIZ = [
       { de: "man mehr Steuern zahlen muss, wenn man nicht zu einer Kirche gehört.", en: "", uk: "", ru: "" },
       { de: "die Kirche für die Steuererklärung verantwortlich ist.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Man muss in der Steuererklärung angeben, ob man zu einer Kirche gehört, weil es die <b>Kirchensteuer</b> gibt. Sie ist an die Einkommen- und Lohnsteuer geknüpft. Wer Kirchenmitglied ist, zahlt sie.<br><br>Wer nicht in der Kirche ist, zahlt nicht mehr Steuern. Die Kirche ist nicht für die Steuererklärung verantwortlich, und es geht nicht um Statistik.", en: "In the tax return you have to state whether you belong to a church, because there is the <b>church tax</b>. It is linked to income tax and wage tax. Members of a church pay it.<br><br>Anyone who is not in the church does not pay more tax. The church is not responsible for the tax return, and it is not about statistics.", uk: "У податковій декларації треба вказати, чи належите ви до церкви, бо існує <b>церковний податок</b>. Він привʼязаний до податку на прибуток і податку із заробітної плати. Члени церкви його сплачують.<br><br>Хто не в церкві, не платить більше податків. Церква не відповідає за податкову декларацію, і йдеться не про статистику.", ru: "В налоговой декларации нужно указать, принадлежите ли вы к церкви, потому что существует <b>церковный налог</b>. Он привязан к подоходному налогу и налогу с заработной платы. Члены церкви его платят.<br><br>Кто не состоит в церкви, не платит больше налогов. Церковь не отвечает за налоговую декларацию, и речь идёт не о статистике." },
   },
   {
     id: "lid_292",
@@ -3995,7 +3995,7 @@ var QUIZ = [
       { de: "Jeder kann glauben, was er möchte.", en: "", uk: "", ru: "", correct: true },
       { de: "Der Staat entscheidet, an welchen Gott die Menschen glauben.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Religiöse Toleranz</b> bedeutet: <b>Jeder kann glauben, was er möchte</b> (Art. 4 GG). Der Staat schreibt keine Religion vor.<br><br>Moscheen dürfen gebaut werden. Nicht alle Menschen glauben an Gott, und der Staat entscheidet nicht über den Glauben.", en: "<b>Religious tolerance</b> means: <b>everyone can believe what they want</b> (Art. 4 GG). The state does not prescribe any religion.<br><br>Mosques may be built. Not all people believe in God, and the state does not decide on belief.", uk: "<b>Релігійна толерантність</b> означає: <b>кожен може вірити в те, у що хоче</b> (ст. 4 GG). Держава не приписує жодної релігії.<br><br>Мечеті можна будувати. Не всі люди вірять у Бога, і держава не вирішує питань віри.", ru: "<b>Религиозная терпимость</b> означает: <b>каждый может верить во что хочет</b> (ст. 4 GG). Государство не предписывает никакой религии.<br><br>Мечети можно строить. Не все люди верят в Бога, и государство не решает вопросов веры." },
   },
   {
     id: "lid_293",
@@ -4008,7 +4008,7 @@ var QUIZ = [
       { de: "Eier bemalen", en: "", uk: "", ru: "", correct: true },
       { de: "Raketen in die Luft schießen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Zu Ostern <b>bemalt man Eier</b> und versteckt sie.<br><br>Kürbisse vor der Tür gehören zu Halloween, der Tannenbaum zu Weihnachten und Raketen zu Silvester.", en: "At Easter people <b>paint eggs</b> and hide them.<br><br>Pumpkins outside the door belong to Halloween, the fir tree to Christmas and rockets to New Year’s Eve.", uk: "На Великдень <b>розмальовують яйця</b> і ховають їх.<br><br>Гарбузи перед дверима належать до Гелловіну, ялинка — до Різдва, а ракети — до Нового року.", ru: "На Пасху <b>раскрашивают яйца</b> и прячут их.<br><br>Тыквы перед дверью относятся к Хэллоуину, ёлка — к Рождеству, а ракеты — к Новому году." },
   },
   {
     id: "lid_294",
@@ -4021,7 +4021,7 @@ var QUIZ = [
       { de: "internationaler Trauertag.", en: "", uk: "", ru: "" },
       { de: "bayerischer Brauch.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Pfingsten ist ein <b>christlicher Feiertag</b>. Man feiert ihn 50 Tage nach Ostern.<br><br>Es ist kein Gedenktag, kein internationaler Trauertag und kein rein bayerischer Brauch.", en: "Pentecost is a <b>Christian holiday</b>. It is celebrated 50 days after Easter.<br><br>It is not a day of remembrance, not an international day of mourning and not a purely Bavarian custom.", uk: "Пʼятидесятниця — <b>християнське свято</b>. Її відзначають через 50 днів після Великодня.<br><br>Це не день памʼяті, не міжнародний день жалоби й не суто баварський звичай.", ru: "Пятидесятница — <b>христианский праздник</b>. Её отмечают через 50 дней после Пасхи.<br><br>Это не день памяти, не международный день траура и не чисто баварский обычай." },
   },
   {
     id: "lid_295",
@@ -4034,7 +4034,7 @@ var QUIZ = [
       { de: "der Buddhismus", en: "", uk: "", ru: "" },
       { de: "der Islam", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die europäische und deutsche Kultur ist vor allem vom <b>Christentum</b> geprägt, zum Beispiel durch Feiertage, Kirchen und Traditionen.<br><br>Hinduismus und Buddhismus haben die Kultur hier nicht geprägt. Auch der Islam gehört heute zum Leben in Deutschland, hat die Kultur historisch aber weniger geprägt.", en: "European and German culture has been shaped above all by <b>Christianity</b>, for example through holidays, churches and traditions.<br><br>Hinduism and Buddhism have not shaped the culture here. Islam also belongs to life in Germany today, but historically it has shaped the culture less.", uk: "Європейську й німецьку культуру сформувало передусім <b>християнство</b>, наприклад через свята, церкви й традиції.<br><br>Індуїзм і буддизм не формували тут культуру. Іслам сьогодні також належить до життя в Німеччині, але історично він менше формував культуру.", ru: "Европейскую и немецкую культуру сформировало прежде всего <b>христианство</b>, например через праздники, церкви и традиции.<br><br>Индуизм и буддизм не формировали здесь культуру. Ислам сегодня также относится к жизни в Германии, но исторически он меньше формировал культуру." },
   },
   {
     id: "lid_296",
@@ -4047,7 +4047,7 @@ var QUIZ = [
       { de: "die Adventszeit.", en: "", uk: "", ru: "", correct: true },
       { de: "Allerheiligen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die letzten vier Wochen vor Weihnachten heißen <b>Adventszeit</b>. Man zündet an den Sonntagen Kerzen am Adventskranz an.<br><br>Der Buß- und Bettag, das Erntedankfest und Allerheiligen sind andere Feiertage im Herbst.", en: "The last four weeks before Christmas are called the <b>Advent season</b>. On the Sundays people light candles on the Advent wreath.<br><br>The Day of Repentance and Prayer, the harvest festival and All Saints’ Day are other holidays in autumn.", uk: "Останні чотири тижні перед Різдвом називаються <b>Адвентом</b>. У неділі запалюють свічки на адвентському вінку.<br><br>День покаяння й молитви, свято врожаю та День усіх святих — інші свята восени.", ru: "Последние четыре недели перед Рождеством называются <b>Адвентом</b>. По воскресеньям зажигают свечи на адвентском венке.<br><br>День покаяния и молитвы, праздник урожая и День всех святых — другие праздники осенью." },
   },
   {
     id: "lid_297",
@@ -4060,7 +4060,7 @@ var QUIZ = [
       { de: "Marokko", en: "", uk: "", ru: "" },
       { de: "Türkei", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die meisten Migrantinnen und Migranten kamen aus der <b>Türkei</b>. Sie kamen vor allem seit den 1960er Jahren als Gastarbeiterinnen und Gastarbeiter. Viele ihrer Familien leben bis heute in Deutschland.<br><br>Aus Italien, Polen und Marokko kamen zwar auch viele Menschen, aber weniger.", en: "Most migrants came from <b>Turkey</b>. They came above all since the 1960s as guest workers. Many of their families still live in Germany today.<br><br>Many people also came from Italy, Poland and Morocco, but fewer.", uk: "Найбільше мігрантів приїхало з <b>Туреччини</b>. Вони приїжджали передусім з 1960-х років як гастарбайтери. Багато їхніх родин досі живуть у Німеччині.<br><br>З Італії, Польщі та Марокко також приїхало багато людей, але менше.", ru: "Больше всего мигрантов приехало из <b>Турции</b>. Они приезжали прежде всего с 1960-х годов как гастарбайтеры. Многие их семьи до сих пор живут в Германии.<br><br>Из Италии, Польши и Марокко тоже приехало много людей, но меньше." },
   },
   {
     id: "lid_298",
@@ -4073,7 +4073,7 @@ var QUIZ = [
       { de: "Chile, Ungarn, Simbabwe.", en: "", uk: "", ru: "" },
       { de: "Nordkorea, Mexiko, Ägypten.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In der DDR lebten vor allem Migrantinnen und Migranten aus <b>Vietnam, Polen und Mosambik</b>. Sie kamen als Vertragsarbeiterinnen und Vertragsarbeiter.<br><br>Die anderen Länderkombinationen stimmen nicht.", en: "In the GDR the migrants came mainly from <b>Vietnam, Poland and Mozambique</b>. They came as contract workers.<br><br>The other combinations of countries are not correct.", uk: "У НДР жили переважно мігранти з <b>Вʼєтнаму, Польщі та Мозамбіку</b>. Вони приїжджали як працівники за договором.<br><br>Інші комбінації країн неправильні.", ru: "В ГДР жили главным образом мигранты из <b>Вьетнама, Польши и Мозамбика</b>. Они приезжали как работники по договору.<br><br>Другие комбинации стран неправильные." },
   },
   {
     id: "lid_299",
@@ -4086,7 +4086,7 @@ var QUIZ = [
       { de: "Zeitarbeiterinnen/Zeitarbeiter.", en: "", uk: "", ru: "" },
       { de: "Schichtarbeiterinnen/Schichtarbeiter.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die in den 1950er und 1960er Jahren angeworbenen ausländischen Arbeitskräfte nannte man <b>Gastarbeiterinnen und Gastarbeiter</b>. Die Bundesrepublik hatte dafür Abkommen mit Ländern wie Italien und der Türkei.<br><br>Schwarzarbeit ist illegal, Zeitarbeit und Schichtarbeit sind Arbeitsformen.", en: "The foreign workers recruited in the 1950s and 1960s were called <b>guest workers</b>. The Federal Republic had agreements with countries such as Italy and Turkey for this.<br><br>Undeclared work is illegal; temporary agency work and shift work are forms of work.", uk: "Іноземних працівників, яких наймали в 1950-х і 1960-х роках, називали <b>гастарбайтерами</b>. Федеративна Республіка мала для цього угоди з такими країнами, як Італія та Туреччина.<br><br>Праця «в чорну» нелегальна, а тимчасова праця через агентство й позмінна робота — форми роботи.", ru: "Иностранных работников, которых нанимали в 1950-х и 1960-х годах, называли <b>гастарбайтерами</b>. У Федеративной Республики были для этого соглашения со странами вроде Италии и Турции.<br><br>Работа «вчёрную» нелегальна, а временная работа через агентство и сменная работа — формы труда." },
   },
   {
     id: "lid_300",
@@ -4099,7 +4099,7 @@ var QUIZ = [
       { de: "Portugal", en: "", uk: "", ru: "" },
       { de: "Türkei Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die ersten Gastarbeiterinnen und Gastarbeiter kamen aus <b>Italien</b>. 1955 schloss die Bundesrepublik das erste Anwerbeabkommen mit Italien.<br><br>Mit Spanien und Griechenland folgten Abkommen 1960, mit der Türkei 1961 und mit Portugal 1964.", en: "The first guest workers came from <b>Italy</b>. In 1955 the Federal Republic concluded its first recruitment agreement with Italy.<br><br>Agreements with Spain and Greece followed in 1960, with Turkey in 1961 and with Portugal in 1964.", uk: "Перші гастарбайтери приїхали з <b>Італії</b>. 1955 року Федеративна Республіка уклала першу угоду про набір робочої сили з Італією.<br><br>З Іспанією та Грецією угоди зʼявилися 1960 року, з Туреччиною — 1961 року, а з Португалією — 1964 року.", ru: "Первые гастарбайтеры приехали из <b>Италии</b>. В 1955 году Федеративная Республика заключила первое соглашение о найме рабочей силы с Италией.<br><br>С Испанией и Грецией соглашения появились в 1960 году, с Турцией — в 1961 году, а с Португалией — в 1964 году." },
   },
   {
     id: "lid_BW_01",
@@ -4113,7 +4113,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_BW_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_BW_01_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Landeswappen von Baden-Württemberg zeigt drei schreitende schwarze Löwen auf goldenem Grund. Es geht auf das Wappen der Staufer zurück.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The coat of arms of Baden-Württemberg shows three striding black lions on a golden background. It goes back to the coat of arms of the Staufer dynasty.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Баден-Вюртемберга зображує трьох чорних левів, що ступають, на золотому тлі. Він походить від герба династії Штауфенів.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Баден-Вюртемберга изображает трёх шагающих чёрных львов на золотом фоне. Он восходит к гербу династии Штауфенов.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_BW_02",
@@ -4127,7 +4127,7 @@ var QUIZ = [
       { de: "Nordfriesland", en: "", uk: "", ru: "" },
       { de: "Altötting", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Neckar-Odenwald-Kreis</b> ist ein Landkreis in Baden-Württemberg. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Mecklenburgische Seenplatte liegt in Mecklenburg-Vorpommern; Nordfriesland liegt in Schleswig-Holstein; Altötting liegt in Bayern.", en: "<b>Neckar-Odenwald-Kreis</b> is a rural district in Baden-Württemberg. Rural districts group several municipalities together.<br><br>Mecklenburgische Seenplatte is in Mecklenburg-Vorpommern; Nordfriesland is in Schleswig-Holstein; Altötting is in Bavaria.", uk: "<b>Neckar-Odenwald-Kreis</b> — район у Баден-Вюртемберзі. Райони обʼєднують кілька громад.<br><br>Mecklenburgische Seenplatte — у Мекленбурзі-Передній Померанії; Nordfriesland — у Шлезвіг-Гольштейні; Altötting — у Баварії.", ru: "<b>Neckar-Odenwald-Kreis</b> — район в Баден-Вюртемберге. Районы объединяют несколько муниципалитетов.<br><br>Mecklenburgische Seenplatte — в Мекленбурге-Передней Померании; Nordfriesland — в Шлезвиг-Гольштейне; Altötting — в Баварии." },
   },
   {
     id: "lid_BW_03",
@@ -4141,7 +4141,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Baden-Württemberg wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Baden-Württemberg is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Баден-Вюртемберг обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Баден-Вюртемберг избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_BW_04",
@@ -4155,7 +4155,7 @@ var QUIZ = [
       { de: "18", en: "", uk: "", ru: "" },
       { de: "20", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Baden-Württemberg darf man schon ab <b>16 Jahren</b> wählen, bei Kommunalwahlen, zum Beispiel für den Gemeinde- oder Stadtrat.<br><br>Bei der Bundestagswahl gilt dagegen das Mindestalter von 18 Jahren. 14 und 20 Jahre sind für Wahlen nicht richtig.", en: "In Baden-Württemberg you may vote from the age of <b>16</b> in local elections, for example for the municipal or town council.<br><br>In the federal election, by contrast, the minimum age is 18. 14 and 20 are not correct ages for elections.", uk: "У Баден-Вюртемберзі голосувати можна вже з <b>16 років</b> на місцевих виборах, наприклад до ради громади чи міської ради.<br><br>На виборах до Бундестагу, навпаки, мінімальний вік — 18 років. 14 і 20 років для виборів не підходять.", ru: "В Баден-Вюртемберге голосовать можно уже с <b>16 лет</b> на местных выборах, например в совет муниципалитета или городской совет.<br><br>На выборах в Бундестаг, напротив, минимальный возраст — 18 лет. 14 и 20 лет для выборов не подходят." },
   },
   {
     id: "lid_BW_05",
@@ -4169,7 +4169,7 @@ var QUIZ = [
       { de: "weiß-blau", en: "", uk: "", ru: "" },
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesfarben von Baden-Württemberg sind Schwarz und Gold. Deshalb ist <b>schwarz-gold</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Baden-Württemberg is black-gold. That is why <b>black-gold</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Баден-Вюртемберг — чорно-золотий. Тому правильна комбінація <b>чорно-золотий</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Баден-Вюртемберг — чёрно-золотой. Поэтому правильна комбинация <b>чёрно-золотой</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_BW_06",
@@ -4183,7 +4183,7 @@ var QUIZ = [
       { de: "bei der Landeszentrale für politische Bildung", en: "", uk: "", ru: "", correct: true },
       { de: "bei den Kirchen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung Baden-Württemberg ist dafür in Baden-Württemberg die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Baden-Württemberg it is called “Landeszentrale für politische Bildung Baden-Württemberg”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Баден-Вюртемберзі він називається «Landeszentrale für politische Bildung Baden-Württemberg».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Баден-Вюртемберге он называется «Landeszentrale für politische Bildung Baden-Württemberg».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_BW_07",
@@ -4197,7 +4197,7 @@ var QUIZ = [
       { de: "Karlsruhe.", en: "", uk: "", ru: "" },
       { de: "Mannheim.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Stuttgart</b> ist die Landeshauptstadt von Baden-Württemberg. Dort sitzen die Landesregierung und der Landtag.<br><br>Heidelberg, Karlsruhe und Mannheim sind bekannte Städte in Baden-Württemberg, aber nicht die Landeshauptstadt. In Karlsruhe sitzt zum Beispiel das Bundesverfassungsgericht.", en: "<b>Stuttgart</b> is the state capital of Baden-Württemberg. The state government and the Landtag are located there.<br><br>Heidelberg, Karlsruhe and Mannheim are well-known cities in Baden-Württemberg, but not the state capital. The Federal Constitutional Court, for example, sits in Karlsruhe.", uk: "<b>Штутгарт</b> — столиця землі Баден-Вюртемберг. Там розташовані уряд землі та ландтаг.<br><br>Гейдельберг, Карлсруе й Мангайм — відомі міста Баден-Вюртемберга, але не столиця землі. У Карлсруе, наприклад, засідає Федеральний конституційний суд.", ru: "<b>Штутгарт</b> — столица земли Баден-Вюртемберг. Там находятся правительство земли и ландтаг.<br><br>Гейдельберг, Карлсруэ и Мангейм — известные города Баден-Вюртемберга, но не столица земли. В Карлсруэ, например, заседает Федеральный конституционный суд." },
   },
   {
     id: "lid_BW_08",
@@ -4212,7 +4212,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Baden-Württemberg liegt im Südwesten Deutschlands und grenzt an Frankreich und die Schweiz. Bekannt sind der Schwarzwald und der Bodensee.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Baden-Württemberg lies in the south-west of Germany and borders France and Switzerland. The Black Forest and Lake Constance are well known.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Баден-Вюртемберг лежить на південному заході Німеччини й межує з Францією та Швейцарією. Відомі Шварцвальд і Боденське озеро.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Баден-Вюртемберг лежит на юго-западе Германии и граничит с Францией и Швейцарией. Известны Шварцвальд и Боденское озеро.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_BW_09",
@@ -4226,7 +4226,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Baden-Württemberg wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Baden-Württemberg the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Баден-Вюртемберзі його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Баден-Вюртемберге его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_BW_10",
@@ -4240,7 +4240,7 @@ var QUIZ = [
       { de: "Innenministerin/Innenminister", en: "", uk: "", ru: "" },
       { de: "Außenministerin/Außenminister Teil II", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Baden-Württemberg hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Baden-Württemberg has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Баден-Вюртемберзі немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Баден-Вюртемберге нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_BY_01",
@@ -4254,7 +4254,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_BY_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_BY_01_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das bayerische Staatswappen enthält unter anderem die weiß-blauen Rauten. Sie sind das bekannteste Zeichen Bayerns.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The Bavarian state coat of arms includes, among other things, the white-and-blue lozenges. They are the best-known symbol of Bavaria.<br><br>The other coats of arms belong to other federal states.", uk: "Баварський державний герб містить, зокрема, біло-сині ромби. Це найвідоміший символ Баварії.<br><br>Інші герби належать іншим федеральним землям.", ru: "Баварский государственный герб содержит, среди прочего, бело-синие ромбы. Это самый известный символ Баварии.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_BY_02",
@@ -4268,7 +4268,7 @@ var QUIZ = [
       { de: "Nordfriesland", en: "", uk: "", ru: "" },
       { de: "Altötting", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Altötting</b> ist ein Landkreis in Bayern. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Prignitz liegt in Brandenburg; Rhein-Sieg-Kreis liegt in Nordrhein-Westfalen; Nordfriesland liegt in Schleswig-Holstein.", en: "<b>Altötting</b> is a rural district in Bavaria. Rural districts group several municipalities together.<br><br>Prignitz is in Brandenburg; Rhein-Sieg-Kreis is in North Rhine-Westphalia; Nordfriesland is in Schleswig-Holstein.", uk: "<b>Altötting</b> — район у Баварії. Райони обʼєднують кілька громад.<br><br>Prignitz — у Бранденбурзі; Rhein-Sieg-Kreis — у Північному Рейні-Вестфалії; Nordfriesland — у Шлезвіг-Гольштейні.", ru: "<b>Altötting</b> — район в Баварии. Районы объединяют несколько муниципалитетов.<br><br>Prignitz — в Бранденбурге; Rhein-Sieg-Kreis — в Северном Рейне-Вестфалии; Nordfriesland — в Шлезвиг-Гольштейне." },
   },
   {
     id: "lid_BY_03",
@@ -4282,7 +4282,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Bayern wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Bavaria is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Баварія обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Бавария избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_BY_04",
@@ -4310,7 +4310,7 @@ var QUIZ = [
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
       { de: "schwarz-gelb", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Weiß-Blau sind die bayerischen Landesfarben. Sie gehen auf die Wittelsbacher zurück. Deshalb ist <b>weiß-blau</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Bavaria is white-blue. The white-and-blue colours go back to the Wittelsbach dynasty. That is why <b>white-blue</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Баварія — біло-синій. Біло-сині кольори походять від династії Віттельсбахів. Тому правильна комбінація <b>біло-синій</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Бавария — бело-синий. Бело-синие цвета восходят к династии Виттельсбахов. Поэтому правильна комбинация <b>бело-синий</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_BY_06",
@@ -4324,7 +4324,7 @@ var QUIZ = [
       { de: "bei der Verbraucherzentrale", en: "", uk: "", ru: "" },
       { de: "bei den Kirchen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Bayerische Landeszentrale für politische Bildungsarbeit ist dafür in Bayern die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Bavaria it is called “Bayerische Landeszentrale für politische Bildungsarbeit”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Баварії він називається «Bayerische Landeszentrale für politische Bildungsarbeit».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Баварии он называется «Bayerische Landeszentrale für politische Bildungsarbeit».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_BY_07",
@@ -4338,7 +4338,7 @@ var QUIZ = [
       { de: "Nürnberg.", en: "", uk: "", ru: "" },
       { de: "München.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>München</b> ist die Landeshauptstadt von Bayern. Dort sitzen die Landesregierung und der Landtag.<br><br>Nürnberg, Regensburg und Ingolstadt sind wichtige Städte in Bayern, aber nicht die Landeshauptstadt. München ist auch die größte Stadt Bayerns.", en: "<b>Munich</b> is the state capital of Bavaria. The state government and the Landtag are located there.<br><br>Nuremberg, Regensburg and Ingolstadt are important cities in Bavaria, but not the state capital. Munich is also the largest city in Bavaria.", uk: "<b>Мюнхен</b> — столиця землі Баварія. Там розташовані уряд землі та ландтаг.<br><br>Нюрнберг, Регенсбург та Інгольштадт — важливі міста Баварії, але не столиця землі. Мюнхен також є найбільшим містом Баварії.", ru: "<b>Мюнхен</b> — столица земли Бавария. Там находятся правительство земли и ландтаг.<br><br>Нюрнберг, Регенсбург и Ингольштадт — важные города Баварии, но не столица земли. Мюнхен также является крупнейшим городом Баварии." },
   },
   {
     id: "lid_BY_08",
@@ -4353,7 +4353,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bayern ist das flächenmäßig größte Bundesland. Es liegt im Südosten Deutschlands und grenzt an Österreich und Tschechien.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Bavaria is the largest federal state by area. It lies in the south-east of Germany and borders Austria and the Czech Republic.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Баварія — найбільша федеральна земля за площею. Вона лежить на південному сході Німеччини й межує з Австрією та Чехією.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Бавария — крупнейшая федеральная земля по площади. Она лежит на юго-востоке Германии и граничит с Австрией и Чехией.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_BY_09",
@@ -4367,7 +4367,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Bayern wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Bavaria the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Баварії його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Баварии его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_BY_10",
@@ -4381,7 +4381,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bayern hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Bavaria has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Баварії немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Баварии нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_BE_01",
@@ -4395,7 +4395,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_BE_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_BE_01_a4.png", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wappen von Berlin zeigt einen schwarzen Bären. Der „Berliner Bär“ ist das Wahrzeichen der Stadt.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The coat of arms of Berlin shows a black bear. The “Berlin Bear” is the emblem of the city.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Берліна зображує чорного ведмедя. «Берлінський ведмідь» — символ міста.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Берлина изображает чёрного медведя. «Берлинский медведь» — символ города.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_BE_02",
@@ -4409,7 +4409,7 @@ var QUIZ = [
       { de: "Pankow", en: "", uk: "", ru: "", correct: true },
       { de: "Mecklenburgische Seenplatte", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Pankow</b> ist ein Bezirk von Berlin.<br><br>Altona gehört zu Hamburg; Prignitz gehört zu Brandenburg; Mecklenburgische Seenplatte gehört zu Mecklenburg-Vorpommern.", en: "<b>Pankow</b> is a district of Berlin.<br><br>Altona is in Hamburg; Prignitz is in Brandenburg; Mecklenburgische Seenplatte is in Mecklenburg-Vorpommern.", uk: "<b>Pankow</b> — район у Берліні.<br><br>Altona — у Гамбурзі; Prignitz — у Бранденбурзі; Mecklenburgische Seenplatte — у Мекленбурзі-Передній Померанії.", ru: "<b>Pankow</b> — район в Берлине.<br><br>Altona — в Гамбурге; Prignitz — в Бранденбурге; Mecklenburgische Seenplatte — в Мекленбурге-Передней Померании." },
   },
   {
     id: "lid_BE_03",
@@ -4423,7 +4423,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Abgeordnetenhaus von Berlin (das Landesparlament) wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Berlin is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Берлін обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Берлин избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_BE_04",
@@ -4437,7 +4437,7 @@ var QUIZ = [
       { de: "18", en: "", uk: "", ru: "" },
       { de: "20", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Berlin darf man schon ab <b>16 Jahren</b> wählen, bei der Wahl der Bezirksverordnetenversammlung (Kommunalwahl).<br><br>Bei der Bundestagswahl gilt dagegen das Mindestalter von 18 Jahren. 14 und 20 Jahre sind für Wahlen nicht richtig.", en: "In Berlin you may vote from the age of <b>16</b> in the election of the district assemblies (local election).<br><br>In the federal election, by contrast, the minimum age is 18. 14 and 20 are not correct ages for elections.", uk: "У Берліні голосувати можна вже з <b>16 років</b> на виборах до районних зборів (місцеві вибори).<br><br>На виборах до Бундестагу, навпаки, мінімальний вік — 18 років. 14 і 20 років для виборів не підходять.", ru: "В Берлине голосовать можно уже с <b>16 лет</b> на выборах в районные собрания (местные выборы).<br><br>На выборах в Бундестаг, напротив, минимальный возраст — 18 лет. 14 и 20 лет для выборов не подходят." },
   },
   {
     id: "lid_BE_05",
@@ -4451,7 +4451,7 @@ var QUIZ = [
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
       { de: "schwarz-gold", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesfarben von Berlin sind Weiß und Rot. Deshalb ist <b>weiß-rot</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Berlin is white-red. That is why <b>white-red</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Берлін — біло-червоний. Тому правильна комбінація <b>біло-червоний</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Берлин — бело-красный. Поэтому правильна комбинация <b>бело-красный</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_BE_06",
@@ -4465,7 +4465,7 @@ var QUIZ = [
       { de: "bei der Verbraucherzentrale", en: "", uk: "", ru: "" },
       { de: "bei der Landeszentrale für politische Bildung", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung Berlin ist dafür in Berlin die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Berlin it is called “Landeszentrale für politische Bildung Berlin”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Берліні він називається «Landeszentrale für politische Bildung Berlin».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Берлине он называется «Landeszentrale für politische Bildung Berlin».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_BE_07",
@@ -4479,7 +4479,7 @@ var QUIZ = [
       { de: "Brandenburg", en: "", uk: "", ru: "" },
       { de: "Hessen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Ein <b>Stadtstaat</b> ist eine Stadt, die zugleich ein eigenes Bundesland ist. In Deutschland gibt es drei: Berlin, Hamburg und Bremen. <b>Berlin</b> ist einer davon.<br><br>Das Saarland, Brandenburg und Hessen sind Flächenländer mit vielen Städten und Gemeinden.", en: "A <b>city-state</b> is a city that is at the same time a federal state of its own. Germany has three: Berlin, Hamburg and Bremen. <b>Berlin</b> is one of them.<br><br>Saarland, Brandenburg and Hesse are area states with many towns and municipalities.", uk: "<b>Місто-земля</b> — це місто, яке водночас є окремою федеральною землею. У Німеччині їх три: Берлін, Гамбург і Бремен. <b>Берлін</b> — одне з них.<br><br>Саар, Бранденбург і Гессен — землі з багатьма містами та громадами.", ru: "<b>Город-земля</b> — это город, который одновременно является отдельной федеральной землёй. В Германии их три: Берлин, Гамбург и Бремен. <b>Берлин</b> — один из них.<br><br>Саар, Бранденбург и Гессен — земли со многими городами и муниципалитетами." },
   },
   {
     id: "lid_BE_08",
@@ -4494,7 +4494,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Berlin liegt im Nordosten Deutschlands und ist ganz von Brandenburg umgeben. Es ist die Hauptstadt der Bundesrepublik und selbst ein Bundesland (Stadtstaat).<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Berlin lies in the north-east of Germany and is entirely surrounded by Brandenburg. It is the capital of the Federal Republic and itself a federal state (city-state).<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Берлін лежить на північному сході Німеччини й з усіх боків оточений Бранденбургом. Це столиця Федеративної Республіки й водночас окрема федеральна земля (місто-земля).<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Берлин лежит на северо-востоке Германии и со всех сторон окружён Бранденбургом. Это столица Федеративной Республики и одновременно отдельная федеральная земля (город-земля).<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_BE_09",
@@ -4508,7 +4508,7 @@ var QUIZ = [
       { de: "Präsidentin/Präsident des Senates", en: "", uk: "", ru: "" },
       { de: "Regierende Bürgermeisterin/Regierender Bürgermeister", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Berlin leitet die <b>Regierende Bürgermeisterin/der Regierende Bürgermeister</b> die Landesregierung (den Senat).<br><br>„Ministerpräsident“ heißt das Amt in den Flächenländern. Oberbürgermeister leiten große Städte in diesen Ländern. „Präsident des Senates“ ist ein Titel in Bremen.", en: "In Berlin the head of the state government (the Senate) is the <b>Governing Mayor</b>.<br><br>“Minister-President” is the title in the area states. Lord mayors head large cities in those states. “President of the Senate” is a title in Bremen.", uk: "У Берліні керівником уряду землі (Сенату) є <b>правлячий бургомістр/правляча бургомістерка</b>.<br><br>«Міністр-президент» — назва посади в землях, що не є містами-землями. Обер-бургомістри очолюють великі міста в цих землях. «Президент Сенату» — назва посади в Бремені.", ru: "В Берлине главой правительства земли (Сената) является <b>правящий бургомистр</b>.<br><br>«Министр-президент» — название должности в землях, не являющихся городами-землями. Обер-бургомистры возглавляют крупные города в этих землях. «Президент Сената» — название должности в Бремене." },
   },
   {
     id: "lid_BE_10",
@@ -4522,7 +4522,7 @@ var QUIZ = [
       { de: "Senatorin/Senator für Außenbeziehungen", en: "", uk: "", ru: "", correct: true },
       { de: "Justizsenatorin/Justizsenator Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Berlin hat keine Senatorin/keinen Senator <b>für Außenbeziehungen</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Senatorinnen und Senatoren für Finanzen, Inneres und Justiz gibt es in Stadtstaaten dagegen. Sie entsprechen den Ministerinnen und Ministern in den Flächenländern.", en: "Berlin has no senator <b>for external relations</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Senators for finance, the interior and justice, on the other hand, do exist in city-states. They correspond to the ministers in the area states.", uk: "У Берліні немає сенатора/сенаторки <b>з питань зовнішніх звʼязків</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість сенатори з питань фінансів, внутрішніх справ та юстиції в містах-землях є. Вони відповідають міністрам у землях, що не є містами-землями.", ru: "В Берлине нет сенатора <b>по внешним связям</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато сенаторы по финансам, внутренним делам и юстиции в городах-землях есть. Они соответствуют министрам в землях, не являющихся городами-землями." },
   },
   {
     id: "lid_BB_01",
@@ -4536,7 +4536,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_BB_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_BB_01_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wappen von Brandenburg zeigt den roten Adler, der auch „märkischer Adler“ genannt wird.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The coat of arms of Brandenburg shows the red eagle, also called the “Brandenburg eagle”.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Бранденбурга зображує червоного орла, якого також називають «бранденбурзьким орлом».<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Бранденбурга изображает красного орла, которого также называют «бранденбургским орлом».<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_BB_02",
@@ -4550,7 +4550,7 @@ var QUIZ = [
       { de: "Vogtlandkreis", en: "", uk: "", ru: "" },
       { de: "Amberg-Sulzbach", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Prignitz</b> ist ein Landkreis in Brandenburg. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Rhein-Sieg-Kreis liegt in Nordrhein-Westfalen; Vogtlandkreis liegt in Sachsen; Amberg-Sulzbach liegt in Bayern.", en: "<b>Prignitz</b> is a rural district in Brandenburg. Rural districts group several municipalities together.<br><br>Rhein-Sieg-Kreis is in North Rhine-Westphalia; Vogtlandkreis is in Saxony; Amberg-Sulzbach is in Bavaria.", uk: "<b>Prignitz</b> — район у Бранденбурзі. Райони обʼєднують кілька громад.<br><br>Rhein-Sieg-Kreis — у Північному Рейні-Вестфалії; Vogtlandkreis — у Саксонії; Amberg-Sulzbach — у Баварії.", ru: "<b>Prignitz</b> — район в Бранденбурге. Районы объединяют несколько муниципалитетов.<br><br>Rhein-Sieg-Kreis — в Северном Рейне-Вестфалии; Vogtlandkreis — в Саксонии; Amberg-Sulzbach — в Баварии." },
   },
   {
     id: "lid_BB_03",
@@ -4564,7 +4564,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Brandenburg wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Brandenburg is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Бранденбург обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Бранденбург избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_BB_04",
@@ -4578,7 +4578,7 @@ var QUIZ = [
       { de: "18", en: "", uk: "", ru: "" },
       { de: "20", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Brandenburg darf man schon ab <b>16 Jahren</b> wählen, bei Kommunalwahlen, zum Beispiel für den Gemeinde- oder Stadtrat.<br><br>Bei der Bundestagswahl gilt dagegen das Mindestalter von 18 Jahren. 14 und 20 Jahre sind für Wahlen nicht richtig.", en: "In Brandenburg you may vote from the age of <b>16</b> in local elections, for example for the municipal or town council.<br><br>In the federal election, by contrast, the minimum age is 18. 14 and 20 are not correct ages for elections.", uk: "У Бранденбурзі голосувати можна вже з <b>16 років</b> на місцевих виборах, наприклад до ради громади чи міської ради.<br><br>На виборах до Бундестагу, навпаки, мінімальний вік — 18 років. 14 і 20 років для виборів не підходять.", ru: "В Бранденбурге голосовать можно уже с <b>16 лет</b> на местных выборах, например в совет муниципалитета или городской совет.<br><br>На выборах в Бундестаг, напротив, минимальный возраст — 18 лет. 14 и 20 лет для выборов не подходят." },
   },
   {
     id: "lid_BB_05",
@@ -4592,7 +4592,7 @@ var QUIZ = [
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
       { de: "schwarz-gelb", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesfarben von Brandenburg sind Rot und Weiß. Deshalb ist <b>rot-weiß</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Brandenburg is red-white. That is why <b>red-white</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Бранденбург — червоно-білий. Тому правильна комбінація <b>червоно-білий</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Бранденбург — красно-белый. Поэтому правильна комбинация <b>красно-белый</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_BB_06",
@@ -4606,7 +4606,7 @@ var QUIZ = [
       { de: "bei der Landeszentrale für politische Bildung", en: "", uk: "", ru: "", correct: true },
       { de: "bei der Verbraucherzentrale", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung Brandenburg ist dafür in Brandenburg die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Brandenburg it is called “Landeszentrale für politische Bildung Brandenburg”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Бранденбурзі він називається «Landeszentrale für politische Bildung Brandenburg».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Бранденбурге он называется «Landeszentrale für politische Bildung Brandenburg».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_BB_07",
@@ -4620,7 +4620,7 @@ var QUIZ = [
       { de: "Brandenburg.", en: "", uk: "", ru: "" },
       { de: "Frankfurt/Oder.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Potsdam</b> ist die Landeshauptstadt von Brandenburg. Dort sitzen die Landesregierung und der Landtag.<br><br>Cottbus, die Stadt Brandenburg an der Havel und Frankfurt (Oder) sind Städte in Brandenburg, aber nicht die Landeshauptstadt. Das Land hat den gleichen Namen wie die Stadt Brandenburg an der Havel, trotzdem sitzt die Regierung in Potsdam.", en: "<b>Potsdam</b> is the state capital of Brandenburg. The state government and the Landtag are located there.<br><br>Cottbus, the city of Brandenburg an der Havel and Frankfurt (Oder) are cities in Brandenburg, but not the state capital. The state has the same name as the city of Brandenburg an der Havel, yet the government sits in Potsdam.", uk: "<b>Потсдам</b> — столиця землі Бранденбург. Там розташовані уряд землі та ландтаг.<br><br>Котбус, місто Бранденбург-на-Гафелі та Франкфурт-на-Одері — міста Бранденбургу, але не столиця землі. Земля має ту саму назву, що й місто Бранденбург-на-Гафелі, проте уряд сидить у Потсдамі.", ru: "<b>Потсдам</b> — столица земли Бранденбург. Там находятся правительство земли и ландтаг.<br><br>Котбус, город Бранденбург-на-Хафеле и Франкфурт-на-Одере — города Бранденбурга, но не столица земли. Земля носит то же название, что и город Бранденбург-на-Хафеле, однако правительство находится в Потсдаме." },
   },
   {
     id: "lid_BB_08",
@@ -4635,7 +4635,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Brandenburg umgibt die Hauptstadt Berlin und grenzt im Osten an Polen.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Brandenburg surrounds the capital Berlin and borders Poland in the east.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Бранденбург оточує столицю Берлін і на сході межує з Польщею.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Бранденбург окружает столицу Берлин и на востоке граничит с Польшей.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_BB_09",
@@ -4649,7 +4649,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Brandenburg wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Brandenburg the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Бранденбурзі його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Бранденбурге его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_BB_10",
@@ -4663,7 +4663,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Brandenburg hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Brandenburg has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Бранденбурзі немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Бранденбурге нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_HB_01",
@@ -4677,7 +4677,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_HB_01_a3.png", correct: true },
       { de: "", en: "", uk: "", ru: "", img: "lid_HB_01_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wappen von Bremen zeigt einen Schlüssel. Der „Bremer Schlüssel“ ist das Wahrzeichen des Landes.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The coat of arms of Bremen shows a key. The “Bremen Key” is the emblem of the state.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Бремена зображує ключ. «Бременський ключ» — символ землі.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Бремена изображает ключ. «Бременский ключ» — символ земли.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_HB_02",
@@ -4691,7 +4691,7 @@ var QUIZ = [
       { de: "Pankow", en: "", uk: "", ru: "" },
       { de: "Babelsberg", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Hemelingen</b> ist ein Stadtteil von Bremen.<br><br>Altona gehört zu Hamburg; Pankow gehört zu Berlin; Babelsberg gehört zu Potsdam (Brandenburg).", en: "<b>Hemelingen</b> is a city district of Bremen.<br><br>Altona is in Hamburg; Pankow is in Berlin; Babelsberg is in Potsdam (Brandenburg).", uk: "<b>Hemelingen</b> — міський район у Бремені.<br><br>Altona — у Гамбурзі; Pankow — у Берліні; Babelsberg — у Потсдамі (Бранденбург).", ru: "<b>Hemelingen</b> — городской район в Бремене.<br><br>Altona — в Гамбурге; Pankow — в Берлине; Babelsberg — в Потсдаме (Бранденбург)." },
   },
   {
     id: "lid_HB_03",
@@ -4719,7 +4719,7 @@ var QUIZ = [
       { de: "18", en: "", uk: "", ru: "" },
       { de: "20", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Bremen darf man schon ab <b>16 Jahren</b> wählen, bei den Wahlen zur Bürgerschaft.<br><br>Bei der Bundestagswahl gilt dagegen das Mindestalter von 18 Jahren. 14 und 20 Jahre sind für Wahlen nicht richtig.", en: "In Bremen you may vote from the age of <b>16</b> in the elections to the Bürgerschaft.<br><br>In the federal election, by contrast, the minimum age is 18. 14 and 20 are not correct ages for elections.", uk: "У Бремені голосувати можна вже з <b>16 років</b> на виборах до Бюргершафту.<br><br>На виборах до Бундестагу, навпаки, мінімальний вік — 18 років. 14 і 20 років для виборів не підходять.", ru: "В Бремене голосовать можно уже с <b>16 лет</b> на выборах в Бюргершафт.<br><br>На выборах в Бундестаг, напротив, минимальный возраст — 18 лет. 14 и 20 лет для выборов не подходят." },
   },
   {
     id: "lid_HB_05",
@@ -4733,7 +4733,7 @@ var QUIZ = [
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
       { de: "schwarz-gold", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesfarben von Bremen sind Rot und Weiß. Deshalb ist <b>rot-weiß</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Bremen is red-white. That is why <b>red-white</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Бремен — червоно-білий. Тому правильна комбінація <b>червоно-білий</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Бремен — красно-белый. Поэтому правильна комбинация <b>красно-белый</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_HB_06",
@@ -4747,7 +4747,7 @@ var QUIZ = [
       { de: "bei den Kirchen", en: "", uk: "", ru: "" },
       { de: "bei der Verbraucherzentrale", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung Bremen ist dafür in Bremen die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Bremen it is called “Landeszentrale für politische Bildung Bremen”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Бремені він називається «Landeszentrale für politische Bildung Bremen».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Бремене он называется «Landeszentrale für politische Bildung Bremen».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_HB_07",
@@ -4761,7 +4761,7 @@ var QUIZ = [
       { de: "Frankfurt", en: "", uk: "", ru: "" },
       { de: "Erfurt", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Ein <b>Stadtstaat</b> ist eine Stadt, die zugleich ein eigenes Bundesland ist. In Deutschland gibt es drei: Berlin, Hamburg und Bremen. <b>Bremen</b> ist einer davon.<br><br>München, Frankfurt und Erfurt sind große Städte, liegen aber in den Flächenländern Bayern, Hessen und Thüringen.", en: "A <b>city-state</b> is a city that is at the same time a federal state of its own. Germany has three: Berlin, Hamburg and Bremen. <b>Bremen</b> is one of them.<br><br>Munich, Frankfurt and Erfurt are large cities but lie in the area states of Bavaria, Hesse and Thuringia.", uk: "<b>Місто-земля</b> — це місто, яке водночас є окремою федеральною землею. У Німеччині їх три: Берлін, Гамбург і Бремен. <b>Бремен</b> — одне з них.<br><br>Мюнхен, Франкфурт і Ерфурт — великі міста, але лежать у землях Баварії, Гессену та Тюрингії.", ru: "<b>Город-земля</b> — это город, который одновременно является отдельной федеральной землёй. В Германии их три: Берлин, Гамбург и Бремен. <b>Бремен</b> — один из них.<br><br>Мюнхен, Франкфурт и Эрфурт — большие города, но лежат в землях Бавария, Гессен и Тюрингия." },
   },
   {
     id: "lid_HB_08",
@@ -4776,7 +4776,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bremen ist das kleinste Bundesland. Es besteht aus den beiden Städten Bremen und Bremerhaven und liegt im Nordwesten Deutschlands, umgeben von Niedersachsen.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Bremen is the smallest federal state. It consists of the two cities of Bremen and Bremerhaven and lies in the north-west of Germany, surrounded by Lower Saxony.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Бремен — найменша федеральна земля. Вона складається з двох міст — Бремена й Бремергафена — і лежить на північному заході Німеччини, оточена Нижньою Саксонією.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Бремен — самая маленькая федеральная земля. Она состоит из двух городов — Бремена и Бремерхафена — и лежит на северо-западе Германии, окружённая Нижней Саксонией.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_HB_09",
@@ -4804,7 +4804,7 @@ var QUIZ = [
       { de: "Justizsenatorin/Justizsenator", en: "", uk: "", ru: "" },
       { de: "Innensenatorin/Innensenator Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Bremen hat keine Senatorin/keinen Senator <b>für Außenbeziehungen</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Senatorinnen und Senatoren für Finanzen, Inneres und Justiz gibt es in Stadtstaaten dagegen. Sie entsprechen den Ministerinnen und Ministern in den Flächenländern.", en: "Bremen has no senator <b>for external relations</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Senators for finance, the interior and justice, on the other hand, do exist in city-states. They correspond to the ministers in the area states.", uk: "У Бремені немає сенатора/сенаторки <b>з питань зовнішніх звʼязків</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість сенатори з питань фінансів, внутрішніх справ та юстиції в містах-землях є. Вони відповідають міністрам у землях, що не є містами-землями.", ru: "В Бремене нет сенатора <b>по внешним связям</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато сенаторы по финансам, внутренним делам и юстиции в городах-землях есть. Они соответствуют министрам в землях, не являющихся городами-землями." },
   },
   {
     id: "lid_HH_01",
@@ -4818,7 +4818,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_HH_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_HH_01_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wappen von Hamburg zeigt eine weiße Burg mit Toren und Türmen auf rotem Grund.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The coat of arms of Hamburg shows a white castle with gates and towers on a red background.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Гамбурга зображує білий замок із воротами й вежами на червоному тлі.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Гамбурга изображает белый замок с воротами и башнями на красном фоне.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_HH_02",
@@ -4832,7 +4832,7 @@ var QUIZ = [
       { de: "Pankow", en: "", uk: "", ru: "" },
       { de: "Mecklenburgische Seenplatte", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Altona</b> ist ein Bezirk von Hamburg.<br><br>Hemelingen gehört zu Bremen; Pankow gehört zu Berlin; Mecklenburgische Seenplatte gehört zu Mecklenburg-Vorpommern.", en: "<b>Altona</b> is a district of Hamburg.<br><br>Hemelingen is in Bremen; Pankow is in Berlin; Mecklenburgische Seenplatte is in Mecklenburg-Vorpommern.", uk: "<b>Altona</b> — район у Гамбурзі.<br><br>Hemelingen — у Бремені; Pankow — у Берліні; Mecklenburgische Seenplatte — у Мекленбурзі-Передній Померанії.", ru: "<b>Altona</b> — район в Гамбурге.<br><br>Hemelingen — в Бремене; Pankow — в Берлине; Mecklenburgische Seenplatte — в Мекленбурге-Передней Померании." },
   },
   {
     id: "lid_HH_03",
@@ -4846,7 +4846,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Hamburgische Bürgerschaft (das Landesparlament) wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Hamburg is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Гамбург обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Гамбург избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_HH_04",
@@ -4860,7 +4860,7 @@ var QUIZ = [
       { de: "18", en: "", uk: "", ru: "" },
       { de: "20", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Hamburg darf man schon ab <b>16 Jahren</b> wählen, bei der Wahl der Bezirksversammlungen (Kommunalwahl).<br><br>Bei der Bundestagswahl gilt dagegen das Mindestalter von 18 Jahren. 14 und 20 Jahre sind für Wahlen nicht richtig.", en: "In Hamburg you may vote from the age of <b>16</b> in the election of the district assemblies (local election).<br><br>In the federal election, by contrast, the minimum age is 18. 14 and 20 are not correct ages for elections.", uk: "У Гамбурзі голосувати можна вже з <b>16 років</b> на виборах до районних зборів (місцеві вибори).<br><br>На виборах до Бундестагу, навпаки, мінімальний вік — 18 років. 14 і 20 років для виборів не підходять.", ru: "В Гамбурге голосовать можно уже с <b>16 лет</b> на выборах в районные собрания (местные выборы).<br><br>На выборах в Бундестаг, напротив, минимальный возраст — 18 лет. 14 и 20 лет для выборов не подходят." },
   },
   {
     id: "lid_HH_05",
@@ -4874,7 +4874,7 @@ var QUIZ = [
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
       { de: "schwarz-gelb", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesfarben von Hamburg sind Weiß und Rot. Deshalb ist <b>weiß-rot</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Hamburg is white-red. That is why <b>white-red</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Гамбург — біло-червоний. Тому правильна комбінація <b>біло-червоний</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Гамбург — бело-красный. Поэтому правильна комбинация <b>бело-красный</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_HH_06",
@@ -4888,7 +4888,7 @@ var QUIZ = [
       { de: "bei den Kirchen", en: "", uk: "", ru: "" },
       { de: "bei der Landeszentrale für politische Bildung", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung Hamburg ist dafür in Hamburg die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Hamburg it is called “Landeszentrale für politische Bildung Hamburg”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Гамбурзі він називається «Landeszentrale für politische Bildung Hamburg».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Гамбурге он называется «Landeszentrale für politische Bildung Hamburg».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_HH_07",
@@ -4902,7 +4902,7 @@ var QUIZ = [
       { de: "Bayern", en: "", uk: "", ru: "" },
       { de: "Thüringen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Ein <b>Stadtstaat</b> ist eine Stadt, die zugleich ein eigenes Bundesland ist. In Deutschland gibt es drei: Berlin, Hamburg und Bremen. <b>Hamburg</b> ist einer davon.<br><br>Sachsen, Bayern und Thüringen sind Flächenländer mit vielen Städten und Gemeinden.", en: "A <b>city-state</b> is a city that is at the same time a federal state of its own. Germany has three: Berlin, Hamburg and Bremen. <b>Hamburg</b> is one of them.<br><br>Saxony, Bavaria and Thuringia are area states with many towns and municipalities.", uk: "<b>Місто-земля</b> — це місто, яке водночас є окремою федеральною землею. У Німеччині їх три: Берлін, Гамбург і Бремен. <b>Гамбург</b> — одне з них.<br><br>Саксонія, Баварія та Тюрингія — землі з багатьма містами та громадами.", ru: "<b>Город-земля</b> — это город, который одновременно является отдельной федеральной землёй. В Германии их три: Берлин, Гамбург и Бремен. <b>Гамбург</b> — один из них.<br><br>Саксония, Бавария и Тюрингия — земли со многими городами и муниципалитетами." },
   },
   {
     id: "lid_HH_08",
@@ -4917,7 +4917,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "", correct: true },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Hamburg liegt im Norden Deutschlands an der Elbe. Es ist ein Stadtstaat und grenzt an Schleswig-Holstein und Niedersachsen.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Hamburg lies in the north of Germany on the Elbe. It is a city-state and borders Schleswig-Holstein and Lower Saxony.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Гамбург лежить на півночі Німеччини на Ельбі. Це місто-земля, що межує зі Шлезвіг-Гольштейном і Нижньою Саксонією.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Гамбург лежит на севере Германии на Эльбе. Это город-земля, граничащая со Шлезвиг-Гольштейном и Нижней Саксонией.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_HH_09",
@@ -4931,7 +4931,7 @@ var QUIZ = [
       { de: "Regierende Senatorin/Regierender Senator", en: "", uk: "", ru: "" },
       { de: "Oberbürgermeisterin/Oberbürgermeister", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Hamburg ist die <b>Erste Bürgermeisterin/der Erste Bürgermeister</b> die Regierungschefin/der Regierungschef. Sie/Er leitet den Senat.<br><br>„Ministerpräsident“ heißt das Amt in den Flächenländern. Ein „Regierender Senator“ und ein Oberbürgermeister sind in Hamburg nicht Regierungschef.", en: "In Hamburg the <b>First Mayor</b> is the head of government. The First Mayor leads the Senate.<br><br>“Minister-President” is the title in the area states. A “Governing Senator” or a lord mayor is not the head of government in Hamburg.", uk: "У Гамбурзі <b>перший бургомістр/перша бургомістерка</b> є керівником уряду. Він/Вона очолює Сенат.<br><br>«Міністр-президент» — назва посади в землях, що не є містами-землями. «Правлячий сенатор» та обер-бургомістр у Гамбурзі не є керівниками уряду.", ru: "В Гамбурге <b>первый бургомистр</b> является главой правительства. Он возглавляет Сенат.<br><br>«Министр-президент» — название должности в землях, не являющихся городами-землями. «Правящий сенатор» и обер-бургомистр в Гамбурге не являются главой правительства." },
   },
   {
     id: "lid_HH_10",
@@ -4945,7 +4945,7 @@ var QUIZ = [
       { de: "Finanzsenatorin/Finanzsenator", en: "", uk: "", ru: "" },
       { de: "Innensenatorin/Innensenator Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Hamburg hat keine Senatorin/keinen Senator <b>für Außenbeziehungen</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Senatorinnen und Senatoren für Finanzen, Inneres und Justiz gibt es in Stadtstaaten dagegen. Sie entsprechen den Ministerinnen und Ministern in den Flächenländern.", en: "Hamburg has no senator <b>for external relations</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Senators for finance, the interior and justice, on the other hand, do exist in city-states. They correspond to the ministers in the area states.", uk: "У Гамбурзі немає сенатора/сенаторки <b>з питань зовнішніх звʼязків</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість сенатори з питань фінансів, внутрішніх справ та юстиції в містах-землях є. Вони відповідають міністрам у землях, що не є містами-землями.", ru: "В Гамбурге нет сенатора <b>по внешним связям</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато сенаторы по финансам, внутренним делам и юстиции в городах-землях есть. Они соответствуют министрам в землях, не являющихся городами-землями." },
   },
   {
     id: "lid_HE_01",
@@ -4959,7 +4959,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_HE_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_HE_01_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wappen von Hessen zeigt den hessischen Löwen mit rot-weißen Streifen auf blauem Grund.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The coat of arms of Hesse shows the Hessian lion with red and white stripes on a blue background.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Гессена зображує гессенського лева з червоно-білими смугами на синьому тлі.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Гессена изображает гессенского льва с красно-белыми полосами на синем фоне.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_HE_02",
@@ -4973,7 +4973,7 @@ var QUIZ = [
       { de: "Prignitz", en: "", uk: "", ru: "" },
       { de: "Main-Taunus-Kreis", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Main-Taunus-Kreis</b> ist ein Landkreis in Hessen. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Ammerland liegt in Niedersachsen; Altötting liegt in Bayern; Prignitz liegt in Brandenburg.", en: "<b>Main-Taunus-Kreis</b> is a rural district in Hesse. Rural districts group several municipalities together.<br><br>Ammerland is in Lower Saxony; Altötting is in Bavaria; Prignitz is in Brandenburg.", uk: "<b>Main-Taunus-Kreis</b> — район у Гессені. Райони обʼєднують кілька громад.<br><br>Ammerland — у Нижній Саксонії; Altötting — у Баварії; Prignitz — у Бранденбурзі.", ru: "<b>Main-Taunus-Kreis</b> — район в Гессене. Районы объединяют несколько муниципалитетов.<br><br>Ammerland — в Нижней Саксонии; Altötting — в Баварии; Prignitz — в Бранденбурге." },
   },
   {
     id: "lid_HE_03",
@@ -4987,7 +4987,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Hessen wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Hesse is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Гессен обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Гессен избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_HE_04",
@@ -5015,7 +5015,7 @@ var QUIZ = [
       { de: "schwarz-gold", en: "", uk: "", ru: "" },
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesfarben von Hessen sind Rot und Weiß. Deshalb ist <b>rot-weiß</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Hesse is red-white. That is why <b>red-white</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Гессен — червоно-білий. Тому правильна комбінація <b>червоно-білий</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Гессен — красно-белый. Поэтому правильна комбинация <b>красно-белый</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_HE_06",
@@ -5029,7 +5029,7 @@ var QUIZ = [
       { de: "beim Ordnungsamt der Gemeinde", en: "", uk: "", ru: "" },
       { de: "bei den Kirchen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Hessische Landeszentrale für politische Bildung ist dafür in Hessen die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Hesse it is called “Hessische Landeszentrale für politische Bildung”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Гессені він називається «Hessische Landeszentrale für politische Bildung».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Гессене он называется «Hessische Landeszentrale für politische Bildung».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_HE_07",
@@ -5043,7 +5043,7 @@ var QUIZ = [
       { de: "Frankfurt.", en: "", uk: "", ru: "" },
       { de: "Wiesbaden.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Wiesbaden</b> ist die Landeshauptstadt von Hessen. Dort sitzen die Landesregierung und der Landtag.<br><br>Frankfurt ist die größte Stadt Hessens und bekannt als Finanzzentrum, aber nicht die Landeshauptstadt. Kassel und Darmstadt sind ebenfalls bekannte Städte.", en: "<b>Wiesbaden</b> is the state capital of Hesse. The state government and the Landtag are located there.<br><br>Frankfurt is the largest city in Hesse and known as a financial centre, but not the state capital. Kassel and Darmstadt are also well-known cities.", uk: "<b>Вісбаден</b> — столиця землі Гессен. Там розташовані уряд землі та ландтаг.<br><br>Франкфурт — найбільше місто Гессена й відомий як фінансовий центр, але не столиця землі. Кассель і Дармштадт також відомі міста.", ru: "<b>Висбаден</b> — столица земли Гессен. Там находятся правительство земли и ландтаг.<br><br>Франкфурт — крупнейший город Гессена и известен как финансовый центр, но не столица земли. Кассель и Дармштадт — тоже известные города." },
   },
   {
     id: "lid_HE_08",
@@ -5058,7 +5058,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "", correct: true },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Hessen liegt in der Mitte Westdeutschlands. Die größte Stadt ist Frankfurt am Main.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Hesse lies in the middle of western Germany. The largest city is Frankfurt am Main.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Гессен лежить у центрі західної Німеччини. Найбільше місто — Франкфурт-на-Майні.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Гессен лежит в центре западной Германии. Крупнейший город — Франкфурт-на-Майне.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_HE_09",
@@ -5072,7 +5072,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Hessen wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Hesse the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Гессені його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Гессене его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_HE_10",
@@ -5086,7 +5086,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Hessen hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Hesse has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Гессені немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Гессене нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_MV_01",
@@ -5100,7 +5100,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_MV_01_a3.png", correct: true },
       { de: "", en: "", uk: "", ru: "", img: "lid_MV_01_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Landeswappen von Mecklenburg-Vorpommern zeigt unter anderem den Stierkopf (Mecklenburg) und den Greif (Vorpommern).<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The state coat of arms of Mecklenburg-Vorpommern shows, among other things, the bull’s head (Mecklenburg) and the griffin (Vorpommern).<br><br>The other coats of arms belong to other federal states.", uk: "Герб Мекленбурга-Передньої Померанії зображує, зокрема, голову бика (Мекленбург) і грифона (Передня Померанія).<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Мекленбурга-Передней Померании изображает, среди прочего, голову быка (Мекленбург) и грифона (Передняя Померания).<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_MV_02",
@@ -5114,7 +5114,7 @@ var QUIZ = [
       { de: "Vogtlandkreis", en: "", uk: "", ru: "" },
       { de: "Rhein-Sieg-Kreis", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Mecklenburgische Seenplatte</b> ist ein Landkreis in Mecklenburg-Vorpommern. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Prignitz liegt in Brandenburg; Vogtlandkreis liegt in Sachsen; Rhein-Sieg-Kreis liegt in Nordrhein-Westfalen.", en: "<b>Mecklenburgische Seenplatte</b> is a rural district in Mecklenburg-Vorpommern. Rural districts group several municipalities together.<br><br>Prignitz is in Brandenburg; Vogtlandkreis is in Saxony; Rhein-Sieg-Kreis is in North Rhine-Westphalia.", uk: "<b>Mecklenburgische Seenplatte</b> — район у Мекленбурзі-Передній Померанії. Райони обʼєднують кілька громад.<br><br>Prignitz — у Бранденбурзі; Vogtlandkreis — у Саксонії; Rhein-Sieg-Kreis — у Північному Рейні-Вестфалії.", ru: "<b>Mecklenburgische Seenplatte</b> — район в Мекленбурге-Передней Померании. Районы объединяют несколько муниципалитетов.<br><br>Prignitz — в Бранденбурге; Vogtlandkreis — в Саксонии; Rhein-Sieg-Kreis — в Северном Рейне-Вестфалии." },
   },
   {
     id: "lid_MV_03",
@@ -5128,7 +5128,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Mecklenburg-Vorpommern wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Mecklenburg-Vorpommern is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Мекленбург-Передня Померанія обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Мекленбург-Передняя Померания избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_MV_04",
@@ -5142,7 +5142,7 @@ var QUIZ = [
       { de: "18", en: "", uk: "", ru: "" },
       { de: "20", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Mecklenburg-Vorpommern darf man schon ab <b>16 Jahren</b> wählen, bei Kommunalwahlen, zum Beispiel für den Gemeinde- oder Stadtrat.<br><br>Bei der Bundestagswahl gilt dagegen das Mindestalter von 18 Jahren. 14 und 20 Jahre sind für Wahlen nicht richtig.", en: "In Mecklenburg-Vorpommern you may vote from the age of <b>16</b> in local elections, for example for the municipal or town council.<br><br>In the federal election, by contrast, the minimum age is 18. 14 and 20 are not correct ages for elections.", uk: "У Мекленбурзі-Передній Померанії голосувати можна вже з <b>16 років</b> на місцевих виборах, наприклад до ради громади чи міської ради.<br><br>На виборах до Бундестагу, навпаки, мінімальний вік — 18 років. 14 і 20 років для виборів не підходять.", ru: "В Мекленбурге-Передней Померании голосовать можно уже с <b>16 лет</b> на местных выборах, например в совет муниципалитета или городской совет.<br><br>На выборах в Бундестаг, напротив, минимальный возраст — 18 лет. 14 и 20 лет для выборов не подходят." },
   },
   {
     id: "lid_MV_05",
@@ -5156,7 +5156,7 @@ var QUIZ = [
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
       { de: "schwarz-gelb", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesflagge von Mecklenburg-Vorpommern hat die Farben Blau, Weiß, Gelb und Rot. Deshalb ist <b>blau-weiß-gelb-rot</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Mecklenburg-Vorpommern is blue-white-yellow-red. That is why <b>blue-white-yellow-red</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Мекленбург-Передня Померанія — синьо-біло-жовто-червоний. Тому правильна комбінація <b>синьо-біло-жовто-червоний</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Мекленбург-Передняя Померания — сине-бело-жёлто-красный. Поэтому правильна комбинация <b>сине-бело-жёлто-красный</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_MV_06",
@@ -5170,7 +5170,7 @@ var QUIZ = [
       { de: "beim Ordnungsamt der Gemeinde", en: "", uk: "", ru: "" },
       { de: "bei der Verbraucherzentrale", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung Mecklenburg-Vorpommern ist dafür in Mecklenburg-Vorpommern die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Mecklenburg-Vorpommern it is called “Landeszentrale für politische Bildung Mecklenburg-Vorpommern”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Мекленбурзі-Передній Померанії він називається «Landeszentrale für politische Bildung Mecklenburg-Vorpommern».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Мекленбурге-Передней Померании он называется «Landeszentrale für politische Bildung Mecklenburg-Vorpommern».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_MV_07",
@@ -5184,7 +5184,7 @@ var QUIZ = [
       { de: "Rostock.", en: "", uk: "", ru: "" },
       { de: "Wismar.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Schwerin</b> ist die Landeshauptstadt von Mecklenburg-Vorpommern. Dort sitzen die Landesregierung und der Landtag.<br><br>Rostock ist die größte Stadt von Mecklenburg-Vorpommern, aber nicht die Landeshauptstadt. Greifswald und Wismar sind kleinere Hansestädte.", en: "<b>Schwerin</b> is the state capital of Mecklenburg-Vorpommern. The state government and the Landtag are located there.<br><br>Rostock is the largest city in Mecklenburg-Vorpommern, but not the state capital. Greifswald and Wismar are smaller Hanseatic cities.", uk: "<b>Шверін</b> — столиця землі Мекленбург-Передня Померанія. Там розташовані уряд землі та ландтаг.<br><br>Росток — найбільше місто Мекленбурга-Передньої Померанії, але не столиця землі. Грайфсвальд і Вісмар — менші ганзейські міста.", ru: "<b>Шверин</b> — столица земли Мекленбург-Передняя Померания. Там находятся правительство земли и ландтаг.<br><br>Росток — крупнейший город Мекленбурга-Передней Померании, но не столица земли. Грайфсвальд и Висмар — меньшие ганзейские города." },
   },
   {
     id: "lid_MV_08",
@@ -5199,7 +5199,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "", correct: true },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Mecklenburg-Vorpommern liegt im Nordosten Deutschlands an der Ostsee und grenzt an Polen.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Mecklenburg-Vorpommern lies in the north-east of Germany on the Baltic Sea and borders Poland.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Мекленбург-Передня Померанія лежить на північному сході Німеччини на Балтійському морі й межує з Польщею.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Мекленбург-Передняя Померания лежит на северо-востоке Германии на Балтийском море и граничит с Польшей.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_MV_09",
@@ -5213,7 +5213,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Mecklenburg-Vorpommern wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Mecklenburg-Vorpommern the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Мекленбурзі-Передній Померанії його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Мекленбурге-Передней Померании его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_MV_10",
@@ -5227,7 +5227,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Mecklenburg-Vorpommern hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Mecklenburg-Vorpommern has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Мекленбурзі-Передній Померанії немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Мекленбурге-Передней Померании нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_NI_01",
@@ -5241,7 +5241,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_NI_01_a3.png", correct: true },
       { de: "", en: "", uk: "", ru: "", img: "lid_NI_01_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Landeswappen von Niedersachsen zeigt das „Sachsenross“, ein weißes springendes Pferd auf rotem Grund.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The state coat of arms of Lower Saxony shows the “Saxon Steed”, a white leaping horse on a red background.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Нижньої Саксонії зображує «саксонського коня» — білого коня в стрибку на червоному тлі.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Нижней Саксонии изображает «саксонского коня» — белую скачущую лошадь на красном фоне.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_NI_02",
@@ -5255,7 +5255,7 @@ var QUIZ = [
       { de: "Nordfriesland", en: "", uk: "", ru: "" },
       { de: "Vogtlandkreis", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Ammerland</b> ist ein Landkreis in Niedersachsen. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Rhein-Sieg-Kreis liegt in Nordrhein-Westfalen; Nordfriesland liegt in Schleswig-Holstein; Vogtlandkreis liegt in Sachsen.", en: "<b>Ammerland</b> is a rural district in Lower Saxony. Rural districts group several municipalities together.<br><br>Rhein-Sieg-Kreis is in North Rhine-Westphalia; Nordfriesland is in Schleswig-Holstein; Vogtlandkreis is in Saxony.", uk: "<b>Ammerland</b> — район у Нижній Саксонії. Райони обʼєднують кілька громад.<br><br>Rhein-Sieg-Kreis — у Північному Рейні-Вестфалії; Nordfriesland — у Шлезвіг-Гольштейні; Vogtlandkreis — у Саксонії.", ru: "<b>Ammerland</b> — район в Нижней Саксонии. Районы объединяют несколько муниципалитетов.<br><br>Rhein-Sieg-Kreis — в Северном Рейне-Вестфалии; Nordfriesland — в Шлезвиг-Гольштейне; Vogtlandkreis — в Саксонии." },
   },
   {
     id: "lid_NI_03",
@@ -5269,7 +5269,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Niedersachsen wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Lower Saxony is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Нижня Саксонія обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Нижняя Саксония избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_NI_04",
@@ -5283,7 +5283,7 @@ var QUIZ = [
       { de: "18", en: "", uk: "", ru: "" },
       { de: "20", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Niedersachsen darf man schon ab <b>16 Jahren</b> wählen, bei Kommunalwahlen, zum Beispiel für den Gemeinde- oder Stadtrat.<br><br>Bei der Bundestagswahl gilt dagegen das Mindestalter von 18 Jahren. 14 und 20 Jahre sind für Wahlen nicht richtig.", en: "In Lower Saxony you may vote from the age of <b>16</b> in local elections, for example for the municipal or town council.<br><br>In the federal election, by contrast, the minimum age is 18. 14 and 20 are not correct ages for elections.", uk: "У Нижній Саксонії голосувати можна вже з <b>16 років</b> на місцевих виборах, наприклад до ради громади чи міської ради.<br><br>На виборах до Бундестагу, навпаки, мінімальний вік — 18 років. 14 і 20 років для виборів не підходять.", ru: "В Нижней Саксонии голосовать можно уже с <b>16 лет</b> на местных выборах, например в совет муниципалитета или городской совет.<br><br>На выборах в Бундестаг, напротив, минимальный возраст — 18 лет. 14 и 20 лет для выборов не подходят." },
   },
   {
     id: "lid_NI_05",
@@ -5297,7 +5297,7 @@ var QUIZ = [
       { de: "schwarz-gelb", en: "", uk: "", ru: "" },
       { de: "blau-weiß-rot", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesflagge von Niedersachsen ist schwarz-rot-gold. Deshalb ist <b>schwarz-rot-gold</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Lower Saxony is black-red-gold. That is why <b>black-red-gold</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Нижня Саксонія — чорно-червоно-золотий. Тому правильна комбінація <b>чорно-червоно-золотий</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Нижняя Саксония — чёрно-красно-золотой. Поэтому правильна комбинация <b>чёрно-красно-золотой</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_NI_06",
@@ -5311,7 +5311,7 @@ var QUIZ = [
       { de: "bei der Verbraucherzentrale", en: "", uk: "", ru: "" },
       { de: "bei den Kirchen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Niedersächsische Landeszentrale für politische Bildung ist dafür in Niedersachsen die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Lower Saxony it is called “Niedersächsische Landeszentrale für politische Bildung”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Нижній Саксонії він називається «Niedersächsische Landeszentrale für politische Bildung».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Нижней Саксонии он называется «Niedersächsische Landeszentrale für politische Bildung».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_NI_07",
@@ -5325,7 +5325,7 @@ var QUIZ = [
       { de: "Wolfsburg.", en: "", uk: "", ru: "" },
       { de: "Osnabrück.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Hannover</b> ist die Landeshauptstadt von Niedersachsen. Dort sitzen die Landesregierung und der Landtag.<br><br>Braunschweig, Wolfsburg und Osnabrück sind große Städte in Niedersachsen, aber nicht die Landeshauptstadt. In Wolfsburg sitzt zum Beispiel das Unternehmen Volkswagen.", en: "<b>Hanover</b> is the state capital of Lower Saxony. The state government and the Landtag are located there.<br><br>Braunschweig, Wolfsburg and Osnabrück are large cities in Lower Saxony, but not the state capital. The company Volkswagen is based in Wolfsburg, for example.", uk: "<b>Ганновер</b> — столиця землі Нижня Саксонія. Там розташовані уряд землі та ландтаг.<br><br>Брауншвейг, Вольфсбург та Оснабрюк — великі міста Нижньої Саксонії, але не столиця землі. У Вольфсбурзі, наприклад, розташована компанія Volkswagen.", ru: "<b>Ганновер</b> — столица земли Нижняя Саксония. Там находятся правительство земли и ландтаг.<br><br>Брауншвейг, Вольфсбург и Оснабрюк — большие города Нижней Саксонии, но не столица земли. В Вольфсбурге, например, находится компания Volkswagen." },
   },
   {
     id: "lid_NI_08",
@@ -5340,7 +5340,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Niedersachsen liegt im Nordwesten Deutschlands an der Nordsee und grenzt an die Niederlande. Es umschließt das Bundesland Bremen.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Lower Saxony lies in the north-west of Germany on the North Sea and borders the Netherlands. It surrounds the federal state of Bremen.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Нижня Саксонія лежить на північному заході Німеччини на Північному морі й межує з Нідерландами. Вона оточує федеральну землю Бремен.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Нижняя Саксония лежит на северо-западе Германии на Северном море и граничит с Нидерландами. Она окружает федеральную землю Бремен.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_NI_09",
@@ -5354,7 +5354,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Niedersachsen wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Lower Saxony the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Нижній Саксонії його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Нижней Саксонии его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_NI_10",
@@ -5368,7 +5368,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Niedersachsen hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Lower Saxony has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Нижній Саксонії немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Нижней Саксонии нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_NW_01",
@@ -5382,7 +5382,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_NW_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_NW_01_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Landeswappen von Nordrhein-Westfalen zeigt den Rhein als Wellenbalken, das Sachsenross für Westfalen und die lippische Rose.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The state coat of arms of North Rhine-Westphalia shows the Rhine as a wavy bar, the Saxon Steed for Westphalia and the Lippe rose.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Північного Рейну-Вестфалії зображує Рейн як хвилясту смугу, саксонського коня для Вестфалії та ліппську троянду.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Северного Рейна-Вестфалии изображает Рейн в виде волнистой полосы, саксонского коня для Вестфалии и липпскую розу.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_NW_02",
@@ -5396,7 +5396,7 @@ var QUIZ = [
       { de: "Nordfriesland", en: "", uk: "", ru: "" },
       { de: "Vogtlandkreis", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Rhein-Sieg-Kreis</b> ist ein Landkreis in Nordrhein-Westfalen. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Ammerland liegt in Niedersachsen; Nordfriesland liegt in Schleswig-Holstein; Vogtlandkreis liegt in Sachsen.", en: "<b>Rhein-Sieg-Kreis</b> is a rural district in North Rhine-Westphalia. Rural districts group several municipalities together.<br><br>Ammerland is in Lower Saxony; Nordfriesland is in Schleswig-Holstein; Vogtlandkreis is in Saxony.", uk: "<b>Rhein-Sieg-Kreis</b> — район у Північному Рейні-Вестфалії. Райони обʼєднують кілька громад.<br><br>Ammerland — у Нижній Саксонії; Nordfriesland — у Шлезвіг-Гольштейні; Vogtlandkreis — у Саксонії.", ru: "<b>Rhein-Sieg-Kreis</b> — район в Северном Рейне-Вестфалии. Районы объединяют несколько муниципалитетов.<br><br>Ammerland — в Нижней Саксонии; Nordfriesland — в Шлезвиг-Гольштейне; Vogtlandkreis — в Саксонии." },
   },
   {
     id: "lid_NW_03",
@@ -5410,7 +5410,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Nordrhein-Westfalen wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of North Rhine-Westphalia is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Північний Рейн-Вестфалія обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Северный Рейн-Вестфалия избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_NW_04",
@@ -5424,7 +5424,7 @@ var QUIZ = [
       { de: "18", en: "", uk: "", ru: "" },
       { de: "20", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Nordrhein-Westfalen darf man schon ab <b>16 Jahren</b> wählen, bei Kommunalwahlen, zum Beispiel für den Gemeinde- oder Stadtrat.<br><br>Bei der Bundestagswahl gilt dagegen das Mindestalter von 18 Jahren. 14 und 20 Jahre sind für Wahlen nicht richtig.", en: "In North Rhine-Westphalia you may vote from the age of <b>16</b> in local elections, for example for the municipal or town council.<br><br>In the federal election, by contrast, the minimum age is 18. 14 and 20 are not correct ages for elections.", uk: "У Північному Рейні-Вестфалії голосувати можна вже з <b>16 років</b> на місцевих виборах, наприклад до ради громади чи міської ради.<br><br>На виборах до Бундестагу, навпаки, мінімальний вік — 18 років. 14 і 20 років для виборів не підходять.", ru: "В Северном Рейне-Вестфалии голосовать можно уже с <b>16 лет</b> на местных выборах, например в совет муниципалитета или городской совет.<br><br>На выборах в Бундестаг, напротив, минимальный возраст — 18 лет. 14 и 20 лет для выборов не подходят." },
   },
   {
     id: "lid_NW_05",
@@ -5438,7 +5438,7 @@ var QUIZ = [
       { de: "schwarz-gold", en: "", uk: "", ru: "" },
       { de: "blau-weiß-rot", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesflagge von Nordrhein-Westfalen ist grün-weiß-rot. Deshalb ist <b>grün-weiß-rot</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of North Rhine-Westphalia is green-white-red. That is why <b>green-white-red</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Північний Рейн-Вестфалія — зелено-біло-червоний. Тому правильна комбінація <b>зелено-біло-червоний</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Северный Рейн-Вестфалия — зелёно-бело-красный. Поэтому правильна комбинация <b>зелёно-бело-красный</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_NW_06",
@@ -5452,7 +5452,7 @@ var QUIZ = [
       { de: "bei der Verbraucherzentrale", en: "", uk: "", ru: "" },
       { de: "bei der Landeszentrale für politische Bildung", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung Nordrhein-Westfalen ist dafür in Nordrhein-Westfalen die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In North Rhine-Westphalia it is called “Landeszentrale für politische Bildung Nordrhein-Westfalen”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Північному Рейні-Вестфалії він називається «Landeszentrale für politische Bildung Nordrhein-Westfalen».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Северном Рейне-Вестфалии он называется «Landeszentrale für politische Bildung Nordrhein-Westfalen».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_NW_07",
@@ -5466,7 +5466,7 @@ var QUIZ = [
       { de: "Düsseldorf.", en: "", uk: "", ru: "", correct: true },
       { de: "Dortmund.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Düsseldorf</b> ist die Landeshauptstadt von Nordrhein-Westfalen. Dort sitzen die Landesregierung und der Landtag.<br><br>Köln ist die größte Stadt des Landes. Bonn war bis 1990 die Hauptstadt der Bundesrepublik, und Dortmund ist eine große Stadt im Ruhrgebiet. Aber nur Düsseldorf ist Landeshauptstadt.", en: "<b>Düsseldorf</b> is the state capital of North Rhine-Westphalia. The state government and the Landtag are located there.<br><br>Cologne is the largest city in the state. Bonn was the capital of the Federal Republic until 1990, and Dortmund is a large city in the Ruhr area. But only Düsseldorf is the state capital.", uk: "<b>Дюссельдорф</b> — столиця землі Північний Рейн-Вестфалія. Там розташовані уряд землі та ландтаг.<br><br>Кельн — найбільше місто землі. Бонн до 1990 року був столицею Федеративної Республіки, а Дортмунд — велике місто в Рурі. Але лише Дюссельдорф є столицею землі.", ru: "<b>Дюссельдорф</b> — столица земли Северный Рейн-Вестфалия. Там находятся правительство земли и ландтаг.<br><br>Кёльн — крупнейший город земли. Бонн до 1990 года был столицей Федеративной Республики, а Дортмунд — большой город в Руре. Но только Дюссельдорф является столицей земли." },
   },
   {
     id: "lid_NW_08",
@@ -5481,7 +5481,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "", correct: true },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Nordrhein-Westfalen liegt im Westen Deutschlands und grenzt an die Niederlande und Belgien. Es ist das bevölkerungsreichste Bundesland.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "North Rhine-Westphalia lies in the west of Germany and borders the Netherlands and Belgium. It is the most populous federal state.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Північний Рейн-Вестфалія лежить на заході Німеччини й межує з Нідерландами та Бельгією. Це найбільш населена федеральна земля.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Северный Рейн-Вестфалия лежит на западе Германии и граничит с Нидерландами и Бельгией. Это самая населённая федеральная земля.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_NW_09",
@@ -5495,7 +5495,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Nordrhein-Westfalen wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In North Rhine-Westphalia the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Північному Рейні-Вестфалії його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Северном Рейне-Вестфалии его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_NW_10",
@@ -5509,7 +5509,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Nordrhein-Westfalen hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "North Rhine-Westphalia has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Північному Рейні-Вестфалії немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Северном Рейне-Вестфалии нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_RP_01",
@@ -5523,7 +5523,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_RP_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_RP_01_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wappen von Rheinland-Pfalz zeigt ein Kreuz, einen Löwen und ein Rad. Sie stehen für die früheren Herrschaftsgebiete Kurtrier, Kurpfalz und Kurmainz.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The coat of arms of Rhineland-Palatinate shows a cross, a lion and a wheel. They stand for the former electorates of Trier, the Palatinate and Mainz.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Рейнланд-Пфальцу зображує хрест, лева й колесо. Вони символізують колишні курфюрства: Трірське, Пфальцське та Майнцьке.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Рейнланд-Пфальца изображает крест, льва и колесо. Они символизируют бывшие курфюршества: Трирское, Пфальцское и Майнцское.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_RP_02",
@@ -5537,7 +5537,7 @@ var QUIZ = [
       { de: "Emsland", en: "", uk: "", ru: "" },
       { de: "Prignitz", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Westerwaldkreis</b> ist ein Landkreis in Rheinland-Pfalz. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Altötting liegt in Bayern; Emsland liegt in Niedersachsen; Prignitz liegt in Brandenburg.", en: "<b>Westerwaldkreis</b> is a rural district in Rhineland-Palatinate. Rural districts group several municipalities together.<br><br>Altötting is in Bavaria; Emsland is in Lower Saxony; Prignitz is in Brandenburg.", uk: "<b>Westerwaldkreis</b> — район у Рейнланд-Пфальці. Райони обʼєднують кілька громад.<br><br>Altötting — у Баварії; Emsland — у Нижній Саксонії; Prignitz — у Бранденбурзі.", ru: "<b>Westerwaldkreis</b> — район в Рейнланд-Пфальце. Районы объединяют несколько муниципалитетов.<br><br>Altötting — в Баварии; Emsland — в Нижней Саксонии; Prignitz — в Бранденбурге." },
   },
   {
     id: "lid_RP_03",
@@ -5551,7 +5551,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Rheinland-Pfalz wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Rhineland-Palatinate is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Рейнланд-Пфальц обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Рейнланд-Пфальц избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_RP_04",
@@ -5579,7 +5579,7 @@ var QUIZ = [
       { de: "schwarz-gelb", en: "", uk: "", ru: "" },
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesflagge von Rheinland-Pfalz ist schwarz-rot-gold. Deshalb ist <b>schwarz-rot-gold</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Rhineland-Palatinate is black-red-gold. That is why <b>black-red-gold</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Рейнланд-Пфальц — чорно-червоно-золотий. Тому правильна комбінація <b>чорно-червоно-золотий</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Рейнланд-Пфальц — чёрно-красно-золотой. Поэтому правильна комбинация <b>чёрно-красно-золотой</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_RP_06",
@@ -5593,7 +5593,7 @@ var QUIZ = [
       { de: "beim Ordnungsamt der Gemeinde", en: "", uk: "", ru: "" },
       { de: "bei der Landeszentrale für politische Bildung", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung Rheinland-Pfalz ist dafür in Rheinland-Pfalz die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Rhineland-Palatinate it is called “Landeszentrale für politische Bildung Rheinland-Pfalz”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Рейнланд-Пфальці він називається «Landeszentrale für politische Bildung Rheinland-Pfalz».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Рейнланд-Пфальце он называется «Landeszentrale für politische Bildung Rheinland-Pfalz».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_RP_07",
@@ -5607,7 +5607,7 @@ var QUIZ = [
       { de: "Ludwigshafen.", en: "", uk: "", ru: "" },
       { de: "Koblenz.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Mainz</b> ist die Landeshauptstadt von Rheinland-Pfalz. Dort sitzen die Landesregierung und der Landtag.<br><br>Kaiserslautern, Ludwigshafen und Koblenz sind größere Städte in Rheinland-Pfalz, aber nicht die Landeshauptstadt. Mainz liegt am Rhein.", en: "<b>Mainz</b> is the state capital of Rhineland-Palatinate. The state government and the Landtag are located there.<br><br>Kaiserslautern, Ludwigshafen and Koblenz are larger cities in Rhineland-Palatinate, but not the state capital. Mainz lies on the Rhine.", uk: "<b>Майнц</b> — столиця землі Рейнланд-Пфальц. Там розташовані уряд землі та ландтаг.<br><br>Кайзерслаутерн, Людвігсгафен і Кобленц — більші міста Рейнланд-Пфальцу, але не столиця землі. Майнц лежить на Рейні.", ru: "<b>Майнц</b> — столица земли Рейнланд-Пфальц. Там находятся правительство земли и ландтаг.<br><br>Кайзерслаутерн, Людвигсхафен и Кобленц — более крупные города Рейнланд-Пфальца, но не столица земли. Майнц лежит на Рейне." },
   },
   {
     id: "lid_RP_08",
@@ -5622,7 +5622,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Rheinland-Pfalz liegt im Westen Deutschlands und grenzt an Frankreich, Luxemburg und Belgien. Rhein und Mosel prägen das Land.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Rhineland-Palatinate lies in the west of Germany and borders France, Luxembourg and Belgium. The Rhine and the Moselle shape the state.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Рейнланд-Пфальц лежить на заході Німеччини й межує з Францією, Люксембургом і Бельгією. Рейн і Мозель формують обличчя землі.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Рейнланд-Пфальц лежит на западе Германии и граничит с Францией, Люксембургом и Бельгией. Рейн и Мозель определяют облик земли.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_RP_09",
@@ -5636,7 +5636,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Rheinland-Pfalz wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Rhineland-Palatinate the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Рейнланд-Пфальці його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Рейнланд-Пфальце его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_RP_10",
@@ -5650,7 +5650,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Rheinland-Pfalz hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Rhineland-Palatinate has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Рейнланд-Пфальці немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Рейнланд-Пфальце нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_SL_01",
@@ -5664,7 +5664,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_SL_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_SL_01_a4.png", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wappen des Saarlandes zeigt in mehreren Feldern die Zeichen der früheren Herrschaftsgebiete der Region.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The coat of arms of Saarland shows, in several fields, the emblems of the region’s former territories.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Саару зображує в кількох полях знаки колишніх володінь регіону.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Саара изображает в нескольких полях знаки бывших владений региона.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_SL_02",
@@ -5678,7 +5678,7 @@ var QUIZ = [
       { de: "Neunkirchen", en: "", uk: "", ru: "", correct: true },
       { de: "Rhein-Sieg-Kreis", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Neunkirchen</b> ist ein Landkreis in das Saarland. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Mecklenburgische Seenplatte liegt in Mecklenburg-Vorpommern; Altötting liegt in Bayern; Rhein-Sieg-Kreis liegt in Nordrhein-Westfalen.", en: "<b>Neunkirchen</b> is a rural district in Saarland. Rural districts group several municipalities together.<br><br>Mecklenburgische Seenplatte is in Mecklenburg-Vorpommern; Altötting is in Bavaria; Rhein-Sieg-Kreis is in North Rhine-Westphalia.", uk: "<b>Neunkirchen</b> — район у Саарі. Райони обʼєднують кілька громад.<br><br>Mecklenburgische Seenplatte — у Мекленбурзі-Передній Померанії; Altötting — у Баварії; Rhein-Sieg-Kreis — у Північному Рейні-Вестфалії.", ru: "<b>Neunkirchen</b> — район в Сааре. Районы объединяют несколько муниципалитетов.<br><br>Mecklenburgische Seenplatte — в Мекленбурге-Передней Померании; Altötting — в Баварии; Rhein-Sieg-Kreis — в Северном Рейне-Вестфалии." },
   },
   {
     id: "lid_SL_03",
@@ -5692,7 +5692,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag des Saarlandes wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Saarland is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Саар обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Саар избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_SL_04",
@@ -5720,7 +5720,7 @@ var QUIZ = [
       { de: "schwarz-gelb", en: "", uk: "", ru: "" },
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesflagge des Saarlandes ist schwarz-rot-gold. Deshalb ist <b>schwarz-rot-gold</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Saarland is black-red-gold. That is why <b>black-red-gold</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Саар — чорно-червоно-золотий. Тому правильна комбінація <b>чорно-червоно-золотий</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Саар — чёрно-красно-золотой. Поэтому правильна комбинация <b>чёрно-красно-золотой</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_SL_06",
@@ -5734,7 +5734,7 @@ var QUIZ = [
       { de: "bei der Verbraucherzentrale", en: "", uk: "", ru: "" },
       { de: "beim Ordnungsamt der Gemeinde", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung des Saarlandes ist dafür in das Saarland die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Saarland it is called “Landeszentrale für politische Bildung des Saarlandes”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Саарі він називається «Landeszentrale für politische Bildung des Saarlandes».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Сааре он называется «Landeszentrale für politische Bildung des Saarlandes».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_SL_07",
@@ -5748,7 +5748,7 @@ var QUIZ = [
       { de: "Saarbrücken.", en: "", uk: "", ru: "", correct: true },
       { de: "Völklingen.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Saarbrücken</b> ist die Landeshauptstadt von das Saarland. Dort sitzen die Landesregierung und der Landtag.<br><br>Neunkirchen, Homburg und Völklingen sind Städte im Saarland, aber nicht die Landeshauptstadt. Saarbrücken ist auch die größte Stadt des Landes.", en: "<b>Saarbrücken</b> is the state capital of Saarland. The state government and the Landtag are located there.<br><br>Neunkirchen, Homburg and Völklingen are towns in Saarland, but not the state capital. Saarbrücken is also the largest city in the state.", uk: "<b>Саарбрюкен</b> — столиця землі Саар. Там розташовані уряд землі та ландтаг.<br><br>Нойнкірхен, Гомбург і Фельклінген — міста Саару, але не столиця землі. Саарбрюкен також є найбільшим містом землі.", ru: "<b>Саарбрюккен</b> — столица земли Саар. Там находятся правительство земли и ландтаг.<br><br>Нойнкирхен, Гомбург и Фёлклинген — города Саара, но не столица земли. Саарбрюккен также является крупнейшим городом земли." },
   },
   {
     id: "lid_SL_08",
@@ -5763,7 +5763,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Saarland liegt im Südwesten Deutschlands und grenzt an Frankreich und Luxemburg. Es ist das kleinste Flächenland.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Saarland lies in the south-west of Germany and borders France and Luxembourg. It is the smallest area state.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Саар лежить на південному заході Німеччини й межує з Францією та Люксембургом. Це найменша територіальна земля.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Саар лежит на юго-западе Германии и граничит с Францией и Люксембургом. Это самая маленькая территориальная земля.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_SL_09",
@@ -5777,7 +5777,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In das Saarland wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Saarland the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Саарі його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Сааре его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_SL_10",
@@ -5791,7 +5791,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Saarland hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Saarland has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Саарі немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Сааре нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_SN_01",
@@ -5805,7 +5805,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_SN_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_SN_01_a4.png", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Wappen von Sachsen zeigt einen grünen Rautenkranz auf schwarz-goldenen Streifen.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The coat of arms of Saxony shows a green crown of rue on black-and-gold stripes.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Саксонії зображує зелений рутовий вінок на чорно-золотих смугах.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Саксонии изображает зелёный рутовый венок на чёрно-золотых полосах.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_SN_02",
@@ -5819,7 +5819,7 @@ var QUIZ = [
       { de: "Uckermark", en: "", uk: "", ru: "" },
       { de: "Nordfriesland", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Vogtlandkreis</b> ist ein Landkreis in Sachsen. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Altötting liegt in Bayern; Uckermark liegt in Brandenburg; Nordfriesland liegt in Schleswig-Holstein.", en: "<b>Vogtlandkreis</b> is a rural district in Saxony. Rural districts group several municipalities together.<br><br>Altötting is in Bavaria; Uckermark is in Brandenburg; Nordfriesland is in Schleswig-Holstein.", uk: "<b>Vogtlandkreis</b> — район у Саксонії. Райони обʼєднують кілька громад.<br><br>Altötting — у Баварії; Uckermark — у Бранденбурзі; Nordfriesland — у Шлезвіг-Гольштейні.", ru: "<b>Vogtlandkreis</b> — район в Саксонии. Районы объединяют несколько муниципалитетов.<br><br>Altötting — в Баварии; Uckermark — в Бранденбурге; Nordfriesland — в Шлезвиг-Гольштейне." },
   },
   {
     id: "lid_SN_03",
@@ -5833,7 +5833,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Sachsen wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Saxony is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Саксонія обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Саксония избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_SN_04",
@@ -5861,7 +5861,7 @@ var QUIZ = [
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
       { de: "schwarz-gelb", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesfarben von Sachsen sind Weiß und Grün. Deshalb ist <b>weiß-grün</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Saxony is white-green. That is why <b>white-green</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Саксонія — біло-зелений. Тому правильна комбінація <b>біло-зелений</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Саксония — бело-зелёный. Поэтому правильна комбинация <b>бело-зелёный</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_SN_06",
@@ -5875,7 +5875,7 @@ var QUIZ = [
       { de: "bei den Kirchen", en: "", uk: "", ru: "" },
       { de: "bei der Verbraucherzentrale", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Sächsische Landeszentrale für politische Bildung ist dafür in Sachsen die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Saxony it is called “Sächsische Landeszentrale für politische Bildung”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Саксонії він називається «Sächsische Landeszentrale für politische Bildung».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Саксонии он называется «Sächsische Landeszentrale für politische Bildung».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_SN_07",
@@ -5889,7 +5889,7 @@ var QUIZ = [
       { de: "Chemnitz.", en: "", uk: "", ru: "" },
       { de: "Zwickau.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Dresden</b> ist die Landeshauptstadt von Sachsen. Dort sitzen die Landesregierung und der Landtag.<br><br>Leipzig ist die größte Stadt Sachsens, aber nicht die Landeshauptstadt. Chemnitz und Zwickau sind ebenfalls große Städte in Sachsen.", en: "<b>Dresden</b> is the state capital of Saxony. The state government and the Landtag are located there.<br><br>Leipzig is the largest city in Saxony, but not the state capital. Chemnitz and Zwickau are also large cities in Saxony.", uk: "<b>Дрезден</b> — столиця землі Саксонія. Там розташовані уряд землі та ландтаг.<br><br>Лейпциг — найбільше місто Саксонії, але не столиця землі. Хемніц і Цвіккау також великі міста Саксонії.", ru: "<b>Дрезден</b> — столица земли Саксония. Там находятся правительство земли и ландтаг.<br><br>Лейпциг — крупнейший город Саксонии, но не столица земли. Хемниц и Цвиккау — тоже большие города Саксонии." },
   },
   {
     id: "lid_SN_08",
@@ -5904,7 +5904,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Sachsen liegt im Osten Deutschlands und grenzt an Tschechien und Polen.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Saxony lies in the east of Germany and borders the Czech Republic and Poland.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Саксонія лежить на сході Німеччини й межує з Чехією та Польщею.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Саксония лежит на востоке Германии и граничит с Чехией и Польшей.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_SN_09",
@@ -5918,7 +5918,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Sachsen wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Saxony the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Саксонії його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Саксонии его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_SN_10",
@@ -5932,7 +5932,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Sachsen hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Saxony has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Саксонії немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Саксонии нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_ST_01",
@@ -5946,7 +5946,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_ST_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_ST_01_a4.png", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Landeswappen von Sachsen-Anhalt ist das richtige Wappen für dieses Bundesland. Die anderen Wappen gehören zu anderen Ländern.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The state coat of arms of Saxony-Anhalt is the right coat of arms for this federal state. The other coats of arms belong to other states.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Саксонії-Ангальт — правильний герб для цієї федеральної землі. Інші герби належать іншим землям.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Саксонии-Анхальт — правильный герб для этой федеральной земли. Другие гербы принадлежат другим землям.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_ST_02",
@@ -5960,7 +5960,7 @@ var QUIZ = [
       { de: "Uckermark", en: "", uk: "", ru: "" },
       { de: "Börde", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Börde</b> ist ein Landkreis in Sachsen-Anhalt. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Ammerland liegt in Niedersachsen; Altötting liegt in Bayern; Uckermark liegt in Brandenburg.", en: "<b>Börde</b> is a rural district in Saxony-Anhalt. Rural districts group several municipalities together.<br><br>Ammerland is in Lower Saxony; Altötting is in Bavaria; Uckermark is in Brandenburg.", uk: "<b>Börde</b> — район у Саксонії-Ангальт. Райони обʼєднують кілька громад.<br><br>Ammerland — у Нижній Саксонії; Altötting — у Баварії; Uckermark — у Бранденбурзі.", ru: "<b>Börde</b> — район в Саксонии-Анхальт. Районы объединяют несколько муниципалитетов.<br><br>Ammerland — в Нижней Саксонии; Altötting — в Баварии; Uckermark — в Бранденбурге." },
   },
   {
     id: "lid_ST_03",
@@ -5974,7 +5974,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Sachsen-Anhalt wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Saxony-Anhalt is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Саксонія-Ангальт обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Саксония-Анхальт избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_ST_04",
@@ -5988,7 +5988,7 @@ var QUIZ = [
       { de: "18", en: "", uk: "", ru: "" },
       { de: "20", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Sachsen-Anhalt darf man schon ab <b>16 Jahren</b> wählen, bei Kommunalwahlen, zum Beispiel für den Gemeinde- oder Stadtrat.<br><br>Bei der Bundestagswahl gilt dagegen das Mindestalter von 18 Jahren. 14 und 20 Jahre sind für Wahlen nicht richtig.", en: "In Saxony-Anhalt you may vote from the age of <b>16</b> in local elections, for example for the municipal or town council.<br><br>In the federal election, by contrast, the minimum age is 18. 14 and 20 are not correct ages for elections.", uk: "У Саксонії-Ангальт голосувати можна вже з <b>16 років</b> на місцевих виборах, наприклад до ради громади чи міської ради.<br><br>На виборах до Бундестагу, навпаки, мінімальний вік — 18 років. 14 і 20 років для виборів не підходять.", ru: "В Саксонии-Анхальт голосовать можно уже с <b>16 лет</b> на местных выборах, например в совет муниципалитета или городской совет.<br><br>На выборах в Бундестаг, напротив, минимальный возраст — 18 лет. 14 и 20 лет для выборов не подходят." },
   },
   {
     id: "lid_ST_05",
@@ -6002,7 +6002,7 @@ var QUIZ = [
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
       { de: "weiß-rot", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesfarben von Sachsen-Anhalt sind Gelb und Schwarz. Deshalb ist <b>gelb-schwarz</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Saxony-Anhalt is yellow-black. That is why <b>yellow-black</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Саксонія-Ангальт — жовто-чорний. Тому правильна комбінація <b>жовто-чорний</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Саксония-Анхальт — жёлто-чёрный. Поэтому правильна комбинация <b>жёлто-чёрный</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_ST_06",
@@ -6016,7 +6016,7 @@ var QUIZ = [
       { de: "beim Ordnungsamt der Gemeinde", en: "", uk: "", ru: "" },
       { de: "bei der Verbraucherzentrale", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung Sachsen-Anhalt ist dafür in Sachsen-Anhalt die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Saxony-Anhalt it is called “Landeszentrale für politische Bildung Sachsen-Anhalt”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Саксонії-Ангальт він називається «Landeszentrale für politische Bildung Sachsen-Anhalt».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Саксонии-Анхальт он называется «Landeszentrale für politische Bildung Sachsen-Anhalt».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_ST_07",
@@ -6030,7 +6030,7 @@ var QUIZ = [
       { de: "Magdeburg.", en: "", uk: "", ru: "", correct: true },
       { de: "Wittenberg.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Magdeburg</b> ist die Landeshauptstadt von Sachsen-Anhalt. Dort sitzen die Landesregierung und der Landtag.<br><br>Halle ist die größte Stadt von Sachsen-Anhalt, aber nicht die Landeshauptstadt. Dessau und Wittenberg sind bekannte Städte, aber ebenfalls nicht Landeshauptstadt.", en: "<b>Magdeburg</b> is the state capital of Saxony-Anhalt. The state government and the Landtag are located there.<br><br>Halle is the largest city in Saxony-Anhalt, but not the state capital. Dessau and Wittenberg are well-known cities, but also not the state capital.", uk: "<b>Магдебург</b> — столиця землі Саксонія-Ангальт. Там розташовані уряд землі та ландтаг.<br><br>Галле — найбільше місто Саксонії-Ангальт, але не столиця землі. Дессау та Віттенберг — відомі міста, але теж не столиця землі.", ru: "<b>Магдебург</b> — столица земли Саксония-Анхальт. Там находятся правительство земли и ландтаг.<br><br>Галле — крупнейший город Саксонии-Анхальт, но не столица земли. Дессау и Виттенберг — известные города, но тоже не столица земли." },
   },
   {
     id: "lid_ST_08",
@@ -6045,7 +6045,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "", correct: true },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Sachsen-Anhalt liegt im Osten Deutschlands. Es grenzt an Niedersachsen, Brandenburg, Sachsen und Thüringen.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Saxony-Anhalt lies in the east of Germany. It borders Lower Saxony, Brandenburg, Saxony and Thuringia.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Саксонія-Ангальт лежить на сході Німеччини. Вона межує з Нижньою Саксонією, Бранденбургом, Саксонією та Тюрингією.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Саксония-Анхальт лежит на востоке Германии. Она граничит с Нижней Саксонией, Бранденбургом, Саксонией и Тюрингией.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_ST_09",
@@ -6059,7 +6059,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Sachsen-Anhalt wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Saxony-Anhalt the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Саксонії-Ангальт його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Саксонии-Анхальт его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_ST_10",
@@ -6073,7 +6073,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Sachsen-Anhalt hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Saxony-Anhalt has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Саксонії-Ангальт немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Саксонии-Анхальт нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_SH_01",
@@ -6087,7 +6087,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_SH_01_a3.png", correct: true },
       { de: "", en: "", uk: "", ru: "", img: "lid_SH_01_a4.png" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Landeswappen von Schleswig-Holstein zeigt zwei blaue Löwen und ein Nesselblatt.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The state coat of arms of Schleswig-Holstein shows two blue lions and a nettle leaf.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Шлезвіг-Гольштейну зображує двох синіх левів і лист кропиви.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Шлезвиг-Гольштейна изображает двух синих львов и лист крапивы.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_SH_02",
@@ -6101,7 +6101,7 @@ var QUIZ = [
       { de: "Nordfriesland", en: "", uk: "", ru: "", correct: true },
       { de: "Rhein-Sieg-Kreis", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Nordfriesland</b> ist ein Landkreis in Schleswig-Holstein. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Ammerland liegt in Niedersachsen; Mecklenburgische Seenplatte liegt in Mecklenburg-Vorpommern; Rhein-Sieg-Kreis liegt in Nordrhein-Westfalen.", en: "<b>Nordfriesland</b> is a rural district in Schleswig-Holstein. Rural districts group several municipalities together.<br><br>Ammerland is in Lower Saxony; Mecklenburgische Seenplatte is in Mecklenburg-Vorpommern; Rhein-Sieg-Kreis is in North Rhine-Westphalia.", uk: "<b>Nordfriesland</b> — район у Шлезвіг-Гольштейні. Райони обʼєднують кілька громад.<br><br>Ammerland — у Нижній Саксонії; Mecklenburgische Seenplatte — у Мекленбурзі-Передній Померанії; Rhein-Sieg-Kreis — у Північному Рейні-Вестфалії.", ru: "<b>Nordfriesland</b> — район в Шлезвиг-Гольштейне. Районы объединяют несколько муниципалитетов.<br><br>Ammerland — в Нижней Саксонии; Mecklenburgische Seenplatte — в Мекленбурге-Передней Померании; Rhein-Sieg-Kreis — в Северном Рейне-Вестфалии." },
   },
   {
     id: "lid_SH_03",
@@ -6115,7 +6115,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Schleswig-Holstein wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Schleswig-Holstein is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Шлезвіг-Гольштейн обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Шлезвиг-Гольштейн избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_SH_04",
@@ -6129,7 +6129,7 @@ var QUIZ = [
       { de: "18", en: "", uk: "", ru: "" },
       { de: "20", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Schleswig-Holstein darf man schon ab <b>16 Jahren</b> wählen, bei Kommunalwahlen, zum Beispiel für den Gemeinde- oder Stadtrat.<br><br>Bei der Bundestagswahl gilt dagegen das Mindestalter von 18 Jahren. 14 und 20 Jahre sind für Wahlen nicht richtig.", en: "In Schleswig-Holstein you may vote from the age of <b>16</b> in local elections, for example for the municipal or town council.<br><br>In the federal election, by contrast, the minimum age is 18. 14 and 20 are not correct ages for elections.", uk: "У Шлезвіг-Гольштейні голосувати можна вже з <b>16 років</b> на місцевих виборах, наприклад до ради громади чи міської ради.<br><br>На виборах до Бундестагу, навпаки, мінімальний вік — 18 років. 14 і 20 років для виборів не підходять.", ru: "В Шлезвиг-Гольштейне голосовать можно уже с <b>16 лет</b> на местных выборах, например в совет муниципалитета или городской совет.<br><br>На выборах в Бундестаг, напротив, минимальный возраст — 18 лет. 14 и 20 лет для выборов не подходят." },
   },
   {
     id: "lid_SH_05",
@@ -6143,7 +6143,7 @@ var QUIZ = [
       { de: "weiß-rot", en: "", uk: "", ru: "" },
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesflagge von Schleswig-Holstein ist blau-weiß-rot. Deshalb ist <b>blau-weiß-rot</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Schleswig-Holstein is blue-white-red. That is why <b>blue-white-red</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Шлезвіг-Гольштейн — синьо-біло-червоний. Тому правильна комбінація <b>синьо-біло-червоний</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Шлезвиг-Гольштейн — сине-бело-красный. Поэтому правильна комбинация <b>сине-бело-красный</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_SH_06",
@@ -6157,7 +6157,7 @@ var QUIZ = [
       { de: "beim / bei der Landesbeauftragten für politische Bildung", en: "", uk: "", ru: "", correct: true },
       { de: "bei den Kirchen", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung Schleswig-Holstein ist dafür in Schleswig-Holstein die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Schleswig-Holstein it is called “Landeszentrale für politische Bildung Schleswig-Holstein”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Шлезвіг-Гольштейні він називається «Landeszentrale für politische Bildung Schleswig-Holstein».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Шлезвиг-Гольштейне он называется «Landeszentrale für politische Bildung Schleswig-Holstein».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_SH_07",
@@ -6171,7 +6171,7 @@ var QUIZ = [
       { de: "Lübeck.", en: "", uk: "", ru: "" },
       { de: "Kiel.", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Kiel</b> ist die Landeshauptstadt von Schleswig-Holstein. Dort sitzen die Landesregierung und der Landtag.<br><br>Husum, Flensburg und Lübeck sind bekannte Städte in Schleswig-Holstein, aber nicht die Landeshauptstadt. Kiel liegt an der Ostsee.", en: "<b>Kiel</b> is the state capital of Schleswig-Holstein. The state government and the Landtag are located there.<br><br>Husum, Flensburg and Lübeck are well-known cities in Schleswig-Holstein, but not the state capital. Kiel lies on the Baltic Sea.", uk: "<b>Кіль</b> — столиця землі Шлезвіг-Гольштейн. Там розташовані уряд землі та ландтаг.<br><br>Гузум, Фленсбург і Любек — відомі міста Шлезвіг-Гольштейну, але не столиця землі. Кіль лежить на Балтійському морі.", ru: "<b>Киль</b> — столица земли Шлезвиг-Гольштейн. Там находятся правительство земли и ландтаг.<br><br>Хузум, Фленсбург и Любек — известные города Шлезвиг-Гольштейна, но не столица земли. Киль лежит на Балтийском море." },
   },
   {
     id: "lid_SH_08",
@@ -6186,7 +6186,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Schleswig-Holstein liegt im Norden Deutschlands zwischen Nordsee und Ostsee und grenzt an Dänemark.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Schleswig-Holstein lies in the north of Germany between the North Sea and the Baltic Sea and borders Denmark.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Шлезвіг-Гольштейн лежить на півночі Німеччини між Північним і Балтійським морями й межує з Данією.<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Шлезвиг-Гольштейн лежит на севере Германии между Северным и Балтийским морями и граничит с Данией.<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_SH_09",
@@ -6200,7 +6200,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Schleswig-Holstein wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Schleswig-Holstein the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Шлезвіг-Гольштейні його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Шлезвиг-Гольштейне его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_SH_10",
@@ -6214,7 +6214,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister Teil II", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Schleswig-Holstein hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Schleswig-Holstein has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Шлезвіг-Гольштейні немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Шлезвиг-Гольштейне нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   },
   {
     id: "lid_TH_01",
@@ -6228,7 +6228,7 @@ var QUIZ = [
       { de: "", en: "", uk: "", ru: "", img: "lid_TH_01_a3.png" },
       { de: "", en: "", uk: "", ru: "", img: "lid_TH_01_a4.png", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Das Landeswappen von Thüringen zeigt einen gestreiften Löwen, der von acht Sternen umgeben ist.<br><br>Die anderen Wappen gehören zu anderen Bundesländern.", en: "The state coat of arms of Thuringia shows a striped lion surrounded by eight stars.<br><br>The other coats of arms belong to other federal states.", uk: "Герб Тюрингії зображує смугастого лева, оточеного вісьмома зірками.<br><br>Інші герби належать іншим федеральним землям.", ru: "Герб Тюрингии изображает полосатого льва, окружённого восемью звёздами.<br><br>Другие гербы принадлежат другим федеральным землям." },
   },
   {
     id: "lid_TH_02",
@@ -6242,7 +6242,7 @@ var QUIZ = [
       { de: "Nordfriesland", en: "", uk: "", ru: "" },
       { de: "Wartburgkreis", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Wartburgkreis</b> ist ein Landkreis in Thüringen. Landkreise fassen mehrere Gemeinden zusammen.<br><br>Ammerland liegt in Niedersachsen; Altötting liegt in Bayern; Nordfriesland liegt in Schleswig-Holstein.", en: "<b>Wartburgkreis</b> is a rural district in Thuringia. Rural districts group several municipalities together.<br><br>Ammerland is in Lower Saxony; Altötting is in Bavaria; Nordfriesland is in Schleswig-Holstein.", uk: "<b>Wartburgkreis</b> — район у Тюрингії. Райони обʼєднують кілька громад.<br><br>Ammerland — у Нижній Саксонії; Altötting — у Баварії; Nordfriesland — у Шлезвіг-Гольштейні.", ru: "<b>Wartburgkreis</b> — район в Тюрингии. Районы объединяют несколько муниципалитетов.<br><br>Ammerland — в Нижней Саксонии; Altötting — в Баварии; Nordfriesland — в Шлезвиг-Гольштейне." },
   },
   {
     id: "lid_TH_03",
@@ -6256,7 +6256,7 @@ var QUIZ = [
       { de: "5", en: "", uk: "", ru: "", correct: true },
       { de: "6", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Der Landtag von Thüringen wird für <b>5 Jahre</b> gewählt. Danach gibt es Neuwahlen.<br><br>Die Wahlperioden von 3, 4 oder 6 Jahren sind hier nicht richtig.", en: "The state parliament of Thuringia is elected for <b>5 years</b>. After that there are new elections.<br><br>Terms of 3, 4 or 6 years are not correct here.", uk: "Парламент землі Тюрингія обирають на <b>5 років</b>. Після цього проходять нові вибори.<br><br>Каденції в 3, 4 чи 6 років тут не підходять.", ru: "Парламент земли Тюрингия избирают на <b>5 лет</b>. После этого проходят новые выборы.<br><br>Созывы в 3, 4 или 6 лет здесь не подходят." },
   },
   {
     id: "lid_TH_04",
@@ -6270,7 +6270,7 @@ var QUIZ = [
       { de: "18", en: "", uk: "", ru: "" },
       { de: "20", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "In Thüringen darf man schon ab <b>16 Jahren</b> wählen, bei Kommunalwahlen, zum Beispiel für den Gemeinde- oder Stadtrat.<br><br>Bei der Bundestagswahl gilt dagegen das Mindestalter von 18 Jahren. 14 und 20 Jahre sind für Wahlen nicht richtig.", en: "In Thuringia you may vote from the age of <b>16</b> in local elections, for example for the municipal or town council.<br><br>In the federal election, by contrast, the minimum age is 18. 14 and 20 are not correct ages for elections.", uk: "У Тюрингії голосувати можна вже з <b>16 років</b> на місцевих виборах, наприклад до ради громади чи міської ради.<br><br>На виборах до Бундестагу, навпаки, мінімальний вік — 18 років. 14 і 20 років для виборів не підходять.", ru: "В Тюрингии голосовать можно уже с <b>16 лет</b> на местных выборах, например в совет муниципалитета или городской совет.<br><br>На выборах в Бундестаг, напротив, минимальный возраст — 18 лет. 14 и 20 лет для выборов не подходят." },
   },
   {
     id: "lid_TH_05",
@@ -6284,7 +6284,7 @@ var QUIZ = [
       { de: "grün-weiß-rot", en: "", uk: "", ru: "" },
       { de: "schwarz-gold", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Landesfarben von Thüringen sind Weiß und Rot. Deshalb ist <b>weiß-rot</b> richtig.<br><br>Die anderen Farbkombinationen gehören zu anderen Bundesländern oder zu anderen Flaggen.", en: "The state flag of Thuringia is white-red. That is why <b>white-red</b> is correct.<br><br>The other colour combinations belong to other federal states or to other flags.", uk: "Прапор землі Тюрингія — біло-червоний. Тому правильна комбінація <b>біло-червоний</b>.<br><br>Інші комбінації кольорів належать іншим федеральним землям або іншим прапорам.", ru: "Флаг земли Тюрингия — бело-красный. Поэтому правильна комбинация <b>бело-красный</b>.<br><br>Другие комбинации цветов принадлежат другим федеральным землям или другим флагам." },
   },
   {
     id: "lid_TH_06",
@@ -6298,7 +6298,7 @@ var QUIZ = [
       { de: "bei der Landeszentrale für politische Bildung", en: "", uk: "", ru: "", correct: true },
       { de: "beim Ordnungsamt der Gemeinde", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Über politische Themen informiert die <b>Landeszentrale für politische Bildung</b>. Sie bietet überparteiliche Informationen, Veranstaltungen und Bücher an. Die Landeszentrale für politische Bildung Thüringen ist dafür in Thüringen die richtige Stelle.<br><br>Das Ordnungsamt kümmert sich um die öffentliche Ordnung in der Gemeinde, die Verbraucherzentrale hilft bei Fragen zu Einkauf und Verträgen, und die Kirchen sind Religionsgemeinschaften.", en: "Information on political topics is provided by the <b>State Centre for Political Education</b>. It offers non-partisan information, events and books. In Thuringia it is called “Landeszentrale für politische Bildung Thüringen”.<br><br>The public order office looks after public order in the municipality, the consumer advice centre helps with questions about shopping and contracts, and the churches are religious communities.", uk: "Про політичні теми інформує <b>Земельний центр політичної освіти</b>. Він пропонує позапартійну інформацію, заходи та книжки. У Тюрингії він називається «Landeszentrale für politische Bildung Thüringen».<br><br>Відділ громадського порядку відповідає за громадський порядок у громаді, центр захисту прав споживачів допомагає з питаннями купівлі та договорів, а церкви — релігійні громади.", ru: "О политических темах информирует <b>Земельный центр политического образования</b>. Он предлагает внепартийную информацию, мероприятия и книги. В Тюрингии он называется «Landeszentrale für politische Bildung Thüringen».<br><br>Отдел общественного порядка отвечает за общественный порядок в муниципалитете, центр защиты прав потребителей помогает с вопросами покупок и договоров, а церкви — религиозные общины." },
   },
   {
     id: "lid_TH_07",
@@ -6312,7 +6312,7 @@ var QUIZ = [
       { de: "Gera.", en: "", uk: "", ru: "" },
       { de: "Jena.", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "<b>Erfurt</b> ist die Landeshauptstadt von Thüringen. Dort sitzen die Landesregierung und der Landtag.<br><br>Eisenach, Gera und Jena sind bekannte Städte in Thüringen, aber nicht die Landeshauptstadt.", en: "<b>Erfurt</b> is the state capital of Thuringia. The state government and the Landtag are located there.<br><br>Eisenach, Gera and Jena are well-known cities in Thuringia, but not the state capital.", uk: "<b>Ерфурт</b> — столиця землі Тюрингія. Там розташовані уряд землі та ландтаг.<br><br>Айзенах, Гера та Єна — відомі міста Тюрингії, але не столиця землі.", ru: "<b>Эрфурт</b> — столица земли Тюрингия. Там находятся правительство земли и ландтаг.<br><br>Айзенах, Гера и Йена — известные города Тюрингии, но не столица земли." },
   },
   {
     id: "lid_TH_08",
@@ -6327,7 +6327,7 @@ var QUIZ = [
       { de: "3", en: "", uk: "", ru: "" },
       { de: "4", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Thüringen liegt in der Mitte Deutschlands und hat keine Außengrenze zu einem anderen Staat. Man nennt es „das grüne Herz Deutschlands“.<br><br>Auf der Karte erkennt man das Bundesland an seiner Lage und an seinen Nachbarn. Die anderen Zahlen stehen für andere Bundesländer.", en: "Thuringia lies in the middle of Germany and has no external border with another country. It is called “the green heart of Germany”.<br><br>On the map you recognise the federal state by its location and its neighbours. The other numbers stand for other federal states.", uk: "Тюрингія лежить у центрі Німеччини й не має зовнішнього кордону з іншою державою. Її називають «зеленим серцем Німеччини».<br><br>На карті федеральну землю впізнають за її розташуванням і сусідами. Інші цифри позначають інші федеральні землі.", ru: "Тюрингия лежит в центре Германии и не имеет внешней границы с другим государством. Её называют «зелёным сердцем Германии».<br><br>На карте федеральную землю узнают по её расположению и соседям. Другие цифры обозначают другие федеральные земли." },
   },
   {
     id: "lid_TH_09",
@@ -6341,7 +6341,7 @@ var QUIZ = [
       { de: "Bürgermeisterin/Bürgermeister", en: "", uk: "", ru: "" },
       { de: "Ministerpräsidentin/Ministerpräsident", en: "", uk: "", ru: "", correct: true },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Die Regierungschefin/der Regierungschef eines Flächenlandes heißt <b>Ministerpräsidentin/Ministerpräsident</b>. In Thüringen wählt der Landtag sie/ihn.<br><br>„Premierminister“ sagt man in anderen Ländern, zum Beispiel in Großbritannien. Eine „Erste Ministerin/ein Erster Minister“ gibt es nicht. Bürgermeisterinnen und Bürgermeister leiten Gemeinden, nicht ganze Länder.", en: "The head of government of an area state is called <b>Minister-President</b>. In Thuringia the Landtag elects them.<br><br>“Prime minister” is used in other countries, for example in Great Britain. There is no “First Minister” here. Mayors head municipalities, not whole states.", uk: "Керівника уряду територіальної землі називають <b>міністр-президент/міністр-президентка</b>. У Тюрингії його/її обирає ландтаг.<br><br>«Премʼєр-міністр» — так кажуть в інших країнах, наприклад у Великій Британії. «Першого міністра» тут немає. Бургомістри очолюють громади, а не цілі землі.", ru: "Главу правительства территориальной земли называют <b>министр-президент</b>. В Тюрингии его избирает ландтаг.<br><br>«Премьер-министр» — так говорят в других странах, например в Великобритании. «Первого министра» здесь нет. Бургомистры возглавляют муниципалитеты, а не целые земли." },
   },
   {
     id: "lid_TH_10",
@@ -6355,7 +6355,7 @@ var QUIZ = [
       { de: "Finanzministerin/Finanzminister", en: "", uk: "", ru: "" },
       { de: "Innenministerin/Innenminister", en: "", uk: "", ru: "" },
     ],
-    expl: { de: "", en: "", uk: "", ru: "" }
+    expl: { de: "Thüringen hat keine <b>Außenministerin/keinen Außenminister</b>. Außenpolitik ist Sache des Bundes (Art. 32 GG), nicht der Länder.<br><br>Finanz-, Justiz- und Innenministerinnen und -minister gibt es dagegen in den Ländern.", en: "Thuringia has no <b>foreign minister</b>. Foreign policy is a matter for the Federation (Art. 32 GG), not for the states.<br><br>Finance, justice and interior ministers, on the other hand, do exist in the states.", uk: "У Тюрингії немає <b>міністра/міністерки закордонних справ</b>. Зовнішня політика — справа федерації (ст. 32 GG), а не земель.<br><br>Натомість міністри фінансів, юстиції та внутрішніх справ у землях є.", ru: "В Тюрингии нет <b>министра иностранных дел</b>. Внешняя политика — дело федерации (ст. 32 GG), а не земель.<br><br>Зато министры финансов, юстиции и внутренних дел в землях есть." },
   }
 ];
 
