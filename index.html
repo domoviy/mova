@@ -3599,9 +3599,20 @@ body{
   box-shadow:0 -4px 32px rgba(0,0,0,.18);
 }
 .sb-prac-feedback-modal-row{
-  display:flex;align-items:center;justify-content:center;gap:10px;margin-bottom:12px;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:4px;margin-bottom:12px;text-align:center;
 }
-.sb-prac-feedback-modal-icon{font-size:24px;color:var(--ink);}
+.sb-prac-feedback-modal-icon{font-size:44px;line-height:1;color:var(--ink);}
+/* Галочка/хрестик «малюються» лінією — той самий ефект і ті самі довжини штриха, що в модалках
+   результату Tiles / Def / Впиши слово / Вимова (див. .tiles-result-icon): іконка зверху по центру,
+   підпис під нею. Анімація використовує keyframes tiles-icon-draw. */
+.sb-prac-feedback-modal-icon svg path{
+  stroke-dasharray:32; stroke-dashoffset:32;
+  animation:tiles-icon-draw .45s .1s cubic-bezier(.65,0,.35,1) forwards;
+}
+.sb-prac-feedback-modal.correct .sb-prac-feedback-modal-icon svg path{ stroke-dasharray:20; stroke-dashoffset:20; }
+@media (prefers-reduced-motion: reduce){
+  .sb-prac-feedback-modal-icon svg path{ animation:none; stroke-dashoffset:0; }
+}
 .sb-prac-feedback-modal.correct .sb-prac-feedback-modal-icon{ color:#27ae60; }
 .sb-prac-feedback-modal.wrong .sb-prac-feedback-modal-icon{ color:var(--red); }
 .sb-prac-feedback-modal-title{font-size:var(--fs-card);font-weight:800;color:var(--ink);}
@@ -3621,10 +3632,10 @@ body{
   cursor:pointer;font-family:inherit;letter-spacing:.2px;
 }
 .sb-prac-feedback-modal.correct .sb-prac-feedback-modal-sheet{
-  border-top:3px solid #27ae60;
+  border-top:4px solid #27ae60;
 }
 .sb-prac-feedback-modal.wrong .sb-prac-feedback-modal-sheet{
-  border-top:3px solid var(--red);
+  border-top:4px solid var(--red);
 }
 
 /* Модалка граматичного правила (📖-кнопка в уроці, VOCAB/SB/Dialogue) —
@@ -5406,7 +5417,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '917-4393c24';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
