@@ -5413,7 +5413,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '934-dfa9e0f';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5905,7 +5905,7 @@ function _lpSpeechGateMigrate(lessons){
     }
   }catch(e){}
 }
-// Вузол ще чекає на проходження? Для звичайних уроків — прогрес <80%, для вузла «Вимова: довгі
+// Вузол ще чекає на проходження? Для звичайних уроків — немає позначки «пройдено», для вузла «Вимова: довгі
 // фрази» (його lessonProgress завжди 100%) — відсутність запису «пройдено/пропущено».
 // ── ПРОХОДЖЕННЯ ВУЗЛІВ СТЕЖКИ ───────────────────────────────────────────────────
 // Вузол стежки вважається ПРОЙДЕНИМ (золотий, розблоковує наступний), лише якщо
@@ -5979,7 +5979,11 @@ function lessonMarkDone(id){
 function lessonDone(l){
   if(!l) return false;
   if(l.type === 'speech') return speechNodeDone(l.id);
-  return !!_lessonDoneMap()[l.id] && lessonProgress(l).pct >= 80;
+  // Правило гейміфікації: пройшов урок до екрана результату (lfShowResult → lessonMarkDone) —
+  // наступний урок відкривається ОДРАЗУ. Покриття карток (раніше >=80%) більше НЕ умова:
+  // проход показує лише кілька карток, тож у великих модулях (B2 Beruf) урок не «закривався»
+  // і після 5+ проходів. Повторення карток — вибір користувача, а не шлагбаум.
+  return !!_lessonDoneMap()[l.id];
 }
 // Для лічильників «N/M пройдено»: вузол мовлення необов'язковий і, як і раніше, рахується пройденим.
 function _lpCounted(l){ return l.type === 'speech' ? true : lessonDone(l); }
@@ -6055,16 +6059,25 @@ function buildLearningPath(rawLessons, courseLevel){
   rawLessons.forEach(function(lesson){
     var ids = lesson.cardIds || [];
 
+    // Урок-квіз: є питання з QUIZ[].lessonId == lesson.id. Якщо в записі явно type:'quiz', вузол лишається
+    // квізом, НАВІТЬ коли в нього є cardIds (слова уроку з VOCAB) — інакше слова «перетягували» урок у
+    // звичайні словникові суб-уроки, а квіз зникав з лінії. cardIds при цьому лишаються на вузлі.
+    var hasQuiz = (typeof QUIZ !== 'undefined' && Array.isArray(QUIZ) &&
+                   QUIZ.some(function(q){ return q.lessonId === lesson.id; }));
+    var isQuizNode = hasQuiz && lesson.type === 'quiz';
+
     // Модулі без карток (чисто службові) — не ріжемо, лише перемаплюємо unlockAfter.
-    if(!ids.length){
+    if(!ids.length || isQuizNode){
       var mapped = (lesson.unlockAfter === null || lesson.unlockAfter === undefined)
         ? null : (lastSubOf[lesson.unlockAfter] || lesson.unlockAfter);
-      // Урок без карток, але з питаннями квізу (QUIZ[].lessonId) — вузол типу 'quiz':
-      // свій модуль (_parentModuleId), прогрес — за відповідями на питання (lessonProgress).
-      var hasQuiz = (typeof QUIZ !== 'undefined' && Array.isArray(QUIZ) &&
-                     QUIZ.some(function(q){ return q.lessonId === lesson.id; }));
+      // Урок з питаннями квізу (QUIZ[].lessonId) — вузол типу 'quiz': прогрес — за відповідями на питання
+      // (lessonProgress). Якщо в записі є module — це свій модуль (_parentModuleId); БЕЗ module (null/відсутнє)
+      // урок лежить прямо в главі, без модульної секції (див. renderLernpfad: група __flat).
       var passthrough = Object.assign({}, lesson, { type: hasQuiz ? 'quiz' : 'lesson', unlockAfter: mapped });
-      if(hasQuiz){ passthrough._parentModuleId = lesson.id; passthrough._subIndex = 1; passthrough._subTotal = 1; }
+      if(hasQuiz){
+        if(lesson.module != null) passthrough._parentModuleId = lesson.id;
+        passthrough._subIndex = 1; passthrough._subTotal = 1;
+      }
       out.push(passthrough);
       lastSubOf[lesson.id] = passthrough.id;
       moduleCardIds[lesson.id] = ids;
@@ -7066,6 +7079,7 @@ const I18N = {
     lp_overall_loading:'Lädt…',
     lp_no_lessons:'Keine Lektionen verfügbar',
     lp_module_prefix:'Modul',
+    lp_lessons_unit:'Lektionen',
     lp_chapter_prefix:'Kapitel',
     lp_all_done:'Kurs abgeschlossen!',
     lr_continue_hint:'Weiter geht\'s gleich…',
@@ -7233,6 +7247,7 @@ const I18N = {
     lp_overall_loading:'Завантаження…',
     lp_no_lessons:'Уроки недоступні',
     lp_module_prefix:'Модуль',
+    lp_lessons_unit:'уроків',
     lp_chapter_prefix:'Розділ',
     lp_all_done:'Курс завершено!',
     lr_continue_hint:'Продовжуємо…',
@@ -7399,6 +7414,7 @@ const I18N = {
     lp_overall_loading:'Loading…',
     lp_no_lessons:'No lessons available',
     lp_module_prefix:'Module',
+    lp_lessons_unit:'lessons',
     lp_chapter_prefix:'Chapter',
     lp_all_done:'Course completed!',
     lr_continue_hint:'Continuing…',
@@ -7566,6 +7582,7 @@ const I18N = {
     lp_overall_loading:'Загрузка…',
     lp_no_lessons:'Уроки недоступны',
     lp_module_prefix:'Модуль',
+    lp_lessons_unit:'уроков',
     lp_chapter_prefix:'Раздел',
     lp_all_done:'Курс завершён!',
     lr_continue_hint:'Продолжаем…',
@@ -9051,7 +9068,7 @@ function srRenderDailyPlan(){
 function _srFindNextLesson(){
   const lessons = typeof LESSONS !== 'undefined' ? LESSONS : [];
   if(!lessons.length) return null;
-  const sorted = [...lessons].sort((a,b) => (a.chapter-b.chapter) || (a.module-b.module));
+  const sorted = [...lessons].sort((a,b) => (a.chapter-b.chapter) || ((a.module||0)-(b.module||0)));
   return sorted.find(l => l.type !== 'speech' && !lessonDone(l)) || null;
 }
 
@@ -12608,8 +12625,11 @@ function renderLernpfad(opts){
       // Без слів "Розділ"/"Модуль" — просто номер + назва з обох боків
       // роздільника "›", компактніше й легше сканується оком, ніж
       // повторення тих самих службових слів щоразу.
+      // Урок без модуля (module відсутнє) лежить прямо в главі: замість «N. назва модуля» — лише назва уроку.
       locEl.innerHTML = `${movaIcon('pin','mi mi-inline')}<b>${curLesson.chapter}.</b> ${chTitle}`
-        + `<span class="sep">›</span><b>${curLesson.module}.</b> ${modTitle}`;
+        + (curLesson.module == null
+            ? `<span class="sep">›</span>${modTitle}`
+            : `<span class="sep">›</span><b>${curLesson.module}.</b> ${modTitle}`);
     }
     // Прогрес МОДУЛЯ — сума по всіх вузлах з тим самим _parentModuleId
     // (та сама група, що об'єднує renderModuleDivider нижче: одна
@@ -12619,7 +12639,9 @@ function renderLernpfad(opts){
     if(modFillEl){
       let modDone=0, modTotal=0;
       lessons
-        .filter(l => l.chapter===curLesson.chapter && l._parentModuleId===curLesson._parentModuleId)
+        .filter(l => l.chapter===curLesson.chapter && (curLesson.module == null
+          ? l.module == null                              // урок без модуля: смуга = прогрес його уроків у главі
+          : l._parentModuleId===curLesson._parentModuleId))
         .forEach(l=>{ const p=lessonProgress(l); modDone+=p.done; modTotal+=p.total; });
       modFillEl.style.width = (modTotal ? Math.round(modDone/modTotal*100) : 0)+'%';
     }
@@ -12696,14 +12718,16 @@ function renderLernpfad(opts){
     const moduleGroups = [];
     let curGroup = null;
     ch.modules.forEach(function(m){
-      if(!curGroup || curGroup.parentId !== m._parentModuleId){
+      // Вузли без module (уроки прямо в главі) йдуть однією групою __flat — без заголовка модуля.
+      const _gk = (m.module == null) ? '__flat' : m._parentModuleId;
+      if(!curGroup || curGroup.parentId !== _gk){
         // moduleTitle (опційне) — окрема назва САМЕ модуля, окремо від
         // title вузла (назва рядка). Потрібно там, де модуль складається
         // з ОДНОГО вузла з іншою власною назвою — напр. модуль "Симуляція
         // іспиту" містить один рядок "Forumsbeitrag": заголовок модуля і
         // назва рядка мають розрізнятись. Без moduleTitle — стара
         // поведінка (заголовок = title першого вузла групи), без змін.
-        curGroup = { parentId: m._parentModuleId, moduleNum: m.module, title: m.moduleTitle || m.title, nodes: [], lastLesson: null };
+        curGroup = { parentId: _gk, flat: m.module == null, moduleNum: m.module, title: m.moduleTitle || m.title, nodes: [], lastLesson: null };
         moduleGroups.push(curGroup);
       }
       curGroup.nodes.push(m);
@@ -12727,7 +12751,7 @@ function renderLernpfad(opts){
       // Той самий принцип, що глава вище: розгорнутий лише модуль з
       // АКТИВНИМ уроком, а не будь-який модуль з хоч якимось прогресом —
       // непочатий і повністю пройдений модуль однаково згорнуті.
-      const isModuleOpen = hasModuleCurrent;
+      const isModuleOpen = hasModuleCurrent || grp.flat;   // уроки без модуля завжди видимі (нема що згортати)
 
       // "Підготовка до екзамену" — НЕ звивиста стежка з іконками-гемами
       // (renderPathNode): там кожен вузол — окремий діалог/форум/e-mail
@@ -12749,9 +12773,10 @@ function renderLernpfad(opts){
       }
       const pathWrapClass = ch.isExamPrep ? 'lp-examprep-list' : 'lp-path';
 
+      const _waveKey = grp.flat ? ('ch' + ch.num + '_flat') : grp.parentId;
       return `<div class="lp-module-section ${isModuleOpen?'open':''}">
-        ${renderModuleDivider(grp, ch, doneCount, countableNodes.length)}
-        <div class="lp-module-section-body"><div class="${pathWrapClass}" ${ch.isExamPrep ? '' : 'data-wave-key="'+grp.parentId+'"'}>${pathHtml}</div></div>
+        ${grp.flat ? '' : renderModuleDivider(grp, ch, doneCount, countableNodes.length)}
+        <div class="lp-module-section-body"><div class="${pathWrapClass}" ${ch.isExamPrep ? '' : 'data-wave-key="'+_waveKey+'"'}>${pathHtml}</div></div>
       </div>`;
     }).join('');
 
@@ -12761,7 +12786,7 @@ function renderLernpfad(opts){
         <div class="lp-chapter-num ${allDone?'done':''} ${ch.isExamPrep?'examprep':''}">${ch.isExamPrep?movaIcon('cap'):ch.num}</div>
         <div class="lp-chapter-info">
           <div class="lp-chapter-title">${ch.title[uiLang]||ch.title[primaryLang()]||ch.title.en||ch.title.de}</div>
-          <div class="lp-chapter-sub">${ch.modules.length} ${t('lp_module_prefix')} · ${
+          <div class="lp-chapter-sub">${ch.modules.length} ${ch.modules.every(m => m.module == null) ? t('lp_lessons_unit') : t('lp_module_prefix')} · ${
             ch.modules.filter(m=>_lpCounted(m)).length
           }/${ch.modules.length} ${t('lp_done').toLowerCase()}</div>
         </div>
@@ -23449,7 +23474,7 @@ function lfShowResult(){
   let _moduleJustCompleted = false;
   let _moduleCompletedInfo = null;
   let _lessonsAll = typeof LESSONS !== 'undefined' ? LESSONS : [];
-  if(LF.lesson && LF.lesson._parentModuleId && _lpModuleFillBeforeLesson < 100){
+  if(LF.lesson && LF.lesson._parentModuleId && LF.lesson.module != null && _lpModuleFillBeforeLesson < 100){
     const _siblingLessons = _lessonsAll.filter(l => l.chapter===LF.lesson.chapter && l._parentModuleId===LF.lesson._parentModuleId);
     if(_siblingLessons.length){
       let _mDone=0, _mTotal=0;
@@ -23486,6 +23511,24 @@ function lfShowResult(){
         chapterNum: LF.lesson.chapter,
         chapterTitle: _ct ? (_ct[uiLang]||_ct[primaryLang()]||_ct.en||_ct.de) : '',
       };
+    }
+  }
+  // Глава з уроками БЕЗ модуля (module відсутнє): модульного святкування нема, тож главу завершує
+  // останній урок. Лише при ПЕРШОМУ проходженні цього уроку (_wasDone) — повтор вже пройденого уроку
+  // главу повторно не святкує. Синтетичні id повторень (_cid не з глави) сюди не потрапляють.
+  if(!_moduleJustCompleted && LF.lesson && LF.lesson.module == null){
+    const _cid = LF._bonusForLessonId || LF.lessonId;
+    const _flatLessons = _lessonsAll.filter(l => l.chapter===LF.lesson.chapter);
+    if(_flatLessons.some(l => l.id===_cid)){
+      const _wasDone = _flatLessons.some(l => l.id===_cid && lessonDone(l));
+      if(!_wasDone && _flatLessons.every(l => l.id===_cid || _lpCounted(l))){
+        _chapterJustCompleted = true;
+        const _ct2 = LF.lesson.chapterTitle;
+        _chapterCompletedInfo = {
+          chapterNum: LF.lesson.chapter,
+          chapterTitle: _ct2 ? (_ct2[uiLang]||_ct2[primaryLang()]||_ct2.en||_ct2.de) : '',
+        };
+      }
     }
   }
 
@@ -23828,6 +23871,8 @@ function lfShowResult(){
       frozenDaysUsed: streakResult ? streakResult.frozenDaysUsed : 0,
       onDone: function(){
         if(!_moduleJustCompleted){
+          // Урок без модуля закрив главу — святкуємо главу (модульного святкування тут нема).
+          if(_chapterJustCompleted){ showChapterCelebration(_chapterCompletedInfo, goToLernpfadActivePoint); return; }
           // Звичайне завершення уроку: замість мовчазного автоповернення — заклик пройти наступний.
           // (Якщо наступного уроку нема — поведінка як раніше.) Після модуля/розділу лишається
           // власна, більша послідовність святкувань нижче.
