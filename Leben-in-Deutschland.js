@@ -5,17 +5,23 @@ var AUDIO_CONFIG = {};   // аудіо для цього курсу поки н�
 // ════════════════════════════════════════════════════════════════
 //  Leben in Deutschland  ·  підготовка до тесту «Leben in Deutschland»
 //  та Einbürgerungstest
-//  Основа курсу — QUIZ (див. нижче). Решта таблиць порожні, але
-//  присутні, щоб структура файлу збігалась з іншими курсами.
+//  Основа курсу — QUIZ та VOCAB, розбиті за темами (CATS). Решта таблиць
+//  порожні, але присутні, щоб структура файлу збігалась з іншими курсами.
 // ════════════════════════════════════════════════════════════════
 
-// ── КАТЕГОРІЇ (QUIZ[].cat) ───────────────────────────────────
+// ── КАТЕГОРІЇ = ТЕМИ (QUIZ[].cat, VOCAB[].cat) ──────────────
 var CATS = [
-  {id:'allgemein',   de:'Allgemeine Fragen',          en:'General questions',         uk:'Загальні питання',          ru:'Общие вопросы',             i:'clipboard', e:''},  // тимчасово, доки питання не розкладені за темами нижче
-  {id:'demokratie',  de:'Leben in der Demokratie',   en:'Living in a democracy',     uk:'Життя в демократії',        ru:'Жизнь в демократии',        i:'institution', e:''},
-  {id:'geschichte',  de:'Geschichte und Verantwortung', en:'History and responsibility', uk:'Історія і відповідальність', ru:'История и ответственность', i:'scroll', e:''},
-  {id:'gesellschaft',de:'Mensch und Gesellschaft',   en:'People and society',        uk:'Людина і суспільство',      ru:'Человек и общество',        i:'people', e:''},
-  {id:'region',      de:'Fragen zu meinem Bundesland', en:'Questions about my state', uk:'Питання про мою землю',     ru:'Вопросы о моей земле',      i:'pin', e:''},
+  {id:'grundrechte', de:'Grundrechte und Verfassung', en:'Basic rights and constitution', uk:'Основні права й конституція', ru:'Основные права и конституция', i:'shield', e:''},
+  {id:'staat', de:'Staat und Verwaltung', en:'State and administration', uk:'Держава й управління', ru:'Государство и управление', i:'institution', e:''},
+  {id:'politik', de:'Parlament und Regierung', en:'Parliament and government', uk:'Парламент і уряд', ru:'Парламент и правительство', i:'building', e:''},
+  {id:'wahlen', de:'Wahlen und Parteien', en:'Elections and parties', uk:'Вибори й партії', ru:'Выборы и партии', i:'hand', e:''},
+  {id:'recht', de:'Recht und Justiz', en:'Law and justice', uk:'Право й правосуддя', ru:'Право и правосудие', i:'scales', e:''},
+  {id:'arbeit', de:'Arbeit und Soziales', en:'Work and social security', uk:'Робота й соціальна сфера', ru:'Работа и социальная сфера', i:'briefcase', e:''},
+  {id:'ns', de:'Nationalsozialismus und Verantwortung', en:'National Socialism and responsibility', uk:'Націонал-соціалізм і відповідальність', ru:'Национал-социализм и ответственность', i:'scroll', e:''},
+  {id:'ddr', de:'Nachkriegszeit, DDR und Einheit', en:'Post-war era, GDR and unity', uk:'Повоєнний час, НДР і єдність', ru:'Послевоенное время, ГДР и единство', i:'city', e:''},
+  {id:'europa', de:'Europa und Nachbarländer', en:'Europe and neighbours', uk:'Європа і сусідні країни', ru:'Европа и соседние страны', i:'globe', e:''},
+  {id:'gesellschaft', de:'Mensch und Gesellschaft', en:'People and society', uk:'Людина і суспільство', ru:'Человек и общество', i:'people', e:''},
+  {id:'region', de:'Fragen zu meinem Bundesland', en:'Questions about my state', uk:'Питання про мою землю', ru:'Вопросы о моей земле', i:'pin', e:''},
 ];
 
 // ── РЕГІОНИ (федеральні землі) ───────────────────────────────
@@ -43,124 +49,140 @@ var REGIONS = [
 
 var GRAMMAR = [];
 // ── LESSONS (шлях навчання) ──────────────────────────────────
-// Запис з type:'quiz' + питання з QUIZ[].lessonId = вузол-квіз. cardIds — слова уроку з VOCAB (необов'язково,
-// квізу не заважають). Поля module тут НЕМАЄ: уроки лежать прямо в главі, без модульних секцій
-// (модуль — опційний рівень; якщо додати module:N, урок знову стане окремим модулем).
-// Загальні питання: 30 уроків по 10 (за порядком у QUIZ). Регіональні (160 = 16 земель × 10): один урок,
-// у ньому користувач бачить лише 10 питань своєї землі; unlockAfter:null — відкритий одразу.
+// Курс розбито на ТЕМИ (глави); модулів немає — уроки лежать прямо в главі (поле module відсутнє).
+// У кожній главі: спочатку уроки зі словами (запис без type, cardIds = слова теми з VOCAB; застосунок сам
+// ріже їх на уроки по кілька слів), потім уроки-квізи (type:'quiz' + питання з QUIZ[].lessonId = id уроку).
+// Тема питання/слова = поле cat (id з CATS). Уроки виведено з cat: щоб перенести питання в іншу тему,
+// змініть cat і lessonId питання (lessonId — один з уроків-квізів тієї теми). Питання теми ділиться на уроки по ~10.
+// Регіональні (160 = 16 земель × 10): один урок lid_lreg, користувач бачить лише 10 питань своєї землі.
 var LESSONS = [
-  {id:'lid_l01', type:'quiz', chapter:1, unlockAfter:null, cardIds:['dem_001','dem_002','ges_001','all_001','dem_003','dem_004','dem_005','dem_006','ges_002','all_002','dem_007','all_003','all_004','dem_008','dem_009','dem_010'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 1–10', uk:'Питання 1–10', en:'Questions 1–10', ru:'Вопросы 1–10'}},
-  {id:'lid_l02', type:'quiz', chapter:1, unlockAfter:'lid_l01', cardIds:['dem_009','dem_011','dem_012','dem_013','dem_014','dem_015','dem_016','dem_017','dem_002','dem_003','dem_018','dem_019','dem_007','his_001'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 11–20', uk:'Питання 11–20', en:'Questions 11–20', ru:'Вопросы 11–20'}},
-  {id:'lid_l03', type:'quiz', chapter:1, unlockAfter:'lid_l02', cardIds:['dem_011','dem_020','dem_021','his_001','his_002','dem_022','dem_023','dem_024','dem_025','dem_026'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 21–30', uk:'Питання 21–30', en:'Questions 21–30', ru:'Вопросы 21–30'}},
-  {id:'lid_l04', type:'quiz', chapter:1, unlockAfter:'lid_l03', cardIds:['dem_001','his_003','dem_003','ges_003','dem_022','dem_027','dem_028','dem_029','dem_030','dem_031'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 31–40', uk:'Питання 31–40', en:'Questions 31–40', ru:'Вопросы 31–40'}},
-  {id:'lid_l05', type:'quiz', chapter:1, unlockAfter:'lid_l04', cardIds:['all_005','dem_014','dem_019','dem_001','dem_016','dem_032','dem_033','all_002','all_006','dem_003','all_007','ges_004'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 41–50', uk:'Питання 41–50', en:'Questions 41–50', ru:'Вопросы 41–50'}},
-  {id:'lid_l06', type:'quiz', chapter:1, unlockAfter:'lid_l05', cardIds:['all_002','dem_006','dem_019','all_004','dem_012','dem_034','dem_035','dem_036','dem_037','dem_038','dem_039','dem_040','all_008','dem_041'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 51–60', uk:'Питання 51–60', en:'Questions 51–60', ru:'Вопросы 51–60'}},
-  {id:'lid_l07', type:'quiz', chapter:1, unlockAfter:'lid_l06', cardIds:['all_003','dem_022','dem_042','reg_001','all_002','dem_011','all_006','all_009','dem_040','dem_041'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 61–70', uk:'Питання 61–70', en:'Questions 61–70', ru:'Вопросы 61–70'}},
-  {id:'lid_l08', type:'quiz', chapter:1, unlockAfter:'lid_l07', cardIds:['dem_012','dem_040','dem_043','all_004','all_010','dem_014'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 71–80', uk:'Питання 71–80', en:'Questions 71–80', ru:'Вопросы 71–80'}},
-  {id:'lid_l09', type:'quiz', chapter:1, unlockAfter:'lid_l08', cardIds:['all_003','dem_012','dem_013','dem_025','dem_040','dem_043','dem_033','dem_018','dem_015','dem_022'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 81–90', uk:'Питання 81–90', en:'Questions 81–90', ru:'Вопросы 81–90'}},
-  {id:'lid_l10', type:'quiz', chapter:1, unlockAfter:'lid_l09', cardIds:['dem_012','dem_014','dem_016','all_011','all_007','ges_003','ges_005','ges_006'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 91–100', uk:'Питання 91–100', en:'Questions 91–100', ru:'Вопросы 91–100'}},
-  {id:'lid_l11', type:'quiz', chapter:1, unlockAfter:'lid_l10', cardIds:['dem_011','all_006','dem_008','dem_044','all_003','dem_012','dem_042'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 101–110', uk:'Питання 101–110', en:'Questions 101–110', ru:'Вопросы 101–110'}},
-  {id:'lid_l12', type:'quiz', chapter:1, unlockAfter:'lid_l11', cardIds:['dem_045','dem_008','all_003','dem_014','dem_044','all_004','dem_046'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 111–120', uk:'Питання 111–120', en:'Questions 111–120', ru:'Вопросы 111–120'}},
-  {id:'lid_l13', type:'quiz', chapter:1, unlockAfter:'lid_l12', cardIds:['dem_012','dem_014','dem_008','dem_016','dem_033','dem_040','dem_042','dem_019','all_003','dem_028'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 121–130', uk:'Питання 121–130', en:'Questions 121–130', ru:'Вопросы 121–130'}},
-  {id:'lid_l14', type:'quiz', chapter:1, unlockAfter:'lid_l13', cardIds:['dem_041','dem_047','dem_005','dem_048'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 131–140', uk:'Питання 131–140', en:'Questions 131–140', ru:'Вопросы 131–140'}},
-  {id:'lid_l15', type:'quiz', chapter:1, unlockAfter:'lid_l14', cardIds:['dem_005','dem_048','dem_004','dem_019','all_002','dem_035','dem_036','dem_037'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 141–150', uk:'Питання 141–150', en:'Questions 141–150', ru:'Вопросы 141–150'}},
-  {id:'lid_l16', type:'quiz', chapter:1, unlockAfter:'lid_l15', cardIds:['his_004','dem_008','his_005','his_001','his_002','his_006'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 151–160', uk:'Питання 151–160', en:'Questions 151–160', ru:'Вопросы 151–160'}},
-  {id:'lid_l17', type:'quiz', chapter:1, unlockAfter:'lid_l16', cardIds:['dem_014','his_005','dem_011','all_012'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 161–170', uk:'Питання 161–170', en:'Questions 161–170', ru:'Вопросы 161–170'}},
-  {id:'lid_l18', type:'quiz', chapter:1, unlockAfter:'lid_l17', cardIds:['all_012','dem_011','his_005'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 171–180', uk:'Питання 171–180', en:'Questions 171–180', ru:'Вопросы 171–180'}},
-  {id:'lid_l19', type:'quiz', chapter:1, unlockAfter:'lid_l18', cardIds:['ges_007','dem_011','dem_003','his_004'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 181–190', uk:'Питання 181–190', en:'Questions 181–190', ru:'Вопросы 181–190'}},
-  {id:'lid_l20', type:'quiz', chapter:1, unlockAfter:'lid_l19', cardIds:['his_004','all_002','all_008','dem_022','dem_003'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 191–200', uk:'Питання 191–200', en:'Questions 191–200', ru:'Вопросы 191–200'}},
-  {id:'lid_l21', type:'quiz', chapter:1, unlockAfter:'lid_l20', cardIds:['dem_022','all_002','dem_003','dem_011','his_007'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 201–210', uk:'Питання 201–210', en:'Questions 201–210', ru:'Вопросы 201–210'}},
-  {id:'lid_l22', type:'quiz', chapter:1, unlockAfter:'lid_l21', cardIds:['dem_011','dem_022'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 211–220', uk:'Питання 211–220', en:'Questions 211–220', ru:'Вопросы 211–220'}},
-  {id:'lid_l23', type:'quiz', chapter:1, unlockAfter:'lid_l22', cardIds:['all_004','all_013'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 221–230', uk:'Питання 221–230', en:'Questions 221–230', ru:'Вопросы 221–230'}},
-  {id:'lid_l24', type:'quiz', chapter:1, unlockAfter:'lid_l23', cardIds:['dem_003','dem_016'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 231–240', uk:'Питання 231–240', en:'Questions 231–240', ru:'Вопросы 231–240'}},
-  {id:'lid_l25', type:'quiz', chapter:1, unlockAfter:'lid_l24', cardIds:['dem_003'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 241–250', uk:'Питання 241–250', en:'Questions 241–250', ru:'Вопросы 241–250'}},
-  {id:'lid_l26', type:'quiz', chapter:1, unlockAfter:'lid_l25', cardIds:['dem_038'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 251–260', uk:'Питання 251–260', en:'Questions 251–260', ru:'Вопросы 251–260'}},
-  {id:'lid_l27', type:'quiz', chapter:1, unlockAfter:'lid_l26', cardIds:['all_004'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 261–270', uk:'Питання 261–270', en:'Questions 261–270', ru:'Вопросы 261–270'}},
-  {id:'lid_l28', type:'quiz', chapter:1, unlockAfter:'lid_l27', cardIds:[], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 271–280', uk:'Питання 271–280', en:'Questions 271–280', ru:'Вопросы 271–280'}},
-  {id:'lid_l29', type:'quiz', chapter:1, unlockAfter:'lid_l28', cardIds:[], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 281–290', uk:'Питання 281–290', en:'Questions 281–290', ru:'Вопросы 281–290'}},
-  {id:'lid_l30', type:'quiz', chapter:1, unlockAfter:'lid_l29', cardIds:['dem_011'], chapterTitle:{de:'Allgemeine Fragen', uk:'Загальні питання', en:'General questions', ru:'Общие вопросы'}, title:{de:'Fragen 291–300', uk:'Питання 291–300', en:'Questions 291–300', ru:'Вопросы 291–300'}},
-  {id:'lid_lreg', type:'quiz', chapter:2, unlockAfter:null, cardIds:['all_002','dem_020','dem_022','reg_002','all_003','reg_003','all_011','reg_001','reg_004','all_005','all_014','dem_038','dem_041','ges_007','reg_005','reg_006','reg_007','dem_027','dem_028','dem_029','dem_047','dem_049','dem_031','dem_050','dem_051','dem_052','dem_008','dem_030'], chapterTitle:{de:'Fragen zu meinem Bundesland', uk:'Питання про мою землю', en:'Questions about my state', ru:'Вопросы о моей земле'}, title:{de:'Mein Bundesland', uk:'Моя земля', en:'My state', ru:'Моя земля'}},
+  {id:'lid_grundrechte_w', chapter:1, unlockAfter:null, cardIds:['all_001','all_002','dem_002','dem_004','dem_006','dem_007','dem_009','dem_010','dem_019','dem_025','dem_026'], chapterTitle:{de:'Grundrechte und Verfassung', uk:'Основні права й конституція', en:'Basic rights and constitution', ru:'Основные права и конституция'}, title:{de:'Wörter', uk:'Слова', en:'Words', ru:'Слова'}},
+  {id:'lid_grundrechte_q1', type:'quiz', chapter:1, unlockAfter:'lid_grundrechte_w', cardIds:[], chapterTitle:{de:'Grundrechte und Verfassung', uk:'Основні права й конституція', en:'Basic rights and constitution', ru:'Основные права и конституция'}, title:{de:'Quiz 1/3', uk:'Квіз 1/3', en:'Quiz 1/3', ru:'Квиз 1/3'}},
+  {id:'lid_grundrechte_q2', type:'quiz', chapter:1, unlockAfter:'lid_grundrechte_q1', cardIds:[], chapterTitle:{de:'Grundrechte und Verfassung', uk:'Основні права й конституція', en:'Basic rights and constitution', ru:'Основные права и конституция'}, title:{de:'Quiz 2/3', uk:'Квіз 2/3', en:'Quiz 2/3', ru:'Квиз 2/3'}},
+  {id:'lid_grundrechte_q3', type:'quiz', chapter:1, unlockAfter:'lid_grundrechte_q2', cardIds:[], chapterTitle:{de:'Grundrechte und Verfassung', uk:'Основні права й конституція', en:'Basic rights and constitution', ru:'Основные права и конституция'}, title:{de:'Quiz 3/3', uk:'Квіз 3/3', en:'Quiz 3/3', ru:'Квиз 3/3'}},
+  {id:'lid_staat_w', chapter:2, unlockAfter:null, cardIds:['all_006','dem_003','dem_011','dem_020','dem_021','dem_022','dem_023','dem_024','dem_035','dem_036','dem_037','dem_039','dem_041','dem_045','dem_047','his_002','ges_002'], chapterTitle:{de:'Staat und Verwaltung', uk:'Держава й управління', en:'State and administration', ru:'Государство и управление'}, title:{de:'Wörter', uk:'Слова', en:'Words', ru:'Слова'}},
+  {id:'lid_staat_q1', type:'quiz', chapter:2, unlockAfter:'lid_staat_w', cardIds:[], chapterTitle:{de:'Staat und Verwaltung', uk:'Держава й управління', en:'State and administration', ru:'Государство и управление'}, title:{de:'Quiz 1/4', uk:'Квіз 1/4', en:'Quiz 1/4', ru:'Квиз 1/4'}},
+  {id:'lid_staat_q2', type:'quiz', chapter:2, unlockAfter:'lid_staat_q1', cardIds:[], chapterTitle:{de:'Staat und Verwaltung', uk:'Держава й управління', en:'State and administration', ru:'Государство и управление'}, title:{de:'Quiz 2/4', uk:'Квіз 2/4', en:'Quiz 2/4', ru:'Квиз 2/4'}},
+  {id:'lid_staat_q3', type:'quiz', chapter:2, unlockAfter:'lid_staat_q2', cardIds:[], chapterTitle:{de:'Staat und Verwaltung', uk:'Держава й управління', en:'State and administration', ru:'Государство и управление'}, title:{de:'Quiz 3/4', uk:'Квіз 3/4', en:'Quiz 3/4', ru:'Квиз 3/4'}},
+  {id:'lid_staat_q4', type:'quiz', chapter:2, unlockAfter:'lid_staat_q3', cardIds:[], chapterTitle:{de:'Staat und Verwaltung', uk:'Держава й управління', en:'State and administration', ru:'Государство и управление'}, title:{de:'Quiz 4/4', uk:'Квіз 4/4', en:'Quiz 4/4', ru:'Квиз 4/4'}},
+  {id:'lid_politik_w', chapter:3, unlockAfter:null, cardIds:['all_004','all_005','all_009','dem_001','dem_012','dem_013','dem_016','dem_017','dem_018','dem_027','dem_028','dem_029','dem_030','dem_031','dem_033','dem_040','dem_043','dem_049','dem_050','dem_051','dem_052'], chapterTitle:{de:'Parlament und Regierung', uk:'Парламент і уряд', en:'Parliament and government', ru:'Парламент и правительство'}, title:{de:'Wörter', uk:'Слова', en:'Words', ru:'Слова'}},
+  {id:'lid_politik_q1', type:'quiz', chapter:3, unlockAfter:'lid_politik_w', cardIds:[], chapterTitle:{de:'Parlament und Regierung', uk:'Парламент і уряд', en:'Parliament and government', ru:'Парламент и правительство'}, title:{de:'Quiz 1/3', uk:'Квіз 1/3', en:'Quiz 1/3', ru:'Квиз 1/3'}},
+  {id:'lid_politik_q2', type:'quiz', chapter:3, unlockAfter:'lid_politik_q1', cardIds:[], chapterTitle:{de:'Parlament und Regierung', uk:'Парламент і уряд', en:'Parliament and government', ru:'Парламент и правительство'}, title:{de:'Quiz 2/3', uk:'Квіз 2/3', en:'Quiz 2/3', ru:'Квиз 2/3'}},
+  {id:'lid_politik_q3', type:'quiz', chapter:3, unlockAfter:'lid_politik_q2', cardIds:[], chapterTitle:{de:'Parlament und Regierung', uk:'Парламент і уряд', en:'Parliament and government', ru:'Парламент и правительство'}, title:{de:'Quiz 3/3', uk:'Квіз 3/3', en:'Quiz 3/3', ru:'Квиз 3/3'}},
+  {id:'lid_wahlen_w', chapter:4, unlockAfter:null, cardIds:['all_003','all_011','dem_008','dem_014','dem_015','dem_042','dem_044'], chapterTitle:{de:'Wahlen und Parteien', uk:'Вибори й партії', en:'Elections and parties', ru:'Выборы и партии'}, title:{de:'Wörter', uk:'Слова', en:'Words', ru:'Слова'}},
+  {id:'lid_wahlen_q1', type:'quiz', chapter:4, unlockAfter:'lid_wahlen_w', cardIds:[], chapterTitle:{de:'Wahlen und Parteien', uk:'Вибори й партії', en:'Elections and parties', ru:'Выборы и партии'}, title:{de:'Quiz 1/4', uk:'Квіз 1/4', en:'Quiz 1/4', ru:'Квиз 1/4'}},
+  {id:'lid_wahlen_q2', type:'quiz', chapter:4, unlockAfter:'lid_wahlen_q1', cardIds:[], chapterTitle:{de:'Wahlen und Parteien', uk:'Вибори й партії', en:'Elections and parties', ru:'Выборы и партии'}, title:{de:'Quiz 2/4', uk:'Квіз 2/4', en:'Quiz 2/4', ru:'Квиз 2/4'}},
+  {id:'lid_wahlen_q3', type:'quiz', chapter:4, unlockAfter:'lid_wahlen_q2', cardIds:[], chapterTitle:{de:'Wahlen und Parteien', uk:'Вибори й партії', en:'Elections and parties', ru:'Выборы и партии'}, title:{de:'Quiz 3/4', uk:'Квіз 3/4', en:'Quiz 3/4', ru:'Квиз 3/4'}},
+  {id:'lid_wahlen_q4', type:'quiz', chapter:4, unlockAfter:'lid_wahlen_q3', cardIds:[], chapterTitle:{de:'Wahlen und Parteien', uk:'Вибори й партії', en:'Elections and parties', ru:'Выборы и партии'}, title:{de:'Quiz 4/4', uk:'Квіз 4/4', en:'Quiz 4/4', ru:'Квиз 4/4'}},
+  {id:'lid_recht_w', chapter:5, unlockAfter:null, cardIds:['dem_005','dem_032','dem_034','dem_048'], chapterTitle:{de:'Recht und Justiz', uk:'Право й правосуддя', en:'Law and justice', ru:'Право и правосудие'}, title:{de:'Wörter', uk:'Слова', en:'Words', ru:'Слова'}},
+  {id:'lid_recht_q1', type:'quiz', chapter:5, unlockAfter:'lid_recht_w', cardIds:[], chapterTitle:{de:'Recht und Justiz', uk:'Право й правосуддя', en:'Law and justice', ru:'Право и правосудие'}, title:{de:'Quiz 1/2', uk:'Квіз 1/2', en:'Quiz 1/2', ru:'Квиз 1/2'}},
+  {id:'lid_recht_q2', type:'quiz', chapter:5, unlockAfter:'lid_recht_q1', cardIds:[], chapterTitle:{de:'Recht und Justiz', uk:'Право й правосуддя', en:'Law and justice', ru:'Право и правосудие'}, title:{de:'Quiz 2/2', uk:'Квіз 2/2', en:'Quiz 2/2', ru:'Квиз 2/2'}},
+  {id:'lid_arbeit_w', chapter:6, unlockAfter:null, cardIds:['all_007','ges_001','ges_003','ges_004','ges_005','ges_006'], chapterTitle:{de:'Arbeit und Soziales', uk:'Робота й соціальна сфера', en:'Work and social security', ru:'Работа и социальная сфера'}, title:{de:'Wörter', uk:'Слова', en:'Words', ru:'Слова'}},
+  {id:'lid_arbeit_q1', type:'quiz', chapter:6, unlockAfter:'lid_arbeit_w', cardIds:[], chapterTitle:{de:'Arbeit und Soziales', uk:'Робота й соціальна сфера', en:'Work and social security', ru:'Работа и социальная сфера'}, title:{de:'Quiz 1/3', uk:'Квіз 1/3', en:'Quiz 1/3', ru:'Квиз 1/3'}},
+  {id:'lid_arbeit_q2', type:'quiz', chapter:6, unlockAfter:'lid_arbeit_q1', cardIds:[], chapterTitle:{de:'Arbeit und Soziales', uk:'Робота й соціальна сфера', en:'Work and social security', ru:'Работа и социальная сфера'}, title:{de:'Quiz 2/3', uk:'Квіз 2/3', en:'Quiz 2/3', ru:'Квиз 2/3'}},
+  {id:'lid_arbeit_q3', type:'quiz', chapter:6, unlockAfter:'lid_arbeit_q2', cardIds:[], chapterTitle:{de:'Arbeit und Soziales', uk:'Робота й соціальна сфера', en:'Work and social security', ru:'Работа и социальная сфера'}, title:{de:'Quiz 3/3', uk:'Квіз 3/3', en:'Quiz 3/3', ru:'Квиз 3/3'}},
+  {id:'lid_ns_w', chapter:7, unlockAfter:null, cardIds:['his_001','his_005','his_006'], chapterTitle:{de:'Nationalsozialismus und Verantwortung', uk:'Націонал-соціалізм і відповідальність', en:'National Socialism and responsibility', ru:'Национал-социализм и ответственность'}, title:{de:'Wörter', uk:'Слова', en:'Words', ru:'Слова'}},
+  {id:'lid_ns_q1', type:'quiz', chapter:7, unlockAfter:'lid_ns_w', cardIds:[], chapterTitle:{de:'Nationalsozialismus und Verantwortung', uk:'Націонал-соціалізм і відповідальність', en:'National Socialism and responsibility', ru:'Национал-социализм и ответственность'}, title:{de:'Quiz 1/3', uk:'Квіз 1/3', en:'Quiz 1/3', ru:'Квиз 1/3'}},
+  {id:'lid_ns_q2', type:'quiz', chapter:7, unlockAfter:'lid_ns_q1', cardIds:[], chapterTitle:{de:'Nationalsozialismus und Verantwortung', uk:'Націонал-соціалізм і відповідальність', en:'National Socialism and responsibility', ru:'Национал-социализм и ответственность'}, title:{de:'Quiz 2/3', uk:'Квіз 2/3', en:'Quiz 2/3', ru:'Квиз 2/3'}},
+  {id:'lid_ns_q3', type:'quiz', chapter:7, unlockAfter:'lid_ns_q2', cardIds:[], chapterTitle:{de:'Nationalsozialismus und Verantwortung', uk:'Націонал-соціалізм і відповідальність', en:'National Socialism and responsibility', ru:'Национал-социализм и ответственность'}, title:{de:'Quiz 3/3', uk:'Квіз 3/3', en:'Quiz 3/3', ru:'Квиз 3/3'}},
+  {id:'lid_ddr_w', chapter:8, unlockAfter:null, cardIds:['all_008','all_012','his_003','his_004','his_007'], chapterTitle:{de:'Nachkriegszeit, DDR und Einheit', uk:'Повоєнний час, НДР і єдність', en:'Post-war era, GDR and unity', ru:'Послевоенное время, ГДР и единство'}, title:{de:'Wörter', uk:'Слова', en:'Words', ru:'Слова'}},
+  {id:'lid_ddr_q1', type:'quiz', chapter:8, unlockAfter:'lid_ddr_w', cardIds:[], chapterTitle:{de:'Nachkriegszeit, DDR und Einheit', uk:'Повоєнний час, НДР і єдність', en:'Post-war era, GDR and unity', ru:'Послевоенное время, ГДР и единство'}, title:{de:'Quiz 1/5', uk:'Квіз 1/5', en:'Quiz 1/5', ru:'Квиз 1/5'}},
+  {id:'lid_ddr_q2', type:'quiz', chapter:8, unlockAfter:'lid_ddr_q1', cardIds:[], chapterTitle:{de:'Nachkriegszeit, DDR und Einheit', uk:'Повоєнний час, НДР і єдність', en:'Post-war era, GDR and unity', ru:'Послевоенное время, ГДР и единство'}, title:{de:'Quiz 2/5', uk:'Квіз 2/5', en:'Quiz 2/5', ru:'Квиз 2/5'}},
+  {id:'lid_ddr_q3', type:'quiz', chapter:8, unlockAfter:'lid_ddr_q2', cardIds:[], chapterTitle:{de:'Nachkriegszeit, DDR und Einheit', uk:'Повоєнний час, НДР і єдність', en:'Post-war era, GDR and unity', ru:'Послевоенное время, ГДР и единство'}, title:{de:'Quiz 3/5', uk:'Квіз 3/5', en:'Quiz 3/5', ru:'Квиз 3/5'}},
+  {id:'lid_ddr_q4', type:'quiz', chapter:8, unlockAfter:'lid_ddr_q3', cardIds:[], chapterTitle:{de:'Nachkriegszeit, DDR und Einheit', uk:'Повоєнний час, НДР і єдність', en:'Post-war era, GDR and unity', ru:'Послевоенное время, ГДР и единство'}, title:{de:'Quiz 4/5', uk:'Квіз 4/5', en:'Quiz 4/5', ru:'Квиз 4/5'}},
+  {id:'lid_ddr_q5', type:'quiz', chapter:8, unlockAfter:'lid_ddr_q4', cardIds:[], chapterTitle:{de:'Nachkriegszeit, DDR und Einheit', uk:'Повоєнний час, НДР і єдність', en:'Post-war era, GDR and unity', ru:'Послевоенное время, ГДР и единство'}, title:{de:'Quiz 5/5', uk:'Квіз 5/5', en:'Quiz 5/5', ru:'Квиз 5/5'}},
+  {id:'lid_europa_w', chapter:9, unlockAfter:null, cardIds:['all_010','all_013','dem_046'], chapterTitle:{de:'Europa und Nachbarländer', uk:'Європа і сусідні країни', en:'Europe and neighbours', ru:'Европа и соседние страны'}, title:{de:'Wörter', uk:'Слова', en:'Words', ru:'Слова'}},
+  {id:'lid_europa_q1', type:'quiz', chapter:9, unlockAfter:'lid_europa_w', cardIds:[], chapterTitle:{de:'Europa und Nachbarländer', uk:'Європа і сусідні країни', en:'Europe and neighbours', ru:'Европа и соседние страны'}, title:{de:'Quiz 1/2', uk:'Квіз 1/2', en:'Quiz 1/2', ru:'Квиз 1/2'}},
+  {id:'lid_europa_q2', type:'quiz', chapter:9, unlockAfter:'lid_europa_q1', cardIds:[], chapterTitle:{de:'Europa und Nachbarländer', uk:'Європа і сусідні країни', en:'Europe and neighbours', ru:'Европа и соседние страны'}, title:{de:'Quiz 2/2', uk:'Квіз 2/2', en:'Quiz 2/2', ru:'Квиз 2/2'}},
+  {id:'lid_gesellschaft_w', chapter:10, unlockAfter:null, cardIds:['all_014','dem_038','ges_007'], chapterTitle:{de:'Mensch und Gesellschaft', uk:'Людина і суспільство', en:'People and society', ru:'Человек и общество'}, title:{de:'Wörter', uk:'Слова', en:'Words', ru:'Слова'}},
+  {id:'lid_gesellschaft_q1', type:'quiz', chapter:10, unlockAfter:'lid_gesellschaft_w', cardIds:[], chapterTitle:{de:'Mensch und Gesellschaft', uk:'Людина і суспільство', en:'People and society', ru:'Человек и общество'}, title:{de:'Quiz 1/5', uk:'Квіз 1/5', en:'Quiz 1/5', ru:'Квиз 1/5'}},
+  {id:'lid_gesellschaft_q2', type:'quiz', chapter:10, unlockAfter:'lid_gesellschaft_q1', cardIds:[], chapterTitle:{de:'Mensch und Gesellschaft', uk:'Людина і суспільство', en:'People and society', ru:'Человек и общество'}, title:{de:'Quiz 2/5', uk:'Квіз 2/5', en:'Quiz 2/5', ru:'Квиз 2/5'}},
+  {id:'lid_gesellschaft_q3', type:'quiz', chapter:10, unlockAfter:'lid_gesellschaft_q2', cardIds:[], chapterTitle:{de:'Mensch und Gesellschaft', uk:'Людина і суспільство', en:'People and society', ru:'Человек и общество'}, title:{de:'Quiz 3/5', uk:'Квіз 3/5', en:'Quiz 3/5', ru:'Квиз 3/5'}},
+  {id:'lid_gesellschaft_q4', type:'quiz', chapter:10, unlockAfter:'lid_gesellschaft_q3', cardIds:[], chapterTitle:{de:'Mensch und Gesellschaft', uk:'Людина і суспільство', en:'People and society', ru:'Человек и общество'}, title:{de:'Quiz 4/5', uk:'Квіз 4/5', en:'Quiz 4/5', ru:'Квиз 4/5'}},
+  {id:'lid_gesellschaft_q5', type:'quiz', chapter:10, unlockAfter:'lid_gesellschaft_q4', cardIds:[], chapterTitle:{de:'Mensch und Gesellschaft', uk:'Людина і суспільство', en:'People and society', ru:'Человек и общество'}, title:{de:'Quiz 5/5', uk:'Квіз 5/5', en:'Quiz 5/5', ru:'Квиз 5/5'}},
+  {id:'lid_reg_w', chapter:11, unlockAfter:null, cardIds:['reg_001','reg_002','reg_003','reg_004','reg_005','reg_006','reg_007'], chapterTitle:{de:'Fragen zu meinem Bundesland', uk:'Питання про мою землю', en:'Questions about my state', ru:'Вопросы о моей земле'}, title:{de:'Wörter', uk:'Слова', en:'Words', ru:'Слова'}},
+  {id:'lid_lreg', type:'quiz', chapter:11, unlockAfter:'lid_reg_w', cardIds:[], chapterTitle:{de:'Fragen zu meinem Bundesland', uk:'Питання про мою землю', en:'Questions about my state', ru:'Вопросы о моей земле'}, title:{de:'Quiz', uk:'Квіз', en:'Quiz', ru:'Квиз'}},
 ];
 var VOCAB = [
-  {id:'all_001', cat:'allgemein', term:{de:'entscheiden', en:'to decide', uk:'вирішувати', ru:'решать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_002', cat:'allgemein', term:{de:'gehören', en:'to belong', uk:'належати', ru:'принадлежать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_003', cat:'allgemein', term:{de:'wählen', en:'to elect', uk:'обирати', ru:'избирать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_004', cat:'allgemein', term:{de:'bedeuten', en:'to mean', uk:'означати', ru:'означать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_005', cat:'allgemein', term:{de:'politisch', en:'political', uk:'політичний', ru:'политический'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_006', cat:'allgemein', term:{de:'die Aufgabe', en:'task', uk:'завдання', ru:'задача'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_007', cat:'allgemein', term:{de:'bezahlen', en:'to pay', uk:'платити', ru:'платить'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_008', cat:'allgemein', term:{de:'das Gebiet', en:'territory', uk:'територія', ru:'территория'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_009', cat:'allgemein', term:{de:'kontrollieren', en:'to oversee', uk:'контролювати', ru:'контролировать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_010', cat:'allgemein', term:{de:'die Abkürzung', en:'abbreviation', uk:'скорочення', ru:'сокращение'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_011', cat:'allgemein', term:{de:'das Alter', en:'age', uk:'вік', ru:'возраст'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_012', cat:'allgemein', term:{de:'gründen', en:'to found', uk:'засновувати', ru:'основывать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_013', cat:'allgemein', term:{de:'das Nachbarland', en:'neighbouring country', uk:'сусідня країна', ru:'соседняя страна'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'all_014', cat:'allgemein', term:{de:'sich informieren', en:'to get informed', uk:'отримувати інформацію', ru:'получать информацию'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_001', cat:'demokratie', term:{de:'die Regierung', en:'government', uk:'уряд', ru:'правительство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_002', cat:'demokratie', term:{de:'die Meinungsfreiheit', en:'freedom of expression', uk:'свобода слова', ru:'свобода слова'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_003', cat:'demokratie', term:{de:'der Staat', en:'state', uk:'держава', ru:'государство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_004', cat:'demokratie', term:{de:'das Gesetz', en:'law', uk:'закон', ru:'закон'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_005', cat:'demokratie', term:{de:'das Gericht', en:'court', uk:'суд', ru:'суд'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_006', cat:'demokratie', term:{de:'der Rechtsstaat', en:'state governed by the rule of law', uk:'правова держава', ru:'правовое государство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_007', cat:'demokratie', term:{de:'das Recht', en:'right', uk:'право', ru:'право'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_008', cat:'demokratie', term:{de:'die Wahl', en:'election', uk:'вибори', ru:'выборы'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_009', cat:'demokratie', term:{de:'das Grundgesetz', en:'Basic Law', uk:'Основний закон', ru:'Основной закон'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_010', cat:'demokratie', term:{de:'die Verfassung', en:'constitution', uk:'конституція', ru:'конституция'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_011', cat:'demokratie', term:{de:'die Bundesrepublik', en:'Federal Republic', uk:'Федеративна Республіка', ru:'Федеративная Республика'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_012', cat:'demokratie', term:{de:'der Bundestag', en:'Bundestag', uk:'Бундестаг', ru:'Бундестаг'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_013', cat:'demokratie', term:{de:'der Bundesrat', en:'Bundesrat', uk:'Бундесрат', ru:'Бундесрат'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_014', cat:'demokratie', term:{de:'die Partei', en:'party', uk:'партія', ru:'партия'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_015', cat:'demokratie', term:{de:'der / die Abgeordnete', en:'member of parliament', uk:'депутат / депутатка', ru:'депутат'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_016', cat:'demokratie', term:{de:'das Parlament', en:'parliament', uk:'парламент', ru:'парламент'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_017', cat:'demokratie', term:{de:'die Fraktion', en:'parliamentary group', uk:'фракція', ru:'фракция'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_018', cat:'demokratie', term:{de:'die Bundesregierung', en:'federal government', uk:'федеральний уряд', ru:'федеральное правительство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_019', cat:'demokratie', term:{de:'der Bürger / die Bürgerin', en:'citizen', uk:'громадянин / громадянка', ru:'гражданин / гражданка'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_020', cat:'demokratie', term:{de:'das Wappen', en:'coat of arms', uk:'герб', ru:'герб'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_021', cat:'demokratie', term:{de:'die Republik', en:'republic', uk:'республіка', ru:'республика'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_022', cat:'demokratie', term:{de:'das Bundesland, -länder', en:'federal state', uk:'федеральна земля', ru:'федеральная земля'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_023', cat:'demokratie', term:{de:'die Behörde', en:'public authority', uk:'державний орган', ru:'государственный орган'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_024', cat:'demokratie', term:{de:'der Bundesstaat', en:'federation', uk:'федеративна держава', ru:'федеративное государство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_025', cat:'demokratie', term:{de:'das Volk', en:'people', uk:'народ', ru:'народ'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_026', cat:'demokratie', term:{de:'die Demokratie', en:'democracy', uk:'демократія', ru:'демократия'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_027', cat:'demokratie', term:{de:'der Minister / die Ministerin', en:'minister', uk:'міністр / міністерка', ru:'министр'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_028', cat:'demokratie', term:{de:'der Ministerpräsident / die Ministerpräsidentin', en:'minister-president', uk:'міністр-президент / міністр-президентка', ru:'министр-президент'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_029', cat:'demokratie', term:{de:'der Premierminister / die Premierministerin', en:'prime minister', uk:'премʼєр-міністр / премʼєр-міністерка', ru:'премьер-министр'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_030', cat:'demokratie', term:{de:'der Senator / die Senatorin', en:'senator', uk:'сенатор / сенаторка', ru:'сенатор'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_031', cat:'demokratie', term:{de:'der Außenminister / die Außenministerin', en:'foreign minister', uk:'міністр / міністерка закордонних справ', ru:'министр иностранных дел'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_032', cat:'demokratie', term:{de:'die Polizei', en:'police', uk:'поліція', ru:'полиция'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_033', cat:'demokratie', term:{de:'der Bundespräsident / die Bundespräsidentin', en:'federal president', uk:'федеральний президент / федеральна президентка', ru:'федеральный президент'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_034', cat:'demokratie', term:{de:'das Bundesverfassungsgericht', en:'Federal Constitutional Court', uk:'Федеральний конституційний суд', ru:'Федеральный конституционный суд'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_035', cat:'demokratie', term:{de:'die Exekutive', en:'executive branch', uk:'виконавча влада', ru:'исполнительная власть'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_036', cat:'demokratie', term:{de:'die Legislative', en:'legislative branch', uk:'законодавча влада', ru:'законодательная власть'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_037', cat:'demokratie', term:{de:'die Judikative', en:'judicial branch', uk:'судова влада', ru:'судебная власть'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_038', cat:'demokratie', term:{de:'das Ordnungsamt', en:'public order office', uk:'відділ громадського порядку', ru:'отдел общественного порядка'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_039', cat:'demokratie', term:{de:'das Finanzamt', en:'tax office', uk:'податкова інспекція', ru:'налоговая инспекция'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_040', cat:'demokratie', term:{de:'der Bundeskanzler / die Bundeskanzlerin', en:'federal chancellor', uk:'федеральний канцлер / федеральна канцлерка', ru:'федеральный канцлер'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_041', cat:'demokratie', term:{de:'die Gemeinde', en:'municipality', uk:'громада', ru:'муниципалитет'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_042', cat:'demokratie', term:{de:'die Bundestagswahl', en:'Bundestag election', uk:'вибори до Бундестагу', ru:'выборы в Бундестаг'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_043', cat:'demokratie', term:{de:'die Bundesversammlung', en:'Federal Convention', uk:'Федеральні збори', ru:'Федеральное собрание'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_044', cat:'demokratie', term:{de:'die Stimme', en:'vote', uk:'голос', ru:'голос'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_045', cat:'demokratie', term:{de:'die Flagge', en:'flag', uk:'прапор', ru:'флаг'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_046', cat:'demokratie', term:{de:'das Mitglied', en:'member', uk:'член', ru:'член'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_047', cat:'demokratie', term:{de:'der Bürgermeister / die Bürgermeisterin', en:'mayor', uk:'мер', ru:'мэр'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_048', cat:'demokratie', term:{de:'der Richter / die Richterin', en:'judge', uk:'суддя', ru:'судья'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_049', cat:'demokratie', term:{de:'der Regierungschef / die Regierungschefin', en:'head of government', uk:'голова уряду', ru:'глава правительства'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_050', cat:'demokratie', term:{de:'der Finanzminister / die Finanzministerin', en:'finance minister', uk:'міністр / міністерка фінансів', ru:'министр финансов'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_051', cat:'demokratie', term:{de:'der Justizminister / die Justizministerin', en:'justice minister', uk:'міністр / міністерка юстиції', ru:'министр юстиции'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'dem_052', cat:'demokratie', term:{de:'der Innenminister / die Innenministerin', en:'interior minister', uk:'міністр / міністерка внутрішніх справ', ru:'министр внутренних дел'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'his_001', cat:'geschichte', term:{de:'die Diktatur', en:'dictatorship', uk:'диктатура', ru:'диктатура'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'his_002', cat:'geschichte', term:{de:'die Monarchie', en:'monarchy', uk:'монархія', ru:'монархия'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'his_003', cat:'geschichte', term:{de:'die Einheit', en:'unity', uk:'єдність', ru:'единство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'his_004', cat:'geschichte', term:{de:'die Mauer', en:'wall', uk:'стіна', ru:'стена'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'his_005', cat:'geschichte', term:{de:'der Weltkrieg', en:'world war', uk:'світова війна', ru:'мировая война'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'his_006', cat:'geschichte', term:{de:'der Nationalsozialismus', en:'National Socialism', uk:'націонал-соціалізм', ru:'национал-социализм'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'his_007', cat:'geschichte', term:{de:'der Beitritt', en:'accession', uk:'вступ', ru:'вступление'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'ges_001', cat:'gesellschaft', term:{de:'die Steuer', en:'tax', uk:'податок', ru:'налог'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'ges_002', cat:'gesellschaft', term:{de:'der Einwohner / die Einwohnerin', en:'inhabitant', uk:'мешканець / мешканка', ru:'житель / жительница'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'ges_003', cat:'gesellschaft', term:{de:'die Sozialversicherung', en:'social insurance', uk:'соціальне страхування', ru:'социальное страхование'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'ges_004', cat:'gesellschaft', term:{de:'die Marktwirtschaft', en:'market economy', uk:'ринкова економіка', ru:'рыночная экономика'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'ges_005', cat:'gesellschaft', term:{de:'der Arbeitgeber / die Arbeitgeberin', en:'employer', uk:'роботодавець / роботодавиця', ru:'работодатель'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
-  {id:'ges_006', cat:'gesellschaft', term:{de:'der Arbeitnehmer / die Arbeitnehmerin', en:'employee', uk:'працівник / працівниця', ru:'работник / работница'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_001', cat:'grundrechte', term:{de:'entscheiden', en:'to decide', uk:'вирішувати', ru:'решать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_002', cat:'grundrechte', term:{de:'gehören', en:'to belong', uk:'належати', ru:'принадлежать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_003', cat:'wahlen', term:{de:'wählen', en:'to elect', uk:'обирати', ru:'избирать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_004', cat:'politik', term:{de:'bedeuten', en:'to mean', uk:'означати', ru:'означать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_005', cat:'politik', term:{de:'politisch', en:'political', uk:'політичний', ru:'политический'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_006', cat:'staat', term:{de:'die Aufgabe', en:'task', uk:'завдання', ru:'задача'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_007', cat:'arbeit', term:{de:'bezahlen', en:'to pay', uk:'платити', ru:'платить'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_008', cat:'ddr', term:{de:'das Gebiet', en:'territory', uk:'територія', ru:'территория'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_009', cat:'politik', term:{de:'kontrollieren', en:'to oversee', uk:'контролювати', ru:'контролировать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_010', cat:'europa', term:{de:'die Abkürzung', en:'abbreviation', uk:'скорочення', ru:'сокращение'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_011', cat:'wahlen', term:{de:'das Alter', en:'age', uk:'вік', ru:'возраст'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_012', cat:'ddr', term:{de:'gründen', en:'to found', uk:'засновувати', ru:'основывать'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_013', cat:'europa', term:{de:'das Nachbarland', en:'neighbouring country', uk:'сусідня країна', ru:'соседняя страна'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'all_014', cat:'gesellschaft', term:{de:'sich informieren', en:'to get informed', uk:'отримувати інформацію', ru:'получать информацию'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_001', cat:'politik', term:{de:'die Regierung', en:'government', uk:'уряд', ru:'правительство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_002', cat:'grundrechte', term:{de:'die Meinungsfreiheit', en:'freedom of expression', uk:'свобода слова', ru:'свобода слова'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_003', cat:'staat', term:{de:'der Staat', en:'state', uk:'держава', ru:'государство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_004', cat:'grundrechte', term:{de:'das Gesetz', en:'law', uk:'закон', ru:'закон'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_005', cat:'recht', term:{de:'das Gericht', en:'court', uk:'суд', ru:'суд'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_006', cat:'grundrechte', term:{de:'der Rechtsstaat', en:'state governed by the rule of law', uk:'правова держава', ru:'правовое государство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_007', cat:'grundrechte', term:{de:'das Recht', en:'right', uk:'право', ru:'право'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_008', cat:'wahlen', term:{de:'die Wahl', en:'election', uk:'вибори', ru:'выборы'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_009', cat:'grundrechte', term:{de:'das Grundgesetz', en:'Basic Law', uk:'Основний закон', ru:'Основной закон'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_010', cat:'grundrechte', term:{de:'die Verfassung', en:'constitution', uk:'конституція', ru:'конституция'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_011', cat:'staat', term:{de:'die Bundesrepublik', en:'Federal Republic', uk:'Федеративна Республіка', ru:'Федеративная Республика'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_012', cat:'politik', term:{de:'der Bundestag', en:'Bundestag', uk:'Бундестаг', ru:'Бундестаг'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_013', cat:'politik', term:{de:'der Bundesrat', en:'Bundesrat', uk:'Бундесрат', ru:'Бундесрат'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_014', cat:'wahlen', term:{de:'die Partei', en:'party', uk:'партія', ru:'партия'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_015', cat:'wahlen', term:{de:'der / die Abgeordnete', en:'member of parliament', uk:'депутат / депутатка', ru:'депутат'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_016', cat:'politik', term:{de:'das Parlament', en:'parliament', uk:'парламент', ru:'парламент'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_017', cat:'politik', term:{de:'die Fraktion', en:'parliamentary group', uk:'фракція', ru:'фракция'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_018', cat:'politik', term:{de:'die Bundesregierung', en:'federal government', uk:'федеральний уряд', ru:'федеральное правительство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_019', cat:'grundrechte', term:{de:'der Bürger / die Bürgerin', en:'citizen', uk:'громадянин / громадянка', ru:'гражданин / гражданка'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_020', cat:'staat', term:{de:'das Wappen', en:'coat of arms', uk:'герб', ru:'герб'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_021', cat:'staat', term:{de:'die Republik', en:'republic', uk:'республіка', ru:'республика'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_022', cat:'staat', term:{de:'das Bundesland, -länder', en:'federal state', uk:'федеральна земля', ru:'федеральная земля'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_023', cat:'staat', term:{de:'die Behörde', en:'public authority', uk:'державний орган', ru:'государственный орган'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_024', cat:'staat', term:{de:'der Bundesstaat', en:'federation', uk:'федеративна держава', ru:'федеративное государство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_025', cat:'grundrechte', term:{de:'das Volk', en:'people', uk:'народ', ru:'народ'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_026', cat:'grundrechte', term:{de:'die Demokratie', en:'democracy', uk:'демократія', ru:'демократия'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_027', cat:'politik', term:{de:'der Minister / die Ministerin', en:'minister', uk:'міністр / міністерка', ru:'министр'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_028', cat:'politik', term:{de:'der Ministerpräsident / die Ministerpräsidentin', en:'minister-president', uk:'міністр-президент / міністр-президентка', ru:'министр-президент'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_029', cat:'politik', term:{de:'der Premierminister / die Premierministerin', en:'prime minister', uk:'премʼєр-міністр / премʼєр-міністерка', ru:'премьер-министр'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_030', cat:'politik', term:{de:'der Senator / die Senatorin', en:'senator', uk:'сенатор / сенаторка', ru:'сенатор'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_031', cat:'politik', term:{de:'der Außenminister / die Außenministerin', en:'foreign minister', uk:'міністр / міністерка закордонних справ', ru:'министр иностранных дел'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_032', cat:'recht', term:{de:'die Polizei', en:'police', uk:'поліція', ru:'полиция'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_033', cat:'politik', term:{de:'der Bundespräsident / die Bundespräsidentin', en:'federal president', uk:'федеральний президент / федеральна президентка', ru:'федеральный президент'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_034', cat:'recht', term:{de:'das Bundesverfassungsgericht', en:'Federal Constitutional Court', uk:'Федеральний конституційний суд', ru:'Федеральный конституционный суд'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_035', cat:'staat', term:{de:'die Exekutive', en:'executive branch', uk:'виконавча влада', ru:'исполнительная власть'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_036', cat:'staat', term:{de:'die Legislative', en:'legislative branch', uk:'законодавча влада', ru:'законодательная власть'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_037', cat:'staat', term:{de:'die Judikative', en:'judicial branch', uk:'судова влада', ru:'судебная власть'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_038', cat:'gesellschaft', term:{de:'das Ordnungsamt', en:'public order office', uk:'відділ громадського порядку', ru:'отдел общественного порядка'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_039', cat:'staat', term:{de:'das Finanzamt', en:'tax office', uk:'податкова інспекція', ru:'налоговая инспекция'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_040', cat:'politik', term:{de:'der Bundeskanzler / die Bundeskanzlerin', en:'federal chancellor', uk:'федеральний канцлер / федеральна канцлерка', ru:'федеральный канцлер'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_041', cat:'staat', term:{de:'die Gemeinde', en:'municipality', uk:'громада', ru:'муниципалитет'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_042', cat:'wahlen', term:{de:'die Bundestagswahl', en:'Bundestag election', uk:'вибори до Бундестагу', ru:'выборы в Бундестаг'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_043', cat:'politik', term:{de:'die Bundesversammlung', en:'Federal Convention', uk:'Федеральні збори', ru:'Федеральное собрание'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_044', cat:'wahlen', term:{de:'die Stimme', en:'vote', uk:'голос', ru:'голос'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_045', cat:'staat', term:{de:'die Flagge', en:'flag', uk:'прапор', ru:'флаг'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_046', cat:'europa', term:{de:'das Mitglied', en:'member', uk:'член', ru:'член'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_047', cat:'staat', term:{de:'der Bürgermeister / die Bürgermeisterin', en:'mayor', uk:'мер', ru:'мэр'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_048', cat:'recht', term:{de:'der Richter / die Richterin', en:'judge', uk:'суддя', ru:'судья'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_049', cat:'politik', term:{de:'der Regierungschef / die Regierungschefin', en:'head of government', uk:'голова уряду', ru:'глава правительства'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_050', cat:'politik', term:{de:'der Finanzminister / die Finanzministerin', en:'finance minister', uk:'міністр / міністерка фінансів', ru:'министр финансов'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_051', cat:'politik', term:{de:'der Justizminister / die Justizministerin', en:'justice minister', uk:'міністр / міністерка юстиції', ru:'министр юстиции'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'dem_052', cat:'politik', term:{de:'der Innenminister / die Innenministerin', en:'interior minister', uk:'міністр / міністерка внутрішніх справ', ru:'министр внутренних дел'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'his_001', cat:'ns', term:{de:'die Diktatur', en:'dictatorship', uk:'диктатура', ru:'диктатура'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'his_002', cat:'staat', term:{de:'die Monarchie', en:'monarchy', uk:'монархія', ru:'монархия'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'his_003', cat:'ddr', term:{de:'die Einheit', en:'unity', uk:'єдність', ru:'единство'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'his_004', cat:'ddr', term:{de:'die Mauer', en:'wall', uk:'стіна', ru:'стена'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'his_005', cat:'ns', term:{de:'der Weltkrieg', en:'world war', uk:'світова війна', ru:'мировая война'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'his_006', cat:'ns', term:{de:'der Nationalsozialismus', en:'National Socialism', uk:'націонал-соціалізм', ru:'национал-социализм'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'his_007', cat:'ddr', term:{de:'der Beitritt', en:'accession', uk:'вступ', ru:'вступление'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'ges_001', cat:'arbeit', term:{de:'die Steuer', en:'tax', uk:'податок', ru:'налог'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'ges_002', cat:'staat', term:{de:'der Einwohner / die Einwohnerin', en:'inhabitant', uk:'мешканець / мешканка', ru:'житель / жительница'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'ges_003', cat:'arbeit', term:{de:'die Sozialversicherung', en:'social insurance', uk:'соціальне страхування', ru:'социальное страхование'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'ges_004', cat:'arbeit', term:{de:'die Marktwirtschaft', en:'market economy', uk:'ринкова економіка', ru:'рыночная экономика'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'ges_005', cat:'arbeit', term:{de:'der Arbeitgeber / die Arbeitgeberin', en:'employer', uk:'роботодавець / роботодавиця', ru:'работодатель'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
+  {id:'ges_006', cat:'arbeit', term:{de:'der Arbeitnehmer / die Arbeitnehmerin', en:'employee', uk:'працівник / працівниця', ru:'работник / работница'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
   {id:'ges_007', cat:'gesellschaft', term:{de:'die Kirche', en:'church', uk:'церква', ru:'церковь'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
   {id:'reg_001', cat:'region', term:{de:'die Kommunalwahl', en:'local election', uk:'місцеві вибори', ru:'местные выборы'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
   {id:'reg_002', cat:'region', term:{de:'der Landkreis', en:'district', uk:'район', ru:'район'}, short:{de:'', en:'', uk:'', ru:''}, def:{de:'', en:'', uk:'', ru:''}, gram:''},
@@ -192,8 +214,8 @@ var DIALOGE = [];
 var QUIZ = [
   {
     id: "lid_001",
-    cat: "allgemein",
-    lessonId: "lid_l01",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q1",
     question: { de: "In Deutschland dürfen Menschen offen etwas gegen die Regierung sagen, weil …", en: "", uk: "", ru: "" },
     answers: [
       { de: "hier Religionsfreiheit gilt.", en: "", uk: "", ru: "" },
@@ -205,8 +227,8 @@ var QUIZ = [
   },
   {
     id: "lid_002",
-    cat: "allgemein",
-    lessonId: "lid_l01",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q1",
     question: { de: "In Deutschland können Eltern bis zum 14. Lebensjahr ihres Kindes entscheiden, ob es in der Schule am …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Geschichtsunterricht teilnimmt.", en: "", uk: "", ru: "" },
@@ -218,8 +240,8 @@ var QUIZ = [
   },
   {
     id: "lid_003",
-    cat: "allgemein",
-    lessonId: "lid_l01",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q1",
     question: { de: "Deutschland ist ein Rechtsstaat. Was ist damit gemeint?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Alle Einwohnerinnen/Einwohner und der Staat müssen sich an die Gesetze halten.", en: "", uk: "", ru: "", correct: true },
@@ -231,8 +253,8 @@ var QUIZ = [
   },
   {
     id: "lid_004",
-    cat: "allgemein",
-    lessonId: "lid_l01",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q1",
     question: { de: "Welches Recht gehört zu den Grundrechten in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Waffenbesitz", en: "", uk: "", ru: "" },
@@ -244,8 +266,8 @@ var QUIZ = [
   },
   {
     id: "lid_005",
-    cat: "allgemein",
-    lessonId: "lid_l01",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q1",
     question: { de: "Wahlen in Deutschland sind frei. Was bedeutet das?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Man darf Geld annehmen, wenn man dafür eine bestimmte Kandidatin/einen bestimmten Kandidaten wählt.", en: "", uk: "", ru: "" },
@@ -257,8 +279,8 @@ var QUIZ = [
   },
   {
     id: "lid_006",
-    cat: "allgemein",
-    lessonId: "lid_l01",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q1",
     question: { de: "Wie heißt die deutsche Verfassung?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Volksgesetz", en: "", uk: "", ru: "" },
@@ -270,8 +292,8 @@ var QUIZ = [
   },
   {
     id: "lid_007",
-    cat: "allgemein",
-    lessonId: "lid_l01",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q1",
     question: { de: "Welches Recht gehört zu den Grundrechten, die nach der deutschen Verfassung garantiert werden? Das Recht auf …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Glaubens- und Gewissensfreiheit", en: "", uk: "", ru: "", correct: true },
@@ -283,8 +305,8 @@ var QUIZ = [
   },
   {
     id: "lid_008",
-    cat: "allgemein",
-    lessonId: "lid_l01",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q1",
     question: { de: "Was steht nicht im Grundgesetz von Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Die Würde des Menschen ist unantastbar.", en: "", uk: "", ru: "" },
@@ -296,8 +318,8 @@ var QUIZ = [
   },
   {
     id: "lid_009",
-    cat: "allgemein",
-    lessonId: "lid_l01",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q1",
     question: { de: "Welches Grundrecht gilt in Deutschland nur für Ausländerinnen/Ausländer? Das Grundrecht auf …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Schutz der Familie", en: "", uk: "", ru: "" },
@@ -309,8 +331,8 @@ var QUIZ = [
   },
   {
     id: "lid_010",
-    cat: "allgemein",
-    lessonId: "lid_l01",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q1",
     question: { de: "Was ist mit dem deutschen Grundgesetz vereinbar?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Prügelstrafe", en: "", uk: "", ru: "" },
@@ -322,8 +344,8 @@ var QUIZ = [
   },
   {
     id: "lid_011",
-    cat: "allgemein",
-    lessonId: "lid_l02",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q1",
     question: { de: "Wie wird die Verfassung der Bundesrepublik Deutschland genannt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Grundgesetz", en: "", uk: "", ru: "", correct: true },
@@ -335,8 +357,8 @@ var QUIZ = [
   },
   {
     id: "lid_012",
-    cat: "allgemein",
-    lessonId: "lid_l02",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q2",
     question: { de: "Eine Partei im Deutschen Bundestag will die Pressefreiheit abschaffen. Ist das möglich?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Ja, wenn mehr als die Hälfte der Abgeordneten im Bundestag dafür sind.", en: "", uk: "", ru: "" },
@@ -348,8 +370,8 @@ var QUIZ = [
   },
   {
     id: "lid_013",
-    cat: "allgemein",
-    lessonId: "lid_l02",
+    cat: "politik",
+    lessonId: "lid_politik_q1",
     question: { de: "Im Parlament steht der Begriff „Opposition“ für …", en: "", uk: "", ru: "" },
     answers: [
       { de: "die regierenden Parteien.", en: "", uk: "", ru: "" },
@@ -361,8 +383,8 @@ var QUIZ = [
   },
   {
     id: "lid_014",
-    cat: "allgemein",
-    lessonId: "lid_l02",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q2",
     question: { de: "Meinungsfreiheit in Deutschland heißt, dass ich …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Passanten auf der Straße beschimpfen darf.", en: "", uk: "", ru: "" },
@@ -374,8 +396,8 @@ var QUIZ = [
   },
   {
     id: "lid_015",
-    cat: "allgemein",
-    lessonId: "lid_l02",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q2",
     question: { de: "Was verbietet das deutsche Grundgesetz?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Militärdienst", en: "", uk: "", ru: "" },
@@ -387,8 +409,8 @@ var QUIZ = [
   },
   {
     id: "lid_016",
-    cat: "allgemein",
-    lessonId: "lid_l02",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q2",
     question: { de: "Wann ist die Meinungsfreiheit in Deutschland eingeschränkt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "bei der öffentlichen Verbreitung falscher Behauptungen über einzelne Personen", en: "", uk: "", ru: "", correct: true },
@@ -400,8 +422,8 @@ var QUIZ = [
   },
   {
     id: "lid_017",
-    cat: "allgemein",
-    lessonId: "lid_l02",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q2",
     question: { de: "Die deutschen Gesetze verbieten …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Meinungsfreiheit der Einwohnerinnen und Einwohner.", en: "", uk: "", ru: "" },
@@ -413,8 +435,8 @@ var QUIZ = [
   },
   {
     id: "lid_018",
-    cat: "allgemein",
-    lessonId: "lid_l02",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q2",
     question: { de: "Welches Grundrecht ist in Artikel 1 des Grundgesetzes der Bundesrepublik Deutschland garantiert?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Unantastbarkeit der Menschenwürde", en: "", uk: "", ru: "", correct: true },
@@ -426,8 +448,8 @@ var QUIZ = [
   },
   {
     id: "lid_019",
-    cat: "allgemein",
-    lessonId: "lid_l02",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q2",
     question: { de: "Was versteht man unter dem Recht der „Freizügigkeit“ in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Man darf sich seinen Wohnort selbst aussuchen.", en: "", uk: "", ru: "", correct: true },
@@ -439,8 +461,8 @@ var QUIZ = [
   },
   {
     id: "lid_020",
-    cat: "allgemein",
-    lessonId: "lid_l02",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q2",
     question: { de: "Eine Partei in Deutschland verfolgt das Ziel, eine Diktatur zu errichten. Sie ist dann …", en: "", uk: "", ru: "" },
     answers: [
       { de: "tolerant.", en: "", uk: "", ru: "" },
@@ -452,8 +474,8 @@ var QUIZ = [
   },
   {
     id: "lid_021",
-    cat: "allgemein",
-    lessonId: "lid_l03",
+    cat: "staat",
+    lessonId: "lid_staat_q1",
     question: { de: "Welches ist das Wappen der Bundesrepublik Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "", en: "", uk: "", ru: "", img: "lid_021_a1.png", correct: true },
@@ -465,8 +487,8 @@ var QUIZ = [
   },
   {
     id: "lid_022",
-    cat: "allgemein",
-    lessonId: "lid_l03",
+    cat: "staat",
+    lessonId: "lid_staat_q1",
     question: { de: "Was für eine Staatsform hat Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Monarchie", en: "", uk: "", ru: "" },
@@ -478,8 +500,8 @@ var QUIZ = [
   },
   {
     id: "lid_023",
-    cat: "allgemein",
-    lessonId: "lid_l03",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q1",
     question: { de: "In Deutschland sind die meisten Erwerbstätigen …", en: "", uk: "", ru: "" },
     answers: [
       { de: "in kleinen Familienunternehmen beschäftigt.", en: "", uk: "", ru: "" },
@@ -491,8 +513,8 @@ var QUIZ = [
   },
   {
     id: "lid_024",
-    cat: "allgemein",
-    lessonId: "lid_l03",
+    cat: "staat",
+    lessonId: "lid_staat_q1",
     question: { de: "Wie viele Bundesländer hat die Bundesrepublik Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "14", en: "", uk: "", ru: "" },
@@ -504,8 +526,8 @@ var QUIZ = [
   },
   {
     id: "lid_025",
-    cat: "allgemein",
-    lessonId: "lid_l03",
+    cat: "staat",
+    lessonId: "lid_staat_q1",
     question: { de: "Was ist kein Bundesland der Bundesrepublik Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Elsass-Lothringen", en: "", uk: "", ru: "", correct: true },
@@ -517,8 +539,8 @@ var QUIZ = [
   },
   {
     id: "lid_026",
-    cat: "allgemein",
-    lessonId: "lid_l03",
+    cat: "staat",
+    lessonId: "lid_staat_q1",
     question: { de: "Deutschland ist …", en: "", uk: "", ru: "" },
     answers: [
       { de: "eine kommunistische Republik.", en: "", uk: "", ru: "" },
@@ -530,8 +552,8 @@ var QUIZ = [
   },
   {
     id: "lid_027",
-    cat: "allgemein",
-    lessonId: "lid_l03",
+    cat: "staat",
+    lessonId: "lid_staat_q1",
     question: { de: "Deutschland ist …", en: "", uk: "", ru: "" },
     answers: [
       { de: "ein sozialistischer Staat.", en: "", uk: "", ru: "" },
@@ -543,8 +565,8 @@ var QUIZ = [
   },
   {
     id: "lid_028",
-    cat: "allgemein",
-    lessonId: "lid_l03",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q1",
     question: { de: "Wer wählt in Deutschland die Abgeordneten zum Bundestag?", en: "", uk: "", ru: "" },
     answers: [
       { de: "das Militär", en: "", uk: "", ru: "" },
@@ -556,8 +578,8 @@ var QUIZ = [
   },
   {
     id: "lid_029",
-    cat: "allgemein",
-    lessonId: "lid_l03",
+    cat: "staat",
+    lessonId: "lid_staat_q1",
     question: { de: "Welches Tier ist das Wappentier der Bundesrepublik Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Löwe", en: "", uk: "", ru: "" },
@@ -569,8 +591,8 @@ var QUIZ = [
   },
   {
     id: "lid_030",
-    cat: "allgemein",
-    lessonId: "lid_l03",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q2",
     question: { de: "Was ist kein Merkmal unserer Demokratie?", en: "", uk: "", ru: "" },
     answers: [
       { de: "regelmäßige Wahlen", en: "", uk: "", ru: "" },
@@ -582,8 +604,8 @@ var QUIZ = [
   },
   {
     id: "lid_031",
-    cat: "allgemein",
-    lessonId: "lid_l04",
+    cat: "politik",
+    lessonId: "lid_politik_q1",
     question: { de: "Die Zusammenarbeit von Parteien zur Bildung einer Regierung nennt man in Deutschland …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Einheit.", en: "", uk: "", ru: "" },
@@ -595,8 +617,8 @@ var QUIZ = [
   },
   {
     id: "lid_032",
-    cat: "allgemein",
-    lessonId: "lid_l04",
+    cat: "staat",
+    lessonId: "lid_staat_q1",
     question: { de: "Was ist keine staatliche Gewalt in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Gesetzgebung", en: "", uk: "", ru: "" },
@@ -608,8 +630,8 @@ var QUIZ = [
   },
   {
     id: "lid_033",
-    cat: "allgemein",
-    lessonId: "lid_l04",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q3",
     question: { de: "Welche Aussage ist richtig? In Deutschland …", en: "", uk: "", ru: "" },
     answers: [
       { de: "sind Staat und Religionsgemeinschaften voneinander getrennt.", en: "", uk: "", ru: "", correct: true },
@@ -621,8 +643,8 @@ var QUIZ = [
   },
   {
     id: "lid_034",
-    cat: "allgemein",
-    lessonId: "lid_l04",
+    cat: "staat",
+    lessonId: "lid_staat_q1",
     question: { de: "Was ist Deutschland nicht?", en: "", uk: "", ru: "" },
     answers: [
       { de: "eine Demokratie", en: "", uk: "", ru: "" },
@@ -634,8 +656,8 @@ var QUIZ = [
   },
   {
     id: "lid_035",
-    cat: "allgemein",
-    lessonId: "lid_l04",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q1",
     question: { de: "Womit finanziert der deutsche Staat die Sozialversicherung?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Kirchensteuer", en: "", uk: "", ru: "" },
@@ -647,8 +669,8 @@ var QUIZ = [
   },
   {
     id: "lid_036",
-    cat: "allgemein",
-    lessonId: "lid_l04",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q1",
     question: { de: "Welche Maßnahme schafft in Deutschland soziale Sicherheit?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Krankenversicherung", en: "", uk: "", ru: "", correct: true },
@@ -660,8 +682,8 @@ var QUIZ = [
   },
   {
     id: "lid_037",
-    cat: "allgemein",
-    lessonId: "lid_l04",
+    cat: "politik",
+    lessonId: "lid_politik_q1",
     question: { de: "Wie werden die Regierungschefinnen/Regierungschefs der meisten Bundesländer in Deutschland genannt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Erste Ministerin/Erster Minister", en: "", uk: "", ru: "" },
@@ -673,8 +695,8 @@ var QUIZ = [
   },
   {
     id: "lid_038",
-    cat: "allgemein",
-    lessonId: "lid_l04",
+    cat: "staat",
+    lessonId: "lid_staat_q2",
     question: { de: "Die Bundesrepublik Deutschland ist ein demokratischer und sozialer …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Staatenverbund.", en: "", uk: "", ru: "" },
@@ -686,8 +708,8 @@ var QUIZ = [
   },
   {
     id: "lid_039",
-    cat: "allgemein",
-    lessonId: "lid_l04",
+    cat: "staat",
+    lessonId: "lid_staat_q2",
     question: { de: "Was hat jedes deutsche Bundesland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "eine eigene Außenministerin/einen eigenen Außenminister", en: "", uk: "", ru: "" },
@@ -699,8 +721,8 @@ var QUIZ = [
   },
   {
     id: "lid_040",
-    cat: "allgemein",
-    lessonId: "lid_l04",
+    cat: "staat",
+    lessonId: "lid_staat_q2",
     question: { de: "Mit welchen Worten beginnt die deutsche Nationalhymne?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Völker, hört die Signale …", en: "", uk: "", ru: "" },
@@ -712,8 +734,8 @@ var QUIZ = [
   },
   {
     id: "lid_041",
-    cat: "allgemein",
-    lessonId: "lid_l05",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q3",
     question: { de: "Warum gibt es in einer Demokratie mehr als eine Partei?", en: "", uk: "", ru: "" },
     answers: [
       { de: "weil dadurch die unterschiedlichen Meinungen der Bürgerinnen und Bürger vertreten werden", en: "", uk: "", ru: "", correct: true },
@@ -725,8 +747,8 @@ var QUIZ = [
   },
   {
     id: "lid_042",
-    cat: "allgemein",
-    lessonId: "lid_l05",
+    cat: "politik",
+    lessonId: "lid_politik_q1",
     question: { de: "Wer beschließt in Deutschland ein neues Gesetz?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Regierung", en: "", uk: "", ru: "" },
@@ -738,8 +760,8 @@ var QUIZ = [
   },
   {
     id: "lid_043",
-    cat: "allgemein",
-    lessonId: "lid_l05",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q3",
     question: { de: "Wann kann in Deutschland eine Partei verboten werden?", en: "", uk: "", ru: "" },
     answers: [
       { de: "wenn ihr Wahlkampf zu teuer ist", en: "", uk: "", ru: "" },
@@ -751,8 +773,8 @@ var QUIZ = [
   },
   {
     id: "lid_044",
-    cat: "allgemein",
-    lessonId: "lid_l05",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q1",
     question: { de: "Wen kann man als Bürgerin/Bürger in Deutschland nicht direkt wählen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Abgeordnete des EU-Parlaments", en: "", uk: "", ru: "" },
@@ -764,8 +786,8 @@ var QUIZ = [
   },
   {
     id: "lid_045",
-    cat: "allgemein",
-    lessonId: "lid_l05",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q1",
     question: { de: "Zu welcher Versicherung gehört die Pflegeversicherung?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Sozialversicherung", en: "", uk: "", ru: "", correct: true },
@@ -777,8 +799,8 @@ var QUIZ = [
   },
   {
     id: "lid_046",
-    cat: "allgemein",
-    lessonId: "lid_l05",
+    cat: "staat",
+    lessonId: "lid_staat_q2",
     question: { de: "Der deutsche Staat hat viele Aufgaben. Welche Aufgabe gehört dazu?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Er baut Straßen und Schulen.", en: "", uk: "", ru: "", correct: true },
@@ -790,8 +812,8 @@ var QUIZ = [
   },
   {
     id: "lid_047",
-    cat: "allgemein",
-    lessonId: "lid_l05",
+    cat: "staat",
+    lessonId: "lid_staat_q2",
     question: { de: "Der deutsche Staat hat viele Aufgaben. Welche Aufgabe gehört nicht dazu?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Er bezahlt für alle Staatsangehörigen Urlaubsreisen.", en: "", uk: "", ru: "", correct: true },
@@ -803,8 +825,8 @@ var QUIZ = [
   },
   {
     id: "lid_048",
-    cat: "allgemein",
-    lessonId: "lid_l05",
+    cat: "staat",
+    lessonId: "lid_staat_q2",
     question: { de: "Welches Organ gehört nicht zu den Verfassungsorganen Deutschlands?", en: "", uk: "", ru: "" },
     answers: [
       { de: "der Bundesrat", en: "", uk: "", ru: "" },
@@ -816,8 +838,8 @@ var QUIZ = [
   },
   {
     id: "lid_049",
-    cat: "allgemein",
-    lessonId: "lid_l05",
+    cat: "staat",
+    lessonId: "lid_staat_q2",
     question: { de: "Wer bestimmt in Deutschland die Schulpolitik?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Lehrer und Lehrerinnen", en: "", uk: "", ru: "" },
@@ -829,8 +851,8 @@ var QUIZ = [
   },
   {
     id: "lid_050",
-    cat: "allgemein",
-    lessonId: "lid_l05",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q1",
     question: { de: "Die Wirtschaftsform in Deutschland nennt man …", en: "", uk: "", ru: "" },
     answers: [
       { de: "freie Zentralwirtschaft.", en: "", uk: "", ru: "" },
@@ -842,8 +864,8 @@ var QUIZ = [
   },
   {
     id: "lid_051",
-    cat: "allgemein",
-    lessonId: "lid_l06",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q3",
     question: { de: "Zu einem demokratischen Rechtsstaat gehört es nicht, dass …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Menschen sich kritisch über die Regierung äußern können.", en: "", uk: "", ru: "" },
@@ -855,8 +877,8 @@ var QUIZ = [
   },
   {
     id: "lid_052",
-    cat: "allgemein",
-    lessonId: "lid_l06",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q3",
     question: { de: "Was bedeutet „Volkssouveränität“? Alle Staatsgewalt geht vom ...", en: "", uk: "", ru: "" },
     answers: [
       { de: "Volke aus.", en: "", uk: "", ru: "", correct: true },
@@ -868,8 +890,8 @@ var QUIZ = [
   },
   {
     id: "lid_053",
-    cat: "allgemein",
-    lessonId: "lid_l06",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q3",
     question: { de: "Was bedeutet „Rechtsstaat“ in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Der Staat hat Recht.", en: "", uk: "", ru: "" },
@@ -881,8 +903,8 @@ var QUIZ = [
   },
   {
     id: "lid_054",
-    cat: "allgemein",
-    lessonId: "lid_l06",
+    cat: "staat",
+    lessonId: "lid_staat_q2",
     question: { de: "Was ist keine staatliche Gewalt in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Legislative", en: "", uk: "", ru: "" },
@@ -894,8 +916,8 @@ var QUIZ = [
   },
   {
     id: "lid_055",
-    cat: "allgemein",
-    lessonId: "lid_l06",
+    cat: "staat",
+    lessonId: "lid_staat_q2",
     img: "lid_055.png",
     imgCredit: "© Deutscher Bundestag/Achim Melde",
     question: { de: "Was zeigt dieses Bild?", en: "", uk: "", ru: "" },
@@ -909,8 +931,8 @@ var QUIZ = [
   },
   {
     id: "lid_056",
-    cat: "allgemein",
-    lessonId: "lid_l06",
+    cat: "staat",
+    lessonId: "lid_staat_q3",
     question: { de: "Welches Amt gehört in Deutschland zur Gemeindeverwaltung?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Pfarramt", en: "", uk: "", ru: "" },
@@ -922,8 +944,8 @@ var QUIZ = [
   },
   {
     id: "lid_057",
-    cat: "allgemein",
-    lessonId: "lid_l06",
+    cat: "politik",
+    lessonId: "lid_politik_q1",
     question: { de: "Wer wird meistens zur Präsidentin/zum Präsidenten des Deutschen Bundestages gewählt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die/der älteste Abgeordnete im Parlament", en: "", uk: "", ru: "" },
@@ -935,8 +957,8 @@ var QUIZ = [
   },
   {
     id: "lid_058",
-    cat: "allgemein",
-    lessonId: "lid_l06",
+    cat: "politik",
+    lessonId: "lid_politik_q1",
     question: { de: "Wer ernennt in Deutschland die Ministerinnen/die Minister der Bundesregierung?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Präsidentin/der Präsident des Bundesverfassungsgerichtes", en: "", uk: "", ru: "" },
@@ -948,8 +970,8 @@ var QUIZ = [
   },
   {
     id: "lid_059",
-    cat: "allgemein",
-    lessonId: "lid_l06",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q1",
     question: { de: "Vor wie vielen Jahren gab es erstmals eine jüdische Gemeinde auf dem Gebiet des heutigen Deutschlands?", en: "", uk: "", ru: "" },
     answers: [
       { de: "vor etwa 300 Jahren", en: "", uk: "", ru: "" },
@@ -961,8 +983,8 @@ var QUIZ = [
   },
   {
     id: "lid_060",
-    cat: "allgemein",
-    lessonId: "lid_l06",
+    cat: "staat",
+    lessonId: "lid_staat_q3",
     question: { de: "In Deutschland gehören der Bundestag und der Bundesrat zur …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Exekutive.", en: "", uk: "", ru: "" },
@@ -974,8 +996,8 @@ var QUIZ = [
   },
   {
     id: "lid_061",
-    cat: "allgemein",
-    lessonId: "lid_l07",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q3",
     question: { de: "Was bedeutet „Volkssouveränität“?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Die Königin/der König herrscht über das Volk.", en: "", uk: "", ru: "" },
@@ -987,8 +1009,8 @@ var QUIZ = [
   },
   {
     id: "lid_062",
-    cat: "allgemein",
-    lessonId: "lid_l07",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q1",
     question: { de: "Wenn das Parlament eines deutschen Bundeslandes gewählt wird, nennt man das …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Kommunalwahl", en: "", uk: "", ru: "" },
@@ -1000,8 +1022,8 @@ var QUIZ = [
   },
   {
     id: "lid_063",
-    cat: "allgemein",
-    lessonId: "lid_l07",
+    cat: "staat",
+    lessonId: "lid_staat_q3",
     question: { de: "Was gehört in Deutschland nicht zur Exekutive?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Polizei", en: "", uk: "", ru: "" },
@@ -1013,8 +1035,8 @@ var QUIZ = [
   },
   {
     id: "lid_064",
-    cat: "allgemein",
-    lessonId: "lid_l07",
+    cat: "staat",
+    lessonId: "lid_staat_q3",
     question: { de: "Die Bundesrepublik Deutschland ist heute gegliedert in …", en: "", uk: "", ru: "" },
     answers: [
       { de: "vier Besatzungszonen.", en: "", uk: "", ru: "" },
@@ -1026,8 +1048,8 @@ var QUIZ = [
   },
   {
     id: "lid_065",
-    cat: "allgemein",
-    lessonId: "lid_l07",
+    cat: "politik",
+    lessonId: "lid_politik_q1",
     question: { de: "Es gehört nicht zu den Aufgaben des Deutschen Bundestages, …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Gesetze zu entwerfen.", en: "", uk: "", ru: "" },
@@ -1039,8 +1061,8 @@ var QUIZ = [
   },
   {
     id: "lid_066",
-    cat: "allgemein",
-    lessonId: "lid_l07",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q1",
     question: { de: "Welche Städte haben die größten jüdischen Gemeinden in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Berlin und München", en: "", uk: "", ru: "", correct: true },
@@ -1052,8 +1074,8 @@ var QUIZ = [
   },
   {
     id: "lid_067",
-    cat: "allgemein",
-    lessonId: "lid_l07",
+    cat: "staat",
+    lessonId: "lid_staat_q3",
     question: { de: "Was ist in Deutschland vor allem eine Aufgabe der Bundesländer?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Verteidigungspolitik", en: "", uk: "", ru: "" },
@@ -1065,8 +1087,8 @@ var QUIZ = [
   },
   {
     id: "lid_068",
-    cat: "allgemein",
-    lessonId: "lid_l07",
+    cat: "staat",
+    lessonId: "lid_staat_q3",
     question: { de: "Warum kontrolliert der Staat in Deutschland das Schulwesen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "weil es in Deutschland nur staatliche Schulen gibt", en: "", uk: "", ru: "" },
@@ -1078,8 +1100,8 @@ var QUIZ = [
   },
   {
     id: "lid_069",
-    cat: "allgemein",
-    lessonId: "lid_l07",
+    cat: "staat",
+    lessonId: "lid_staat_q3",
     question: { de: "Die Bundesrepublik Deutschland hat einen dreistufigen Verwaltungsaufbau. Wie heißt die unterste politische Stufe?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Stadträte", en: "", uk: "", ru: "" },
@@ -1091,8 +1113,8 @@ var QUIZ = [
   },
   {
     id: "lid_070",
-    cat: "allgemein",
-    lessonId: "lid_l07",
+    cat: "politik",
+    lessonId: "lid_politik_q1",
     img: "lid_070.png",
     imgCredit: "© Bundesregierung/Engelbert Reineke",
     question: { de: "Der deutsche Bundespräsident Gustav Heinemann gibt Helmut Schmidt 1974 die Ernennungsurkunde zum deutschen Bundeskanzler. Was gehört zu den Aufgaben der deutschen Bundespräsidentin/des deutschen Bundespräsidenten?", en: "", uk: "", ru: "" },
@@ -1106,8 +1128,8 @@ var QUIZ = [
   },
   {
     id: "lid_071",
-    cat: "allgemein",
-    lessonId: "lid_l08",
+    cat: "politik",
+    lessonId: "lid_politik_q1",
     question: { de: "Wo hält sich die deutsche Bundeskanzlerin/der deutsche Bundeskanzler am häufigsten auf? Am häufigsten ist sie/er …", en: "", uk: "", ru: "" },
     answers: [
       { de: "in Bonn, weil sich dort das Bundeskanzleramt und der Bundestag befinden.", en: "", uk: "", ru: "" },
@@ -1119,8 +1141,8 @@ var QUIZ = [
   },
   {
     id: "lid_072",
-    cat: "allgemein",
-    lessonId: "lid_l08",
+    cat: "politik",
+    lessonId: "lid_politik_q1",
     question: { de: "Wie heißt die jetzige Bundeskanzlerin/der jetzige Bundeskanzler von Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Gerhard Schröder", en: "", uk: "", ru: "" },
@@ -1132,8 +1154,8 @@ var QUIZ = [
   },
   {
     id: "lid_073",
-    cat: "allgemein",
-    lessonId: "lid_l08",
+    cat: "politik",
+    lessonId: "lid_politik_q2",
     question: { de: "Die beiden größten Fraktionen im Deutschen Bundestag heißen zurzeit …", en: "", uk: "", ru: "" },
     answers: [
       { de: "CDU/CSU und AfD.", en: "", uk: "", ru: "", correct: true },
@@ -1145,8 +1167,8 @@ var QUIZ = [
   },
   {
     id: "lid_074",
-    cat: "allgemein",
-    lessonId: "lid_l08",
+    cat: "politik",
+    lessonId: "lid_politik_q2",
     question: { de: "Wie heißt das Parlament für ganz Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Bundesversammlung", en: "", uk: "", ru: "" },
@@ -1158,8 +1180,8 @@ var QUIZ = [
   },
   {
     id: "lid_075",
-    cat: "allgemein",
-    lessonId: "lid_l08",
+    cat: "politik",
+    lessonId: "lid_politik_q2",
     question: { de: "Wie heißt Deutschlands heutiges Staatsoberhaupt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Frank-Walter Steinmeier", en: "", uk: "", ru: "", correct: true },
@@ -1171,8 +1193,8 @@ var QUIZ = [
   },
   {
     id: "lid_076",
-    cat: "allgemein",
-    lessonId: "lid_l08",
+    cat: "politik",
+    lessonId: "lid_politik_q2",
     question: { de: "Was bedeutet die Abkürzung CDU in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Christliche Deutsche Union", en: "", uk: "", ru: "" },
@@ -1184,8 +1206,8 @@ var QUIZ = [
   },
   {
     id: "lid_077",
-    cat: "allgemein",
-    lessonId: "lid_l08",
+    cat: "staat",
+    lessonId: "lid_staat_q3",
     question: { de: "Was ist die Bundeswehr?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die deutsche Polizei", en: "", uk: "", ru: "" },
@@ -1197,8 +1219,8 @@ var QUIZ = [
   },
   {
     id: "lid_078",
-    cat: "allgemein",
-    lessonId: "lid_l08",
+    cat: "politik",
+    lessonId: "lid_politik_q2",
     question: { de: "Was bedeutet die Abkürzung SPD?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Sozialistische Partei Deutschlands", en: "", uk: "", ru: "" },
@@ -1210,8 +1232,8 @@ var QUIZ = [
   },
   {
     id: "lid_079",
-    cat: "allgemein",
-    lessonId: "lid_l08",
+    cat: "politik",
+    lessonId: "lid_politik_q2",
     question: { de: "Was bedeutet die Abkürzung FDP in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Friedliche Demonstrative Partei", en: "", uk: "", ru: "" },
@@ -1223,8 +1245,8 @@ var QUIZ = [
   },
   {
     id: "lid_080",
-    cat: "allgemein",
-    lessonId: "lid_l08",
+    cat: "recht",
+    lessonId: "lid_recht_q1",
     question: { de: "Welches Gericht in Deutschland ist zuständig für die Auslegung des Grundgesetzes?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Oberlandesgericht", en: "", uk: "", ru: "" },
@@ -1236,8 +1258,8 @@ var QUIZ = [
   },
   {
     id: "lid_081",
-    cat: "allgemein",
-    lessonId: "lid_l09",
+    cat: "politik",
+    lessonId: "lid_politik_q2",
     question: { de: "Wer wählt die Bundeskanzlerin/den Bundeskanzler in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "der Bundesrat", en: "", uk: "", ru: "" },
@@ -1249,8 +1271,8 @@ var QUIZ = [
   },
   {
     id: "lid_082",
-    cat: "allgemein",
-    lessonId: "lid_l09",
+    cat: "politik",
+    lessonId: "lid_politik_q2",
     question: { de: "Wer leitet das deutsche Bundeskabinett?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Bundestagspräsidentin/der Bundestagspräsident", en: "", uk: "", ru: "" },
@@ -1262,8 +1284,8 @@ var QUIZ = [
   },
   {
     id: "lid_083",
-    cat: "allgemein",
-    lessonId: "lid_l09",
+    cat: "politik",
+    lessonId: "lid_politik_q2",
     question: { de: "Wer wählt die deutsche Bundeskanzlerin/den deutschen Bundeskanzler?", en: "", uk: "", ru: "" },
     answers: [
       { de: "das Volk", en: "", uk: "", ru: "" },
@@ -1275,8 +1297,8 @@ var QUIZ = [
   },
   {
     id: "lid_084",
-    cat: "allgemein",
-    lessonId: "lid_l09",
+    cat: "politik",
+    lessonId: "lid_politik_q2",
     question: { de: "Welche Hauptaufgabe hat die deutsche Bundespräsidentin/der deutsche Bundespräsident? Sie/Er …", en: "", uk: "", ru: "" },
     answers: [
       { de: "regiert das Land.", en: "", uk: "", ru: "" },
@@ -1288,8 +1310,8 @@ var QUIZ = [
   },
   {
     id: "lid_085",
-    cat: "allgemein",
-    lessonId: "lid_l09",
+    cat: "politik",
+    lessonId: "lid_politik_q3",
     question: { de: "Wer bildet den deutschen Bundesrat?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Abgeordneten des Bundestages", en: "", uk: "", ru: "" },
@@ -1301,8 +1323,8 @@ var QUIZ = [
   },
   {
     id: "lid_086",
-    cat: "allgemein",
-    lessonId: "lid_l09",
+    cat: "politik",
+    lessonId: "lid_politik_q3",
     question: { de: "Wer wählt in Deutschland die Bundespräsidentin/den Bundespräsidenten?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Bundesversammlung", en: "", uk: "", ru: "", correct: true },
@@ -1314,8 +1336,8 @@ var QUIZ = [
   },
   {
     id: "lid_087",
-    cat: "allgemein",
-    lessonId: "lid_l09",
+    cat: "politik",
+    lessonId: "lid_politik_q3",
     question: { de: "Wer ist das Staatsoberhaupt der Bundesrepublik Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Bundeskanzlerin/der Bundeskanzler", en: "", uk: "", ru: "" },
@@ -1327,8 +1349,8 @@ var QUIZ = [
   },
   {
     id: "lid_088",
-    cat: "allgemein",
-    lessonId: "lid_l09",
+    cat: "politik",
+    lessonId: "lid_politik_q3",
     question: { de: "Die parlamentarische Opposition im Deutschen Bundestag …", en: "", uk: "", ru: "" },
     answers: [
       { de: "kontrolliert die Regierung.", en: "", uk: "", ru: "", correct: true },
@@ -1340,8 +1362,8 @@ var QUIZ = [
   },
   {
     id: "lid_089",
-    cat: "allgemein",
-    lessonId: "lid_l09",
+    cat: "politik",
+    lessonId: "lid_politik_q3",
     question: { de: "Wie nennt man in Deutschland die Vereinigung von Abgeordneten einer Partei im Parlament?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Verband", en: "", uk: "", ru: "" },
@@ -1353,8 +1375,8 @@ var QUIZ = [
   },
   {
     id: "lid_090",
-    cat: "allgemein",
-    lessonId: "lid_l09",
+    cat: "politik",
+    lessonId: "lid_politik_q3",
     question: { de: "Die deutschen Bundesländer wirken an der Gesetzgebung des Bundes mit durch …", en: "", uk: "", ru: "" },
     answers: [
       { de: "den Bundesrat.", en: "", uk: "", ru: "", correct: true },
@@ -1366,8 +1388,8 @@ var QUIZ = [
   },
   {
     id: "lid_091",
-    cat: "allgemein",
-    lessonId: "lid_l10",
+    cat: "politik",
+    lessonId: "lid_politik_q3",
     question: { de: "In Deutschland kann ein Regierungswechsel in einem Bundesland Auswirkungen auf die Bundespolitik haben. Das Regieren wird …", en: "", uk: "", ru: "" },
     answers: [
       { de: "schwieriger, wenn sich dadurch die Mehrheit im Bundestag ändert.", en: "", uk: "", ru: "" },
@@ -1379,8 +1401,8 @@ var QUIZ = [
   },
   {
     id: "lid_092",
-    cat: "allgemein",
-    lessonId: "lid_l10",
+    cat: "politik",
+    lessonId: "lid_politik_q3",
     question: { de: "Was bedeutet die Abkürzung CSU in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Christlich Sichere Union", en: "", uk: "", ru: "" },
@@ -1392,8 +1414,8 @@ var QUIZ = [
   },
   {
     id: "lid_093",
-    cat: "allgemein",
-    lessonId: "lid_l10",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q1",
     question: { de: "Je mehr „Zweitstimmen“ eine Partei bei einer Bundestagswahl bekommt, desto …", en: "", uk: "", ru: "" },
     answers: [
       { de: "weniger Erststimmen kann sie haben.", en: "", uk: "", ru: "" },
@@ -1405,8 +1427,8 @@ var QUIZ = [
   },
   {
     id: "lid_094",
-    cat: "allgemein",
-    lessonId: "lid_l10",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q1",
     question: { de: "Ab welchem Alter darf man in Deutschland an der Wahl zum Deutschen Bundestag teilnehmen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "16", en: "", uk: "", ru: "" },
@@ -1418,8 +1440,8 @@ var QUIZ = [
   },
   {
     id: "lid_095",
-    cat: "allgemein",
-    lessonId: "lid_l10",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q1",
     question: { de: "Was gilt für die meisten Kinder in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Wahlpflicht", en: "", uk: "", ru: "" },
@@ -1431,8 +1453,8 @@ var QUIZ = [
   },
   {
     id: "lid_096",
-    cat: "allgemein",
-    lessonId: "lid_l10",
+    cat: "ns",
+    lessonId: "lid_ns_q1",
     question: { de: "Wie kann jemand, der den Holocaust leugnet, bestraft werden?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Kürzung sozialer Leistungen", en: "", uk: "", ru: "" },
@@ -1444,8 +1466,8 @@ var QUIZ = [
   },
   {
     id: "lid_097",
-    cat: "allgemein",
-    lessonId: "lid_l10",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q1",
     question: { de: "Was bezahlt man in Deutschland automatisch, wenn man fest angestellt ist?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Sozialversicherung", en: "", uk: "", ru: "", correct: true },
@@ -1457,8 +1479,8 @@ var QUIZ = [
   },
   {
     id: "lid_098",
-    cat: "allgemein",
-    lessonId: "lid_l10",
+    cat: "politik",
+    lessonId: "lid_politik_q3",
     question: { de: "Wenn Abgeordnete im Deutschen Bundestag ihre Fraktion wechseln, …", en: "", uk: "", ru: "" },
     answers: [
       { de: "dürfen sie nicht mehr an den Sitzungen des Parlaments teilnehmen.", en: "", uk: "", ru: "" },
@@ -1470,8 +1492,8 @@ var QUIZ = [
   },
   {
     id: "lid_099",
-    cat: "allgemein",
-    lessonId: "lid_l10",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q1",
     question: { de: "Wer bezahlt in Deutschland die Sozialversicherungen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Arbeitgeberinnen/Arbeitgeber und Arbeitnehmerinnen/Arbeitnehmer", en: "", uk: "", ru: "", correct: true },
@@ -1483,8 +1505,8 @@ var QUIZ = [
   },
   {
     id: "lid_100",
-    cat: "allgemein",
-    lessonId: "lid_l10",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q1",
     question: { de: "Was gehört nicht zur gesetzlichen Sozialversicherung?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Lebensversicherung", en: "", uk: "", ru: "", correct: true },
@@ -1496,8 +1518,8 @@ var QUIZ = [
   },
   {
     id: "lid_101",
-    cat: "allgemein",
-    lessonId: "lid_l11",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q2",
     question: { de: "Gewerkschaften sind Interessenverbände der …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Jugendlichen.", en: "", uk: "", ru: "" },
@@ -1509,8 +1531,8 @@ var QUIZ = [
   },
   {
     id: "lid_102",
-    cat: "allgemein",
-    lessonId: "lid_l11",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q1",
     question: { de: "Womit kann man in der Bundesrepublik Deutschland geehrt werden, wenn man auf politischem, wirtschaftlichem, kulturellem, geistigem oder sozialem Gebiet eine besondere Leistung erbracht hat? Mit dem …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Bundesverdienstkreuz", en: "", uk: "", ru: "", correct: true },
@@ -1522,8 +1544,8 @@ var QUIZ = [
   },
   {
     id: "lid_103",
-    cat: "allgemein",
-    lessonId: "lid_l11",
+    cat: "politik",
+    lessonId: "lid_politik_q3",
     question: { de: "Was wird in Deutschland als „Ampelkoalition“ bezeichnet? Die Zusammenarbeit …", en: "", uk: "", ru: "" },
     answers: [
       { de: "der Bundestagsfraktionen von CDU und CSU", en: "", uk: "", ru: "" },
@@ -1535,8 +1557,8 @@ var QUIZ = [
   },
   {
     id: "lid_104",
-    cat: "allgemein",
-    lessonId: "lid_l11",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q2",
     question: { de: "Eine Frau in Deutschland verliert ihre Arbeit. Was darf nicht der Grund für diese Entlassung sein?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Die Frau ist lange krank und arbeitsunfähig.", en: "", uk: "", ru: "" },
@@ -1548,8 +1570,8 @@ var QUIZ = [
   },
   {
     id: "lid_105",
-    cat: "allgemein",
-    lessonId: "lid_l11",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q1",
     question: { de: "Was ist eine Aufgabe von Wahlhelferinnen/Wahlhelfern in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Sie helfen alten Menschen bei der Stimmabgabe in der Wahlkabine.", en: "", uk: "", ru: "" },
@@ -1561,8 +1583,8 @@ var QUIZ = [
   },
   {
     id: "lid_106",
-    cat: "allgemein",
-    lessonId: "lid_l11",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q1",
     question: { de: "In Deutschland helfen ehrenamtliche Wahlhelferinnen und Wahlhelfer bei den Wahlen. Was ist eine Aufgabe von Wahlhelferinnen/Wahlhelfern?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Sie helfen Kindern und alten Menschen beim Wählen.", en: "", uk: "", ru: "" },
@@ -1574,8 +1596,8 @@ var QUIZ = [
   },
   {
     id: "lid_107",
-    cat: "allgemein",
-    lessonId: "lid_l11",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q2",
     question: { de: "Für wie viele Jahre wird der Bundestag in Deutschland gewählt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "2 Jahre", en: "", uk: "", ru: "" },
@@ -1587,8 +1609,8 @@ var QUIZ = [
   },
   {
     id: "lid_108",
-    cat: "allgemein",
-    lessonId: "lid_l11",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q2",
     question: { de: "Bei einer Bundestagswahl in Deutschland darf jede/jeder wählen, die/der …", en: "", uk: "", ru: "" },
     answers: [
       { de: "in der Bundesrepublik Deutschland wohnt und wählen möchte.", en: "", uk: "", ru: "" },
@@ -1600,8 +1622,8 @@ var QUIZ = [
   },
   {
     id: "lid_109",
-    cat: "allgemein",
-    lessonId: "lid_l11",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q2",
     question: { de: "Wie oft gibt es normalerweise Bundestagswahlen in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "alle drei Jahre", en: "", uk: "", ru: "" },
@@ -1613,8 +1635,8 @@ var QUIZ = [
   },
   {
     id: "lid_110",
-    cat: "allgemein",
-    lessonId: "lid_l11",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q2",
     question: { de: "Für wie viele Jahre wird der Bundestag in Deutschland gewählt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "2 Jahre", en: "", uk: "", ru: "" },
@@ -1626,8 +1648,8 @@ var QUIZ = [
   },
   {
     id: "lid_111",
-    cat: "allgemein",
-    lessonId: "lid_l12",
+    cat: "ns",
+    lessonId: "lid_ns_q1",
     question: { de: "Welche Handlungen mit Bezug auf den Staat Israel sind in Deutschland verboten?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Politik Israels öffentlich kritisieren", en: "", uk: "", ru: "" },
@@ -1639,8 +1661,8 @@ var QUIZ = [
   },
   {
     id: "lid_112",
-    cat: "allgemein",
-    lessonId: "lid_l12",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q2",
     question: { de: "Die Wahlen in Deutschland sind …", en: "", uk: "", ru: "" },
     answers: [
       { de: "speziell.", en: "", uk: "", ru: "" },
@@ -1652,8 +1674,8 @@ var QUIZ = [
   },
   {
     id: "lid_113",
-    cat: "allgemein",
-    lessonId: "lid_l12",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q2",
     question: { de: "Wahlen in Deutschland gewinnt die Partei, die …", en: "", uk: "", ru: "" },
     answers: [
       { de: "die meisten Stimmen bekommt.", en: "", uk: "", ru: "", correct: true },
@@ -1665,8 +1687,8 @@ var QUIZ = [
   },
   {
     id: "lid_114",
-    cat: "allgemein",
-    lessonId: "lid_l12",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q2",
     question: { de: "An demokratischen Wahlen in Deutschland teilzunehmen ist …", en: "", uk: "", ru: "" },
     answers: [
       { de: "eine Pflicht.", en: "", uk: "", ru: "" },
@@ -1678,8 +1700,8 @@ var QUIZ = [
   },
   {
     id: "lid_115",
-    cat: "allgemein",
-    lessonId: "lid_l12",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q2",
     question: { de: "Was bedeutet „aktives Wahlrecht“ in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Man kann gewählt werden.", en: "", uk: "", ru: "" },
@@ -1691,8 +1713,8 @@ var QUIZ = [
   },
   {
     id: "lid_116",
-    cat: "allgemein",
-    lessonId: "lid_l12",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q3",
     question: { de: "Wenn Sie bei einer Bundestagswahl in Deutschland wählen dürfen, heißt das …", en: "", uk: "", ru: "" },
     answers: [
       { de: "aktive Wahlkampagne.", en: "", uk: "", ru: "" },
@@ -1704,8 +1726,8 @@ var QUIZ = [
   },
   {
     id: "lid_117",
-    cat: "allgemein",
-    lessonId: "lid_l12",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q3",
     question: { de: "Wie viel Prozent der Zweitstimmen müssen Parteien mindestens bekommen, um in den Deutschen Bundestag gewählt zu werden?", en: "", uk: "", ru: "" },
     answers: [
       { de: "3%", en: "", uk: "", ru: "" },
@@ -1717,8 +1739,8 @@ var QUIZ = [
   },
   {
     id: "lid_118",
-    cat: "allgemein",
-    lessonId: "lid_l12",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q1",
     question: { de: "Wer darf bei den rund 40 jüdischen Makkabi-Sportvereinen Mitglied werden?", en: "", uk: "", ru: "" },
     answers: [
       { de: "nur Deutsche", en: "", uk: "", ru: "" },
@@ -1730,8 +1752,8 @@ var QUIZ = [
   },
   {
     id: "lid_119",
-    cat: "allgemein",
-    lessonId: "lid_l12",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q3",
     question: { de: "Wahlen in Deutschland sind frei. Was bedeutet das?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Alle verurteilten Straftäterinnen/Straftäter dürfen nicht wählen.", en: "", uk: "", ru: "" },
@@ -1743,8 +1765,8 @@ var QUIZ = [
   },
   {
     id: "lid_120",
-    cat: "allgemein",
-    lessonId: "lid_l12",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q3",
     question: { de: "Das Wahlsystem in Deutschland ist ein …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Zensuswahlrecht.", en: "", uk: "", ru: "" },
@@ -1756,8 +1778,8 @@ var QUIZ = [
   },
   {
     id: "lid_121",
-    cat: "allgemein",
-    lessonId: "lid_l13",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q3",
     question: { de: "Eine Partei möchte in den Deutschen Bundestag. Sie muss aber einen Mindestanteil an Wählerstimmen haben. Das heißt …", en: "", uk: "", ru: "" },
     answers: [
       { de: "5%-Hürde.", en: "", uk: "", ru: "", correct: true },
@@ -1769,8 +1791,8 @@ var QUIZ = [
   },
   {
     id: "lid_122",
-    cat: "allgemein",
-    lessonId: "lid_l13",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q3",
     question: { de: "Welchem Grundsatz unterliegen Wahlen in Deutschland? Wahlen in Deutschland sind …", en: "", uk: "", ru: "" },
     answers: [
       { de: "frei, gleich, geheim.", en: "", uk: "", ru: "", correct: true },
@@ -1782,8 +1804,8 @@ var QUIZ = [
   },
   {
     id: "lid_123",
-    cat: "allgemein",
-    lessonId: "lid_l13",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q3",
     question: { de: "Was ist in Deutschland die „5%-Hürde“?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Abstimmungsregelung im Bundestag für kleine Parteien", en: "", uk: "", ru: "" },
@@ -1795,8 +1817,8 @@ var QUIZ = [
   },
   {
     id: "lid_124",
-    cat: "allgemein",
-    lessonId: "lid_l13",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q3",
     question: { de: "Die Bundestagswahl in Deutschland ist die Wahl …", en: "", uk: "", ru: "" },
     answers: [
       { de: "der Bundeskanzlerin/des Bundeskanzlers.", en: "", uk: "", ru: "" },
@@ -1808,8 +1830,8 @@ var QUIZ = [
   },
   {
     id: "lid_125",
-    cat: "allgemein",
-    lessonId: "lid_l13",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q4",
     question: { de: "In einer Demokratie ist eine Funktion von regelmäßigen Wahlen, …", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Bürgerinnen und Bürger zu zwingen, ihre Stimme abzugeben.", en: "", uk: "", ru: "" },
@@ -1821,8 +1843,8 @@ var QUIZ = [
   },
   {
     id: "lid_126",
-    cat: "allgemein",
-    lessonId: "lid_l13",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q4",
     question: { de: "Was bekommen wahlberechtigte Bürgerinnen und Bürger in Deutschland vor einer Wahl?", en: "", uk: "", ru: "" },
     answers: [
       { de: "eine Wahlbenachrichtigung von der Gemeinde", en: "", uk: "", ru: "", correct: true },
@@ -1834,8 +1856,8 @@ var QUIZ = [
   },
   {
     id: "lid_127",
-    cat: "allgemein",
-    lessonId: "lid_l13",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q4",
     question: { de: "Warum gibt es die 5%-Hürde im Wahlgesetz der Bundesrepublik Deutschland? Es gibt sie, weil …", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Programme von vielen kleinen Parteien viele Gemeinsamkeiten haben.", en: "", uk: "", ru: "" },
@@ -1847,8 +1869,8 @@ var QUIZ = [
   },
   {
     id: "lid_128",
-    cat: "allgemein",
-    lessonId: "lid_l13",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q4",
     question: { de: "Parlamentsmitglieder, die von den Bürgerinnen und Bürgern gewählt werden, nennt man …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Abgeordnete.", en: "", uk: "", ru: "", correct: true },
@@ -1860,8 +1882,8 @@ var QUIZ = [
   },
   {
     id: "lid_129",
-    cat: "allgemein",
-    lessonId: "lid_l13",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q4",
     question: { de: "Vom Volk gewählt wird in Deutschland …", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Bundeskanzlerin/der Bundeskanzler.", en: "", uk: "", ru: "" },
@@ -1873,8 +1895,8 @@ var QUIZ = [
   },
   {
     id: "lid_130",
-    cat: "allgemein",
-    lessonId: "lid_l13",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q4",
     img: "lid_130.png",
     question: { de: "Welcher Stimmzettel wäre bei einer Bundestagswahl gültig? In Anlehnung an Bundeswahlordnung (BWO), Anlage 26", en: "", uk: "", ru: "" },
     answers: [
@@ -1887,8 +1909,8 @@ var QUIZ = [
   },
   {
     id: "lid_131",
-    cat: "allgemein",
-    lessonId: "lid_l14",
+    cat: "staat",
+    lessonId: "lid_staat_q3",
     question: { de: "In Deutschland ist eine Bürgermeisterin/ein Bürgermeister …", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Leiterin/der Leiter einer Schule.", en: "", uk: "", ru: "" },
@@ -1900,8 +1922,8 @@ var QUIZ = [
   },
   {
     id: "lid_132",
-    cat: "allgemein",
-    lessonId: "lid_l14",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q1",
     question: { de: "Viele Menschen in Deutschland arbeiten in ihrer Freizeit ehrenamtlich. Was bedeutet das?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Sie arbeiten als Soldatinnen/Soldaten.", en: "", uk: "", ru: "" },
@@ -1913,8 +1935,8 @@ var QUIZ = [
   },
   {
     id: "lid_133",
-    cat: "allgemein",
-    lessonId: "lid_l14",
+    cat: "wahlen",
+    lessonId: "lid_wahlen_q4",
     question: { de: "Was ist bei Bundestags- und Landtagswahlen in Deutschland erlaubt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Der Ehemann wählt für seine Frau mit.", en: "", uk: "", ru: "" },
@@ -1926,8 +1948,8 @@ var QUIZ = [
   },
   {
     id: "lid_134",
-    cat: "allgemein",
-    lessonId: "lid_l14",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q3",
     question: { de: "Man will die Buslinie abschaffen, mit der Sie immer zur Arbeit fahren. Was können Sie machen, um die Buslinie zu erhalten?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Ich beteilige mich an einer Bürgerinitiative für die Erhaltung der Buslinie oder gründe selber eine Initiative.", en: "", uk: "", ru: "", correct: true },
@@ -1939,8 +1961,8 @@ var QUIZ = [
   },
   {
     id: "lid_135",
-    cat: "allgemein",
-    lessonId: "lid_l14",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q2",
     question: { de: "Wen vertreten die Gewerkschaften in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "große Unternehmen", en: "", uk: "", ru: "" },
@@ -1952,8 +1974,8 @@ var QUIZ = [
   },
   {
     id: "lid_136",
-    cat: "allgemein",
-    lessonId: "lid_l14",
+    cat: "recht",
+    lessonId: "lid_recht_q1",
     question: { de: "Sie gehen in Deutschland zum Arbeitsgericht bei …", en: "", uk: "", ru: "" },
     answers: [
       { de: "falscher Nebenkostenabrechnung.", en: "", uk: "", ru: "" },
@@ -1965,8 +1987,8 @@ var QUIZ = [
   },
   {
     id: "lid_137",
-    cat: "allgemein",
-    lessonId: "lid_l14",
+    cat: "recht",
+    lessonId: "lid_recht_q1",
     question: { de: "Welches Gericht ist in Deutschland bei Konflikten in der Arbeitswelt zuständig?", en: "", uk: "", ru: "" },
     answers: [
       { de: "das Familiengericht", en: "", uk: "", ru: "" },
@@ -1978,8 +2000,8 @@ var QUIZ = [
   },
   {
     id: "lid_138",
-    cat: "allgemein",
-    lessonId: "lid_l14",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q2",
     question: { de: "Was kann ich in Deutschland machen, wenn mir meine Arbeitgeberin/mein Arbeitgeber zu Unrecht gekündigt hat?", en: "", uk: "", ru: "" },
     answers: [
       { de: "weiterarbeiten und freundlich zur Chefin/zum Chef sein", en: "", uk: "", ru: "" },
@@ -1991,8 +2013,8 @@ var QUIZ = [
   },
   {
     id: "lid_139",
-    cat: "allgemein",
-    lessonId: "lid_l14",
+    cat: "recht",
+    lessonId: "lid_recht_q1",
     question: { de: "Wann kommt es in Deutschland zu einem Prozess vor Gericht? Wenn jemand …", en: "", uk: "", ru: "" },
     answers: [
       { de: "zu einer anderen Religion übertritt.", en: "", uk: "", ru: "" },
@@ -2004,8 +2026,8 @@ var QUIZ = [
   },
   {
     id: "lid_140",
-    cat: "allgemein",
-    lessonId: "lid_l14",
+    cat: "recht",
+    lessonId: "lid_recht_q1",
     question: { de: "Was macht eine Schöffin/ein Schöffe in Deutschland? Sie/Er …", en: "", uk: "", ru: "" },
     answers: [
       { de: "entscheidet mit Richterinnen/Richtern über Schuld und Strafe.", en: "", uk: "", ru: "", correct: true },
@@ -2017,8 +2039,8 @@ var QUIZ = [
   },
   {
     id: "lid_141",
-    cat: "allgemein",
-    lessonId: "lid_l15",
+    cat: "recht",
+    lessonId: "lid_recht_q1",
     question: { de: "Wer berät in Deutschland Personen bei Rechtsfragen und vertritt sie vor Gericht?", en: "", uk: "", ru: "" },
     answers: [
       { de: "eine Rechtsanwältin/ein Rechtsanwalt", en: "", uk: "", ru: "", correct: true },
@@ -2030,8 +2052,8 @@ var QUIZ = [
   },
   {
     id: "lid_142",
-    cat: "allgemein",
-    lessonId: "lid_l15",
+    cat: "recht",
+    lessonId: "lid_recht_q1",
     question: { de: "Was ist die Hauptaufgabe einer Richterin/eines Richters in Deutschland? Eine Richterin/ein Richter …", en: "", uk: "", ru: "" },
     answers: [
       { de: "vertritt Bürgerinnen und Bürger vor einem Gericht.", en: "", uk: "", ru: "" },
@@ -2043,8 +2065,8 @@ var QUIZ = [
   },
   {
     id: "lid_143",
-    cat: "allgemein",
-    lessonId: "lid_l15",
+    cat: "recht",
+    lessonId: "lid_recht_q1",
     question: { de: "Eine Richterin/ein Richter in Deutschland gehört zur …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Judikative.", en: "", uk: "", ru: "", correct: true },
@@ -2056,8 +2078,8 @@ var QUIZ = [
   },
   {
     id: "lid_144",
-    cat: "allgemein",
-    lessonId: "lid_l15",
+    cat: "recht",
+    lessonId: "lid_recht_q1",
     question: { de: "Eine Richterin/ein Richter gehört in Deutschland zur …", en: "", uk: "", ru: "" },
     answers: [
       { de: "vollziehenden Gewalt.", en: "", uk: "", ru: "" },
@@ -2069,8 +2091,8 @@ var QUIZ = [
   },
   {
     id: "lid_145",
-    cat: "allgemein",
-    lessonId: "lid_l15",
+    cat: "recht",
+    lessonId: "lid_recht_q2",
     question: { de: "In Deutschland wird die Staatsgewalt geteilt. Für welche Staatsgewalt arbeitet eine Richterin/ein Richter? Für die …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Judikative", en: "", uk: "", ru: "", correct: true },
@@ -2082,8 +2104,8 @@ var QUIZ = [
   },
   {
     id: "lid_146",
-    cat: "allgemein",
-    lessonId: "lid_l15",
+    cat: "recht",
+    lessonId: "lid_recht_q2",
     question: { de: "Wie nennt man in Deutschland ein Verfahren vor einem Gericht?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Programm", en: "", uk: "", ru: "" },
@@ -2095,8 +2117,8 @@ var QUIZ = [
   },
   {
     id: "lid_147",
-    cat: "allgemein",
-    lessonId: "lid_l15",
+    cat: "recht",
+    lessonId: "lid_recht_q2",
     question: { de: "Was ist die Arbeit einer Richterin/eines Richters in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Deutschland regieren", en: "", uk: "", ru: "" },
@@ -2108,8 +2130,8 @@ var QUIZ = [
   },
   {
     id: "lid_148",
-    cat: "allgemein",
-    lessonId: "lid_l15",
+    cat: "recht",
+    lessonId: "lid_recht_q2",
     question: { de: "Was ist eine Aufgabe der Polizei in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "das Land zu verteidigen", en: "", uk: "", ru: "" },
@@ -2121,8 +2143,8 @@ var QUIZ = [
   },
   {
     id: "lid_149",
-    cat: "allgemein",
-    lessonId: "lid_l15",
+    cat: "ns",
+    lessonId: "lid_ns_q1",
     question: { de: "Was ist ein Beispiel für antisemitisches Verhalten?", en: "", uk: "", ru: "" },
     answers: [
       { de: "ein jüdisches Fest besuchen", en: "", uk: "", ru: "" },
@@ -2134,8 +2156,8 @@ var QUIZ = [
   },
   {
     id: "lid_150",
-    cat: "allgemein",
-    lessonId: "lid_l15",
+    cat: "recht",
+    lessonId: "lid_recht_q2",
     question: { de: "Eine Gerichtsschöffin/ein Gerichtsschöffe in Deutschland ist …", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Stellvertreterin/der Stellvertreter des Stadtoberhaupts.", en: "", uk: "", ru: "" },
@@ -2147,8 +2169,8 @@ var QUIZ = [
   },
   {
     id: "lid_151",
-    cat: "allgemein",
-    lessonId: "lid_l16",
+    cat: "ddr",
+    lessonId: "lid_ddr_q1",
     question: { de: "Wer baute die Mauer in Berlin?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Großbritannien", en: "", uk: "", ru: "" },
@@ -2160,8 +2182,8 @@ var QUIZ = [
   },
   {
     id: "lid_152",
-    cat: "allgemein",
-    lessonId: "lid_l16",
+    cat: "ns",
+    lessonId: "lid_ns_q1",
     question: { de: "Wann waren die Nationalsozialisten mit Adolf Hitler in Deutschland an der Macht?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1918 bis 1923", en: "", uk: "", ru: "" },
@@ -2173,8 +2195,8 @@ var QUIZ = [
   },
   {
     id: "lid_153",
-    cat: "allgemein",
-    lessonId: "lid_l16",
+    cat: "ns",
+    lessonId: "lid_ns_q1",
     question: { de: "Was war am 8. Mai 1945?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Tod Adolf Hitlers", en: "", uk: "", ru: "" },
@@ -2186,8 +2208,8 @@ var QUIZ = [
   },
   {
     id: "lid_154",
-    cat: "allgemein",
-    lessonId: "lid_l16",
+    cat: "ns",
+    lessonId: "lid_ns_q1",
     question: { de: "Wann war der Zweite Weltkrieg zu Ende?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1933", en: "", uk: "", ru: "" },
@@ -2199,8 +2221,8 @@ var QUIZ = [
   },
   {
     id: "lid_155",
-    cat: "allgemein",
-    lessonId: "lid_l16",
+    cat: "ns",
+    lessonId: "lid_ns_q1",
     question: { de: "Wann waren die Nationalsozialisten in Deutschland an der Macht?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1888 bis 1918", en: "", uk: "", ru: "" },
@@ -2212,8 +2234,8 @@ var QUIZ = [
   },
   {
     id: "lid_156",
-    cat: "allgemein",
-    lessonId: "lid_l16",
+    cat: "ns",
+    lessonId: "lid_ns_q1",
     question: { de: "In welchem Jahr wurde Hitler Reichskanzler?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1923", en: "", uk: "", ru: "" },
@@ -2225,8 +2247,8 @@ var QUIZ = [
   },
   {
     id: "lid_157",
-    cat: "allgemein",
-    lessonId: "lid_l16",
+    cat: "ns",
+    lessonId: "lid_ns_q2",
     question: { de: "Die Nationalsozialisten mit Adolf Hitler errichteten 1933 in Deutschland …", en: "", uk: "", ru: "" },
     answers: [
       { de: "eine Diktatur.", en: "", uk: "", ru: "", correct: true },
@@ -2238,8 +2260,8 @@ var QUIZ = [
   },
   {
     id: "lid_158",
-    cat: "allgemein",
-    lessonId: "lid_l16",
+    cat: "ns",
+    lessonId: "lid_ns_q2",
     question: { de: "Das „Dritte Reich“ war eine …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Diktatur.", en: "", uk: "", ru: "", correct: true },
@@ -2251,8 +2273,8 @@ var QUIZ = [
   },
   {
     id: "lid_159",
-    cat: "allgemein",
-    lessonId: "lid_l16",
+    cat: "ns",
+    lessonId: "lid_ns_q2",
     question: { de: "Was gab es in Deutschland nicht während der Zeit des Nationalsozialismus?", en: "", uk: "", ru: "" },
     answers: [
       { de: "freie Wahlen", en: "", uk: "", ru: "", correct: true },
@@ -2264,8 +2286,8 @@ var QUIZ = [
   },
   {
     id: "lid_160",
-    cat: "allgemein",
-    lessonId: "lid_l16",
+    cat: "ns",
+    lessonId: "lid_ns_q2",
     question: { de: "Welcher Krieg dauerte von 1939 bis 1945?", en: "", uk: "", ru: "" },
     answers: [
       { de: "der Erste Weltkrieg", en: "", uk: "", ru: "" },
@@ -2277,8 +2299,8 @@ var QUIZ = [
   },
   {
     id: "lid_161",
-    cat: "allgemein",
-    lessonId: "lid_l17",
+    cat: "ns",
+    lessonId: "lid_ns_q2",
     question: { de: "Was kennzeichnete den NS-Staat? Eine Politik …", en: "", uk: "", ru: "" },
     answers: [
       { de: "des staatlichen Rassismus", en: "", uk: "", ru: "", correct: true },
@@ -2290,8 +2312,8 @@ var QUIZ = [
   },
   {
     id: "lid_162",
-    cat: "allgemein",
-    lessonId: "lid_l17",
+    cat: "ns",
+    lessonId: "lid_ns_q2",
     question: { de: "Claus Schenk Graf von Stauffenberg wurde bekannt durch …", en: "", uk: "", ru: "" },
     answers: [
       { de: "eine Goldmedaille bei den Olympischen Spielen 1936.", en: "", uk: "", ru: "" },
@@ -2303,8 +2325,8 @@ var QUIZ = [
   },
   {
     id: "lid_163",
-    cat: "allgemein",
-    lessonId: "lid_l17",
+    cat: "ns",
+    lessonId: "lid_ns_q2",
     question: { de: "In welchem Jahr zerstörten die Nationalsozialisten Synagogen und jüdische Geschäfte in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1925", en: "", uk: "", ru: "" },
@@ -2316,8 +2338,8 @@ var QUIZ = [
   },
   {
     id: "lid_164",
-    cat: "allgemein",
-    lessonId: "lid_l17",
+    cat: "ns",
+    lessonId: "lid_ns_q2",
     question: { de: "Was passierte am 9. November 1938 in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Mit dem Angriff auf Polen beginnt der Zweite Weltkrieg.", en: "", uk: "", ru: "" },
@@ -2329,8 +2351,8 @@ var QUIZ = [
   },
   {
     id: "lid_165",
-    cat: "allgemein",
-    lessonId: "lid_l17",
+    cat: "ddr",
+    lessonId: "lid_ddr_q1",
     question: { de: "Wie hieß der erste Bundeskanzler der Bundesrepublik Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Konrad Adenauer", en: "", uk: "", ru: "", correct: true },
@@ -2342,8 +2364,8 @@ var QUIZ = [
   },
   {
     id: "lid_166",
-    cat: "allgemein",
-    lessonId: "lid_l17",
+    cat: "ddr",
+    lessonId: "lid_ddr_q1",
     question: { de: "Bei welchen Demonstrationen in Deutschland riefen die Menschen „Wir sind das Volk“?", en: "", uk: "", ru: "" },
     answers: [
       { de: "beim Arbeiteraufstand 1953 in der DDR", en: "", uk: "", ru: "" },
@@ -2355,8 +2377,8 @@ var QUIZ = [
   },
   {
     id: "lid_167",
-    cat: "allgemein",
-    lessonId: "lid_l17",
+    cat: "ddr",
+    lessonId: "lid_ddr_q1",
     question: { de: "Welche Länder wurden nach dem Zweiten Weltkrieg in Deutschland als „Alliierte Besatzungsmächte“ bezeichnet?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Sowjetunion, Großbritannien, Polen, Schweden", en: "", uk: "", ru: "" },
@@ -2368,8 +2390,8 @@ var QUIZ = [
   },
   {
     id: "lid_168",
-    cat: "allgemein",
-    lessonId: "lid_l17",
+    cat: "ddr",
+    lessonId: "lid_ddr_q1",
     question: { de: "Welches Land war keine „Alliierte Besatzungsmacht“ in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "USA", en: "", uk: "", ru: "" },
@@ -2381,8 +2403,8 @@ var QUIZ = [
   },
   {
     id: "lid_169",
-    cat: "allgemein",
-    lessonId: "lid_l17",
+    cat: "ddr",
+    lessonId: "lid_ddr_q1",
     question: { de: "Wann wurde die Bundesrepublik Deutschland gegründet?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1939", en: "", uk: "", ru: "" },
@@ -2394,8 +2416,8 @@ var QUIZ = [
   },
   {
     id: "lid_170",
-    cat: "allgemein",
-    lessonId: "lid_l17",
+    cat: "ns",
+    lessonId: "lid_ns_q3",
     question: { de: "Was gab es während der Zeit des Nationalsozialismus in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "das Verbot von Parteien", en: "", uk: "", ru: "", correct: true },
@@ -2407,8 +2429,8 @@ var QUIZ = [
   },
   {
     id: "lid_171",
-    cat: "allgemein",
-    lessonId: "lid_l18",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q2",
     question: { de: "Soziale Marktwirtschaft bedeutet, die Wirtschaft …", en: "", uk: "", ru: "" },
     answers: [
       { de: "steuert sich allein nach Angebot und Nachfrage.", en: "", uk: "", ru: "" },
@@ -2420,8 +2442,8 @@ var QUIZ = [
   },
   {
     id: "lid_172",
-    cat: "allgemein",
-    lessonId: "lid_l18",
+    cat: "ddr",
+    lessonId: "lid_ddr_q1",
     question: { de: "In welcher Besatzungszone wurde die DDR gegründet? In der …", en: "", uk: "", ru: "" },
     answers: [
       { de: "amerikanischen Besatzungszone", en: "", uk: "", ru: "" },
@@ -2433,8 +2455,8 @@ var QUIZ = [
   },
   {
     id: "lid_173",
-    cat: "allgemein",
-    lessonId: "lid_l18",
+    cat: "europa",
+    lessonId: "lid_europa_q1",
     question: { de: "Die Bundesrepublik Deutschland ist ein Gründungsmitglied …", en: "", uk: "", ru: "" },
     answers: [
       { de: "des Nordatlantikpakts (NATO).", en: "", uk: "", ru: "" },
@@ -2446,8 +2468,8 @@ var QUIZ = [
   },
   {
     id: "lid_174",
-    cat: "allgemein",
-    lessonId: "lid_l18",
+    cat: "ddr",
+    lessonId: "lid_ddr_q1",
     question: { de: "Wann wurde die DDR gegründet?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1947", en: "", uk: "", ru: "" },
@@ -2459,8 +2481,8 @@ var QUIZ = [
   },
   {
     id: "lid_175",
-    cat: "allgemein",
-    lessonId: "lid_l18",
+    cat: "ddr",
+    lessonId: "lid_ddr_q1",
     question: { de: "Wie viele Besatzungszonen gab es in Deutschland nach dem Zweiten Weltkrieg?", en: "", uk: "", ru: "" },
     answers: [
       { de: "3", en: "", uk: "", ru: "" },
@@ -2472,8 +2494,8 @@ var QUIZ = [
   },
   {
     id: "lid_176",
-    cat: "allgemein",
-    lessonId: "lid_l18",
+    cat: "ddr",
+    lessonId: "lid_ddr_q2",
     img: "lid_176.png",
     question: { de: "Wie waren die Besatzungszonen Deutschlands nach 1945 verteilt?", en: "", uk: "", ru: "" },
     answers: [
@@ -2486,8 +2508,8 @@ var QUIZ = [
   },
   {
     id: "lid_177",
-    cat: "allgemein",
-    lessonId: "lid_l18",
+    cat: "ddr",
+    lessonId: "lid_ddr_q2",
     question: { de: "Welche deutsche Stadt wurde nach dem Zweiten Weltkrieg in vier Sektoren aufgeteilt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "München", en: "", uk: "", ru: "" },
@@ -2499,8 +2521,8 @@ var QUIZ = [
   },
   {
     id: "lid_178",
-    cat: "allgemein",
-    lessonId: "lid_l18",
+    cat: "ddr",
+    lessonId: "lid_ddr_q2",
     question: { de: "Vom Juni 1948 bis zum Mai 1949 wurden die Bürgerinnen und Bürger von West-Berlin durch eine Luftbrücke versorgt. Welcher Umstand war dafür verantwortlich?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Für Frankreich war eine Versorgung der West-Berliner Bevölkerung mit dem Flugzeug kostengünstiger.", en: "", uk: "", ru: "" },
@@ -2512,8 +2534,8 @@ var QUIZ = [
   },
   {
     id: "lid_179",
-    cat: "allgemein",
-    lessonId: "lid_l18",
+    cat: "ns",
+    lessonId: "lid_ns_q3",
     question: { de: "Wie endete der Zweite Weltkrieg in Europa offiziell?", en: "", uk: "", ru: "" },
     answers: [
       { de: "mit dem Tod Adolf Hitlers", en: "", uk: "", ru: "" },
@@ -2525,8 +2547,8 @@ var QUIZ = [
   },
   {
     id: "lid_180",
-    cat: "allgemein",
-    lessonId: "lid_l18",
+    cat: "ddr",
+    lessonId: "lid_ddr_q2",
     question: { de: "Der erste Bundeskanzler der Bundesrepublik Deutschland war …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Ludwig Erhard.", en: "", uk: "", ru: "" },
@@ -2538,8 +2560,8 @@ var QUIZ = [
   },
   {
     id: "lid_181",
-    cat: "allgemein",
-    lessonId: "lid_l19",
+    cat: "ns",
+    lessonId: "lid_ns_q3",
     img: "lid_181.png",
     imgCredit: "© Bundesregierung/Engelbert Reineke",
     question: { de: "Was wollte Willy Brandt mit seinem Kniefall 1970 im ehemaligen jüdischen Ghetto in Warschau ausdrücken?", en: "", uk: "", ru: "" },
@@ -2553,8 +2575,8 @@ var QUIZ = [
   },
   {
     id: "lid_182",
-    cat: "allgemein",
-    lessonId: "lid_l19",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q1",
     question: { de: "Wie heißt das jüdische Gebetshaus?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Basilika", en: "", uk: "", ru: "" },
@@ -2566,8 +2588,8 @@ var QUIZ = [
   },
   {
     id: "lid_183",
-    cat: "allgemein",
-    lessonId: "lid_l19",
+    cat: "ddr",
+    lessonId: "lid_ddr_q2",
     question: { de: "Wann war in der Bundesrepublik Deutschland das „Wirtschaftswunder“?", en: "", uk: "", ru: "" },
     answers: [
       { de: "40er Jahre", en: "", uk: "", ru: "" },
@@ -2579,8 +2601,8 @@ var QUIZ = [
   },
   {
     id: "lid_184",
-    cat: "allgemein",
-    lessonId: "lid_l19",
+    cat: "ns",
+    lessonId: "lid_ns_q3",
     question: { de: "184.   Auf welcher rechtlichen Grundlage wurde der Staat Israel gegründet?", en: "", uk: "", ru: "" },
     answers: [
       { de: "eine Resolution der Vereinten Nationen", en: "", uk: "", ru: "", correct: true },
@@ -2592,8 +2614,8 @@ var QUIZ = [
   },
   {
     id: "lid_185",
-    cat: "allgemein",
-    lessonId: "lid_l19",
+    cat: "ddr",
+    lessonId: "lid_ddr_q2",
     question: { de: "Wofür stand der Ausdruck „Eiserner Vorhang“? Für die Abschottung …", en: "", uk: "", ru: "" },
     answers: [
       { de: "des Warschauer Pakts gegen den Westen", en: "", uk: "", ru: "", correct: true },
@@ -2605,8 +2627,8 @@ var QUIZ = [
   },
   {
     id: "lid_186",
-    cat: "allgemein",
-    lessonId: "lid_l19",
+    cat: "ddr",
+    lessonId: "lid_ddr_q2",
     question: { de: "Im Jahr 1953 gab es in der DDR einen Aufstand, an den lange Zeit in der Bundesrepublik Deutschland ein Feiertag erinnerte. Wann war das?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1. Mai", en: "", uk: "", ru: "" },
@@ -2618,8 +2640,8 @@ var QUIZ = [
   },
   {
     id: "lid_187",
-    cat: "allgemein",
-    lessonId: "lid_l19",
+    cat: "ddr",
+    lessonId: "lid_ddr_q2",
     img: "lid_187.png",
     question: { de: "Welcher deutsche Staat hatte eine schwarz-rot-goldene Flagge mit Hammer, Zirkel und Ährenkranz?", en: "", uk: "", ru: "" },
     answers: [
@@ -2632,8 +2654,8 @@ var QUIZ = [
   },
   {
     id: "lid_188",
-    cat: "allgemein",
-    lessonId: "lid_l19",
+    cat: "ddr",
+    lessonId: "lid_ddr_q2",
     question: { de: "In welchem Jahr wurde die Mauer in Berlin gebaut?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1953", en: "", uk: "", ru: "" },
@@ -2645,8 +2667,8 @@ var QUIZ = [
   },
   {
     id: "lid_189",
-    cat: "allgemein",
-    lessonId: "lid_l19",
+    cat: "ddr",
+    lessonId: "lid_ddr_q3",
     question: { de: "Wann baute die DDR die Mauer in Berlin?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1919", en: "", uk: "", ru: "" },
@@ -2658,8 +2680,8 @@ var QUIZ = [
   },
   {
     id: "lid_190",
-    cat: "allgemein",
-    lessonId: "lid_l19",
+    cat: "ddr",
+    lessonId: "lid_ddr_q3",
     question: { de: "Was bedeutet die Abkürzung DDR?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Dritter Deutscher Rundfunk", en: "", uk: "", ru: "" },
@@ -2671,8 +2693,8 @@ var QUIZ = [
   },
   {
     id: "lid_191",
-    cat: "allgemein",
-    lessonId: "lid_l20",
+    cat: "ddr",
+    lessonId: "lid_ddr_q3",
     question: { de: "Wann wurde die Mauer in Berlin für alle geöffnet?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1987", en: "", uk: "", ru: "" },
@@ -2684,8 +2706,8 @@ var QUIZ = [
   },
   {
     id: "lid_192",
-    cat: "allgemein",
-    lessonId: "lid_l20",
+    cat: "ddr",
+    lessonId: "lid_ddr_q3",
     question: { de: "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Brandenburg", en: "", uk: "", ru: "", correct: true },
@@ -2697,8 +2719,8 @@ var QUIZ = [
   },
   {
     id: "lid_193",
-    cat: "allgemein",
-    lessonId: "lid_l20",
+    cat: "ddr",
+    lessonId: "lid_ddr_q3",
     question: { de: "Von 1961 bis 1989 war Berlin …", en: "", uk: "", ru: "" },
     answers: [
       { de: "ohne Bürgermeister.", en: "", uk: "", ru: "" },
@@ -2710,8 +2732,8 @@ var QUIZ = [
   },
   {
     id: "lid_194",
-    cat: "allgemein",
-    lessonId: "lid_l20",
+    cat: "ddr",
+    lessonId: "lid_ddr_q3",
     question: { de: "Am 3. Oktober feiert man in Deutschland den Tag der Deutschen …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Einheit.", en: "", uk: "", ru: "", correct: true },
@@ -2723,8 +2745,8 @@ var QUIZ = [
   },
   {
     id: "lid_195",
-    cat: "allgemein",
-    lessonId: "lid_l20",
+    cat: "ddr",
+    lessonId: "lid_ddr_q3",
     question: { de: "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Hessen", en: "", uk: "", ru: "" },
@@ -2736,8 +2758,8 @@ var QUIZ = [
   },
   {
     id: "lid_196",
-    cat: "allgemein",
-    lessonId: "lid_l20",
+    cat: "ddr",
+    lessonId: "lid_ddr_q3",
     question: { de: "Warum nennt man die Zeit im Herbst 1989 in der DDR „Die Wende“? In dieser Zeit veränderte sich die DDR politisch …", en: "", uk: "", ru: "" },
     answers: [
       { de: "von einer Diktatur zur Demokratie.", en: "", uk: "", ru: "", correct: true },
@@ -2749,8 +2771,8 @@ var QUIZ = [
   },
   {
     id: "lid_197",
-    cat: "allgemein",
-    lessonId: "lid_l20",
+    cat: "ddr",
+    lessonId: "lid_ddr_q3",
     question: { de: "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Thüringen", en: "", uk: "", ru: "", correct: true },
@@ -2762,8 +2784,8 @@ var QUIZ = [
   },
   {
     id: "lid_198",
-    cat: "allgemein",
-    lessonId: "lid_l20",
+    cat: "ddr",
+    lessonId: "lid_ddr_q4",
     question: { de: "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Bayern", en: "", uk: "", ru: "" },
@@ -2775,8 +2797,8 @@ var QUIZ = [
   },
   {
     id: "lid_199",
-    cat: "allgemein",
-    lessonId: "lid_l20",
+    cat: "ddr",
+    lessonId: "lid_ddr_q4",
     question: { de: "Mit der Abkürzung „Stasi“ meinte man in der DDR …", en: "", uk: "", ru: "" },
     answers: [
       { de: "das Parlament.", en: "", uk: "", ru: "" },
@@ -2788,8 +2810,8 @@ var QUIZ = [
   },
   {
     id: "lid_200",
-    cat: "allgemein",
-    lessonId: "lid_l20",
+    cat: "ddr",
+    lessonId: "lid_ddr_q4",
     question: { de: "Welches heutige deutsche Bundesland gehörte früher zum Gebiet der DDR?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Hessen", en: "", uk: "", ru: "" },
@@ -2801,8 +2823,8 @@ var QUIZ = [
   },
   {
     id: "lid_201",
-    cat: "allgemein",
-    lessonId: "lid_l21",
+    cat: "ddr",
+    lessonId: "lid_ddr_q4",
     question: { de: "Welche der folgenden Auflistungen enthält nur Bundesländer, die zum Gebiet der früheren DDR gehörten?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Niedersachsen, Nordrhein-Westfalen, Hessen, Schleswig-Holstein, Brandenburg", en: "", uk: "", ru: "" },
@@ -2814,8 +2836,8 @@ var QUIZ = [
   },
   {
     id: "lid_202",
-    cat: "allgemein",
-    lessonId: "lid_l21",
+    cat: "ddr",
+    lessonId: "lid_ddr_q4",
     question: { de: "Zu wem gehörte die DDR im „Kalten Krieg“?", en: "", uk: "", ru: "" },
     answers: [
       { de: "zu den Westmächten", en: "", uk: "", ru: "" },
@@ -2827,8 +2849,8 @@ var QUIZ = [
   },
   {
     id: "lid_203",
-    cat: "allgemein",
-    lessonId: "lid_l21",
+    cat: "ddr",
+    lessonId: "lid_ddr_q4",
     question: { de: "Wie hieß das Wirtschaftssystem der DDR?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Marktwirtschaft", en: "", uk: "", ru: "" },
@@ -2840,8 +2862,8 @@ var QUIZ = [
   },
   {
     id: "lid_204",
-    cat: "allgemein",
-    lessonId: "lid_l21",
+    cat: "ddr",
+    lessonId: "lid_ddr_q4",
     question: { de: "Wie wurden die Bundesrepublik Deutschland und die DDR zu einem Staat?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Die Bundesrepublik hat die DDR besetzt.", en: "", uk: "", ru: "" },
@@ -2853,8 +2875,8 @@ var QUIZ = [
   },
   {
     id: "lid_205",
-    cat: "allgemein",
-    lessonId: "lid_l21",
+    cat: "ddr",
+    lessonId: "lid_ddr_q4",
     question: { de: "Mit dem Beitritt der DDR zur Bundesrepublik Deutschland gehören die neuen Bundesländer nun auch …", en: "", uk: "", ru: "" },
     answers: [
       { de: "zur Europäischen Union.", en: "", uk: "", ru: "", correct: true },
@@ -2866,8 +2888,8 @@ var QUIZ = [
   },
   {
     id: "lid_206",
-    cat: "allgemein",
-    lessonId: "lid_l21",
+    cat: "ns",
+    lessonId: "lid_ns_q3",
     question: { de: "206.   Woran erinnern die sogenannten „Stolpersteine“ in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "an berühmte deutsche Politikerinnen und Politiker", en: "", uk: "", ru: "" },
@@ -2879,8 +2901,8 @@ var QUIZ = [
   },
   {
     id: "lid_207",
-    cat: "allgemein",
-    lessonId: "lid_l21",
+    cat: "ddr",
+    lessonId: "lid_ddr_q4",
     question: { de: "In welchem Militärbündnis war die DDR Mitglied?", en: "", uk: "", ru: "" },
     answers: [
       { de: "in der NATO", en: "", uk: "", ru: "" },
@@ -2892,8 +2914,8 @@ var QUIZ = [
   },
   {
     id: "lid_208",
-    cat: "allgemein",
-    lessonId: "lid_l21",
+    cat: "ddr",
+    lessonId: "lid_ddr_q5",
     question: { de: "Was war die „Stasi“?", en: "", uk: "", ru: "" },
     answers: [
       { de: "der Geheimdienst im „Dritten Reich“", en: "", uk: "", ru: "" },
@@ -2905,8 +2927,8 @@ var QUIZ = [
   },
   {
     id: "lid_209",
-    cat: "allgemein",
-    lessonId: "lid_l21",
+    cat: "ddr",
+    lessonId: "lid_ddr_q5",
     question: { de: "Welches war das Wappen der Deutschen Demokratischen Republik?", en: "", uk: "", ru: "" },
     answers: [
       { de: "", en: "", uk: "", ru: "", img: "lid_209_a1.png" },
@@ -2918,8 +2940,8 @@ var QUIZ = [
   },
   {
     id: "lid_210",
-    cat: "allgemein",
-    lessonId: "lid_l21",
+    cat: "ddr",
+    lessonId: "lid_ddr_q5",
     question: { de: "Was ereignete sich am 17. Juni 1953 in der DDR?", en: "", uk: "", ru: "" },
     answers: [
       { de: "der feierliche Beitritt zum Warschauer Pakt", en: "", uk: "", ru: "" },
@@ -2931,8 +2953,8 @@ var QUIZ = [
   },
   {
     id: "lid_211",
-    cat: "allgemein",
-    lessonId: "lid_l22",
+    cat: "ddr",
+    lessonId: "lid_ddr_q5",
     question: { de: "Welcher Politiker steht für die „Ostverträge“?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Helmut Kohl", en: "", uk: "", ru: "" },
@@ -2944,8 +2966,8 @@ var QUIZ = [
   },
   {
     id: "lid_212",
-    cat: "allgemein",
-    lessonId: "lid_l22",
+    cat: "staat",
+    lessonId: "lid_staat_q4",
     question: { de: "Wie heißt Deutschland mit vollem Namen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Bundesstaat Deutschland", en: "", uk: "", ru: "" },
@@ -2957,8 +2979,8 @@ var QUIZ = [
   },
   {
     id: "lid_213",
-    cat: "allgemein",
-    lessonId: "lid_l22",
+    cat: "staat",
+    lessonId: "lid_staat_q4",
     question: { de: "Wie viele Einwohner hat Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "70 Millionen", en: "", uk: "", ru: "" },
@@ -2970,8 +2992,8 @@ var QUIZ = [
   },
   {
     id: "lid_214",
-    cat: "allgemein",
-    lessonId: "lid_l22",
+    cat: "staat",
+    lessonId: "lid_staat_q4",
     question: { de: "Welche Farben hat die deutsche Flagge?", en: "", uk: "", ru: "" },
     answers: [
       { de: "schwarz-rot-gold", en: "", uk: "", ru: "", correct: true },
@@ -2983,8 +3005,8 @@ var QUIZ = [
   },
   {
     id: "lid_215",
-    cat: "allgemein",
-    lessonId: "lid_l22",
+    cat: "ddr",
+    lessonId: "lid_ddr_q5",
     question: { de: "Wer wird als „Kanzler der Deutschen Einheit“ bezeichnet?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Gerhard Schröder", en: "", uk: "", ru: "" },
@@ -2996,8 +3018,8 @@ var QUIZ = [
   },
   {
     id: "lid_216",
-    cat: "allgemein",
-    lessonId: "lid_l22",
+    cat: "staat",
+    lessonId: "lid_staat_q4",
     img: "lid_216.png",
     imgCredit: "© Deutscher Bundestag/Janine Schmitz",
     question: { de: "Welches Symbol ist im Plenarsaal des Deutschen Bundestages zu sehen?", en: "", uk: "", ru: "" },
@@ -3011,8 +3033,8 @@ var QUIZ = [
   },
   {
     id: "lid_217",
-    cat: "allgemein",
-    lessonId: "lid_l22",
+    cat: "ddr",
+    lessonId: "lid_ddr_q5",
     question: { de: "In welchem Zeitraum gab es die Deutsche Demokratische Republik (DDR)?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1919 bis 1927", en: "", uk: "", ru: "" },
@@ -3024,8 +3046,8 @@ var QUIZ = [
   },
   {
     id: "lid_218",
-    cat: "allgemein",
-    lessonId: "lid_l22",
+    cat: "ddr",
+    lessonId: "lid_ddr_q5",
     question: { de: "Wie viele Bundesländer kamen bei der Wiedervereinigung 1990 zur Bundesrepublik Deutschland hinzu?", en: "", uk: "", ru: "" },
     answers: [
       { de: "4", en: "", uk: "", ru: "" },
@@ -3037,8 +3059,8 @@ var QUIZ = [
   },
   {
     id: "lid_219",
-    cat: "allgemein",
-    lessonId: "lid_l22",
+    cat: "ddr",
+    lessonId: "lid_ddr_q5",
     question: { de: "Die Bundesrepublik Deutschland hat die Grenzen von heute seit …", en: "", uk: "", ru: "" },
     answers: [
       { de: "1933", en: "", uk: "", ru: "" },
@@ -3050,8 +3072,8 @@ var QUIZ = [
   },
   {
     id: "lid_220",
-    cat: "allgemein",
-    lessonId: "lid_l22",
+    cat: "ns",
+    lessonId: "lid_ns_q3",
     question: { de: "Der 27. Januar ist in Deutschland ein offizieller Gedenktag. Woran erinnert dieser Tag?", en: "", uk: "", ru: "" },
     answers: [
       { de: "an das Ende des Zweiten Weltkrieges", en: "", uk: "", ru: "" },
@@ -3063,8 +3085,8 @@ var QUIZ = [
   },
   {
     id: "lid_221",
-    cat: "allgemein",
-    lessonId: "lid_l23",
+    cat: "europa",
+    lessonId: "lid_europa_q1",
     question: { de: "Deutschland ist Mitglied des Schengener Abkommens. Was bedeutet das?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Deutsche können in viele Länder Europas ohne Passkontrolle reisen.", en: "", uk: "", ru: "", correct: true },
@@ -3076,8 +3098,8 @@ var QUIZ = [
   },
   {
     id: "lid_222",
-    cat: "allgemein",
-    lessonId: "lid_l23",
+    cat: "europa",
+    lessonId: "lid_europa_q1",
     question: { de: "Welches Land ist ein Nachbarland von Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Ungarn", en: "", uk: "", ru: "" },
@@ -3089,8 +3111,8 @@ var QUIZ = [
   },
   {
     id: "lid_223",
-    cat: "allgemein",
-    lessonId: "lid_l23",
+    cat: "europa",
+    lessonId: "lid_europa_q1",
     question: { de: "Welches Land ist ein Nachbarland von Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Rumänien", en: "", uk: "", ru: "" },
@@ -3102,8 +3124,8 @@ var QUIZ = [
   },
   {
     id: "lid_224",
-    cat: "allgemein",
-    lessonId: "lid_l23",
+    cat: "europa",
+    lessonId: "lid_europa_q1",
     question: { de: "Was bedeutet die Abkürzung EU?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Europäische Unternehmen", en: "", uk: "", ru: "" },
@@ -3115,8 +3137,8 @@ var QUIZ = [
   },
   {
     id: "lid_225",
-    cat: "allgemein",
-    lessonId: "lid_l23",
+    cat: "europa",
+    lessonId: "lid_europa_q1",
     question: { de: "In welchem anderen Land gibt es eine große deutschsprachige Bevölkerung?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Tschechien", en: "", uk: "", ru: "" },
@@ -3128,8 +3150,8 @@ var QUIZ = [
   },
   {
     id: "lid_226",
-    cat: "allgemein",
-    lessonId: "lid_l23",
+    cat: "europa",
+    lessonId: "lid_europa_q1",
     question: { de: "Welche ist die Flagge der Europäischen Union?", en: "", uk: "", ru: "" },
     answers: [
       { de: "", en: "", uk: "", ru: "", img: "lid_226_a1.png" },
@@ -3141,8 +3163,8 @@ var QUIZ = [
   },
   {
     id: "lid_227",
-    cat: "allgemein",
-    lessonId: "lid_l23",
+    cat: "europa",
+    lessonId: "lid_europa_q1",
     question: { de: "Welches Land ist ein Nachbarland von Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Finnland", en: "", uk: "", ru: "" },
@@ -3154,8 +3176,8 @@ var QUIZ = [
   },
   {
     id: "lid_228",
-    cat: "allgemein",
-    lessonId: "lid_l23",
+    cat: "ddr",
+    lessonId: "lid_ddr_q5",
     question: { de: "Wie wird der Beitritt der DDR zur Bundesrepublik Deutschland im Jahr 1990 allgemein genannt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "NATO-Osterweiterung", en: "", uk: "", ru: "" },
@@ -3167,8 +3189,8 @@ var QUIZ = [
   },
   {
     id: "lid_229",
-    cat: "allgemein",
-    lessonId: "lid_l23",
+    cat: "europa",
+    lessonId: "lid_europa_q1",
     question: { de: "Welches Land ist ein Nachbarland von Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Spanien", en: "", uk: "", ru: "" },
@@ -3180,8 +3202,8 @@ var QUIZ = [
   },
   {
     id: "lid_230",
-    cat: "allgemein",
-    lessonId: "lid_l23",
+    cat: "europa",
+    lessonId: "lid_europa_q1",
     question: { de: "Das Europäische Parlament wird regelmäßig gewählt, nämlich alle …", en: "", uk: "", ru: "" },
     answers: [
       { de: "5 Jahre.", en: "", uk: "", ru: "", correct: true },
@@ -3193,8 +3215,8 @@ var QUIZ = [
   },
   {
     id: "lid_231",
-    cat: "allgemein",
-    lessonId: "lid_l24",
+    cat: "europa",
+    lessonId: "lid_europa_q2",
     question: { de: "Was bedeutet der Begriff „europäische Integration“?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Damit sind amerikanische Einwanderinnen und Einwanderer in Europa gemeint.", en: "", uk: "", ru: "" },
@@ -3206,8 +3228,8 @@ var QUIZ = [
   },
   {
     id: "lid_232",
-    cat: "allgemein",
-    lessonId: "lid_l24",
+    cat: "europa",
+    lessonId: "lid_europa_q2",
     question: { de: "Wer wird bei der Europawahl gewählt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Europäische Kommission", en: "", uk: "", ru: "" },
@@ -3219,8 +3241,8 @@ var QUIZ = [
   },
   {
     id: "lid_233",
-    cat: "allgemein",
-    lessonId: "lid_l24",
+    cat: "europa",
+    lessonId: "lid_europa_q2",
     question: { de: "Welches Land ist ein Nachbarland von Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Tschechien", en: "", uk: "", ru: "", correct: true },
@@ -3232,8 +3254,8 @@ var QUIZ = [
   },
   {
     id: "lid_234",
-    cat: "allgemein",
-    lessonId: "lid_l24",
+    cat: "europa",
+    lessonId: "lid_europa_q2",
     question: { de: "Wo ist ein Sitz des Europäischen Parlaments?", en: "", uk: "", ru: "" },
     answers: [
       { de: "London", en: "", uk: "", ru: "" },
@@ -3245,8 +3267,8 @@ var QUIZ = [
   },
   {
     id: "lid_235",
-    cat: "allgemein",
-    lessonId: "lid_l24",
+    cat: "europa",
+    lessonId: "lid_europa_q2",
     img: "lid_235.png",
     imgCredit: "© Bundesregierung/Richard Schulze-Vorberg",
     question: { de: "Der damalige französische Staatspräsident François Mitterrand und der damalige deutsche Bundeskanzler Helmut Kohl gedenken in Verdun gemeinsam der Toten beider Weltkriege. Welches Ziel der Europäischen Union wird bei diesem Treffen deutlich?", en: "", uk: "", ru: "" },
@@ -3260,8 +3282,8 @@ var QUIZ = [
   },
   {
     id: "lid_236",
-    cat: "allgemein",
-    lessonId: "lid_l24",
+    cat: "europa",
+    lessonId: "lid_europa_q2",
     question: { de: "Wie viele Mitgliedstaaten hat die EU heute?", en: "", uk: "", ru: "" },
     answers: [
       { de: "21", en: "", uk: "", ru: "" },
@@ -3273,8 +3295,8 @@ var QUIZ = [
   },
   {
     id: "lid_237",
-    cat: "allgemein",
-    lessonId: "lid_l24",
+    cat: "europa",
+    lessonId: "lid_europa_q2",
     question: { de: "2007 wurde das 50-jährige Jubiläum der „Römischen Verträge“ gefeiert. Was war der Inhalt der Verträge?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Beitritt Deutschlands zur NATO", en: "", uk: "", ru: "" },
@@ -3286,8 +3308,8 @@ var QUIZ = [
   },
   {
     id: "lid_238",
-    cat: "allgemein",
-    lessonId: "lid_l24",
+    cat: "europa",
+    lessonId: "lid_europa_q2",
     question: { de: "An welchen Orten arbeitet das Europäische Parlament?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Paris, London und Den Haag", en: "", uk: "", ru: "" },
@@ -3299,8 +3321,8 @@ var QUIZ = [
   },
   {
     id: "lid_239",
-    cat: "allgemein",
-    lessonId: "lid_l24",
+    cat: "europa",
+    lessonId: "lid_europa_q2",
     question: { de: "Durch welche Verträge schloss sich die Bundesrepublik Deutschland mit anderen Staaten zur Europäischen Wirtschaftsgemeinschaft zusammen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "durch die „Hamburger Verträge“", en: "", uk: "", ru: "" },
@@ -3312,8 +3334,8 @@ var QUIZ = [
   },
   {
     id: "lid_240",
-    cat: "allgemein",
-    lessonId: "lid_l24",
+    cat: "europa",
+    lessonId: "lid_europa_q2",
     question: { de: "Seit wann bezahlt man in Deutschland mit dem Euro in bar?", en: "", uk: "", ru: "" },
     answers: [
       { de: "1995", en: "", uk: "", ru: "" },
@@ -3325,8 +3347,8 @@ var QUIZ = [
   },
   {
     id: "lid_241",
-    cat: "allgemein",
-    lessonId: "lid_l25",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q1",
     question: { de: "Frau Seger bekommt ein Kind. Was muss sie tun, um Elterngeld zu erhalten?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Sie muss an ihre Krankenkasse schreiben.", en: "", uk: "", ru: "" },
@@ -3338,8 +3360,8 @@ var QUIZ = [
   },
   {
     id: "lid_242",
-    cat: "allgemein",
-    lessonId: "lid_l25",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q1",
     question: { de: "Wer entscheidet, ob ein Kind in Deutschland in den Kindergarten geht?", en: "", uk: "", ru: "" },
     answers: [
       { de: "der Staat", en: "", uk: "", ru: "" },
@@ -3351,8 +3373,8 @@ var QUIZ = [
   },
   {
     id: "lid_243",
-    cat: "allgemein",
-    lessonId: "lid_l25",
+    cat: "grundrechte",
+    lessonId: "lid_grundrechte_q3",
     question: { de: "Maik und Sybille wollen mit Freunden an ihrem deutschen Wohnort eine Demonstration auf der Straße abhalten. Was müssen sie vorher tun?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Sie müssen die Demonstration anmelden.", en: "", uk: "", ru: "", correct: true },
@@ -3364,8 +3386,8 @@ var QUIZ = [
   },
   {
     id: "lid_244",
-    cat: "allgemein",
-    lessonId: "lid_l25",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q1",
     question: { de: "Welchen Schulabschluss braucht man normalerweise, um an einer Universität in Deutschland ein Studium zu beginnen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "das Abitur", en: "", uk: "", ru: "", correct: true },
@@ -3377,8 +3399,8 @@ var QUIZ = [
   },
   {
     id: "lid_245",
-    cat: "allgemein",
-    lessonId: "lid_l25",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q2",
     question: { de: "Wer darf in Deutschland nicht als Paar zusammenleben?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Hans (20 Jahre) und Marie (19 Jahre)", en: "", uk: "", ru: "" },
@@ -3390,8 +3412,8 @@ var QUIZ = [
   },
   {
     id: "lid_246",
-    cat: "allgemein",
-    lessonId: "lid_l25",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q2",
     question: { de: "Ab welchem Alter ist man in Deutschland volljährig?", en: "", uk: "", ru: "" },
     answers: [
       { de: "16", en: "", uk: "", ru: "" },
@@ -3403,8 +3425,8 @@ var QUIZ = [
   },
   {
     id: "lid_247",
-    cat: "allgemein",
-    lessonId: "lid_l25",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q2",
     question: { de: "Eine Frau ist schwanger. Sie ist kurz vor und nach der Geburt ihres Kindes vom Gesetz besonders beschützt. Wie heißt dieser Schutz?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Elternzeit", en: "", uk: "", ru: "" },
@@ -3416,8 +3438,8 @@ var QUIZ = [
   },
   {
     id: "lid_248",
-    cat: "allgemein",
-    lessonId: "lid_l25",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q2",
     question: { de: "Die Erziehung der Kinder ist in Deutschland vor allem Aufgabe …", en: "", uk: "", ru: "" },
     answers: [
       { de: "des Staates.", en: "", uk: "", ru: "" },
@@ -3429,8 +3451,8 @@ var QUIZ = [
   },
   {
     id: "lid_249",
-    cat: "allgemein",
-    lessonId: "lid_l25",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q2",
     question: { de: "Wer ist in Deutschland hauptsächlich verantwortlich für die Kindererziehung?", en: "", uk: "", ru: "" },
     answers: [
       { de: "der Staat", en: "", uk: "", ru: "" },
@@ -3442,8 +3464,8 @@ var QUIZ = [
   },
   {
     id: "lid_250",
-    cat: "allgemein",
-    lessonId: "lid_l25",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q2",
     question: { de: "In Deutschland hat man die besten Chancen auf einen gut bezahlten Arbeitsplatz, wenn man …", en: "", uk: "", ru: "" },
     answers: [
       { de: "katholisch ist.", en: "", uk: "", ru: "" },
@@ -3455,8 +3477,8 @@ var QUIZ = [
   },
   {
     id: "lid_251",
-    cat: "allgemein",
-    lessonId: "lid_l26",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q2",
     question: { de: "Wenn man in Deutschland ein Kind schlägt, …", en: "", uk: "", ru: "" },
     answers: [
       { de: "geht das niemanden etwas an.", en: "", uk: "", ru: "" },
@@ -3468,8 +3490,8 @@ var QUIZ = [
   },
   {
     id: "lid_252",
-    cat: "allgemein",
-    lessonId: "lid_l26",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q2",
     question: { de: "In Deutschland …", en: "", uk: "", ru: "" },
     answers: [
       { de: "darf man zur gleichen Zeit nur mit einer Partnerin/einem Partner verheiratet sein.", en: "", uk: "", ru: "", correct: true },
@@ -3481,8 +3503,8 @@ var QUIZ = [
   },
   {
     id: "lid_253",
-    cat: "allgemein",
-    lessonId: "lid_l26",
+    cat: "staat",
+    lessonId: "lid_staat_q4",
     question: { de: "Wo müssen Sie sich anmelden, wenn Sie in Deutschland umziehen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "beim Einwohnermeldeamt", en: "", uk: "", ru: "", correct: true },
@@ -3494,8 +3516,8 @@ var QUIZ = [
   },
   {
     id: "lid_254",
-    cat: "allgemein",
-    lessonId: "lid_l26",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q2",
     question: { de: "In Deutschland dürfen Ehepaare sich scheiden lassen. Meistens müssen sie dazu das „Trennungsjahr“ einhalten. Was bedeutet das?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Der Scheidungsprozess dauert ein Jahr.", en: "", uk: "", ru: "" },
@@ -3507,8 +3529,8 @@ var QUIZ = [
   },
   {
     id: "lid_255",
-    cat: "allgemein",
-    lessonId: "lid_l26",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q2",
     question: { de: "Bei Erziehungsproblemen können Eltern in Deutschland Hilfe erhalten vom …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Ordnungsamt.", en: "", uk: "", ru: "" },
@@ -3520,8 +3542,8 @@ var QUIZ = [
   },
   {
     id: "lid_256",
-    cat: "allgemein",
-    lessonId: "lid_l26",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q2",
     question: { de: "Ein Ehepaar möchte in Deutschland ein Restaurant eröffnen. Was braucht es dazu unbedingt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "eine Erlaubnis der Polizei", en: "", uk: "", ru: "" },
@@ -3533,8 +3555,8 @@ var QUIZ = [
   },
   {
     id: "lid_257",
-    cat: "allgemein",
-    lessonId: "lid_l26",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q2",
     question: { de: "Eine erwachsene Frau möchte in Deutschland das Abitur nachholen. Das kann sie an …", en: "", uk: "", ru: "" },
     answers: [
       { de: "einer Hochschule.", en: "", uk: "", ru: "" },
@@ -3546,8 +3568,8 @@ var QUIZ = [
   },
   {
     id: "lid_258",
-    cat: "allgemein",
-    lessonId: "lid_l26",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q3",
     question: { de: "Was darf das Jugendamt in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Es entscheidet, welche Schule das Kind besucht.", en: "", uk: "", ru: "" },
@@ -3559,8 +3581,8 @@ var QUIZ = [
   },
   {
     id: "lid_259",
-    cat: "allgemein",
-    lessonId: "lid_l26",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q2",
     question: { de: "Das Berufsinformationszentrum BIZ bei der Bundesagentur für Arbeit in Deutschland hilft bei der …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Rentenberechnung.", en: "", uk: "", ru: "" },
@@ -3572,8 +3594,8 @@ var QUIZ = [
   },
   {
     id: "lid_260",
-    cat: "allgemein",
-    lessonId: "lid_l26",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q3",
     question: { de: "In Deutschland hat ein Kind in der Schule …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Recht auf unbegrenzte Freizeit.", en: "", uk: "", ru: "" },
@@ -3585,8 +3607,8 @@ var QUIZ = [
   },
   {
     id: "lid_261",
-    cat: "allgemein",
-    lessonId: "lid_l27",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q3",
     question: { de: "Ein Mann möchte mit 30 Jahren in Deutschland sein Abitur nachholen. Wo kann er das tun? An …", en: "", uk: "", ru: "" },
     answers: [
       { de: "einer Hochschule.", en: "", uk: "", ru: "" },
@@ -3598,8 +3620,8 @@ var QUIZ = [
   },
   {
     id: "lid_262",
-    cat: "allgemein",
-    lessonId: "lid_l27",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q3",
     question: { de: "Was bedeutet in Deutschland der Grundsatz der Gleichbehandlung?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Niemand darf z.B. wegen einer Behinderung benachteiligt werden.", en: "", uk: "", ru: "", correct: true },
@@ -3611,8 +3633,8 @@ var QUIZ = [
   },
   {
     id: "lid_263",
-    cat: "allgemein",
-    lessonId: "lid_l27",
+    cat: "recht",
+    lessonId: "lid_recht_q2",
     question: { de: "In Deutschland sind Jugendliche ab 14 Jahren strafmündig. Das bedeutet: Jugendliche, die 14 Jahre und älter sind und gegen Strafgesetze verstoßen, …", en: "", uk: "", ru: "" },
     answers: [
       { de: "werden bestraft.", en: "", uk: "", ru: "", correct: true },
@@ -3624,8 +3646,8 @@ var QUIZ = [
   },
   {
     id: "lid_264",
-    cat: "allgemein",
-    lessonId: "lid_l27",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q3",
     question: { de: "Zu welchem Fest tragen Menschen in Deutschland bunte Kostüme und Masken?", en: "", uk: "", ru: "" },
     answers: [
       { de: "am Rosenmontag", en: "", uk: "", ru: "", correct: true },
@@ -3637,8 +3659,8 @@ var QUIZ = [
   },
   {
     id: "lid_265",
-    cat: "allgemein",
-    lessonId: "lid_l27",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q3",
     question: { de: "Wohin muss man in Deutschland zuerst gehen, wenn man heiraten möchte?", en: "", uk: "", ru: "" },
     answers: [
       { de: "zum Einwohnermeldeamt", en: "", uk: "", ru: "" },
@@ -3650,8 +3672,8 @@ var QUIZ = [
   },
   {
     id: "lid_266",
-    cat: "allgemein",
-    lessonId: "lid_l27",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q3",
     question: { de: "Wann beginnt die gesetzliche Nachtruhe in Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "wenn die Sonne untergeht", en: "", uk: "", ru: "" },
@@ -3663,8 +3685,8 @@ var QUIZ = [
   },
   {
     id: "lid_267",
-    cat: "allgemein",
-    lessonId: "lid_l27",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q3",
     question: { de: "Eine junge Frau in Deutschland, 22 Jahre alt, lebt mit ihrem Freund zusammen. Die Eltern der Frau finden das nicht gut, weil ihnen der Freund nicht gefällt. Was können die Eltern tun?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Sie müssen die Entscheidung der volljährigen Tochter respektieren.", en: "", uk: "", ru: "", correct: true },
@@ -3676,8 +3698,8 @@ var QUIZ = [
   },
   {
     id: "lid_268",
-    cat: "allgemein",
-    lessonId: "lid_l27",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q3",
     question: { de: "Eine junge Frau will den Führerschein machen. Sie hat Angst vor der Prüfung, weil ihre Muttersprache nicht Deutsch ist. Was ist richtig?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Sie muss mindestens zehn Jahre in Deutschland leben, bevor sie den Führerschein machen kann.", en: "", uk: "", ru: "" },
@@ -3689,8 +3711,8 @@ var QUIZ = [
   },
   {
     id: "lid_269",
-    cat: "allgemein",
-    lessonId: "lid_l27",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q3",
     question: { de: "In Deutschland haben Kinder ab dem Alter von drei Jahren bis zur Ersteinschulung einen Anspruch auf …", en: "", uk: "", ru: "" },
     answers: [
       { de: "monatliches Taschengeld.", en: "", uk: "", ru: "" },
@@ -3702,8 +3724,8 @@ var QUIZ = [
   },
   {
     id: "lid_270",
-    cat: "allgemein",
-    lessonId: "lid_l27",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q4",
     question: { de: "Die Volkshochschule in Deutschland ist eine Einrichtung …", en: "", uk: "", ru: "" },
     answers: [
       { de: "für den Religionsunterricht.", en: "", uk: "", ru: "" },
@@ -3715,8 +3737,8 @@ var QUIZ = [
   },
   {
     id: "lid_271",
-    cat: "allgemein",
-    lessonId: "lid_l28",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q4",
     question: { de: "Was ist in Deutschland ein Brauch zu Weihnachten?", en: "", uk: "", ru: "" },
     answers: [
       { de: "bunte Eier verstecken", en: "", uk: "", ru: "" },
@@ -3728,8 +3750,8 @@ var QUIZ = [
   },
   {
     id: "lid_272",
-    cat: "allgemein",
-    lessonId: "lid_l28",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q4",
     question: { de: "Welche Lebensform ist in Deutschland nicht erlaubt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Mann und Frau sind geschieden und leben mit neuen Partnern zusammen.", en: "", uk: "", ru: "" },
@@ -3741,8 +3763,8 @@ var QUIZ = [
   },
   {
     id: "lid_273",
-    cat: "allgemein",
-    lessonId: "lid_l28",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q4",
     question: { de: "Bei Erziehungsproblemen gehen Sie in Deutschland …", en: "", uk: "", ru: "" },
     answers: [
       { de: "zur Ärztin/zum Arzt.", en: "", uk: "", ru: "" },
@@ -3754,8 +3776,8 @@ var QUIZ = [
   },
   {
     id: "lid_274",
-    cat: "allgemein",
-    lessonId: "lid_l28",
+    cat: "recht",
+    lessonId: "lid_recht_q2",
     question: { de: "Sie haben in Deutschland absichtlich einen Brief geöffnet, der an eine andere Person adressiert ist. Was haben Sie nicht beachtet?", en: "", uk: "", ru: "" },
     answers: [
       { de: "das Schweigerecht", en: "", uk: "", ru: "" },
@@ -3767,8 +3789,8 @@ var QUIZ = [
   },
   {
     id: "lid_275",
-    cat: "allgemein",
-    lessonId: "lid_l28",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q4",
     question: { de: "Was braucht man in Deutschland für eine Ehescheidung?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Einwilligung der Eltern", en: "", uk: "", ru: "" },
@@ -3780,8 +3802,8 @@ var QUIZ = [
   },
   {
     id: "lid_276",
-    cat: "allgemein",
-    lessonId: "lid_l28",
+    cat: "staat",
+    lessonId: "lid_staat_q4",
     question: { de: "Was sollten Sie tun, wenn Sie von Ihrer Ansprechpartnerin/Ihrem Ansprechpartner in einer deutschen Behörde schlecht behandelt werden?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Ich kann nichts tun.", en: "", uk: "", ru: "" },
@@ -3793,8 +3815,8 @@ var QUIZ = [
   },
   {
     id: "lid_277",
-    cat: "allgemein",
-    lessonId: "lid_l28",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q3",
     question: { de: "Eine Frau, die ein zweijähriges Kind hat, bewirbt sich in Deutschland um eine Stelle. Was ist ein Beispiel für Diskriminierung? Sie bekommt die Stelle nur deshalb nicht, weil sie …", en: "", uk: "", ru: "" },
     answers: [
       { de: "kein Englisch spricht.", en: "", uk: "", ru: "" },
@@ -3806,8 +3828,8 @@ var QUIZ = [
   },
   {
     id: "lid_278",
-    cat: "allgemein",
-    lessonId: "lid_l28",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q3",
     question: { de: "Ein Mann im Rollstuhl hat sich auf eine Stelle als Buchhalter beworben. Was ist ein Beispiel für Diskriminierung? Er bekommt die Stelle nur deshalb nicht, weil er …", en: "", uk: "", ru: "" },
     answers: [
       { de: "im Rollstuhl sitzt.", en: "", uk: "", ru: "", correct: true },
@@ -3819,8 +3841,8 @@ var QUIZ = [
   },
   {
     id: "lid_279",
-    cat: "allgemein",
-    lessonId: "lid_l28",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q4",
     question: { de: "In den meisten Mietshäusern in Deutschland gibt es eine „Hausordnung“. Was steht in einer solchen „Hausordnung“? Sie nennt …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Regeln für die Benutzung öffentlicher Verkehrsmittel.", en: "", uk: "", ru: "" },
@@ -3832,8 +3854,8 @@ var QUIZ = [
   },
   {
     id: "lid_280",
-    cat: "allgemein",
-    lessonId: "lid_l28",
+    cat: "staat",
+    lessonId: "lid_staat_q4",
     question: { de: "Wenn Sie sich in Deutschland gegen einen falschen Steuerbescheid wehren wollen, müssen Sie …", en: "", uk: "", ru: "" },
     answers: [
       { de: "nichts machen.", en: "", uk: "", ru: "" },
@@ -3845,8 +3867,8 @@ var QUIZ = [
   },
   {
     id: "lid_281",
-    cat: "allgemein",
-    lessonId: "lid_l29",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q4",
     question: { de: "Zwei Freunde wollen in ein öffentliches Schwimmbad in Deutschland. Beide haben eine dunkle Hautfarbe und werden deshalb nicht hineingelassen. Welches Recht wird in dieser Situation verletzt? Das Recht auf …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Meinungsfreiheit", en: "", uk: "", ru: "" },
@@ -3858,8 +3880,8 @@ var QUIZ = [
   },
   {
     id: "lid_282",
-    cat: "allgemein",
-    lessonId: "lid_l29",
+    cat: "recht",
+    lessonId: "lid_recht_q2",
     question: { de: "Welches Ehrenamt müssen deutsche Staatsbürgerinnen und Staatsbürger übernehmen, wenn sie dazu aufgefordert werden?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Vereinstrainerin/Vereinstrainer", en: "", uk: "", ru: "" },
@@ -3871,8 +3893,8 @@ var QUIZ = [
   },
   {
     id: "lid_283",
-    cat: "allgemein",
-    lessonId: "lid_l29",
+    cat: "staat",
+    lessonId: "lid_staat_q4",
     question: { de: "Was tun Sie, wenn Sie eine falsche Rechnung von einer deutschen Behörde bekommen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Ich lasse die Rechnung liegen.", en: "", uk: "", ru: "" },
@@ -3884,8 +3906,8 @@ var QUIZ = [
   },
   {
     id: "lid_284",
-    cat: "allgemein",
-    lessonId: "lid_l29",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q3",
     question: { de: "Was man für die Arbeit können muss, ändert sich in Zukunft sehr schnell. Was kann man tun?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Es ist egal, was man lernt.", en: "", uk: "", ru: "" },
@@ -3897,8 +3919,8 @@ var QUIZ = [
   },
   {
     id: "lid_285",
-    cat: "allgemein",
-    lessonId: "lid_l29",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q3",
     question: { de: "Frau Frost arbeitet als fest angestellte Mitarbeiterin in einem Büro. Was muss sie nicht von ihrem Gehalt bezahlen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Lohnsteuer", en: "", uk: "", ru: "" },
@@ -3910,8 +3932,8 @@ var QUIZ = [
   },
   {
     id: "lid_286",
-    cat: "allgemein",
-    lessonId: "lid_l29",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q3",
     question: { de: "Welche Organisation in einer Firma hilft den Arbeitnehmerinnen und Arbeitnehmern bei Problemen mit der Arbeitgeberin/dem Arbeitgeber?", en: "", uk: "", ru: "" },
     answers: [
       { de: "der Betriebsrat", en: "", uk: "", ru: "", correct: true },
@@ -3923,8 +3945,8 @@ var QUIZ = [
   },
   {
     id: "lid_287",
-    cat: "allgemein",
-    lessonId: "lid_l29",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q3",
     question: { de: "Sie möchten bei einer Firma in Deutschland ihr Arbeitsverhältnis beenden. Was müssen Sie beachten?", en: "", uk: "", ru: "" },
     answers: [
       { de: "die Gehaltszahlungen", en: "", uk: "", ru: "" },
@@ -3936,8 +3958,8 @@ var QUIZ = [
   },
   {
     id: "lid_288",
-    cat: "allgemein",
-    lessonId: "lid_l29",
+    cat: "ns",
+    lessonId: "lid_ns_q3",
     question: { de: "Woraus begründet sich Deutschlands besondere Verantwortung für Israel?", en: "", uk: "", ru: "" },
     answers: [
       { de: "aus der Mitgliedschaft in der Europäischen Union (EU)", en: "", uk: "", ru: "" },
@@ -3949,8 +3971,8 @@ var QUIZ = [
   },
   {
     id: "lid_289",
-    cat: "allgemein",
-    lessonId: "lid_l29",
+    cat: "arbeit",
+    lessonId: "lid_arbeit_q3",
     question: { de: "Ein Mann mit dunkler Hautfarbe bewirbt sich um eine Stelle als Kellner in einem Restaurant in Deutschland. Was ist ein Beispiel für Diskriminierung? Er bekommt die Stelle nur deshalb nicht, weil …", en: "", uk: "", ru: "" },
     answers: [
       { de: "seine Deutschkenntnisse zu gering sind.", en: "", uk: "", ru: "" },
@@ -3962,8 +3984,8 @@ var QUIZ = [
   },
   {
     id: "lid_290",
-    cat: "allgemein",
-    lessonId: "lid_l29",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q4",
     question: { de: "Sie haben in Deutschland einen Fernseher gekauft. Zu Hause packen Sie den Fernseher aus, doch er funktioniert nicht. Der Fernseher ist kaputt. Was können Sie machen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "eine Anzeige schreiben", en: "", uk: "", ru: "" },
@@ -3975,8 +3997,8 @@ var QUIZ = [
   },
   {
     id: "lid_291",
-    cat: "allgemein",
-    lessonId: "lid_l30",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q4",
     question: { de: "Warum muss man in Deutschland bei der Steuererklärung aufschreiben, ob man zu einer Kirche gehört oder nicht? Weil …", en: "", uk: "", ru: "" },
     answers: [
       { de: "es eine Kirchensteuer gibt, die an die Einkommen- und Lohnsteuer geknüpft ist.", en: "", uk: "", ru: "", correct: true },
@@ -3988,8 +4010,8 @@ var QUIZ = [
   },
   {
     id: "lid_292",
-    cat: "allgemein",
-    lessonId: "lid_l30",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q5",
     question: { de: "Die Menschen in Deutschland leben nach dem Grundsatz der religiösen Toleranz. Was bedeutet das?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Es dürfen keine Moscheen gebaut werden.", en: "", uk: "", ru: "" },
@@ -4001,8 +4023,8 @@ var QUIZ = [
   },
   {
     id: "lid_293",
-    cat: "allgemein",
-    lessonId: "lid_l30",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q5",
     question: { de: "Was ist in Deutschland ein Brauch zu Ostern?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Kürbisse vor die Tür stellen", en: "", uk: "", ru: "" },
@@ -4014,8 +4036,8 @@ var QUIZ = [
   },
   {
     id: "lid_294",
-    cat: "allgemein",
-    lessonId: "lid_l30",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q5",
     question: { de: "Pfingsten ist ein …", en: "", uk: "", ru: "" },
     answers: [
       { de: "christlicher Feiertag.", en: "", uk: "", ru: "", correct: true },
@@ -4027,8 +4049,8 @@ var QUIZ = [
   },
   {
     id: "lid_295",
-    cat: "allgemein",
-    lessonId: "lid_l30",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q5",
     question: { de: "Welche Religion hat die europäische und deutsche Kultur geprägt?", en: "", uk: "", ru: "" },
     answers: [
       { de: "der Hinduismus", en: "", uk: "", ru: "" },
@@ -4040,8 +4062,8 @@ var QUIZ = [
   },
   {
     id: "lid_296",
-    cat: "allgemein",
-    lessonId: "lid_l30",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q5",
     question: { de: "In Deutschland nennt man die letzten vier Wochen vor Weihnachten …", en: "", uk: "", ru: "" },
     answers: [
       { de: "den Buß- und Bettag.", en: "", uk: "", ru: "" },
@@ -4053,8 +4075,8 @@ var QUIZ = [
   },
   {
     id: "lid_297",
-    cat: "allgemein",
-    lessonId: "lid_l30",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q5",
     question: { de: "Aus welchem Land sind die meisten Migrantinnen und Migranten nach Deutschland gekommen?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Italien", en: "", uk: "", ru: "" },
@@ -4066,8 +4088,8 @@ var QUIZ = [
   },
   {
     id: "lid_298",
-    cat: "allgemein",
-    lessonId: "lid_l30",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q5",
     question: { de: "In der DDR lebten vor allem Migrantinnen und Migranten aus …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Vietnam, Polen, Mosambik.", en: "", uk: "", ru: "", correct: true },
@@ -4079,8 +4101,8 @@ var QUIZ = [
   },
   {
     id: "lid_299",
-    cat: "allgemein",
-    lessonId: "lid_l30",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q5",
     question: { de: "Ausländische Arbeitnehmerinnen und Arbeitnehmer, die in den 50er und 60er Jahren von der Bundesrepublik Deutschland angeworben wurden, nannte man …", en: "", uk: "", ru: "" },
     answers: [
       { de: "Schwarzarbeiterinnen/Schwarzarbeiter.", en: "", uk: "", ru: "" },
@@ -4092,8 +4114,8 @@ var QUIZ = [
   },
   {
     id: "lid_300",
-    cat: "allgemein",
-    lessonId: "lid_l30",
+    cat: "gesellschaft",
+    lessonId: "lid_gesellschaft_q5",
     question: { de: "Aus welchem Land kamen die ersten Gastarbeiterinnen und Gastarbeiter in die Bundesrepublik Deutschland?", en: "", uk: "", ru: "" },
     answers: [
       { de: "Italien", en: "", uk: "", ru: "", correct: true },
