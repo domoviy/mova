@@ -5419,7 +5419,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '939-928e4df';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -19379,20 +19379,24 @@ function _cloudMountPw(){
   i.placeholder = t('acc_pw_ph');
   i.className = 'acc-field';
   i.onblur = _cloudUnmountPw;
-  // Кнопка «показати пароль». pointerdown не віддає фокус кнопці (поле лишається активним і не зникає
-  // через _cloudUnmountPw, клавіатура не ховається); сам перемикач — на click.
+  wrap.appendChild(i); wrap.appendChild(_pwToggleBtn(i, 'cloud-pw-toggle'));
+  slot.appendChild(wrap);
+}
+// ── «Показати пароль»: спільний механізм для ВСІХ полів пароля (форма входу/реєстрації, модалка видалення).
+// Нове поле пароля: обгорнути в <div class="acc-pw"> і додати _pwToggleBtn(input).
+// pointerdown не віддає фокус кнопці (поле лишається активним, клавіатура не ховається, поле входу не зникає
+// через _cloudUnmountPw); сам перемикач — на click.
+function _pwToggleBtn(inp, id){
   const b = document.createElement('button');
-  b.type = 'button'; b.id = 'cloud-pw-toggle'; b.className = 'acc-pw-toggle';
+  b.type = 'button'; if(id) b.id = id; b.className = 'acc-pw-toggle';
   b.setAttribute('aria-pressed','false');
   b.setAttribute('aria-label', t('acc_pw_show')); b.title = t('acc_pw_show');
   b.innerHTML = movaIcon('eye','mi');
   b.onpointerdown = function(e){ e.preventDefault(); };
-  b.onclick = _cloudTogglePw;
-  wrap.appendChild(i); wrap.appendChild(b);
-  slot.appendChild(wrap);
+  b.onclick = function(){ _pwToggle(inp, b); };
+  return b;
 }
-function _cloudTogglePw(){
-  const p = document.getElementById('cloud-password'), b = document.getElementById('cloud-pw-toggle');
+function _pwToggle(p, b){
   if(!p || !b) return;
   const show = p.type === 'password';
   let s0 = null, s1 = null;
@@ -19522,6 +19526,10 @@ function _askPasswordModal(email){
     const inp = document.createElement('input');
     inp.type = 'password'; inp.autocomplete = 'current-password'; inp.placeholder = t('wipe_pw_ph');
     inp.className = 'acc-field';
+    inp.setAttribute('autocapitalize','off'); inp.setAttribute('autocorrect','off'); inp.setAttribute('spellcheck','false');
+    const pwWrap = document.createElement('div');
+    pwWrap.className = 'acc-pw';
+    pwWrap.appendChild(inp); pwWrap.appendChild(_pwToggleBtn(inp, 'wipe-pw-toggle'));
     const row = document.createElement('div');
     row.style.cssText = 'display:flex;gap:10px;margin-top:14px';
     const cancel = document.createElement('button');
@@ -19534,7 +19542,7 @@ function _askPasswordModal(email){
     inp.onkeydown = function(e){ if(e.key === 'Enter') ok.onclick(); else if(e.key === 'Escape') cancel.onclick(); };
     ov.onclick = function(e){ if(e.target === ov) close(null); };
     row.appendChild(cancel); row.appendChild(ok);
-    box.appendChild(h); box.appendChild(tx); box.appendChild(inp); box.appendChild(row);
+    box.appendChild(h); box.appendChild(tx); box.appendChild(pwWrap); box.appendChild(row);
     ov.appendChild(box); document.body.appendChild(ov);
     setTimeout(function(){ inp.focus(); }, 50);
   });
