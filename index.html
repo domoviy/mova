@@ -5419,7 +5419,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '948-b072403';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5464,6 +5464,14 @@ const COURSES = [
     icon:     'briefcase',
     level:    'B2',
     langs:    ['de','uk','en'],
+  },
+  {
+    id:       'Deutsch-C1',
+    emoji:    '',
+    icon:     'trophy',
+    level:    'C1',
+    langs:    ['de','uk','en','ru'],
+    debugOnly: true,   // курс ще в розробці: не показується в списку курсів/онбордингу, лише в Налаштування → Налагодження
   },
   {
     id:       'Leben-in-Deutschland',
@@ -7046,7 +7054,7 @@ const I18N = {
     course_Deutsch_A1_title:'Deutsch A1', course_Deutsch_A1_desc:'Deutsch für Anfänger',
     course_Deutsch_A2_title:'Deutsch A2', course_Deutsch_A2_desc:'Deutsch für den Alltag',
     course_Deutsch_B1_title:'Deutsch B1', course_Deutsch_B1_desc:'Deutsch für Fortgeschrittene',
-    course_Deutsch_B2_Beruf_title:'Deutsch B2 Beruf', course_Deutsch_B2_Beruf_desc:'Deutsch für den Beruf',
+    course_Deutsch_B2_Beruf_title:'Deutsch B2 Beruf', course_Deutsch_B2_Beruf_desc:'Deutsch für den Beruf', course_Deutsch_C1_title:'Deutsch C1', course_Deutsch_C1_desc:'Deutsch für Fortgeschrittene',
     course_Financial_Accounting_Foundations_title:'Finanzbuchhaltung', course_Financial_Accounting_Foundations_desc:'Grundlagen der Finanzbuchhaltung',
     course_Financial_Accounting_Foundations_level:'Grundlagen',
     
@@ -7218,7 +7226,7 @@ const I18N = {
     course_Deutsch_A1_title:'Німецька A1', course_Deutsch_A1_desc:'Німецька для початківців',
     course_Deutsch_A2_title:'Німецька A2', course_Deutsch_A2_desc:'Побутова німецька',
     course_Deutsch_B1_title:'Німецька B1', course_Deutsch_B1_desc:'Німецька для середнього рівня',
-    course_Deutsch_B2_Beruf_title:'Німецька B2 Beruf', course_Deutsch_B2_Beruf_desc:'Німецька для роботи',
+    course_Deutsch_B2_Beruf_title:'Німецька B2 Beruf', course_Deutsch_B2_Beruf_desc:'Німецька для роботи', course_Deutsch_C1_title:'Німецька C1', course_Deutsch_C1_desc:'Німецька для просунутих',
     course_Financial_Accounting_Foundations_title:'Фінансовий облік', course_Financial_Accounting_Foundations_desc:'Основи фінансового обліку',
     course_Financial_Accounting_Foundations_level:'Основи',
     
@@ -7385,7 +7393,7 @@ const I18N = {
     course_Deutsch_A1_title:'German A1', course_Deutsch_A1_desc:'German for beginners',
     course_Deutsch_A2_title:'German A2', course_Deutsch_A2_desc:'Everyday German',
     course_Deutsch_B1_title:'German B1', course_Deutsch_B1_desc:'German for intermediate learners',
-    course_Deutsch_B2_Beruf_title:'German B2 Beruf', course_Deutsch_B2_Beruf_desc:'German for work',
+    course_Deutsch_B2_Beruf_title:'German B2 Beruf', course_Deutsch_B2_Beruf_desc:'German for work', course_Deutsch_C1_title:'German C1', course_Deutsch_C1_desc:'Advanced German',
     course_Financial_Accounting_Foundations_title:'Financial Accounting', course_Financial_Accounting_Foundations_desc:'Financial accounting fundamentals',
     course_Financial_Accounting_Foundations_level:'Foundations',
     
@@ -7553,7 +7561,7 @@ const I18N = {
     course_Deutsch_A1_title:'Немецкий A1', course_Deutsch_A1_desc:'Немецкий для начинающих',
     course_Deutsch_A2_title:'Немецкий A2', course_Deutsch_A2_desc:'Бытовой немецкий',
     course_Deutsch_B1_title:'Немецкий B1', course_Deutsch_B1_desc:'Немецкий для среднего уровня',
-    course_Deutsch_B2_Beruf_title:'Немецкий B2 Beruf', course_Deutsch_B2_Beruf_desc:'Немецкий для работы',
+    course_Deutsch_B2_Beruf_title:'Немецкий B2 Beruf', course_Deutsch_B2_Beruf_desc:'Немецкий для работы', course_Deutsch_C1_title:'Немецкий C1', course_Deutsch_C1_desc:'Немецкий для продвинутых',
     course_Financial_Accounting_Foundations_title:'Финансовый учёт', course_Financial_Accounting_Foundations_desc:'Основы финансового учёта',
     course_Financial_Accounting_Foundations_level:'Основы',
     nav_lernpfad:'Обучение', 
