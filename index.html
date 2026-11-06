@@ -5419,7 +5419,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '958-aeba0ab';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -24294,6 +24294,13 @@ function _quizShowCard(){
     qTrEl.textContent = qt.tr;
     qTrEl.style.display = qt.tr ? '' : 'none';
   }
+  // Озвучення питання (pregen-аудіо з gen_audio.py) + karaoke-підсвітка слів.
+  // Тап по тексту питання — повторити.
+  if(qTextEl){
+    qTextEl.style.cursor = 'pointer';
+    qTextEl.onclick = function(){ _quizSpeak(quizState && quizState.questions[quizState.idx], 'question', qTextEl); };
+    _quizSpeak(q, 'question', qTextEl);
+  }
 
   // Варіанти відповідей — перемішуємо, але запам'ятовуємо correct
   const answers = [...(q.answers || [])].sort(()=>Math.random()-.5);
@@ -24324,6 +24331,7 @@ function _quizShowCard(){
       wrap.className = 'quiz-opt-txt';
       if(label){
         const tx = document.createElement('span');
+        tx.className = 'quiz-opt-main';   // сюди чіпляється karaoke-підсвітка правильної відповіді
         tx.textContent = label;   // текст з бази — лише textContent
         wrap.appendChild(tx);
       }
@@ -24338,6 +24346,19 @@ function _quizShowCard(){
     btn.addEventListener('click', ()=> _quizAnswer(btn, ans, answers, q));
     optBox.appendChild(btn);
   });
+}
+
+// Озвучення поля квізу: field = 'question' | 'answer' (файли audio/<курс>/<мова>/<швидкість>/lid/<id>_<field>_...).
+// Без аудіо (інший курс, відповідь-картинка, файл ще не згенеровано) — тихо нічого не робить.
+// Підсвітка слів вмикається лише якщо в маніфесті для файлу є таймінг (+t).
+function _quizSpeak(q, field, el){
+  try{
+    if(!q || !q.id || !el) return;
+    const pl = primaryLang();
+    if(!hasAudioFor(q.id, field, pl)) return;
+    const hl = hasTimingFor(q.id, field, pl) ? el : null;
+    speak(null, pl, null, q.id, field, false, hl);
+  }catch(e){}
 }
 
 function _quizAnswer(btn, chosen, answers, q){
@@ -24369,15 +24390,20 @@ function _quizAnswer(btn, chosen, answers, q){
 
   // Підсвічуємо варіанти
   const allBtns = document.querySelectorAll('.quiz-opt');
+  let correctTextEl = null;
   allBtns.forEach((b, i)=>{
     const ans = answers[i];
     b.style.pointerEvents = 'none';
     if(ans.correct){
       b.classList.add(isCorrect && b === btn ? 'correct' : 'reveal');
+      correctTextEl = b.querySelector('.quiz-opt-main');
     } else if(b === btn){
       b.classList.add('wrong');
     }
   });
+  // Озвучуємо ПРАВИЛЬНУ відповідь (і коли відповіли вірно, і коли помилились) з karaoke-підсвіткою.
+  // Відповіді-картинки без тексту (correctTextEl === null) не озвучуються.
+  if(correctTextEl) _quizSpeak(q, 'answer', correctTextEl);
 
   _quizSyncLessonBar(quizState.idx + 1);
   // Далі — за кнопкою (без автопереходу): час прочитати правильну відповідь і переклад
@@ -24430,6 +24456,7 @@ function _quizRemoveNextBtn(){
   if(r && r.dataset.quiz) r.remove();
 }
 function _quizAdvance(){
+  try{ stopTTS(); }catch(e){}
   _quizRemoveNextBtn();
   if(!quizState) return;
   quizState.idx++;
@@ -24438,6 +24465,7 @@ function _quizAdvance(){
 }
 
 function _quizShowResult(){
+  try{ stopTTS(); }catch(e){}
   _quizRemoveNextBtn();
   const total   = quizState?.questions.length || 0;
   const correct = quizState?.correct || 0;
