@@ -5419,7 +5419,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '955-17a5733';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5518,6 +5518,19 @@ function getSavedCourseId(){
   // Дані прогресу під id видаленого курсу в localStorage лишаються —
   // їх ніхто не стирає.
   if(saved && COURSES.some(c=>c.id===saved)) return saved;
+  return 'Deutsch-B2-Beruf';
+}
+// Курс для ХОЛОДНОГО СТАРТУ. Курс «у розробці» (debugOnly: Leben-in-Deutschland, Deutsch-C1…), відкритий
+// через Налаштування → Налагодження, після перезавантаження НЕ відновлюється: застосунок повертається
+// до останнього звичайного курсу (а якщо його немає — до Deutsch-B2-Beruf). Інакше розробник, який
+// протестував debug-курс, після перезапуску бачив би його замість свого основного курсу.
+// getSavedCourseId() лишається без змін для решти коду (під час роботи в debug-курсі він повертає його id).
+function getStartupCourseId(){
+  const saved = localStorage.getItem('mova_course');
+  const sc = saved && COURSES.find(c=>c.id===saved);
+  if(sc && !sc.debugOnly) return saved;
+  const reg = localStorage.getItem('mova_course_regular');
+  if(reg && COURSES.some(c=>c.id===reg && !c.debugOnly)) return reg;
   return 'Deutsch-B2-Beruf';
 }
 
@@ -5705,6 +5718,12 @@ async function onLearnLangPick(l){
 function onTransLangPick(l){ if(_lp && l !== _lp.trans) setCourseTransLang(l); }
 function saveCourseId(id){
   localStorage.setItem('mova_course', id);
+  // Запам'ятовуємо останній ЗВИЧАЙНИЙ курс окремо: курси «у розробці» (debugOnly) не мають
+  // ставати курсом холодного старту (див. getStartupCourseId).
+  try{
+    const c = COURSES.find(x=>x.id===id);
+    if(c && !c.debugOnly) localStorage.setItem('mova_course_regular', id);
+  }catch(e){}
 }
 
 // Динамічно завантажує JS файл курсу і повертає Promise
@@ -5922,14 +5941,14 @@ function _lpSpeechGateMigrate(lessons){
 // Вузол ще чекає на проходження? Для звичайних уроків — немає позначки «пройдено», для вузла «Вимова: довгі
 // фрази» (його lessonProgress завжди 100%) — відсутність запису «пройдено/пропущено».
 // ── ПРОХОДЖЕННЯ ВУЗЛІВ СТЕЖКИ ───────────────────────────────────────────────────
-// Вузол стежки вважається ПРОЙДЕНИМ (золотий, розблоковує наступний), лише якщо
-//   1) урок реально завершено хоч раз (прапорець у mova_lesson_done_<стан курсу>), І
-//   2) його картки вже покриті на ≥80% (lessonProgress; один прохід показує ≤4 картки).
-// Картки, зіграні поза уроком (словник, Smart Review, інші вузли), самі по собі вузол НЕ
-// закривають — інакше стежка мовчки перестрибувала б уроки, яких користувач не проходив.
+// Вузол стежки вважається ПРОЙДЕНИМ (золотий, розблоковує наступний), якщо урок реально завершено
+// хоч раз (прапорець у mova_lesson_done_<стан курсу>, ставиться на екрані результату — lfShowResult).
+// Покриття карток (раніше ≥80%) БІЛЬШЕ не умова: один прохід показує лише кілька карток, тож у великих
+// модулях урок «не закривався» і блокував стежку. Прогрес-смуги й відсотки рахують покриття як і раніше.
+// Картки, зіграні поза уроком (словник, Smart Review, інші вузли), самі по собі вузол НЕ закривають.
 // Вузол мовлення має власну логіку (speechNodeDone: пройдено або «Не можу говорити»).
-// Одноразова міграція (на стан курсу): вузли, що ДО цієї зміни вже мали ≥80%, позначаються
-// завершеними, щоб існуючі користувачі не втратили прогрес і не побачили закритих уроків.
+// Одноразова міграція (на стан курсу, значення прапорця = 1, на відміну від справжнього завершення,
+// де там мітка часу): вузли, що ДО введення прапорців уже мали ≥80%, позначаються завершеними.
 const LESSON_DONE_PREFIX = 'mova_lesson_done_';
 var _lpPathReady = false;            // true, коли LESSONS уже перетворено на вузли стежки
 var _ldCache = null, _ldKey = null, _ldMigKey = null;
@@ -6590,6 +6609,7 @@ async function switchCourse(courseId, opts){
   if(activeCourse?.id === courseId && !opts.force) return; // вже активний (force — перезавантаження курсу)
   const targetCourse = COURSES.find(c=>c.id===courseId);
   csShowModal('loading', targetCourse);
+  const _prevSavedCourse = localStorage.getItem('mova_course');   // щоб відкотити, якщо курс не завантажиться
   saveCourseId(courseId);
   audioBufferCache.clear();
   audioBlobCache.clear();
@@ -6652,6 +6672,9 @@ async function switchCourse(courseId, opts){
     if(!opts.noLangSteps) await ensureCourseLangChoices();
   }catch(e){
     console.error('switchCourse error:', e);
+    // Курс не завантажився (наприклад, файл бази ще не на сервері): не лишаємо його «збереженим»,
+    // інакше після перезавантаження застосунок знову намагався б його відкрити.
+    try{ if(_prevSavedCourse !== null) localStorage.setItem('mova_course', _prevSavedCourse); else localStorage.removeItem('mova_course'); }catch(_){}
     notify('⚠️ ' + t('course_load_failed'));
     csShowModal('error', targetCourse);
     setTimeout(csHideModal, 1800);
@@ -9764,7 +9787,8 @@ async function init(){
   });
 
   // Завантажуємо активний курс
-  const courseId = getSavedCourseId();
+  const courseId = getStartupCourseId();
+  if(localStorage.getItem('mova_course') !== courseId) saveCourseId(courseId);   // debug-курс не лишаємо «збереженим»
   try{
     await loadCourseScript(courseId);
   }catch(e){
