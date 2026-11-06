@@ -4981,7 +4981,7 @@ var LESSONS = [
 ];
 
 var FORMS = {  // схема форм слова (картка: "forms":{"t":тип,"v":[значення за порядком slots]}); мітки — за мовою інтерфейсу
-  "verb": {"slots": ["pres","pret","perf"], "voice": true, "label": {"de": ["3. Pers. Sg.","Präteritum","Perfekt"], "en": ["3rd sg.","Preterite","Perfect"], "uk": ["3 ос. одн.","Präteritum","Perfekt"], "ru": ["3 л. ед.","Präteritum","Perfekt"]}},
+  "verb": {"slots": ["pres","pret","perf"], "voice": true, "label": {"de": ["","Präteritum","Perfekt"], "en": ["","Preterite","Perfect"], "uk": ["","Präteritum","Perfekt"], "ru": ["","Präteritum","Perfekt"]}},
   "noun": {"slots": ["pl"], "voice": true, "label": {"de": ["Plural"], "en": ["Plural"], "uk": ["Множина"], "ru": ["Мн. число"]}}
 };
 var VOCAB = [
