@@ -2453,6 +2453,50 @@ async def main():
                                 "primary_lang": primary_lang
                             })
 
+        # forms — словникові форми VOCAB-картки (дієслово: 3 ос. одн./Präteritum/
+        # Perfekt; іменник: повна множина), поле card["forms"] = {"t":..., "v":[...]}.
+        # Не мовний dict (як term/short/def), а один список німецьких рядків, тож
+        # окрема гілка, як distractors нижче: лише PRIMARY_LANG, поле "forms",
+        # текст = v через кому ("nimmt auf, nahm auf, hat aufgenommen"), голос —
+        # як у vocab.term (VOICE_MAPPING["vocab"]["forms"] відсутній → беремо term).
+        # Клієнт (index.html, playFormsAudio) шукає файл
+        # <id>_forms_<lang>_<rate>.mp3 і показує кнопку 🔊 лише коли він є в манифесті.
+        # Змінилися форми або голос term → інший хеш → автоматична перегенерація.
+        if internal_cat == "vocab":
+            forms_obj = item.get("forms")
+            forms_v = forms_obj.get("v") if isinstance(forms_obj, dict) else None
+            if isinstance(forms_v, list) and forms_v and primary_lang in audio_config:
+                forms_text = ", ".join(str(x).strip() for x in forms_v if isinstance(x, str) and x.strip())
+                cleaned = clean_text(forms_text, primary_lang)
+                if cleaned:
+                    field = "forms"
+                    voice = get_voice_id("vocab", "term", primary_lang)
+                    for rate in audio_config.get(primary_lang, ["100"]):
+                        filename = f"{item_id}_{field}_{primary_lang}_{rate}.mp3"
+                        mkey = f"{course}/{primary_lang}/{rate}/{cat_lower}/{item_id}_{field}_{primary_lang}_{rate}"
+                        content_hash = compute_content_hash(cleaned, voice, rate)
+                        existing_value = manifest_data.get(mkey)
+                        existing_hash = manifest_hash_part(existing_value)
+                        if existing_value != content_hash:
+                            tasks.append({
+                                "id": item_id,
+                                "course": course,
+                                "audio_base": audio_base,
+                                "internal_cat": internal_cat,
+                                "cat_lower": cat_lower,
+                                "sub": field,
+                                "lang": primary_lang,
+                                "rate": rate,
+                                "cleaned": cleaned,
+                                "voice": voice,
+                                "filename": filename,
+                                "mkey": mkey,
+                                "content_hash": content_hash,
+                                "existing_hash": existing_hash,
+                                "want_timing": False,
+                                "primary_lang": primary_lang
+                            })
+
         # distractors — окрема гілка: на відміну від полів вище це ПРОСТИЙ
         # список рядків (завжди PRIMARY_LANG, без мовного dict), бо це
         # варіанти відповіді на вправу із заповненням пропуску в реченні

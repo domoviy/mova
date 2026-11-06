@@ -1048,6 +1048,29 @@ body{
 .fc-term{font-size:var(--fs-card);font-weight:700;color:#fff;line-height:1.3}
 .fc-short{font-size:var(--fs-short);color:rgba(255,255,255,.42);margin-top:1px}
 
+/* ══ INFO-чипи картки слова (поле VOCAB[].info): число, відмінок, значення.
+   Лише показ — у озвучення не потрапляють (аудіо береться з term). ══ */
+.info-row{display:flex;flex-wrap:wrap;align-items:center;gap:4px;margin:3px 0 1px}
+.info-chip{display:inline-flex;align-items:center;gap:3px;padding:1px 7px;border-radius:999px;font-size:11px;font-weight:700;line-height:1.5;letter-spacing:.2px;color:#fff;background:#78716c;white-space:nowrap}
+.info-chip svg{width:12px;height:12px;display:block}
+.info-chip.info-case-A{background:#c0392b}
+.info-chip.info-case-D{background:#2563a8}
+.info-chip.info-case-G{background:#2f7d4f}
+.info-chip.info-num{background:#78716c}
+.info-chip.info-sense{background:transparent;color:inherit;opacity:.65;border:1px solid currentColor;font-weight:500;font-style:italic}
+.info-sep{opacity:.5;font-size:11px}
+
+/* ══ FORMS (поле VOCAB[].forms): форми слова — Stammformen дієслів, множина іменників.
+   Схема слотів/міток — глобальна FORMS курсу (або вбудований дефолт). Лише показ + кнопка 🔊. ══ */
+.forms-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:2px 10px;margin:4px 0 2px}
+.forms-item{display:inline-flex;flex-direction:column;line-height:1.25}
+.forms-item small{font-size:9.5px;font-weight:600;letter-spacing:.3px;text-transform:uppercase;opacity:.5}
+.forms-item b{font-size:14px;font-weight:600;opacity:.92}
+.forms-play{border:0;background:rgba(255,255,255,.12);color:inherit;border-radius:999px;width:26px;height:26px;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;align-self:center}
+.forms-play svg{width:14px;height:14px;display:block}
+.syn-row{margin:3px 0 1px;font-size:13px;opacity:.85}
+.syn-lab{font-weight:700;opacity:.55;margin-right:5px;font-size:11px;letter-spacing:.3px;text-transform:uppercase}
+
 /* ══ MATCHING GAME ══ */
 #vocab-panel-match{
   flex:1;min-height:0;display:flex;flex-direction:column;
@@ -5419,7 +5442,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '959-424d223';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7039,6 +7062,8 @@ function movaIcon(name, cls){ var p = MOVA_ICONS[name]; if(!p) return ''; return
 // ── I18N ─────────────────────────────────────────────────────
 const I18N = {
   de: {
+    info_sg:'Nur Singular', info_pl:'Nur Plural', info_case_A:'Akkusativ', info_case_D:'Dativ', info_case_G:'Genitiv',
+    forms_listen:'Formen anhören', syn_label:'Synonyme',
     nav_vocab:'Vokabeln', nav_favs:'Favoriten', nav_settings:'Einstellungen',
     tab_card:'Karte', tab_all:'Alle',
     fav_added:'★ Zu Lesezeichen hinzugefügt',
@@ -7211,6 +7236,8 @@ const I18N = {
     story_finish_title:'Geschafft!',
   },
   uk: {
+    info_sg:'Лише однина', info_pl:'Лише множина', info_case_A:'Akkusativ — знахідний відмінок', info_case_D:'Dativ — давальний відмінок', info_case_G:'Genitiv — родовий відмінок',
+    forms_listen:'Прослухати форми', syn_label:'Синоніми',
     nav_vocab:'Словник', nav_favs:'Обране', nav_settings:'Налаштування',
     tab_card:'Картка', tab_all:'Всі',
     fav_added:'★ Додано в обране',
@@ -7378,6 +7405,8 @@ const I18N = {
     story_finish_title:'Готово!',
   },
   en: {
+    info_sg:'Singular only', info_pl:'Plural only', info_case_A:'Accusative', info_case_D:'Dative', info_case_G:'Genitive',
+    forms_listen:'Listen to the forms', syn_label:'Synonyms',
     nav_vocab:'Vocabulary', nav_favs:'Favorites', nav_settings:'Settings',
     tab_card:'Card', tab_all:'All',
     fav_added:'★ Added to bookmarks',
@@ -7546,6 +7575,8 @@ const I18N = {
     story_finish_title:'Done!',
   },
   ru: {
+    info_sg:'Только единственное число', info_pl:'Только множественное число', info_case_A:'Akkusativ — винительный падеж', info_case_D:'Dativ — дательный падеж', info_case_G:'Genitiv — родительный падеж',
+    forms_listen:'Прослушать формы', syn_label:'Синонимы',
     nav_vocab:'Словарь', nav_favs:'Закладки', nav_settings:'Настройки',
     tab_card:'Карточка', tab_all:'Все',
     fav_added:'★ Добавлено в закладки',
@@ -7717,6 +7748,86 @@ const I18N = {
 // Поточна мова інтерфейсу
 let uiLang = localStorage.getItem('mova_ui_lang') || 'de'; // дефолт 'de' для існуючих юзерів; нові побачать onboarding
 function t(key){ return (I18N[uiLang]||I18N.de)[key] || key; }
+
+// Поле картки VOCAB[].info (необов'язкове): {num:'sg'|'pl', case:'A'|'D'|'G'|'A / D', sense:'…'}.
+// Тільки візуальна підказка біля слова; в озвучення й вправи не входить.
+// Підписи (title/aria-label) беруться з I18N (info_*), у базі перекладів немає.
+function infoHtml(card){
+  const info = card && card.info;
+  if(!info) return '';
+  const parts = [];
+  if(info.num === 'sg' || info.num === 'pl'){
+    const lbl = t(info.num === 'sg' ? 'info_sg' : 'info_pl');
+    const dots = info.num === 'sg'
+      ? '<circle cx="12" cy="12" r="5" fill="currentColor"/>'
+      : '<circle cx="5.5" cy="12" r="3.4" fill="currentColor"/><circle cx="12" cy="12" r="3.4" fill="currentColor"/><circle cx="18.5" cy="12" r="3.4" fill="currentColor"/>';
+    parts.push('<span class="info-chip info-num" title="'+lbl+'" aria-label="'+lbl+'"><svg viewBox="0 0 24 24" aria-hidden="true">'+dots+'</svg>'+(info.num === 'sg' ? 'Sg' : 'Pl')+'</span>');
+  }
+  if(info.case){
+    String(info.case).split('/').map(x => x.trim()).filter(x => x === 'A' || x === 'D' || x === 'G').forEach((c, i) => {
+      if(i) parts.push('<span class="info-sep">/</span>');
+      const lbl = t('info_case_' + c);
+      const ab = c === 'A' ? 'Akk' : c === 'D' ? 'Dat' : 'Gen';
+      parts.push('<span class="info-chip info-case-' + c + '" title="' + lbl + '" aria-label="' + lbl + '">' + ab + '</span>');
+    });
+  }
+  if(info.sense){
+    parts.push('<span class="info-chip info-sense">' + _escapeHtmlText(String(info.sense)) + '</span>');
+  }
+  return parts.length ? '<div class="info-row">' + parts.join('') + '</div>' : '';
+}
+
+// ── Поле картки VOCAB[].forms (необов'язкове): {t:'verb'|'noun'|…, v:[значення за порядком slots]} ──
+// Схема типу (slots, label за мовами інтерфейсу, voice) — глобальна FORMS з файлу курсу; якщо її нема
+// (старі курси / розбита база без FORMS) — вбудований дефолт нижче. Картка без forms показується як раніше.
+// Приклад: {t:'verb', v:['nimmt auf','nahm auf','hat aufgenommen']}, {t:'noun', v:['die Ebenen']}.
+const FORMS_DEFAULT = {
+  verb:{slots:['pres','pret','perf'], voice:true, label:{de:['3. Pers. Sg.','Präteritum','Perfekt'], en:['3rd sg.','Preterite','Perfect'], uk:['3 ос. одн.','Präteritum','Perfekt'], ru:['3 л. ед.','Präteritum','Perfekt']}},
+  noun:{slots:['pl'], voice:true, label:{de:['Plural'], en:['Plural'], uk:['Множина'], ru:['Мн. число']}}
+};
+function formsSchema(type){
+  try{
+    if(typeof FORMS !== 'undefined' && FORMS && FORMS[type]) return FORMS[type];
+  }catch(e){}
+  return FORMS_DEFAULT[type] || null;
+}
+// Чи є готове pregen-аудіо форм (поле 'forms'): кнопка 🔊 з'являється лише тоді, коли маніфест
+// аудіо його знає. Поки gen_audio не згенерував файл — кнопки нема, текст форм видно завжди.
+function formsAudioAvailable(cardId){
+  try{
+    if(typeof audioManifestReady !== 'function' || !audioManifestReady()) return false;
+    const mkey = urlToAudioMkey(getAudioUrl(cardId, 'forms', primaryLang()));
+    return !!(audioManifestKnown(mkey) && audioManifestHas(mkey));
+  }catch(e){ return false; }
+}
+function formsHtml(card){
+  const f = card && card.forms;
+  if(!f || !Array.isArray(f.v) || !f.v.length) return '';
+  const sch = formsSchema(f.t);
+  const lab = (sch && sch.label && (sch.label[uiLang] || sch.label.de)) || [];
+  const items = f.v.map(function(val, i){
+    const l = lab[i] ? '<small>' + _escapeHtmlText(lab[i]) + '</small>' : '';
+    return '<span class="forms-item">' + l + '<b>' + _escapeHtmlText(String(val)) + '</b></span>';
+  }).join('');
+  let btn = '';
+  if(sch && sch.voice && formsAudioAvailable(card.id)){
+    const tt = _escapeHtmlText(t('forms_listen'));
+    btn = '<button type="button" class="forms-play" title="' + tt + '" aria-label="' + tt + '" onclick="event.stopPropagation();playFormsAudio(\'' + String(card.id).replace(/[^\w-]/g, '') + '\')">'
+        + '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg></button>';
+  }
+  return '<div class="forms-row">' + items + btn + '</div>';
+}
+function playFormsAudio(cardId){
+  const card = (typeof VOCAB !== 'undefined' ? VOCAB : []).find(function(v){ return v.id === cardId; });
+  if(!card || !card.forms) return;
+  speak(card.forms.v.join(', '), primaryLang(), null, card.id, 'forms');
+}
+// Поле картки VOCAB[].syn (необов'язкове): масив синонімів мовою курсу (текст; не озвучується).
+function synHtml(card){
+  const a = card && card.syn;
+  if(!Array.isArray(a) || !a.length) return '';
+  return '<div class="syn-row"><span class="syn-lab" title="' + _escapeHtmlText(t('syn_label')) + '">≈</span>' + a.map(function(x){ return _escapeHtmlText(String(x)); }).join(', ') + '</div>';
+}
 
 // Основна мова контенту курсу (мова, яку вчить користувач), напр. "de" для Deutsch-B2-Beruf.
 // Визначається в файлі курсу (Deutsch-B2-Beruf.js); 'de' — фолбек для курсів, де поле відсутнє.
@@ -10729,7 +10840,7 @@ function renderVocabCard(){
   const cat=CATS.find(c=>c.id===v.cat);
   const al=getActiveLangs();
   if(!V.flipped){trackCardToday(v.id);window.mlog?.('card_viewed',{cat:v.cat,mode:V.mode});}
-  const termRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term" data-audio-field="term" data-lang="${l}">${v.term?.[l]||''}</div><div class="fc-short" data-audio-field="short" data-lang="${l}">${v.short?.[l]||''}</div></div></div>`).join('');
+  const termRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term" data-audio-field="term" data-lang="${l}">${v.term?.[l]||''}</div>${l===primaryLang()?infoHtml(v)+formsHtml(v):''}<div class="fc-short" data-audio-field="short" data-lang="${l}">${v.short?.[l]||''}</div></div></div>`).join('');
   const defRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def" data-audio-field="def" data-lang="${l}">${v.def?.[l]||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
   const card=document.getElementById('flashcard');if(!card)return;
   card.classList.toggle('flipped',V.flipped);
@@ -10761,9 +10872,10 @@ function renderVocabCard(){
     <div class="fc-back-header">
       <button class="fc-fav-back ${fav?'active':''}" data-fav-id="${v.id}" id="fc-fav-back">${favIcon(fav)}</button>
       <span class="fc-flag" style="font-size:15px">${F[primaryLang()]||F.de}</span>
-      <span class="fc-back-term">${v.term?.[primaryLang()]||''}</span>
+      <span class="fc-back-term">${v.term?.[primaryLang()]||''}</span>${infoHtml(v)}
       <span class="fc-cat" style="background:var(--gold-dim);color:var(--gold)">${cat?catIconHtml(cat):''}</span>
     </div>
+    ${(v.forms||v.syn)?'<div style="padding:2px 14px 0">'+formsHtml(v)+synHtml(v)+'</div>':''}
     <div class="fc-body" style="padding-top:12px">${defRows}</div>
     <div class="fc-hint">${srsHintText}</div>`;
   document.getElementById('vpbf').style.width=((V.idx/Math.max(1,V.queue.length))*100)+'%';
@@ -23212,7 +23324,7 @@ var _lfVocabHandlers = {
       var shortTranslation = ul !== pl ? (card.short?.[ul] || '') : '';
       body.innerHTML =
         '<div class="lf-unit-main-row">'+
-          '<div><div class="lf-unit-term" data-audio-field="term">'+term+'</div>'+
+          '<div><div class="lf-unit-term" data-audio-field="term">'+term+'</div>'+infoHtml(card)+formsHtml(card)+synHtml(card)+
           (short ? '<div class="lf-unit-short" data-audio-field="short">'+short+'</div>' : '')+'</div>'+
         '</div>'+
         (termTranslation ?
@@ -25556,13 +25668,14 @@ function debugOpenStory(topicIndex){
 // майже ідентичний шаблон розмітки. Один стовпчик, на всю ширину:
 // текст зліва (категорія + основний текст + короткий підпис), шеврон
 // справа. onclickAttr — вже готовий рядок виклику (напр. "openFavCard(3)").
-function renderMiniCardRow(catId, title, sub, onclickAttr){
+function renderMiniCardRow(catId, title, sub, onclickAttr, extraHtml){
   const cat = typeof CATS!=='undefined' ? CATS.find(c=>c.id===catId) : null;
   const catLabel = cat ? catLabelHtml(cat) : _escapeHtmlText(catId||'');
   return `<div class="vocab-mini-card" onclick="${onclickAttr}">`+
     `<div class="vmc-body">`+
       `<div class="vmc-cat">${catLabel}</div>`+
       `<div class="vmc-term">${title||''}</div>`+
+      (extraHtml||'')+
       `<div class="vmc-short">${sub||''}</div>`+
     `</div>`+
     `<div class="vmc-chevron">›</div>`+
@@ -25959,7 +26072,7 @@ function _vocabListRow(v, onclickAttr){
   const pl = primaryLang(), tl = transLang();
   const main = v.term?.[pl] || '';
   const tr   = (tl && tl !== pl) ? (v.term?.[tl] || '') : '';
-  return renderMiniCardRow(v.cat, main, tr, onclickAttr);
+  return renderMiniCardRow(v.cat, main, tr, onclickAttr, infoHtml(v));
 }
 function renderFavGrid(){
   const favs=_favSortedVocab();
