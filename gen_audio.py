@@ -184,6 +184,7 @@ COURSES = [
     'Deutsch-A2',
     'Deutsch-B1',
     'Deutsch-C1',
+    'Leben-in-Deutschland',
 ]
 
 AUDIO_ROOT = pathlib.Path('audio')
