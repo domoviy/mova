@@ -65,22 +65,24 @@ self.addEventListener('fetch', event => {
     return;
   }
 
-  // Cache First: дані курсів (data/<курс>/*.json?v=…) та версійні скрипти (<курс>.js?v=…,
-  // characters.js?v=…). Адреса містить версію застосунку, тож вміст за нею незмінний: нова версія
-  // = інша адреса. Раніше такі запити потрапляли в "Stale While Revalidate" внизу, який ЩОРАЗУ
-  // перекачував файл у фоні навіть коли він уже в кеші — для бази курсу це кілька МБ на запуск.
+  // Дані курсів (data/<курс>/*.json) та версійні скрипти (<курс>.js?v=…): кеш використовується
+  // ЛИШЕ якщо сервер не має новішої версії. Запит іде з cache:'no-cache' — браузер обходить
+  // свій HTTP-кеш і питає сервер умовним запитом (If-None-Match/ETag). Файл не змінився →
+  // сервер відповідає 304 без тіла (дешево), змінився → качаємо новий і перезаписуємо кеш.
+  // Мережі немає (офлайн) → віддаємо те, що в кеші. Це не залежить від того, чи змінився ?v=.
   if (url.pathname.startsWith('/data/') ||
       (url.pathname.endsWith('.js') && url.searchParams.has('v'))) {
     event.respondWith(
-      caches.match(event.request).then(cached =>
-        cached || fetch(event.request).then(res => {
+      fetch(event.request, { cache: 'no-cache' })
+        .then(res => {
           if (res.ok) {
             const clone = res.clone();
             caches.open(CACHE_NAME).then(c => c.put(event.request, clone));
+            return res;
           }
-          return res;
+          return caches.match(event.request).then(cached => cached || res);
         })
-      )
+        .catch(() => caches.match(event.request))
     );
     return;
   }
