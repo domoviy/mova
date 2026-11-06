@@ -15,7 +15,7 @@ var AUDIO_CONFIG = {
 var GRAMMAR = [
   {
     "id": "hoefliche_bitten_konjunktiv_b1",
-    "title": {"de": "Höfliche Bitten (Konjunktiv II): Könnten Sie …?", "en": "Polite requests (Subjunctive II): Could you …?", "uk": "Ввічливі прохання (Кон'юнктив II): Могли б Ви …?", "ru": "Вежливые просьбы (Конъюнктив II): Могли бы Вы …?"},
+    "title": {"de": "Höfliche Bitten (Konjunktiv II): Könnten Sie …?", "en": "Polite requests (Subjunctive II): Could you …?", "uk": "Ввічливі прохання (Конʼюнктив II): Могли б Ви …?", "ru": "Вежливые просьбы (Конъюнктив II): Могли бы Вы …?"},
     "explanation": {
       "de": "Willst du höflich um etwas bitten oder fragen, benutzt du <g>Konjunktiv II</g> statt des normalen Präsens.<br>Die zwei häufigsten Formen sind <g>könnten</g> (von können) und <g>würden</g> (von werden) + Infinitiv am Satzende.<br><b>Wichtig:</b> Das Hauptverb bleibt im Infinitiv und steht ganz am Ende.<br>Beispiel: <g>Könnten</g> Sie mir bitte helfen? <g>Würden</g> Sie das Fenster schließen?<br>Vergleiche: Hilf mir! (direkter Befehl) vs. <g>Könnten</g> Sie mir helfen? (höflich)",
       "en": "When you want to politely ask for something or ask a question, use <g>Konjunktiv II</g> instead of the normal present tense.<br>The two most common forms are <g>könnten</g> (from können) and <g>würden</g> (from werden) + infinitive at the end of the sentence.<br><b>Important:</b> the main verb stays in the infinitive and goes right to the end.<br>Example: <g>Könnten</g> Sie mir bitte helfen? (Could you please help me?) <g>Würden</g> Sie das Fenster schließen? (Would you close the window?)<br>Compare: Hilf mir! (a direct command) vs. <g>Könnten</g> Sie mir helfen? (polite)",
@@ -35,7 +35,7 @@ var GRAMMAR = [
     "explanation": {
       "de": "Wenn im Satz zwei Verben stehen, verbindet man sie oft mit <g>zu</g> + Infinitiv, das am Ende des Satzes steht.<br>Das passiert typischerweise nach Ausdrücken wie <g>Es ist wichtig, ... zu ...</g>, <g>Ich habe Lust, ... zu ...</g> oder <g>Ich versuche, ... zu ...</g>.<br><b>Achtung bei trennbaren Verben:</b> das 'zu' rutscht zwischen Präfix und Stamm (einkaufen -> einzukaufen).<br>Beispiel: Ich versuche, Deutsch <g>zu lernen</g>. Es ist schön, <g>einzukaufen</g>.<br>Nach Modalverben (können, müssen ...) fällt das 'zu' dagegen weg: Ich kann Deutsch lernen.",
       "en": "When a sentence has two verbs, they're often connected with <g>zu</g> + infinitive, placed at the end of the sentence.<br>This typically happens after expressions like <g>Es ist wichtig, ... zu ...</g>, <g>Ich habe Lust, ... zu ...</g>, or <g>Ich versuche, ... zu ...</g>.<br><b>Careful with separable verbs:</b> 'zu' slips between the prefix and the stem (einkaufen -> einzukaufen).<br>Example: Ich versuche, Deutsch <g>zu lernen</g>. (I'm trying to learn German.) Es ist schön, <g>einzukaufen</g>. (It's nice to go shopping.)<br>After modal verbs (können, müssen ...), however, 'zu' is dropped: Ich kann Deutsch lernen.",
-      "uk": "Коли в реченні є два дієслова, їх часто з'єднують за допомогою <g>zu</g> + інфінітив, який стоїть у кінці речення.<br>Це типово трапляється після зворотів на кшталт <g>Es ist wichtig, ... zu ...</g>, <g>Ich habe Lust, ... zu ...</g> або <g>Ich versuche, ... zu ...</g>.<br><b>Увага з відокремлюваними дієсловами:</b> 'zu' вставляється між префіксом та основою (einkaufen -> einzukaufen).<br>Приклад: Ich versuche, Deutsch <g>zu lernen</g>. (Я намагаюсь вивчити німецьку.) Es ist schön, <g>einzukaufen</g>. (Приємно робити покупки.)<br>А от після модальних дієслів (können, müssen ...) 'zu' не вживається: Ich kann Deutsch lernen.",
+      "uk": "Коли в реченні є два дієслова, їх часто зʼєднують за допомогою <g>zu</g> + інфінітив, який стоїть у кінці речення.<br>Це типово трапляється після зворотів на кшталт <g>Es ist wichtig, ... zu ...</g>, <g>Ich habe Lust, ... zu ...</g> або <g>Ich versuche, ... zu ...</g>.<br><b>Увага з відокремлюваними дієсловами:</b> 'zu' вставляється між префіксом та основою (einkaufen -> einzukaufen).<br>Приклад: Ich versuche, Deutsch <g>zu lernen</g>. (Я намагаюсь вивчити німецьку.) Es ist schön, <g>einzukaufen</g>. (Приємно робити покупки.)<br>А от після модальних дієслів (können, müssen ...) 'zu' не вживається: Ich kann Deutsch lernen.",
       "ru": "Когда в предложении два глагола, их часто соединяют с помощью <g>zu</g> + инфинитив, который стоит в конце предложения.<br>Обычно это происходит после выражений вроде <g>Es ist wichtig, ... zu ...</g>, <g>Ich habe Lust, ... zu ...</g> или <g>Ich versuche, ... zu ...</g>.<br><b>Внимание с отделяемыми глаголами:</b> 'zu' вставляется между приставкой и основой (einkaufen -> einzukaufen).<br>Пример: Ich versuche, Deutsch <g>zu lernen</g>. (Я пытаюсь выучить немецкий.) Es ist schön, <g>einzukaufen</g>. (Приятно делать покупки.)<br>А вот после модальных глаголов (können, müssen ...) 'zu' не используется: Ich kann Deutsch lernen."
     },
     "rule": {
@@ -51,13 +51,13 @@ var GRAMMAR = [
     "explanation": {
       "de": "<g>sowohl ... als auch</g> und <g>weder ... noch</g> sind zweiteilige Konnektoren, die zwei gleichartige Satzteile verbinden.<br><b><g>sowohl ... als auch</g></b> = Plus + Plus: beide Dinge treffen zu.<br><b><g>weder ... noch</g></b> = Minus + Minus: keins von beiden trifft zu.<br>Beispiel: Ich spreche <g>sowohl</g> Englisch <g>als auch</g> Deutsch. (beides ist wahr)<br>Er trinkt <g>weder</g> Kaffee <g>noch</g> Tee. (nichts von beidem)<br><b>Tipp:</b> Bei <g>weder ... noch</g> braucht der Satz kein zusätzliches 'nicht'.",
       "en": "<g>sowohl ... als auch</g> and <g>weder ... noch</g> are two-part connectors that link two similar parts of a sentence.<br><b><g>sowohl ... als auch</g></b> = Plus + Plus: both things are true.<br><b><g>weder ... noch</g></b> = Minus + Minus: neither thing is true.<br>Example: Ich spreche <g>sowohl</g> Englisch <g>als auch</g> Deutsch. (both are true — I speak both English and German.)<br>Er trinkt <g>weder</g> Kaffee <g>noch</g> Tee. (neither one — He drinks neither coffee nor tea.)<br><b>Tip:</b> with <g>weder ... noch</g> the sentence doesn't need an extra 'nicht'.",
-      "uk": "<g>sowohl ... als auch</g> та <g>weder ... noch</g> — це подвійні сполучники, які з'єднують два однорідні члени речення.<br><b><g>sowohl ... als auch</g></b> = Плюс + Плюс: обидва варіанти правдиві.<br><b><g>weder ... noch</g></b> = Мінус + Мінус: жоден з варіантів не правдивий.<br>Приклад: Ich spreche <g>sowohl</g> Englisch <g>als auch</g> Deutsch. (правда і те, і інше — Я розмовляю як англійською, так і німецькою.)<br>Er trinkt <g>weder</g> Kaffee <g>noch</g> Tee. (жодне з двох — Він не п'є ні кави, ні чаю.)<br><b>Порада:</b> з <g>weder ... noch</g> реченню не потрібне додаткове заперечення 'nicht'.",
+      "uk": "<g>sowohl ... als auch</g> та <g>weder ... noch</g> — це подвійні сполучники, які зʼєднують два однорідні члени речення.<br><b><g>sowohl ... als auch</g></b> = Плюс + Плюс: обидва варіанти правдиві.<br><b><g>weder ... noch</g></b> = Мінус + Мінус: жоден з варіантів не правдивий.<br>Приклад: Ich spreche <g>sowohl</g> Englisch <g>als auch</g> Deutsch. (правда і те, і інше — Я розмовляю як англійською, так і німецькою.)<br>Er trinkt <g>weder</g> Kaffee <g>noch</g> Tee. (жодне з двох — Він не пʼє ні кави, ні чаю.)<br><b>Порада:</b> з <g>weder ... noch</g> реченню не потрібне додаткове заперечення 'nicht'.",
       "ru": "<g>sowohl ... als auch</g> и <g>weder ... noch</g> — это двойные союзы, которые соединяют два однородных члена предложения.<br><b><g>sowohl ... als auch</g></b> = Плюс + Плюс: верны оба варианта.<br><b><g>weder ... noch</g></b> = Минус + Минус: ни один из вариантов не верен.<br>Пример: Ich spreche <g>sowohl</g> Englisch <g>als auch</g> Deutsch. (верно и то, и другое — Я говорю как на английском, так и на немецком.)<br>Er trinkt <g>weder</g> Kaffee <g>noch</g> Tee. (ни то, ни другое — Он не пьет ни кофе, ни чай.)<br><b>Совет:</b> с <g>weder ... noch</g> предложению не нужно дополнительное отрицание 'nicht'."
     },
     "rule": {
       "de": "<b>Struktur</b><br><table><tr><th>Konnektor</th><th>Bedeutung</th></tr><tr><td><g>sowohl ... als auch</g></td><td>Plus + Plus (beides trifft zu)</td></tr><tr><td><g>weder ... noch</g></td><td>Minus + Minus (nichts von beidem trifft zu)</td></tr></table><br>Beide sind zweiteilige Konnektoren und verbinden zwei gleichartige Satzteile (z. B. zwei Nomen, zwei Verben, zwei Adjektive).<br><br><b>Wortstellung</b><br>Bei <g>weder ... noch</g> bleibt der Satz positiv, ein zusätzliches 'nicht' oder 'kein' ist nicht nötig.<br><br><b>Beispiele</b><br>Ich spreche <g>sowohl</g> Englisch <g>als auch</g> Deutsch.<br>Er trinkt <g>weder</g> Kaffee <g>noch</g> Tee.<br>Sie ist <g>weder</g> müde <g>noch</g> hungrig.",
       "en": "<b>Structure</b><br><table><tr><th>Connector</th><th>Meaning</th></tr><tr><td><g>sowohl ... als auch</g></td><td>Plus + Plus (both are true)</td></tr><tr><td><g>weder ... noch</g></td><td>Minus + Minus (neither is true)</td></tr></table><br>Both are two-part connectors that link two parallel sentence parts (e.g. two nouns, two verbs, two adjectives).<br><br><b>Word order</b><br>With <g>weder ... noch</g>, the sentence stays grammatically positive — no extra 'nicht' or 'kein' is needed.<br><br><b>Examples</b><br>Ich spreche <g>sowohl</g> Englisch <g>als auch</g> Deutsch.<br>Er trinkt <g>weder</g> Kaffee <g>noch</g> Tee.<br>Sie ist <g>weder</g> müde <g>noch</g> hungrig.",
-      "uk": "<b>Структура</b><br><table><tr><th>Сполучник</th><th>Значення</th></tr><tr><td><g>sowohl ... als auch</g></td><td>Плюс + Плюс (і те, і інше)</td></tr><tr><td><g>weder ... noch</g></td><td>Мінус + Мінус (ні те, ні інше)</td></tr></table><br>Обидва — подвійні сполучники, що з'єднують два однорідні члени речення (наприклад, два іменники, два дієслова, два прикметники).<br><br><b>Порядок слів</b><br>З <g>weder ... noch</g> речення залишається стверджувальним за формою, додаткове заперечення 'nicht' чи 'kein' не потрібне.<br><br><b>Приклади</b><br>Ich spreche <g>sowohl</g> Englisch <g>als auch</g> Deutsch. (Я розмовляю як англійською, так і німецькою.)<br>Er trinkt <g>weder</g> Kaffee <g>noch</g> Tee. (Він не п'є ні кави, ні чаю.)<br>Sie ist <g>weder</g> müde <g>noch</g> hungrig. (Вона ні втомлена, ні голодна.)",
+      "uk": "<b>Структура</b><br><table><tr><th>Сполучник</th><th>Значення</th></tr><tr><td><g>sowohl ... als auch</g></td><td>Плюс + Плюс (і те, і інше)</td></tr><tr><td><g>weder ... noch</g></td><td>Мінус + Мінус (ні те, ні інше)</td></tr></table><br>Обидва — подвійні сполучники, що зʼєднують два однорідні члени речення (наприклад, два іменники, два дієслова, два прикметники).<br><br><b>Порядок слів</b><br>З <g>weder ... noch</g> речення залишається стверджувальним за формою, додаткове заперечення 'nicht' чи 'kein' не потрібне.<br><br><b>Приклади</b><br>Ich spreche <g>sowohl</g> Englisch <g>als auch</g> Deutsch. (Я розмовляю як англійською, так і німецькою.)<br>Er trinkt <g>weder</g> Kaffee <g>noch</g> Tee. (Він не пʼє ні кави, ні чаю.)<br>Sie ist <g>weder</g> müde <g>noch</g> hungrig. (Вона ні втомлена, ні голодна.)",
       "ru": "<b>Структура</b><br><table><tr><th>Союз</th><th>Значение</th></tr><tr><td><g>sowohl ... als auch</g></td><td>Плюс + Плюс (и то, и другое верно)</td></tr><tr><td><g>weder ... noch</g></td><td>Минус + Минус (ни то, ни другое неверно)</td></tr></table><br>Оба союза — двухчастные и соединяют два однородных члена предложения (например, два существительных, два глагола, два прилагательных).<br><br><b>Порядок слов</b><br>С <g>weder ... noch</g> предложение остаётся грамматически положительным, дополнительное отрицание 'nicht' или 'kein' не нужно.<br><br><b>Примеры</b><br>Ich spreche <g>sowohl</g> Englisch <g>als auch</g> Deutsch. (Я говорю как на английском, так и на немецком.)<br>Er trinkt <g>weder</g> Kaffee <g>noch</g> Tee. (Он не пьет ни кофе, ни чай.)<br>Sie ist <g>weder</g> müde <g>noch</g> hungrig. (Она ни устала, ни голодна.)"
     }
   },
@@ -67,13 +67,13 @@ var GRAMMAR = [
     "explanation": {
       "de": "Modalverben verändern die Bedeutung des Hauptverbs. <g>müssen</g> = Pflicht, <g>dürfen</g> = Erlaubnis (mit nicht = Verbot), <g>sollen</g> = Aufgabe/Ratschlag, <g>können</g> = Fähigkeit, <g>wollen</g> = Wunsch.<br><b>Satzbau:</b> Modalverb auf Position 2, Hauptverb im Infinitiv ganz am Ende.<br>Beispiel: Hier <g>darf</g> man nicht rauchen. Du <g>musst</g> leise sein.<br><b>Achtung:</b> <g>nicht dürfen</g> (verboten) ist NICHT dasselbe wie <g>nicht müssen</g> (nicht nötig)!",
       "en": "Modal verbs change the meaning of the main verb. <g>müssen</g> = obligation, <g>dürfen</g> = permission (with nicht = prohibition), <g>sollen</g> = task/advice, <g>können</g> = ability, <g>wollen</g> = wish.<br><b>Sentence structure:</b> modal verb in position 2, main verb in the infinitive right at the end.<br>Example: Hier <g>darf</g> man nicht rauchen. (You're not allowed to smoke here.) Du <g>musst</g> leise sein. (You have to be quiet.)<br><b>Careful:</b> <g>nicht dürfen</g> (forbidden) is NOT the same as <g>nicht müssen</g> (not necessary)!",
-      "uk": "Модальні дієслова змінюють значення основного дієслова. <g>müssen</g> = обов'язок, <g>dürfen</g> = дозвіл (з nicht = заборона), <g>sollen</g> = завдання/порада, <g>können</g> = здатність, <g>wollen</g> = бажання.<br><b>Побудова речення:</b> модальне дієслово на 2-й позиції, основне дієслово в інфінітиві в самому кінці.<br>Приклад: Hier <g>darf</g> man nicht rauchen. (Тут не можна курити.) Du <g>musst</g> leise sein. (Ти маєш бути тихим.)<br><b>Увага:</b> <g>nicht dürfen</g> (заборонено) — це НЕ те саме, що <g>nicht müssen</g> (не обов'язково)!",
+      "uk": "Модальні дієслова змінюють значення основного дієслова. <g>müssen</g> = обовʼязок, <g>dürfen</g> = дозвіл (з nicht = заборона), <g>sollen</g> = завдання/порада, <g>können</g> = здатність, <g>wollen</g> = бажання.<br><b>Побудова речення:</b> модальне дієслово на 2-й позиції, основне дієслово в інфінітиві в самому кінці.<br>Приклад: Hier <g>darf</g> man nicht rauchen. (Тут не можна курити.) Du <g>musst</g> leise sein. (Ти маєш бути тихим.)<br><b>Увага:</b> <g>nicht dürfen</g> (заборонено) — це НЕ те саме, що <g>nicht müssen</g> (не обовʼязково)!",
       "ru": "Модальные глаголы меняют значение основного глагола. <g>müssen</g> = обязанность, <g>dürfen</g> = разрешение (с nicht = запрет), <g>sollen</g> = задание/совет, <g>können</g> = способность, <g>wollen</g> = желание.<br><b>Построение предложения:</b> модальный глагол на 2-й позиции, основной глагол в инфинитиве в самом конце.<br>Пример: Hier <g>darf</g> man nicht rauchen. (Здесь нельзя курить.) Du <g>musst</g> leise sein. (Ты должен вести себя тихо.)<br><b>Внимание:</b> <g>nicht dürfen</g> (запрещено) — это НЕ то же самое, что <g>nicht müssen</g> (не обязательно)!"
     },
     "rule": {
       "de": "<b>Modalverben — Übersicht</b><br><table><tr><th>Verb</th><th>Bedeutung</th></tr><tr><td><g>müssen</g></td><td>Pflicht, Notwendigkeit</td></tr><tr><td><g>dürfen</g></td><td>Erlaubnis; mit 'nicht' = Verbot</td></tr><tr><td><g>sollen</g></td><td>Aufgabe, Ratschlag (von jemand anderem)</td></tr><tr><td><g>können</g></td><td>Fähigkeit, Möglichkeit</td></tr><tr><td><g>wollen</g></td><td>Wunsch, Absicht</td></tr><tr><td><g>möchten</g></td><td>höflicher Wunsch</td></tr></table><br><b>Satzbau</b><br>Modalverb = Position 2 (konjugiert), Hauptverb = Infinitiv am Ende.<br>Hier <g>darf</g> man nicht rauchen.<br>Du <g>musst</g> leise sein.<br><br><b>Achtung:</b> <g>nicht dürfen</g> = Verbot, aber <g>nicht müssen</g> = keine Pflicht (nicht dasselbe!).<br>Du <b>musst</b> das nicht machen. (= es ist nicht nötig)<br>Du <b>darfst</b> das nicht machen. (= es ist verboten)",
       "en": "<b>Modal verbs — overview</b><br><table><tr><th>Verb</th><th>Meaning</th></tr><tr><td><g>müssen</g></td><td>obligation, necessity</td></tr><tr><td><g>dürfen</g></td><td>permission; with 'nicht' = prohibition</td></tr><tr><td><g>sollen</g></td><td>task or advice (from someone else)</td></tr><tr><td><g>können</g></td><td>ability, possibility</td></tr><tr><td><g>wollen</g></td><td>wish, intention</td></tr><tr><td><g>möchten</g></td><td>polite wish</td></tr></table><br><b>Sentence structure</b><br>Modal verb = position 2 (conjugated), main verb = infinitive at the end.<br>Hier <g>darf</g> man nicht rauchen.<br>Du <g>musst</g> leise sein.<br><br><b>Careful:</b> <g>nicht dürfen</g> = prohibition, but <g>nicht müssen</g> = no obligation (not the same thing!).<br>Du <b>musst</b> das nicht machen. (= it's not necessary)<br>Du <b>darfst</b> das nicht machen. (= it's forbidden)",
-      "uk": "<b>Модальні дієслова — огляд</b><br><table><tr><th>Дієслово</th><th>Значення</th></tr><tr><td><g>müssen</g></td><td>обов'язок, необхідність</td></tr><tr><td><g>dürfen</g></td><td>дозвіл; із 'nicht' = заборона</td></tr><tr><td><g>sollen</g></td><td>порада чи доручення (від когось іншого)</td></tr><tr><td><g>können</g></td><td>здатність, можливість</td></tr><tr><td><g>wollen</g></td><td>бажання, намір</td></tr><tr><td><g>möchten</g></td><td>ввічливе бажання</td></tr></table><br><b>Побудова речення</b><br>Модальне дієслово — на 2-й позиції (змінюване), основне дієслово — інфінітив у кінці.<br>Hier <g>darf</g> man nicht rauchen. (Тут не можна курити.)<br>Du <g>musst</g> leise sein. (Ти маєш бути тихим.)<br><br><b>Увага:</b> <g>nicht dürfen</g> = заборона, а <g>nicht müssen</g> = відсутність обов'язку (це не одне й те саме!).<br>Du <b>musst</b> das nicht machen. (= не обов'язково)<br>Du <b>darfst</b> das nicht machen. (= заборонено)",
+      "uk": "<b>Модальні дієслова — огляд</b><br><table><tr><th>Дієслово</th><th>Значення</th></tr><tr><td><g>müssen</g></td><td>обовʼязок, необхідність</td></tr><tr><td><g>dürfen</g></td><td>дозвіл; із 'nicht' = заборона</td></tr><tr><td><g>sollen</g></td><td>порада чи доручення (від когось іншого)</td></tr><tr><td><g>können</g></td><td>здатність, можливість</td></tr><tr><td><g>wollen</g></td><td>бажання, намір</td></tr><tr><td><g>möchten</g></td><td>ввічливе бажання</td></tr></table><br><b>Побудова речення</b><br>Модальне дієслово — на 2-й позиції (змінюване), основне дієслово — інфінітив у кінці.<br>Hier <g>darf</g> man nicht rauchen. (Тут не можна курити.)<br>Du <g>musst</g> leise sein. (Ти маєш бути тихим.)<br><br><b>Увага:</b> <g>nicht dürfen</g> = заборона, а <g>nicht müssen</g> = відсутність обовʼязку (це не одне й те саме!).<br>Du <b>musst</b> das nicht machen. (= не обовʼязково)<br>Du <b>darfst</b> das nicht machen. (= заборонено)",
       "ru": "<b>Модальные глаголы — обзор</b><br><table><tr><th>Глагол</th><th>Значение</th></tr><tr><td><g>müssen</g></td><td>обязанность, необходимость</td></tr><tr><td><g>dürfen</g></td><td>разрешение; с 'nicht' = запрет</td></tr><tr><td><g>sollen</g></td><td>задание или совет (от кого-то другого)</td></tr><tr><td><g>können</g></td><td>способность, возможность</td></tr><tr><td><g>wollen</g></td><td>желание, намерение</td></tr><tr><td><g>möchten</g></td><td>вежливое желание</td></tr></table><br><b>Построение предложения</b><br>Модальный глагол — на 2-й позиции (спрягаемый), основной глагол — инфинитив в конце.<br>Hier <g>darf</g> man nicht rauchen. (Здесь нельзя курить.)<br>Du <g>musst</g> leise sein. (Ты должен вести себя тихо.)<br><br><b>Внимание:</b> <g>nicht dürfen</g> = запрет, а <g>nicht müssen</g> = отсутствие обязанности (это не одно и то же!).<br>Du <b>musst</b> das nicht machen. (= не обязательно)<br>Du <b>darfst</b> das nicht machen. (= запрещено)"
     }
   },
@@ -115,7 +115,7 @@ var GRAMMAR = [
     "explanation": {
       "de": "Ein Relativsatz gibt zusätzliche Information über ein Nomen. Das <g>Relativpronomen</g> im Nominativ (<g>der, die, das, die</g>) ist das Subjekt dieses Nebensatzes, und das Verb rutscht ans Ende.<br>Beispiel: Das ist der Mann, <g>der</g> das Auto repariert.<br><b>Zusätzlich:</b> Der Konnektor <g>sondern</g> korrigiert eine Verneinung und bedeutet 'aber stattdessen' — er kommt NUR nach nicht/kein.<br>Beispiel: Ich kaufe nicht Saft, <g>sondern</g> Milch.",
       "en": "A relative clause gives extra information about a noun. The <g>relative pronoun</g> in the nominative (<g>der, die, das, die</g>) is the subject of this subordinate clause, and the verb moves to the end.<br>Example: Das ist der Mann, <g>der</g> das Auto repariert. (That's the man who is fixing the car.)<br><b>In addition:</b> the connector <g>sondern</g> corrects a negation and means 'but instead' — it only appears after nicht/kein.<br>Example: Ich kaufe nicht Saft, <g>sondern</g> Milch. (I'm not buying juice, but milk.)",
-      "uk": "Підрядне означальне речення дає додаткову інформацію про іменник. <g>Відносний займенник</g> у називному відмінку (<g>der, die, das, die</g>) є підметом цього підрядного речення, і дієслово переходить у кінець.<br>Приклад: Das ist der Mann, <g>der</g> das Auto repariert. (Це чоловік, який ремонтує машину.)<br><b>Додатково:</b> сполучник <g>sondern</g> виправляє заперечення і означає 'а, натомість' — він з'являється ЛИШЕ після nicht/kein.<br>Приклад: Ich kaufe nicht Saft, <g>sondern</g> Milch. (Я купую не сік, а молоко.)",
+      "uk": "Підрядне означальне речення дає додаткову інформацію про іменник. <g>Відносний займенник</g> у називному відмінку (<g>der, die, das, die</g>) є підметом цього підрядного речення, і дієслово переходить у кінець.<br>Приклад: Das ist der Mann, <g>der</g> das Auto repariert. (Це чоловік, який ремонтує машину.)<br><b>Додатково:</b> сполучник <g>sondern</g> виправляє заперечення і означає 'а, натомість' — він зʼявляється ЛИШЕ після nicht/kein.<br>Приклад: Ich kaufe nicht Saft, <g>sondern</g> Milch. (Я купую не сік, а молоко.)",
       "ru": "Придаточное определительное предложение дает дополнительную информацию о существительном. <g>Относительное местоимение</g> в именительном падеже (<g>der, die, das, die</g>) является подлежащим этого придаточного предложения, и глагол переходит в конец.<br>Пример: Das ist der Mann, <g>der</g> das Auto repariert. (Это мужчина, который ремонтирует машину.)<br><b>Дополнительно:</b> союз <g>sondern</g> исправляет отрицание и означает 'а, наоборот' — он появляется ТОЛЬКО после nicht/kein.<br>Пример: Ich kaufe nicht Saft, <g>sondern</g> Milch. (Я покупаю не сок, а молоко.)"
     },
     "rule": {
@@ -153,7 +153,7 @@ var GRAMMAR = [
     "rule": {
       "de": "<b>Komposita: Nomen + Nomen</b><br>Zwei (oder mehr) Nomen werden zu einem neuen Wort zusammengesetzt. Das <b>letzte</b> Nomen bestimmt Artikel und Plural des ganzen Wortes.<br><br><table><tr><th>Nomen 1</th><th>Nomen 2</th><th>Kompositum</th></tr><tr><td>der Tisch</td><td>das Tennis + die Platte</td><td><g>die Tischtennisplatte</g></td></tr><tr><td>die Schule</td><td>der Hof</td><td><g>der Schulhof</g></td></tr><tr><td>der Kaffee</td><td>die Tasse</td><td><g>die Kaffeetasse</g></td></tr></table><br><b>Regel:</b> letztes Nomen = Artikel; die Betonung liegt auf dem ersten Wortteil.",
       "en": "<b>Compounds: noun + noun</b><br>Two (or more) nouns are combined into one new word. The <b>last</b> noun determines the article and plural of the whole word.<br><br><table><tr><th>Noun 1</th><th>Noun 2</th><th>Compound</th></tr><tr><td>der Tisch</td><td>das Tennis + die Platte</td><td><g>die Tischtennisplatte</g></td></tr><tr><td>die Schule</td><td>der Hof</td><td><g>der Schulhof</g></td></tr><tr><td>der Kaffee</td><td>die Tasse</td><td><g>die Kaffeetasse</g></td></tr></table><br><b>Rule:</b> last noun = article; stress falls on the first part of the word.",
-      "uk": "<b>Композити: іменник + іменник</b><br>Два (або більше) іменники з'єднуються в одне нове слово. <b>Останній</b> іменник визначає артикль та множину всього слова.<br><br><table><tr><th>Іменник 1</th><th>Іменник 2</th><th>Композит</th></tr><tr><td>der Tisch</td><td>das Tennis + die Platte</td><td><g>die Tischtennisplatte</g></td></tr><tr><td>die Schule</td><td>der Hof</td><td><g>der Schulhof</g></td></tr><tr><td>der Kaffee</td><td>die Tasse</td><td><g>die Kaffeetasse</g></td></tr></table><br><b>Правило:</b> останній іменник = артикль; наголос падає на першу частину слова.",
+      "uk": "<b>Композити: іменник + іменник</b><br>Два (або більше) іменники зʼєднуються в одне нове слово. <b>Останній</b> іменник визначає артикль та множину всього слова.<br><br><table><tr><th>Іменник 1</th><th>Іменник 2</th><th>Композит</th></tr><tr><td>der Tisch</td><td>das Tennis + die Platte</td><td><g>die Tischtennisplatte</g></td></tr><tr><td>die Schule</td><td>der Hof</td><td><g>der Schulhof</g></td></tr><tr><td>der Kaffee</td><td>die Tasse</td><td><g>die Kaffeetasse</g></td></tr></table><br><b>Правило:</b> останній іменник = артикль; наголос падає на першу частину слова.",
       "ru": "<b>Композиты: существительное + существительное</b><br>Два (или более) существительных соединяются в одно новое слово. <b>Последнее</b> существительное определяет артикль и множественное число всего слова.<br><br><table><tr><th>Существительное 1</th><th>Существительное 2</th><th>Композит</th></tr><tr><td>der Tisch</td><td>das Tennis + die Platte</td><td><g>die Tischtennisplatte</g></td></tr><tr><td>die Schule</td><td>der Hof</td><td><g>der Schulhof</g></td></tr><tr><td>der Kaffee</td><td>die Tasse</td><td><g>die Kaffeetasse</g></td></tr></table><br><b>Правило:</b> последнее существительное = артикль; ударение падает на первую часть слова."
     }
   },
@@ -169,7 +169,7 @@ var GRAMMAR = [
     "rule": {
       "de": "<b>Modalverben für Vermutungen (Konjunktiv II)</b><br><table><tr><th>Verb</th><th>Sicherheit</th></tr><tr><td><g>müsste</g></td><td>sehr sicher (fast 100%)</td></tr><tr><td><g>dürfte</g></td><td>wahrscheinlich</td></tr><tr><td><g>könnte</g></td><td>vielleicht möglich</td></tr></table><br><b>Beispiele</b><br>Es <g>müsste</g> schon 18 Uhr sein. (Ich bin fast sicher.)<br>Sie <g>dürfte</g> schon zu Hause sein. (wahrscheinlich)<br>Er <g>könnte</g> krank sein. (eine von mehreren Möglichkeiten)<br><br><b>Tipp:</b> Diese Form drückt eine subjektive Einschätzung aus, keine Tatsache.",
       "en": "<b>Modal verbs for assumptions (Konjunktiv II)</b><br><table><tr><th>Verb</th><th>Certainty</th></tr><tr><td><g>müsste</g></td><td>very certain (almost 100%)</td></tr><tr><td><g>dürfte</g></td><td>probably</td></tr><tr><td><g>könnte</g></td><td>maybe possible</td></tr></table><br><b>Examples</b><br>Es <g>müsste</g> schon 18 Uhr sein. (I'm almost sure.)<br>Sie <g>dürfte</g> schon zu Hause sein. (probably)<br>Er <g>könnte</g> krank sein. (one of several possibilities)<br><br><b>Tip:</b> This form expresses a subjective assessment, not a fact.",
-      "uk": "<b>Модальні дієслова для припущень (Konjunktiv II)</b><br><table><tr><th>Дієслово</th><th>Ступінь впевненості</th></tr><tr><td><g>müsste</g></td><td>дуже впевнений (майже 100%)</td></tr><tr><td><g>dürfte</g></td><td>імовірно</td></tr><tr><td><g>könnte</g></td><td>можливо, один з варіантів</td></tr></table><br><b>Приклади</b><br>Es <g>müsste</g> schon 18 Uhr sein. (Мабуть, уже 18:00; я майже впевнений.)<br>Sie <g>dürfte</g> schon zu Hause sein. (Вона, ймовірно, вже вдома.)<br>Er <g>könnte</g> krank sein. (Можливо, він хворий — один з варіантів.)<br><br><b>Порада:</b> Ця форма виражає суб'єктивну оцінку, а не факт.",
+      "uk": "<b>Модальні дієслова для припущень (Konjunktiv II)</b><br><table><tr><th>Дієслово</th><th>Ступінь впевненості</th></tr><tr><td><g>müsste</g></td><td>дуже впевнений (майже 100%)</td></tr><tr><td><g>dürfte</g></td><td>імовірно</td></tr><tr><td><g>könnte</g></td><td>можливо, один з варіантів</td></tr></table><br><b>Приклади</b><br>Es <g>müsste</g> schon 18 Uhr sein. (Мабуть, уже 18:00; я майже впевнений.)<br>Sie <g>dürfte</g> schon zu Hause sein. (Вона, ймовірно, вже вдома.)<br>Er <g>könnte</g> krank sein. (Можливо, він хворий — один з варіантів.)<br><br><b>Порада:</b> Ця форма виражає субʼєктивну оцінку, а не факт.",
       "ru": "<b>Модальные глаголы для предположений (Konjunktiv II)</b><br><table><tr><th>Глагол</th><th>Степень уверенности</th></tr><tr><td><g>müsste</g></td><td>очень уверен (почти 100%)</td></tr><tr><td><g>dürfte</g></td><td>вероятно</td></tr><tr><td><g>könnte</g></td><td>возможно, один из вариантов</td></tr></table><br><b>Примеры</b><br>Es <g>müsste</g> schon 18 Uhr sein. (Наверное, уже 18:00; я почти уверен.)<br>Sie <g>dürfte</g> schon zu Hause sein. (Она, вероятно, уже дома.)<br>Er <g>könnte</g> krank sein. (Возможно, он болен — один из вариантов.)<br><br><b>Совет:</b> Эта форма выражает субъективную оценку, а не факт."
     }
   },
@@ -211,7 +211,7 @@ var GRAMMAR = [
     "explanation": {
       "de": "Konnektoren verbinden zwei Sätze, aber je nach Konnektor ändert sich die Wortstellung unterschiedlich.<br><b>Nebensatz-Konnektoren</b> (<g>weil, dass, wenn, obwohl</g>) schicken das Verb ans Satzende.<br><b>Position-0-Konnektoren</b> (<g>aber, denn, oder, und</g>) verändern die Wortstellung gar nicht.<br><b>Position-1-Konnektoren</b> (<g>deshalb, trotzdem</g>) stehen selbst auf Platz 1, direkt danach folgt das Verb.<br>Beispiel: Ich bleibe zu Hause, <g>weil</g> es <g>regnet</g>. Es regnet, <g>aber</g> ich gehe raus. Es regnet, <g>deshalb bleibe</g> ich hier.",
       "en": "Connectors link two sentences, but depending on the connector, the word order changes differently.<br><b>Subordinate-clause connectors</b> (<g>weil, dass, wenn, obwohl</g>) send the verb to the end of the sentence.<br><b>Position-0 connectors</b> (<g>aber, denn, oder, und</g>) don't change the word order at all.<br><b>Position-1 connectors</b> (<g>deshalb, trotzdem</g>) take slot 1 themselves, with the verb right after.<br>Example: Ich bleibe zu Hause, <g>weil</g> es <g>regnet</g>. (I'm staying home because it's raining.) Es regnet, <g>aber</g> ich gehe raus. (It's raining, but I'm going out.) Es regnet, <g>deshalb bleibe</g> ich hier. (It's raining, so I'm staying here.)",
-      "uk": "Конектори з'єднують два речення, але залежно від конектора порядок слів змінюється по-різному.<br><b>Конектори підрядних речень</b> (<g>weil, dass, wenn, obwohl</g>) відправляють дієслово в кінець речення.<br><b>Конектори нульової позиції</b> (<g>aber, denn, oder, und</g>) взагалі не змінюють порядок слів.<br><b>Конектори 1-ї позиції</b> (<g>deshalb, trotzdem</g>) самі займають місце 1, одразу після них іде дієслово.<br>Приклад: Ich bleibe zu Hause, <g>weil</g> es <g>regnet</g>. (Я залишаюсь удома, бо йде дощ.) Es regnet, <g>aber</g> ich gehe raus. (Йде дощ, але я виходжу.) Es regnet, <g>deshalb bleibe</g> ich hier. (Йде дощ, тому я залишаюсь тут.)",
+      "uk": "Конектори зʼєднують два речення, але залежно від конектора порядок слів змінюється по-різному.<br><b>Конектори підрядних речень</b> (<g>weil, dass, wenn, obwohl</g>) відправляють дієслово в кінець речення.<br><b>Конектори нульової позиції</b> (<g>aber, denn, oder, und</g>) взагалі не змінюють порядок слів.<br><b>Конектори 1-ї позиції</b> (<g>deshalb, trotzdem</g>) самі займають місце 1, одразу після них іде дієслово.<br>Приклад: Ich bleibe zu Hause, <g>weil</g> es <g>regnet</g>. (Я залишаюсь удома, бо йде дощ.) Es regnet, <g>aber</g> ich gehe raus. (Йде дощ, але я виходжу.) Es regnet, <g>deshalb bleibe</g> ich hier. (Йде дощ, тому я залишаюсь тут.)",
       "ru": "Союзы соединяют два предложения, но в зависимости от союза порядок слов меняется по-разному.<br><b>Союзы придаточных предложений</b> (<g>weil, dass, wenn, obwohl</g>) отправляют глагол в конец предложения.<br><b>Союзы нулевой позиции</b> (<g>aber, denn, oder, und</g>) вообще не меняют порядок слов.<br><b>Союзы 1-й позиции</b> (<g>deshalb, trotzdem</g>) сами занимают место 1, сразу после них идет глагол.<br>Пример: Ich bleibe zu Hause, <g>weil</g> es <g>regnet</g>. (Я остаюсь дома, потому что идет дождь.) Es regnet, <g>aber</g> ich gehe raus. (Идет дождь, но я выхожу.) Es regnet, <g>deshalb bleibe</g> ich hier. (Идет дождь, поэтому я остаюсь тут.)"
     },
     "rule": {
@@ -243,7 +243,7 @@ var GRAMMAR = [
     "explanation": {
       "de": "Das <g>Präteritum</g> ist die einfache Vergangenheitsform, die man vor allem beim Schreiben (Geschichten, Berichte, Nachrichten) benutzt.<br><b>Regelmäßige Verben:</b> Stamm + <g>-te-</g> + Endung (ich mach<g>te</g>).<br><b>Unregelmäßige Verben:</b> der Stammvokal ändert sich, man muss die Form auswendig lernen (ich <g>ging</g>, ich <g>schrieb</g>).<br>Beispiel: Ich <g>machte</g> gestern meine Hausaufgaben.<br><b>Tipp:</b> Im gesprochenen Deutsch benutzt man meistens das Perfekt statt des Präteritums.",
       "en": "The <g>Präteritum</g> is the simple past tense, used mainly in writing (stories, reports, news).<br><b>Regular verbs:</b> stem + <g>-te-</g> + ending (ich mach<g>te</g>).<br><b>Irregular verbs:</b> the stem vowel changes, and you need to memorize the form (ich <g>ging</g>, ich <g>schrieb</g>).<br>Example: Ich <g>machte</g> gestern meine Hausaufgaben. (I did my homework yesterday.)<br><b>Tip:</b> in spoken German, people usually use the Perfekt instead of the Präteritum.",
-      "uk": "<g>Претерит</g> — це проста форма минулого часу, яку в основному використовують на письмі (розповіді, звіти, новини).<br><b>Регулярні дієслова:</b> основа + <g>-te-</g> + закінчення (ich mach<g>te</g>).<br><b>Нерегулярні дієслова:</b> коренева голосна змінюється, форму потрібно заучувати напам'ять (ich <g>ging</g>, ich <g>schrieb</g>).<br>Приклад: Ich <g>machte</g> gestern meine Hausaufgaben. (Я вчора робив домашнє завдання.)<br><b>Порада:</b> у розмовній німецькій зазвичай використовують перфект замість претерита.",
+      "uk": "<g>Претерит</g> — це проста форма минулого часу, яку в основному використовують на письмі (розповіді, звіти, новини).<br><b>Регулярні дієслова:</b> основа + <g>-te-</g> + закінчення (ich mach<g>te</g>).<br><b>Нерегулярні дієслова:</b> коренева голосна змінюється, форму потрібно заучувати напамʼять (ich <g>ging</g>, ich <g>schrieb</g>).<br>Приклад: Ich <g>machte</g> gestern meine Hausaufgaben. (Я вчора робив домашнє завдання.)<br><b>Порада:</b> у розмовній німецькій зазвичай використовують перфект замість претерита.",
       "ru": "<g>Претерит</g> — это простая форма прошедшего времени, которая используется в основном на письме (рассказы, отчеты, новости).<br><b>Регулярные глаголы:</b> основа + <g>-te-</g> + окончание (ich mach<g>te</g>).<br><b>Нерегулярные глаголы:</b> корневая гласная меняется, форму нужно заучивать наизусть (ich <g>ging</g>, ich <g>schrieb</g>).<br>Пример: Ich <g>machte</g> gestern meine Hausaufgaben. (Я вчера делал домашнее задание.)<br><b>Совет:</b> в разговорном немецком обычно используют перфект вместо претерита."
     },
     "rule": {
@@ -275,7 +275,7 @@ var GRAMMAR = [
     "explanation": {
       "de": "Wenn man zwei Nomen zu einem Kompositum verbindet, klingt es manchmal besser mit einem kleinen <g>Verbindungselement</g> (Fugenelement) dazwischen — meist <g>-s-</g>, <g>-n-</g> oder <g>-e-</g>.<br>Beispiel: die Arbeit + der Geber = der Arbeit<g>s</g>geber. die Frage + der Bogen = der Frage<g>n</g>bogen.<br><b>Wichtig:</b> Es gibt keine feste Regel dafür, welches Element benutzt wird — am besten lernst du neue Komposita einfach mit ihrem Fugenelement zusammen auswendig.",
       "en": "When you combine two nouns into a compound, it often sounds better with a small <g>linking element</g> (Fugenelement) in between — usually <g>-s-</g>, <g>-n-</g>, or <g>-e-</g>.<br>Example: die Arbeit + der Geber = der Arbeit<g>s</g>geber. die Frage + der Bogen = der Frage<g>n</g>bogen.<br><b>Important:</b> there's no fixed rule for which element to use — it's best to simply memorize new compounds together with their linking element.",
-      "uk": "Коли два іменники з'єднують у композит, часто звучить краще з невеликим <g>сполучним елементом</g> (Fugenelement) між ними — зазвичай <g>-s-</g>, <g>-n-</g> або <g>-e-</g>.<br>Приклад: die Arbeit + der Geber = der Arbeit<g>s</g>geber. die Frage + der Bogen = der Frage<g>n</g>bogen.<br><b>Важливо:</b> чіткого правила щодо того, який елемент вживається, немає — краще одразу заучувати нові композити разом з їхнім сполучним елементом.",
+      "uk": "Коли два іменники зʼєднують у композит, часто звучить краще з невеликим <g>сполучним елементом</g> (Fugenelement) між ними — зазвичай <g>-s-</g>, <g>-n-</g> або <g>-e-</g>.<br>Приклад: die Arbeit + der Geber = der Arbeit<g>s</g>geber. die Frage + der Bogen = der Frage<g>n</g>bogen.<br><b>Важливо:</b> чіткого правила щодо того, який елемент вживається, немає — краще одразу заучувати нові композити разом з їхнім сполучним елементом.",
       "ru": "Когда два существительных соединяют в композит, часто звучит лучше с небольшим <g>соединительным элементом</g> (Fugenelement) между ними — обычно <g>-s-</g>, <g>-n-</g> или <g>-e-</g>.<br>Пример: die Arbeit + der Geber = der Arbeit<g>s</g>geber. die Frage + der Bogen = der Frage<g>n</g>bogen.<br><b>Важно:</b> четкого правила насчет того, какой элемент использовать, нет — лучше сразу заучивать новые композиты вместе с их соединительным элементом."
     },
     "rule": {
@@ -291,13 +291,13 @@ var GRAMMAR = [
     "explanation": {
       "de": "Der <g>Genitiv</g> klingt formell und wird oft in geschriebener Sprache benutzt. Im Alltag und beim Sprechen ersetzt man ihn meistens durch <g>von</g> + Dativ — das ist einfacher.<br>Beispiel: Das Auto des Bruders (Genitiv, formell) -> Das Auto <g>von meinem Bruder</g> (von + Dativ, Alltag).<br><b>Tipp:</b> Bei Eigennamen ist <g>von</g> sogar Pflicht: die Tasche <g>von Anna</g> (nicht 'Annas Tasche' in der gesprochenen Sprache).",
       "en": "The <g>genitive</g> sounds formal and is often used in written language. In everyday spoken German, it's usually replaced by <g>von</g> + dative — which is simpler.<br>Example: Das Auto des Bruders (genitive, formal) -> Das Auto <g>von meinem Bruder</g> (von + dative, everyday).<br><b>Tip:</b> with proper names, <g>von</g> is even required: die Tasche <g>von Anna</g> (not 'Annas Tasche' in spoken language).",
-      "uk": "<g>Родовий відмінок (Genitiv)</g> звучить офіційно і часто вживається на письмі. У повсякденному мовленні його зазвичай замінюють на <g>von</g> + давальний — так простіше.<br>Приклад: Das Auto des Bruders (Genitiv, офіційно) -> Das Auto <g>von meinem Bruder</g> (von + Dativ, побутово).<br><b>Порада:</b> з власними іменами <g>von</g> навіть обов'язковий: die Tasche <g>von Anna</g> (а не 'Annas Tasche' у розмовній мові).",
+      "uk": "<g>Родовий відмінок (Genitiv)</g> звучить офіційно і часто вживається на письмі. У повсякденному мовленні його зазвичай замінюють на <g>von</g> + давальний — так простіше.<br>Приклад: Das Auto des Bruders (Genitiv, офіційно) -> Das Auto <g>von meinem Bruder</g> (von + Dativ, побутово).<br><b>Порада:</b> з власними іменами <g>von</g> навіть обовʼязковий: die Tasche <g>von Anna</g> (а не 'Annas Tasche' у розмовній мові).",
       "ru": "<g>Родительный падеж (Genitiv)</g> звучит официально и часто используется на письме. В повседневной разговорной речи его обычно заменяют на <g>von</g> + дательный — так проще.<br>Пример: Das Auto des Bruders (Genitiv, официально) -> Das Auto <g>von meinem Bruder</g> (von + Dativ, в быту).<br><b>Совет:</b> с именами собственными <g>von</g> даже обязателен: die Tasche <g>von Anna</g> (а не 'Annas Tasche' в разговорной речи)."
     },
     "rule": {
       "de": "<b>Genitiv vs. von + Dativ</b><br><table><tr><th>Genitiv (formell)</th><th>von + Dativ (Alltag)</th></tr><tr><td>das Auto <g>des Bruders</g></td><td>das Auto <g>von meinem Bruder</g></td></tr></table><br>Im Alltag und in der gesprochenen Sprache ersetzt man den Genitiv oft durch <g>von</g> + Dativ.<br><br><b>Beispiele</b><br>Das Auto <g>des Bruders</g>. (formell, Genitiv)<br>Das Auto <g>von meinem Bruder</g>. (Alltag, von + Dativ)<br><br><b>Tipp:</b> Bei Namen und bestimmten Konstruktionen ist <g>von</g> sogar notwendig: die Freundin <g>von Tom</g>.",
       "en": "<b>Genitive vs. von + Dative</b><br><table><tr><th>Genitive (formal)</th><th>von + Dative (everyday)</th></tr><tr><td>das Auto <g>des Bruders</g></td><td>das Auto <g>von meinem Bruder</g></td></tr></table><br>In everyday and spoken language, the genitive is often replaced by <g>von</g> + dative.<br><br><b>Examples</b><br>Das Auto <g>des Bruders</g>. (formal, genitive)<br>Das Auto <g>von meinem Bruder</g>. (everyday, von + dative)<br><br><b>Tip:</b> With names and certain constructions, <g>von</g> is even required: die Freundin <g>von Tom</g>.",
-      "uk": "<b>Родовий відмінок vs. von + давальний</b><br><table><tr><th>Genitiv (офіційно)</th><th>von + Dativ (у побуті)</th></tr><tr><td>das Auto <g>des Bruders</g></td><td>das Auto <g>von meinem Bruder</g></td></tr></table><br>У розмовній мові родовий відмінок часто замінюють на <g>von</g> + давальний відмінок.<br><br><b>Приклади</b><br>Das Auto <g>des Bruders</g>. (офіційно, Genitiv) — Машина брата.<br>Das Auto <g>von meinem Bruder</g>. (побутово, von + Dativ) — Машина мого брата.<br><br><b>Порада:</b> З іменами та деякими конструкціями <g>von</g> навіть обов'язковий: die Freundin <g>von Tom</g>.",
+      "uk": "<b>Родовий відмінок vs. von + давальний</b><br><table><tr><th>Genitiv (офіційно)</th><th>von + Dativ (у побуті)</th></tr><tr><td>das Auto <g>des Bruders</g></td><td>das Auto <g>von meinem Bruder</g></td></tr></table><br>У розмовній мові родовий відмінок часто замінюють на <g>von</g> + давальний відмінок.<br><br><b>Приклади</b><br>Das Auto <g>des Bruders</g>. (офіційно, Genitiv) — Машина брата.<br>Das Auto <g>von meinem Bruder</g>. (побутово, von + Dativ) — Машина мого брата.<br><br><b>Порада:</b> З іменами та деякими конструкціями <g>von</g> навіть обовʼязковий: die Freundin <g>von Tom</g>.",
       "ru": "<b>Родительный падеж vs. von + Dativ</b><br><table><tr><th>Genitiv (официально)</th><th>von + Dativ (в быту)</th></tr><tr><td>das Auto <g>des Bruders</g></td><td>das Auto <g>von meinem Bruder</g></td></tr></table><br>В разговорной речи родительный падеж часто заменяют на <g>von</g> + дательный падеж.<br><br><b>Примеры</b><br>Das Auto <g>des Bruders</g>. (официально, Genitiv) — Машина брата.<br>Das Auto <g>von meinem Bruder</g>. (в быту, von + Dativ) — Машина моего брата.<br><br><b>Совет:</b> С именами и в некоторых конструкциях <g>von</g> даже обязателен: die Freundin <g>von Tom</g>."
     }
   },
@@ -403,7 +403,7 @@ var GRAMMAR = [
     "explanation": {
       "de": "Der zweiteilige Konnektor <g>nicht nur ..., sondern auch ...</g> verbindet zwei Aussagen und betont, dass BEIDE gleichzeitig wahr sind — oft ist der zweite Punkt überraschend oder besonders wichtig.<br>Beispiel: Er ist <g>nicht nur</g> intelligent, <g>sondern auch</g> sehr sportlich.<br><b>Vergleich:</b> Ähnlich wie <g>sowohl ... als auch</g>, aber mit stärkerer Betonung auf dem zweiten Teil.",
       "en": "The two-part connector <g>nicht nur ..., sondern auch ...</g> ('not only..., but also...') links two statements and emphasizes that BOTH are true at the same time — often the second point is surprising or especially important.<br>Example: Er ist <g>nicht nur</g> intelligent, <g>sondern auch</g> sehr sportlich. (He's not only smart, but also very athletic.)<br><b>Compare:</b> similar to <g>sowohl ... als auch</g>, but with stronger emphasis on the second part.",
-      "uk": "Подвійний сполучник <g>nicht nur ..., sondern auch ...</g> ('не лише..., а й...') з'єднує два твердження і підкреслює, що ОБИДВА правдиві одночасно — часто друга частина несподівана або особливо важлива.<br>Приклад: Er ist <g>nicht nur</g> intelligent, <g>sondern auch</g> sehr sportlich. (Він не лише розумний, а й дуже спортивний.)<br><b>Порівняння:</b> подібно до <g>sowohl ... als auch</g>, але з сильнішим наголосом на другій частині.",
+      "uk": "Подвійний сполучник <g>nicht nur ..., sondern auch ...</g> ('не лише..., а й...') зʼєднує два твердження і підкреслює, що ОБИДВА правдиві одночасно — часто друга частина несподівана або особливо важлива.<br>Приклад: Er ist <g>nicht nur</g> intelligent, <g>sondern auch</g> sehr sportlich. (Він не лише розумний, а й дуже спортивний.)<br><b>Порівняння:</b> подібно до <g>sowohl ... als auch</g>, але з сильнішим наголосом на другій частині.",
       "ru": "Двойной союз <g>nicht nur ..., sondern auch ...</g> ('не только..., но и...') соединяет два утверждения и подчеркивает, что ОБА верны одновременно — часто вторая часть неожиданна или особенно важна.<br>Пример: Er ist <g>nicht nur</g> intelligent, <g>sondern auch</g> sehr sportlich. (Он не только умный, но и очень спортивный.)<br><b>Сравнение:</b> похоже на <g>sowohl ... als auch</g>, но с более сильным акцентом на второй части."
     },
     "rule": {
@@ -435,7 +435,7 @@ var GRAMMAR = [
     "explanation": {
       "de": "Wenn das Subjekt im Hauptsatz und im Nebensatz UNTERSCHIEDLICH ist, MÜSSEN wir <g>damit</g> statt <g>um ... zu</g> benutzen.<br><b>Wortstellung:</b> Wie in jedem Nebensatz steht das konjugierte Verb ganz am Ende.<br>Beispiel: Ich gebe meinem Sohn Geld, <g>damit</g> er ein Buch <g>kauft</g>. (Subjekt 1: ich; Subjekt 2: er — verschieden!)<br><b>Vergleich:</b> Ich lerne, <g>um</g> die Prüfung <g>zu bestehen</g>. (gleiches Subjekt) vs. Der Lehrer erklärt es langsam, <g>damit</g> wir es <g>verstehen</g>. (unterschiedliches Subjekt)",
       "en": "When the subject in the main clause and the subordinate clause is DIFFERENT, we MUST use <g>damit</g> instead of <g>um ... zu</g>.<br><b>Word order:</b> as in any subordinate clause, the conjugated verb goes right to the end.<br>Example: Ich gebe meinem Sohn Geld, <g>damit</g> er ein Buch <g>kauft</g>. (Subject 1: I; subject 2: he — different!)<br><b>Compare:</b> Ich lerne, <g>um</g> die Prüfung <g>zu bestehen</g>. (same subject) vs. Der Lehrer erklärt es langsam, <g>damit</g> wir es <g>verstehen</g>. (different subject)",
-      "uk": "Коли підмет у головному та підрядному реченні РІЗНИЙ, ми ОБОВ'ЯЗКОВО вживаємо <g>damit</g> замість <g>um ... zu</g>.<br><b>Порядок слів:</b> як і в будь-якому підрядному реченні, змінюване дієслово стоїть у самому кінці.<br>Приклад: Ich gebe meinem Sohn Geld, <g>damit</g> er ein Buch <g>kauft</g>. (Підмет 1: я; підмет 2: він — різні! Я даю синові гроші, щоб він купив книгу.)<br><b>Порівняння:</b> Ich lerne, <g>um</g> die Prüfung <g>zu bestehen</g>. (однаковий підмет) vs. Der Lehrer erklärt es langsam, <g>damit</g> wir es <g>verstehen</g>. (різний підмет)",
+      "uk": "Коли підмет у головному та підрядному реченні РІЗНИЙ, ми ОБОВʼЯЗКОВО вживаємо <g>damit</g> замість <g>um ... zu</g>.<br><b>Порядок слів:</b> як і в будь-якому підрядному реченні, змінюване дієслово стоїть у самому кінці.<br>Приклад: Ich gebe meinem Sohn Geld, <g>damit</g> er ein Buch <g>kauft</g>. (Підмет 1: я; підмет 2: він — різні! Я даю синові гроші, щоб він купив книгу.)<br><b>Порівняння:</b> Ich lerne, <g>um</g> die Prüfung <g>zu bestehen</g>. (однаковий підмет) vs. Der Lehrer erklärt es langsam, <g>damit</g> wir es <g>verstehen</g>. (різний підмет)",
       "ru": "Когда подлежащее в главном и придаточном предложении РАЗНОЕ, мы ОБЯЗАТЕЛЬНО используем <g>damit</g> вместо <g>um ... zu</g>.<br><b>Порядок слов:</b> как и в любом придаточном предложении, спрягаемый глагол стоит в самом конце.<br>Пример: Ich gebe meinem Sohn Geld, <g>damit</g> er ein Buch <g>kauft</g>. (Подлежащее 1: я; подлежащее 2: он — разные! Я даю сыну деньги, чтобы он купил книгу.)<br><b>Сравнение:</b> Ich lerne, <g>um</g> die Prüfung <g>zu bestehen</g>. (одинаковое подлежащее) vs. Der Lehrer erklärt es langsam, <g>damit</g> wir es <g>verstehen</g>. (разное подлежащее)"
     },
     "rule": {
@@ -585,7 +585,7 @@ var GRAMMAR = [
     "rule": {
       "de": "<b>Konjunktiv II: Wünsche äußern</b><br><table><tr><th>Verb</th><th>Konjunktiv II</th></tr><tr><td>sein</td><td><g>wäre</g></td></tr><tr><td>haben</td><td><g>hätte</g></td></tr><tr><td>andere Verben</td><td><g>würde</g> + Infinitiv</td></tr></table><br><b>Struktur für Wünsche</b><br>Oft mit <g>doch</g>, <g>nur</g> oder <g>doch nur</g> verstärkt.<br><br><b>Beispiele</b><br>Ich <g>wäre</g> gern am Strand!<br>Wenn ich <g>nur</g> mehr Zeit <g>hätte</g>!<br>Ich <g>würde</g> gern mehr reisen.<br><br><b>Tipp:</b> Diese Sätze drücken einen Wunsch aus, der (noch) nicht Realität ist.",
       "en": "<b>Konjunktiv II: expressing wishes</b><br><table><tr><th>Verb</th><th>Konjunktiv II</th></tr><tr><td>sein</td><td><g>wäre</g></td></tr><tr><td>haben</td><td><g>hätte</g></td></tr><tr><td>other verbs</td><td><g>würde</g> + infinitive</td></tr></table><br><b>Structure for wishes</b><br>Often reinforced with <g>doch</g>, <g>nur</g>, or <g>doch nur</g>.<br><br><b>Examples</b><br>Ich <g>wäre</g> gern am Strand! (I wish I were at the beach!)<br>Wenn ich <g>nur</g> mehr Zeit <g>hätte</g>! (If only I had more time!)<br>Ich <g>würde</g> gern mehr reisen. (I'd love to travel more.)<br><br><b>Tip:</b> These sentences express a wish that isn't (yet) reality.",
-      "uk": "<b>Кон'юнктив II: вираження бажань</b><br><table><tr><th>Дієслово</th><th>Konjunktiv II</th></tr><tr><td>sein</td><td><g>wäre</g></td></tr><tr><td>haben</td><td><g>hätte</g></td></tr><tr><td>інші дієслова</td><td><g>würde</g> + інфінітив</td></tr></table><br><b>Структура для бажань</b><br>Часто підсилюється словами <g>doch</g>, <g>nur</g> або <g>doch nur</g>.<br><br><b>Приклади</b><br>Ich <g>wäre</g> gern am Strand! (Я б хотів бути на пляжі!)<br>Wenn ich <g>nur</g> mehr Zeit <g>hätte</g>! (Якби ж я мав більше часу!)<br>Ich <g>würde</g> gern mehr reisen. (Я б хотів більше подорожувати.)<br><br><b>Порада:</b> Такі речення виражають бажання, яке (поки що) не є реальністю.",
+      "uk": "<b>Конʼюнктив II: вираження бажань</b><br><table><tr><th>Дієслово</th><th>Konjunktiv II</th></tr><tr><td>sein</td><td><g>wäre</g></td></tr><tr><td>haben</td><td><g>hätte</g></td></tr><tr><td>інші дієслова</td><td><g>würde</g> + інфінітив</td></tr></table><br><b>Структура для бажань</b><br>Часто підсилюється словами <g>doch</g>, <g>nur</g> або <g>doch nur</g>.<br><br><b>Приклади</b><br>Ich <g>wäre</g> gern am Strand! (Я б хотів бути на пляжі!)<br>Wenn ich <g>nur</g> mehr Zeit <g>hätte</g>! (Якби ж я мав більше часу!)<br>Ich <g>würde</g> gern mehr reisen. (Я б хотів більше подорожувати.)<br><br><b>Порада:</b> Такі речення виражають бажання, яке (поки що) не є реальністю.",
       "ru": "<b>Konjunktiv II: выражение желаний</b><br><table><tr><th>Глагол</th><th>Konjunktiv II</th></tr><tr><td>sein</td><td><g>wäre</g></td></tr><tr><td>haben</td><td><g>hätte</g></td></tr><tr><td>другие глаголы</td><td><g>würde</g> + инфинитив</td></tr></table><br><b>Структура для желаний</b><br>Часто усиливается словами <g>doch</g>, <g>nur</g> или <g>doch nur</g>.<br><br><b>Примеры</b><br>Ich <g>wäre</g> gern am Strand! (Я бы хотел быть на пляже!)<br>Wenn ich <g>nur</g> mehr Zeit <g>hätte</g>! (Если бы у меня было больше времени!)<br>Ich <g>würde</g> gern mehr reisen. (Я бы хотел больше путешествовать.)<br><br><b>Совет:</b> такие предложения выражают желание, которое (пока) не является реальностью."
     }
   },
@@ -707,13 +707,13 @@ var GRAMMAR = [
     "explanation": {
       "de": "<g>nicht brauchen zu</g> + Infinitiv bedeutet genau dasselbe wie <g>nicht müssen</g> — nämlich: es ist NICHT nötig, keine Pflicht.<br>Beispiel: Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= Du musst heute nicht arbeiten.)<br><b>Tipp:</b> Diese Form klingt etwas formeller und wird oft mit <g>nur</g> kombiniert: Du brauchst nur anzurufen.",
       "en": "<g>nicht brauchen zu</g> + infinitive means exactly the same as <g>nicht müssen</g> — namely: it's NOT necessary, no obligation.<br>Example: Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= You don't have to work today.)<br><b>Tip:</b> this form sounds a bit more formal and is often combined with <g>nur</g>: Du brauchst nur anzurufen. (You just need to call.)",
-      "uk": "<g>nicht brauchen zu</g> + інфінітив означає точнісінько те саме, що й <g>nicht müssen</g> — а саме: НЕ обов'язково, немає жодного примусу.<br>Приклад: Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= Тобі сьогодні не обов'язково працювати.)<br><b>Порада:</b> ця форма звучить трохи офіційніше і часто поєднується з <g>nur</g>: Du brauchst nur anzurufen. (Тобі достатньо просто зателефонувати.)",
+      "uk": "<g>nicht brauchen zu</g> + інфінітив означає точнісінько те саме, що й <g>nicht müssen</g> — а саме: НЕ обовʼязково, немає жодного примусу.<br>Приклад: Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= Тобі сьогодні не обовʼязково працювати.)<br><b>Порада:</b> ця форма звучить трохи офіційніше і часто поєднується з <g>nur</g>: Du brauchst nur anzurufen. (Тобі достатньо просто зателефонувати.)",
       "ru": "<g>nicht brauchen zu</g> + инфинитив означает ровно то же самое, что и <g>nicht müssen</g> — а именно: НЕ обязательно, нет никакой необходимости.<br>Пример: Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= Тебе сегодня не обязательно работать.)<br><b>Совет:</b> эта форма звучит немного официальнее и часто сочетается с <g>nur</g>: Du brauchst nur anzurufen. (Тебе достаточно просто позвонить.)"
     },
     "rule": {
       "de": "<b>nicht brauchen zu</b><br><table><tr><th>Konstruktion</th><th>Bedeutung</th></tr><tr><td><g>nicht müssen</g></td><td>keine Pflicht</td></tr><tr><td><g>nicht brauchen zu</g> + Infinitiv</td><td>keine Pflicht (gleiche Bedeutung)</td></tr></table><br><b>Beispiele</b><br>Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= Du musst nicht arbeiten.)<br>Sie <g>braucht</g> das <g>nicht zu erklären</g>.<br><br><b>Tipp:</b> Diese Form ist etwas formeller und wird oft mit <g>nur</g> kombiniert: Du brauchst nur anzurufen.",
       "en": "<b>nicht brauchen zu</b><br><table><tr><th>Construction</th><th>Meaning</th></tr><tr><td><g>nicht müssen</g></td><td>no obligation</td></tr><tr><td><g>nicht brauchen zu</g> + infinitive</td><td>no obligation (same meaning)</td></tr></table><br><b>Examples</b><br>Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= Du musst nicht arbeiten.)<br>Sie <g>braucht</g> das <g>nicht zu erklären</g>.<br><br><b>Tip:</b> This form is a bit more formal and is often combined with <g>nur</g>: Du brauchst nur anzurufen. (You just need to call.)",
-      "uk": "<b>nicht brauchen zu</b><br><table><tr><th>Конструкція</th><th>Значення</th></tr><tr><td><g>nicht müssen</g></td><td>немає обов'язку</td></tr><tr><td><g>nicht brauchen zu</g> + інфінітив</td><td>немає обов'язку (те саме значення)</td></tr></table><br><b>Приклади</b><br>Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= Тобі сьогодні не обов'язково працювати.)<br>Sie <g>braucht</g> das <g>nicht zu erklären</g>. (Їй не потрібно це пояснювати.)<br><br><b>Порада:</b> Ця форма трохи офіційніша і часто поєднується з <g>nur</g>: Du brauchst nur anzurufen. (Тобі достатньо просто зателефонувати.)",
+      "uk": "<b>nicht brauchen zu</b><br><table><tr><th>Конструкція</th><th>Значення</th></tr><tr><td><g>nicht müssen</g></td><td>немає обовʼязку</td></tr><tr><td><g>nicht brauchen zu</g> + інфінітив</td><td>немає обовʼязку (те саме значення)</td></tr></table><br><b>Приклади</b><br>Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= Тобі сьогодні не обовʼязково працювати.)<br>Sie <g>braucht</g> das <g>nicht zu erklären</g>. (Їй не потрібно це пояснювати.)<br><br><b>Порада:</b> Ця форма трохи офіційніша і часто поєднується з <g>nur</g>: Du brauchst nur anzurufen. (Тобі достатньо просто зателефонувати.)",
       "ru": "<b>nicht brauchen zu</b><br><table><tr><th>Конструкция</th><th>Значение</th></tr><tr><td><g>nicht müssen</g></td><td>нет обязанности</td></tr><tr><td><g>nicht brauchen zu</g> + инфинитив</td><td>нет обязанности (то же значение)</td></tr></table><br><b>Примеры</b><br>Du <g>brauchst</g> heute <g>nicht zu arbeiten</g>. (= Тебе сегодня не обязательно работать.)<br>Sie <g>braucht</g> das <g>nicht zu erklären</g>. (Ей не нужно это объяснять.)<br><br><b>Совет:</b> эта форма немного более официальна и часто сочетается с <g>nur</g>: Du brauchst nur anzurufen. (Тебе достаточно просто позвонить.)"
     }
   },
@@ -723,7 +723,7 @@ var GRAMMAR = [
     "explanation": {
       "de": "Der Konnektor <g>während</g> verbindet zwei Handlungen, die genau <b>gleichzeitig</b> (simultan) passieren.<br><b>Position:</b> Es ist ein Nebensatz, deshalb steht das konjugierte Verb am Ende.<br>Beispiel: <g>Während</g> ich koche, <g>hört</g> mein Mann Musik.<br><b>Zweite Bedeutung:</b> <g>während</g> kann auch einen Kontrast ausdrücken (= 'im Gegensatz dazu'): Er ist faul, während sie sehr fleißig ist.",
       "en": "The connector <g>während</g> links two actions that happen exactly at the <b>same time</b> (simultaneously).<br><b>Position:</b> it's a subordinate clause, so the conjugated verb goes at the end.<br>Example: <g>Während</g> ich koche, <g>hört</g> mein Mann Musik. (While I'm cooking, my husband is listening to music.)<br><b>Second meaning:</b> <g>während</g> can also express a contrast (= 'whereas'): Er ist faul, während sie sehr fleißig ist. (He's lazy, whereas she's very hard-working.)",
-      "uk": "Сполучник <g>während</g> з'єднує дві дії, які відбуваються рівно <b>одночасно</b> (симультанно).<br><b>Позиція:</b> це підрядне речення, тому змінюване дієслово стоїть у кінці.<br>Приклад: <g>Während</g> ich koche, <g>hört</g> mein Mann Musik. (Поки я готую, мій чоловік слухає музику.)<br><b>Друге значення:</b> <g>während</g> також може виражати контраст (= 'на відміну від цього'): Er ist faul, während sie sehr fleißig ist. (Він лінивий, тоді як вона дуже старанна.)",
+      "uk": "Сполучник <g>während</g> зʼєднує дві дії, які відбуваються рівно <b>одночасно</b> (симультанно).<br><b>Позиція:</b> це підрядне речення, тому змінюване дієслово стоїть у кінці.<br>Приклад: <g>Während</g> ich koche, <g>hört</g> mein Mann Musik. (Поки я готую, мій чоловік слухає музику.)<br><b>Друге значення:</b> <g>während</g> також може виражати контраст (= 'на відміну від цього'): Er ist faul, während sie sehr fleißig ist. (Він лінивий, тоді як вона дуже старанна.)",
       "ru": "Союз <g>während</g> соединяет два действия, которые происходят ровно <b>одновременно</b> (симультанно).<br><b>Позиция:</b> это придаточное предложение, поэтому спрягаемый глагол стоит в конце.<br>Пример: <g>Während</g> ich koche, <g>hört</g> mein Mann Musik. (Пока я готовлю, мой муж слушает музыку.)<br><b>Второе значение:</b> <g>während</g> может также выражать контраст (= 'тогда как'): Er ist faul, während sie sehr fleißig ist. (Он ленивый, тогда как она очень трудолюбивая.)"
     },
     "rule": {
@@ -803,7 +803,7 @@ var GRAMMAR = [
     "explanation": {
       "de": "Der Konnektor <g>nachdem</g> zeigt, dass die Handlung im Nebensatz VOR der Handlung im Hauptsatz passiert ist.<br><b>Wichtige Regel zur Zeit:</b> Steht der Hauptsatz im Präteritum, MUSS der nachdem-Satz im <g>Plusquamperfekt</g> stehen. Steht der Hauptsatz im Präsens, benutzt man im nachdem-Satz das <g>Perfekt</g>.<br>Beispiel: <g>Nachdem</g> er die Hausaufgabe gemacht <g>hatte</g>, spielte er Fußball. (Plusquamperfekt -> Präteritum)<br><b>Tipp:</b> Bei <g>nachdem</g> ist die richtige Zeitform besonders wichtig — anders als bei den meisten Nebensätzen!",
       "en": "The connector <g>nachdem</g> shows that the action in the subordinate clause happened BEFORE the action in the main clause.<br><b>Key tense rule:</b> if the main clause is in the Präteritum, the nachdem-clause MUST be in the <g>Plusquamperfekt</g>. If the main clause is in the present tense, the nachdem-clause uses the <g>Perfekt</g>.<br>Example: <g>Nachdem</g> er die Hausaufgabe gemacht <g>hatte</g>, spielte er Fußball. (Plusquamperfekt -> Präteritum)<br><b>Tip:</b> with <g>nachdem</g>, getting the tense right is especially important — unlike with most subordinate clauses!",
-      "uk": "Сполучник <g>nachdem</g> показує, що дія в підрядному реченні відбулась РАНІШЕ за дію в головному.<br><b>Головне правило щодо часу:</b> якщо головне речення стоїть у претериті, речення з nachdem ОБОВ'ЯЗКОВО має стояти у <g>Plusquamperfekt</g>. Якщо головне речення в презенсі, у реченні з nachdem вживають <g>Perfekt</g>.<br>Приклад: <g>Nachdem</g> er die Hausaufgabe gemacht <g>hatte</g>, spielte er Fußball. (Plusquamperfekt -> Präteritum. Після того як він зробив домашнє завдання, він грав у футбол.)<br><b>Порада:</b> з <g>nachdem</g> правильний час особливо важливий — на відміну від більшості підрядних речень!",
+      "uk": "Сполучник <g>nachdem</g> показує, що дія в підрядному реченні відбулась РАНІШЕ за дію в головному.<br><b>Головне правило щодо часу:</b> якщо головне речення стоїть у претериті, речення з nachdem ОБОВʼЯЗКОВО має стояти у <g>Plusquamperfekt</g>. Якщо головне речення в презенсі, у реченні з nachdem вживають <g>Perfekt</g>.<br>Приклад: <g>Nachdem</g> er die Hausaufgabe gemacht <g>hatte</g>, spielte er Fußball. (Plusquamperfekt -> Präteritum. Після того як він зробив домашнє завдання, він грав у футбол.)<br><b>Порада:</b> з <g>nachdem</g> правильний час особливо важливий — на відміну від більшості підрядних речень!",
       "ru": "Союз <g>nachdem</g> показывает, что действие в придаточном предложении произошло РАНЬШЕ действия в главном.<br><b>Главное правило о времени:</b> если главное предложение стоит в претерите, предложение с nachdem ОБЯЗАТЕЛЬНО должно стоять в <g>Plusquamperfekt</g>. Если главное предложение в презенсе, в предложении с nachdem используют <g>Perfekt</g>.<br>Пример: <g>Nachdem</g> er die Hausaufgabe gemacht <g>hatte</g>, spielte er Fußball. (Plusquamperfekt -> Präteritum. После того как он сделал домашнее задание, он играл в футбол.)<br><b>Совет:</b> с <g>nachdem</g> правильное время особенно важно — в отличие от большинства придаточных предложений!"
     },
     "rule": {
@@ -819,7 +819,7 @@ var GRAMMAR = [
     "explanation": {
       "de": "Mit den Suffixen <g>-bar</g> und <g>-los</g> kann man aus einem Verb oder Nomen ein neues Adjektiv bilden.<br><g>-bar</g> (meist von Verben) bedeutet 'man kann es machen' (= möglich).<br><g>-los</g> (meist von Nomen) bedeutet 'ohne etwas' (= fehlt).<br>Beispiel: essen -> ess<g>bar</g> (man kann es essen). das Geld -> geld<g>los</g> (ohne Geld). die Arbeit -> arbeits<g>los</g> (ohne Arbeit).<br><b>Tipp:</b> Frag dich: kommt das Wort von einem Verb (-bar) oder einem Nomen (-los)?",
       "en": "With the suffixes <g>-bar</g> and <g>-los</g>, you can form a new adjective from a verb or a noun.<br><g>-bar</g> (usually from verbs) means 'this can be done' (= possible).<br><g>-los</g> (usually from nouns) means 'without something' (= missing).<br>Example: essen -> ess<g>bar</g> (edible, can be eaten). das Geld -> geld<g>los</g> (without money). die Arbeit -> arbeits<g>los</g> (unemployed).<br><b>Tip:</b> ask yourself: does the word come from a verb (-bar) or a noun (-los)?",
-      "uk": "За допомогою суфіксів <g>-bar</g> та <g>-los</g> можна утворити новий прикметник від дієслова або іменника.<br><g>-bar</g> (зазвичай від дієслів) означає 'можна це зробити' (= можливо).<br><g>-los</g> (зазвичай від іменників) означає 'без чогось' (= відсутнє).<br>Приклад: essen -> ess<g>bar</g> (їстівний, можна з'їсти). das Geld -> geld<g>los</g> (без грошей). die Arbeit -> arbeits<g>los</g> (безробітний).<br><b>Порада:</b> запитай себе: слово походить від дієслова (-bar) чи від іменника (-los)?",
+      "uk": "За допомогою суфіксів <g>-bar</g> та <g>-los</g> можна утворити новий прикметник від дієслова або іменника.<br><g>-bar</g> (зазвичай від дієслів) означає 'можна це зробити' (= можливо).<br><g>-los</g> (зазвичай від іменників) означає 'без чогось' (= відсутнє).<br>Приклад: essen -> ess<g>bar</g> (їстівний, можна зʼїсти). das Geld -> geld<g>los</g> (без грошей). die Arbeit -> arbeits<g>los</g> (безробітний).<br><b>Порада:</b> запитай себе: слово походить від дієслова (-bar) чи від іменника (-los)?",
       "ru": "С помощью суффиксов <g>-bar</g> и <g>-los</g> можно образовать новое прилагательное от глагола или существительного.<br><g>-bar</g> (обычно от глаголов) означает 'это можно сделать' (= возможно).<br><g>-los</g> (обычно от существительных) означает 'без чего-то' (= отсутствует).<br>Пример: essen -> ess<g>bar</g> (съедобный, можно съесть). das Geld -> geld<g>los</g> (без денег). die Arbeit -> arbeits<g>los</g> (безработный).<br><b>Совет:</b> спроси себя: слово происходит от глагола (-bar) или от существительного (-los)?"
     },
     "rule": {
@@ -867,13 +867,13 @@ var GRAMMAR = [
     "explanation": {
       "de": "Im <g>Genitiv</g> ist die Adjektivendung besonders einfach: nach dem bestimmten ODER unbestimmten Artikel bekommen ALLE Adjektive (egal welches Genus) die Endung <g>-en</g>.<br>Beispiel: wegen des <g>schlechten</g> Wetters, trotz einer <g>großen</g> Pause.<br><b>Tipp:</b> Das ist der einzige Fall im Deutschen ohne Ausnahmen — im Genitiv musst du dir nur EINE Endung merken!",
       "en": "In the <g>genitive</g>, the adjective ending is especially simple: after the definite OR indefinite article, ALL adjectives (no matter the gender) take the ending <g>-en</g>.<br>Example: wegen des <g>schlechten</g> Wetters (because of the bad weather), trotz einer <g>großen</g> Pause (despite a long break).<br><b>Tip:</b> this is the only case in German with no exceptions — in the genitive you only need to remember ONE ending!",
-      "uk": "У <g>Genitiv</g> закінчення прикметника особливо просте: після означеного АБО неозначеного артикля ВСІ прикметники (незалежно від роду) отримують закінчення <g>-en</g>.<br>Приклад: wegen des <g>schlechten</g> Wetters (через погану погоду), trotz einer <g>großen</g> Pause (попри велику перерву).<br><b>Порада:</b> це єдиний випадок у німецькій без винятків — у родовому відмінку треба запам'ятати лише ОДНЕ закінчення!",
+      "uk": "У <g>Genitiv</g> закінчення прикметника особливо просте: після означеного АБО неозначеного артикля ВСІ прикметники (незалежно від роду) отримують закінчення <g>-en</g>.<br>Приклад: wegen des <g>schlechten</g> Wetters (через погану погоду), trotz einer <g>großen</g> Pause (попри велику перерву).<br><b>Порада:</b> це єдиний випадок у німецькій без винятків — у родовому відмінку треба запамʼятати лише ОДНЕ закінчення!",
       "ru": "В <g>Genitiv</g> окончание прилагательного особенно простое: после определенного ИЛИ неопределенного артикля ВСЕ прилагательные (независимо от рода) получают окончание <g>-en</g>.<br>Пример: wegen des <g>schlechten</g> Wetters (из-за плохой погоды), trotz einer <g>großen</g> Pause (несмотря на большой перерыв).<br><b>Совет:</b> это единственный падеж в немецком без исключений — в родительном падеже нужно запомнить лишь ОДНО окончание!"
     },
     "rule": {
       "de": "<b>Adjektivendung im Genitiv</b><br><table><tr><th>Genus / Zahl</th><th>Endung</th></tr><tr><td>maskulin</td><td><g>-en</g></td></tr><tr><td>neutral</td><td><g>-en</g></td></tr><tr><td>feminin</td><td><g>-en</g></td></tr><tr><td>Plural</td><td><g>-en</g></td></tr></table><br><b>Regel:</b> Im Genitiv bekommt JEDES Adjektiv (nach bestimmtem oder unbestimmtem Artikel) die Endung <g>-en</g> — egal welches Genus.<br><br><b>Beispiele</b><br>wegen des <g>schlechten</g> Wetters.<br>trotz einer <g>großen</g> Pause.<br><br><b>Tipp:</b> Das macht den Genitiv einfacher als die anderen Fälle — es gibt keine Ausnahmen zu lernen!",
       "en": "<b>Adjective ending in the genitive</b><br><table><tr><th>Gender / number</th><th>Ending</th></tr><tr><td>masculine</td><td><g>-en</g></td></tr><tr><td>neuter</td><td><g>-en</g></td></tr><tr><td>feminine</td><td><g>-en</g></td></tr><tr><td>plural</td><td><g>-en</g></td></tr></table><br><b>Rule:</b> In the genitive, EVERY adjective (after a definite or indefinite article) takes the ending <g>-en</g> — no matter the gender.<br><br><b>Examples</b><br>wegen des <g>schlechten</g> Wetters. (because of the bad weather)<br>trotz einer <g>großen</g> Pause. (despite a long break)<br><br><b>Tip:</b> This makes the genitive simpler than the other cases — there are no exceptions to learn!",
-      "uk": "<b>Закінчення прикметників у родовому відмінку</b><br><table><tr><th>Рід / число</th><th>Закінчення</th></tr><tr><td>чоловічий</td><td><g>-en</g></td></tr><tr><td>середній</td><td><g>-en</g></td></tr><tr><td>жіночий</td><td><g>-en</g></td></tr><tr><td>множина</td><td><g>-en</g></td></tr></table><br><b>Правило:</b> У Genitiv КОЖЕН прикметник (після означеного чи неозначеного артикля) отримує закінчення <g>-en</g> — незалежно від роду.<br><br><b>Приклади</b><br>wegen des <g>schlechten</g> Wetters. (через погану погоду)<br>trotz einer <g>großen</g> Pause. (попри велику перерву)<br><br><b>Порада:</b> Це робить Genitiv простішим за інші відмінки — тут немає винятків для запам'ятовування!",
+      "uk": "<b>Закінчення прикметників у родовому відмінку</b><br><table><tr><th>Рід / число</th><th>Закінчення</th></tr><tr><td>чоловічий</td><td><g>-en</g></td></tr><tr><td>середній</td><td><g>-en</g></td></tr><tr><td>жіночий</td><td><g>-en</g></td></tr><tr><td>множина</td><td><g>-en</g></td></tr></table><br><b>Правило:</b> У Genitiv КОЖЕН прикметник (після означеного чи неозначеного артикля) отримує закінчення <g>-en</g> — незалежно від роду.<br><br><b>Приклади</b><br>wegen des <g>schlechten</g> Wetters. (через погану погоду)<br>trotz einer <g>großen</g> Pause. (попри велику перерву)<br><br><b>Порада:</b> Це робить Genitiv простішим за інші відмінки — тут немає винятків для запамʼятовування!",
       "ru": "<b>Окончание прилагательных в родительном падеже</b><br><table><tr><th>Род / число</th><th>Окончание</th></tr><tr><td>мужской</td><td><g>-en</g></td></tr><tr><td>средний</td><td><g>-en</g></td></tr><tr><td>женский</td><td><g>-en</g></td></tr><tr><td>множественное</td><td><g>-en</g></td></tr></table><br><b>Правило:</b> в Genitiv КАЖДОЕ прилагательное (после определенного или неопределенного артикля) получает окончание <g>-en</g> — независимо от рода.<br><br><b>Примеры</b><br>wegen des <g>schlechten</g> Wetters. (из-за плохой погоды)<br>trotz einer <g>großen</g> Pause. (несмотря на большой перерыв)<br><br><b>Совет:</b> это делает Genitiv проще других падежей — здесь нет исключений для запоминания!"
     }
   },
@@ -899,7 +899,7 @@ var GRAMMAR = [
     "explanation": {
       "de": "Manche maskuline Nomen (oft Personen oder Berufe auf <g>-e, -ent, -ist, -at</g>) bekommen in ALLEN Fällen außer dem Nominativ ein zusätzliches <g>-n</g> oder <g>-en</g> — das nennt man <g>n-Deklination</g>.<br>Beispiel: der Kollege (Nom.) -> Ich helfe dem <g>Kollegen</g> (Dat.). Ich sehe den <g>Kollegen</g> (Akk.).<br><b>Tipp:</b> Nur der Nominativ bleibt normal — merk dir diese Nomen am besten als eigene Gruppe.",
       "en": "Some masculine nouns (often people or professions ending in <g>-e, -ent, -ist, -at</g>) get an extra <g>-n</g> or <g>-en</g> in ALL cases except the nominative — this is called the <g>n-declension</g>.<br>Example: der Kollege (Nom.) -> Ich helfe dem <g>Kollegen</g> (Dat. — I'm helping my colleague). Ich sehe den <g>Kollegen</g> (Acc. — I see my colleague).<br><b>Tip:</b> only the nominative stays normal — it's best to memorize these nouns as their own group.",
-      "uk": "Деякі іменники чоловічого роду (часто назви осіб чи професій на <g>-e, -ent, -ist, -at</g>) отримують у ВСІХ відмінках, крім називного, додаткове закінчення <g>-n</g> або <g>-en</g> — це називають <g>n-Deklination</g>.<br>Приклад: der Kollege (Nom.) -> Ich helfe dem <g>Kollegen</g> (Dat. — Я допомагаю колезі). Ich sehe den <g>Kollegen</g> (Akk. — Я бачу колегу).<br><b>Порада:</b> лише називний залишається звичайним — краще запам'ятай ці іменники як окрему групу.",
+      "uk": "Деякі іменники чоловічого роду (часто назви осіб чи професій на <g>-e, -ent, -ist, -at</g>) отримують у ВСІХ відмінках, крім називного, додаткове закінчення <g>-n</g> або <g>-en</g> — це називають <g>n-Deklination</g>.<br>Приклад: der Kollege (Nom.) -> Ich helfe dem <g>Kollegen</g> (Dat. — Я допомагаю колезі). Ich sehe den <g>Kollegen</g> (Akk. — Я бачу колегу).<br><b>Порада:</b> лише називний залишається звичайним — краще запамʼятай ці іменники як окрему групу.",
       "ru": "Некоторые существительные мужского рода (часто названия лиц или профессий на <g>-e, -ent, -ist, -at</g>) получают во ВСЕХ падежах, кроме именительного, дополнительное окончание <g>-n</g> или <g>-en</g> — это называют <g>n-склонением</g>.<br>Пример: der Kollege (Nom.) -> Ich helfe dem <g>Kollegen</g> (Dat. — Я помогаю коллеге). Ich sehe den <g>Kollegen</g> (Akk. — Я вижу коллегу).<br><b>Совет:</b> только именительный остается обычным — лучше запомни эти существительные как отдельную группу."
     },
     "rule": {
@@ -985,7 +985,7 @@ var GRAMMAR = [
     "rule": {
       "de": "<b>Adjektivdeklination ohne Artikel</b><br><table><tr><th>Kasus</th><th>maskulin</th><th>neutral</th><th>feminin</th><th>Plural</th></tr><tr><td>Nominativ</td><td><g>-er</g></td><td><g>-es</g></td><td><g>-e</g></td><td><g>-e</g></td></tr><tr><td>Dativ</td><td>-em</td><td>-em</td><td>-er</td><td><g>-en</g></td></tr></table><br><b>Regel:</b> Ohne Artikel (Nullartikel) muss das Adjektiv selbst zeigen, welches Genus und welcher Kasus das Nomen hat — genau wie der bestimmte Artikel.<br><br><b>Beispiele</b><br><g>Kalter</g> Kaffee schmeckt nicht. (maskulin, Nom.)<br>Ich trinke Tee mit <g>warmer</g> Milch. (feminin, Dat.)<br><g>Heißes</g> Wasser ist gefährlich. (neutral, Nom.)",
       "en": "<b>Adjective declension without an article</b><br><table><tr><th>Case</th><th>masculine</th><th>neuter</th><th>feminine</th><th>plural</th></tr><tr><td>Nominative</td><td><g>-er</g></td><td><g>-es</g></td><td><g>-e</g></td><td><g>-e</g></td></tr><tr><td>Dative</td><td>-em</td><td>-em</td><td>-er</td><td><g>-en</g></td></tr></table><br><b>Rule:</b> Without an article (zero article), the adjective itself must show the gender and case of the noun — just like the definite article normally would.<br><br><b>Examples</b><br><g>Kalter</g> Kaffee schmeckt nicht. (masculine, Nom. — Cold coffee doesn't taste good.)<br>Ich trinke Tee mit <g>warmer</g> Milch. (feminine, Dat. — I drink tea with warm milk.)<br><g>Heißes</g> Wasser ist gefährlich. (neuter, Nom. — Hot water is dangerous.)",
-      "uk": "<b>Відмінювання прикметників без артикля</b><br><table><tr><th>Відмінок</th><th>чоловічий</th><th>середній</th><th>жіночий</th><th>множина</th></tr><tr><td>Nominativ</td><td><g>-er</g></td><td><g>-es</g></td><td><g>-e</g></td><td><g>-e</g></td></tr><tr><td>Dativ</td><td>-em</td><td>-em</td><td>-er</td><td><g>-en</g></td></tr></table><br><b>Правило:</b> Без артикля (нульовий артикль) прикметник сам має показувати рід і відмінок іменника — точнісінько так, як зазвичай робить означений артикль.<br><br><b>Приклади</b><br><g>Kalter</g> Kaffee schmeckt nicht. (чоловічий, Nom. — Холодна кава несмачна.)<br>Ich trinke Tee mit <g>warmer</g> Milch. (жіночий, Dat. — Я п'ю чай з теплим молоком.)<br><g>Heißes</g> Wasser ist gefährlich. (середній, Nom. — Гаряча вода небезпечна.)",
+      "uk": "<b>Відмінювання прикметників без артикля</b><br><table><tr><th>Відмінок</th><th>чоловічий</th><th>середній</th><th>жіночий</th><th>множина</th></tr><tr><td>Nominativ</td><td><g>-er</g></td><td><g>-es</g></td><td><g>-e</g></td><td><g>-e</g></td></tr><tr><td>Dativ</td><td>-em</td><td>-em</td><td>-er</td><td><g>-en</g></td></tr></table><br><b>Правило:</b> Без артикля (нульовий артикль) прикметник сам має показувати рід і відмінок іменника — точнісінько так, як зазвичай робить означений артикль.<br><br><b>Приклади</b><br><g>Kalter</g> Kaffee schmeckt nicht. (чоловічий, Nom. — Холодна кава несмачна.)<br>Ich trinke Tee mit <g>warmer</g> Milch. (жіночий, Dat. — Я пʼю чай з теплим молоком.)<br><g>Heißes</g> Wasser ist gefährlich. (середній, Nom. — Гаряча вода небезпечна.)",
       "ru": "<b>Склонение прилагательных без артикля</b><br><table><tr><th>Падеж</th><th>мужской</th><th>средний</th><th>женский</th><th>множественное</th></tr><tr><td>Nominativ</td><td><g>-er</g></td><td><g>-es</g></td><td><g>-e</g></td><td><g>-e</g></td></tr><tr><td>Dativ</td><td>-em</td><td>-em</td><td>-er</td><td><g>-en</g></td></tr></table><br><b>Правило:</b> без артикля (нулевой артикль) прилагательное само должно показывать род и падеж существительного — точно так же, как обычно делает определенный артикль.<br><br><b>Примеры</b><br><g>Kalter</g> Kaffee schmeckt nicht. (мужской род, Nom. — Холодный кофе невкусный.)<br>Ich trinke Tee mit <g>warmer</g> Milch. (женский род, Dat. — Я пью чай с теплым молоком.)<br><g>Heißes</g> Wasser ist gefährlich. (средний род, Nom. — Горячая вода опасна.)"
     }
   },
@@ -1033,7 +1033,7 @@ var GRAMMAR = [
     "rule": {
       "de": "<b>entweder … oder</b><br><table><tr><th>Konnektor</th><th>Bedeutung</th></tr><tr><td><g>entweder ... oder</g></td><td>Alternative: nur eine von zwei Optionen ist möglich</td></tr></table><br><b>Beispiele</b><br>Zum Frühstück trinke ich <g>entweder</g> Kaffee <g>oder</g> Tee. (nicht beides)<br>Wir fahren <g>entweder</g> nach Italien <g>oder</g> nach Spanien.<br><br><b>Wortstellung:</b> Steht <g>entweder</g> am Satzanfang, folgt direkt das Verb (Position 2): <g>Entweder</g> kommst du mit, <g>oder</g> du bleibst hier.",
       "en": "<b>entweder … oder (either … or)</b><br><table><tr><th>Connector</th><th>Meaning</th></tr><tr><td><g>entweder ... oder</g></td><td>alternative: only one of two options is possible</td></tr></table><br><b>Examples</b><br>Zum Frühstück trinke ich <g>entweder</g> Kaffee <g>oder</g> Tee. (not both — For breakfast I drink either coffee or tea.)<br>Wir fahren <g>entweder</g> nach Italien <g>oder</g> nach Spanien. (We're going either to Italy or to Spain.)<br><br><b>Word order:</b> if <g>entweder</g> starts the sentence, the verb comes right after it (position 2): <g>Entweder</g> kommst du mit, <g>oder</g> du bleibst hier.",
-      "uk": "<b>entweder … oder (або … або)</b><br><table><tr><th>Сполучник</th><th>Значення</th></tr><tr><td><g>entweder ... oder</g></td><td>альтернатива: можливий лише один із двох варіантів</td></tr></table><br><b>Приклади</b><br>Zum Frühstück trinke ich <g>entweder</g> Kaffee <g>oder</g> Tee. (не обидва одразу — На сніданок я п'ю або каву, або чай.)<br>Wir fahren <g>entweder</g> nach Italien <g>oder</g> nach Spanien. (Ми поїдемо або в Італію, або в Іспанію.)<br><br><b>Порядок слів:</b> якщо <g>entweder</g> стоїть на початку речення, одразу йде дієслово (2-га позиція): <g>Entweder</g> kommst du mit, <g>oder</g> du bleibst hier.",
+      "uk": "<b>entweder … oder (або … або)</b><br><table><tr><th>Сполучник</th><th>Значення</th></tr><tr><td><g>entweder ... oder</g></td><td>альтернатива: можливий лише один із двох варіантів</td></tr></table><br><b>Приклади</b><br>Zum Frühstück trinke ich <g>entweder</g> Kaffee <g>oder</g> Tee. (не обидва одразу — На сніданок я пʼю або каву, або чай.)<br>Wir fahren <g>entweder</g> nach Italien <g>oder</g> nach Spanien. (Ми поїдемо або в Італію, або в Іспанію.)<br><br><b>Порядок слів:</b> якщо <g>entweder</g> стоїть на початку речення, одразу йде дієслово (2-га позиція): <g>Entweder</g> kommst du mit, <g>oder</g> du bleibst hier.",
       "ru": "<b>entweder … oder (либо … либо)</b><br><table><tr><th>Союз</th><th>Значение</th></tr><tr><td><g>entweder ... oder</g></td><td>альтернатива: возможен только один из двух вариантов</td></tr></table><br><b>Примеры</b><br>Zum Frühstück trinke ich <g>entweder</g> Kaffee <g>oder</g> Tee. (не оба сразу — На завтрак я пью либо кофе, либо чай.)<br>Wir fahren <g>entweder</g> nach Italien <g>oder</g> nach Spanien. (Мы поедем либо в Италию, либо в Испанию.)<br><br><b>Порядок слов:</b> если <g>entweder</g> стоит в начале предложения, сразу идет глагол (2-я позиция): <g>Entweder</g> kommst du mit, <g>oder</g> du bleibst hier."
     }
   },
@@ -1065,7 +1065,7 @@ var GRAMMAR = [
     "rule": {
       "de": "<b>Trennbare Verben mit mit-, weg-, weiter-, zusammen-, zurück-</b><br><table><tr><th>Präfix</th><th>Bedeutung</th></tr><tr><td><g>mit-</g></td><td>Gemeinsamkeit (zusammen mit anderen)</td></tr><tr><td><g>weg-</g></td><td>Entfernung (weg von hier)</td></tr><tr><td><g>weiter-</g></td><td>Fortsetzung (nicht aufhören)</td></tr><tr><td><g>zusammen-</g></td><td>Gemeinsamkeit, Vereinigung</td></tr><tr><td><g>zurück-</g></td><td>Wiederholung, Retour</td></tr></table><br><b>Wortstellung:</b> Das Präfix steht im Präsens/Präteritum ganz am Satzende, getrennt vom Verbstamm.<br><br><b>Beispiele</b><br>Ich <g>komme</g> morgen <g>mit</g>. (mitkommen)<br>Wir <g>arbeiten weiter</g>. (weiterarbeiten)<br>Er <g>kommt</g> nächste Woche <g>zurück</g>. (zurückkommen)",
       "en": "<b>Separable verbs with mit-, weg-, weiter-, zusammen-, zurück-</b><br><table><tr><th>Prefix</th><th>Meaning</th></tr><tr><td><g>mit-</g></td><td>togetherness (along with others)</td></tr><tr><td><g>weg-</g></td><td>away (away from here)</td></tr><tr><td><g>weiter-</g></td><td>continuation (not stopping)</td></tr><tr><td><g>zusammen-</g></td><td>togetherness, union</td></tr><tr><td><g>zurück-</g></td><td>repetition, return</td></tr></table><br><b>Word order:</b> in the present/Präteritum, the prefix goes to the very end of the sentence, separated from the verb stem.<br><br><b>Examples</b><br>Ich <g>komme</g> morgen <g>mit</g>. (mitkommen — I'll come along tomorrow.)<br>Wir <g>arbeiten weiter</g>. (weiterarbeiten — We keep working.)<br>Er <g>kommt</g> nächste Woche <g>zurück</g>. (zurückkommen — He's coming back next week.)",
-      "uk": "<b>Відокремлювані дієслова з mit-, weg-, weiter-, zusammen-, zurück-</b><br><table><tr><th>Префікс</th><th>Значення</th></tr><tr><td><g>mit-</g></td><td>спільність (разом з іншими)</td></tr><tr><td><g>weg-</g></td><td>віддалення (геть звідси)</td></tr><tr><td><g>weiter-</g></td><td>продовження (не зупинятись)</td></tr><tr><td><g>zusammen-</g></td><td>спільність, об'єднання</td></tr><tr><td><g>zurück-</g></td><td>повторення, повернення</td></tr></table><br><b>Порядок слів:</b> у теперішньому/минулому часі префікс стоїть у самому кінці речення, окремо від основи дієслова.<br><br><b>Приклади</b><br>Ich <g>komme</g> morgen <g>mit</g>. (mitkommen — Я приєднаюсь завтра.)<br>Wir <g>arbeiten weiter</g>. (weiterarbeiten — Ми продовжуємо працювати.)<br>Er <g>kommt</g> nächste Woche <g>zurück</g>. (zurückkommen — Він повернеться наступного тижня.)",
+      "uk": "<b>Відокремлювані дієслова з mit-, weg-, weiter-, zusammen-, zurück-</b><br><table><tr><th>Префікс</th><th>Значення</th></tr><tr><td><g>mit-</g></td><td>спільність (разом з іншими)</td></tr><tr><td><g>weg-</g></td><td>віддалення (геть звідси)</td></tr><tr><td><g>weiter-</g></td><td>продовження (не зупинятись)</td></tr><tr><td><g>zusammen-</g></td><td>спільність, обʼєднання</td></tr><tr><td><g>zurück-</g></td><td>повторення, повернення</td></tr></table><br><b>Порядок слів:</b> у теперішньому/минулому часі префікс стоїть у самому кінці речення, окремо від основи дієслова.<br><br><b>Приклади</b><br>Ich <g>komme</g> morgen <g>mit</g>. (mitkommen — Я приєднаюсь завтра.)<br>Wir <g>arbeiten weiter</g>. (weiterarbeiten — Ми продовжуємо працювати.)<br>Er <g>kommt</g> nächste Woche <g>zurück</g>. (zurückkommen — Він повернеться наступного тижня.)",
       "ru": "<b>Отделяемые глаголы с mit-, weg-, weiter-, zusammen-, zurück-</b><br><table><tr><th>Приставка</th><th>Значение</th></tr><tr><td><g>mit-</g></td><td>совместность (вместе с другими)</td></tr><tr><td><g>weg-</g></td><td>удаление (прочь отсюда)</td></tr><tr><td><g>weiter-</g></td><td>продолжение (не останавливаться)</td></tr><tr><td><g>zusammen-</g></td><td>совместность, объединение</td></tr><tr><td><g>zurück-</g></td><td>повторение, возвращение</td></tr></table><br><b>Порядок слов:</b> в презенсе/претерите приставка стоит в самом конце предложения, отдельно от основы глагола.<br><br><b>Примеры</b><br>Ich <g>komme</g> morgen <g>mit</g>. (mitkommen — Я присоединюсь завтра.)<br>Wir <g>arbeiten weiter</g>. (weiterarbeiten — Мы продолжаем работать.)<br>Er <g>kommt</g> nächste Woche <g>zurück</g>. (zurückkommen — Он вернется на следующей неделе.)"
     }
   }
@@ -1281,7 +1281,7 @@ var LESSONS = [
       "k1_017",
       "k1_018",
       "k1_019",
-      "k1_020",
+      "k14_029",
       "k1_021",
       "k1_022",
       "k1_061"
@@ -1586,10 +1586,10 @@ var LESSONS = [
     ],
     "grammar": null,
     "cardIds": [
-      "k2_015",
+      "k8_048",
       "k2_008",
       "k2_016",
-      "k2_017",
+      "k8_015",
       "k2_018",
       "k2_019",
       "k2_020",
@@ -2118,7 +2118,7 @@ var LESSONS = [
     "grammar": "komposita_verb_nomen",
     "cardIds": [
       "k3_009",
-      "k3_010",
+      "k2_052",
       "k3_011",
       "k3_048",
       "k3_049",
@@ -2170,8 +2170,8 @@ var LESSONS = [
     ],
     "grammar": "konnektoren_wdh_b1",
     "cardIds": [
-      "k3_012",
-      "k3_013",
+      "k2_051",
+      "k2_049",
       "k3_014",
       "k3_015",
       "k3_055",
@@ -2778,7 +2778,7 @@ var LESSONS = [
     "cardIds": [
       "k5_003",
       "k5_008",
-      "k5_048",
+      "k2_029",
       "k5_049",
       "k5_050",
       "k5_051",
@@ -3031,7 +3031,7 @@ var LESSONS = [
       "k6_010",
       "k6_004",
       "k6_039",
-      "k6_040",
+      "k8_021",
       "k6_041",
       "k6_042",
       "k6_043",
@@ -3105,7 +3105,7 @@ var LESSONS = [
     },
     "title": {
       "de": "Wir tun alles für Ihre Gesundheit.",
-      "uk": "Ми робимо все для вашого здоров'я.",
+      "uk": "Ми робимо все для вашого здоровʼя.",
       "en": "We do everything for your health.",
       "ru": "Мы делаем всё для вашего здоровья."
     },
@@ -3292,7 +3292,7 @@ var LESSONS = [
     "grammar": "perfekt_wdh_b1",
     "cardIds": [
       "k7_012",
-      "k7_014",
+      "k1_041",
       "k7_031",
       "k7_032",
       "k7_033",
@@ -3519,7 +3519,7 @@ var LESSONS = [
       "k8_016",
       "k8_017",
       "k8_018",
-      "k8_019",
+      "k13_027",
       "k8_020",
       "k8_021",
       "k8_022",
@@ -3630,7 +3630,7 @@ var LESSONS = [
     "cardIds": [
       "k8_003",
       "k8_012",
-      "k8_032",
+      "k5_009",
       "k8_033",
       "k8_034",
       "k8_035",
@@ -3688,9 +3688,9 @@ var LESSONS = [
       "k8_004",
       "k8_015",
       "k8_040",
-      "k8_041",
+      "k2_047",
       "k8_042",
-      "k8_043",
+      "k2_051",
       "k8_044",
       "k8_045",
       "k8_046",
@@ -3737,7 +3737,7 @@ var LESSONS = [
       "k8_052",
       "k8_053",
       "k8_054",
-      "k8_055",
+      "k15_030",
       "k8_099",
       "k8_100",
       "k8_101"
@@ -3830,7 +3830,7 @@ var LESSONS = [
       "k9_020",
       "k9_021",
       "k9_022",
-      "k9_023",
+      "k7_037",
       "k9_051",
       "k9_052",
       "k9_053",
@@ -3887,7 +3887,7 @@ var LESSONS = [
       "k9_025",
       "k9_026",
       "k9_027",
-      "k9_028",
+      "k12_004",
       "k9_029",
       "k9_030",
       "k9_031",
@@ -4004,7 +4004,7 @@ var LESSONS = [
       "k9_040",
       "k9_041",
       "k9_042",
-      "k9_043",
+      "k5_023",
       "k9_044",
       "k9_045",
       "k9_046",
@@ -4053,11 +4053,11 @@ var LESSONS = [
       "k9_013",
       "k9_014",
       "k9_015",
-      "k9_016",
+      "k7_023",
       "k9_047",
       "k9_048",
       "k9_049",
-      "k9_050",
+      "k5_016",
       "k9_102",
       "k9_103",
       "k9_104",
@@ -4116,7 +4116,7 @@ var LESSONS = [
       "k10_020",
       "k10_021",
       "k10_022",
-      "k10_023",
+      "k7_052",
       "k10_051",
       "k10_052",
       "k10_053",
@@ -4172,7 +4172,7 @@ var LESSONS = [
       "k10_028",
       "k10_029",
       "k10_030",
-      "k10_031",
+      "k5_034",
       "k10_060",
       "k10_061",
       "k10_062",
@@ -4272,9 +4272,9 @@ var LESSONS = [
       "k10_008",
       "k10_009",
       "k10_014",
-      "k10_040",
+      "k4_050",
       "k10_041",
-      "k10_042",
+      "k2_048",
       "k10_043",
       "k10_044",
       "k10_045",
@@ -4314,12 +4314,12 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k10_010",
-      "k10_011",
+      "k7_031",
       "k10_012",
       "k10_013",
       "k10_015",
       "k10_016",
-      "k10_047",
+      "k1_044",
       "k10_048",
       "k10_049",
       "k10_050",
@@ -4360,8 +4360,8 @@ var LESSONS = [
       "k11_001",
       "k11_009",
       "k11_010",
-      "k11_017",
-      "k11_018",
+      "k6_015",
+      "k1_008",
       "k11_019",
       "k11_020",
       "k11_021",
@@ -4405,10 +4405,10 @@ var LESSONS = [
     ],
     "grammar": "nebensatz_mit_waehrend",
     "cardIds": [
-      "k11_002",
+      "k5_054",
       "k11_006",
       "k11_024",
-      "k11_025",
+      "k6_023",
       "k11_026",
       "k11_027",
       "k11_028",
@@ -4459,13 +4459,13 @@ var LESSONS = [
     "cardIds": [
       "k11_003",
       "k11_007",
-      "k11_032",
+      "k13_039",
       "k11_033",
       "k11_034",
-      "k11_035",
+      "k9_014",
       "k11_036",
       "k11_037",
-      "k11_038",
+      "k13_022",
       "k11_039",
       "k11_061",
       "k11_062"
@@ -4508,9 +4508,9 @@ var LESSONS = [
       "k11_040",
       "k11_041",
       "k11_042",
-      "k11_043",
+      "k1_046",
       "k11_044",
-      "k11_045",
+      "k5_001",
       "k11_046",
       "k11_063",
       "k11_064",
@@ -4596,7 +4596,7 @@ var LESSONS = [
     "cardIds": [
       "k12_001",
       "k12_002",
-      "k12_017",
+      "k5_011",
       "k12_018",
       "k12_019",
       "k12_020",
@@ -4656,14 +4656,14 @@ var LESSONS = [
     "cardIds": [
       "k12_003",
       "k12_004",
-      "k12_025",
+      "k5_009",
       "k12_026",
       "k12_027",
       "k12_028",
       "k12_029",
       "k12_030",
       "k12_031",
-      "k12_032",
+      "k7_037",
       "k12_064",
       "k12_065",
       "k12_066",
@@ -4721,7 +4721,7 @@ var LESSONS = [
       "k12_005",
       "k12_012",
       "k12_033",
-      "k12_034",
+      "k8_008",
       "k12_035",
       "k12_036",
       "k12_037",
@@ -4765,10 +4765,10 @@ var LESSONS = [
       "k12_006",
       "k12_007",
       "k12_013",
-      "k12_041",
+      "k9_010",
       "k12_042",
       "k12_043",
-      "k12_044",
+      "k11_044",
       "k12_045",
       "k12_046",
       "k12_047",
@@ -4812,8 +4812,8 @@ var LESSONS = [
       "k12_011",
       "k12_014",
       "k12_015",
-      "k12_016",
-      "k12_048",
+      "k10_030",
+      "k3_058",
       "k12_049",
       "k12_050",
       "k12_095",
@@ -4858,11 +4858,11 @@ var LESSONS = [
     "cardIds": [
       "k13_001",
       "k13_002",
-      "k13_009",
+      "k6_033",
       "k13_017",
-      "k13_018",
+      "k1_033",
       "k13_019",
-      "k13_020",
+      "k8_008",
       "k13_021",
       "k13_022",
       "k13_023",
@@ -4896,9 +4896,9 @@ var LESSONS = [
     ],
     "grammar": "praepositionen_mit_genitiv",
     "cardIds": [
-      "k13_003",
-      "k13_004",
-      "k13_024",
+      "k3_045",
+      "k7_032",
+      "k5_009",
       "k13_025",
       "k13_026",
       "k13_027",
@@ -4935,7 +4935,7 @@ var LESSONS = [
     ],
     "grammar": "adjektivendung_genitiv",
     "cardIds": [
-      "k13_005",
+      "k7_034",
       "k13_010",
       "k13_032",
       "k13_033",
@@ -4975,15 +4975,15 @@ var LESSONS = [
     ],
     "grammar": "adjektive_auf_voll_reich",
     "cardIds": [
-      "k13_006",
+      "k8_052",
       "k13_007",
       "k13_011",
-      "k13_040",
+      "k10_030",
       "k13_041",
       "k13_042",
       "k13_043",
       "k13_044",
-      "k13_045",
+      "k1_006",
       "k13_046",
       "k13_053",
       "k13_054"
@@ -5017,7 +5017,7 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k13_008",
-      "k13_012",
+      "k10_046",
       "k13_013",
       "k13_014",
       "k13_015",
@@ -5059,11 +5059,11 @@ var LESSONS = [
     ],
     "grammar": "n_deklination",
     "cardIds": [
-      "k14_001",
+      "k1_003",
       "k14_002",
       "k14_017",
       "k14_018",
-      "k14_019",
+      "k3_025",
       "k14_020",
       "k14_021",
       "k14_022",
@@ -5100,12 +5100,12 @@ var LESSONS = [
     "cardIds": [
       "k14_003",
       "k14_004",
-      "k14_025",
+      "k1_016",
       "k14_026",
       "k14_027",
       "k14_028",
       "k14_029",
-      "k14_030",
+      "k3_049",
       "k14_031",
       "k14_032",
       "k14_061",
@@ -5153,7 +5153,7 @@ var LESSONS = [
       "k14_005",
       "k14_011",
       "k14_033",
-      "k14_034",
+      "k1_025",
       "k14_035",
       "k14_036",
       "k14_037",
@@ -5197,7 +5197,7 @@ var LESSONS = [
       "k14_007",
       "k14_041",
       "k14_042",
-      "k14_043",
+      "k1_015",
       "k14_044",
       "k14_045",
       "k14_046",
@@ -5323,9 +5323,9 @@ var LESSONS = [
       "k15_017",
       "k15_018",
       "k15_019",
-      "k15_020",
+      "k10_030",
       "k15_021",
-      "k15_022",
+      "k13_044",
       "k15_023",
       "k15_024",
       "k15_051",
@@ -5427,12 +5427,12 @@ var LESSONS = [
       "k15_005",
       "k15_010",
       "k15_033",
-      "k15_034",
-      "k15_035",
-      "k15_036",
+      "k3_058",
+      "k12_043",
+      "k2_047",
       "k15_037",
-      "k15_038",
-      "k15_039",
+      "k9_001",
+      "k13_027",
       "k15_078",
       "k15_079",
       "k15_080",
@@ -5484,11 +5484,11 @@ var LESSONS = [
       "k15_040",
       "k15_041",
       "k15_042",
-      "k15_043",
+      "k8_042",
       "k15_044",
       "k15_045",
       "k15_046",
-      "k15_047",
+      "k11_004",
       "k15_091",
       "k15_092",
       "k15_093",
@@ -5542,7 +5542,7 @@ var LESSONS = [
       "k15_014",
       "k15_015",
       "k15_016",
-      "k15_048",
+      "k2_051",
       "k15_049",
       "k15_050",
       "k15_108",
@@ -5592,9 +5592,9 @@ var LESSONS = [
       "k16_017",
       "k16_018",
       "k16_019",
-      "k16_020",
+      "k8_008",
       "k16_021",
-      "k16_022",
+      "k9_034",
       "k16_023",
       "k16_041",
       "k16_042",
@@ -5650,12 +5650,12 @@ var LESSONS = [
       "k16_004",
       "k16_005",
       "k16_024",
-      "k16_025",
+      "k2_036",
       "k16_026",
       "k16_027",
-      "k16_028",
+      "k1_035",
       "k16_029",
-      "k16_030",
+      "k1_038",
       "k16_031",
       "k16_059",
       "k16_060",
@@ -5712,7 +5712,7 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k16_009",
-      "k16_010",
+      "k3_034",
       "k16_011",
       "k16_012",
       "k16_032",
@@ -10689,6 +10689,12 @@ var EXAM_SIM = {
   }
 };
 
+// ── СХЕМА ФОРМ СЛОВА (картка: "forms":{"t":тип,"v":[значення за порядком slots]}; "info":{num,case,sense}; "syn":[…]) ──
+var FORMS = {
+  "verb": {"slots": ["pres","pret","perf"], "voice": true, "label": {"de": ["","Präteritum","Perfekt"], "en": ["","Preterite","Perfect"], "uk": ["","Präteritum","Perfekt"], "ru": ["","Präteritum","Perfekt"]}},
+  "noun": {"slots": ["pl"], "voice": true, "label": {"de": ["Plural"], "en": ["Plural"], "uk": ["Множина"], "ru": ["Мн. число"]}}
+};
+
 var VOCAB = [
   {
     "id": "k1_001",
@@ -10734,7 +10740,13 @@ var VOCAB = [
       "uk": "Наш новий <b>сусід</b> вже десять років живе в будинку навпроти.",
       "ru": "Наш новый <b>сосед</b> уже десять лет живёт в доме напротив."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
+    "gram": "wechselpraepositionen_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Nachbarn / die Nachbarinnen"
+      ]
+    }
   },
   {
     "id": "k1_003",
@@ -10757,7 +10769,13 @@ var VOCAB = [
       "uk": "Моя сестра живе в сучасному <b>багатоквартирному будинку</b> з дванадцятьма квартирами.",
       "ru": "Моя сестра живёт в современном <b>многоквартирном доме</b> с двенадцатью квартирами."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
+    "gram": "wechselpraepositionen_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Mehrfamilienhäuser"
+      ]
+    }
   },
   {
     "id": "k1_004",
@@ -10780,7 +10798,13 @@ var VOCAB = [
       "uk": "У <b>правилах будинку</b> написано, що після 22:00 <g>не можна слухати</g> голосну музику.",
       "ru": "В <b>правилах дома</b> написано, что после 22:00 <g>нельзя слушать</g> громкую музыку."
     },
-    "gram": "modalverben_wdh_b1"
+    "gram": "modalverben_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Hausordnungen"
+      ]
+    }
   },
   {
     "id": "k1_005",
@@ -10849,7 +10873,13 @@ var VOCAB = [
       "uk": "У <b>підʼїзді</b> <g>не можна залишати</g> велосипеди чи коробки.",
       "ru": "В <b>подъезде</b> <g>нельзя оставлять</g> велосипеды или коробки."
     },
-    "gram": "modalverben_wdh_b1"
+    "gram": "modalverben_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Treppenhäuser"
+      ]
+    }
   },
   {
     "id": "k1_008",
@@ -10907,7 +10937,7 @@ var VOCAB = [
       "ru": "жаловаться"
     },
     "short": {
-      "de": "Sagen, dass man mit etwas nicht zufrieden ist",
+      "de": "sagen, dass man mit etwas nicht zufrieden ist",
       "en": "to say that you are not satisfied with something",
       "uk": "казати, що ти чимось незадоволений",
       "ru": "говорить, что ты чем-то недоволен"
@@ -10953,7 +10983,7 @@ var VOCAB = [
       "ru": "разрешать"
     },
     "short": {
-      "de": "Sagen, dass jemand etwas machen darf",
+      "de": "sagen, dass jemand etwas machen darf",
       "en": "to say that someone is allowed to do something",
       "uk": "казати, що комусь можна щось робити",
       "ru": "говорить, что кому-то можно что-то делать"
@@ -11056,7 +11086,13 @@ var VOCAB = [
       "uk": "<g>Могли б Ви</g>, будь ласка, повідомити нашого <b>орендодавця</b>, що опалення зламалося?",
       "ru": "<g>Могли бы Вы</g>, пожалуйста, сообщить нашему <b>арендодателю</b>, что отопление сломалось?"
     },
-    "gram": "hoefliche_bitten_konjunktiv_b1"
+    "gram": "hoefliche_bitten_konjunktiv_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Vermieter / die Vermieterinnen"
+      ]
+    }
   },
   {
     "id": "k1_017",
@@ -11079,7 +11115,13 @@ var VOCAB = [
       "uk": "Нелегко щомісяця вчасно платити <b>орендну плату</b>.",
       "ru": "Нелегко каждый месяц вовремя платить <b>арендную плату</b>."
     },
-    "gram": "infinitiv_mit_zu"
+    "gram": "infinitiv_mit_zu",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Mieten"
+      ]
+    }
   },
   {
     "id": "k1_018",
@@ -11102,7 +11144,13 @@ var VOCAB = [
       "uk": "У разі пожежі <g>не можна користуватися</g> <b>ліфтом</b>.",
       "ru": "При пожаре <g>нельзя пользоваться</g> <b>лифтом</b>."
     },
-    "gram": "modalverben_wdh_b1"
+    "gram": "modalverben_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Aufzüge"
+      ]
+    }
   },
   {
     "id": "k1_019",
@@ -11125,30 +11173,13 @@ var VOCAB = [
       "uk": "Я ставлю старі велосипеди в <b>підвал</b>, бо в коридорі більше немає місця.",
       "ru": "Я ставлю старые велосипеды в <b>подвал</b>, потому что в коридоре больше нет места."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
-  },
-  {
-    "id": "k1_020",
-    "cat": "k1",
-    "term": {
-      "de": "der Balkon",
-      "en": "balcony",
-      "uk": "балкон",
-      "ru": "балкон"
-    },
-    "short": {
-      "de": "ein kleiner Platz an der Wohnung, wo man draußen sitzen kann",
-      "en": "a small space attached to the flat where you can sit outside",
-      "uk": "невеликий простір біля квартири, де можна сидіти надворі",
-      "ru": "небольшое пространство рядом с квартирой, где можно сидеть на улице"
-    },
-    "def": {
-      "de": "Wir haben viele Pflanzen <g>sowohl</g> auf dem <b>Balkon</b> <g>als auch</g> im Wohnzimmer.",
-      "en": "We have lots of plants <g>both</g> on the <b>balcony</b> <g>and</g> in the living room.",
-      "uk": "У нас багато рослин <g>як</g> на <b>балконі</b>, <g>так і</g> у вітальні.",
-      "ru": "У нас много растений <g>как</g> на <b>балконе</b>, <g>так и</g> в гостиной."
-    },
-    "gram": "sowohl_als_auch_weder_noch"
+    "gram": "wechselpraepositionen_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Keller"
+      ]
+    }
   },
   {
     "id": "k1_021",
@@ -11217,7 +11248,13 @@ var VOCAB = [
       "uk": "Діти поставили своє взуття в <b>коридор</b>.",
       "ru": "Дети поставили свою обувь в <b>коридор</b>."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
+    "gram": "wechselpraepositionen_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Flure"
+      ]
+    }
   },
   {
     "id": "k1_024",
@@ -11240,7 +11277,13 @@ var VOCAB = [
       "uk": "Пан Шмідт щовечора ставить свою машину в <b>гараж</b>.",
       "ru": "Господин Шмидт каждый вечер ставит свою машину в <b>гараж</b>."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
+    "gram": "wechselpraepositionen_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Garagen"
+      ]
+    }
   },
   {
     "id": "k1_025",
@@ -11263,7 +11306,13 @@ var VOCAB = [
       "uk": "Діти цілий день грають у <b>саду</b>.",
       "ru": "Дети целый день играют в <b>саду</b>."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
+    "gram": "wechselpraepositionen_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Gärten"
+      ]
+    }
   },
   {
     "id": "k1_026",
@@ -11309,7 +11358,13 @@ var VOCAB = [
       "uk": "Родина Їлмаз живе на <b>першому поверсі</b>, прямо біля входу.",
       "ru": "Семья Йылмаз живёт на <b>первом этаже</b>, прямо у входа."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
+    "gram": "wechselpraepositionen_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Erdgeschosse"
+      ]
+    }
   },
   {
     "id": "k1_028",
@@ -11355,7 +11410,13 @@ var VOCAB = [
       "uk": "Пополудні діти люблять ходити на <b>дитячий майданчик</b>.",
       "ru": "После обеда дети любят ходить на <b>детскую площадку</b>."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
+    "gram": "wechselpraepositionen_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Spielplätze"
+      ]
+    }
   },
   {
     "id": "k1_030",
@@ -11378,7 +11439,13 @@ var VOCAB = [
       "uk": "Ми щодня ставимо машину на <b>паркувальне місце</b> номер сім.",
       "ru": "Мы каждый день ставим машину на <b>парковочное место</b> номер семь."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
+    "gram": "wechselpraepositionen_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Parkplätze"
+      ]
+    }
   },
   {
     "id": "k1_031",
@@ -11539,7 +11606,10 @@ var VOCAB = [
       "uk": "<g>Могли б Ви</g> сьогодні ввечері трохи <b>попильнувати</b> за моєю кішкою?",
       "ru": "<g>Могли бы Вы</g> сегодня вечером немного <b>присмотреть</b> за моей кошкой?"
     },
-    "gram": "hoefliche_bitten_konjunktiv_b1"
+    "gram": "hoefliche_bitten_konjunktiv_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k1_038",
@@ -11608,7 +11678,10 @@ var VOCAB = [
       "uk": "Не завжди легко <b>піклуватися</b> про спільний сад.",
       "ru": "Не всегда легко <b>заботиться</b> об общем саде."
     },
-    "gram": "infinitiv_mit_zu"
+    "gram": "infinitiv_mit_zu",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k1_041",
@@ -11654,7 +11727,10 @@ var VOCAB = [
       "uk": "Часто потрібно кілька тижнів, щоб <b>звикнути</b> до нового сусідства.",
       "ru": "Часто нужно несколько недель, чтобы <b>привыкнуть</b> к новому соседству."
     },
-    "gram": "infinitiv_mit_zu"
+    "gram": "infinitiv_mit_zu",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k1_043",
@@ -11930,7 +12006,10 @@ var VOCAB = [
       "uk": "<b>Шум</b> ішов <g>ні</g> з будівництва, <g>ні</g> з вулиці, а з вечірки по сусідству.",
       "ru": "<b>Шум</b> исходил <g>ни</g> со стройки, <g>ни</g> с улицы, а с вечеринки по соседству."
     },
-    "gram": "sowohl_als_auch_weder_noch"
+    "gram": "sowohl_als_auch_weder_noch",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k1_055",
@@ -11976,7 +12055,13 @@ var VOCAB = [
       "uk": "<b>Скарга</b> надійшла <g>ні</g> від двірника, <g>ні</g> від орендодавця, а безпосередньо від сусідів.",
       "ru": "<b>Жалоба</b> поступила <g>ни</g> от дворника, <g>ни</g> от арендодателя, а напрямую от соседей."
     },
-    "gram": "sowohl_als_auch_weder_noch"
+    "gram": "sowohl_als_auch_weder_noch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Beschwerden"
+      ]
+    }
   },
   {
     "id": "k1_057",
@@ -12114,7 +12199,13 @@ var VOCAB = [
       "uk": "Один мій <b>знайомий</b> повісив свої картини на стіну в коридорі.",
       "ru": "Один мой <b>знакомый</b> повесил свои картины на стену в коридоре."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
+    "gram": "wechselpraepositionen_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Bekannten"
+      ]
+    }
   },
   {
     "id": "k1_063",
@@ -13356,7 +13447,13 @@ var VOCAB = [
       "uk": "<b>Рахунок</b>, <g>який</g> ми отримали минулого тижня, на жаль, був неправильним.",
       "ru": "<b>Счёт</b>, <g>который</g> мы получили на прошлой неделе, к сожалению, был неправильным."
     },
-    "gram": "relativsatz_akkusativ_b1"
+    "gram": "relativsatz_akkusativ_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Rechnungen"
+      ]
+    }
   },
   {
     "id": "k2_006",
@@ -13379,7 +13476,13 @@ var VOCAB = [
       "uk": "Без <b>квитанції</b>, <g>яку</g> я, на жаль, загубив, я не можу обміняти штани.",
       "ru": "Без <b>квитанции</b>, <g>которую</g> я, к сожалению, потерял, я не могу обменять брюки."
     },
-    "gram": "relativsatz_akkusativ_b1"
+    "gram": "relativsatz_akkusativ_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Quittungen"
+      ]
+    }
   },
   {
     "id": "k2_007",
@@ -13506,7 +13609,7 @@ var VOCAB = [
       "ru": "заказывать"
     },
     "short": {
-      "de": "Sagen, dass man etwas in einem Geschäft oder online kaufen möchte",
+      "de": "sagen, dass man etwas in einem Geschäft oder online kaufen möchte",
       "en": "to say that you want to buy something in a shop or online",
       "uk": "казати, що хочеш купити щось у магазині чи онлайн",
       "ru": "говорить, что хочешь купить что-то в магазине или онлайн"
@@ -13563,30 +13666,13 @@ var VOCAB = [
       "uk": "Без <b>касового чека</b> магазин не може обміняти товар.",
       "ru": "Без <b>кассового чека</b> магазин не может обменять товар."
     },
-    "gram": "komposita_nomen_nomen"
-  },
-  {
-    "id": "k2_015",
-    "cat": "k2",
-    "term": {
-      "de": "die Öffnungszeiten",
-      "en": "opening hours",
-      "uk": "години роботи",
-      "ru": "часы работы"
-    },
-    "short": {
-      "de": "die Zeiten, in denen ein Geschäft geöffnet ist",
-      "en": "the times when a shop is open",
-      "uk": "час, коли магазин відчинений",
-      "ru": "время, когда магазин открыт"
-    },
-    "def": {
-      "de": "Der Supermarkt hat <g>sowohl</g> am Samstag <g>als auch</g> am Sonntag lange <b>Öffnungszeiten</b>.",
-      "en": "The supermarket has long <b>opening hours</b> <g>both</g> on Saturday <g>and</g> on Sunday.",
-      "uk": "У супермаркету довгі <b>години роботи</b> <g>як</g> у суботу, <g>так і</g> в неділю.",
-      "ru": "У супермаркета долгие <b>часы работы</b> <g>как</g> в субботу, <g>так и</g> в воскресенье."
-    },
-    "gram": "sowohl_als_auch_weder_noch"
+    "gram": "komposita_nomen_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kassenbons"
+      ]
+    }
   },
   {
     "id": "k2_016",
@@ -13608,29 +13694,6 @@ var VOCAB = [
       "en": "My <b>shopping list</b> has <g>both</g> fruit <g>and</g> vegetables on it.",
       "uk": "У моєму <b>списку покупок</b> є <g>як</g> фрукти, <g>так і</g> овочі.",
       "ru": "В моём <b>списке покупок</b> есть <g>как</g> фрукты, <g>так и</g> овощи."
-    },
-    "gram": "sowohl_als_auch_weder_noch"
-  },
-  {
-    "id": "k2_017",
-    "cat": "k2",
-    "term": {
-      "de": "das Angebot",
-      "en": "offer",
-      "uk": "пропозиція",
-      "ru": "предложение"
-    },
-    "short": {
-      "de": "ein günstiger Preis oder eine besondere Aktion in einem Geschäft",
-      "en": "a good price or a special promotion in a shop",
-      "uk": "вигідна ціна чи особлива акція в магазині",
-      "ru": "выгодная цена или особая акция в магазине"
-    },
-    "def": {
-      "de": "Das <b>Angebot</b> gilt <g>weder</g> heute <g>noch</g> morgen, sondern erst ab Montag.",
-      "en": "The <b>offer</b> is valid <g>neither</g> today <g>nor</g> tomorrow, but only from Monday.",
-      "uk": "<b>Пропозиція</b> діє <g>ні</g> сьогодні, <g>ні</g> завтра, а лише з понеділка.",
-      "ru": "<b>Предложение</b> действует <g>ни</g> сегодня, <g>ни</g> завтра, а только с понедельника."
     },
     "gram": "sowohl_als_auch_weder_noch"
   },
@@ -13724,7 +13787,13 @@ var VOCAB = [
       "uk": "На <b>касі</b> не було <g>ні</g> довгої черги, <g>ні</g> проблем із карткою.",
       "ru": "На <b>кассе</b> не было <g>ни</g> длинной очереди, <g>ни</g> проблем с картой."
     },
-    "gram": "sowohl_als_auch_weder_noch"
+    "gram": "sowohl_als_auch_weder_noch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kassen"
+      ]
+    }
   },
   {
     "id": "k2_022",
@@ -13747,7 +13816,13 @@ var VOCAB = [
       "uk": "<b>Спеціальна пропозиція</b> діє <g>як</g> у магазині, <g>так і</g> в інтернет-магазині.",
       "ru": "<b>Специальное предложение</b> действует <g>как</g> в магазине, <g>так и</g> в интернет-магазине."
     },
-    "gram": "sowohl_als_auch_weder_noch"
+    "gram": "sowohl_als_auch_weder_noch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Sonderangebote"
+      ]
+    }
   },
   {
     "id": "k2_023",
@@ -13793,7 +13868,10 @@ var VOCAB = [
       "uk": "Я нарешті <b>вирішив(-ла)</b> взяти червону сукню.",
       "ru": "Я наконец <b>решил(-а)</b> взять красное платье."
     },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+    "gram": "reflexivpronomen_akkusativ_wdh_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k2_025",
@@ -13839,7 +13917,10 @@ var VOCAB = [
       "uk": "Перед покупкою вона добре <b>дізналася</b> про товар.",
       "ru": "Перед покупкой она хорошо <b>разузнала</b> о товаре."
     },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+    "gram": "reflexivpronomen_akkusativ_wdh_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k2_027",
@@ -13862,7 +13943,10 @@ var VOCAB = [
       "uk": "Він дуже <b>розсердився</b> через високі ціни.",
       "ru": "Он очень <b>рассердился</b> из-за высоких цен."
     },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+    "gram": "reflexivpronomen_akkusativ_wdh_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k2_028",
@@ -13885,7 +13969,10 @@ var VOCAB = [
       "uk": "Моя сестра дуже <b>цікавиться</b> сталою модою.",
       "ru": "Моя сестра очень <b>интересуется</b> устойчивой модой."
     },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+    "gram": "reflexivpronomen_akkusativ_wdh_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k2_029",
@@ -13908,7 +13995,10 @@ var VOCAB = [
       "uk": "Діти вже дуже <b>чекають</b> на нову іграшку.",
       "ru": "Дети уже очень <b>ждут</b> новую игрушку."
     },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+    "gram": "reflexivpronomen_akkusativ_wdh_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k2_030",
@@ -13954,7 +14044,10 @@ var VOCAB = [
       "uk": "Я <b>домовився(-лась)</b> з подругою піти за покупками.",
       "ru": "Я <b>договорился(-лась)</b> с подругой пойти по магазинам."
     },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+    "gram": "reflexivpronomen_akkusativ_wdh_b1",
+    "info": {
+      "case": "D"
+    }
   },
   {
     "id": "k2_032",
@@ -14092,7 +14185,10 @@ var VOCAB = [
       "uk": "Це була не швидка відповідь, <g>а</g> служба підтримки, <g>яка</g> <b>відреагувала</b> лише через три дні.",
       "ru": "Это был не быстрый ответ, <g>а</g> служба поддержки, <g>которая</g> <b>отреагировала</b> лишь через три дня."
     },
-    "gram": "relativsatz_nominativ_sondern"
+    "gram": "relativsatz_nominativ_sondern",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k2_038",
@@ -14322,7 +14418,13 @@ var VOCAB = [
       "uk": "<b>Строк</b>, <g>який</g> дала нам компанія, вже наступного тижня.",
       "ru": "<b>Срок</b>, <g>который</g> дала нам компания, уже на следующей неделе."
     },
-    "gram": "relativsatz_akkusativ_b1"
+    "gram": "relativsatz_akkusativ_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Fristen"
+      ]
+    }
   },
   {
     "id": "k2_048",
@@ -14391,7 +14493,13 @@ var VOCAB = [
       "uk": "<b>Рахунок</b>, <g>який</g> я відкрив(-ла) рік тому, я використовую майже щодня.",
       "ru": "<b>Счёт</b>, <g>который</g> я открыл(-а) год назад, я использую почти каждый день."
     },
-    "gram": "relativsatz_akkusativ_b1"
+    "gram": "relativsatz_akkusativ_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Konten"
+      ]
+    }
   },
   {
     "id": "k2_051",
@@ -14414,7 +14522,13 @@ var VOCAB = [
       "uk": "<b>Комісія</b>, <g>яку</g> вимагає банк за переказ, здається мені дуже високою.",
       "ru": "<b>Комиссия</b>, <g>которую</g> требует банк за перевод, кажется мне очень высокой."
     },
-    "gram": "relativsatz_akkusativ_b1"
+    "gram": "relativsatz_akkusativ_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Gebühren"
+      ]
+    }
   },
   {
     "id": "k2_052",
@@ -14437,7 +14551,13 @@ var VOCAB = [
       "uk": "<b>Договір</b>, <g>який</g> я підписав(-ла) минулого тижня, мені треба ще раз уважно прочитати.",
       "ru": "<b>Договор</b>, <g>который</g> я подписал(-а) на прошлой неделе, мне нужно ещё раз внимательно прочитать."
     },
-    "gram": "relativsatz_akkusativ_b1"
+    "gram": "relativsatz_akkusativ_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Verträge"
+      ]
+    }
   },
   {
     "id": "k2_053",
@@ -14460,7 +14580,10 @@ var VOCAB = [
       "uk": "Лист, <g>який</g> я отримав(-ла) сьогодні вранці, <b>нагадав</b> мені про оплату.",
       "ru": "Письмо, <g>которое</g> я получил(-а) сегодня утром, <b>напомнило</b> мне об оплате."
     },
-    "gram": "relativsatz_akkusativ_b1"
+    "gram": "relativsatz_akkusativ_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k2_054",
@@ -14874,7 +14997,13 @@ var VOCAB = [
       "uk": "<b>Товар</b> був <g>ні</g> упакований, <g>ні</g> забезпечений рахунком.",
       "ru": "<b>Товар</b> был <g>ни</g> упакован, <g>ни</g> снабжён счётом."
     },
-    "gram": "sowohl_als_auch_weder_noch"
+    "gram": "sowohl_als_auch_weder_noch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Waren"
+      ]
+    }
   },
   {
     "id": "k2_072",
@@ -15409,7 +15538,7 @@ var VOCAB = [
     "id": "k2_095",
     "cat": "k2",
     "term": {
-      "de": "die Mehrkosten, Pl.",
+      "de": "die Mehrkosten",
       "en": "additional costs",
       "uk": "додаткові витрати",
       "ru": "дополнительные расходы"
@@ -15426,7 +15555,10 @@ var VOCAB = [
       "uk": "За експрес-відправлення виникають <b>додаткові витрати</b> в розмірі пʼяти євро.",
       "ru": "За экспресс-отправку возникают <b>дополнительные расходы</b> в размере пяти евро."
     },
-    "gram": "komposita_nomen_nomen"
+    "gram": "komposita_nomen_nomen",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k2_096",
@@ -15472,7 +15604,13 @@ var VOCAB = [
       "uk": "<b>Посилка</b> стоїть перед вхідними дверима.",
       "ru": "<b>Посылка</b> стоит перед входной дверью."
     },
-    "gram": "komposita_nomen_nomen"
+    "gram": "komposita_nomen_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Pakete"
+      ]
+    }
   },
   {
     "id": "k2_098",
@@ -15570,7 +15708,7 @@ var VOCAB = [
     "id": "k2_102",
     "cat": "k2",
     "term": {
-      "de": "die Portokosten, Pl.",
+      "de": "die Portokosten",
       "en": "postage costs",
       "uk": "витрати на пересилання",
       "ru": "расходы на пересылку"
@@ -15587,7 +15725,10 @@ var VOCAB = [
       "uk": "<b>Витрати на пересилання</b> бере на себе фірма.",
       "ru": "<b>Расходы на пересылку</b> берёт на себя фирма."
     },
-    "gram": "komposita_nomen_nomen"
+    "gram": "komposita_nomen_nomen",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k2_103",
@@ -15754,7 +15895,7 @@ var VOCAB = [
     "id": "k2_110",
     "cat": "k2",
     "term": {
-      "de": "die AGB (Allgemeine Geschäftsbedingungen, Pl.)",
+      "de": "die AGB",
       "en": "general terms and conditions",
       "uk": "загальні умови",
       "ru": "общие условия"
@@ -15771,7 +15912,10 @@ var VOCAB = [
       "uk": "<b>Загальні умови</b>, <g>які</g> я прочитав перед покупкою, були дуже довгими.",
       "ru": "<b>Общие условия</b>, <g>которые</g> я прочитал перед покупкой, были очень длинными."
     },
-    "gram": "relativsatz_akkusativ_b1"
+    "gram": "relativsatz_akkusativ_b1",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k2_111",
@@ -16329,7 +16473,7 @@ var VOCAB = [
     "id": "k2_135",
     "cat": "k2",
     "term": {
-      "de": "das PS (Pferdestärke)",
+      "de": "das PS",
       "en": "horsepower",
       "uk": "кінська сила",
       "ru": "лошадиная сила"
@@ -16576,7 +16720,10 @@ var VOCAB = [
       "uk": "Він <b>розірвав</b> договір, <g>хоча</g> страхування насправді було дуже дешевим.",
       "ru": "Он <b>расторг</b> договор, <g>хотя</g> страхование на самом деле было очень дешёвым."
     },
-    "gram": "nebensatz_mit_obwohl"
+    "gram": "nebensatz_mit_obwohl",
+    "info": {
+      "sense": "Vertrag"
+    }
   },
   {
     "id": "k3_008",
@@ -16599,7 +16746,10 @@ var VOCAB = [
       "uk": "<b>Розірвання договору</b> надійшло, <g>хоча</g> пані Краузе ніколи не надсилала листа.",
       "ru": "<b>Расторжение договора</b> пришло, <g>хотя</g> госпожа Краузе никогда не отправляла письмо."
     },
-    "gram": "nebensatz_mit_obwohl"
+    "gram": "nebensatz_mit_obwohl",
+    "info": {
+      "sense": "Vertrag"
+    }
   },
   {
     "id": "k3_009",
@@ -16625,29 +16775,6 @@ var VOCAB = [
     "gram": "komposita_verb_nomen"
   },
   {
-    "id": "k3_010",
-    "cat": "k3",
-    "term": {
-      "de": "der Vertrag",
-      "en": "contract",
-      "uk": "договір",
-      "ru": "договор"
-    },
-    "short": {
-      "de": "ein offizielles Dokument, das die Regeln zwischen zwei Seiten festlegt",
-      "en": "an official document that sets the rules between two parties",
-      "uk": "офіційний документ, який визначає правила між двома сторонами",
-      "ru": "официальный документ, который устанавливает правила между двумя сторонами"
-    },
-    "def": {
-      "de": "Bevor man einen <b>Vertrag</b> unterschreibt, sollte man die <g>Kündigungsfrist</g> genau lesen.",
-      "en": "Before signing a <b>contract</b>, you should read the notice period carefully.",
-      "uk": "Перш ніж підписувати <b>договір</b>, варто уважно прочитати термін розірвання.",
-      "ru": "Перед подписанием <b>договора</b> стоит внимательно прочитать срок расторжения."
-    },
-    "gram": "komposita_verb_nomen"
-  },
-  {
     "id": "k3_011",
     "cat": "k3",
     "term": {
@@ -16669,52 +16796,6 @@ var VOCAB = [
       "ru": "Мы <b>заключили</b> новое страхование после долгой консультационной беседы."
     },
     "gram": "komposita_verb_nomen"
-  },
-  {
-    "id": "k3_012",
-    "cat": "k3",
-    "term": {
-      "de": "die Gebühr",
-      "en": "fee",
-      "uk": "плата",
-      "ru": "плата"
-    },
-    "short": {
-      "de": "Geld, das man für einen Service oder eine Leistung bezahlen muss",
-      "en": "money that you have to pay for a service",
-      "uk": "гроші, які потрібно платити за послугу",
-      "ru": "деньги, которые нужно платить за услугу"
-    },
-    "def": {
-      "de": "Die Bank verlangt eine <b>Gebühr</b>, <g>obwohl</g> das Konto eigentlich kostenlos sein sollte.",
-      "en": "The bank charges a <b>fee</b> <g>although</g> the account is actually supposed to be free.",
-      "uk": "Банк вимагає <b>плату</b>, <g>хоча</g> рахунок мав би бути безкоштовним.",
-      "ru": "Банк требует <b>плату</b>, <g>хотя</g> счёт должен быть бесплатным."
-    },
-    "gram": "konnektoren_wdh_b1"
-  },
-  {
-    "id": "k3_013",
-    "cat": "k3",
-    "term": {
-      "de": "die Überweisung",
-      "en": "bank transfer",
-      "uk": "банківський переказ",
-      "ru": "банковский перевод"
-    },
-    "short": {
-      "de": "wenn man Geld von seinem Konto auf ein anderes Konto schickt",
-      "en": "when you send money from your account to another account",
-      "uk": "коли ти переказуєш гроші з свого рахунку на інший рахунок",
-      "ru": "когда ты переводишь деньги со своего счёта на другой счёт"
-    },
-    "def": {
-      "de": "Die <b>Überweisung</b> ist noch nicht angekommen, <g>deshalb</g> rufe ich heute bei der Bank an.",
-      "en": "The <b>bank transfer</b> has not arrived yet, <g>therefore</g> I am calling the bank today.",
-      "uk": "<b>Переказ</b> ще не надійшов, <g>тому</g> я сьогодні дзвоню в банк.",
-      "ru": "<b>Перевод</b> ещё не пришёл, <g>поэтому</g> я сегодня звоню в банк."
-    },
-    "gram": "konnektoren_wdh_b1"
   },
   {
     "id": "k3_014",
@@ -16990,7 +17071,13 @@ var VOCAB = [
       "uk": "Задоволеність <b>клієнта</b> дуже важлива для банку.",
       "ru": "Удовлетворённость <b>клиента</b> очень важна для банка."
     },
-    "gram": "genitiv"
+    "gram": "genitiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kunden / die Kundinnen"
+      ]
+    }
   },
   {
     "id": "k3_026",
@@ -17082,7 +17169,13 @@ var VOCAB = [
       "uk": "Термін дії <b>кредитної картки</b> закінчується через два місяці.",
       "ru": "Срок действия <b>кредитной карты</b> заканчивается через два месяца."
     },
-    "gram": "genitiv"
+    "gram": "genitiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kreditkarten"
+      ]
+    }
   },
   {
     "id": "k3_030",
@@ -17220,7 +17313,13 @@ var VOCAB = [
       "uk": "Текст <b>заяви</b> в поліцію потрібно було написати дуже точно.",
       "ru": "Текст <b>заявления</b> в полицию нужно было написать очень точно."
     },
-    "gram": "genitiv"
+    "gram": "genitiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Anzeigen"
+      ]
+    }
   },
   {
     "id": "k3_036",
@@ -17243,7 +17342,10 @@ var VOCAB = [
       "uk": "Номер <b>поліції</b> вона, на щастя, зберегла у телефоні.",
       "ru": "Номер <b>полиции</b> она, к счастью, сохранила в телефоне."
     },
-    "gram": "genitiv"
+    "gram": "genitiv",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k3_037",
@@ -17542,7 +17644,13 @@ var VOCAB = [
       "uk": "<b>Термін розірвання</b> у більшості страхових компаній становить один місяць.",
       "ru": "<b>Срок расторжения</b> в большинстве страховых компаний составляет один месяц."
     },
-    "gram": "komposita_verb_nomen"
+    "gram": "komposita_verb_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kündigungsfristen"
+      ]
+    }
   },
   {
     "id": "k3_050",
@@ -17749,7 +17857,13 @@ var VOCAB = [
       "uk": "Мені потрібен <b>доказ</b>, <g>бо</g> інакше банк мені не повірить.",
       "ru": "Мне нужно <b>доказательство</b>, <g>потому что</g> иначе банк мне не поверит."
     },
-    "gram": "konnektoren_wdh_b1"
+    "gram": "konnektoren_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Nachweise"
+      ]
+    }
   },
   {
     "id": "k3_059",
@@ -18169,7 +18283,7 @@ var VOCAB = [
     "id": "k3_077",
     "cat": "k3",
     "term": {
-      "de": "die Teilkaskoversicherung (Teilkasko)",
+      "de": "die Teilkaskoversicherung",
       "en": "partial comprehensive car insurance",
       "uk": "часткове КАСКО",
       "ru": "частичное КАСКО"
@@ -18186,7 +18300,10 @@ var VOCAB = [
       "uk": "Він уклав лише <b>часткове КАСКО</b>, <g>хоча</g> автомобіль новий.",
       "ru": "Он заключил только <b>частичное КАСКО</b>, <g>хотя</g> автомобиль новый."
     },
-    "gram": "nebensatz_mit_obwohl"
+    "gram": "nebensatz_mit_obwohl",
+    "syn": [
+      "Teilkasko"
+    ]
   },
   {
     "id": "k3_078",
@@ -18261,7 +18378,7 @@ var VOCAB = [
     "id": "k3_081",
     "cat": "k3",
     "term": {
-      "de": "die Vollkaskoversicherung (Vollkasko)",
+      "de": "die Vollkaskoversicherung",
       "en": "fully comprehensive car insurance",
       "uk": "повне КАСКО",
       "ru": "полное КАСКО"
@@ -18278,7 +18395,10 @@ var VOCAB = [
       "uk": "Він обрав <b>повне КАСКО</b>, <g>хоча</g> воно багато коштує.",
       "ru": "Он выбрал <b>полное КАСКО</b>, <g>хотя</g> оно стоит много."
     },
-    "gram": "nebensatz_mit_obwohl"
+    "gram": "nebensatz_mit_obwohl",
+    "syn": [
+      "Vollkasko"
+    ]
   },
   {
     "id": "k3_082",
@@ -18577,7 +18697,10 @@ var VOCAB = [
       "uk": "<g>Оскільки</g> його автомобіль старий, він купує вживаний <b>замість</b> нового.",
       "ru": "<g>Поскольку</g> его автомобиль старый, он покупает подержанный <b>вместо</b> нового."
     },
-    "gram": "konnektoren_wdh_b1"
+    "gram": "konnektoren_wdh_b1",
+    "info": {
+      "case": "G"
+    }
   },
   {
     "id": "k3_095",
@@ -18830,7 +18953,13 @@ var VOCAB = [
       "uk": "<b>Автомат</b> був, на жаль, зламаний, <g>тому</g> я не міг купити каву.",
       "ru": "<b>Автомат</b> был, к сожалению, сломан, <g>поэтому</g> я не мог купить кофе."
     },
-    "gram": "konnektoren_wdh_b1"
+    "gram": "konnektoren_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Automaten"
+      ]
+    }
   },
   {
     "id": "k4_005",
@@ -19129,7 +19258,10 @@ var VOCAB = [
       "uk": "Я помічаю, <g>що</g> дуже <b>голодний(-а)</b>.",
       "ru": "Я замечаю, <g>что</g> очень <b>голоден / голодна</b>."
     },
-    "gram": "konnektoren_wdh_b1"
+    "gram": "konnektoren_wdh_b1",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k4_018",
@@ -19152,7 +19284,10 @@ var VOCAB = [
       "uk": "<g>Коли</g> я в стресі, я зазвичай втрачаю <b>апетит</b>.",
       "ru": "<g>Когда</g> я в стрессе, я обычно теряю <b>аппетит</b>."
     },
-    "gram": "konnektoren_wdh_b1"
+    "gram": "konnektoren_wdh_b1",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k4_019",
@@ -19704,7 +19839,13 @@ var VOCAB = [
       "uk": "Щороку моя мама пече чудовий <b>торт на день народження</b>.",
       "ru": "Каждый год моя мама печёт прекрасный <b>торт на день рождения</b>."
     },
-    "gram": "komposita_fugenelemente"
+    "gram": "komposita_fugenelemente",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Geburtstagstorten"
+      ]
+    }
   },
   {
     "id": "k4_043",
@@ -19819,7 +19960,13 @@ var VOCAB = [
       "uk": "<b>Результат</b> опитування здивував нас усіх.",
       "ru": "<b>Результат</b> опроса удивил нас всех."
     },
-    "gram": "genitiv_alternativen"
+    "gram": "genitiv_alternativen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ergebnisse"
+      ]
+    }
   },
   {
     "id": "k4_048",
@@ -19957,7 +20104,13 @@ var VOCAB = [
       "uk": "<b>Відповідь</b> більшості була однозначною: сніданок важливий.",
       "ru": "<b>Ответ</b> большинства был однозначным: завтрак важен."
     },
-    "gram": "genitiv_alternativen"
+    "gram": "genitiv_alternativen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Antworten"
+      ]
+    }
   },
   {
     "id": "k4_054",
@@ -20348,7 +20501,13 @@ var VOCAB = [
       "uk": "Я люблю їсти <b>ковбасу</b>, <g>хоча</g> вона не надто корисна.",
       "ru": "Я люблю есть <b>колбасу</b>, <g>хотя</g> она не очень полезна."
     },
-    "gram": "konnektoren_wdh_b1"
+    "gram": "konnektoren_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Würste"
+      ]
+    }
   },
   {
     "id": "k4_071",
@@ -21366,7 +21525,7 @@ var VOCAB = [
     "id": "k4_115",
     "cat": "k4",
     "term": {
-      "de": "die Chips, Pl.",
+      "de": "die Chips",
       "en": "crisps",
       "uk": "чипси",
       "ru": "чипсы"
@@ -21383,7 +21542,10 @@ var VOCAB = [
       "uk": "Пачка <b>чипсів</b> уже порожня.",
       "ru": "Пачка <b>чипсов</b> уже пустая."
     },
-    "gram": "genitiv_alternativen"
+    "gram": "genitiv_alternativen",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k4_116",
@@ -21682,7 +21844,13 @@ var VOCAB = [
       "uk": "Я чекав, <g>доки</g> не набрав достатньо <b>досвіду</b> для нової роботи.",
       "ru": "Я ждал, <g>пока</g> не набрал достаточно <b>опыта</b> для новой работы."
     },
-    "gram": "nebensatz_mit_bis"
+    "gram": "nebensatz_mit_bis",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Erfahrungen"
+      ]
+    }
   },
   {
     "id": "k5_010",
@@ -21705,7 +21873,10 @@ var VOCAB = [
       "uk": "Покупки та приготування їжі — тверда частина мого <b>повсякдення</b>.",
       "ru": "Покупки и готовка — твёрдая часть моей <b>повседневной жизни</b>."
     },
-    "gram": "verben_als_nomen"
+    "gram": "verben_als_nomen",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k5_011",
@@ -21751,7 +21922,13 @@ var VOCAB = [
       "uk": "<g>З ким</g> ти взагалі говориш своєю <b>рідною мовою</b>?",
       "ru": "<g>С кем</g> ты вообще говоришь на своём <b>родном языке</b>?"
     },
-    "gram": "verben_praep_personen_sachen"
+    "gram": "verben_praep_personen_sachen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Muttersprachen"
+      ]
+    }
   },
   {
     "id": "k5_013",
@@ -21763,7 +21940,7 @@ var VOCAB = [
       "ru": "бросаться в глаза"
     },
     "short": {
-      "de": "Bemerkt werden, weil etwas anders oder besonders ist",
+      "de": "bemerkt werden, weil etwas anders oder besonders ist",
       "en": "to be noticed because something is different or special",
       "uk": "бути помітним, бо щось відрізняється чи особливе",
       "ru": "быть заметным, потому что что-то отличается или особенное"
@@ -21843,7 +22020,13 @@ var VOCAB = [
       "uk": "У мене багато нових <b>звичок</b>, <g>відколи</g> я живу в іншій країні.",
       "ru": "У меня много новых <b>привычек</b>, <g>с тех пор как</g> я живу в другой стране."
     },
-    "gram": "nebensatz_seit_seitdem"
+    "gram": "nebensatz_seit_seitdem",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Gewohnheiten"
+      ]
+    }
   },
   {
     "id": "k5_017",
@@ -21958,7 +22141,13 @@ var VOCAB = [
       "uk": "Я набагато краще знаю найважливіші <b>правила</b> повсякденного життя, <g>відколи</g> відвідую мовний курс.",
       "ru": "Я намного лучше знаю самые важные <b>правила</b> повседневной жизни, <g>с тех пор как</g> посещаю языковой курс."
     },
-    "gram": "nebensatz_seit_seitdem"
+    "gram": "nebensatz_seit_seitdem",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Regeln"
+      ]
+    }
   },
   {
     "id": "k5_022",
@@ -22027,7 +22216,10 @@ var VOCAB = [
       "uk": "<g>Чого</g> ти взагалі ще <b>чекаєш</b>?",
       "ru": "<g>Чего</g> ты вообще ещё <b>ждёшь</b>?"
     },
-    "gram": "verben_praep_personen_sachen"
+    "gram": "verben_praep_personen_sachen",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_025",
@@ -22050,7 +22242,10 @@ var VOCAB = [
       "uk": "<g>Про кого</g> ти зараз <b>думаєш</b>?",
       "ru": "<g>О ком</g> ты сейчас <b>думаешь</b>?"
     },
-    "gram": "verben_praep_personen_sachen"
+    "gram": "verben_praep_personen_sachen",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_026",
@@ -22073,7 +22268,10 @@ var VOCAB = [
       "uk": "<g>Що</g> ти ще <b>памʼятаєш</b> зі свого дитинства?",
       "ru": "<g>Что</g> ты ещё <b>помнишь</b> из своего детства?"
     },
-    "gram": "verben_praep_personen_sachen"
+    "gram": "verben_praep_personen_sachen",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_027",
@@ -22096,7 +22294,10 @@ var VOCAB = [
       "uk": "<g>Про що</g> тобі <b>снилося</b> вчора вночі?",
       "ru": "<g>О чём</g> тебе <b>снилось</b> вчера ночью?"
     },
-    "gram": "verben_praep_personen_sachen"
+    "gram": "verben_praep_personen_sachen",
+    "info": {
+      "case": "D"
+    }
   },
   {
     "id": "k5_028",
@@ -22119,7 +22320,10 @@ var VOCAB = [
       "uk": "<g>Про що</g> ви вчора так довго <b>говорили</b>?",
       "ru": "<g>О чём</g> вы вчера так долго <b>говорили</b>?"
     },
-    "gram": "verben_praep_personen_sachen"
+    "gram": "verben_praep_personen_sachen",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_029",
@@ -22142,7 +22346,10 @@ var VOCAB = [
       "uk": "<g>Про кого</g> ви <b>дискутували</b> на курсі?",
       "ru": "<g>О ком</g> вы <b>дискутировали</b> на курсе?"
     },
-    "gram": "verben_praep_personen_sachen"
+    "gram": "verben_praep_personen_sachen",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_030",
@@ -22165,7 +22372,10 @@ var VOCAB = [
       "uk": "<g>Чим</g> ти зараз <b>займаєшся</b> у вільний час?",
       "ru": "<g>Чем</g> ты сейчас <b>занимаешься</b> в свободное время?"
     },
-    "gram": "verben_praep_personen_sachen"
+    "gram": "verben_praep_personen_sachen",
+    "info": {
+      "case": "D"
+    }
   },
   {
     "id": "k5_031",
@@ -22188,7 +22398,10 @@ var VOCAB = [
       "uk": "<g>На що</g> потрібно особливо <b>звертати увагу</b> на цьому курсі?",
       "ru": "<g>На что</g> нужно особенно <b>обращать внимание</b> на этом курсе?"
     },
-    "gram": "verben_praep_personen_sachen"
+    "gram": "verben_praep_personen_sachen",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_032",
@@ -22303,7 +22516,13 @@ var VOCAB = [
       "uk": "Я тяжко працював(-ла), <g>доки</g> нарешті не досяг(-ла) своєї <b>мети</b>.",
       "ru": "Я усердно работал(-а), <g>пока</g> наконец не достиг(-ла) своей <b>цели</b>."
     },
-    "gram": "nebensatz_mit_bis"
+    "gram": "nebensatz_mit_bis",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ziele"
+      ]
+    }
   },
   {
     "id": "k5_037",
@@ -22559,29 +22778,6 @@ var VOCAB = [
     "gram": "verben_als_nomen"
   },
   {
-    "id": "k5_048",
-    "cat": "k5",
-    "term": {
-      "de": "sich freuen auf",
-      "en": "to look forward to",
-      "uk": "чекати з радістю",
-      "ru": "с радостью ждать"
-    },
-    "short": {
-      "de": "eine positive Erwartung von etwas haben, das noch kommt",
-      "en": "to have a positive expectation of something that is still to come",
-      "uk": "мати позитивне очікування чогось, що ще станеться",
-      "ru": "иметь позитивное ожидание чего-то, что ещё произойдёт"
-    },
-    "def": {
-      "de": "<g>Worauf</g> <b>freust</b> du <b>dich</b> am meisten, wenn du an den Urlaub denkst?",
-      "en": "What are you <b>looking forward</b> <g>to</g> the most when you think about the holiday?",
-      "uk": "<g>Чого</g> ти найбільше <b>очікуєш</b>, коли думаєш про відпустку?",
-      "ru": "<g>Чего</g> ты больше всего <b>ждёшь</b>, когда думаешь об отпуске?"
-    },
-    "gram": "praepositionaladverbien_b1"
-  },
-  {
     "id": "k5_049",
     "cat": "k5",
     "term": {
@@ -22602,7 +22798,10 @@ var VOCAB = [
       "uk": "<g>На що</g> цього разу <b>поскаржився</b> сусід?",
       "ru": "<g>На что</g> на этот раз <b>пожаловался</b> сосед?"
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_050",
@@ -22625,7 +22824,10 @@ var VOCAB = [
       "uk": "<g>Над чим</g> ти так довго <b>роздумував(-ла)</b>?",
       "ru": "<g>Над чем</g> ты так долго <b>размышлял(-а)</b>?"
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_051",
@@ -22648,7 +22850,10 @@ var VOCAB = [
       "uk": "<g>Чому</g> ти <b>здивувався(-лась)</b>, коли приїхав(-ла) до Німеччини?",
       "ru": "<g>Чему</g> ты <b>удивился(-лась)</b>, когда приехал(-а) в Германию?"
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_052",
@@ -22671,7 +22876,10 @@ var VOCAB = [
       "uk": "<g>Чого</g> ти <b>боявся(-лась)</b>, перш ніж переїхати в нову країну?",
       "ru": "<g>Чего</g> ты <b>боялся(-лась)</b>, прежде чем переехать в новую страну?"
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "info": {
+      "case": "D"
+    }
   },
   {
     "id": "k5_053",
@@ -22694,7 +22902,10 @@ var VOCAB = [
       "uk": "<g>Чим</g> ти особливо <b>пишаєшся</b> у своєму новому житті?",
       "ru": "<g>Чем</g> ты особенно <b>гордишься</b> в своей новой жизни?"
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_054",
@@ -22717,7 +22928,10 @@ var VOCAB = [
       "uk": "<g>До чого</g> тобі ще треба <b>підготуватися</b> для іспиту?",
       "ru": "<g>К чему</g> тебе ещё нужно <b>подготовиться</b> к экзамену?"
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_055",
@@ -22740,7 +22954,10 @@ var VOCAB = [
       "uk": "<g>Про що</g> тебе <b>попередив</b> твій друг, перш ніж ти сюди переїхав(-ла)?",
       "ru": "<g>О чём</g> тебя <b>предупредил</b> твой друг, прежде чем ты сюда переехал(-а)?"
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "info": {
+      "case": "D"
+    }
   },
   {
     "id": "k5_056",
@@ -22786,7 +23003,13 @@ var VOCAB = [
       "uk": "<b>Звичай</b> з різдвяною ялинкою мене дуже зачарував — я часто про це думаю.",
       "ru": "<b>Обычай</b> с рождественской ёлкой меня очень восхитил — я часто об этом думаю."
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Bräuche"
+      ]
+    }
   },
   {
     "id": "k5_058",
@@ -22855,7 +23078,10 @@ var VOCAB = [
       "uk": "<g>Від чого</g> тут обовʼязково потрібно <b>відмовитися</b> на офіційній зустрічі?",
       "ru": "<g>От чего</g> здесь обязательно нужно <b>отказаться</b> на официальной встрече?"
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k5_061",
@@ -23959,7 +24185,13 @@ var VOCAB = [
       "uk": "Під час бігу я щодня пробігаю пʼять <b>кілометрів</b>.",
       "ru": "Во время бега я каждый день пробегаю пять <b>километров</b>."
     },
-    "gram": "verben_als_nomen"
+    "gram": "verben_als_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kilometer"
+      ]
+    }
   },
   {
     "id": "k5_109",
@@ -24166,7 +24398,13 @@ var VOCAB = [
       "uk": "<g>Вставання</g> о шостій годині належить до мого <b>розпорядку дня</b>.",
       "ru": "Вставание в шесть часов входит в мой <b>распорядок дня</b>."
     },
-    "gram": "verben_als_nomen"
+    "gram": "verben_als_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Tagesabläufe"
+      ]
+    }
   },
   {
     "id": "k5_118",
@@ -24419,7 +24657,13 @@ var VOCAB = [
       "uk": "У випадку <b>надзвичайної ситуації</b> потрібно <g>не тільки</g> залишатися спокійним, <g>а й</g> швидко зателефонувати на 112.",
       "ru": "В <b>экстренной ситуации</b> нужно <g>не только</g> оставаться спокойным, <g>но и</g> быстро позвонить по номеру 112."
     },
-    "gram": "nicht_nur_sondern_auch"
+    "gram": "nicht_nur_sondern_auch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Notfälle"
+      ]
+    }
   },
   {
     "id": "k6_003",
@@ -24465,7 +24709,13 @@ var VOCAB = [
       "uk": "Медсестра наклала <b>повʼязку</b>, <g>щоб</g> захистити рану.",
       "ru": "Медсестра наложила <b>повязку</b>, <g>чтобы</g> защитить рану."
     },
-    "gram": "satz_mit_um_zu"
+    "gram": "satz_mit_um_zu",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Verbände"
+      ]
+    }
   },
   {
     "id": "k6_005",
@@ -24488,7 +24738,13 @@ var VOCAB = [
       "uk": "<b>Обстеження</b> <g>відбудеться</g> завтра вранці.",
       "ru": "<b>Обследование</b> <g>будет проходить</g> завтра утром."
     },
-    "gram": "futur_werden"
+    "gram": "futur_werden",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Untersuchungen"
+      ]
+    }
   },
   {
     "id": "k6_006",
@@ -24603,7 +24859,13 @@ var VOCAB = [
       "uk": "Вона дуже уважно заповнила <b>бланк</b>, <g>щоб</g> не зробити помилок.",
       "ru": "Она очень внимательно заполнила <b>бланк</b>, <g>чтобы</g> не сделать ошибок."
     },
-    "gram": "satz_mit_um_zu"
+    "gram": "satz_mit_um_zu",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Formulare"
+      ]
+    }
   },
   {
     "id": "k6_011",
@@ -24649,7 +24911,13 @@ var VOCAB = [
       "uk": "Цей <b>медикамент</b> швидко допомагає проти втоми після операції.",
       "ru": "Этот <b>медикамент</b> быстро помогает против усталости после операции."
     },
-    "gram": "nomen_auf_heit_keit"
+    "gram": "nomen_auf_heit_keit",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Medikamente"
+      ]
+    }
   },
   {
     "id": "k6_013",
@@ -24718,7 +24986,13 @@ var VOCAB = [
       "uk": "Після <b>народження</b> вся родина була сповнена вдячності й радості.",
       "ru": "После <b>рождения</b> вся семья была полна благодарности и радости."
     },
-    "gram": "nomen_auf_heit_keit"
+    "gram": "nomen_auf_heit_keit",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Geburten"
+      ]
+    }
   },
   {
     "id": "k6_016",
@@ -24741,7 +25015,13 @@ var VOCAB = [
       "uk": "Про нового <b>пацієнта</b> лікарі довго розмовляли — щодо цього було багато запитань.",
       "ru": "О новом <b>пациенте</b> врачи долго разговаривали — по этому поводу было много вопросов."
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Patienten / die Patientinnen"
+      ]
+    }
   },
   {
     "id": "k6_017",
@@ -24764,7 +25044,13 @@ var VOCAB = [
       "uk": "Про <b>лікаря</b> ми чули лише хороше — цьому ми були дуже раді.",
       "ru": "О <b>враче</b> мы слышали только хорошее — этому мы были очень рады."
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ärzte / die Ärztinnen"
+      ]
+    }
   },
   {
     "id": "k6_018",
@@ -24810,7 +25096,10 @@ var VOCAB = [
       "uk": "<g>Про що</g> ти найбільше <b>хвилювався(-лась)</b>, коли він був у лікарні?",
       "ru": "<g>О чём</g> ты больше всего <b>переживал(-а)</b>, когда он был в больнице?"
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k6_020",
@@ -24879,7 +25168,13 @@ var VOCAB = [
       "uk": "Ми всі дуже зраділи короткому <b>візиту</b> до неї в лікарні — <g>про це</g> ми досі часто говоримо.",
       "ru": "Мы все очень обрадовались короткому <b>визиту</b> к ней в больницу — <g>об этом</g> мы до сих пор часто говорим."
     },
-    "gram": "praepositionaladverbien_b1"
+    "gram": "praepositionaladverbien_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Besuche"
+      ]
+    }
   },
   {
     "id": "k6_023",
@@ -24971,7 +25266,10 @@ var VOCAB = [
       "uk": "Пацієнт повністю <g><b>одужає</b></g> протягом наступних тижнів.",
       "ru": "Пациент полностью <g><b>выздоровеет</b></g> в течение следующих недель."
     },
-    "gram": "futur_werden"
+    "gram": "futur_werden",
+    "info": {
+      "sense": "Krankheit"
+    }
   },
   {
     "id": "k6_027",
@@ -25269,29 +25567,6 @@ var VOCAB = [
       "en": "She showed her <b>insurance card</b> <g>in order to</g> <g>register</g> faster.",
       "uk": "Вона показала свою <b>страхову картку</b>, <g>щоб</g> швидше зареєструватися.",
       "ru": "Она показала свою <b>страховую карту</b>, <g>чтобы</g> быстрее зарегистрироваться."
-    },
-    "gram": "satz_mit_um_zu"
-  },
-  {
-    "id": "k6_040",
-    "cat": "k6",
-    "term": {
-      "de": "sich anmelden",
-      "en": "to register",
-      "uk": "реєструватися",
-      "ru": "регистрироваться"
-    },
-    "short": {
-      "de": "seinen Namen und seine Daten offiziell angeben, bevor man behandelt wird",
-      "en": "to officially give your name and details before being treated",
-      "uk": "офіційно надати своє імʼя та дані перед лікуванням",
-      "ru": "официально предоставить своё имя и данные перед лечением"
-    },
-    "def": {
-      "de": "Er ging zum Schalter, <g>um</g> sich <g><b>anzumelden</b></g>.",
-      "en": "He went to the counter <g>in order to</g> <g><b>register</b></g>.",
-      "uk": "Він пішов до стійки, <g>щоб</g> <g><b>зареєструватися</b></g>.",
-      "ru": "Он подошёл к стойке, <g>чтобы</g> <g><b>зарегистрироваться</b></g>."
     },
     "gram": "satz_mit_um_zu"
   },
@@ -25638,7 +25913,10 @@ var VOCAB = [
       "uk": "<b>Здоровʼя</b> пацієнтів — найвищий пріоритет для цієї лікарні.",
       "ru": "<b>Здоровье</b> пациентов — высший приоритет для этой больницы."
     },
-    "gram": "nomen_auf_heit_keit"
+    "gram": "nomen_auf_heit_keit",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k6_056",
@@ -26791,29 +27069,6 @@ var VOCAB = [
     "gram": "passiv_praesens_b1"
   },
   {
-    "id": "k7_014",
-    "cat": "k7",
-    "term": {
-      "de": "vermeiden",
-      "en": "to avoid",
-      "uk": "уникати",
-      "ru": "избегать"
-    },
-    "short": {
-      "de": "etwas Schlechtes nicht passieren lassen",
-      "en": "to not let something bad happen",
-      "uk": "не дозволити чомусь поганому статися",
-      "ru": "не дать чему-то плохому произойти"
-    },
-    "def": {
-      "de": "Wir <g>haben</g> in diesem Jahr viel Plastikmüll <g><b>vermieden</b></g>.",
-      "en": "This year, we <g>have</g> <g><b>avoided</b></g> a lot of plastic waste.",
-      "uk": "Цього року ми <b>уникли</b> багато пластикового сміття.",
-      "ru": "В этом году мы <b>избежали</b> много пластикового мусора."
-    },
-    "gram": "perfekt_wdh_b1"
-  },
-  {
     "id": "k7_015",
     "cat": "k7",
     "term": {
@@ -27018,7 +27273,13 @@ var VOCAB = [
       "uk": "У <b>дійсності</b> захист клімату часто складніший, ніж думають багато людей.",
       "ru": "В <b>действительности</b> защита климата часто сложнее, чем думают многие люди."
     },
-    "gram": "nomen_auf_heit_keit"
+    "gram": "nomen_auf_heit_keit",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Wirklichkeiten"
+      ]
+    }
   },
   {
     "id": "k7_024",
@@ -27271,7 +27532,10 @@ var VOCAB = [
       "uk": "Організація довго <b>відстоювала</b> чисті річки.",
       "ru": "Организация долго <b>отстаивала</b> чистые реки."
     },
-    "gram": "perfekt_wdh_b1"
+    "gram": "perfekt_wdh_b1",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k7_035",
@@ -29893,7 +30157,13 @@ var VOCAB = [
       "uk": "Ми залишаємося в порту, <g>доки</g> сильний <b>вітер</b> не вщухне.",
       "ru": "Мы остаёмся в порту, <g>пока</g> сильный <b>ветер</b> не утихнет."
     },
-    "gram": "nebensatz_mit_bis"
+    "gram": "nebensatz_mit_bis",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Winde"
+      ]
+    }
   },
   {
     "id": "k7_149",
@@ -29939,7 +30209,13 @@ var VOCAB = [
       "uk": "Цей <b>захід</b> цього року організовують у парку.",
       "ru": "Это <b>мероприятие</b> в этом году организуют в парке."
     },
-    "gram": "passiv_praesens_b1"
+    "gram": "passiv_praesens_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Veranstaltungen"
+      ]
+    }
   },
   {
     "id": "k8_002",
@@ -30008,7 +30284,13 @@ var VOCAB = [
       "uk": "Про що взагалі повідомляв лист від <b>бібліотеки</b>?",
       "ru": "О чём вообще сообщало письмо от <b>библиотеки</b>?"
     },
-    "gram": "fragewoerter_wor_dar"
+    "gram": "fragewoerter_wor_dar",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Bibliotheken"
+      ]
+    }
   },
   {
     "id": "k8_005",
@@ -30031,7 +30313,13 @@ var VOCAB = [
       "uk": "А скільки <g>взагалі</g> триває <b>екскурсія</b>?",
       "ru": "А сколько <g>вообще</g> длится <b>экскурсия</b>?"
     },
-    "gram": "interesse_denn_eigentlich"
+    "gram": "interesse_denn_eigentlich",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Führungen"
+      ]
+    }
   },
   {
     "id": "k8_006",
@@ -30261,7 +30549,13 @@ var VOCAB = [
       "uk": "До чого саме стосується нова <b>пропозиція</b> бібліотеки?",
       "ru": "К чему именно относится новое <b>предложение</b> библиотеки?"
     },
-    "gram": "fragewoerter_wor_dar"
+    "gram": "fragewoerter_wor_dar",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Angebote"
+      ]
+    }
   },
   {
     "id": "k8_016",
@@ -30284,7 +30578,13 @@ var VOCAB = [
       "uk": "<b>Запрошення</b> на фестиваль сьогодні надсилають електронною поштою.",
       "ru": "<b>Приглашение</b> на фестиваль сегодня отправляют по электронной почте."
     },
-    "gram": "passiv_praesens_b1"
+    "gram": "passiv_praesens_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Einladungen"
+      ]
+    }
   },
   {
     "id": "k8_017",
@@ -30333,29 +30633,6 @@ var VOCAB = [
     "gram": "futur_werden"
   },
   {
-    "id": "k8_019",
-    "cat": "k8",
-    "term": {
-      "de": "der Termin",
-      "en": "appointment",
-      "uk": "домовлена дата",
-      "ru": "назначенная дата"
-    },
-    "short": {
-      "de": "eine bestimmte Zeit, zu der man etwas machen oder wohin man gehen möchte",
-      "en": "a certain time when you want to do something or go somewhere",
-      "uk": "конкретний час, коли хочеш щось зробити або кудись піти",
-      "ru": "конкретное время, когда хочешь что-то сделать или куда-то пойти"
-    },
-    "def": {
-      "de": "Der <b>Termin</b> für die Führung <g>wird</g> online <g>vereinbart</g>.",
-      "en": "The <b>appointment</b> for the tour <g>is</g> <g>arranged</g> online.",
-      "uk": "<b>Дату</b> екскурсії узгоджують онлайн.",
-      "ru": "<b>Дата</b> экскурсии согласовывается онлайн."
-    },
-    "gram": "passiv_praesens_b1"
-  },
-  {
     "id": "k8_020",
     "cat": "k8",
     "term": {
@@ -30376,7 +30653,13 @@ var VOCAB = [
       "uk": "<b>Реєстрацію</b> на курс відкривають із завтрашнього дня.",
       "ru": "<b>Регистрацию</b> на курс открывают с завтрашнего дня."
     },
-    "gram": "passiv_praesens_b1"
+    "gram": "passiv_praesens_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Anmeldungen"
+      ]
+    }
   },
   {
     "id": "k8_021",
@@ -30632,29 +30915,6 @@ var VOCAB = [
     "gram": "verben_mit_praep_wdh_b1"
   },
   {
-    "id": "k8_032",
-    "cat": "k8",
-    "term": {
-      "de": "die Erfahrung",
-      "en": "experience",
-      "uk": "досвід",
-      "ru": "опыт"
-    },
-    "short": {
-      "de": "das Wissen oder die Fähigkeit, die man durch etwas Erlebtes bekommt",
-      "en": "the knowledge or skill you gain from something you have experienced",
-      "uk": "знання чи вміння, які отримуєш завдяки пережитому",
-      "ru": "знания или умения, которые получаешь благодаря пережитому"
-    },
-    "def": {
-      "de": "<g>Womit</g> hast du bei der Organisation die meiste <b>Erfahrung</b>?",
-      "en": "What do you have the most <b>experience</b> with when it comes to organising?",
-      "uk": "У чому в тебе найбільше <b>досвіду</b> в організації?",
-      "ru": "В чём у тебя больше всего <b>опыта</b> в организации?"
-    },
-    "gram": "fragewoerter_wor_dar"
-  },
-  {
     "id": "k8_033",
     "cat": "k8",
     "term": {
@@ -30836,30 +31096,13 @@ var VOCAB = [
       "uk": "Про що саме інформувало <b>повідомлення</b> від бібліотеки?",
       "ru": "О чём именно информировало <b>сообщение</b> от библиотеки?"
     },
-    "gram": "fragewoerter_wor_dar"
-  },
-  {
-    "id": "k8_041",
-    "cat": "k8",
-    "term": {
-      "de": "die Frist",
-      "en": "deadline",
-      "uk": "строк",
-      "ru": "срок"
-    },
-    "short": {
-      "de": "der letzte Zeitpunkt, bis zu dem man etwas machen muss",
-      "en": "the last point in time by which you must do something",
-      "uk": "останній момент, до якого треба щось зробити",
-      "ru": "последний момент, до которого нужно что-то сделать"
-    },
-    "def": {
-      "de": "<g>Worauf</g> muss ich bei der <b>Frist</b> für die Rückgabe der Bücher achten?",
-      "en": "What do I have to look out for with the <b>deadline</b> for returning the books?",
-      "uk": "На що мені слід звернути увагу щодо <b>строку</b> повернення книжок?",
-      "ru": "На что мне нужно обратить внимание в отношении <b>срока</b> возврата книг?"
-    },
-    "gram": "fragewoerter_wor_dar"
+    "gram": "fragewoerter_wor_dar",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Nachrichten"
+      ]
+    }
   },
   {
     "id": "k8_042",
@@ -30881,29 +31124,6 @@ var VOCAB = [
       "en": "I asked the library to <b>extend</b> the loan period by two weeks.",
       "uk": "Я попросив бібліотеку <b>продовжити</b> строк позики на два тижні.",
       "ru": "Я попросил библиотеку <b>продлить</b> срок выдачи на две недели."
-    },
-    "gram": "fragewoerter_wor_dar"
-  },
-  {
-    "id": "k8_043",
-    "cat": "k8",
-    "term": {
-      "de": "die Gebühr",
-      "en": "fee",
-      "uk": "плата",
-      "ru": "плата"
-    },
-    "short": {
-      "de": "das Geld, das man für eine bestimmte Leistung bezahlen muss",
-      "en": "the money you must pay for a certain service",
-      "uk": "гроші, які треба заплатити за певну послугу",
-      "ru": "деньги, которые нужно заплатить за определённую услугу"
-    },
-    "def": {
-      "de": "<g>Wofür</g> genau wird bei der Bibliothek eine <b>Gebühr</b> verlangt?",
-      "en": "What exactly does the library charge a <b>fee</b> for?",
-      "uk": "За що саме бібліотека стягує <b>плату</b>?",
-      "ru": "За что именно библиотека взимает <b>плату</b>?"
     },
     "gram": "fragewoerter_wor_dar"
   },
@@ -30951,7 +31171,16 @@ var VOCAB = [
       "uk": "Навіщо в бібліотеці потрібен читацький <b>квиток</b>?",
       "ru": "Для чего в библиотеке нужен читательский <b>билет</b>?"
     },
-    "gram": "fragewoerter_wor_dar"
+    "gram": "fragewoerter_wor_dar",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ausweise"
+      ]
+    },
+    "info": {
+      "sense": "Mitgliedschaft"
+    }
   },
   {
     "id": "k8_046",
@@ -31089,7 +31318,10 @@ var VOCAB = [
       "uk": "А чому тут <g>взагалі</g> потрібна така <b>тиша</b>?",
       "ru": "А почему тут <g>вообще</g> нужна такая <b>тишина</b>?"
     },
-    "gram": "interesse_denn_eigentlich"
+    "gram": "interesse_denn_eigentlich",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k8_052",
@@ -31112,7 +31344,13 @@ var VOCAB = [
       "uk": "А яка <g>взагалі</g> <b>частина</b> призначена спеціально для дітей?",
       "ru": "А какая <g>вообще</g> <b>часть</b> предназначена специально для детей?"
     },
-    "gram": "interesse_denn_eigentlich"
+    "gram": "interesse_denn_eigentlich",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Bereiche"
+      ]
+    }
   },
   {
     "id": "k8_053",
@@ -31161,29 +31399,6 @@ var VOCAB = [
     "gram": "interesse_denn_eigentlich"
   },
   {
-    "id": "k8_055",
-    "cat": "k8",
-    "term": {
-      "de": "der Mitarbeiter",
-      "en": "staff member",
-      "uk": "співробітник",
-      "ru": "сотрудник"
-    },
-    "short": {
-      "de": "eine Person, die an einem Ort, zum Beispiel einer Bibliothek, arbeitet",
-      "en": "a person who works at a place, for example a library",
-      "uk": "особа, яка працює в певному місці, наприклад у бібліотеці",
-      "ru": "лицо, работающее в определённом месте, например в библиотеке"
-    },
-    "def": {
-      "de": "Kann mir hier <g>eigentlich</g> ein <b>Mitarbeiter</b> weiterhelfen?",
-      "en": "So, can a <b>staff member</b> here <g>actually</g> help me?",
-      "uk": "А чи може мені тут <g>взагалі</g> допомогти якийсь <b>співробітник</b>?",
-      "ru": "А может ли мне тут <g>вообще</g> помочь какой-нибудь <b>сотрудник</b>?"
-    },
-    "gram": "interesse_denn_eigentlich"
-  },
-  {
     "id": "k8_056",
     "cat": "k8",
     "term": {
@@ -31204,7 +31419,13 @@ var VOCAB = [
       "uk": "Багато хто вважає талант цього <b>митця</b> просто неймовірним.",
       "ru": "Многие считают талант этого <b>художника</b> просто невероятным."
     },
-    "gram": "adjektive_mit_un"
+    "gram": "adjektive_mit_un",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Künstler"
+      ]
+    }
   },
   {
     "id": "k8_057",
@@ -31371,7 +31592,7 @@ var VOCAB = [
     "id": "k8_064",
     "cat": "k8",
     "term": {
-      "de": "die Dokumentation (Doku)",
+      "de": "die Dokumentation",
       "en": "documentary",
       "uk": "документальний фільм",
       "ru": "документальный фильм"
@@ -31388,7 +31609,10 @@ var VOCAB = [
       "uk": "Я часто дивлюся <b>документальний фільм</b>, <g>щоб</g> дізнатися щось нове.",
       "ru": "Я часто смотрю <b>документальный фильм</b>, <g>чтобы</g> узнать что-то новое."
     },
-    "gram": "satz_mit_um_zu"
+    "gram": "satz_mit_um_zu",
+    "syn": [
+      "Doku"
+    ]
   },
   {
     "id": "k8_065",
@@ -31411,7 +31635,13 @@ var VOCAB = [
       "uk": "Я позичу тобі <b>DVD-диск</b>, <g>щоб</g> ти міг подивитися фільм на вихідних.",
       "ru": "Я одолжу тебе <b>DVD-диск</b>, <g>чтобы</g> ты мог посмотреть фильм на выходных."
     },
-    "gram": "nebensatz_mit_damit_wdh_b1"
+    "gram": "nebensatz_mit_damit_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die DVDs"
+      ]
+    }
   },
   {
     "id": "k8_066",
@@ -31871,7 +32101,13 @@ var VOCAB = [
       "uk": "<b>Репортер</b> стоїть наживо перед ратушею.",
       "ru": "<b>Репортёр</b> стоит в прямом эфире перед ратушей."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
+    "gram": "wechselpraepositionen_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Reporter"
+      ]
+    }
   },
   {
     "id": "k8_086",
@@ -32239,7 +32475,13 @@ var VOCAB = [
       "uk": "А скільки часу тобі <g>взагалі</g> потрібно на таку <b>головоломку</b>?",
       "ru": "А сколько времени тебе <g>вообще</g> нужно на такую <b>головоломку</b>?"
     },
-    "gram": "interesse_denn_eigentlich"
+    "gram": "interesse_denn_eigentlich",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Rätsel"
+      ]
+    }
   },
   {
     "id": "k8_102",
@@ -32337,7 +32579,7 @@ var VOCAB = [
     "id": "k9_001",
     "cat": "k9",
     "term": {
-      "de": "die Bewerbung, -en",
+      "de": "die Bewerbung",
       "en": "job application",
       "uk": "заява про прийом на роботу",
       "ru": "заявление о приёме на работу"
@@ -32354,13 +32596,19 @@ var VOCAB = [
       "uk": "<g>Я хотів би</g> отримати відповідь щодо моєї <b>заяви</b>, адже я чекаю вже два тижні.",
       "ru": "<g>Я хотел бы</g> получить ответ по моей <b>заявке</b>, ведь я жду уже две недели."
     },
-    "gram": "konjunktiv2_wuensche_b1"
+    "gram": "konjunktiv2_wuensche_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Bewerbungen"
+      ]
+    }
   },
   {
     "id": "k9_002",
     "cat": "k9",
     "term": {
-      "de": "das Anschreiben, -",
+      "de": "das Anschreiben",
       "en": "cover letter",
       "uk": "супровідний лист",
       "ru": "сопроводительное письмо"
@@ -32377,13 +32625,19 @@ var VOCAB = [
       "uk": "<g>Я хотів би</g> почути вашу думку щодо мого <b>супровідного листа</b>, перш ніж остаточно його надіслати.",
       "ru": "<g>Я хотел бы</g> услышать ваше мнение о моём <b>сопроводительном письме</b>, прежде чем окончательно его отправить."
     },
-    "gram": "konjunktiv2_wuensche_b1"
+    "gram": "konjunktiv2_wuensche_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Anschreiben"
+      ]
+    }
   },
   {
     "id": "k9_003",
     "cat": "k9",
     "term": {
-      "de": "die Stellenanzeige, -n",
+      "de": "die Stellenanzeige",
       "en": "job advertisement",
       "uk": "оголошення про вакансію",
       "ru": "объявление о вакансии"
@@ -32400,13 +32654,19 @@ var VOCAB = [
       "uk": "<g>Якби</g> це <b>оголошення про вакансію</b> не було таким цікавим, я б навіть не подавав заявку.",
       "ru": "<g>Если бы</g> это <b>объявление о вакансии</b> не было таким интересным, я бы даже не подавал заявку."
     },
-    "gram": "nebensatz_wenn_konjunktiv2_irreal"
+    "gram": "nebensatz_wenn_konjunktiv2_irreal",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Stellenanzeigen"
+      ]
+    }
   },
   {
     "id": "k9_004",
     "cat": "k9",
     "term": {
-      "de": "das Vorstellungsgespräch, -e",
+      "de": "das Vorstellungsgespräch",
       "en": "job interview",
       "uk": "співбесіда",
       "ru": "собеседование"
@@ -32423,13 +32683,19 @@ var VOCAB = [
       "uk": "Я радію <g>тому, що</g> мене запросили на <b>співбесіду</b> завтра.",
       "ru": "Я рад <g>тому, что</g> меня пригласили на <b>собеседование</b> завтра."
     },
-    "gram": "verben_praep_dass_satz"
+    "gram": "verben_praep_dass_satz",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Vorstellungsgespräche"
+      ]
+    }
   },
   {
     "id": "k9_005",
     "cat": "k9",
     "term": {
-      "de": "die Kündigung, -en",
+      "de": "die Kündigung",
       "en": "notice of termination",
       "uk": "звільнення",
       "ru": "увольнение"
@@ -32446,13 +32712,22 @@ var VOCAB = [
       "uk": "Я був здивований <g>тим, що</g> <b>звільнення</b> прийшло так раптово.",
       "ru": "Я был удивлён <g>тем, что</g> <b>увольнение</b> пришло так внезапно."
     },
-    "gram": "verben_praep_dass_satz"
+    "gram": "verben_praep_dass_satz",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kündigungen"
+      ]
+    },
+    "info": {
+      "sense": "Arbeit"
+    }
   },
   {
     "id": "k9_006",
     "cat": "k9",
     "term": {
-      "de": "der Lohn, Löhne",
+      "de": "der Lohn",
       "en": "wage",
       "uk": "заробітна плата",
       "ru": "заработная плата"
@@ -32469,13 +32744,19 @@ var VOCAB = [
       "uk": "<b>Заробітна плата</b> за цю виснажливу роботу, на жаль, не дуже висока.",
       "ru": "<b>Заработная плата</b> за эту изнурительную работу, к сожалению, не очень высокая."
     },
-    "gram": "adjektive_auf_ig_isch"
+    "gram": "adjektive_auf_ig_isch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Löhne"
+      ]
+    }
   },
   {
     "id": "k9_007",
     "cat": "k9",
     "term": {
-      "de": "die Überstunde, -n",
+      "de": "die Überstunde",
       "en": "overtime hour",
       "uk": "понаднормова година",
       "ru": "сверхурочный час"
@@ -32492,13 +32773,19 @@ var VOCAB = [
       "uk": "<g>Я хотів би</g> мати менше <b>понаднормових годин</b>, щоб мати більше часу для родини.",
       "ru": "<g>Я хотел бы</g> иметь меньше <b>сверхурочных часов</b>, чтобы у меня было больше времени для семьи."
     },
-    "gram": "konjunktiv2_wuensche_b1"
+    "gram": "konjunktiv2_wuensche_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Überstunden"
+      ]
+    }
   },
   {
     "id": "k9_008",
     "cat": "k9",
     "term": {
-      "de": "die Teilzeit, Sg.",
+      "de": "die Teilzeit",
       "en": "part-time work",
       "uk": "неповна зайнятість",
       "ru": "неполная занятость"
@@ -32515,13 +32802,16 @@ var VOCAB = [
       "uk": "<g>Якби</g> я <g>працював</g> на умовах <b>неповної зайнятості</b>, у мене було б більше часу на навчання.",
       "ru": "<g>Если бы</g> я <g>работал</g> на условиях <b>неполной занятости</b>, у меня было бы больше времени на учёбу."
     },
-    "gram": "nebensatz_wenn_konjunktiv2_irreal"
+    "gram": "nebensatz_wenn_konjunktiv2_irreal",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k9_009",
     "cat": "k9",
     "term": {
-      "de": "das Homeoffice, Sg.",
+      "de": "das Homeoffice",
       "en": "home office",
       "uk": "домашній офіс",
       "ru": "домашний офис"
@@ -32538,13 +32828,16 @@ var VOCAB = [
       "uk": "Мій керівник наполягає <g>на тому, щоб</g> ми працювали з <b>домашнього офісу</b> щонайменше два дні на тиждень.",
       "ru": "Мой руководитель настаивает <g>на том, чтобы</g> мы работали из <b>домашнего офиса</b> минимум два дня в неделю."
     },
-    "gram": "verben_praep_dass_satz"
+    "gram": "verben_praep_dass_satz",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k9_010",
     "cat": "k9",
     "term": {
-      "de": "die Weiterbildung, -en",
+      "de": "die Weiterbildung",
       "en": "further training",
       "uk": "підвищення кваліфікації",
       "ru": "повышение квалификации"
@@ -32561,13 +32854,19 @@ var VOCAB = [
       "uk": "Для цього професійного <b>підвищення кваліфікації</b> попередні знання не потрібні.",
       "ru": "Для этого профессионального <b>повышения квалификации</b> предварительные знания не нужны."
     },
-    "gram": "adjektive_auf_ig_isch"
+    "gram": "adjektive_auf_ig_isch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Weiterbildungen"
+      ]
+    }
   },
   {
     "id": "k9_011",
     "cat": "k9",
     "term": {
-      "de": "der / die Angestellte, -n",
+      "de": "der / die Angestellte",
       "en": "employee",
       "uk": "службовець / службовиця",
       "ru": "служащий / служащая"
@@ -32584,7 +32883,13 @@ var VOCAB = [
       "uk": "Як багаторічна <b>службовиця</b>, вона знає фірму краще за будь-кого іншого.",
       "ru": "Как многолетняя <b>служащая</b>, она знает фирму лучше, чем кто-либо другой."
     },
-    "gram": "adjektive_auf_ig_isch"
+    "gram": "adjektive_auf_ig_isch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Angestellten"
+      ]
+    }
   },
   {
     "id": "k9_012",
@@ -32636,7 +32941,7 @@ var VOCAB = [
     "id": "k9_014",
     "cat": "k9",
     "term": {
-      "de": "die Verantwortung, Sg.",
+      "de": "die Verantwortung",
       "en": "responsibility",
       "uk": "відповідальність",
       "ru": "ответственность"
@@ -32653,13 +32958,16 @@ var VOCAB = [
       "uk": "На цій керівній посаді несуть велику <b>відповідальність</b>.",
       "ru": "На этой руководящей должности несут большую <b>ответственность</b>."
     },
-    "gram": "adjektive_auf_ig_isch"
+    "gram": "adjektive_auf_ig_isch",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k9_015",
     "cat": "k9",
     "term": {
-      "de": "der Wunsch, Wünsche",
+      "de": "der Wunsch",
       "en": "wish",
       "uk": "бажання",
       "ru": "желание"
@@ -32676,30 +32984,13 @@ var VOCAB = [
       "uk": "Її найбільше професійне <b>бажання</b> — керівна посада.",
       "ru": "Её самое большое профессиональное <b>желание</b> — руководящая должность."
     },
-    "gram": "adjektive_auf_ig_isch"
-  },
-  {
-    "id": "k9_016",
-    "cat": "k9",
-    "term": {
-      "de": "die Wirklichkeit, -en",
-      "en": "reality",
-      "uk": "дійсність",
-      "ru": "действительность"
-    },
-    "short": {
-      "de": "das, was wirklich passiert, im Gegensatz zu Träumen oder Plänen",
-      "en": "what really happens, as opposed to dreams or plans",
-      "uk": "те, що відбувається насправді, на відміну від мрій чи планів",
-      "ru": "то, что происходит на самом деле, в отличие от мечтаний или планов"
-    },
-    "def": {
-      "de": "Die <g>wirtschaftliche</g> <b>Wirklichkeit</b> sieht für viele Berufseinsteiger anders aus als erwartet.",
-      "en": "The economic <b>reality</b> looks different for many career starters than expected.",
-      "uk": "Економічна <b>дійсність</b> для багатьох новачків у професії виглядає інакше, ніж очікувалося.",
-      "ru": "Экономическая <b>действительность</b> для многих новичков в профессии выглядит иначе, чем ожидалось."
-    },
-    "gram": "adjektive_auf_ig_isch"
+    "gram": "adjektive_auf_ig_isch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Wünsche"
+      ]
+    }
   },
   {
     "id": "k9_017",
@@ -32768,7 +33059,13 @@ var VOCAB = [
       "uk": "<g>Я хотів би</g> мати вищу <b>зарплату</b> за таку відповідальність.",
       "ru": "<g>Я хотел бы</g> иметь более высокую <b>зарплату</b> за такую ответственность."
     },
-    "gram": "konjunktiv2_wuensche_b1"
+    "gram": "konjunktiv2_wuensche_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Gehälter"
+      ]
+    }
   },
   {
     "id": "k9_020",
@@ -32837,30 +33134,13 @@ var VOCAB = [
       "uk": "<g>Я хотів би</g> мати приємніших <b>колег</b> у новому відділі.",
       "ru": "<g>Я хотел бы</g> иметь более приятных <b>коллег</b> в новом отделе."
     },
-    "gram": "konjunktiv2_wuensche_b1"
-  },
-  {
-    "id": "k9_023",
-    "cat": "k9",
-    "term": {
-      "de": "wechseln",
-      "en": "to change",
-      "uk": "змінювати",
-      "ru": "менять"
-    },
-    "short": {
-      "de": "etwas gegen etwas anderes tauschen, zum Beispiel den Job",
-      "en": "to swap something for something else, for example a job",
-      "uk": "міняти щось на щось інше, наприклад роботу",
-      "ru": "менять что-то на что-то другое, например работу"
-    },
-    "def": {
-      "de": "Ich <g>würde</g> gern die Stelle <b>wechseln</b>, wenn ich die passende finden würde.",
-      "en": "I <g>would</g> gladly <b>change</b> jobs if I could find the right one.",
-      "uk": "Я б залюбки <b>змінив</b> роботу, якби знайшов підходящу.",
-      "ru": "Я бы с удовольствием <b>сменил</b> работу, если бы нашёл подходящую."
-    },
-    "gram": "konjunktiv2_wuensche_b1"
+    "gram": "konjunktiv2_wuensche_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kollegen / die Kolleginnen"
+      ]
+    }
   },
   {
     "id": "k9_024",
@@ -32906,7 +33186,10 @@ var VOCAB = [
       "uk": "<g>Якби</g> робота залишалася такою стресовою, я б <b>звільнився</b>.",
       "ru": "<g>Если бы</g> работа оставалась такой напряжённой, я бы <b>уволился</b>."
     },
-    "gram": "nebensatz_wenn_konjunktiv2_irreal"
+    "gram": "nebensatz_wenn_konjunktiv2_irreal",
+    "info": {
+      "sense": "Arbeit"
+    }
   },
   {
     "id": "k9_026",
@@ -32951,29 +33234,6 @@ var VOCAB = [
       "en": "<g>If</g> I <g>had</g> more <b>motivation</b>, I <g>would</g> still <g>take</g> a course in the evening.",
       "uk": "<g>Якби</g> в мене було більше <b>мотивації</b>, я б увечері ще й ходив на курси.",
       "ru": "<g>Если бы</g> у меня было больше <b>мотивации</b>, я бы вечером ещё занимался на курсах."
-    },
-    "gram": "nebensatz_wenn_konjunktiv2_irreal"
-  },
-  {
-    "id": "k9_028",
-    "cat": "k9",
-    "term": {
-      "de": "der Lebenslauf",
-      "en": "CV",
-      "uk": "резюме",
-      "ru": "резюме"
-    },
-    "short": {
-      "de": "ein Dokument mit den wichtigsten Informationen über die eigene Ausbildung und Arbeit",
-      "en": "a document with the key information about your education and work",
-      "uk": "документ із найважливішою інформацією про освіту й досвід роботи",
-      "ru": "документ с самой важной информацией об образовании и опыте работы"
-    },
-    "def": {
-      "de": "<g>Wenn</g> mein <b>Lebenslauf</b> besser <g>wäre</g>, <g>hätte</g> ich sicher mehr Chancen.",
-      "en": "<g>If</g> my <b>CV</b> <g>were</g> better, I <g>would</g> certainly <g>have</g> more chances.",
-      "uk": "<g>Якби</g> моє <b>резюме</b> було кращим, у мене точно було б більше шансів.",
-      "ru": "<g>Если бы</g> моё <b>резюме</b> было лучше, у меня точно было бы больше шансов."
     },
     "gram": "nebensatz_wenn_konjunktiv2_irreal"
   },
@@ -33050,7 +33310,7 @@ var VOCAB = [
     "id": "k9_032",
     "cat": "k9",
     "term": {
-      "de": "die Unterlagen, Pl.",
+      "de": "die Unterlagen",
       "en": "documents",
       "uk": "документи",
       "ru": "документы"
@@ -33067,7 +33327,10 @@ var VOCAB = [
       "uk": "Я уважно стежу за <g>тим, щоб</g> мої <b>документи</b> були повними.",
       "ru": "Я внимательно слежу за <g>тем, чтобы</g> мои <b>документы</b> были полными."
     },
-    "gram": "verben_praep_dass_satz"
+    "gram": "verben_praep_dass_satz",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k9_033",
@@ -33297,30 +33560,13 @@ var VOCAB = [
       "uk": "Керівник відділу кадрів поставив доволі критичне <b>питання</b>.",
       "ru": "Начальник отдела кадров задал довольно критичный <b>вопрос</b>."
     },
-    "gram": "adjektive_auf_ig_isch"
-  },
-  {
-    "id": "k9_043",
-    "cat": "k9",
-    "term": {
-      "de": "die Erwartung",
-      "en": "expectation",
-      "uk": "очікування",
-      "ru": "ожидание"
-    },
-    "short": {
-      "de": "das, was man von etwas oder jemandem erhofft oder erwartet",
-      "en": "what you hope for or expect from something or someone",
-      "uk": "те, на що людина сподівається чи що очікує від чогось або когось",
-      "ru": "то, на что человек надеется или что ожидает от чего-то или кого-то"
-    },
-    "def": {
-      "de": "Ich habe <g>realistische</g> <b>Erwartungen</b> an das Vorstellungsgespräch.",
-      "en": "I have realistic <b>expectations</b> for the job interview.",
-      "uk": "Я маю реалістичні <b>очікування</b> від співбесіди.",
-      "ru": "У меня реалистичные <b>ожидания</b> от собеседования."
-    },
-    "gram": "adjektive_auf_ig_isch"
+    "gram": "adjektive_auf_ig_isch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Fragen"
+      ]
+    }
   },
   {
     "id": "k9_044",
@@ -33412,7 +33658,13 @@ var VOCAB = [
       "uk": "Ми регулярно робимо коротку <b>перерву</b> під час роботи.",
       "ru": "Мы регулярно делаем короткий <b>перерыв</b> во время работы."
     },
-    "gram": "adjektive_auf_ig_isch"
+    "gram": "adjektive_auf_ig_isch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Pausen"
+      ]
+    }
   },
   {
     "id": "k9_048",
@@ -33458,30 +33710,13 @@ var VOCAB = [
       "uk": "Ергономічне <b>робоче місце</b> важливе для здоровʼя.",
       "ru": "Эргономичное <b>рабочее место</b> важно для здоровья."
     },
-    "gram": "adjektive_auf_ig_isch"
-  },
-  {
-    "id": "k9_050",
-    "cat": "k9",
-    "term": {
-      "de": "die Gewohnheit",
-      "en": "habit",
-      "uk": "звичка",
-      "ru": "привычка"
-    },
-    "short": {
-      "de": "etwas, das man regelmäßig und automatisch tut",
-      "en": "something you do regularly and automatically",
-      "uk": "те, що людина робить регулярно й автоматично",
-      "ru": "то, что человек делает регулярно и автоматически"
-    },
-    "def": {
-      "de": "Das ist eine ziemlich <g>typische</g> <b>Gewohnheit</b> unter Büroangestellten.",
-      "en": "That is a fairly typical <b>habit</b> among office employees.",
-      "uk": "Це доволі типова <b>звичка</b> серед офісних працівників.",
-      "ru": "Это довольно типичная <b>привычка</b> среди офисных сотрудников."
-    },
-    "gram": "adjektive_auf_ig_isch"
+    "gram": "adjektive_auf_ig_isch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Arbeitsplätze"
+      ]
+    }
   },
   {
     "id": "k9_051",
@@ -33688,7 +33923,13 @@ var VOCAB = [
       "uk": "Мюнхен — це місто, <g>яке</g> має понад <b>мільйон</b> мешканців.",
       "ru": "Мюнхен — это город, <g>который</g> имеет более <b>миллиона</b> жителей."
     },
-    "gram": "relativsatz_nominativ_sondern"
+    "gram": "relativsatz_nominativ_sondern",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Millionen"
+      ]
+    }
   },
   {
     "id": "k9_060",
@@ -34355,7 +34596,13 @@ var VOCAB = [
       "uk": "<g>Могли б Ви</g>, будь ласка, надіслати мені документ по <b>факсу</b>?",
       "ru": "<g>Могли бы Вы</g>, пожалуйста, отправить мне документ по <b>факсу</b>?"
     },
-    "gram": "hoefliche_bitten_konjunktiv_b1"
+    "gram": "hoefliche_bitten_konjunktiv_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Faxe"
+      ]
+    }
   },
   {
     "id": "k9_089",
@@ -34384,7 +34631,7 @@ var VOCAB = [
     "id": "k9_090",
     "cat": "k9",
     "term": {
-      "de": "die Kontaktdaten, Pl.",
+      "de": "die Kontaktdaten",
       "en": "contact details",
       "uk": "контактні дані",
       "ru": "контактные данные"
@@ -34401,7 +34648,10 @@ var VOCAB = [
       "uk": "Мені потрібні ваші <b>контактні дані</b>, <g>щоб</g> швидко вам передзвонити.",
       "ru": "Мне нужны ваши <b>контактные данные</b>, <g>чтобы</g> быстро вам перезвонить."
     },
-    "gram": "satz_mit_um_zu"
+    "gram": "satz_mit_um_zu",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k9_091",
@@ -35074,7 +35324,7 @@ var VOCAB = [
     "id": "k10_003",
     "cat": "k10",
     "term": {
-      "de": "das Workout, -s",
+      "de": "das Workout",
       "en": "workout",
       "uk": "тренування",
       "ru": "тренировка"
@@ -35091,13 +35341,19 @@ var VOCAB = [
       "uk": "Це інтенсивне <b>тренування</b> мене повністю виснажило.",
       "ru": "Эта интенсивная <b>тренировка</b> меня полностью вымотала."
     },
-    "gram": "adjektivdeklination_bestimmter_artikel"
+    "gram": "adjektivdeklination_bestimmter_artikel",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Workouts"
+      ]
+    }
   },
   {
     "id": "k10_004",
     "cat": "k10",
     "term": {
-      "de": "der Muskel, -n",
+      "de": "der Muskel",
       "en": "muscle",
       "uk": "мʼяз",
       "ru": "мышца"
@@ -35114,13 +35370,19 @@ var VOCAB = [
       "uk": "Після тренування болить кожен окремий <b>мʼяз</b>.",
       "ru": "После тренировки болит каждая отдельная <b>мышца</b>."
     },
-    "gram": "adjektivdeklination_bestimmter_artikel"
+    "gram": "adjektivdeklination_bestimmter_artikel",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Muskeln"
+      ]
+    }
   },
   {
     "id": "k10_005",
     "cat": "k10",
     "term": {
-      "de": "der Wettkampf, -kämpfe",
+      "de": "der Wettkampf",
       "en": "competition",
       "uk": "змагання",
       "ru": "соревнование"
@@ -35137,7 +35399,13 @@ var VOCAB = [
       "uk": "<g>Перш ніж</g> <b>змагання</b> почнеться, усі спортсмени повинні розігрітися.",
       "ru": "<g>Прежде чем</g> <b>соревнование</b> начнётся, все спортсмены должны размяться."
     },
-    "gram": "nebensatz_mit_bevor"
+    "gram": "nebensatz_mit_bevor",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Wettkämpfe"
+      ]
+    }
   },
   {
     "id": "k10_006",
@@ -35166,7 +35434,7 @@ var VOCAB = [
     "id": "k10_007",
     "cat": "k10",
     "term": {
-      "de": "die Meisterschaft, -en",
+      "de": "die Meisterschaft",
       "en": "championship",
       "uk": "чемпіонат",
       "ru": "чемпионат"
@@ -35183,13 +35451,19 @@ var VOCAB = [
       "uk": "Цей <g>найбільший</g> <b>чемпіонат</b> року відбудеться в Мюнхені.",
       "ru": "Этот <g>крупнейший</g> <b>чемпионат</b> года пройдёт в Мюнхене."
     },
-    "gram": "komparativ_superlativ_vor_nomen"
+    "gram": "komparativ_superlativ_vor_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Meisterschaften"
+      ]
+    }
   },
   {
     "id": "k10_008",
     "cat": "k10",
     "term": {
-      "de": "der Sieg, -e",
+      "de": "der Sieg",
       "en": "victory",
       "uk": "перемога",
       "ru": "победа"
@@ -35206,7 +35480,13 @@ var VOCAB = [
       "uk": "Найкращим у цій <b>перемозі</b> була радість усієї команди.",
       "ru": "Самым лучшим в этой <b>победе</b> была радость всей команды."
     },
-    "gram": "adjektive_als_nomen"
+    "gram": "adjektive_als_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Siege"
+      ]
+    }
   },
   {
     "id": "k10_009",
@@ -35235,7 +35515,7 @@ var VOCAB = [
     "id": "k10_010",
     "cat": "k10",
     "term": {
-      "de": "die Sportart, -en",
+      "de": "die Sportart",
       "en": "type of sport",
       "uk": "вид спорту",
       "ru": "вид спорта"
@@ -35252,30 +35532,13 @@ var VOCAB = [
       "uk": "Нічого нового не було в цьому <b>виді спорту</b>, правила завжди залишаються однаковими.",
       "ru": "Ничего нового не было в этом <b>виде спорта</b>, правила всегда остаются одинаковыми."
     },
-    "gram": "adjektive_als_nomen"
-  },
-  {
-    "id": "k10_011",
-    "cat": "k10",
-    "term": {
-      "de": "überzeugen",
-      "en": "to convince",
-      "uk": "переконувати",
-      "ru": "убеждать"
-    },
-    "short": {
-      "de": "jemandem so gute Gründe geben, dass er seine Meinung ändert",
-      "en": "to give someone such good reasons that they change their opinion",
-      "uk": "наводити комусь такі вагомі аргументи, що людина змінює свою думку",
-      "ru": "приводить кому-либо такие веские аргументы, что человек меняет своё мнение"
-    },
-    "def": {
-      "de": "Der Trainer konnte die Mannschaft von <g>etwas Wichtigem</g> <b>überzeugen</b>: dass sie gewinnen können.",
-      "en": "The coach managed to <b>convince</b> the team of something important: that they can win.",
-      "uk": "Тренеру вдалося <b>переконати</b> команду в дечому важливому: що вони можуть перемогти.",
-      "ru": "Тренеру удалось <b>убедить</b> команду в чём-то важном: что они могут победить."
-    },
-    "gram": "adjektive_als_nomen"
+    "gram": "adjektive_als_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Sportarten"
+      ]
+    }
   },
   {
     "id": "k10_012",
@@ -35327,7 +35590,7 @@ var VOCAB = [
     "id": "k10_014",
     "cat": "k10",
     "term": {
-      "de": "der Spendenlauf, -läufe",
+      "de": "der Spendenlauf",
       "en": "charity run",
       "uk": "благодійний забіг",
       "ru": "благотворительный забег"
@@ -35344,7 +35607,13 @@ var VOCAB = [
       "uk": "Найкрасивішим у цьому <b>благодійному забігу</b> було те, скільки людей взяли участь.",
       "ru": "Самым прекрасным в этом <b>благотворительном забеге</b> было то, сколько людей приняли участие."
     },
-    "gram": "adjektive_als_nomen"
+    "gram": "adjektive_als_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Spendenläufe"
+      ]
+    }
   },
   {
     "id": "k10_015",
@@ -35373,7 +35642,7 @@ var VOCAB = [
     "id": "k10_016",
     "cat": "k10",
     "term": {
-      "de": "der Rekord, -e",
+      "de": "der Rekord",
       "en": "record",
       "uk": "рекорд",
       "ru": "рекорд"
@@ -35390,7 +35659,13 @@ var VOCAB = [
       "uk": "Досі не було нічого подібного — цей <b>рекорд</b> справді унікальний.",
       "ru": "До сих пор не было ничего подобного — этот <b>рекорд</b> действительно уникален."
     },
-    "gram": "adjektive_als_nomen"
+    "gram": "adjektive_als_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Rekorde"
+      ]
+    }
   },
   {
     "id": "k10_017",
@@ -35527,29 +35802,6 @@ var VOCAB = [
       "en": "<g>Before</g> an important competition <g>begins</g>, many athletes get <b>nervous</b>.",
       "uk": "<g>Перш ніж</g> важливе змагання <g>почнеться</g>, багато спортсменів стають <b>нервовими</b>.",
       "ru": "<g>Прежде чем</g> важное соревнование <g>начнётся</g>, многие спортсмены становятся <b>нервными</b>."
-    },
-    "gram": "nebensatz_mit_bevor"
-  },
-  {
-    "id": "k10_023",
-    "cat": "k10",
-    "term": {
-      "de": "kontrollieren",
-      "en": "to check",
-      "uk": "перевіряти",
-      "ru": "проверять"
-    },
-    "short": {
-      "de": "genau prüfen, ob etwas richtig oder in Ordnung ist",
-      "en": "to check carefully whether something is correct or in order",
-      "uk": "ретельно перевіряти, чи щось правильне або в порядку",
-      "ru": "тщательно проверять, всё ли правильно или в порядке"
-    },
-    "def": {
-      "de": "<g>Bevor</g> das Rennen <g>beginnt</g>, <b>kontrolliert</b> jeder Athlet noch einmal seine Schuhe.",
-      "en": "<g>Before</g> the race <g>begins</g>, every athlete <b>checks</b> their shoes one more time.",
-      "uk": "<g>Перш ніж</g> забіг <g>почнеться</g>, кожен атлет ще раз <b>перевіряє</b> своє взуття.",
-      "ru": "<g>Прежде чем</g> забег <g>начнётся</g>, каждый атлет ещё раз <b>проверяет</b> свою обувь."
     },
     "gram": "nebensatz_mit_bevor"
   },
@@ -35712,30 +35964,13 @@ var VOCAB = [
       "uk": "Швидкий <b>успіх</b> здивував усю команду.",
       "ru": "Быстрый <b>успех</b> удивил всю команду."
     },
-    "gram": "adjektivdeklination_bestimmter_artikel"
-  },
-  {
-    "id": "k10_031",
-    "cat": "k10",
-    "term": {
-      "de": "die Herausforderung",
-      "en": "challenge",
-      "uk": "виклик",
-      "ru": "вызов"
-    },
-    "short": {
-      "de": "eine schwierige Aufgabe, die viel Einsatz verlangt",
-      "en": "a difficult task that requires a lot of effort",
-      "uk": "складне завдання, яке вимагає багато зусиль",
-      "ru": "сложная задача, требующая много усилий"
-    },
-    "def": {
-      "de": "<g>Die schwierige</g> <b>Herausforderung</b> hat das Team zusammengeschweißt.",
-      "en": "The difficult <b>challenge</b> brought the team closer together.",
-      "uk": "Складний <b>виклик</b> згуртував команду.",
-      "ru": "Сложный <b>вызов</b> сплотил команду."
-    },
-    "gram": "adjektivdeklination_bestimmter_artikel"
+    "gram": "adjektivdeklination_bestimmter_artikel",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Erfolge"
+      ]
+    }
   },
   {
     "id": "k10_032",
@@ -35922,29 +36157,6 @@ var VOCAB = [
     "gram": "komparativ_superlativ_vor_nomen"
   },
   {
-    "id": "k10_040",
-    "cat": "k10",
-    "term": {
-      "de": "der Teilnehmer / die Teilnehmerin",
-      "en": "participant",
-      "uk": "учасник",
-      "ru": "участник"
-    },
-    "short": {
-      "de": "eine Person, die bei einer Veranstaltung mitmacht",
-      "en": "a person who takes part in an event",
-      "uk": "особа, яка бере участь у заході",
-      "ru": "лицо, которое участвует в мероприятии"
-    },
-    "def": {
-      "de": "<g>Etwas Erstaunliches</g> geschah, als über tausend <b>Teilnehmer</b> beim Spendenlauf mitmachten.",
-      "en": "Something amazing happened when over a thousand <b>participants</b> joined the charity run.",
-      "uk": "Сталося щось дивовижне, коли понад тисячу <b>учасників</b> взяли участь у благодійному забігу.",
-      "ru": "Произошло нечто удивительное, когда более тысячи <b>участников</b> присоединились к благотворительному забегу."
-    },
-    "gram": "adjektive_als_nomen"
-  },
-  {
     "id": "k10_041",
     "cat": "k10",
     "term": {
@@ -35964,29 +36176,6 @@ var VOCAB = [
       "en": "The most important thing about <b>donating</b> is doing it wholeheartedly.",
       "uk": "Найважливіше в тому, щоб <b>жертвувати</b>, — робити це від щирого серця.",
       "ru": "Самое важное в том, чтобы <b>жертвовать</b>, — делать это от чистого сердца."
-    },
-    "gram": "adjektive_als_nomen"
-  },
-  {
-    "id": "k10_042",
-    "cat": "k10",
-    "term": {
-      "de": "der Betrag",
-      "en": "amount",
-      "uk": "сума",
-      "ru": "сумма"
-    },
-    "short": {
-      "de": "eine bestimmte Menge Geld",
-      "en": "a certain amount of money",
-      "uk": "певна кількість грошей",
-      "ru": "определённое количество денег"
-    },
-    "def": {
-      "de": "<g>Nichts Beeindruckenderes</g> gab es als den gesammelten <b>Betrag</b> am Ende des Tages.",
-      "en": "There was nothing more impressive than the <b>amount</b> collected at the end of the day.",
-      "uk": "Не було нічого враженнішого, ніж зібрана <b>сума</b> в кінці дня.",
-      "ru": "Не было ничего более впечатляющего, чем собранная <b>сумма</b> в конце дня."
     },
     "gram": "adjektive_als_nomen"
   },
@@ -36083,29 +36272,6 @@ var VOCAB = [
     "gram": "adjektive_als_nomen"
   },
   {
-    "id": "k10_047",
-    "cat": "k10",
-    "term": {
-      "de": "vorschlagen",
-      "en": "to suggest",
-      "uk": "пропонувати",
-      "ru": "предлагать"
-    },
-    "short": {
-      "de": "eine Idee nennen, über die andere entscheiden sollen",
-      "en": "to name an idea that others should decide on",
-      "uk": "висловлювати ідею, щодо якої мають вирішити інші",
-      "ru": "высказывать идею, по поводу которой должны решить другие"
-    },
-    "def": {
-      "de": "<g>Etwas Interessantes</g> <b>schlug</b> unser Trainer letzte Woche <b>vor</b>: ein Wochenende Wandern.",
-      "en": "Our coach <b>suggested</b> something interesting last week: a weekend of hiking.",
-      "uk": "Наш тренер <b>запропонував</b> дещо цікаве минулого тижня: похідні вихідні.",
-      "ru": "Наш тренер <b>предложил</b> что-то интересное на прошлой неделе: выходные с походом."
-    },
-    "gram": "adjektive_als_nomen"
-  },
-  {
     "id": "k10_048",
     "cat": "k10",
     "term": {
@@ -36149,7 +36315,13 @@ var VOCAB = [
       "uk": "Дещо чудове в нашому <b>клубі</b> — те, що всі раді кожному.",
       "ru": "Что-то замечательное в нашем <b>клубе</b> — то, что каждому рады."
     },
-    "gram": "adjektive_als_nomen"
+    "gram": "adjektive_als_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Vereine"
+      ]
+    }
   },
   {
     "id": "k10_050",
@@ -36822,7 +36994,7 @@ var VOCAB = [
     "id": "k10_079",
     "cat": "k10",
     "term": {
-      "de": "die Weltmeisterschaft (WM)",
+      "de": "die Weltmeisterschaft",
       "en": "World Championship",
       "uk": "чемпіонат світу",
       "ru": "чемпионат мира"
@@ -36839,7 +37011,10 @@ var VOCAB = [
       "uk": "<b>Чемпіонат світу</b> — це найбільша спортивна подія у світі.",
       "ru": "<b>Чемпионат мира</b> — это крупнейшее спортивное событие в мире."
     },
-    "gram": "komparativ_superlativ_vor_nomen"
+    "gram": "komparativ_superlativ_vor_nomen",
+    "syn": [
+      "WM"
+    ]
   },
   {
     "id": "k10_080",
@@ -36891,7 +37066,7 @@ var VOCAB = [
     "id": "k11_001",
     "cat": "k11",
     "term": {
-      "de": "die Schwangerschaft, -en",
+      "de": "die Schwangerschaft",
       "en": "pregnancy",
       "uk": "вагітність",
       "ru": "беременность"
@@ -36908,36 +37083,19 @@ var VOCAB = [
       "uk": "Вона не відчувала нічого особливого під час своєї <b>вагітності</b> аж до восьмого місяця.",
       "ru": "Она не чувствовала ничего особенного во время своей <b>беременности</b> до восьмого месяца."
     },
-    "gram": "adjektive_als_nomen"
-  },
-  {
-    "id": "k11_002",
-    "cat": "k11",
-    "term": {
-      "de": "sich vorbereiten auf",
-      "en": "to prepare for",
-      "uk": "готуватися до",
-      "ru": "готовиться к"
-    },
-    "short": {
-      "de": "sich rechtzeitig auf etwas einstellen, das noch kommt",
-      "en": "to get ready in time for something that is still to come",
-      "uk": "завчасно готуватися до чогось, що ще має статися",
-      "ru": "заранее готовиться к чему-то, что ещё должно произойти"
-    },
-    "def": {
-      "de": "<g>Während</g> sie <b>sich</b> auf die Geburt <b>vorbereitet</b>, kümmert sich ihr Mann um die Wohnung.",
-      "en": "<g>While</g> she <b>prepares</b> for the birth, her husband takes care of the flat.",
-      "uk": "<g>Поки</g> вона <b>готується</b> до пологів, її чоловік дбає про квартиру.",
-      "ru": "<g>Пока</g> она <b>готовится</b> к родам, её муж заботится о квартире."
-    },
-    "gram": "nebensatz_mit_waehrend"
+    "gram": "adjektive_als_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Schwangerschaften"
+      ]
+    }
   },
   {
     "id": "k11_003",
     "cat": "k11",
     "term": {
-      "de": "die Windel, -n",
+      "de": "die Windel",
       "en": "nappy",
       "uk": "підгузок",
       "ru": "подгузник"
@@ -36954,7 +37112,13 @@ var VOCAB = [
       "uk": "Тобі <g>не потрібно</g> міняти <b>підгузок</b> щогодини, достатньо кожні три години.",
       "ru": "Тебе <g>не нужно</g> менять <b>подгузник</b> каждый час, достаточно каждые три часа."
     },
-    "gram": "nicht_brauchen_zu"
+    "gram": "nicht_brauchen_zu",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Windeln"
+      ]
+    }
   },
   {
     "id": "k11_004",
@@ -36983,7 +37147,7 @@ var VOCAB = [
     "id": "k11_005",
     "cat": "k11",
     "term": {
-      "de": "die Frauenrolle, -n",
+      "de": "die Frauenrolle",
       "en": "womanʼs role",
       "uk": "жіноча роль",
       "ru": "женская роль"
@@ -37000,13 +37164,19 @@ var VOCAB = [
       "uk": "<g>Деякі</g> люди досі думають традиційно про <b>жіночу роль</b>.",
       "ru": "<g>Некоторые</g> люди до сих пор думают традиционно о <b>женской роли</b>."
     },
-    "gram": "indefinitpronomen_possessivpronomen"
+    "gram": "indefinitpronomen_possessivpronomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Frauenrollen"
+      ]
+    }
   },
   {
     "id": "k11_006",
     "cat": "k11",
     "term": {
-      "de": "die Männerrolle, -n",
+      "de": "die Männerrolle",
       "en": "manʼs role",
       "uk": "чоловіча роль",
       "ru": "мужская роль"
@@ -37023,7 +37193,13 @@ var VOCAB = [
       "uk": "<g>Тоді як</g> <b>чоловіча роль</b> сильно змінилася за останні роки, багато чого в суспільстві залишається традиційним.",
       "ru": "<g>В то время как</g> <b>мужская роль</b> сильно изменилась за последние годы, многое в обществе остаётся традиционным."
     },
-    "gram": "nebensatz_mit_waehrend"
+    "gram": "nebensatz_mit_waehrend",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Männerrollen"
+      ]
+    }
   },
   {
     "id": "k11_007",
@@ -37052,7 +37228,7 @@ var VOCAB = [
     "id": "k11_008",
     "cat": "k11",
     "term": {
-      "de": "die Kindertagesstätte, -n (die Kita, -s)",
+      "de": "die Kindertagesstätte",
       "en": "daycare centre",
       "uk": "дитячий садок",
       "ru": "детский сад"
@@ -37069,13 +37245,22 @@ var VOCAB = [
       "uk": "У <g>нашому</g> <b>дитячому садку</b>, на жаль, більше немає вільного місця.",
       "ru": "В <g>нашем</g> <b>детском саду</b>, к сожалению, больше нет свободного места."
     },
-    "gram": "indefinitpronomen_possessivpronomen"
+    "gram": "indefinitpronomen_possessivpronomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kindertagesstätten"
+      ]
+    },
+    "syn": [
+      "Kita"
+    ]
   },
   {
     "id": "k11_009",
     "cat": "k11",
     "term": {
-      "de": "der Kita-Platz, -plätze",
+      "de": "der Kita-Platz",
       "en": "daycare place",
       "uk": "місце в дитячому садку",
       "ru": "место в детском саду"
@@ -37092,13 +37277,19 @@ var VOCAB = [
       "uk": "Сталося щось хороше: ми нарешті отримали <b>місце в дитячому садку</b>!",
       "ru": "Произошло что-то хорошее: мы наконец получили <b>место в детском саду</b>!"
     },
-    "gram": "adjektive_als_nomen"
+    "gram": "adjektive_als_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kita-Plätze"
+      ]
+    }
   },
   {
     "id": "k11_010",
     "cat": "k11",
     "term": {
-      "de": "der Mutterschutz, Sg.",
+      "de": "der Mutterschutz",
       "en": "maternity protection",
       "uk": "охорона материнства",
       "ru": "охрана материнства"
@@ -37115,7 +37306,10 @@ var VOCAB = [
       "uk": "Найважливіше в <b>охороні материнства</b> — це захист здоровʼя матері й дитини.",
       "ru": "Самое важное в <b>охране материнства</b> — это защита здоровья матери и ребёнка."
     },
-    "gram": "adjektive_als_nomen"
+    "gram": "adjektive_als_nomen",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k11_011",
@@ -37144,7 +37338,7 @@ var VOCAB = [
     "id": "k11_012",
     "cat": "k11",
     "term": {
-      "de": "die Enttäuschung, -en",
+      "de": "die Enttäuschung",
       "en": "disappointment",
       "uk": "розчарування",
       "ru": "разочарование"
@@ -37161,13 +37355,19 @@ var VOCAB = [
       "uk": "Маленька дівчинка відчувала <b>розчарування</b> своїх батьків після розлучення.",
       "ru": "Маленькая девочка чувствовала <b>разочарование</b> своих родителей после развода."
     },
-    "gram": "nomen_auf_chen"
+    "gram": "nomen_auf_chen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Enttäuschungen"
+      ]
+    }
   },
   {
     "id": "k11_013",
     "cat": "k11",
     "term": {
-      "de": "die Patchworkfamilie, -n",
+      "de": "die Patchworkfamilie",
       "en": "blended family",
       "uk": "змішана сімʼя",
       "ru": "смешанная семья"
@@ -37184,13 +37384,19 @@ var VOCAB = [
       "uk": "У нашій <b>змішаній сімʼї</b> є також маленький братик від другого шлюбу.",
       "ru": "В нашей <b>смешанной семье</b> есть также маленький братик от второго брака."
     },
-    "gram": "nomen_auf_chen"
+    "gram": "nomen_auf_chen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Patchworkfamilien"
+      ]
+    }
   },
   {
     "id": "k11_014",
     "cat": "k11",
     "term": {
-      "de": "die Ehe, -n",
+      "de": "die Ehe",
       "en": "marriage",
       "uk": "шлюб",
       "ru": "брак"
@@ -37207,7 +37413,13 @@ var VOCAB = [
       "uk": "Після двадцяти років <b>шлюбу</b> вони купили собі невеликий будиночок за містом.",
       "ru": "После двадцати лет <b>брака</b> они купили себе небольшой домик за городом."
     },
-    "gram": "nomen_auf_chen"
+    "gram": "nomen_auf_chen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ehen"
+      ]
+    }
   },
   {
     "id": "k11_015",
@@ -37254,52 +37466,6 @@ var VOCAB = [
       "ru": "Это была маленькая тайна, которая раскрылась, когда он <b>изменил</b> жене."
     },
     "gram": "nomen_auf_chen"
-  },
-  {
-    "id": "k11_017",
-    "cat": "k11",
-    "term": {
-      "de": "die Geburt",
-      "en": "birth",
-      "uk": "народження",
-      "ru": "рождение"
-    },
-    "short": {
-      "de": "der Moment, in dem ein Kind auf die Welt kommt",
-      "en": "the moment a child comes into the world",
-      "uk": "момент, коли дитина зʼявляється на світ",
-      "ru": "момент, когда ребёнок появляется на свет"
-    },
-    "def": {
-      "de": "<g>Etwas Emotionales</g> war die <b>Geburt</b> ihres ersten Kindes.",
-      "en": "Something emotional was the <b>birth</b> of their first child.",
-      "uk": "Дещо емоційне — <b>народження</b> їхньої першої дитини.",
-      "ru": "Что-то эмоциональное — <b>рождение</b> их первого ребёнка."
-    },
-    "gram": "adjektive_als_nomen"
-  },
-  {
-    "id": "k11_018",
-    "cat": "k11",
-    "term": {
-      "de": "der Kinderwagen",
-      "en": "pram",
-      "uk": "дитяча коляска",
-      "ru": "детская коляска"
-    },
-    "short": {
-      "de": "ein kleines Fahrzeug, in dem man ein Baby herumschiebt",
-      "en": "a small vehicle used to push a baby around",
-      "uk": "невеликий візок, у якому возять немовля",
-      "ru": "небольшая коляска, в которой возят младенца"
-    },
-    "def": {
-      "de": "<g>Nichts Praktischeres</g> gab es als einen guten <b>Kinderwagen</b> für die ersten Monate.",
-      "en": "There was nothing more practical than a good <b>pram</b> for the first months.",
-      "uk": "Не було нічого практичнішого за хорошу <b>дитячу коляску</b> для перших місяців.",
-      "ru": "Не было ничего практичнее хорошей <b>детской коляски</b> для первых месяцев."
-    },
-    "gram": "adjektive_als_nomen"
   },
   {
     "id": "k11_019",
@@ -37436,29 +37602,6 @@ var VOCAB = [
       "en": "<g>While</g> I work, my husband takes care of the <b>household</b>.",
       "uk": "<g>Поки</g> я працюю, мій чоловік дбає про <b>домашнє господарство</b>.",
       "ru": "<g>Пока</g> я работаю, мой муж заботится о <b>домашнем хозяйстве</b>."
-    },
-    "gram": "nebensatz_mit_waehrend"
-  },
-  {
-    "id": "k11_025",
-    "cat": "k11",
-    "term": {
-      "de": "betreuen",
-      "en": "to look after",
-      "uk": "доглядати",
-      "ru": "присматривать"
-    },
-    "short": {
-      "de": "sich um jemanden kümmern und für ihn sorgen",
-      "en": "to take care of someone and look after them",
-      "uk": "піклуватися про когось і доглядати за ним",
-      "ru": "заботиться о ком-то и присматривать за ним"
-    },
-    "def": {
-      "de": "<g>Während</g> die Großeltern die Kinder <b>betreuen</b>, gehen die Eltern arbeiten.",
-      "en": "<g>While</g> the grandparents <b>look after</b> the children, the parents go to work.",
-      "uk": "<g>Поки</g> бабуся й дідусь <b>доглядають</b> за дітьми, батьки йдуть на роботу.",
-      "ru": "<g>Пока</g> бабушка и дедушка <b>присматривают</b> за детьми, родители идут на работу."
     },
     "gram": "nebensatz_mit_waehrend"
   },
@@ -37601,29 +37744,6 @@ var VOCAB = [
     "gram": "nebensatz_mit_waehrend"
   },
   {
-    "id": "k11_032",
-    "cat": "k11",
-    "term": {
-      "de": "die Hilfe",
-      "en": "help",
-      "uk": "допомога",
-      "ru": "помощь"
-    },
-    "short": {
-      "de": "die Unterstützung, die man von jemandem bekommt",
-      "en": "the support you receive from someone",
-      "uk": "підтримка, яку отримують від когось",
-      "ru": "поддержка, которую получают от кого-то"
-    },
-    "def": {
-      "de": "Du <g>brauchst</g> <g>nicht</g> auf <b>Hilfe</b> <g>zu</g> verzichten, nur weil du selbstständig sein willst.",
-      "en": "You <g>don't need to</g> do without <b>help</b> just because you want to be independent.",
-      "uk": "Тобі <g>не потрібно</g> відмовлятися від <b>допомоги</b> лише тому, що ти хочеш бути самостійним.",
-      "ru": "Тебе <g>не нужно</g> отказываться от <b>помощи</b> только потому, что ты хочешь быть самостоятельным."
-    },
-    "gram": "nicht_brauchen_zu"
-  },
-  {
     "id": "k11_033",
     "cat": "k11",
     "term": {
@@ -37670,29 +37790,6 @@ var VOCAB = [
     "gram": "nicht_brauchen_zu"
   },
   {
-    "id": "k11_035",
-    "cat": "k11",
-    "term": {
-      "de": "die Verantwortung",
-      "en": "responsibility",
-      "uk": "відповідальність",
-      "ru": "ответственность"
-    },
-    "short": {
-      "de": "die Pflicht, für etwas zu sorgen oder die Folgen zu tragen",
-      "en": "the duty to take care of something or bear the consequences",
-      "uk": "обовʼязок дбати про щось чи нести наслідки",
-      "ru": "обязанность заботиться о чём-то или нести последствия"
-    },
-    "def": {
-      "de": "Du <g>brauchst</g> die ganze <b>Verantwortung</b> <g>nicht</g> allein <g>zu</g> tragen.",
-      "en": "You <g>don't need to</g> carry the entire <b>responsibility</b> alone.",
-      "uk": "Тобі <g>не потрібно</g> нести всю <b>відповідальність</b> самотужки.",
-      "ru": "Тебе <g>не нужно</g> нести всю <b>ответственность</b> в одиночку."
-    },
-    "gram": "nicht_brauchen_zu"
-  },
-  {
     "id": "k11_036",
     "cat": "k11",
     "term": {
@@ -37735,29 +37832,6 @@ var VOCAB = [
       "en": "You <g>don't need to</g> <b>hesitate</b> when you need help — just ask.",
       "uk": "Тобі <g>не потрібно</g> <b>вагатися</b>, коли потрібна допомога, — просто попроси.",
       "ru": "Тебе <g>не нужно</g> <b>колебаться</b>, если нужна помощь, — просто попроси."
-    },
-    "gram": "nicht_brauchen_zu"
-  },
-  {
-    "id": "k11_038",
-    "cat": "k11",
-    "term": {
-      "de": "erledigen",
-      "en": "to get done",
-      "uk": "робити",
-      "ru": "делать"
-    },
-    "short": {
-      "de": "eine Aufgabe fertig machen",
-      "en": "to finish a task",
-      "uk": "завершувати завдання",
-      "ru": "завершать задачу"
-    },
-    "def": {
-      "de": "Wir <g>brauchen</g> <g>nicht</g> alles an einem Tag <g>zu</g> <b>erledigen</b>.",
-      "en": "We <g>don't need to</g> <b>get</b> everything <b>done</b> in one day.",
-      "uk": "Нам <g>не потрібно</g> все <b>зробити</b> за один день.",
-      "ru": "Нам <g>не нужно</g> всё <b>сделать</b> за один день."
     },
     "gram": "nicht_brauchen_zu"
   },
@@ -37854,29 +37928,6 @@ var VOCAB = [
     "gram": "indefinitpronomen_possessivpronomen"
   },
   {
-    "id": "k11_043",
-    "cat": "k11",
-    "term": {
-      "de": "teilen",
-      "en": "to share",
-      "uk": "ділити",
-      "ru": "делить"
-    },
-    "short": {
-      "de": "etwas mit jemand anderem gemeinsam nutzen oder aufteilen",
-      "en": "to use or divide something together with someone else",
-      "uk": "спільно використовувати або розподіляти щось з кимось",
-      "ru": "совместно использовать или распределять что-то с кем-то"
-    },
-    "def": {
-      "de": "<g>Alles</g> im Haushalt sollte gerecht <b>geteilt</b> werden.",
-      "en": "<g>Everything</g> in the household should be <b>shared</b> fairly.",
-      "uk": "<g>Усе</g> в домашньому господарстві варто чесно <b>ділити</b>.",
-      "ru": "<g>Всё</g> в домашнем хозяйстве стоит честно <b>делить</b>."
-    },
-    "gram": "indefinitpronomen_possessivpronomen"
-  },
-  {
     "id": "k11_044",
     "cat": "k11",
     "term": {
@@ -37897,30 +37948,13 @@ var VOCAB = [
       "uk": "<g>Дещо</g> в цьому <b>завданні</b> було типовим для старого розподілу ролей.",
       "ru": "<g>Кое-что</g> в этом <b>задании</b> было типичным для старого распределения ролей."
     },
-    "gram": "indefinitpronomen_possessivpronomen"
-  },
-  {
-    "id": "k11_045",
-    "cat": "k11",
-    "term": {
-      "de": "der Unterschied",
-      "en": "difference",
-      "uk": "відмінність",
-      "ru": "различие"
-    },
-    "short": {
-      "de": "das, was zwei Dinge oder Personen voneinander unterscheidet",
-      "en": "what distinguishes two things or people from each other",
-      "uk": "те, що відрізняє дві речі чи людей одне від одного",
-      "ru": "то, что отличает две вещи или людей друг от друга"
-    },
-    "def": {
-      "de": "<g>Manche</g> <b>Unterschiede</b> zwischen den Geschlechtern sind gesellschaftlich, nicht biologisch.",
-      "en": "<g>Some</g> <b>differences</b> between the genders are social, not biological.",
-      "uk": "<g>Деякі</g> <b>відмінності</b> між статями є суспільними, а не біологічними.",
-      "ru": "<g>Некоторые</g> <b>различия</b> между полами являются общественными, а не биологическими."
-    },
-    "gram": "indefinitpronomen_possessivpronomen"
+    "gram": "indefinitpronomen_possessivpronomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Aufgaben"
+      ]
+    }
   },
   {
     "id": "k11_046",
@@ -38455,7 +38489,7 @@ var VOCAB = [
     "id": "k12_001",
     "cat": "k12",
     "term": {
-      "de": "die Anerkennung, -en",
+      "de": "die Anerkennung",
       "en": "recognition of qualifications",
       "uk": "визнання кваліфікації",
       "ru": "признание квалификации"
@@ -38472,7 +38506,13 @@ var VOCAB = [
       "uk": "<g>Після того як</g> вона подала заявку на <b>визнання</b> свого диплома, їй довелося чекати три місяці.",
       "ru": "<g>После того как</g> она подала заявку на <b>признание</b> своего диплома, ей пришлось ждать три месяца."
     },
-    "gram": "nebensatz_mit_nachdem"
+    "gram": "nebensatz_mit_nachdem",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Anerkennungen"
+      ]
+    }
   },
   {
     "id": "k12_002",
@@ -38501,7 +38541,7 @@ var VOCAB = [
     "id": "k12_003",
     "cat": "k12",
     "term": {
-      "de": "der Arbeitsmarkt, Sg.",
+      "de": "der Arbeitsmarkt",
       "en": "labour market",
       "uk": "ринок праці",
       "ru": "рынок труда"
@@ -38518,13 +38558,16 @@ var VOCAB = [
       "uk": "До того як вона приїхала до Німеччини, вона вже ретельно вивчила німецький <b>ринок праці</b>.",
       "ru": "До того как она приехала в Германию, она уже тщательно изучила немецкий <b>рынок труда</b>."
     },
-    "gram": "plusquamperfekt"
+    "gram": "plusquamperfekt",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k12_004",
     "cat": "k12",
     "term": {
-      "de": "der Lebenslauf, -läufe",
+      "de": "der Lebenslauf",
       "en": "CV",
       "uk": "резюме",
       "ru": "резюме"
@@ -38541,13 +38584,19 @@ var VOCAB = [
       "uk": "Він уже оновив своє <b>резюме</b> до того, як оголошення про вакансію було опубліковано.",
       "ru": "Он уже обновил своё <b>резюме</b> до того, как объявление о вакансии было опубликовано."
     },
-    "gram": "plusquamperfekt"
+    "gram": "plusquamperfekt",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Lebensläufe"
+      ]
+    }
   },
   {
     "id": "k12_005",
     "cat": "k12",
     "term": {
-      "de": "die Ausbildung, -en",
+      "de": "die Ausbildung",
       "en": "vocational training",
       "uk": "професійне навчання",
       "ru": "профессиональное обучение"
@@ -38564,13 +38613,19 @@ var VOCAB = [
       "uk": "Навчання новим навичкам є невідʼємною частиною будь-якого гарного <b>професійного навчання</b>.",
       "ru": "Обучение новым навыкам является неотъемлемой частью любого хорошего <b>профессионального обучения</b>."
     },
-    "gram": "infinitiv_als_nomen"
+    "gram": "infinitiv_als_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ausbildungen"
+      ]
+    }
   },
   {
     "id": "k12_006",
     "cat": "k12",
     "term": {
-      "de": "der Schulabschluss, -abschlüsse",
+      "de": "der Schulabschluss",
       "en": "school-leaving qualification",
       "uk": "атестат про освіту",
       "ru": "школьный аттестат"
@@ -38587,13 +38642,19 @@ var VOCAB = [
       "uk": "Без придатного <b>атестата про освіту</b> важко знайти місце для навчання.",
       "ru": "Без пригодного <b>школьного аттестата</b> трудно найти место для обучения."
     },
-    "gram": "adjektive_auf_bar_los"
+    "gram": "adjektive_auf_bar_los",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Schulabschlüsse"
+      ]
+    }
   },
   {
     "id": "k12_007",
     "cat": "k12",
     "term": {
-      "de": "das Schülerpraktikum, -praktika",
+      "de": "das Schülerpraktikum",
       "en": "student internship",
       "uk": "учнівська практика",
       "ru": "ученическая практика"
@@ -38610,13 +38671,19 @@ var VOCAB = [
       "uk": "Безкоштовна <b>учнівська практика</b> допомогла їй знайти правильну професію.",
       "ru": "Бесплатная <b>ученическая практика</b> помогла ей найти подходящую профессию."
     },
-    "gram": "adjektive_auf_bar_los"
+    "gram": "adjektive_auf_bar_los",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Schülerpraktika"
+      ]
+    }
   },
   {
     "id": "k12_008",
     "cat": "k12",
     "term": {
-      "de": "der Arbeitnehmer, - / die Arbeitnehmerin, -nen",
+      "de": "der Arbeitnehmer / die Arbeitnehmerin",
       "en": "employee",
       "uk": "найманий працівник / працівниця",
       "ru": "наёмный работник / работница"
@@ -38633,13 +38700,19 @@ var VOCAB = [
       "uk": "Після десяти років цей <b>найманий працівник</b> практично не підлягає звільненню.",
       "ru": "После десяти лет этот <b>наёмный работник</b> практически не подлежит увольнению."
     },
-    "gram": "adjektive_auf_bar_los"
+    "gram": "adjektive_auf_bar_los",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Arbeitnehmer / die Arbeitnehmerinnen"
+      ]
+    }
   },
   {
     "id": "k12_009",
     "cat": "k12",
     "term": {
-      "de": "die Gewerkschaft, -en",
+      "de": "die Gewerkschaft",
       "en": "trade union",
       "uk": "профспілка",
       "ru": "профсоюз"
@@ -38656,13 +38729,19 @@ var VOCAB = [
       "uk": "<b>Профспілка</b> бореться за доступну відпустку для всіх працівників.",
       "ru": "<b>Профсоюз</b> борется за доступный отпуск для всех работников."
     },
-    "gram": "adjektive_auf_bar_los"
+    "gram": "adjektive_auf_bar_los",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Gewerkschaften"
+      ]
+    }
   },
   {
     "id": "k12_010",
     "cat": "k12",
     "term": {
-      "de": "die Arbeitserlaubnis, Sg.",
+      "de": "die Arbeitserlaubnis",
       "en": "work permit",
       "uk": "дозвіл на роботу",
       "ru": "разрешение на работу"
@@ -38679,13 +38758,16 @@ var VOCAB = [
       "uk": "Без чинного <b>дозволу на роботу</b> людина, на жаль, часто залишається безробітною.",
       "ru": "Без действующего <b>разрешения на работу</b> человек, к сожалению, часто остаётся безработным."
     },
-    "gram": "adjektive_auf_bar_los"
+    "gram": "adjektive_auf_bar_los",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k12_011",
     "cat": "k12",
     "term": {
-      "de": "das Berufsprofil, -e",
+      "de": "das Berufsprofil",
       "en": "job profile",
       "uk": "профіль професії",
       "ru": "профиль профессии"
@@ -38702,13 +38784,19 @@ var VOCAB = [
       "uk": "Добре читабельний <b>профіль професії</b> допомагає знайти відповідну посаду.",
       "ru": "Хорошо читаемый <b>профиль профессии</b> помогает найти подходящую должность."
     },
-    "gram": "adjektive_auf_bar_los"
+    "gram": "adjektive_auf_bar_los",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Berufsprofile"
+      ]
+    }
   },
   {
     "id": "k12_012",
     "cat": "k12",
     "term": {
-      "de": "der Betriebsrat, -räte",
+      "de": "der Betriebsrat",
       "en": "works council",
       "uk": "виробнича рада",
       "ru": "производственный совет"
@@ -38725,13 +38813,19 @@ var VOCAB = [
       "uk": "Ведення переговорів з керівництвом є одним із завдань <b>виробничої ради</b>.",
       "ru": "Ведение переговоров с руководством является одной из задач <b>производственного совета</b>."
     },
-    "gram": "infinitiv_als_nomen"
+    "gram": "infinitiv_als_nomen",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Betriebsräte"
+      ]
+    }
   },
   {
     "id": "k12_013",
     "cat": "k12",
     "term": {
-      "de": "die Zufriedenheit, Sg.",
+      "de": "die Zufriedenheit",
       "en": "satisfaction",
       "uk": "задоволення",
       "ru": "удовлетворённость"
@@ -38748,7 +38842,10 @@ var VOCAB = [
       "uk": "Вона відчула безмежне <b>задоволення</b>, коли нарешті знайшла роботу своєї мрії.",
       "ru": "Она почувствовала безграничное <b>удовлетворение</b>, когда наконец нашла работу своей мечты."
     },
-    "gram": "adjektive_auf_bar_los"
+    "gram": "adjektive_auf_bar_los",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k12_014",
@@ -38771,7 +38868,10 @@ var VOCAB = [
       "uk": "Фірма повинна відповісти <b>в межах</b> прийнятного терміну.",
       "ru": "Фирма должна ответить <b>в пределах</b> приемлемого срока."
     },
-    "gram": "adjektive_auf_bar_los"
+    "gram": "adjektive_auf_bar_los",
+    "info": {
+      "case": "G"
+    }
   },
   {
     "id": "k12_015",
@@ -38794,53 +38894,10 @@ var VOCAB = [
       "uk": "<b>Поза</b> робочим часом, на жаль, ніхто не є доступним.",
       "ru": "<b>За пределами</b> рабочего времени, к сожалению, никто не доступен."
     },
-    "gram": "adjektive_auf_bar_los"
-  },
-  {
-    "id": "k12_016",
-    "cat": "k12",
-    "term": {
-      "de": "der Erfolg, -e",
-      "en": "success",
-      "uk": "успіх",
-      "ru": "успех"
-    },
-    "short": {
-      "de": "ein gutes Ergebnis, das man nach viel Mühe erreicht hat",
-      "en": "a good result achieved after a lot of effort",
-      "uk": "хороший результат, досягнутий після значних зусиль",
-      "ru": "хороший результат, достигнутый после больших усилий"
-    },
-    "def": {
-      "de": "Ihr beruflicher <b>Erfolg</b> kam keineswegs <g>mühelos</g>, sondern durch harte Arbeit.",
-      "en": "Her professional <b>success</b> did not come effortlessly at all, but through hard work.",
-      "uk": "Її професійний <b>успіх</b> прийшов аж ніяк не легко, а завдяки важкій праці.",
-      "ru": "Её профессиональный <b>успех</b> пришёл отнюдь не легко, а благодаря упорному труду."
-    },
-    "gram": "adjektive_auf_bar_los"
-  },
-  {
-    "id": "k12_017",
-    "cat": "k12",
-    "term": {
-      "de": "sich integrieren",
-      "en": "to integrate",
-      "uk": "інтегруватися",
-      "ru": "интегрироваться"
-    },
-    "short": {
-      "de": "sich in eine neue Gesellschaft oder Gruppe einfügen",
-      "en": "to fit into a new society or group",
-      "uk": "вливатися в нове суспільство чи групу",
-      "ru": "вливаться в новое общество или группу"
-    },
-    "def": {
-      "de": "<g>Nachdem</g> er sich gut <b>integriert</b> <g>hatte</g>, fand er schnell neue Freunde.",
-      "en": "<g>After</g> he <g>had</g> <b>integrated</b> well, he quickly made new friends.",
-      "uk": "<g>Після того як</g> він добре <b>інтегрувався</b>, він швидко знайшов нових друзів.",
-      "ru": "<g>После того как</g> он хорошо <b>интегрировался</b>, он быстро нашёл новых друзей."
-    },
-    "gram": "nebensatz_mit_nachdem"
+    "gram": "adjektive_auf_bar_los",
+    "info": {
+      "case": "G"
+    }
   },
   {
     "id": "k12_018",
@@ -39001,30 +39058,13 @@ var VOCAB = [
       "uk": "<g>Після того як</g> вони знайшли <b>квартиру</b>, вони нарешті могли по-справжньому влаштуватися.",
       "ru": "<g>После того как</g> они нашли <b>квартиру</b>, они наконец могли по-настоящему обосноваться."
     },
-    "gram": "nebensatz_mit_nachdem"
-  },
-  {
-    "id": "k12_025",
-    "cat": "k12",
-    "term": {
-      "de": "die Erfahrung",
-      "en": "experience",
-      "uk": "досвід",
-      "ru": "опыт"
-    },
-    "short": {
-      "de": "das Wissen oder Können, das man durch etwas Erlebtes gewinnt",
-      "en": "the knowledge or skill you gain through something you have experienced",
-      "uk": "знання чи вміння, набуті завдяки пережитому",
-      "ru": "знания или умения, приобретённые благодаря пережитому"
-    },
-    "def": {
-      "de": "Bevor sie nach Deutschland kam, <g>hatte</g> sie schon viel <b>Erfahrung</b> im Verkauf <g>gesammelt</g>.",
-      "en": "Before she came to Germany, she <g>had</g> already <g>gathered</g> a lot of <b>experience</b> in sales.",
-      "uk": "До того як вона приїхала до Німеччини, вона вже мала багато <b>досвіду</b> в продажах.",
-      "ru": "До того как она приехала в Германию, у неё уже было много <b>опыта</b> в продажах."
-    },
-    "gram": "plusquamperfekt"
+    "gram": "nebensatz_mit_nachdem",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Wohnungen"
+      ]
+    }
   },
   {
     "id": "k12_026",
@@ -39047,7 +39087,13 @@ var VOCAB = [
       "uk": "До того як він переїхав сюди, він уже працював у великій <b>фірмі</b>.",
       "ru": "До того как он переехал сюда, он уже работал в крупной <b>фирме</b>."
     },
-    "gram": "plusquamperfekt"
+    "gram": "plusquamperfekt",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Firmen"
+      ]
+    }
   },
   {
     "id": "k12_027",
@@ -39116,7 +39162,13 @@ var VOCAB = [
       "uk": "До того як вона подала заявку, вона вже визнала свій <b>диплом</b>.",
       "ru": "До того как она подала заявку, она уже признала свой <b>диплом</b>."
     },
-    "gram": "plusquamperfekt"
+    "gram": "plusquamperfekt",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Abschlüsse"
+      ]
+    }
   },
   {
     "id": "k12_030",
@@ -39162,30 +39214,13 @@ var VOCAB = [
       "uk": "До того як вона звільнилася, вона обіймала керівну <b>посаду</b>.",
       "ru": "До того как она уволилась, она занимала руководящую <b>должность</b>."
     },
-    "gram": "plusquamperfekt"
-  },
-  {
-    "id": "k12_032",
-    "cat": "k12",
-    "term": {
-      "de": "wechseln",
-      "en": "to change",
-      "uk": "змінювати",
-      "ru": "менять"
-    },
-    "short": {
-      "de": "etwas gegen etwas anderes tauschen, zum Beispiel den Arbeitsplatz",
-      "en": "to swap something for something else, for example your job",
-      "uk": "міняти щось на щось інше, наприклад роботу",
-      "ru": "менять что-то на что-то другое, например работу"
-    },
-    "def": {
-      "de": "Bevor er diese Stelle fand, <g>hatte</g> er schon dreimal den Job <g><b>gewechselt</b></g>.",
-      "en": "Before he found this position, he <g>had</g> already <g><b>changed</b></g> jobs three times.",
-      "uk": "До того як він знайшов цю посаду, він уже тричі <b>змінював</b> роботу.",
-      "ru": "До того как он нашёл эту должность, он уже трижды <b>менял</b> работу."
-    },
-    "gram": "plusquamperfekt"
+    "gram": "plusquamperfekt",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Positionen"
+      ]
+    }
   },
   {
     "id": "k12_033",
@@ -39207,29 +39242,6 @@ var VOCAB = [
       "en": "<g><b>Organising</b></g> appointments is one of my daily tasks.",
       "uk": "<b>Організація</b> зустрічей — одне з моїх щоденних завдань.",
       "ru": "<b>Организация</b> встреч — одна из моих ежедневных задач."
-    },
-    "gram": "infinitiv_als_nomen"
-  },
-  {
-    "id": "k12_034",
-    "cat": "k12",
-    "term": {
-      "de": "planen",
-      "en": "to plan",
-      "uk": "планувати",
-      "ru": "планировать"
-    },
-    "short": {
-      "de": "im Voraus überlegen, wie man etwas machen will",
-      "en": "to think in advance about how you want to do something",
-      "uk": "заздалегідь обдумувати, як щось зробити",
-      "ru": "заранее обдумывать, как что-то сделать"
-    },
-    "def": {
-      "de": "<g>Das <b>Planen</b></g> neuer Projekte macht ihr besonders viel Spaß.",
-      "en": "<g><b>Planning</b></g> new projects is something she particularly enjoys.",
-      "uk": "<b>Планування</b> нових проєктів приносить їй особливе задоволення.",
-      "ru": "<b>Планирование</b> новых проектов приносит ей особое удовольствие."
     },
     "gram": "infinitiv_als_nomen"
   },
@@ -39372,29 +39384,6 @@ var VOCAB = [
     "gram": "infinitiv_als_nomen"
   },
   {
-    "id": "k12_041",
-    "cat": "k12",
-    "term": {
-      "de": "die Weiterbildung",
-      "en": "further training",
-      "uk": "підвищення кваліфікації",
-      "ru": "повышение квалификации"
-    },
-    "short": {
-      "de": "eine zusätzliche Ausbildung, um neue Fähigkeiten zu lernen",
-      "en": "additional training to learn new skills",
-      "uk": "додаткове навчання для здобуття нових навичок",
-      "ru": "дополнительное обучение для получения новых навыков"
-    },
-    "def": {
-      "de": "Die <b>Weiterbildung</b> war für alle Mitarbeiter <g>kostenlos</g>.",
-      "en": "The <b>further training</b> was free for all employees.",
-      "uk": "<b>Підвищення кваліфікації</b> було безкоштовним для всіх співробітників.",
-      "ru": "<b>Повышение квалификации</b> было бесплатным для всех сотрудников."
-    },
-    "gram": "adjektive_auf_bar_los"
-  },
-  {
     "id": "k12_042",
     "cat": "k12",
     "term": {
@@ -39438,30 +39427,13 @@ var VOCAB = [
       "uk": "<b>Іспит</b>, на щастя, можна перескласти, якщо не здаси.",
       "ru": "<b>Экзамен</b>, к счастью, можно пересдать, если не сдашь."
     },
-    "gram": "adjektive_auf_bar_los"
-  },
-  {
-    "id": "k12_044",
-    "cat": "k12",
-    "term": {
-      "de": "die Aufgabe",
-      "en": "task",
-      "uk": "завдання",
-      "ru": "задание"
-    },
-    "short": {
-      "de": "etwas, das man erledigen oder lösen soll",
-      "en": "something you are supposed to get done or solve",
-      "uk": "те, що потрібно виконати чи розвʼязати",
-      "ru": "то, что нужно выполнить или решить"
-    },
-    "def": {
-      "de": "Diese <b>Aufgabe</b> ist auch für Anfänger gut <g>lösbar</g>.",
-      "en": "This <b>task</b> is easily solvable even for beginners.",
-      "uk": "Це <b>завдання</b> легко вирішити навіть початківцям.",
-      "ru": "Это <b>задание</b> легко решить даже новичкам."
-    },
-    "gram": "adjektive_auf_bar_los"
+    "gram": "adjektive_auf_bar_los",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Prüfungen"
+      ]
+    }
   },
   {
     "id": "k12_045",
@@ -39484,7 +39456,13 @@ var VOCAB = [
       "uk": "Більшості <b>помилок</b> у цій роботі легко уникнути.",
       "ru": "Большинства <b>ошибок</b> в этой работе легко избежать."
     },
-    "gram": "adjektive_auf_bar_los"
+    "gram": "adjektive_auf_bar_los",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Fehler"
+      ]
+    }
   },
   {
     "id": "k12_046",
@@ -39530,30 +39508,13 @@ var VOCAB = [
       "uk": "<b>Перехід</b> у новий відділ пройшов зовсім без проблем.",
       "ru": "<b>Переход</b> в новый отдел прошёл совершенно без проблем."
     },
-    "gram": "adjektive_auf_bar_los"
-  },
-  {
-    "id": "k12_048",
-    "cat": "k12",
-    "term": {
-      "de": "der Nachweis",
-      "en": "certificate",
-      "uk": "підтвердження",
-      "ru": "подтверждение"
-    },
-    "short": {
-      "de": "ein Beweis oder Dokument, das etwas bestätigt",
-      "en": "evidence or a document confirming something",
-      "uk": "доказ чи документ, що щось підтверджує",
-      "ru": "доказательство или документ, что-то подтверждающий"
-    },
-    "def": {
-      "de": "Ihre Berufserfahrung war durch einen offiziellen <b>Nachweis</b> gut <g>nachweisbar</g>.",
-      "en": "Her work experience was easily provable through an official <b>certificate</b>.",
-      "uk": "Її досвід роботи легко підтверджувався офіційним <b>підтвердженням</b>.",
-      "ru": "Её опыт работы легко подтверждался официальным <b>подтверждением</b>."
-    },
-    "gram": "adjektive_auf_bar_los"
+    "gram": "adjektive_auf_bar_los",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Wechsel"
+      ]
+    }
   },
   {
     "id": "k12_049",
@@ -39622,7 +39583,13 @@ var VOCAB = [
       "uk": "На <b>початку</b> місяця я отримую зарплату.",
       "ru": "В <b>начале</b> месяца я получаю зарплату."
     },
-    "gram": "genitiv"
+    "gram": "genitiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Anfänge"
+      ]
+    }
   },
   {
     "id": "k12_052",
@@ -40870,7 +40837,7 @@ var VOCAB = [
     "id": "k13_001",
     "cat": "k13",
     "term": {
-      "de": "das Ehrenamt, -ämter",
+      "de": "das Ehrenamt",
       "en": "voluntary position",
       "uk": "громадська посада",
       "ru": "общественная должность"
@@ -40887,7 +40854,13 @@ var VOCAB = [
       "uk": "<b>Громадську посаду</b> <g>може взяти на себе</g> будь-яка людина, незалежно від віку.",
       "ru": "<b>Общественную должность</b> <g>может взять на себя</g> любой человек, независимо от возраста."
     },
-    "gram": "passiv_mit_modalverben"
+    "gram": "passiv_mit_modalverben",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ehrenämter"
+      ]
+    }
   },
   {
     "id": "k13_002",
@@ -40913,102 +40886,10 @@ var VOCAB = [
     "gram": "passiv_mit_modalverben"
   },
   {
-    "id": "k13_003",
-    "cat": "k13",
-    "term": {
-      "de": "freiwillig",
-      "en": "voluntary",
-      "uk": "добровільний",
-      "ru": "добровольный"
-    },
-    "short": {
-      "de": "aus eigenem Willen, ohne dass jemand es verlangt",
-      "en": "of one's own free will, without anyone demanding it",
-      "uk": "за власним бажанням, без чиєїсь вимоги",
-      "ru": "по собственному желанию, без чьего-либо требования"
-    },
-    "def": {
-      "de": "<g>Trotz seines</g> vollen Terminkalenders hilft er <b>freiwillig</b> im Altersheim.",
-      "en": "<g>Despite his</g> busy schedule, he helps <b>voluntarily</b> at the retirement home.",
-      "uk": "<g>Незважаючи на свій</g> завантажений графік, він <b>добровільно</b> допомагає в будинку для літніх людей.",
-      "ru": "<g>Несмотря на свой</g> плотный график, он <b>добровольно</b> помогает в доме престарелых."
-    },
-    "gram": "praepositionen_mit_genitiv"
-  },
-  {
-    "id": "k13_004",
-    "cat": "k13",
-    "term": {
-      "de": "sich engagieren",
-      "en": "to get involved",
-      "uk": "займатися волонтерством",
-      "ru": "заниматься волонтёрством"
-    },
-    "short": {
-      "de": "sich aktiv und mit viel Energie für eine Sache einsetzen",
-      "en": "to get actively and energetically involved in a cause",
-      "uk": "активно й з великою енергією працювати заради якоїсь справи",
-      "ru": "активно и с большой энергией работать ради какого-либо дела"
-    },
-    "def": {
-      "de": "<g>Wegen der</g> vielen Flüchtlinge <b>engagieren</b> sich immer mehr Menschen in der Region.",
-      "en": "<g>Because of the</g> many refugees, more and more people are <b>getting involved</b> in the region.",
-      "uk": "<g>Через</g> велику кількість біженців у регіоні дедалі більше людей <b>стають волонтерами</b>.",
-      "ru": "<g>Из-за</g> большого количества беженцев в регионе всё больше людей <b>становятся волонтёрами</b>."
-    },
-    "gram": "praepositionen_mit_genitiv"
-  },
-  {
-    "id": "k13_005",
-    "cat": "k13",
-    "term": {
-      "de": "sich einsetzen für",
-      "en": "to advocate for",
-      "uk": "виступати за щось",
-      "ru": "выступать за что-то"
-    },
-    "short": {
-      "de": "sich stark für ein Ziel oder eine Person engagieren",
-      "en": "to strongly commit oneself to a goal or a person",
-      "uk": "активно виступати за якусь мету чи людину",
-      "ru": "активно выступать за какую-либо цель или человека"
-    },
-    "def": {
-      "de": "Sie <b>setzt</b> <b>sich</b> für die Rechte <g>obdachloser</g> Menschen <b>ein</b>.",
-      "en": "She <b>advocates for</b> the rights of homeless people.",
-      "uk": "Вона <b>виступає за</b> права безхатченків.",
-      "ru": "Она <b>выступает за</b> права бездомных."
-    },
-    "gram": "adjektivendung_genitiv"
-  },
-  {
-    "id": "k13_006",
-    "cat": "k13",
-    "term": {
-      "de": "der Bereich, -e",
-      "en": "area",
-      "uk": "сфера",
-      "ru": "сфера"
-    },
-    "short": {
-      "de": "ein bestimmter Teil eines größeren Themas oder Gebiets",
-      "en": "a certain part of a larger topic or field",
-      "uk": "певна частина більшої теми чи галузі",
-      "ru": "определённая часть более крупной темы или сферы"
-    },
-    "def": {
-      "de": "Im sozialen <b>Bereich</b> gibt es viele <g>hilfreiche</g> Projekte für Geflüchtete.",
-      "en": "In the social <b>area</b>, there are many helpful projects for refugees.",
-      "uk": "У соціальній <b>сфері</b> є багато корисних проєктів для біженців.",
-      "ru": "В социальной <b>сфере</b> есть много полезных проектов для беженцев."
-    },
-    "gram": "adjektive_auf_voll_reich"
-  },
-  {
     "id": "k13_007",
     "cat": "k13",
     "term": {
-      "de": "das Hilfsangebot, -e",
+      "de": "das Hilfsangebot",
       "en": "support service",
       "uk": "пропозиція допомоги",
       "ru": "предложение помощи"
@@ -41025,13 +40906,19 @@ var VOCAB = [
       "uk": "Ця широка <b>пропозиція допомоги</b> підтримує сімʼї у складних ситуаціях.",
       "ru": "Это обширное <b>предложение помощи</b> поддерживает семьи в трудных ситуациях."
     },
-    "gram": "adjektive_auf_voll_reich"
+    "gram": "adjektive_auf_voll_reich",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Hilfsangebote"
+      ]
+    }
   },
   {
     "id": "k13_008",
     "cat": "k13",
     "term": {
-      "de": "die Gefahr, -en",
+      "de": "die Gefahr",
       "en": "danger",
       "uk": "небезпека",
       "ru": "опасность"
@@ -41048,36 +40935,19 @@ var VOCAB = [
       "uk": "Незважаючи на численні <b>небезпеки</b>, він допоміг пораненому туристу.",
       "ru": "Несмотря на многочисленные <b>опасности</b>, он помог раненому туристу."
     },
-    "gram": "adjektive_auf_voll_reich"
-  },
-  {
-    "id": "k13_009",
-    "cat": "k13",
-    "term": {
-      "de": "retten",
-      "en": "to rescue",
-      "uk": "рятувати",
-      "ru": "спасать"
-    },
-    "short": {
-      "de": "jemanden aus einer gefährlichen Situation befreien",
-      "en": "to free someone from a dangerous situation",
-      "uk": "визволяти когось з небезпечної ситуації",
-      "ru": "освобождать кого-либо из опасной ситуации"
-    },
-    "def": {
-      "de": "Der Schwimmer <g>musste</g> von der Feuerwehr <g><b>gerettet werden</b></g>, weil die Strömung zu stark war.",
-      "en": "The swimmer <g>had to be</g> <g><b>rescued</b></g> by the fire brigade because the current was too strong.",
-      "uk": "Плавця <g>довелося</g> <g><b>врятувати</b></g> пожежникам, бо течія була занадто сильною.",
-      "ru": "Пловца <g>пришлось</g> <g><b>спасти</b></g> пожарным, потому что течение было слишком сильным."
-    },
-    "gram": "passiv_mit_modalverben"
+    "gram": "adjektive_auf_voll_reich",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Gefahren"
+      ]
+    }
   },
   {
     "id": "k13_010",
     "cat": "k13",
     "term": {
-      "de": "die Toleranz, Sg.",
+      "de": "die Toleranz",
       "en": "tolerance",
       "uk": "толерантність",
       "ru": "толерантность"
@@ -41094,13 +40964,16 @@ var VOCAB = [
       "uk": "Виховання толерантних дітей починається з власної <b>толерантності</b> батьків.",
       "ru": "Воспитание толерантных детей начинается с собственной <b>толерантности</b> родителей."
     },
-    "gram": "adjektivendung_genitiv"
+    "gram": "adjektivendung_genitiv",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k13_011",
     "cat": "k13",
     "term": {
-      "de": "die Empathie, Sg.",
+      "de": "die Empathie",
       "en": "empathy",
       "uk": "емпатія",
       "ru": "эмпатия"
@@ -41117,30 +40990,10 @@ var VOCAB = [
       "uk": "Волонтерка виявляла ніжну <b>емпатію</b> до кожної дитини в притулку.",
       "ru": "Волонтёр проявляла нежную <b>эмпатию</b> к каждому ребёнку в приюте."
     },
-    "gram": "adjektive_auf_voll_reich"
-  },
-  {
-    "id": "k13_012",
-    "cat": "k13",
-    "term": {
-      "de": "die Unterstützung, Sg.",
-      "en": "support",
-      "uk": "підтримка",
-      "ru": "поддержка"
-    },
-    "short": {
-      "de": "die Hilfe, die man einer Person gibt",
-      "en": "the help that you give to a person",
-      "uk": "допомога, яку надають людині",
-      "ru": "помощь, которую оказывают человеку"
-    },
-    "def": {
-      "de": "Die Familie bekam <g>hilfreiche</g> <b>Unterstützung</b> von der Nachbarschaft.",
-      "en": "The family received helpful <b>support</b> from the neighbourhood.",
-      "uk": "Родина отримала корисну <b>підтримку</b> від сусідів.",
-      "ru": "Семья получила полезную <b>поддержку</b> от соседей."
-    },
-    "gram": "adjektive_auf_voll_reich"
+    "gram": "adjektive_auf_voll_reich",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k13_013",
@@ -41169,7 +41022,7 @@ var VOCAB = [
     "id": "k13_014",
     "cat": "k13",
     "term": {
-      "de": "der Freundeskreis, -e",
+      "de": "der Freundeskreis",
       "en": "circle of friends",
       "uk": "коло друзів",
       "ru": "круг друзей"
@@ -41186,7 +41039,13 @@ var VOCAB = [
       "uk": "Її численне <b>коло друзів</b> допомогло їй у важкий час.",
       "ru": "Её многочисленный <b>круг друзей</b> помог ей в трудное время."
     },
-    "gram": "adjektive_auf_voll_reich"
+    "gram": "adjektive_auf_voll_reich",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Freundeskreise"
+      ]
+    }
   },
   {
     "id": "k13_015",
@@ -41258,29 +41117,6 @@ var VOCAB = [
     "gram": "passiv_mit_modalverben"
   },
   {
-    "id": "k13_018",
-    "cat": "k13",
-    "term": {
-      "de": "das Werkzeug",
-      "en": "tool",
-      "uk": "інструмент",
-      "ru": "инструмент"
-    },
-    "short": {
-      "de": "ein Gerät, mit dem man etwas herstellt oder repariert",
-      "en": "a device used to make or fix something",
-      "uk": "пристрій, яким щось виготовляють або ремонтують",
-      "ru": "устройство, которым что-то изготавливают или ремонтируют"
-    },
-    "def": {
-      "de": "Das <b>Werkzeug</b> <g>sollte</g> nach jedem Einsatz <g>gereinigt werden</g>.",
-      "en": "The <b>tools</b> <g>should be cleaned</g> after each use.",
-      "uk": "<b>Інструмент</b> <g>слід чистити</g> після кожного використання.",
-      "ru": "<b>Инструмент</b> <g>следует чистить</g> после каждого использования."
-    },
-    "gram": "passiv_mit_modalverben"
-  },
-  {
     "id": "k13_019",
     "cat": "k13",
     "term": {
@@ -41300,29 +41136,6 @@ var VOCAB = [
       "en": "Donations <g>can</g> also <g><b>be collected</b></g> online.",
       "uk": "Пожертви <g>можна</g> також <g><b>збирати</b></g> онлайн.",
       "ru": "Пожертвования <g>можно</g> также <g><b>собирать</b></g> онлайн."
-    },
-    "gram": "passiv_mit_modalverben"
-  },
-  {
-    "id": "k13_020",
-    "cat": "k13",
-    "term": {
-      "de": "planen",
-      "en": "to plan",
-      "uk": "планувати",
-      "ru": "планировать"
-    },
-    "short": {
-      "de": "im Voraus überlegen, wie man etwas machen will",
-      "en": "to think in advance about how you want to do something",
-      "uk": "заздалегідь обдумувати, як щось зробити",
-      "ru": "заранее обдумывать, как что-то сделать"
-    },
-    "def": {
-      "de": "Die Aktion <g>muss</g> sorgfältig <g><b>geplant werden</b></g>.",
-      "en": "The campaign <g>must</g> be carefully <g><b>planned</b></g>.",
-      "uk": "Акцію <g>потрібно</g> ретельно <g><b>спланувати</b></g>.",
-      "ru": "Акцию <g>нужно</g> тщательно <g><b>спланировать</b></g>."
     },
     "gram": "passiv_mit_modalverben"
   },
@@ -41396,29 +41209,6 @@ var VOCAB = [
     "gram": "passiv_mit_modalverben"
   },
   {
-    "id": "k13_024",
-    "cat": "k13",
-    "term": {
-      "de": "die Erfahrung",
-      "en": "experience",
-      "uk": "досвід",
-      "ru": "опыт"
-    },
-    "short": {
-      "de": "das Wissen oder Können, das man durch etwas Erlebtes gewinnt",
-      "en": "the knowledge or skill you gain through something you have experienced",
-      "uk": "знання чи вміння, набуті завдяки пережитому",
-      "ru": "знания или умения, приобретённые благодаря пережитому"
-    },
-    "def": {
-      "de": "<g>Trotz jahrelanger</g> <b>Erfahrung</b> fühlte sie sich am ersten Tag nervös.",
-      "en": "<g>Despite years of</g> <b>experience</b>, she felt nervous on the first day.",
-      "uk": "<g>Незважаючи на багаторічний</g> <b>досвід</b>, вона нервувала першого дня.",
-      "ru": "<g>Несмотря на многолетний</g> <b>опыт</b>, она нервничала в первый день."
-    },
-    "gram": "praepositionen_mit_genitiv"
-  },
-  {
     "id": "k13_025",
     "cat": "k13",
     "term": {
@@ -41439,7 +41229,13 @@ var VOCAB = [
       "uk": "<g>Через тяжку</g> <b>хворобу</b> він більше не міг активно допомагати.",
       "ru": "<g>Из-за тяжёлой</g> <b>болезни</b> он больше не мог активно участвовать."
     },
-    "gram": "praepositionen_mit_genitiv"
+    "gram": "praepositionen_mit_genitiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Krankheiten"
+      ]
+    }
   },
   {
     "id": "k13_026",
@@ -41485,7 +41281,13 @@ var VOCAB = [
       "uk": "<g>Через важливу</g> <b>зустріч</b> їй довелося покинути засідання.",
       "ru": "<g>Из-за важной</g> <b>встречи</b> ей пришлось покинуть заседание."
     },
-    "gram": "praepositionen_mit_genitiv"
+    "gram": "praepositionen_mit_genitiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Termine"
+      ]
+    }
   },
   {
     "id": "k13_028",
@@ -41560,7 +41362,7 @@ var VOCAB = [
     "id": "k13_031",
     "cat": "k13",
     "term": {
-      "de": "die Ferien, Pl.",
+      "de": "die Ferien",
       "en": "holidays",
       "uk": "канікули",
       "ru": "каникулы"
@@ -41577,7 +41379,10 @@ var VOCAB = [
       "uk": "<g>Під час</g> <b>канікул</b> багато студентів займаються волонтерством.",
       "ru": "<g>Во время</g> <b>каникул</b> многие студенты занимаются волонтёрством."
     },
-    "gram": "praepositionen_mit_genitiv"
+    "gram": "praepositionen_mit_genitiv",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k13_032",
@@ -41761,30 +41566,10 @@ var VOCAB = [
       "uk": "Незважаючи на швидку <b>допомогу</b>, будинок не вдалося врятувати.",
       "ru": "Несмотря на быструю <b>помощь</b>, дом не удалось спасти."
     },
-    "gram": "adjektivendung_genitiv"
-  },
-  {
-    "id": "k13_040",
-    "cat": "k13",
-    "term": {
-      "de": "der Erfolg",
-      "en": "success",
-      "uk": "успіх",
-      "ru": "успех"
-    },
-    "short": {
-      "de": "ein gutes Ergebnis, das man durch Mühe erreicht hat",
-      "en": "a good result achieved through effort",
-      "uk": "хороший результат, досягнутий завдяки зусиллям",
-      "ru": "хороший результат, достигнутый благодаря усилиям"
-    },
-    "def": {
-      "de": "Ihr <b>Erfolg</b> war das Ergebnis <g>zahlreicher</g> Anstrengungen im Verein.",
-      "en": "Her <b>success</b> was the result of <g>numerous</g> efforts in the club.",
-      "uk": "Її <b>успіх</b> став результатом <g>численних</g> зусиль у клубі.",
-      "ru": "Её <b>успех</b> стал результатом <g>многочисленных</g> усилий в клубе."
-    },
-    "gram": "adjektive_auf_voll_reich"
+    "gram": "adjektivendung_genitiv",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k13_041",
@@ -41876,30 +41661,13 @@ var VOCAB = [
       "uk": "<b>Надія</b> родини зростала завдяки <g>турботливій</g> підтримці сусідів.",
       "ru": "<b>Надежда</b> семьи росла благодаря <g>заботливой</g> поддержке соседей."
     },
-    "gram": "adjektive_auf_voll_reich"
-  },
-  {
-    "id": "k13_045",
-    "cat": "k13",
-    "term": {
-      "de": "die Rücksicht",
-      "en": "consideration",
-      "uk": "делікатність до інших",
-      "ru": "деликатность к другим"
-    },
-    "short": {
-      "de": "das Verhalten, bei dem man auf die Bedürfnisse anderer achtet",
-      "en": "behaviour that takes other people's needs into account",
-      "uk": "поведінка, коли враховують потреби інших",
-      "ru": "поведение, при котором учитывают потребности других"
-    },
-    "def": {
-      "de": "Seine <b>Rücksicht</b> zeigte sich in einem <g>respektvollen</g> Umgang mit älteren Menschen.",
-      "en": "His <b>consideration</b> showed in a <g>respectful</g> manner towards older people.",
-      "uk": "Його <b>делікатність</b> проявлялася в <g>шанобливому</g> ставленні до людей похилого віку.",
-      "ru": "Его <b>деликатность</b> проявлялась в <g>уважительном</g> отношении к пожилым людям."
-    },
-    "gram": "adjektive_auf_voll_reich"
+    "gram": "adjektive_auf_voll_reich",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Hoffnungen"
+      ]
+    }
   },
   {
     "id": "k13_046",
@@ -41968,7 +41736,13 @@ var VOCAB = [
       "uk": "Її <b>ідея</b> виявилася <g>цінною</g> для всієї команди.",
       "ru": "Её <b>идея</b> оказалась <g>ценной</g> для всей команды."
     },
-    "gram": "adjektive_auf_voll_reich"
+    "gram": "adjektive_auf_voll_reich",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ideen"
+      ]
+    }
   },
   {
     "id": "k13_049",
@@ -41991,7 +41765,13 @@ var VOCAB = [
       "uk": "Це був <b>день</b>, повний <g>корисних</g> знайомств і нових контактів.",
       "ru": "Это был <b>день</b>, полный <g>полезных</g> знакомств и новых контактов."
     },
-    "gram": "adjektive_auf_voll_reich"
+    "gram": "adjektive_auf_voll_reich",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Tage"
+      ]
+    }
   },
   {
     "id": "k13_050",
@@ -42109,33 +41889,10 @@ var VOCAB = [
     "gram": "praeteritum_wdh_b1"
   },
   {
-    "id": "k14_001",
-    "cat": "k14",
-    "term": {
-      "de": "das Mehrfamilienhaus, -häuser",
-      "en": "apartment building",
-      "uk": "багатоквартирний будинок",
-      "ru": "многоквартирный дом"
-    },
-    "short": {
-      "de": "ein Haus, in dem mehrere Familien in getrennten Wohnungen leben",
-      "en": "a house in which several families live in separate flats",
-      "uk": "будинок, у якому кілька сімей живуть в окремих квартирах",
-      "ru": "дом, в котором несколько семей живут в отдельных квартирах"
-    },
-    "def": {
-      "de": "In unserem <b>Mehrfamilienhaus</b> kenne ich jeden <g>Nachbarn</g> persönlich.",
-      "en": "In our <b>apartment building</b>, I know every neighbour personally.",
-      "uk": "У нашому <b>багатоквартирному будинку</b> я особисто знаю кожного сусіда.",
-      "ru": "В нашем <b>многоквартирном доме</b> я лично знаю каждого соседа."
-    },
-    "gram": "n_deklination"
-  },
-  {
     "id": "k14_002",
     "cat": "k14",
     "term": {
-      "de": "das Einfamilienhaus, -häuser",
+      "de": "das Einfamilienhaus",
       "en": "single-family house",
       "uk": "одноквартирний будинок",
       "ru": "одноквартирный дом"
@@ -42152,13 +41909,19 @@ var VOCAB = [
       "uk": "Ми купили наш <b>одноквартирний будинок</b> у привітного пана.",
       "ru": "Мы купили наш <b>одноквартирный дом</b> у приветливого господина."
     },
-    "gram": "n_deklination"
+    "gram": "n_deklination",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Einfamilienhäuser"
+      ]
+    }
   },
   {
     "id": "k14_003",
     "cat": "k14",
     "term": {
-      "de": "die Kaltmiete, -n",
+      "de": "die Kaltmiete",
       "en": "rent excluding utilities",
       "uk": "орендна плата без комунальних послуг",
       "ru": "аренда без коммунальных услуг"
@@ -42175,13 +41938,19 @@ var VOCAB = [
       "uk": "<b>Орендна плата без комунальних послуг</b>, <g>про яку</g> ми говорили, справді доступна.",
       "ru": "<b>Аренда без коммунальных услуг</b>, <g>о которой</g> мы говорили, действительно доступная."
     },
-    "gram": "relativsatz_mit_praeposition"
+    "gram": "relativsatz_mit_praeposition",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kaltmieten"
+      ]
+    }
   },
   {
     "id": "k14_004",
     "cat": "k14",
     "term": {
-      "de": "die Warmmiete, -n",
+      "de": "die Warmmiete",
       "en": "rent including utilities",
       "uk": "орендна плата з комунальними послугами",
       "ru": "аренда с коммунальными услугами"
@@ -42198,7 +41967,13 @@ var VOCAB = [
       "uk": "Це квартира, <g>за яку</g> ми платимо <b>орендну плату з комунальними послугами</b> у розмірі 900 євро.",
       "ru": "Это квартира, <g>за которую</g> мы платим <b>аренду с коммунальными услугами</b> в размере 900 евро."
     },
-    "gram": "relativsatz_mit_praeposition"
+    "gram": "relativsatz_mit_praeposition",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Warmmieten"
+      ]
+    }
   },
   {
     "id": "k14_005",
@@ -42221,13 +41996,16 @@ var VOCAB = [
       "uk": "Ми знайшли квартиру, <g>де</g> <b>комунальні витрати</b> дуже низькі.",
       "ru": "Мы нашли квартиру, <g>где</g> <b>коммунальные расходы</b> очень низкие."
     },
-    "gram": "relativsatz_wo_was"
+    "gram": "relativsatz_wo_was",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k14_006",
     "cat": "k14",
     "term": {
-      "de": "der Stadtrand, -ränder",
+      "de": "der Stadtrand",
       "en": "outskirts of the city",
       "uk": "околиця міста",
       "ru": "окраина города"
@@ -42244,13 +42022,19 @@ var VOCAB = [
       "uk": "Це <b>околиця міста</b>, <g>у якій</g> я живу вже десять років.",
       "ru": "Это <b>окраина города</b>, <g>в которой</g> я живу уже десять лет."
     },
-    "gram": "relativpronomen_dativ_wdh_b1"
+    "gram": "relativpronomen_dativ_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Stadtränder"
+      ]
+    }
   },
   {
     "id": "k14_007",
     "cat": "k14",
     "term": {
-      "de": "der Vorort, -e",
+      "de": "der Vorort",
       "en": "suburb",
       "uk": "передмістя",
       "ru": "пригород"
@@ -42267,7 +42051,13 @@ var VOCAB = [
       "uk": "<b>Передмістя</b>, <g>у якому</g> живуть мої батьки, дуже тихе.",
       "ru": "<b>Пригород</b>, <g>в котором</g> живут мои родители, очень тихий."
     },
-    "gram": "relativpronomen_dativ_wdh_b1"
+    "gram": "relativpronomen_dativ_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Vororte"
+      ]
+    }
   },
   {
     "id": "k14_008",
@@ -42319,7 +42109,7 @@ var VOCAB = [
     "id": "k14_010",
     "cat": "k14",
     "term": {
-      "de": "die Nachbarschaftshilfe, Sg.",
+      "de": "die Nachbarschaftshilfe",
       "en": "neighbourhood help",
       "uk": "сусідська взаємодопомога",
       "ru": "соседская взаимопомощь"
@@ -42336,13 +42126,16 @@ var VOCAB = [
       "uk": "Ця міжрегіональна <b>сусідська взаємодопомога</b> обʼєднує кілька районів міста.",
       "ru": "Эта межрегиональная <b>соседская взаимопомощь</b> объединяет несколько районов города."
     },
-    "gram": "adjektive_super_hoch_ueber_extra"
+    "gram": "adjektive_super_hoch_ueber_extra",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k14_011",
     "cat": "k14",
     "term": {
-      "de": "das Gesuch, -e",
+      "de": "das Gesuch",
       "en": "wanted ad",
       "uk": "оголошення про пошук",
       "ru": "объявление о поиске"
@@ -42359,7 +42152,13 @@ var VOCAB = [
       "uk": "<g>Те, що</g> було написано в її <b>оголошенні</b>, одразу мене переконало.",
       "ru": "<g>То, что</g> было написано в её <b>объявлении</b>, сразу меня убедило."
     },
-    "gram": "relativsatz_wo_was"
+    "gram": "relativsatz_wo_was",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Gesuche"
+      ]
+    }
   },
   {
     "id": "k14_012",
@@ -42434,7 +42233,7 @@ var VOCAB = [
     "id": "k14_015",
     "cat": "k14",
     "term": {
-      "de": "die Wohnfläche, -n",
+      "de": "die Wohnfläche",
       "en": "living area",
       "uk": "житлова площа",
       "ru": "жилая площадь"
@@ -42451,13 +42250,19 @@ var VOCAB = [
       "uk": "Ця вілла має надсередню <b>житлову площу</b> в 250 квадратних метрів.",
       "ru": "Эта вилла имеет сверхсреднюю <b>жилую площадь</b> в 250 квадратных метров."
     },
-    "gram": "adjektive_super_hoch_ueber_extra"
+    "gram": "adjektive_super_hoch_ueber_extra",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Wohnflächen"
+      ]
+    }
   },
   {
     "id": "k14_016",
     "cat": "k14",
     "term": {
-      "de": "die Innenstadt, -städte",
+      "de": "die Innenstadt",
       "en": "city centre",
       "uk": "центр міста",
       "ru": "центр города"
@@ -42474,13 +42279,19 @@ var VOCAB = [
       "uk": "Дороговартісний <b>центр міста</b> приваблює насамперед заможні родини.",
       "ru": "Дорогой <b>центр города</b> привлекает в основном состоятельные семьи."
     },
-    "gram": "adjektive_super_hoch_ueber_extra"
+    "gram": "adjektive_super_hoch_ueber_extra",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Innenstädte"
+      ]
+    }
   },
   {
     "id": "k14_017",
     "cat": "k14",
     "term": {
-      "de": "der Mensch, -en",
+      "de": "der Mensch",
       "en": "person",
       "uk": "людина",
       "ru": "человек"
@@ -42497,13 +42308,19 @@ var VOCAB = [
       "uk": "Мені дуже подобається ця приязна <b>людина</b> із сусідства.",
       "ru": "Мне очень нравится этот приветливый <b>человек</b> из соседства."
     },
-    "gram": "n_deklination"
+    "gram": "n_deklination",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Menschen"
+      ]
+    }
   },
   {
     "id": "k14_018",
     "cat": "k14",
     "term": {
-      "de": "der Experte, -n / die Expertin, -nen",
+      "de": "der Experte / die Expertin",
       "en": "expert",
       "uk": "експерт",
       "ru": "эксперт"
@@ -42520,36 +42337,19 @@ var VOCAB = [
       "uk": "Для ремонту ми викликали <b>експерта</b>.",
       "ru": "Для ремонта мы вызвали <b>эксперта</b>."
     },
-    "gram": "n_deklination"
-  },
-  {
-    "id": "k14_019",
-    "cat": "k14",
-    "term": {
-      "de": "der Kunde, -n / die Kundin, -nen",
-      "en": "customer",
-      "uk": "клієнт",
-      "ru": "клиент"
-    },
-    "short": {
-      "de": "eine Person, die etwas kauft oder eine Dienstleistung nutzt",
-      "en": "a person who buys something or uses a service",
-      "uk": "особа, яка щось купує чи користується послугою",
-      "ru": "лицо, которое что-то покупает или пользуется услугой"
-    },
-    "def": {
-      "de": "Der Vermieter behandelt jeden <g><b>Kunden</b></g> fair.",
-      "en": "The landlord treats every <b>customer</b> fairly.",
-      "uk": "Орендодавець ставиться до кожного <b>клієнта</b> справедливо.",
-      "ru": "Арендодатель относится к каждому <b>клиенту</b> справедливо."
-    },
-    "gram": "n_deklination"
+    "gram": "n_deklination",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Experten / die Expertinnen"
+      ]
+    }
   },
   {
     "id": "k14_020",
     "cat": "k14",
     "term": {
-      "de": "der Architekt, -en / die Architektin, -nen",
+      "de": "der Architekt / die Architektin",
       "en": "architect",
       "uk": "архітектор",
       "ru": "архитектор"
@@ -42566,13 +42366,19 @@ var VOCAB = [
       "uk": "Будинок спроєктував відомий <b>архітектор</b>.",
       "ru": "Дом спроектировал известный <b>архитектор</b>."
     },
-    "gram": "n_deklination"
+    "gram": "n_deklination",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Architekten / die Architektinnen"
+      ]
+    }
   },
   {
     "id": "k14_021",
     "cat": "k14",
     "term": {
-      "de": "der Student, -en / die Studentin, -nen",
+      "de": "der Student / die Studentin",
       "en": "student",
       "uk": "студент",
       "ru": "студент"
@@ -42589,13 +42395,19 @@ var VOCAB = [
       "uk": "На першому поверсі я познайомився зі <b>студентом</b> з Іспанії.",
       "ru": "На первом этаже я познакомился со <b>студентом</b> из Испании."
     },
-    "gram": "n_deklination"
+    "gram": "n_deklination",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Studenten / die Studentinnen"
+      ]
+    }
   },
   {
     "id": "k14_022",
     "cat": "k14",
     "term": {
-      "de": "der Polizist, -en / die Polizistin, -nen",
+      "de": "der Polizist / die Polizistin",
       "en": "police officer",
       "uk": "поліцейський",
       "ru": "полицейский"
@@ -42612,13 +42424,19 @@ var VOCAB = [
       "uk": "Ми викликали <b>поліцейського</b>, бо у підʼїзді було шумно.",
       "ru": "Мы вызвали <b>полицейского</b>, потому что в подъезде было шумно."
     },
-    "gram": "n_deklination"
+    "gram": "n_deklination",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Polizisten / die Polizistinnen"
+      ]
+    }
   },
   {
     "id": "k14_023",
     "cat": "k14",
     "term": {
-      "de": "der Praktikant, -en / die Praktikantin, -nen",
+      "de": "der Praktikant / die Praktikantin",
       "en": "intern",
       "uk": "практикант",
       "ru": "стажёр"
@@ -42635,13 +42453,19 @@ var VOCAB = [
       "uk": "Управління будинком дало новому <b>практиканту</b> багато завдань.",
       "ru": "Управление домом дало новому <b>стажёру</b> много заданий."
     },
-    "gram": "n_deklination"
+    "gram": "n_deklination",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Praktikanten / die Praktikantinnen"
+      ]
+    }
   },
   {
     "id": "k14_024",
     "cat": "k14",
     "term": {
-      "de": "der Journalist, -en / die Journalistin, -nen",
+      "de": "der Journalist / die Journalistin",
       "en": "journalist",
       "uk": "журналіст",
       "ru": "журналист"
@@ -42658,36 +42482,19 @@ var VOCAB = [
       "uk": "Мешканці довго розмовляли з <b>журналістом</b> про новий квартал.",
       "ru": "Жители подробно говорили с <b>журналистом</b> о новом квартале."
     },
-    "gram": "n_deklination"
-  },
-  {
-    "id": "k14_025",
-    "cat": "k14",
-    "term": {
-      "de": "der Vermieter, - / die Vermieterin, -nen",
-      "en": "landlord",
-      "uk": "орендодавець",
-      "ru": "арендодатель"
-    },
-    "short": {
-      "de": "eine Person, die eine Wohnung oder ein Haus vermietet",
-      "en": "a person who rents out a flat or house",
-      "uk": "особа, яка здає квартиру чи будинок в оренду",
-      "ru": "лицо, сдающее квартиру или дом в аренду"
-    },
-    "def": {
-      "de": "Das ist der <b>Vermieter</b>, <g>mit dem</g> wir den Vertrag unterschrieben haben.",
-      "en": "That's the <b>landlord</b> <g>with whom</g> we signed the contract.",
-      "uk": "Це <b>орендодавець</b>, <g>з яким</g> ми підписали договір.",
-      "ru": "Это <b>арендодатель</b>, <g>с которым</g> мы подписали договор."
-    },
-    "gram": "relativsatz_mit_praeposition"
+    "gram": "n_deklination",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Journalisten / die Journalistinnen"
+      ]
+    }
   },
   {
     "id": "k14_026",
     "cat": "k14",
     "term": {
-      "de": "der Mietvertrag, -verträge",
+      "de": "der Mietvertrag",
       "en": "rental contract",
       "uk": "договір оренди",
       "ru": "договор аренды"
@@ -42704,13 +42511,19 @@ var VOCAB = [
       "uk": "Це <b>договір оренди</b>, <g>про який</g> ми довго домовлялися.",
       "ru": "Это <b>договор аренды</b>, <g>о котором</g> мы долго договаривались."
     },
-    "gram": "relativsatz_mit_praeposition"
+    "gram": "relativsatz_mit_praeposition",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Mietverträge"
+      ]
+    }
   },
   {
     "id": "k14_027",
     "cat": "k14",
     "term": {
-      "de": "die Kaution, -en",
+      "de": "die Kaution",
       "en": "deposit",
       "uk": "застава",
       "ru": "залог"
@@ -42727,13 +42540,19 @@ var VOCAB = [
       "uk": "<b>Заставу</b>, <g>на яку</g> ми чекали місяцями, нарешті повернули.",
       "ru": "<b>Залог</b>, <g>которого</g> мы ждали месяцами, наконец вернули."
     },
-    "gram": "relativsatz_mit_praeposition"
+    "gram": "relativsatz_mit_praeposition",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kautionen"
+      ]
+    }
   },
   {
     "id": "k14_028",
     "cat": "k14",
     "term": {
-      "de": "die Renovierung, -en",
+      "de": "die Renovierung",
       "en": "renovation",
       "uk": "ремонт",
       "ru": "ремонт"
@@ -42750,13 +42569,19 @@ var VOCAB = [
       "uk": "Це <b>ремонт</b>, <g>на який</g> ми витратили багато грошей.",
       "ru": "Это <b>ремонт</b>, <g>на который</g> мы потратили много денег."
     },
-    "gram": "relativsatz_mit_praeposition"
+    "gram": "relativsatz_mit_praeposition",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Renovierungen"
+      ]
+    }
   },
   {
     "id": "k14_029",
     "cat": "k14",
     "term": {
-      "de": "der Balkon, -e",
+      "de": "der Balkon",
       "en": "balcony",
       "uk": "балкон",
       "ru": "балкон"
@@ -42773,36 +42598,19 @@ var VOCAB = [
       "uk": "Це <b>балкон</b>, <g>з якого</g> видно море.",
       "ru": "Это <b>балкон</b>, <g>с которого</g> видно море."
     },
-    "gram": "relativsatz_mit_praeposition"
-  },
-  {
-    "id": "k14_030",
-    "cat": "k14",
-    "term": {
-      "de": "die Kündigungsfrist, -en",
-      "en": "notice period",
-      "uk": "термін розірвання договору",
-      "ru": "срок расторжения договора"
-    },
-    "short": {
-      "de": "der Zeitraum, den man einhalten muss, bevor ein Vertrag endet",
-      "en": "the period that must be observed before a contract ends",
-      "uk": "проміжок часу, якого треба дотримуватися перед закінченням договору",
-      "ru": "промежуток времени, который нужно соблюдать перед окончанием договора"
-    },
-    "def": {
-      "de": "Die <b>Kündigungsfrist</b>, <g>an die</g> man sich halten muss, beträgt drei Monate.",
-      "en": "The <b>notice period</b> <g>that</g> you have to adhere to is three months.",
-      "uk": "<b>Термін розірвання договору</b>, <g>якого</g> потрібно дотримуватися, становить три місяці.",
-      "ru": "<b>Срок расторжения договора</b>, <g>которого</g> нужно придерживаться, составляет три месяца."
-    },
-    "gram": "relativsatz_mit_praeposition"
+    "gram": "relativsatz_mit_praeposition",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Balkone"
+      ]
+    }
   },
   {
     "id": "k14_031",
     "cat": "k14",
     "term": {
-      "de": "der Nachmieter, - / die Nachmieterin, -nen",
+      "de": "der Nachmieter / die Nachmieterin",
       "en": "next tenant",
       "uk": "наступний орендар",
       "ru": "следующий арендатор"
@@ -42819,13 +42627,19 @@ var VOCAB = [
       "uk": "Ми шукаємо <b>наступного орендаря</b>, <g>яким</g> буде задоволений орендодавець.",
       "ru": "Мы ищем <b>следующего арендатора</b>, <g>которым</g> будет доволен арендодатель."
     },
-    "gram": "relativsatz_mit_praeposition"
+    "gram": "relativsatz_mit_praeposition",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Nachmieter / die Nachmieterinnen"
+      ]
+    }
   },
   {
     "id": "k14_032",
     "cat": "k14",
     "term": {
-      "de": "der Immobilienmakler, - / die Immobilienmaklerin, -nen",
+      "de": "der Immobilienmakler / die Immobilienmaklerin",
       "en": "real estate agent",
       "uk": "маклер з нерухомості",
       "ru": "риелтор"
@@ -42842,13 +42656,19 @@ var VOCAB = [
       "uk": "Це <b>маклер</b>, <g>через якого</g> ми знайшли квартиру.",
       "ru": "Это <b>маклер</b>, <g>через которого</g> мы нашли квартиру."
     },
-    "gram": "relativsatz_mit_praeposition"
+    "gram": "relativsatz_mit_praeposition",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Immobilienmakler / die Immobilienmaklerinnen"
+      ]
+    }
   },
   {
     "id": "k14_033",
     "cat": "k14",
     "term": {
-      "de": "das Viertel, -",
+      "de": "das Viertel",
       "en": "neighbourhood",
       "uk": "квартал",
       "ru": "квартал"
@@ -42865,36 +42685,19 @@ var VOCAB = [
       "uk": "Це <b>квартал</b>, <g>де</g> я виріс.",
       "ru": "Это <b>квартал</b>, <g>где</g> я вырос."
     },
-    "gram": "relativsatz_wo_was"
-  },
-  {
-    "id": "k14_034",
-    "cat": "k14",
-    "term": {
-      "de": "der Garten, Gärten",
-      "en": "garden",
-      "uk": "сад",
-      "ru": "сад"
-    },
-    "short": {
-      "de": "ein Stück Land bei einem Haus, auf dem Pflanzen wachsen",
-      "en": "a piece of land by a house where plants grow",
-      "uk": "ділянка землі біля будинку, де ростуть рослини",
-      "ru": "участок земли у дома, где растут растения"
-    },
-    "def": {
-      "de": "Wir haben einen <b>Garten</b>, <g>wo</g> die Kinder spielen können.",
-      "en": "We have a <b>garden</b> <g>where</g> the children can play.",
-      "uk": "У нас є <b>сад</b>, <g>де</g> можуть гратися діти.",
-      "ru": "У нас есть <b>сад</b>, <g>где</g> могут играть дети."
-    },
-    "gram": "relativsatz_wo_was"
+    "gram": "relativsatz_wo_was",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Viertel"
+      ]
+    }
   },
   {
     "id": "k14_035",
     "cat": "k14",
     "term": {
-      "de": "das Café, -s",
+      "de": "das Café",
       "en": "café",
       "uk": "кафе",
       "ru": "кафе"
@@ -42911,13 +42714,19 @@ var VOCAB = [
       "uk": "Це <b>кафе</b>, <g>де</g> ми завжди зустрічаємося.",
       "ru": "Это <b>кафе</b>, <g>где</g> мы всегда встречаемся."
     },
-    "gram": "relativsatz_wo_was"
+    "gram": "relativsatz_wo_was",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Cafés"
+      ]
+    }
   },
   {
     "id": "k14_036",
     "cat": "k14",
     "term": {
-      "de": "der Lieblingsplatz, -plätze",
+      "de": "der Lieblingsplatz",
       "en": "favourite spot",
       "uk": "улюблене місце",
       "ru": "любимое место"
@@ -42934,7 +42743,13 @@ var VOCAB = [
       "uk": "Парк — моє <b>улюблене місце</b>, <g>де</g> я можу розслабитися.",
       "ru": "Парк — моё <b>любимое место</b>, <g>где</g> я могу расслабиться."
     },
-    "gram": "relativsatz_wo_was"
+    "gram": "relativsatz_wo_was",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Lieblingsplätze"
+      ]
+    }
   },
   {
     "id": "k14_037",
@@ -43032,7 +42847,7 @@ var VOCAB = [
     "id": "k14_041",
     "cat": "k14",
     "term": {
-      "de": "die Familie, -n",
+      "de": "die Familie",
       "en": "family",
       "uk": "сімʼя",
       "ru": "семья"
@@ -43049,13 +42864,19 @@ var VOCAB = [
       "uk": "Це <b>сімʼя</b>, <g>якій</g> ми здали квартиру в оренду.",
       "ru": "Это <b>семья</b>, <g>которой</g> мы сдали квартиру в аренду."
     },
-    "gram": "relativpronomen_dativ_wdh_b1"
+    "gram": "relativpronomen_dativ_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Familien"
+      ]
+    }
   },
   {
     "id": "k14_042",
     "cat": "k14",
     "term": {
-      "de": "das Ehepaar, -e",
+      "de": "das Ehepaar",
       "en": "married couple",
       "uk": "подружжя",
       "ru": "супружеская пара"
@@ -43072,36 +42893,19 @@ var VOCAB = [
       "uk": "Це <b>подружжя</b>, <g>якому</g> належить будинок.",
       "ru": "Это <b>супружеская пара</b>, <g>которой</g> принадлежит дом."
     },
-    "gram": "relativpronomen_dativ_wdh_b1"
-  },
-  {
-    "id": "k14_043",
-    "cat": "k14",
-    "term": {
-      "de": "die Mieter, Pl.",
-      "en": "tenants",
-      "uk": "орендарі",
-      "ru": "арендаторы"
-    },
-    "short": {
-      "de": "die Personen, die eine Wohnung oder ein Haus mieten",
-      "en": "the people who rent a flat or house",
-      "uk": "особи, які орендують квартиру чи будинок",
-      "ru": "лица, арендующие квартиру или дом"
-    },
-    "def": {
-      "de": "Das sind die <b>Mieter</b>, <g>denen</g> wir sehr dankbar sind.",
-      "en": "Those are the <b>tenants</b> <g>to whom</g> we are very grateful.",
-      "uk": "Це <b>орендарі</b>, <g>яким</g> ми дуже вдячні.",
-      "ru": "Это <b>арендаторы</b>, <g>которым</g> мы очень благодарны."
-    },
-    "gram": "relativpronomen_dativ_wdh_b1"
+    "gram": "relativpronomen_dativ_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ehepaare"
+      ]
+    }
   },
   {
     "id": "k14_044",
     "cat": "k14",
     "term": {
-      "de": "der Handwerker, - / die Handwerkerin, -nen",
+      "de": "der Handwerker / die Handwerkerin",
       "en": "tradesperson",
       "uk": "майстер",
       "ru": "мастер"
@@ -43118,13 +42922,19 @@ var VOCAB = [
       "uk": "Це <b>майстер</b>, <g>якому</g> ми довіряємо.",
       "ru": "Это <b>мастер</b>, <g>которому</g> мы доверяем."
     },
-    "gram": "relativpronomen_dativ_wdh_b1"
+    "gram": "relativpronomen_dativ_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Handwerker / die Handwerkerinnen"
+      ]
+    }
   },
   {
     "id": "k14_045",
     "cat": "k14",
     "term": {
-      "de": "die Hausverwaltung, -en",
+      "de": "die Hausverwaltung",
       "en": "property management",
       "uk": "управління будинком",
       "ru": "управление домом"
@@ -43141,13 +42951,19 @@ var VOCAB = [
       "uk": "Це <b>управління будинком</b>, <g>якому</g> ми щомісяця перераховуємо орендну плату.",
       "ru": "Это <b>управление домом</b>, <g>которому</g> мы ежемесячно переводим арендную плату."
     },
-    "gram": "relativpronomen_dativ_wdh_b1"
+    "gram": "relativpronomen_dativ_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Hausverwaltungen"
+      ]
+    }
   },
   {
     "id": "k14_046",
     "cat": "k14",
     "term": {
-      "de": "der Eigentümer, - / die Eigentümerin, -nen",
+      "de": "der Eigentümer / die Eigentümerin",
       "en": "owner",
       "uk": "власник",
       "ru": "владелец"
@@ -43164,13 +42980,19 @@ var VOCAB = [
       "uk": "Це <b>власник</b>, <g>якому</g> належить уся будівля.",
       "ru": "Это <b>владелец</b>, <g>которому</g> принадлежит всё здание."
     },
-    "gram": "relativpronomen_dativ_wdh_b1"
+    "gram": "relativpronomen_dativ_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Eigentümer / die Eigentümerinnen"
+      ]
+    }
   },
   {
     "id": "k14_047",
     "cat": "k14",
     "term": {
-      "de": "die Kinder, Pl.",
+      "de": "die Kinder",
       "en": "children",
       "uk": "діти",
       "ru": "дети"
@@ -43187,13 +43009,16 @@ var VOCAB = [
       "uk": "Це <b>діти</b>, <g>яким</g> особливо подобається сад.",
       "ru": "Это <b>дети</b>, <g>которым</g> особенно нравится сад."
     },
-    "gram": "relativpronomen_dativ_wdh_b1"
+    "gram": "relativpronomen_dativ_wdh_b1",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k14_048",
     "cat": "k14",
     "term": {
-      "de": "der Gast, Gäste",
+      "de": "der Gast",
       "en": "guest",
       "uk": "гість",
       "ru": "гость"
@@ -43210,13 +43035,19 @@ var VOCAB = [
       "uk": "Це <b>гості</b>, <g>яким</g> ми пропонуємо гостьову кімнату.",
       "ru": "Это <b>гости</b>, <g>которым</g> мы предлагаем гостевую комнату."
     },
-    "gram": "relativpronomen_dativ_wdh_b1"
+    "gram": "relativpronomen_dativ_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Gäste"
+      ]
+    }
   },
   {
     "id": "k14_049",
     "cat": "k14",
     "term": {
-      "de": "die Aussicht, -en",
+      "de": "die Aussicht",
       "en": "view",
       "uk": "краєвид",
       "ru": "вид"
@@ -43233,13 +43064,19 @@ var VOCAB = [
       "uk": "Звідси зверху відкривається чудовий <b>краєвид</b>.",
       "ru": "Отсюда сверху открывается прекрасный <b>вид</b>."
     },
-    "gram": "adjektive_super_hoch_ueber_extra"
+    "gram": "adjektive_super_hoch_ueber_extra",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Aussichten"
+      ]
+    }
   },
   {
     "id": "k14_050",
     "cat": "k14",
     "term": {
-      "de": "die Lage, -n",
+      "de": "die Lage",
       "en": "location",
       "uk": "місце розташування",
       "ru": "местоположение"
@@ -43256,13 +43093,19 @@ var VOCAB = [
       "uk": "Квартира розташована в надзвичайно затребуваному <b>місці</b>.",
       "ru": "Квартира расположена в чрезвычайно востребованном <b>месте</b>."
     },
-    "gram": "adjektive_super_hoch_ueber_extra"
+    "gram": "adjektive_super_hoch_ueber_extra",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Lagen"
+      ]
+    }
   },
   {
     "id": "k14_051",
     "cat": "k14",
     "term": {
-      "de": "die Nachfrage, Sg.",
+      "de": "die Nachfrage",
       "en": "demand",
       "uk": "попит",
       "ru": "спрос"
@@ -43279,13 +43122,16 @@ var VOCAB = [
       "uk": "Надзвичайно великий <b>попит</b> на цю квартиру нас здивував.",
       "ru": "Чрезвычайно большой <b>спрос</b> на эту квартиру нас удивил."
     },
-    "gram": "adjektive_super_hoch_ueber_extra"
+    "gram": "adjektive_super_hoch_ueber_extra",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k14_052",
     "cat": "k14",
     "term": {
-      "de": "der Preis, -e",
+      "de": "der Preis",
       "en": "price",
       "uk": "ціна",
       "ru": "цена"
@@ -43302,13 +43148,19 @@ var VOCAB = [
       "uk": "<b>Ціна</b> на цю квартиру дуже низька.",
       "ru": "<b>Цена</b> на эту квартиру очень низкая."
     },
-    "gram": "adjektive_super_hoch_ueber_extra"
+    "gram": "adjektive_super_hoch_ueber_extra",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Preise"
+      ]
+    }
   },
   {
     "id": "k14_053",
     "cat": "k14",
     "term": {
-      "de": "die Ausstattung, Sg.",
+      "de": "die Ausstattung",
       "en": "fittings",
       "uk": "оснащення",
       "ru": "оснащение"
@@ -43325,7 +43177,10 @@ var VOCAB = [
       "uk": "<b>Оснащення</b> кухні надсучасне.",
       "ru": "<b>Оснащение</b> кухни супер-современное."
     },
-    "gram": "adjektive_super_hoch_ueber_extra"
+    "gram": "adjektive_super_hoch_ueber_extra",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k14_054",
@@ -43400,7 +43255,7 @@ var VOCAB = [
     "id": "k14_057",
     "cat": "k14",
     "term": {
-      "de": "die Durchwahl, -en",
+      "de": "die Durchwahl",
       "en": "extension number",
       "uk": "внутрішній номер",
       "ru": "внутренний номер"
@@ -43417,7 +43272,13 @@ var VOCAB = [
       "uk": "<b>Внутрішній номер</b> бухгалтерії дуже важливий для вашого запиту.",
       "ru": "<b>Внутренний номер</b> бухгалтерии очень важен для вашего запроса."
     },
-    "gram": "adjektive_super_hoch_ueber_extra"
+    "gram": "adjektive_super_hoch_ueber_extra",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Durchwahlen"
+      ]
+    }
   },
   {
     "id": "k14_058",
@@ -43446,7 +43307,7 @@ var VOCAB = [
     "id": "k14_059",
     "cat": "k14",
     "term": {
-      "de": "der Anrufbeantworter, -",
+      "de": "der Anrufbeantworter",
       "en": "answering machine",
       "uk": "автовідповідач",
       "ru": "автоответчик"
@@ -43463,7 +43324,13 @@ var VOCAB = [
       "uk": "<b>Автовідповідач</b> був, на жаль, перевантажений і більше не приймав повідомлень.",
       "ru": "<b>Автоответчик</b>, к сожалению, был перегружен и больше не принимал сообщений."
     },
-    "gram": "adjektive_super_hoch_ueber_extra"
+    "gram": "adjektive_super_hoch_ueber_extra",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Anrufbeantworter"
+      ]
+    }
   },
   {
     "id": "k14_060",
@@ -43699,7 +43566,7 @@ var VOCAB = [
     "id": "k14_070",
     "cat": "k14",
     "term": {
-      "de": "die Energiekosten, Pl.",
+      "de": "die Energiekosten",
       "en": "energy costs",
       "uk": "витрати на енергію",
       "ru": "расходы на энергию"
@@ -43716,13 +43583,16 @@ var VOCAB = [
       "uk": "Ми живемо в будинку, <g>де</g> <b>витрати на енергію</b> взимку особливо високі.",
       "ru": "Мы живём в доме, <g>где</g> <b>расходы на энергию</b> зимой особенно высокие."
     },
-    "gram": "relativsatz_wo_was"
+    "gram": "relativsatz_wo_was",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k14_071",
     "cat": "k14",
     "term": {
-      "de": "die Heizkosten, Pl.",
+      "de": "die Heizkosten",
       "en": "heating costs",
       "uk": "витрати на опалення",
       "ru": "расходы на отопление"
@@ -43739,13 +43609,16 @@ var VOCAB = [
       "uk": "Усе, <g>що</g> знижує <b>витрати на опалення</b>, — це вигідна інвестиція.",
       "ru": "Всё, <g>что</g> снижает <b>расходы на отопление</b>, — это выгодная инвестиция."
     },
-    "gram": "relativsatz_wo_was"
+    "gram": "relativsatz_wo_was",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k14_072",
     "cat": "k14",
     "term": {
-      "de": "die Stromkosten, Pl.",
+      "de": "die Stromkosten",
       "en": "electricity costs",
       "uk": "витрати на електроенергію",
       "ru": "расходы на электроэнергию"
@@ -43762,7 +43635,10 @@ var VOCAB = [
       "uk": "Найкраще, <g>що</g> я можу сказати про квартиру, — це низькі <b>витрати на електроенергію</b>.",
       "ru": "Лучшее, <g>что</g> я могу сказать о квартире, — это низкие <b>расходы на электроэнергию</b>."
     },
-    "gram": "relativsatz_wo_was"
+    "gram": "relativsatz_wo_was",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k14_073",
@@ -43975,7 +43851,7 @@ var VOCAB = [
     "id": "k15_001",
     "cat": "k15",
     "term": {
-      "de": "die Einbürgerung, -en",
+      "de": "die Einbürgerung",
       "en": "naturalisation",
       "uk": "натуралізація",
       "ru": "натурализация"
@@ -43992,13 +43868,19 @@ var VOCAB = [
       "uk": "Для успішної <b>натуралізації</b> потрібні хороші знання німецької мови.",
       "ru": "Для успешной <b>натурализации</b> нужны хорошие знания немецкого языка."
     },
-    "gram": "adjektivdeklination_ohne_artikel"
+    "gram": "adjektivdeklination_ohne_artikel",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Einbürgerungen"
+      ]
+    }
   },
   {
     "id": "k15_002",
     "cat": "k15",
     "term": {
-      "de": "der Einbürgerungsantrag, -anträge",
+      "de": "der Einbürgerungsantrag",
       "en": "naturalisation application",
       "uk": "заява на натуралізацію",
       "ru": "заявление на натурализацию"
@@ -44015,13 +43897,19 @@ var VOCAB = [
       "uk": "Повна <b>заява на натуралізацію</b> потребує кількох важливих документів.",
       "ru": "Полное <b>заявление на натурализацию</b> требует нескольких важных документов."
     },
-    "gram": "adjektivdeklination_ohne_artikel"
+    "gram": "adjektivdeklination_ohne_artikel",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Einbürgerungsanträge"
+      ]
+    }
   },
   {
     "id": "k15_003",
     "cat": "k15",
     "term": {
-      "de": "die Staatsbürgerschaft, -en",
+      "de": "die Staatsbürgerschaft",
       "en": "citizenship",
       "uk": "громадянство",
       "ru": "гражданство"
@@ -44038,7 +43926,13 @@ var VOCAB = [
       "uk": "Зростаюча кількість заявок на <b>громадянство</b> свідчить про великий інтерес до Німеччини.",
       "ru": "Растущее число заявок на <b>гражданство</b> свидетельствует о большом интересе к Германии."
     },
-    "gram": "partizip1_als_adjektiv"
+    "gram": "partizip1_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Staatsbürgerschaften"
+      ]
+    }
   },
   {
     "id": "k15_004",
@@ -44067,7 +43961,7 @@ var VOCAB = [
     "id": "k15_005",
     "cat": "k15",
     "term": {
-      "de": "der Integrationskurs, -e",
+      "de": "der Integrationskurs",
       "en": "integration course",
       "uk": "інтеграційний курс",
       "ru": "интеграционный курс"
@@ -44084,13 +43978,19 @@ var VOCAB = [
       "uk": "Успішно завершений <b>інтеграційний курс</b> є важливою умовою для натуралізації.",
       "ru": "Успешно завершённый <b>интеграционный курс</b> является важным условием для натурализации."
     },
-    "gram": "partizip2_als_adjektiv"
+    "gram": "partizip2_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Integrationskurse"
+      ]
+    }
   },
   {
     "id": "k15_006",
     "cat": "k15",
     "term": {
-      "de": "das Aufenthaltsrecht, -e",
+      "de": "das Aufenthaltsrecht",
       "en": "right of residence",
       "uk": "право на проживання",
       "ru": "право на проживание"
@@ -44107,13 +44007,19 @@ var VOCAB = [
       "uk": "Потрібне <g>або</g> чинне <b>право на проживання</b>, <g>або</g> захист від видворення.",
       "ru": "Нужно <g>либо</g> действующее <b>право на проживание</b>, <g>либо</g> защита от депортации."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Aufenthaltsrechte"
+      ]
+    }
   },
   {
     "id": "k15_007",
     "cat": "k15",
     "term": {
-      "de": "die Aufenthaltserlaubnis, Sg.",
+      "de": "die Aufenthaltserlaubnis",
       "en": "residence permit",
       "uk": "дозвіл на проживання",
       "ru": "разрешение на проживание"
@@ -44130,13 +44036,16 @@ var VOCAB = [
       "uk": "Для заяви потрібен <g>або</g> <b>дозвіл на проживання</b>, <g>або</g> інше чинне підтвердження.",
       "ru": "Для заявления нужно <g>либо</g> <b>разрешение на проживание</b>, <g>либо</g> другое действующее подтверждение."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k15_008",
     "cat": "k15",
     "term": {
-      "de": "der Grundwert, -e",
+      "de": "der Grundwert",
       "en": "fundamental value",
       "uk": "основна цінність",
       "ru": "основная ценность"
@@ -44153,13 +44062,19 @@ var VOCAB = [
       "uk": "<g>Або</g> людина поважає <b>основні цінності</b> суспільства, <g>або</g> живе всупереч їм.",
       "ru": "<g>Либо</g> человек уважает <b>основные ценности</b> общества, <g>либо</g> живёт вопреки им."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Grundwerte"
+      ]
+    }
   },
   {
     "id": "k15_009",
     "cat": "k15",
     "term": {
-      "de": "das Grundrecht, -e",
+      "de": "das Grundrecht",
       "en": "fundamental right",
       "uk": "основне право",
       "ru": "основное право"
@@ -44176,13 +44091,19 @@ var VOCAB = [
       "uk": "Переконливий аргумент на користь демократії — захист кожного <b>основного права</b>.",
       "ru": "Убедительный аргумент в пользу демократии — защита каждого <b>основного права</b>."
     },
-    "gram": "partizip1_als_adjektiv"
+    "gram": "partizip1_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Grundrechte"
+      ]
+    }
   },
   {
     "id": "k15_010",
     "cat": "k15",
     "term": {
-      "de": "die Glaubensfreiheit, Sg.",
+      "de": "die Glaubensfreiheit",
       "en": "freedom of religion",
       "uk": "свобода віросповідання",
       "ru": "свобода вероисповедания"
@@ -44199,13 +44120,16 @@ var VOCAB = [
       "uk": "Захищена законом <b>свобода віросповідання</b> є одним із найважливіших основних прав.",
       "ru": "Защищённая законом <b>свобода вероисповедания</b> является одним из важнейших основных прав."
     },
-    "gram": "partizip2_als_adjektiv"
+    "gram": "partizip2_als_adjektiv",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k15_011",
     "cat": "k15",
     "term": {
-      "de": "die Demokratie, -n",
+      "de": "die Demokratie",
       "en": "democracy",
       "uk": "демократія",
       "ru": "демократия"
@@ -44222,7 +44146,13 @@ var VOCAB = [
       "uk": "<g>Або</g> людина активно долучається до <b>демократії</b>, <g>або</g> поступово втрачає її переваги.",
       "ru": "<g>Либо</g> человек активно участвует в <b>демократии</b>, <g>либо</g> постепенно теряет её преимущества."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Demokratien"
+      ]
+    }
   },
   {
     "id": "k15_012",
@@ -44314,13 +44244,16 @@ var VOCAB = [
       "uk": "Кожен може <g>або</g> зробити фінансовий <b>внесок</b> у проєкт, <g>або</g> допомогти своїм часом.",
       "ru": "Каждый может <g>либо</g> внести финансовый <b>вклад</b> в проект, <g>либо</g> помочь своим временем."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "info": {
+      "case": "D"
+    }
   },
   {
     "id": "k15_016",
     "cat": "k15",
     "term": {
-      "de": "die Bürokratie, Sg.",
+      "de": "die Bürokratie",
       "en": "bureaucracy",
       "uk": "бюрократія",
       "ru": "бюрократия"
@@ -44337,13 +44270,16 @@ var VOCAB = [
       "uk": "<g>Або</g> людина приймає <b>бюрократію</b> в Німеччині, <g>або</g> швидко впадає через неї у відчай.",
       "ru": "<g>Либо</g> человек принимает <b>бюрократию</b> в Германии, <g>либо</g> быстро приходит от неё в отчаяние."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k15_017",
     "cat": "k15",
     "term": {
-      "de": "der Pass, Pässe",
+      "de": "der Pass",
       "en": "passport",
       "uk": "паспорт",
       "ru": "паспорт"
@@ -44360,13 +44296,19 @@ var VOCAB = [
       "uk": "Німецький <b>паспорт</b> означає для багатьох людей новий розділ у житті.",
       "ru": "Немецкий <b>паспорт</b> означает для многих людей новую главу в жизни."
     },
-    "gram": "adjektivdeklination_ohne_artikel"
+    "gram": "adjektivdeklination_ohne_artikel",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Pässe"
+      ]
+    }
   },
   {
     "id": "k15_018",
     "cat": "k15",
     "term": {
-      "de": "die Arbeit, -en",
+      "de": "die Arbeit",
       "en": "work",
       "uk": "робота",
       "ru": "работа"
@@ -44383,13 +44325,19 @@ var VOCAB = [
       "uk": "Важка <b>робота</b> часто веде до успіху.",
       "ru": "Тяжёлая <b>работа</b> часто ведёт к успеху."
     },
-    "gram": "adjektivdeklination_ohne_artikel"
+    "gram": "adjektivdeklination_ohne_artikel",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Arbeiten"
+      ]
+    }
   },
   {
     "id": "k15_019",
     "cat": "k15",
     "term": {
-      "de": "die Geduld, Sg.",
+      "de": "die Geduld",
       "en": "patience",
       "uk": "терпіння",
       "ru": "терпение"
@@ -44406,36 +44354,16 @@ var VOCAB = [
       "uk": "Велике <b>терпіння</b> необхідне в цьому бюрократичному процесі.",
       "ru": "Большое <b>терпение</b> необходимо в этом бюрократическом процессе."
     },
-    "gram": "adjektivdeklination_ohne_artikel"
-  },
-  {
-    "id": "k15_020",
-    "cat": "k15",
-    "term": {
-      "de": "der Erfolg, -e",
-      "en": "success",
-      "uk": "успіх",
-      "ru": "успех"
-    },
-    "short": {
-      "de": "ein gutes Ergebnis, das man durch Mühe erreicht hat",
-      "en": "a good result achieved through effort",
-      "uk": "хороший результат, досягнутий завдяки зусиллям",
-      "ru": "хороший результат, достигнутый благодаря усилиям"
-    },
-    "def": {
-      "de": "<g>Beruflicher</g> <b>Erfolg</b> braucht meistens viel Zeit.",
-      "en": "Professional <b>success</b> usually takes a lot of time.",
-      "uk": "Професійний <b>успіх</b> зазвичай потребує багато часу.",
-      "ru": "Профессиональный <b>успех</b> обычно требует много времени."
-    },
-    "gram": "adjektivdeklination_ohne_artikel"
+    "gram": "adjektivdeklination_ohne_artikel",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k15_021",
     "cat": "k15",
     "term": {
-      "de": "das Leben, Sg.",
+      "de": "das Leben",
       "en": "life",
       "uk": "життя",
       "ru": "жизнь"
@@ -44452,36 +44380,16 @@ var VOCAB = [
       "uk": "Нове <b>життя</b> в чужій країні часто починається з багатьох викликів.",
       "ru": "Новая <b>жизнь</b> в чужой стране часто начинается со множества трудностей."
     },
-    "gram": "adjektivdeklination_ohne_artikel"
-  },
-  {
-    "id": "k15_022",
-    "cat": "k15",
-    "term": {
-      "de": "die Hoffnung, -en",
-      "en": "hope",
-      "uk": "надія",
-      "ru": "надежда"
-    },
-    "short": {
-      "de": "der Wunsch und die Erwartung, dass etwas Gutes passiert",
-      "en": "the wish and expectation that something good will happen",
-      "uk": "бажання і сподівання, що станеться щось хороше",
-      "ru": "желание и ожидание, что произойдёт что-то хорошее"
-    },
-    "def": {
-      "de": "<g>Große</g> <b>Hoffnung</b> begleitete sie während des ganzen Verfahrens.",
-      "en": "Great <b>hope</b> accompanied her throughout the whole process.",
-      "uk": "Велика <b>надія</b> супроводжувала її протягом усього процесу.",
-      "ru": "Большая <b>надежда</b> сопровождала её на протяжении всего процесса."
-    },
-    "gram": "adjektivdeklination_ohne_artikel"
+    "gram": "adjektivdeklination_ohne_artikel",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k15_023",
     "cat": "k15",
     "term": {
-      "de": "die Zukunft, Sg.",
+      "de": "die Zukunft",
       "en": "future",
       "uk": "майбутнє",
       "ru": "будущее"
@@ -44498,13 +44406,16 @@ var VOCAB = [
       "uk": "Впевнене <b>майбутнє</b> — бажання багатьох іммігрантів.",
       "ru": "Уверенное <b>будущее</b> — желание многих иммигрантов."
     },
-    "gram": "adjektivdeklination_ohne_artikel"
+    "gram": "adjektivdeklination_ohne_artikel",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k15_024",
     "cat": "k15",
     "term": {
-      "de": "die Mühe, -n",
+      "de": "die Mühe",
       "en": "effort",
       "uk": "зусилля",
       "ru": "усилие"
@@ -44521,13 +44432,19 @@ var VOCAB = [
       "uk": "Багато <b>зусиль</b> вкладено в кожну окрему заяву.",
       "ru": "Много <b>усилий</b> вложено в каждое отдельное заявление."
     },
-    "gram": "adjektivdeklination_ohne_artikel"
+    "gram": "adjektivdeklination_ohne_artikel",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Mühen"
+      ]
+    }
   },
   {
     "id": "k15_025",
     "cat": "k15",
     "term": {
-      "de": "das Kind, -er",
+      "de": "das Kind",
       "en": "child",
       "uk": "дитина",
       "ru": "ребёнок"
@@ -44544,13 +44461,19 @@ var VOCAB = [
       "uk": "<b>Дитину</b>, що плакала, швидко заспокоїла мама.",
       "ru": "Плачущего <b>ребёнка</b> быстро успокоила мама."
     },
-    "gram": "partizip1_als_adjektiv"
+    "gram": "partizip1_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kinder"
+      ]
+    }
   },
   {
     "id": "k15_026",
     "cat": "k15",
     "term": {
-      "de": "die Menge, -n",
+      "de": "die Menge",
       "en": "crowd",
       "uk": "натовп",
       "ru": "толпа"
@@ -44567,13 +44490,19 @@ var VOCAB = [
       "uk": "<b>Натовп</b>, що чекав, терпляче стояв перед установою.",
       "ru": "Ожидающая <b>толпа</b> терпеливо стояла перед учреждением."
     },
-    "gram": "partizip1_als_adjektiv"
+    "gram": "partizip1_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Mengen"
+      ]
+    }
   },
   {
     "id": "k15_027",
     "cat": "k15",
     "term": {
-      "de": "die Zahl, -en",
+      "de": "die Zahl",
       "en": "number",
       "uk": "кількість",
       "ru": "число"
@@ -44590,13 +44519,19 @@ var VOCAB = [
       "uk": "Зростаюча <b>кількість</b> натуралізацій радує органи влади.",
       "ru": "Растущее <b>число</b> натурализаций радует органы власти."
     },
-    "gram": "partizip1_als_adjektiv"
+    "gram": "partizip1_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Zahlen"
+      ]
+    }
   },
   {
     "id": "k15_028",
     "cat": "k15",
     "term": {
-      "de": "die Bedingung, -en",
+      "de": "die Bedingung",
       "en": "condition",
       "uk": "умова",
       "ru": "условие"
@@ -44613,13 +44548,19 @@ var VOCAB = [
       "uk": "Вирішальна <b>умова</b> для натуралізації — мовний іспит.",
       "ru": "Решающее <b>условие</b> для натурализации — языковой экзамен."
     },
-    "gram": "partizip1_als_adjektiv"
+    "gram": "partizip1_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Bedingungen"
+      ]
+    }
   },
   {
     "id": "k15_029",
     "cat": "k15",
     "term": {
-      "de": "das Problem, -e",
+      "de": "das Problem",
       "en": "problem",
       "uk": "проблема",
       "ru": "проблема"
@@ -44636,13 +44577,19 @@ var VOCAB = [
       "uk": "Наявну <b>проблему</b> з документами швидко вирішили.",
       "ru": "Существующую <b>проблему</b> с документами быстро решили."
     },
-    "gram": "partizip1_als_adjektiv"
+    "gram": "partizip1_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Probleme"
+      ]
+    }
   },
   {
     "id": "k15_030",
     "cat": "k15",
     "term": {
-      "de": "der Mitarbeiter, - / die Mitarbeiterin, -nen",
+      "de": "der Mitarbeiter / die Mitarbeiterin",
       "en": "staff member",
       "uk": "співробітник",
       "ru": "сотрудник"
@@ -44659,13 +44606,19 @@ var VOCAB = [
       "uk": "<b>Співробітник</b>, який допомагав, терпляче відповідав на всі запитання.",
       "ru": "<b>Сотрудник</b>, который помогал, терпеливо отвечал на все вопросы."
     },
-    "gram": "partizip1_als_adjektiv"
+    "gram": "partizip1_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Mitarbeiter / die Mitarbeiterinnen"
+      ]
+    }
   },
   {
     "id": "k15_031",
     "cat": "k15",
     "term": {
-      "de": "die Erklärung, -en",
+      "de": "die Erklärung",
       "en": "explanation",
       "uk": "пояснення",
       "ru": "объяснение"
@@ -44682,13 +44635,19 @@ var VOCAB = [
       "uk": "Переконливе <b>пояснення</b> допомогло їй правильно заповнити заяву.",
       "ru": "Убедительное <b>объяснение</b> помогло ей правильно заполнить заявление."
     },
-    "gram": "partizip1_als_adjektiv"
+    "gram": "partizip1_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Erklärungen"
+      ]
+    }
   },
   {
     "id": "k15_032",
     "cat": "k15",
     "term": {
-      "de": "die Situation, -en",
+      "de": "die Situation",
       "en": "situation",
       "uk": "ситуація",
       "ru": "ситуация"
@@ -44705,13 +44664,19 @@ var VOCAB = [
       "uk": "Обтяжлива <b>ситуація</b> тривала кілька місяців.",
       "ru": "Тяжёлая <b>ситуация</b> длилась несколько месяцев."
     },
-    "gram": "partizip1_als_adjektiv"
+    "gram": "partizip1_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Situationen"
+      ]
+    }
   },
   {
     "id": "k15_033",
     "cat": "k15",
     "term": {
-      "de": "das Dokument, -e",
+      "de": "das Dokument",
       "en": "document",
       "uk": "документ",
       "ru": "документ"
@@ -44728,82 +44693,19 @@ var VOCAB = [
       "uk": "Перекладений <b>документ</b> потрібно було додатково засвідчити.",
       "ru": "Переведённый <b>документ</b> нужно было дополнительно заверить."
     },
-    "gram": "partizip2_als_adjektiv"
-  },
-  {
-    "id": "k15_034",
-    "cat": "k15",
-    "term": {
-      "de": "der Nachweis, -e",
-      "en": "certificate",
-      "uk": "підтвердження",
-      "ru": "подтверждение"
-    },
-    "short": {
-      "de": "ein Beweis oder Dokument, das etwas bestätigt",
-      "en": "evidence or a document confirming something",
-      "uk": "доказ чи документ, що щось підтверджує",
-      "ru": "доказательство или документ, что-то подтверждающий"
-    },
-    "def": {
-      "de": "Der <g>unterschriebene</g> <b>Nachweis</b> lag bereits bei den Unterlagen.",
-      "en": "The <g>signed</g> <b>certificate</b> was already included with the documents.",
-      "uk": "Підписане <b>підтвердження</b> вже було серед документів.",
-      "ru": "Подписанное <b>подтверждение</b> уже было среди документов."
-    },
-    "gram": "partizip2_als_adjektiv"
-  },
-  {
-    "id": "k15_035",
-    "cat": "k15",
-    "term": {
-      "de": "die Prüfung, -en",
-      "en": "exam",
-      "uk": "іспит",
-      "ru": "экзамен"
-    },
-    "short": {
-      "de": "ein Test, mit dem man Wissen oder Können überprüft",
-      "en": "a test used to check knowledge or ability",
-      "uk": "тест, яким перевіряють знання чи вміння",
-      "ru": "тест, которым проверяют знания или умения"
-    },
-    "def": {
-      "de": "Die <g>bestandene</g> <b>Prüfung</b> war die letzte Hürde vor der Einbürgerung.",
-      "en": "The passed <b>exam</b> was the last hurdle before naturalisation.",
-      "uk": "Складений <b>іспит</b> став останньою перешкодою перед натуралізацією.",
-      "ru": "Сданный <b>экзамен</b> стал последним препятствием перед натурализацией."
-    },
-    "gram": "partizip2_als_adjektiv"
-  },
-  {
-    "id": "k15_036",
-    "cat": "k15",
-    "term": {
-      "de": "die Frist, -en",
-      "en": "deadline",
-      "uk": "строк",
-      "ru": "срок"
-    },
-    "short": {
-      "de": "der letzte Zeitpunkt, bis zu dem man etwas machen muss",
-      "en": "the last point in time by which you must do something",
-      "uk": "останній момент, до якого треба щось зробити",
-      "ru": "последний момент, до которого нужно что-то сделать"
-    },
-    "def": {
-      "de": "Die <g>verpasste</g> <b>Frist</b> führte zu einer Verzögerung des Verfahrens.",
-      "en": "The <g>missed</g> <b>deadline</b> led to a delay in the process.",
-      "uk": "Пропущений <b>строк</b> призвів до затримки процесу.",
-      "ru": "Пропущенный <b>срок</b> привёл к задержке процесса."
-    },
-    "gram": "partizip2_als_adjektiv"
+    "gram": "partizip2_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Dokumente"
+      ]
+    }
   },
   {
     "id": "k15_037",
     "cat": "k15",
     "term": {
-      "de": "die Anfrage, -n",
+      "de": "die Anfrage",
       "en": "inquiry",
       "uk": "запит",
       "ru": "запрос"
@@ -44820,59 +44722,19 @@ var VOCAB = [
       "uk": "<b>Запит</b>, на який відповіли, нарешті приніс ясність.",
       "ru": "<b>Запрос</b>, на который ответили, наконец внёс ясность."
     },
-    "gram": "partizip2_als_adjektiv"
-  },
-  {
-    "id": "k15_038",
-    "cat": "k15",
-    "term": {
-      "de": "die Bewerbung, -en",
-      "en": "application",
-      "uk": "заявка",
-      "ru": "заявка"
-    },
-    "short": {
-      "de": "eine offizielle Anfrage um eine Stelle oder einen Platz",
-      "en": "an official request for a job or place",
-      "uk": "офіційний запит на посаду чи місце",
-      "ru": "официальный запрос на должность или место"
-    },
-    "def": {
-      "de": "Die <g>abgelehnte</g> <b>Bewerbung</b> konnte leider nicht mehr korrigiert werden.",
-      "en": "The <g>rejected</g> <b>application</b> could unfortunately no longer be corrected.",
-      "uk": "Відхилену <b>заявку</b>, на жаль, уже не можна було виправити.",
-      "ru": "Отклонённую <b>заявку</b>, к сожалению, уже нельзя было исправить."
-    },
-    "gram": "partizip2_als_adjektiv"
-  },
-  {
-    "id": "k15_039",
-    "cat": "k15",
-    "term": {
-      "de": "der Termin, -e",
-      "en": "appointment",
-      "uk": "зустріч",
-      "ru": "встреча"
-    },
-    "short": {
-      "de": "eine bestimmte Zeit, zu der man etwas machen oder wohin man gehen möchte",
-      "en": "a certain time when you want to do something or go somewhere",
-      "uk": "конкретний час, коли хочеш щось зробити або кудись піти",
-      "ru": "конкретное время, когда хочешь что-то сделать или куда-то пойти"
-    },
-    "def": {
-      "de": "Der <g>vereinbarte</g> <b>Termin</b> beim Amt musste leider verschoben werden.",
-      "en": "The <g>agreed</g> <b>appointment</b> at the office unfortunately had to be postponed.",
-      "uk": "Домовлену <b>зустріч</b> в установі, на жаль, довелося перенести.",
-      "ru": "Согласованную <b>встречу</b> в учреждении, к сожалению, пришлось перенести."
-    },
-    "gram": "partizip2_als_adjektiv"
+    "gram": "partizip2_als_adjektiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Anfragen"
+      ]
+    }
   },
   {
     "id": "k15_040",
     "cat": "k15",
     "term": {
-      "de": "der Wohnsitz, -e",
+      "de": "der Wohnsitz",
       "en": "residence",
       "uk": "місце проживання",
       "ru": "место жительства"
@@ -44889,13 +44751,19 @@ var VOCAB = [
       "uk": "Потрібне <g>або</g> постійне <b>місце проживання</b>, <g>або</g> офіційна адреса реєстрації.",
       "ru": "Нужно <g>либо</g> постоянное <b>место жительства</b>, <g>либо</g> официальный адрес регистрации."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Wohnsitze"
+      ]
+    }
   },
   {
     "id": "k15_041",
     "cat": "k15",
     "term": {
-      "de": "der Reisepass, -pässe",
+      "de": "der Reisepass",
       "en": "passport",
       "uk": "закордонний паспорт",
       "ru": "загранпаспорт"
@@ -44912,13 +44780,19 @@ var VOCAB = [
       "uk": "Для подорожі потрібен <g>або</g> чинний <b>закордонний паспорт</b>, <g>або</g> посвідчення особи.",
       "ru": "Для поездки нужен <g>либо</g> действующий <b>загранпаспорт</b>, <g>либо</g> удостоверение личности."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Reisepässe"
+      ]
+    }
   },
   {
     "id": "k15_042",
     "cat": "k15",
     "term": {
-      "de": "der Zeuge, -n / die Zeugin, -nen",
+      "de": "der Zeuge / die Zeugin",
       "en": "witness",
       "uk": "свідок",
       "ru": "свидетель"
@@ -44935,36 +44809,19 @@ var VOCAB = [
       "uk": "На церемонії потрібні <g>або</g> два <b>свідки</b>, <g>або</g> офіційний представник.",
       "ru": "На церемонии нужны <g>либо</g> два <b>свидетеля</b>, <g>либо</g> официальный представитель."
     },
-    "gram": "entweder_oder"
-  },
-  {
-    "id": "k15_043",
-    "cat": "k15",
-    "term": {
-      "de": "verlängern",
-      "en": "to extend",
-      "uk": "продовжувати",
-      "ru": "продлевать"
-    },
-    "short": {
-      "de": "die Zeit für etwas länger machen",
-      "en": "to make the time for something longer",
-      "uk": "робити час для чогось довшим",
-      "ru": "делать время для чего-то дольше"
-    },
-    "def": {
-      "de": "Man kann die Aufenthaltserlaubnis <g>entweder</g> <b>verlängern</b> <g>oder</g> neu beantragen.",
-      "en": "You can <g>either</g> <b>extend</b> the residence permit <g>or</g> apply for it again.",
-      "uk": "Дозвіл на проживання можна <g>або</g> <b>продовжити</b>, <g>або</g> подати нову заяву.",
-      "ru": "Разрешение на проживание можно <g>либо</g> <b>продлить</b>, <g>либо</g> подать новое заявление."
-    },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Zeugen / die Zeuginnen"
+      ]
+    }
   },
   {
     "id": "k15_044",
     "cat": "k15",
     "term": {
-      "de": "der Ausweis, -e",
+      "de": "der Ausweis",
       "en": "ID card",
       "uk": "посвідчення особи",
       "ru": "удостоверение личности"
@@ -44981,13 +44838,22 @@ var VOCAB = [
       "uk": "Показують <g>або</g> <b>посвідчення особи</b>, <g>або</g> паспорт.",
       "ru": "Показывают <g>либо</g> <b>удостоверение личности</b>, <g>либо</g> паспорт."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ausweise"
+      ]
+    },
+    "info": {
+      "sense": "Identität"
+    }
   },
   {
     "id": "k15_045",
     "cat": "k15",
     "term": {
-      "de": "die Meldebescheinigung, -en",
+      "de": "die Meldebescheinigung",
       "en": "registration certificate",
       "uk": "довідка про реєстрацію",
       "ru": "справка о регистрации"
@@ -45004,7 +44870,13 @@ var VOCAB = [
       "uk": "Для заяви потрібна <g>або</g> <b>довідка про реєстрацію</b>, <g>або</g> інше підтвердження адреси.",
       "ru": "Для заявления нужна <g>либо</g> <b>справка о регистрации</b>, <g>либо</g> другое подтверждение адреса."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Meldebescheinigungen"
+      ]
+    }
   },
   {
     "id": "k15_046",
@@ -45030,56 +44902,10 @@ var VOCAB = [
     "gram": "entweder_oder"
   },
   {
-    "id": "k15_047",
-    "cat": "k15",
-    "term": {
-      "de": "akzeptieren",
-      "en": "to accept",
-      "uk": "приймати",
-      "ru": "принимать"
-    },
-    "short": {
-      "de": "etwas annehmen oder gutheißen",
-      "en": "to accept or approve of something",
-      "uk": "приймати чи схвалювати щось",
-      "ru": "принимать или одобрять что-то"
-    },
-    "def": {
-      "de": "Die Behörde kann den Antrag <g>entweder</g> <b>akzeptieren</b> <g>oder</g> ablehnen.",
-      "en": "The authority can <g>either</g> <b>accept</b> the application <g>or</g> reject it.",
-      "uk": "Установа може <g>або</g> <b>прийняти</b> заяву, <g>або</g> відхилити її.",
-      "ru": "Учреждение может <g>либо</g> <b>принять</b> заявление, <g>либо</g> отклонить его."
-    },
-    "gram": "entweder_oder"
-  },
-  {
-    "id": "k15_048",
-    "cat": "k15",
-    "term": {
-      "de": "die Gebühr, -en",
-      "en": "fee",
-      "uk": "збір",
-      "ru": "сбор"
-    },
-    "short": {
-      "de": "das Geld, das man für eine bestimmte Leistung bezahlen muss",
-      "en": "the money you must pay for a certain service",
-      "uk": "гроші, які треба заплатити за певну послугу",
-      "ru": "деньги, которые нужно заплатить за определённую услугу"
-    },
-    "def": {
-      "de": "Man zahlt <g>entweder</g> die <b>Gebühr</b> online <g>oder</g> bar am Schalter.",
-      "en": "You pay <g>either</g> the <b>fee</b> online <g>or</g> in cash at the counter.",
-      "uk": "Оплатити <b>збір</b> можна <g>або</g> онлайн, <g>або</g> готівкою в касі.",
-      "ru": "Оплатить <b>сбор</b> можно <g>либо</g> онлайн, <g>либо</g> наличными в кассе."
-    },
-    "gram": "entweder_oder"
-  },
-  {
     "id": "k15_049",
     "cat": "k15",
     "term": {
-      "de": "das Interview, -s",
+      "de": "das Interview",
       "en": "interview",
       "uk": "співбесіда",
       "ru": "собеседование"
@@ -45096,13 +44922,19 @@ var VOCAB = [
       "uk": "Потрібно <g>або</g> зʼявитися на <b>співбесіду</b>, <g>або</g> назвати поважну причину відмови.",
       "ru": "Нужно <g>либо</g> явиться на <b>собеседование</b>, <g>либо</g> назвать уважительную причину отказа."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Interviews"
+      ]
+    }
   },
   {
     "id": "k15_050",
     "cat": "k15",
     "term": {
-      "de": "der Sachbearbeiter, - / die Sachbearbeiterin, -nen",
+      "de": "der Sachbearbeiter / die Sachbearbeiterin",
       "en": "caseworker",
       "uk": "працівник",
       "ru": "сотрудник"
@@ -45119,7 +44951,13 @@ var VOCAB = [
       "uk": "Можна <g>або</g> поговорити з відповідальним <b>працівником</b>, <g>або</g> почекати на письмову відповідь.",
       "ru": "Можно <g>либо</g> поговорить с ответственным <b>сотрудником</b>, <g>либо</g> подождать письменного ответа."
     },
-    "gram": "entweder_oder"
+    "gram": "entweder_oder",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Sachbearbeiter / die Sachbearbeiterinnen"
+      ]
+    }
   },
   {
     "id": "k15_051",
@@ -45424,7 +45262,7 @@ var VOCAB = [
     "id": "k15_064",
     "cat": "k15",
     "term": {
-      "de": "die Bundesrepublik (BRD)",
+      "de": "die Bundesrepublik",
       "en": "Federal Republic of Germany",
       "uk": "Федеративна Республіка Німеччина",
       "ru": "Федеративная Республика Германия"
@@ -45441,7 +45279,10 @@ var VOCAB = [
       "uk": "<b>Федеративна Республіка Німеччина</b> є провідною економічною державою Європи.",
       "ru": "<b>Федеративная Республика Германия</b> является ведущей экономической державой Европы."
     },
-    "gram": "partizip1_als_adjektiv"
+    "gram": "partizip1_als_adjektiv",
+    "syn": [
+      "BRD"
+    ]
   },
   {
     "id": "k15_065",
@@ -45539,7 +45380,7 @@ var VOCAB = [
     "id": "k15_069",
     "cat": "k15",
     "term": {
-      "de": "die Europäische Union (EU)",
+      "de": "die Europäische Union",
       "en": "European Union",
       "uk": "Європейський Союз",
       "ru": "Европейский союз"
@@ -45556,7 +45397,10 @@ var VOCAB = [
       "uk": "Німеччина належить до <b>Європейського Союзу</b>.",
       "ru": "Германия входит в <b>Европейский союз</b>."
     },
-    "gram": "adjektivdeklination_bestimmter_artikel"
+    "gram": "adjektivdeklination_bestimmter_artikel",
+    "syn": [
+      "EU"
+    ]
   },
   {
     "id": "k15_070",
@@ -45746,7 +45590,7 @@ var VOCAB = [
     "id": "k15_078",
     "cat": "k15",
     "term": {
-      "de": "die Alliierten, Pl.",
+      "de": "die Alliierten",
       "en": "Allies",
       "uk": "союзники",
       "ru": "союзники"
@@ -45763,7 +45607,10 @@ var VOCAB = [
       "uk": "<b>Союзники</b> перемогли Німеччину 1945 року.",
       "ru": "<b>Союзники</b> победили Германию в 1945 году."
     },
-    "gram": "praeteritum_wdh_b1"
+    "gram": "praeteritum_wdh_b1",
+    "info": {
+      "num": "pl"
+    }
   },
   {
     "id": "k15_079",
@@ -46045,7 +45892,7 @@ var VOCAB = [
     "id": "k15_091",
     "cat": "k15",
     "term": {
-      "de": "die Deutsche Demokratische Republik (DDR)",
+      "de": "die Deutsche Demokratische Republik",
       "en": "German Democratic Republic",
       "uk": "Німецька Демократична Республіка",
       "ru": "Германская Демократическая Республика"
@@ -46062,7 +45909,10 @@ var VOCAB = [
       "uk": "<b>НДР</b> існувала з 1949 до 1990 року.",
       "ru": "<b>ГДР</b> существовала с 1949 по 1990 год."
     },
-    "gram": "praeteritum_wdh_b1"
+    "gram": "praeteritum_wdh_b1",
+    "syn": [
+      "DDR"
+    ]
   },
   {
     "id": "k15_092",
@@ -46775,7 +46625,10 @@ var VOCAB = [
       "uk": "Я дуже <b>тішуся</b> відпусткою, <g>і</g> я вже все спакував.",
       "ru": "Я очень <b>радуюсь</b> отпуску, <g>и</g> я уже всё упаковал."
     },
-    "gram": "satzverbindungen_ueberblick"
+    "gram": "satzverbindungen_ueberblick",
+    "info": {
+      "case": "A"
+    }
   },
   {
     "id": "k16_004",
@@ -46827,7 +46680,7 @@ var VOCAB = [
     "id": "k16_006",
     "cat": "k16",
     "term": {
-      "de": "die Jugendherberge, -n",
+      "de": "die Jugendherberge",
       "en": "youth hostel",
       "uk": "молодіжний хостел",
       "ru": "молодёжный хостел"
@@ -46844,13 +46697,19 @@ var VOCAB = [
       "uk": "У <b>молодіжному хостелі</b> всі гості вранці разом прибирають.",
       "ru": "В <b>молодёжном хостеле</b> все гости утром вместе убираются."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Jugendherbergen"
+      ]
+    }
   },
   {
     "id": "k16_007",
     "cat": "k16",
     "term": {
-      "de": "das Denkmal, Denkmäler",
+      "de": "das Denkmal",
       "en": "monument",
       "uk": "памʼятник",
       "ru": "памятник"
@@ -46867,7 +46726,13 @@ var VOCAB = [
       "uk": "Ми завтра знову повернемося до <b>памʼятника</b>, щоб зробити фото.",
       "ru": "Мы завтра снова вернёмся к <b>памятнику</b>, чтобы сделать фотографии."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Denkmäler"
+      ]
+    }
   },
   {
     "id": "k16_008",
@@ -46896,7 +46761,7 @@ var VOCAB = [
     "id": "k16_009",
     "cat": "k16",
     "term": {
-      "de": "der Einbrecher, - / die Einbrecherin, -nen",
+      "de": "der Einbrecher / die Einbrecherin",
       "en": "burglar",
       "uk": "грабіжник / грабіжниця",
       "ru": "грабитель / грабительница"
@@ -46913,30 +46778,13 @@ var VOCAB = [
       "uk": "<b>Грабіжник</b> хотів утекти, але сусід просто відвів його з собою до поліції.",
       "ru": "<b>Грабитель</b> хотел сбежать, но сосед просто отвёл его с собой в полицию."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
-  },
-  {
-    "id": "k16_010",
-    "cat": "k16",
-    "term": {
-      "de": "stehlen",
-      "en": "to steal",
-      "uk": "красти",
-      "ru": "красть"
-    },
-    "short": {
-      "de": "etwas nehmen, das einer anderen Person gehört, ohne zu fragen",
-      "en": "to take something that belongs to another person without asking",
-      "uk": "брати щось, що належить іншій людині, без дозволу",
-      "ru": "брать что-то, принадлежащее другому человеку, без разрешения"
-    },
-    "def": {
-      "de": "Der Dieb <g>nahm</g> das Fahrrad <g>mit</g>, nachdem er es <b>gestohlen</b> hatte.",
-      "en": "The thief <g>took</g> the bike <g>with him</g> after he had <b>stolen</b> it.",
-      "uk": "Злодій забрав велосипед із собою після того, як <b>украв</b> його.",
-      "ru": "Вор забрал велосипед с собой после того, как <b>украл</b> его."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Einbrecher / die Einbrecherinnen"
+      ]
+    }
   },
   {
     "id": "k16_011",
@@ -47011,7 +46859,7 @@ var VOCAB = [
     "id": "k16_014",
     "cat": "k16",
     "term": {
-      "de": "das Urteil, -e",
+      "de": "das Urteil",
       "en": "verdict",
       "uk": "вирок",
       "ru": "приговор"
@@ -47028,13 +46876,19 @@ var VOCAB = [
       "uk": "Після <b>вироку</b> адвокат забрав свої документи із собою.",
       "ru": "После <b>приговора</b> адвокат забрал свои документы с собой."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Urteile"
+      ]
+    }
   },
   {
     "id": "k16_015",
     "cat": "k16",
     "term": {
-      "de": "das Wahrzeichen, -",
+      "de": "das Wahrzeichen",
       "en": "landmark",
       "uk": "визначна памʼятка",
       "ru": "достопримечательность"
@@ -47051,13 +46905,19 @@ var VOCAB = [
       "uk": "Туристи щороку повертаються, щоб побачити відому <b>визначну памʼятку</b> міста.",
       "ru": "Туристы каждый год возвращаются, чтобы увидеть знаменитую <b>достопримечательность</b> города."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Wahrzeichen"
+      ]
+    }
   },
   {
     "id": "k16_016",
     "cat": "k16",
     "term": {
-      "de": "die Architektur, Sg.",
+      "de": "die Architektur",
       "en": "architecture",
       "uk": "архітектура",
       "ru": "архитектура"
@@ -47074,13 +46934,16 @@ var VOCAB = [
       "uk": "Сучасна <b>архітектура</b> міста та старі будівлі напрочуд добре поєднуються.",
       "ru": "Современная <b>архитектура</b> города и старые здания на удивление хорошо сочетаются."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k16_017",
     "cat": "k16",
     "term": {
-      "de": "die Feier, -n",
+      "de": "die Feier",
       "en": "party",
       "uk": "свято",
       "ru": "праздник"
@@ -47097,7 +46960,13 @@ var VOCAB = [
       "uk": "Ми організовуємо велике <b>свято</b>, <g>бо</g> наша команда успішно завершила проєкт.",
       "ru": "Мы организуем большой <b>праздник</b>, <g>потому что</g> наша команда успешно завершила проект."
     },
-    "gram": "satzverbindungen_ueberblick"
+    "gram": "satzverbindungen_ueberblick",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Feiern"
+      ]
+    }
   },
   {
     "id": "k16_018",
@@ -47120,13 +46989,16 @@ var VOCAB = [
       "uk": "Вона була дуже виснажена, <g>тому</g> зараз <b>відпочиває</b> на морі.",
       "ru": "Она была очень измотана, <g>поэтому</g> сейчас <b>отдыхает</b> у моря."
     },
-    "gram": "satzverbindungen_ueberblick"
+    "gram": "satzverbindungen_ueberblick",
+    "info": {
+      "sense": "Ruhe"
+    }
   },
   {
     "id": "k16_019",
     "cat": "k16",
     "term": {
-      "de": "die Reise, -n",
+      "de": "die Reise",
       "en": "trip",
       "uk": "подорож",
       "ru": "путешествие"
@@ -47143,36 +47015,19 @@ var VOCAB = [
       "uk": "Ми вирушаємо в <b>подорож</b>, <g>хоча</g> погода не ідеальна.",
       "ru": "Мы отправляемся в <b>путешествие</b>, <g>хотя</g> погода не идеальная."
     },
-    "gram": "satzverbindungen_ueberblick"
-  },
-  {
-    "id": "k16_020",
-    "cat": "k16",
-    "term": {
-      "de": "planen",
-      "en": "to plan",
-      "uk": "планувати",
-      "ru": "планировать"
-    },
-    "short": {
-      "de": "im Voraus überlegen, wie man etwas machen will",
-      "en": "to think in advance about how you want to do something",
-      "uk": "заздалегідь обдумувати, як щось зробити",
-      "ru": "заранее обдумывать, как что-то сделать"
-    },
-    "def": {
-      "de": "Wir <b>planen</b> die Feier neu, <g>wenn</g> es regnet.",
-      "en": "We will <b>replan</b> the party <g>if</g> it rains.",
-      "uk": "Ми <b>переплануємо</b> свято, <g>якщо</g> піде дощ.",
-      "ru": "Мы <b>перепланируем</b> праздник, <g>если</g> пойдёт дождь."
-    },
-    "gram": "satzverbindungen_ueberblick"
+    "gram": "satzverbindungen_ueberblick",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Reisen"
+      ]
+    }
   },
   {
     "id": "k16_021",
     "cat": "k16",
     "term": {
-      "de": "das Fest, -e",
+      "de": "das Fest",
       "en": "party",
       "uk": "свято",
       "ru": "праздник"
@@ -47189,30 +47044,13 @@ var VOCAB = [
       "uk": "<b>Святкуємо</b> <b>свято</b> в саду, <g>чи</g> краще підемо в ресторан?",
       "ru": "<b>Празднуем</b> в саду, <g>или</g> лучше пойдём в ресторан?"
     },
-    "gram": "satzverbindungen_ueberblick"
-  },
-  {
-    "id": "k16_022",
-    "cat": "k16",
-    "term": {
-      "de": "hoffen",
-      "en": "to hope",
-      "uk": "сподіватися",
-      "ru": "надеяться"
-    },
-    "short": {
-      "de": "wünschen, dass etwas Positives passiert",
-      "en": "to wish that something positive happens",
-      "uk": "бажати, щоб сталося щось хороше",
-      "ru": "желать, чтобы произошло что-то хорошее"
-    },
-    "def": {
-      "de": "Ich <b>hoffe</b>, <g>dass</g> das Wetter am Wochenende schön bleibt.",
-      "en": "I <b>hope</b> <g>that</g> the weather stays nice at the weekend.",
-      "uk": "Я <b>сподіваюся</b>, <g>що</g> погода на вихідних залишиться гарною.",
-      "ru": "Я <b>надеюсь</b>, <g>что</g> погода на выходных останется хорошей."
-    },
-    "gram": "satzverbindungen_ueberblick"
+    "gram": "satzverbindungen_ueberblick",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Feste"
+      ]
+    }
   },
   {
     "id": "k16_023",
@@ -47257,29 +47095,6 @@ var VOCAB = [
       "en": "The children will <g><b>follow</b></g> tomorrow, we're already leaving today.",
       "uk": "Діти <b>приєднаються</b> завтра, ми виїжджаємо вже сьогодні.",
       "ru": "Дети <b>присоединятся</b> завтра, мы уезжаем уже сегодня."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
-  },
-  {
-    "id": "k16_025",
-    "cat": "k16",
-    "term": {
-      "de": "zurückschicken",
-      "en": "to send back",
-      "uk": "відправляти назад",
-      "ru": "отправлять назад"
-    },
-    "short": {
-      "de": "etwas an den Absender zurückgeben",
-      "en": "to return something to the sender",
-      "uk": "повертати щось відправнику",
-      "ru": "возвращать что-то отправителю"
-    },
-    "def": {
-      "de": "Das Paket war falsch adressiert, deshalb <g><b>schicken</b></g> wir es <g><b>zurück</b></g>.",
-      "en": "The package was addressed incorrectly, so we are <g><b>sending</b></g> it <g><b>back</b></g>.",
-      "uk": "Посилка була неправильно адресована, тому ми <b>відправляємо</b> її <b>назад</b>.",
-      "ru": "Посылка была неправильно адресована, поэтому мы <b>отправляем</b> её <b>назад</b>."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47330,29 +47145,6 @@ var VOCAB = [
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
   {
-    "id": "k16_028",
-    "cat": "k16",
-    "term": {
-      "de": "mitbringen",
-      "en": "to bring along",
-      "uk": "брати із собою",
-      "ru": "брать с собой"
-    },
-    "short": {
-      "de": "etwas zu einem Ort bringen, wenn man selbst dorthin geht",
-      "en": "to bring something to a place when you go there yourself",
-      "uk": "приносити щось із собою, коли йдеш кудись",
-      "ru": "приносить что-то с собой, когда идёшь куда-то"
-    },
-    "def": {
-      "de": "Ich <g><b>bringe</b></g> meinen Reisepass unbedingt <g><b>mit</b></g>.",
-      "en": "I definitely <g><b>bring</b></g> my passport <g><b>with me</b></g>.",
-      "uk": "Я обовʼязково <b>беру із собою</b> паспорт.",
-      "ru": "Я обязательно <b>беру с собой</b> паспорт."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
-  },
-  {
     "id": "k16_029",
     "cat": "k16",
     "term": {
@@ -47372,29 +47164,6 @@ var VOCAB = [
       "en": "When are you <g><b>coming</b></g> <g><b>back</b></g> from the trip?",
       "uk": "Коли ти <b>повертаєшся</b> з подорожі?",
       "ru": "Когда ты <b>возвращаешься</b> из путешествия?"
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
-  },
-  {
-    "id": "k16_030",
-    "cat": "k16",
-    "term": {
-      "de": "abholen",
-      "en": "to pick up",
-      "uk": "забирати когось або щось",
-      "ru": "забирать кого-то или что-то"
-    },
-    "short": {
-      "de": "zu einem Ort gehen oder fahren, um jemanden oder etwas von dort mitzunehmen",
-      "en": "to go or drive somewhere to collect someone or something",
-      "uk": "йти чи їхати кудись, щоб забрати звідти когось або щось",
-      "ru": "идти или ехать куда-то, чтобы забрать оттуда кого-то или что-то"
-    },
-    "def": {
-      "de": "Ich <g><b>hole</b></g> dich morgen früh am Bahnhof <g><b>ab</b></g>.",
-      "en": "I'll <g><b>pick</b></g> you <g><b>up</b></g> at the station tomorrow morning.",
-      "uk": "Я <b>заберу</b> тебе завтра вранці з вокзалу.",
-      "ru": "Я <b>заберу</b> тебя завтра утром с вокзала."
     },
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
@@ -47425,7 +47194,7 @@ var VOCAB = [
     "id": "k16_032",
     "cat": "k16",
     "term": {
-      "de": "der / die Verdächtige, -n",
+      "de": "der / die Verdächtige",
       "en": "suspect",
       "uk": "підозрюваний",
       "ru": "подозреваемый"
@@ -47442,7 +47211,13 @@ var VOCAB = [
       "uk": "Поліція забрала <b>підозрюваного</b> на допит.",
       "ru": "Полиция забрала <b>подозреваемого</b> на допрос."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Verdächtigen"
+      ]
+    }
   },
   {
     "id": "k16_033",
@@ -47494,7 +47269,7 @@ var VOCAB = [
     "id": "k16_035",
     "cat": "k16",
     "term": {
-      "de": "der Tatort, -e",
+      "de": "der Tatort",
       "en": "crime scene",
       "uk": "місце злочину",
       "ru": "место преступления"
@@ -47511,7 +47286,13 @@ var VOCAB = [
       "uk": "Поліція одразу оточила <b>місце злочину</b>.",
       "ru": "Полиция сразу оцепила <b>место преступления</b>."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Tatorte"
+      ]
+    }
   },
   {
     "id": "k16_036",
@@ -47540,7 +47321,7 @@ var VOCAB = [
     "id": "k16_037",
     "cat": "k16",
     "term": {
-      "de": "der Beweis, -e",
+      "de": "der Beweis",
       "en": "evidence",
       "uk": "доказ",
       "ru": "доказательство"
@@ -47557,7 +47338,13 @@ var VOCAB = [
       "uk": "Поліція зібрала всі <b>докази</b> на місці злочину.",
       "ru": "Полиция собрала все <b>доказательства</b> на месте преступления."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Beweise"
+      ]
+    }
   },
   {
     "id": "k16_038",
@@ -47649,7 +47436,13 @@ var VOCAB = [
       "uk": "<b>Вильот</b> о 6:45, <g>тому</g> нам треба рано вставати.",
       "ru": "<b>Вылет</b> в 6:45, <g>поэтому</g> нам нужно рано вставать."
     },
-    "gram": "satzverbindungen_ueberblick"
+    "gram": "satzverbindungen_ueberblick",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Abflüge"
+      ]
+    }
   },
   {
     "id": "k16_042",
@@ -47948,7 +47741,13 @@ var VOCAB = [
       "uk": "У <b>турагентстві</b> я забронював поїздку до Греції.",
       "ru": "В <b>турагентстве</b> я забронировал поездку в Грецию."
     },
-    "gram": "perfekt_wdh_b1"
+    "gram": "perfekt_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Reisebüros"
+      ]
+    }
   },
   {
     "id": "k16_055",
@@ -48115,7 +47914,7 @@ var VOCAB = [
     "id": "k16_062",
     "cat": "k16",
     "term": {
-      "de": "das Doppelzimmer (DZ)",
+      "de": "das Doppelzimmer",
       "en": "double room",
       "uk": "двомісний номер",
       "ru": "двухместный номер"
@@ -48132,7 +47931,16 @@ var VOCAB = [
       "uk": "Ми приїжджаємо в пʼятницю й хочемо забронювати <b>двомісний номер</b> на дві ночі.",
       "ru": "Мы приезжаем в пятницу и хотим забронировать <b>двухместный номер</b> на две ночи."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Doppelzimmer"
+      ]
+    },
+    "syn": [
+      "DZ"
+    ]
   },
   {
     "id": "k16_063",
@@ -48184,7 +47992,7 @@ var VOCAB = [
     "id": "k16_065",
     "cat": "k16",
     "term": {
-      "de": "das Einzelzimmer (EZ)",
+      "de": "das Einzelzimmer",
       "en": "single room",
       "uk": "одномісний номер",
       "ru": "одноместный номер"
@@ -48201,7 +48009,16 @@ var VOCAB = [
       "uk": "Для свого відрядження я забронював <b>одномісний номер</b>.",
       "ru": "Для своей командировки я забронировал <b>одноместный номер</b>."
     },
-    "gram": "perfekt_wdh_b1"
+    "gram": "perfekt_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Einzelzimmer"
+      ]
+    },
+    "syn": [
+      "EZ"
+    ]
   },
   {
     "id": "k16_066",
@@ -48224,7 +48041,10 @@ var VOCAB = [
       "uk": "Мій <b>багаж</b>, на жаль, не прибув.",
       "ru": "Мой <b>багаж</b>, к сожалению, не прибыл."
     },
-    "gram": "perfekt_wdh_b1"
+    "gram": "perfekt_wdh_b1",
+    "info": {
+      "num": "sg"
+    }
   },
   {
     "id": "k16_067",
@@ -48276,7 +48096,7 @@ var VOCAB = [
     "id": "k16_069",
     "cat": "k16",
     "term": {
-      "de": "die Halbpension (HP)",
+      "de": "die Halbpension",
       "en": "half board",
       "uk": "напівпансіон",
       "ru": "полупансион"
@@ -48293,7 +48113,10 @@ var VOCAB = [
       "uk": "При <b>напівпансіоні</b> обіду немає: лише сніданок і вечеря.",
       "ru": "При <b>полупансионе</b> обеда нет: только завтрак и ужин."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "syn": [
+      "HP"
+    ]
   },
   {
     "id": "k16_070",
@@ -48477,13 +48300,19 @@ var VOCAB = [
       "uk": "Ми приїжджаємо завтра й потребуємо лише одну <b>ночівлю</b> у двомісному номері.",
       "ru": "Мы приезжаем завтра и нуждаемся только в одной <b>ночёвке</b> в двухместном номере."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Übernachtungen"
+      ]
+    }
   },
   {
     "id": "k16_078",
     "cat": "k16",
     "term": {
-      "de": "die Übernachtung mit Frühstück (ÜF)",
+      "de": "die Übernachtung mit Frühstück",
       "en": "bed and breakfast",
       "uk": "ночівля зі сніданком",
       "ru": "ночёвка с завтраком"
@@ -48500,7 +48329,10 @@ var VOCAB = [
       "uk": "Я телефоную до готелю, бо хочу забронювати <b>ночівлю зі сніданком</b>.",
       "ru": "Я звоню в отель, потому что хочу забронировать <b>ночёвку с завтраком</b>."
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "syn": [
+      "ÜF"
+    ]
   },
   {
     "id": "k16_079",
@@ -48937,7 +48769,13 @@ var VOCAB = [
       "uk": "<b>Вихід</b>, <g>яким</g> слід користуватися у разі небезпеки, розташований праворуч.",
       "ru": "<b>Выход</b>, <g>которым</g> следует пользоваться в случае опасности, находится справа."
     },
-    "gram": "relativsatz_akkusativ_b1"
+    "gram": "relativsatz_akkusativ_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ausgänge"
+      ]
+    }
   },
   {
     "id": "k16_098",
@@ -48960,7 +48798,13 @@ var VOCAB = [
       "uk": "Ми живемо в невеликому <b>селі</b> в горах.",
       "ru": "Мы живём в небольшой <b>деревне</b> в горах."
     },
-    "gram": "adjektivdeklination_bestimmter_artikel"
+    "gram": "adjektivdeklination_bestimmter_artikel",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Dörfer"
+      ]
+    }
   },
   {
     "id": "k16_099",
@@ -51192,7 +51036,7 @@ var DIALOGE = [
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> am Freitagnachmittag treffen, <g>um</g> das Paket gemeinsam <g>abzuholen</g>.<br><r>Passt dir das so?</r>",
       "en": "<r>I like that a lot</r>.<br><r>Let's just</r> meet on Friday afternoon <g>to</g> pick up the package together.<br><r>Does that work for you?</r>",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> зустрінемося в п'ятницю вдень, <g>щоб</g> разом забрати посилку.<br><r>Тобі так підходить?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> зустрінемося в пʼятницю вдень, <g>щоб</g> разом забрати посилку.<br><r>Тобі так підходить?</r>",
       "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> встретимся в пятницу днём, <g>чтобы</g> вместе забрать посылку.<br><r>Тебе так подходит?</r>",
       "gram": "satz_mit_um_zu"
     },
@@ -51206,7 +51050,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir entscheiden uns für die günstigere Marke, ich bestelle heute Abend, und wir treffen uns am Freitagnachmittag, <g>um</g> das Paket <g>abzuholen</g>. Ich freue mich schon darauf! Bis Freitag!",
       "en": "Yes, good idea! So, we'll decide on the cheaper brand, I'll order it this evening, and we'll meet on Friday afternoon <g>to</g> pick up the package. I'm already looking forward to it! See you Friday!",
-      "uk": "Так, гарна ідея! Отже, ми обираємо дешевшу марку, я замовляю сьогодні ввечері, і зустрічаємося в п'ятницю вдень, <g>щоб</g> забрати посилку. Уже тішуся цьому! До п'ятниці!",
+      "uk": "Так, гарна ідея! Отже, ми обираємо дешевшу марку, я замовляю сьогодні ввечері, і зустрічаємося в пʼятницю вдень, <g>щоб</g> забрати посилку. Уже тішуся цьому! До пʼятниці!",
       "ru": "Да, хорошая идея! Итак, мы выбираем более дешёвую марку, я заказываю сегодня вечером, и встречаемся в пятницу днём, <g>чтобы</g> забрать посылку. Уже жду этого с нетерпением! До пятницы!",
       "gram": "satz_mit_um_zu"
     }
@@ -51240,7 +51084,7 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> den Verkäufer kontaktieren, <g>der</g> uns die Bestellung geschickt hat.<br><r>Wie findest du das?</r>",
       "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we contact the seller <g>who</g> sent us the order.<br><r>How do you find that?</r>",
-      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми зв'язалися з продавцем, <g>який</g> надіслав нам замовлення.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми звʼязалися з продавцем, <g>який</g> надіслав нам замовлення.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы связались с продавцом, <g>который</g> отправил нам заказ.<br><r>Как тебе такая идея?</r>",
       "gram": "relativsatz_nominativ_sondern"
     },
@@ -51289,7 +51133,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir machen ein Foto, schreiben eine schriftliche Reklamation, <g>schicken</g> das beschädigte Produkt <g>zurück</g> und bitten um einen Ersatz. Ich hoffe, das klappt schnell! Bis später!",
       "en": "Yes, good idea! So, we'll take a photo, write a formal complaint, <g>send</g> the damaged product <g>back</g>, and ask for a replacement. I hope it works out quickly! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, ми робимо фото, пишемо письмову рекламацію, <g>відправляємо</g> пошкоджений товар <g>назад</g> і просимо заміну. Сподіваюся, все вирішиться швидко! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, ми робимо фото, пишемо письмову рекламацію, <g>відправляємо</g> пошкоджений товар <g>назад</g> і просимо заміну. Сподіваюся, все вирішиться швидко! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, мы делаем фото, пишем письменную претензию, <g>отправляем</g> повреждённый товар <g>обратно</g> и просим замену. Надеюсь, всё решится быстро! До связи!",
       "gram": "trennbare_verben_praefixe_wdh_b1"
     }
@@ -51372,7 +51216,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir legen das Geschenk in den Warenkorb, ich bezahle mit Karte, die Lieferung geht an meine Adresse, und wir notieren uns die Bestellnummer. Ich freue mich schon auf Annas Gesicht! Bis später!",
       "en": "Yes, good idea! So, we'll put the present in the shopping cart, I'll pay by card, the delivery will go to my address, and we'll note down the order number. I'm already looking forward to Anna's face! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, кладемо подарунок у кошик, я плачу карткою, доставка йде на мою адресу, і ми занотовуємо номер замовлення. Уже уявляю обличчя Анни! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, кладемо подарунок у кошик, я плачу карткою, доставка йде на мою адресу, і ми занотовуємо номер замовлення. Уже уявляю обличчя Анни! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, кладём подарок в корзину, я плачу картой, доставка идёт на мой адрес, и мы записываем номер заказа. Уже представляю лицо Анны! До связи!",
       "gram": ""
     }
@@ -51455,7 +51299,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, ich überweise das Geld noch heute, wir teilen den Betrag, und wir prüfen zusammen den Vertrag. So bekommen wir keine Mahnung! Bis später!",
       "en": "Yes, good idea! So, I'll transfer the money today, we'll split the amount, and we'll check the contract together. That way we won't get a dunning notice! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, я переказую гроші сьогодні, ми ділимо суму, і разом перевіряємо договір. Так ми уникнемо офіційного нагадування! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, я переказую гроші сьогодні, ми ділимо суму, і разом перевіряємо договір. Так ми уникнемо офіційного нагадування! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, я перевожу деньги сегодня, мы делим сумму, и вместе проверяем договор. Так мы избежим официального напоминания! До связи!",
       "gram": ""
     }
@@ -51565,7 +51409,7 @@ var DIALOGE = [
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> morgen früh gehen, die Bankfiliale <g>müsste</g> um neun Uhr öffnen.<br><r>Was denkst du</r>, Alex?",
       "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we go tomorrow morning, the bank branch <g>should</g> open at nine.<br><r>What do you think</r>, Alex?",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми пішли завтра вранці, відділення банку <g>має</g> відкритися о дев'ятій.<br><r>Що ти думаєш</r>, Алексе?",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми пішли завтра вранці, відділення банку <g>має</g> відкритися о девʼятій.<br><r>Що ти думаєш</r>, Алексе?",
       "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы пошли завтра утром, отделение банка <g>должно</g> открыться в девять.<br><r>Что ты думаешь</r>, Алекс?",
       "gram": "modalverben_vermutung"
     },
@@ -51766,7 +51610,7 @@ var DIALOGE = [
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob die Bank die Karte sofort ersetzen kann.<br><r>Vielleicht wäre es am besten, wenn wir</r> das direkt in der Bankfiliale klären.<br><r>Wäre das okay für dich?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether the bank can replace the card right away.<br><r>Maybe it would be best if</r> we clarify that directly at the bank branch.<br><r>Would that be okay for you?</r>",
-      "uk": "<r>Хм, я не зовсім впевнений</r>, чи зможе банк одразу замінити картку.<br><r>Можливо, було б найкраще, якби ми</r> з'ясували це прямо у відділенні банку.<br><r>Тобі це підходить?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи зможе банк одразу замінити картку.<br><r>Можливо, було б найкраще, якби ми</r> зʼясували це прямо у відділенні банку.<br><r>Тобі це підходить?</r>",
       "ru": "<r>Хм, я не совсем уверен</r>, сможет ли банк сразу заменить карту.<br><r>Возможно, было бы лучше, если бы мы</r> выяснили это прямо в отделении банка.<br><r>Тебе это подходит?</r>",
       "gram": ""
     },
@@ -51799,7 +51643,7 @@ var DIALOGE = [
     "task": {
       "de": "Situation: Sie und Ihr Mitbewohner/Ihre Mitbewohnerin überlegen, ob Sie Ihre Hausratversicherung behalten oder eine andere Versicherung kündigen sollten.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie vorgehen.\nDiese Punkte helfen Ihnen:\nBrauchen Sie die Versicherung wirklich? (freiwillig oder notwendig)\nWas deckt der Versicherungsschutz ab?\nWie hoch ist die Selbstbeteiligung?\nSollen Sie die alte Versicherung kündigen?\nWann klären Sie das?",
       "en": "Situation: You and your roommate are considering whether to keep your home contents insurance or cancel another insurance policy.\nTask: Plan together with your conversation partner how you'll proceed.\nThese points will help you:\nDo you really need the insurance? (voluntary or necessary)\nWhat does the insurance coverage include?\nHow high is the deductible?\nShould you cancel the old insurance?\nWhen will you sort this out?",
-      "uk": "Ситуація: Ви та Ваш сусід/Ваша сусідка по кімнаті обмірковуєте, чи залишити страхування майна, чи розірвати інший страховий договір.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nЧи справді Вам потрібне це страхування? (добровільне чи необхідне)\nЩо покриває страховий захист?\nЯка франшиза?\nЧи варто розірвати старе страхування?\nКоли Ви це з'ясуєте?",
+      "uk": "Ситуація: Ви та Ваш сусід/Ваша сусідка по кімнаті обмірковуєте, чи залишити страхування майна, чи розірвати інший страховий договір.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nЧи справді Вам потрібне це страхування? (добровільне чи необхідне)\nЩо покриває страховий захист?\nЯка франшиза?\nЧи варто розірвати старе страхування?\nКоли Ви це зʼясуєте?",
       "ru": "Ситуация: Вы и Ваш сосед/Ваша соседка по комнате обдумываете, оставить ли страхование имущества или расторгнуть другой страховой договор.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы будете действовать.\nЭти пункты Вам помогут:\nДействительно ли Вам нужна эта страховка? (добровольная или необходимая)\nЧто покрывает страховая защита?\nКакая франшиза?\nСтоит ли расторгнуть старую страховку?\nКогда Вы это выясните?"
     },
     "name_q": "de_m_mark",
@@ -51863,14 +51707,14 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> alles gleich heute klären, <g>obwohl</g> wir eigentlich keine Zeit haben.<br><r>Können wir uns darauf einigen?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we sort everything out today, <g>although</g> we don't really have time.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми все з'ясували вже сьогодні, <g>хоча</g> в нас насправді немає часу.<br><r>Ми можемо про це домовитися?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми все зʼясували вже сьогодні, <g>хоча</g> в нас насправді немає часу.<br><r>Ми можемо про це домовитися?</r>",
       "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы всё выясним уже сегодня, <g>хотя</g> у нас на самом деле нет времени.<br><r>Мы можем об этом договориться?</r>",
       "gram": "nebensatz_mit_obwohl"
     },
     "a4": {
       "de": "Ja, gute Idee! Also, wir behalten die Hausratversicherung, kündigen die alte Kfz-Versicherung, und klären heute noch alles Wichtige. Das ist zwar sinnvoll, obwohl es Arbeit macht! Bis später!",
       "en": "Yes, good idea! So, we'll keep the home contents insurance, cancel the old car insurance, and sort out everything important today. It's sensible, although it's a bit of work! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, залишаємо страхування майна, розриваємо стару автостраховку, і з'ясовуємо все важливе сьогодні. Це доцільно, хоча й потребує зусиль! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, залишаємо страхування майна, розриваємо стару автостраховку, і зʼясовуємо все важливе сьогодні. Це доцільно, хоча й потребує зусиль! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, оставляем страховку имущества, расторгаем старую автостраховку, и выясняем всё важное сегодня. Это целесообразно, хотя и требует усилий! До связи!",
       "gram": ""
     }
@@ -51965,7 +51809,7 @@ var DIALOGE = [
     "task": {
       "de": "Situation: Obwohl Sie rechtzeitig gekündigt haben, wurde trotzdem eine Gebühr von Ihrem Konto abgebucht. Sie möchten mit einem Freund/einer Freundin planen, wie Sie das klären.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie vorgehen.\nDiese Punkte helfen Ihnen:\nWelchen Nachweis brauchen Sie? (Bestätigung der Kündigung)\nSchreiben Sie oder rufen Sie zuerst an?\nWie fordern Sie das Geld zurück?\nWelche Frist setzen Sie?\nWas tun, falls die Firma nicht reagiert?",
       "en": "Situation: Although you cancelled in time, a fee was still charged from your account. You want to plan with a friend how to sort this out.\nTask: Plan together with your conversation partner how you'll proceed.\nThese points will help you:\nWhat proof do you need? (confirmation of the cancellation)\nWill you write or call first?\nHow will you demand the money back?\nWhat deadline will you set?\nWhat to do if the company doesn't respond?",
-      "uk": "Ситуація: Хоча Ви вчасно розірвали договір, з Вашого рахунку все одно списали плату. Ви хочете спланувати з другом/подругою, як це з'ясувати.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nЯкий доказ Вам потрібен? (підтвердження розірвання)\nВи спершу напишете чи зателефонуєте?\nЯк Ви вимагатимете гроші назад?\nЯкий термін Ви встановите?\nЩо робити, якщо компанія не відповідає?",
+      "uk": "Ситуація: Хоча Ви вчасно розірвали договір, з Вашого рахунку все одно списали плату. Ви хочете спланувати з другом/подругою, як це зʼясувати.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nЯкий доказ Вам потрібен? (підтвердження розірвання)\nВи спершу напишете чи зателефонуєте?\nЯк Ви вимагатимете гроші назад?\nЯкий термін Ви встановите?\nЩо робити, якщо компанія не відповідає?",
       "ru": "Ситуация: Хотя Вы вовремя расторгли договор, с Вашего счёта всё равно списали плату. Вы хотите спланировать с другом/подругой, как это выяснить.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы будете действовать.\nЭти пункты Вам помогут:\nКакое доказательство Вам нужно? (подтверждение расторжения)\nВы сначала напишете или позвоните?\nКак Вы потребуете деньги обратно?\nКакой срок Вы установите?\nЧто делать, если компания не отвечает?"
     },
     "name_q": "de_w_nina",
@@ -51973,7 +51817,7 @@ var DIALOGE = [
     "q": {
       "de": "Hallo, David! Ich habe gerade gesehen, <g>dass</g> trotzdem eine Gebühr von meinem Konto abgebucht wurde, obwohl ich rechtzeitig gekündigt habe. Kannst du mir helfen, das zu klären?",
       "en": "Hi, David! I just saw <g>that</g> a fee was still charged from my account, although I cancelled in time. Can you help me sort this out?",
-      "uk": "Привіт, Девіде! Я щойно побачила, <g>що</g> з мого рахунку все одно списали плату, хоча я вчасно розірвала договір. Можеш допомогти мені це з'ясувати?",
+      "uk": "Привіт, Девіде! Я щойно побачила, <g>що</g> з мого рахунку все одно списали плату, хоча я вчасно розірвала договір. Можеш допомогти мені це зʼясувати?",
       "ru": "Привет, Дэвид! Я только что увидела, <g>что</g> с моего счёта всё равно списали плату, хотя я вовремя расторгла договор. Можешь помочь мне это выяснить?",
       "gram": "konnektoren_wdh_b1"
     },
@@ -52036,7 +51880,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir suchen die Bestätigung, rufen an, schreiben eine E-Mail mit dem Nachweis, und setzen eine Frist für die Rückzahlung. Ich helfe dir gern dabei! Bis später!",
       "en": "Yes, good idea! So, we'll look for the confirmation, call them, write an email with the proof, and set a deadline for the refund. I'm happy to help you with it! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, шукаємо підтвердження, телефонуємо, пишемо лист із доказом, і встановлюємо термін для повернення грошей. Із задоволенням допоможу тобі! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, шукаємо підтвердження, телефонуємо, пишемо лист із доказом, і встановлюємо термін для повернення грошей. Із задоволенням допоможу тобі! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, ищем подтверждение, звоним, пишем письмо с доказательством, и устанавливаем срок для возврата денег. С удовольствием помогу тебе! До связи!",
       "gram": ""
     }
@@ -52070,7 +51914,7 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> auch an vegetarische Optionen denken, falls jemand kein Fleisch isst.<br><r>Wie findest du das?</r>",
       "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we also think about vegetarian options, in case someone doesn't eat meat.<br><r>How do you find that?</r>",
-      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми також подумали про вегетаріанські варіанти, якщо хтось не їсть м'яса.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми також подумали про вегетаріанські варіанти, якщо хтось не їсть мʼяса.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы также подумали о вегетарианских вариантах, если кто-то не ест мясо.<br><r>Как тебе такая идея?</r>",
       "gram": ""
     },
@@ -52084,7 +51928,7 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns treffen, sobald wir richtig Hunger haben, also so gegen neun Uhr.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Good idea, let's do that</r>.<br><r>My suggestion would be that</r> we meet as soon as we're really hungry, so around nine.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми зустрілися, як тільки зголодніємо, тобто десь о дев'ятій.<br><r>Ти згоден з цим?</r>",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Я б запропонував, щоб</r> ми зустрілися, як тільки зголодніємо, тобто десь о девʼятій.<br><r>Ти згоден з цим?</r>",
       "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Я бы предложил, чтобы</r> мы встретились, как только проголодаемся, то есть около девяти.<br><r>Ты согласен с этим?</r>",
       "gram": ""
     },
@@ -52119,7 +51963,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir kaufen heute Abend ein, treffen uns morgen um neun zum Frühstück, und ich mache süße und salzige Sachen, während du für den Kaffee sorgst. Ich freue mich schon darauf! Bis morgen!",
       "en": "Yes, good idea! So, we'll go shopping tonight, meet for breakfast tomorrow at nine, and I'll make sweet and salty things while you take care of the coffee. I'm already looking forward to it! See you tomorrow!",
-      "uk": "Так, гарна ідея! Отже, ідемо за покупками сьогодні ввечері, зустрічаємося на сніданок завтра о дев'ятій, і я готую солодке й солоне, поки ти подбаєш про каву. Уже тішуся цьому! До завтра!",
+      "uk": "Так, гарна ідея! Отже, ідемо за покупками сьогодні ввечері, зустрічаємося на сніданок завтра о девʼятій, і я готую солодке й солоне, поки ти подбаєш про каву. Уже тішуся цьому! До завтра!",
       "ru": "Да, хорошая идея! Итак, идём за покупками сегодня вечером, встречаемся на завтрак завтра в девять, и я готовлю сладкое и солёное, пока ты позаботишься о кофе. Уже жду этого с нетерпением! До завтра!",
       "gram": ""
     }
@@ -52139,7 +51983,7 @@ var DIALOGE = [
     "q": {
       "de": "Hallo, Nina! Ich <g>habe</g> neulich an unsere Kindheit <g>gedacht</g>. Weißt du noch, was es bei euch zu Hause oft zu essen gab? Wollen wir einen Kochabend planen und ein paar alte Gerichte nachkochen?",
       "en": "Hi, Nina! I've <g>been thinking</g> about our childhood recently. Do you remember what you often used to eat at home? Should we plan a cooking night and recreate a few old dishes?",
-      "uk": "Привіт, Ніно! Я нещодавно <g>згадувала</g> наше дитинство. Пам'ятаєш, що у вас удома часто їли? Може, сплануємо вечір кулінарії і приготуємо кілька старих страв?",
+      "uk": "Привіт, Ніно! Я нещодавно <g>згадувала</g> наше дитинство. Памʼятаєш, що у вас удома часто їли? Може, сплануємо вечір кулінарії і приготуємо кілька старих страв?",
       "ru": "Привет, Нина! Я недавно <g>вспоминала</g> наше детство. Помнишь, что у вас дома часто ели? Может, спланируем кулинарный вечер и приготовим несколько старых блюд?",
       "gram": "perfekt_wdh_b1"
     },
@@ -52181,7 +52025,7 @@ var DIALOGE = [
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir uns an alle Rezepte noch erinnern.<br><r>Vielleicht wäre es am besten, wenn wir</r> vorher unsere Eltern fragen, wie es früher <g>war</g>.<br><r>Wäre das okay für dich?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether we still remember all the recipes.<br><r>Maybe it would be best if</r> we ask our parents beforehand how it <g>was</g> back then.<br><r>Would that be okay for you?</r>",
-      "uk": "<r>Хм, я не зовсім впевнена</r>, чи пам'ятаємо ми всі рецепти.<br><r>Можливо, було б найкраще, якби ми</r> заздалегідь запитали в батьків, як <g>було</g> раніше.<br><r>Тобі це підходить?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи памʼятаємо ми всі рецепти.<br><r>Можливо, було б найкраще, якби ми</r> заздалегідь запитали в батьків, як <g>було</g> раніше.<br><r>Тобі це підходить?</r>",
       "ru": "<r>Хм, я не совсем уверена</r>, помним ли мы все рецепты.<br><r>Возможно, было бы лучше, если бы мы</r> заранее спросили у родителей, как <g>было</g> раньше.<br><r>Тебе это подходит?</r>",
       "gram": "praeteritum_wdh_b1"
     },
@@ -52395,7 +52239,7 @@ var DIALOGE = [
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst die Meinung <g>der Mehrheit</g> herausfinden wollen, also fragen wir viele Leute.<br><r>Was denkst du</r>, Mark?",
       "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first find out the opinion <g>of the majority</g>, so we'll ask a lot of people.<br><r>What do you think</r>, Mark?",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу з'ясували думку <g>більшості</g>, тому запитаємо багато людей.<br><r>Що ти думаєш</r>, Марку?",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу зʼясували думку <g>більшості</g>, тому запитаємо багато людей.<br><r>Що ти думаєш</r>, Марку?",
       "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала выяснили мнение <g>большинства</g>, поэтому спросим много людей.<br><r>Что ты думаешь</r>, Марк?",
       "gram": "genitiv_alternativen"
     },
@@ -52451,7 +52295,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir stellen die Fragen unserem Kurs, sammeln die Antworten, und berechnen am Ende den Durchschnitt für die Statistik. Ich freue mich schon auf die Ergebnisse! Bis bald!",
       "en": "Yes, good idea! So, we'll ask our class the questions, collect the answers, and calculate the average for the statistic at the end. I'm already looking forward to the results! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, ставимо запитання нашому курсу, збираємо відповіді, і наприкінці рахуємо середнє значення для статистики. Уже тішуся результатам! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, ставимо запитання нашому курсу, збираємо відповіді, і наприкінці рахуємо середнє значення для статистики. Уже тішуся результатам! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, задаём вопросы нашему курсу, собираем ответы, и в конце считаем среднее значение для статистики. Уже жду результатов с нетерпением! До связи!",
       "gram": ""
     }
@@ -52617,7 +52461,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir erklären ihr die wichtigsten Regeln, zeigen ihr die Stadt, und laden sie nächste Woche zum Mittagessen ein. Ich freue mich schon darauf, sie besser <g>kennenzulernen</g>! Bis bald!",
       "en": "Yes, good idea! So, we'll explain the most important rules to her, show her around the city, and invite her for lunch next week. I'm already looking forward <g>to getting to know</g> her better! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, пояснюємо їй найважливіші правила, показуємо місто, і запрошуємо на обід наступного тижня. Уже тішуся ближче з нею <g>познайомитися</g>! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, пояснюємо їй найважливіші правила, показуємо місто, і запрошуємо на обід наступного тижня. Уже тішуся ближче з нею <g>познайомитися</g>! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, объясняем ей самые важные правила, показываем город, и приглашаем на обед на следующей неделе. Уже жду с нетерпением <g>узнать</g> её лучше! До связи!",
       "gram": "infinitiv_mit_zu"
     }
@@ -52629,7 +52473,7 @@ var DIALOGE = [
     "task": {
       "de": "Situation: Sie möchten mit einem Freund/einer Freundin einen Abend organisieren, an dem alle über ihre Sprachbiografien sprechen.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie den Abend vorbereiten.\nDiese Punkte helfen Ihnen:\nWorüber sprechen die Teilnehmer zuerst?\nAn wen erinnern sie sich beim Sprachenlernen?\nWoran denken sie bei ihrer ersten Fremdsprache?\nWovon träumen viele beim Sprachenlernen?\nMit wem möchten sich alle am Ende austauschen?",
       "en": "Situation: You want to organize an evening with a friend where everyone talks about their language biographies.\nTask: Plan together with your conversation partner how you'll prepare the evening.\nThese points will help you:\nWhat will the participants talk about first?\nWho do they remember from their language learning?\nWhat do they think of when it comes to their first foreign language?\nWhat do many people dream of when learning a language?\nWho would everyone like to stay in touch with at the end?",
-      "uk": "Ситуація: Ви хочете організувати з другом/подругою вечір, на якому всі розповідатимуть про свої мовні біографії.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підготуєте вечір.\nЦі пункти Вам допоможуть:\nПро що учасники розповідатимуть спочатку?\nКого вони згадують у зв'язку з вивченням мови?\nПро що вони думають, згадуючи свою першу іноземну мову?\nПро що багато хто мріє під час вивчення мови?\nЗ ким усі хотіли б спілкуватися наприкінці?",
+      "uk": "Ситуація: Ви хочете організувати з другом/подругою вечір, на якому всі розповідатимуть про свої мовні біографії.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підготуєте вечір.\nЦі пункти Вам допоможуть:\nПро що учасники розповідатимуть спочатку?\nКого вони згадують у звʼязку з вивченням мови?\nПро що вони думають, згадуючи свою першу іноземну мову?\nПро що багато хто мріє під час вивчення мови?\nЗ ким усі хотіли б спілкуватися наприкінці?",
       "ru": "Ситуация: Вы хотите организовать с другом/подругой вечер, на котором все расскажут о своих языковых биографиях.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы подготовите вечер.\nЭти пункты Вам помогут:\nО чём участники расскажут сначала?\nКого они вспоминают в связи с изучением языка?\nО чём они думают, вспоминая свой первый иностранный язык?\nО чём многие мечтают во время изучения языка?\nС кем все хотели бы общаться в конце?"
     },
     "name_q": "de_w_julia",
@@ -52651,14 +52495,14 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Ich schlage vor, dass wir</r> fragen, <g>an wen</g> sich jeder erinnert, der ihm beim Sprachenlernen geholfen hat.<br><r>Wie findest du das?</r>",
       "en": "<r>Perfect, that's what we'll do</r>.<br><r>I suggest that</r> we ask <g>who</g> each person remembers as having helped them learn a language.<br><r>How do you find that?</r>",
-      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми запитали, <g>кого</g> кожен пам'ятає як людину, яка допомогла йому вивчати мову.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Пропоную, щоб</r> ми запитали, <g>кого</g> кожен памʼятає як людину, яка допомогла йому вивчати мову.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Отлично, так и сделаем</r>.<br><r>Предлагаю, чтобы</r> мы спросили, <g>кого</g> каждый вспоминает как человека, который помог ему учить язык.<br><r>Как тебе такая идея?</r>",
       "gram": "verben_praep_personen_sachen"
     },
     "a1": {
       "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> an die Muttersprache denken.<br><r>Wir könnten doch</r> fragen, <g>woran</g> sich die Leute erinnern, wenn sie an ihre erste Fremdsprache denken.<br><r>Was meinst du dazu?</r>",
       "en": "<r>That sounds good, but maybe we should also</r> think about native languages.<br><r>We could</r> ask <g>what</g> people remember when they think of their first foreign language.<br><r>What do you think about that?</r>",
-      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про рідну мову.<br><r>Ми могли б</r> запитати, <g>що</g> люди пам'ятають, коли думають про свою першу іноземну мову.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Звучить непогано, але, можливо, варто ще</r> подумати про рідну мову.<br><r>Ми могли б</r> запитати, <g>що</g> люди памʼятають, коли думають про свою першу іноземну мову.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Звучит неплохо, но, возможно, стоит ещё</r> подумать о родном языке.<br><r>Мы могли бы</r> спросить, <g>что</g> люди помнят, когда думают о своём первом иностранном языке.<br><r>Что ты на это скажешь?</r>",
       "gram": "verben_praep_personen_sachen"
     },
@@ -52686,7 +52530,7 @@ var DIALOGE = [
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch klären, <g>worauf</g> die Leute besonders achten sollen, wenn sie ihre Geschichte erzählen.<br><r>Passt dir das so</r>, Julia?",
       "en": "<r>I like that a lot</r>.<br><r>Let's just</r> also clarify <g>what</g> people should pay special attention to when telling their story.<br><r>Does that work for you</r>, Julia?",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> ще з'ясуємо, <g>на що</g> людям слід особливо звертати увагу, коли вони розповідають свою історію.<br><r>Тобі так підходить</r>, Юліє?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> ще зʼясуємо, <g>на що</g> людям слід особливо звертати увагу, коли вони розповідають свою історію.<br><r>Тобі так підходить</r>, Юліє?",
       "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> ещё выясним, <g>на что</g> людям стоит особенно обращать внимание, когда они рассказывают свою историю.<br><r>Тебе так подходит</r>, Юлия?",
       "gram": "verben_praep_personen_sachen"
     },
@@ -52700,7 +52544,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir bereiten Fragen zur Muttersprache, zur ersten Fremdsprache und zu den Erinnerungen vor, und am Ende fragen wir, mit wem sich alle austauschen möchten. Ich freue mich schon auf den Abend! Bis bald!",
       "en": "Yes, good idea! So, we'll prepare questions about native languages, first foreign languages, and memories, and at the end we'll ask who everyone would like to stay in touch with. I'm already looking forward to the evening! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, готуємо запитання про рідну мову, першу іноземну мову й спогади, а наприкінці запитаємо, з ким усі хотіли б спілкуватися далі. Уже тішуся цьому вечору! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, готуємо запитання про рідну мову, першу іноземну мову й спогади, а наприкінці запитаємо, з ким усі хотіли б спілкуватися далі. Уже тішуся цьому вечору! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, готовим вопросы о родном языке, первом иностранном языке и воспоминаниях, а в конце спросим, с кем все хотели бы продолжить общение. Уже жду этого вечера с нетерпением! До связи!",
       "gram": ""
     }
@@ -52783,7 +52627,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir trainieren, warten auf gutes Wetter, und gehen dann bis zum Gipfel. Am Ende feiern wir zusammen! Ich freue mich schon auf das Abenteuer! Bis bald!",
       "en": "Yes, good idea! So, we'll train, wait for good weather, and then hike all the way to the summit. At the end we'll celebrate together! I'm already looking forward to the adventure! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, тренуємося, чекаємо на гарну погоду, а потім піднімаємося аж до вершини. Наприкінці святкуємо разом! Уже тішуся цій пригоді! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, тренуємося, чекаємо на гарну погоду, а потім піднімаємося аж до вершини. Наприкінці святкуємо разом! Уже тішуся цій пригоді! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, тренируемся, ждём хорошей погоды, а потом поднимаемся до самой вершины. В конце празднуем вместе! Уже жду этого приключения с нетерпением! До связи!",
       "gram": ""
     }
@@ -52866,7 +52710,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir erklären ihm das Pendeln und das Arbeiten, helfen ihm beim Kennenlernen der Nachbarn, und zeigen ihm die Stadt. Ich freue mich schon darauf, ihm <g>zu helfen</g>! Bis bald!",
       "en": "Yes, good idea! So, we'll explain commuting and working to him, help him with getting to know the neighbours, and show him the city. I'm already looking forward <g>to helping</g> him! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, пояснюємо йому регулярні поїздки й роботу, допомагаємо із знайомством із сусідами, і показуємо місто. Уже тішуся <g>допомогти</g> йому! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, пояснюємо йому регулярні поїздки й роботу, допомагаємо із знайомством із сусідами, і показуємо місто. Уже тішуся <g>допомогти</g> йому! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, объясняем ему регулярные поездки и работу, помогаем со знакомством с соседями, и показываем город. Уже жду с нетерпением <g>помочь</g> ему! До связи!",
       "gram": "infinitiv_mit_zu"
     }
@@ -52878,7 +52722,7 @@ var DIALOGE = [
     "task": {
       "de": "Situation: In Ihrem Team gibt es ein paar Missverständnisse. Sie möchten mit einer Kollegin/einem Kollegen ein klärendes Gespräch vorbereiten.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das Gespräch vorbereiten.\nDiese Punkte helfen Ihnen:\nWorüber ärgern sich die Kollegen am meisten?\nWie bereiten Sie sich auf das Gespräch vor?\nWovor haben manche Angst?\nWorauf freuen sich alle, wenn das Problem gelöst ist?\nWorauf sollen Sie am Ende stolz sein können?",
       "en": "Situation: There are a few misunderstandings in your team. You want to prepare a clarifying conversation with a colleague.\nTask: Plan together with your conversation partner how you'll prepare the conversation.\nThese points will help you:\nWhat are the colleagues most annoyed about?\nHow will you prepare for the conversation?\nWhat are some people afraid of?\nWhat does everyone look forward to once the problem is solved?\nWhat should you be able to be proud of at the end?",
-      "uk": "Ситуація: У Вашій команді є кілька непорозумінь. Ви хочете підготувати з колегою розмову для їх з'ясування.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підготуєте цю розмову.\nЦі пункти Вам допоможуть:\nЧерез що колеги найбільше дратуються?\nЯк Ви підготуєтеся до розмови?\nЧого дехто боїться?\nЧого всі з радістю чекають, коли проблему вирішать?\nЧим Ви маєте змогу пишатися наприкінці?",
+      "uk": "Ситуація: У Вашій команді є кілька непорозумінь. Ви хочете підготувати з колегою розмову для їх зʼясування.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підготуєте цю розмову.\nЦі пункти Вам допоможуть:\nЧерез що колеги найбільше дратуються?\nЯк Ви підготуєтеся до розмови?\nЧого дехто боїться?\nЧого всі з радістю чекають, коли проблему вирішать?\nЧим Ви маєте змогу пишатися наприкінці?",
       "ru": "Ситуация: В Вашей команде есть несколько недопониманий. Вы хотите подготовить с коллегой разговор для их выяснения.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы подготовите этот разговор.\nЭти пункты Вам помогут:\nИз-за чего коллеги больше всего раздражаются?\nКак Вы подготовитесь к разговору?\nЧего некоторые боятся?\nЧего все с радостью ждут, когда проблему решат?\nЧем Вы сможете гордиться в конце?"
     },
     "name_q": "de_m_alex",
@@ -52893,7 +52737,7 @@ var DIALOGE = [
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst herausfinden, <g>worüber</g> sich die Kollegen am meisten ärgern.<br><r>Was denkst du</r>, Alex?",
       "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first find out <g>what</g> the colleagues are most annoyed about.<br><r>What do you think</r>, Alex?",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу з'ясували, <g>через що</g> колеги найбільше дратуються.<br><r>Що ти думаєш</r>, Алексе?",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу зʼясували, <g>через що</g> колеги найбільше дратуються.<br><r>Що ти думаєш</r>, Алексе?",
       "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала выяснили, <g>из-за чего</g> коллеги больше всего раздражаются.<br><r>Что ты думаешь</r>, Алекс?",
       "gram": "praepositionaladverbien_b1"
     },
@@ -52949,7 +52793,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir finden heraus, worüber sich alle ärgern, bereiten uns gut vor, und sprechen offen <g>darüber</g>. Ich freue mich schon darauf, das zu klären! Bis bald!",
       "en": "Yes, good idea! So, we'll find out what everyone's annoyed about, prepare well, and talk openly <g>about it</g>. I'm already looking forward to sorting this out! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, з'ясовуємо, через що всі дратуються, добре готуємося, і відкрито <g>про це</g> говоримо. Уже тішуся це з'ясувати! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, зʼясовуємо, через що всі дратуються, добре готуємося, і відкрито <g>про це</g> говоримо. Уже тішуся це зʼясувати! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, выясняем, из-за чего все раздражаются, хорошо готовимся, и открыто <g>об этом</g> говорим. Уже жду с нетерпением это выяснить! До связи!",
       "gram": "praepositionaladverbien_b1"
     }
@@ -53032,7 +52876,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir erklären die Begrüßung, geben Tipps zum Smalltalk, und schreiben die wichtigsten Sitten und Bräuche auf. Ich freue mich schon auf den fertigen Leitfaden! Bis bald!",
       "en": "Yes, good idea! So, we'll explain the greeting, give small talk tips, and write down the most important customs and traditions. I'm already looking forward to the finished guide! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, пояснюємо вітання, даємо поради щодо розмови, і записуємо найважливіші звичаї й традиції. Уже тішуся готовому путівнику! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, пояснюємо вітання, даємо поради щодо розмови, і записуємо найважливіші звичаї й традиції. Уже тішуся готовому путівнику! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, объясняем приветствие, даём советы по беседе, и записываем самые важные обычаи и традиции. Уже жду с нетерпением готовый путеводитель! До связи!",
       "gram": ""
     }
@@ -53115,7 +52959,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir fragen den Arzt, besuchen sie abwechselnd, und betreuen sie zu Hause, sobald sie entlassen wird. Ich hoffe, es geht ihr bald besser! Bis bald!",
       "en": "Yes, good idea! So, we'll ask the doctor, visit her in turns, and look after her at home once she's discharged. I hope she feels better soon! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, запитуємо лікаря, відвідуємо її по черзі, і доглядаємо вдома, щойно її випишуть. Сподіваюся, їй скоро стане краще! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, запитуємо лікаря, відвідуємо її по черзі, і доглядаємо вдома, щойно її випишуть. Сподіваюся, їй скоро стане краще! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, спрашиваем врача, навещаем её по очереди, и ухаживаем дома, как только её выпишут. Надеюсь, ей скоро станет лучше! До связи!",
       "gram": ""
     }
@@ -53198,7 +53042,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir rufen sie nach der Untersuchung an, besuchen sie jeden Tag, und begleiten sie bei der Therapie. Ich bin sicher, sie <g>wird</g> sich bald <g>erholen</g>! Bis bald!",
       "en": "Yes, good idea! So, we'll call her after the examination, visit her every day, and go with her to therapy. I'm sure she<g>'ll recover</g> soon! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, телефонуємо їй після обстеження, відвідуємо щодня, і супроводжуємо на терапію. Я впевнений, вона <g>скоро одужає</g>! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, телефонуємо їй після обстеження, відвідуємо щодня, і супроводжуємо на терапію. Я впевнений, вона <g>скоро одужає</g>! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, звоним ей после обследования, навещаем каждый день, и сопровождаем на терапию. Я уверен, она <g>скоро выздоровеет</g>! До связи!",
       "gram": "futur_werden"
     }
@@ -53267,7 +53111,7 @@ var DIALOGE = [
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> <g>nicht nur</g> das Verbandsmaterial mitbringen, <g>sondern auch</g> ein kleines Handout.<br><r>Passt dir das so</r>, Nina?",
       "en": "<r>I like that a lot</r>.<br><r>Let's just</r> bring <g>not only</g> the bandages <g>but also</g> a small handout.<br><r>Does that work for you</r>, Nina?",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> візьмемо <g>не тільки</g> перев'язувальний матеріал, <g>а й</g> невеликий друкований матеріал.<br><r>Тобі так підходить</r>, Ніно?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Тоді давай</r> візьмемо <g>не тільки</g> перевʼязувальний матеріал, <g>а й</g> невеликий друкований матеріал.<br><r>Тобі так підходить</r>, Ніно?",
       "ru": "<r>Мне это очень нравится</r>.<br><r>Тогда давай</r> возьмём <g>не только</g> перевязочный материал, <g>но и</g> небольшой печатный материал.<br><r>Тебе так подходит</r>, Нина?",
       "gram": "nicht_nur_sondern_auch"
     },
@@ -53281,7 +53125,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir organisieren einen Erste-Hilfe-Kurs mit Theorie und Praxis, und üben sowohl Wunden als auch Bewusstlosigkeit. Ich freue mich schon darauf, das Team <g>vorzubereiten</g>! Bis bald!",
       "en": "Yes, good idea! So, we'll organize a first-aid course with theory and practice, and practice both wounds and unconsciousness. I'm already looking forward <g>to preparing</g> the team! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, організовуємо курс першої допомоги з теорією і практикою, і тренуємо як рани, так і непритомність. Уже тішуся <g>підготувати</g> команду! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, організовуємо курс першої допомоги з теорією і практикою, і тренуємо як рани, так і непритомність. Уже тішуся <g>підготувати</g> команду! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, организуем курс первой помощи с теорией и практикой, и тренируем как раны, так и обморочные состояния. Уже жду с нетерпением <g>подготовить</g> команду! До связи!",
       "gram": "infinitiv_mit_zu"
     }
@@ -53293,7 +53137,7 @@ var DIALOGE = [
     "task": {
       "de": "Situation: Ihr Bruder hat sich verletzt und Sie müssen mit ihm in die Notaufnahme. Sie möchten mit einem Freund/einer Freundin planen, wie Sie das organisieren.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie vorgehen.\nDiese Punkte helfen Ihnen:\nWas bringen Sie mit, um sich schnell anzumelden?\nWas tun Sie, damit die Wartezeit kürzer wird?\nWie füllen Sie das Formular aus?\nWer bleibt telefonisch erreichbar?\nWas ist wichtig, damit alles dringend bearbeitet wird?",
       "en": "Situation: Your brother got hurt and you need to take him to the emergency room. You want to plan with a friend how to organize this.\nTask: Plan together with your conversation partner how you'll proceed.\nThese points will help you:\nWhat will you bring to register quickly?\nWhat will you do so the waiting time is shorter?\nHow will you fill out the form?\nWho will stay reachable by phone?\nWhat's important so everything is handled urgently?",
-      "uk": "Ситуація: Ваш брат травмувався, і Вам потрібно з ним у приймальне відділення. Ви хочете спланувати з другом/подругою, як це організувати.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nЩо Ви візьмете, щоб швидко зареєструватися?\nЩо Ви зробите, щоб час очікування був коротшим?\nЯк Ви заповните формуляр?\nХто залишиться на зв'язку по телефону?\nЩо важливо, щоб усе обробили терміново?",
+      "uk": "Ситуація: Ваш брат травмувався, і Вам потрібно з ним у приймальне відділення. Ви хочете спланувати з другом/подругою, як це організувати.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви діятимете.\nЦі пункти Вам допоможуть:\nЩо Ви візьмете, щоб швидко зареєструватися?\nЩо Ви зробите, щоб час очікування був коротшим?\nЯк Ви заповните формуляр?\nХто залишиться на звʼязку по телефону?\nЩо важливо, щоб усе обробили терміново?",
       "ru": "Ситуация: Ваш брат травмировался, и Вам нужно с ним в приёмный покой. Вы хотите спланировать с другом/подругой, как это организовать.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы будете действовать.\nЭти пункты Вам помогут:\nЧто Вы возьмёте, чтобы быстро зарегистрироваться?\nЧто Вы сделаете, чтобы время ожидания было короче?\nКак Вы заполните формуляр?\nКто останется на связи по телефону?\nЧто важно, чтобы всё обработали срочно?"
     },
     "name_q": "de_m_david",
@@ -53364,7 +53208,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir nehmen die Versicherungskarte mit, füllen das Formular aus, und ich bleibe telefonisch erreichbar. Ich hoffe, es geht deinem Bruder bald besser! Bis bald!",
       "en": "Yes, good idea! So, we'll take the insurance card, fill out the form, and I'll stay reachable by phone. I hope your brother feels better soon! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, беремо страхову картку, заповнюємо формуляр, і я лишаюся на зв'язку по телефону. Сподіваюся, твоєму братові скоро стане краще! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, беремо страхову картку, заповнюємо формуляр, і я лишаюся на звʼязку по телефону. Сподіваюся, твоєму братові скоро стане краще! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, берём страховую карту, заполняем формуляр, и я остаюсь на связи по телефону. Надеюсь, твоему брату скоро станет лучше! До связи!",
       "gram": ""
     }
@@ -53447,7 +53291,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, gute Idee! Also, wir sprechen mit dem Chirurgen, bleiben bei deinem Bruder, und warten zusammen auf die Prognose. Ich bin sicher, alles wird gut gehen! Bis bald!",
       "en": "Yes, good idea! So, we'll talk to the surgeon, stay with your brother, and wait together for the prognosis. I'm sure everything will go well! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, розмовляємо з хірургом, залишаємося з твоїм братом, і разом чекаємо на прогноз. Я впевнена, усе буде добре! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, розмовляємо з хірургом, залишаємося з твоїм братом, і разом чекаємо на прогноз. Я впевнена, усе буде добре! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, разговариваем с хирургом, остаёмся с твоим братом, и вместе ждём прогноза. Я уверена, всё будет хорошо! До связи!",
       "gram": ""
     }
@@ -53459,7 +53303,7 @@ var DIALOGE = [
     "task": {
       "de": "Situation: Sie möchten mit einem Kollegen/einer Kollegin einen kleinen Gesundheitstag für Ihr Team organisieren.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie den Tag vorbereiten.\nDiese Punkte helfen Ihnen:\nWas ist die Wichtigkeit eines Gesundheitstages?\nWelche Möglichkeiten bieten Sie den Mitarbeitern?\nWie sorgen Sie für Sicherheit und Sauberkeit?\nWelche Schwierigkeiten könnten auftreten?\nWie fördern Sie die Gesundheit langfristig?",
       "en": "Situation: You want to organize a small health day for your team with a colleague.\nTask: Plan together with your conversation partner how you'll prepare the day.\nThese points will help you:\nWhat's the importance of a health day?\nWhat opportunities will you offer employees?\nHow will you ensure safety and cleanliness?\nWhat difficulties might arise?\nHow will you promote health long-term?",
-      "uk": "Ситуація: Ви хочете організувати з колегою невеликий день здоров'я для своєї команди.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підготуєте цей день.\nЦі пункти Вам допоможуть:\nУ чому важливість дня здоров'я?\nЯкі можливості Ви запропонуєте співробітникам?\nЯк Ви подбаєте про безпеку й чистоту?\nЯкі труднощі можуть виникнути?\nЯк Ви сприятимете здоров'ю в довгостроковій перспективі?",
+      "uk": "Ситуація: Ви хочете організувати з колегою невеликий день здоровʼя для своєї команди.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви підготуєте цей день.\nЦі пункти Вам допоможуть:\nУ чому важливість дня здоровʼя?\nЯкі можливості Ви запропонуєте співробітникам?\nЯк Ви подбаєте про безпеку й чистоту?\nЯкі труднощі можуть виникнути?\nЯк Ви сприятимете здоровʼю в довгостроковій перспективі?",
       "ru": "Ситуация: Вы хотите организовать с коллегой небольшой день здоровья для своей команды.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы подготовите этот день.\nЭти пункты Вам помогут:\nВ чём важность дня здоровья?\nКакие возможности Вы предложите сотрудникам?\nКак Вы позаботитесь о безопасности и чистоте?\nКакие трудности могут возникнуть?\nКак Вы будете способствовать здоровью в долгосрочной перспективе?"
     },
     "name_q": "de_m_alex",
@@ -53467,14 +53311,14 @@ var DIALOGE = [
     "q": {
       "de": "Hallo, Julia! Ich finde, wir sollten einen kleinen Gesundheitstag für unser Team organisieren. Wollen wir das zusammen planen?",
       "en": "Hi, Julia! I think we should organize a small health day for our team. Should we plan that together?",
-      "uk": "Привіт, Юліє! Думаю, нам варто організувати невеликий день здоров'я для нашої команди. Може, сплануємо це разом?",
+      "uk": "Привіт, Юліє! Думаю, нам варто організувати невеликий день здоровʼя для нашої команди. Може, сплануємо це разом?",
       "ru": "Привет, Юлия! Думаю, нам стоит организовать небольшой день здоровья для нашей команды. Может, спланируем это вместе?",
       "gram": ""
     },
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich schlage vor, dass wir</r> zuerst über die <g>Wichtigkeit</g> der Gesundheit am Arbeitsplatz sprechen.<br><r>Was denkst du</r>, Alex?",
       "en": "<r>Sounds great, let's do that</r>.<br><r>I suggest that</r> we first talk about the <g>importance</g> of health in the workplace.<br><r>What do you think</r>, Alex?",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу поговорили про <g>важливість</g> здоров'я на робочому місці.<br><r>Що ти думаєш</r>, Алексе?",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>Пропоную, щоб</r> ми спершу поговорили про <g>важливість</g> здоровʼя на робочому місці.<br><r>Що ти думаєш</r>, Алексе?",
       "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>Предлагаю, чтобы</r> мы сначала поговорили о <g>важности</g> здоровья на рабочем месте.<br><r>Что ты думаешь</r>, Алекс?",
       "gram": "nomen_auf_heit_keit"
     },
@@ -53523,14 +53367,14 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Ich würde vorschlagen, dass wir</r> die <g>Gesundheit</g> unserer Kollegen zu einem festen Thema im Team machen.<br><r>Können wir uns darauf einigen?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>I would suggest that</r> we make our colleagues' <g>health</g> a permanent topic in the team.<br><r>Can we agree on that?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми зробили <g>здоров'я</g> наших колег постійною темою в команді.<br><r>Ми можемо про це домовитися?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Я б запропонував, щоб</r> ми зробили <g>здоровʼя</g> наших колег постійною темою в команді.<br><r>Ми можемо про це домовитися?</r>",
       "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Я бы предложил, чтобы</r> мы сделали <g>здоровье</g> наших коллег постоянной темой в команде.<br><r>Мы можем об этом договориться?</r>",
       "gram": "nomen_auf_heit_keit"
     },
     "a4": {
       "de": "Ja, gute Idee! Also, wir sprechen über Gesundheit, Sicherheit und Sauberkeit, bieten kostenlose Untersuchungen an, und planen genug Flexibilität für alle. Ich freue mich schon auf den Gesundheitstag! Bis bald!",
       "en": "Yes, good idea! So, we'll talk about health, safety, and cleanliness, offer free check-ups, and plan enough flexibility for everyone. I'm already looking forward to the health day! Talk soon!",
-      "uk": "Так, гарна ідея! Отже, говоримо про здоров'я, безпеку й чистоту, пропонуємо безкоштовні огляди, і плануємо достатньо гнучкості для всіх. Уже тішуся дню здоров'я! До зв'язку!",
+      "uk": "Так, гарна ідея! Отже, говоримо про здоровʼя, безпеку й чистоту, пропонуємо безкоштовні огляди, і плануємо достатньо гнучкості для всіх. Уже тішуся дню здоровʼя! До звʼязку!",
       "ru": "Да, хорошая идея! Итак, говорим о здоровье, безопасности и чистоте, предлагаем бесплатные осмотры, и планируем достаточно гибкости для всех. Уже жду с нетерпением день здоровья! До связи!",
       "gram": ""
     }
@@ -53585,7 +53429,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären</r>, wie viele Nachbarn wirklich mitmachen.<br><r>Mein Vorschlag wäre, dass wir</r> es erst einmal alle zwei Monate versuchen, <g>damit</g> die Aktion nachhaltig <g>bleibt</g>.<br><r>Wäre das okay für dich?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how many neighbors will actually take part.<br><r>My suggestion would be that we</r> try it every two months at first, <g>so that</g> the action stays sustainable.<br><r>Would that be okay for you?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати</r>, скільки сусідів справді долучаться.<br><r>Моя пропозиція така, що ми</r> спочатку спробуємо раз на два місяці, <g>щоб</g> акція залишалася сталою.<br><r>Тобі це підійде?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати</r>, скільки сусідів справді долучаться.<br><r>Моя пропозиція така, що ми</r> спочатку спробуємо раз на два місяці, <g>щоб</g> акція залишалася сталою.<br><r>Тобі це підійде?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить</r>, сколько соседей действительно присоединятся.<br><r>Моё предложение в том, чтобы мы</r> сначала попробовали раз в два месяца, <g>чтобы</g> акция оставалась устойчивой.<br><r>Тебе это подойдёт?</r>",
       "gram": "nebensatz_mit_damit_wdh_b1"
     },
@@ -53668,7 +53512,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob wir dann nicht frieren.<br><r>Eine Idee wäre, dass wir</r> langfristig auch erneuerbare Energiequellen einsetzen, damit sie öfter <g>genutzt werden</g>.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> whether we won't be cold then.<br><r>One idea would be that we</r> also use renewable energy sources in the long term, so they <g>are used</g> more often.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи ми тоді не мерзнутимемо.<br><r>Була б ідея, щоб ми</r> також довгостроково використовували відновлювані джерела енергії, щоб їх <g>частіше використовували</g>.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> чи ми тоді не мерзнутимемо.<br><r>Була б ідея, щоб ми</r> також довгостроково використовували відновлювані джерела енергії, щоб їх <g>частіше використовували</g>.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> не будем ли мы тогда мёрзнуть.<br><r>Была бы идея, чтобы мы</r> также в долгосрочной перспективе использовали возобновляемые источники энергии, чтобы их <g>чаще использовали</g>.<br><r>Что ты на это скажешь?</r>",
       "gram": "passiv_praesens_b1"
     },
@@ -53751,7 +53595,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie wir das genau messen.<br><r>Eine Idee wäre, dass wir</r> weitermachen – ich habe schon einige Kollegen <g>überzeugt</g>, den Müll zu trennen.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> exactly how we measure that.<br><r>One idea would be that we</r> keep going – I've already <g>convinced</g> some colleagues to separate their waste.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як саме ми це вимірюватимемо.<br><r>Була б ідея, щоб ми</r> продовжували – я вже <g>переконала</g> кількох колег сортувати сміття.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> як саме ми це вимірюватимемо.<br><r>Була б ідея, щоб ми</r> продовжували – я вже <g>переконала</g> кількох колег сортувати сміття.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как именно мы будем это измерять.<br><r>Была бы идея, чтобы мы</r> продолжали – я уже <g>убедила</g> нескольких коллег сортировать мусор.<br><r>Что ты на это скажешь?</r>",
       "gram": "perfekt_wdh_b1"
     },
@@ -53834,7 +53678,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie lange wir bleiben.<br><r>Eine Idee wäre, dass wir</r> danach fragen, wie die <g>Vermarktung</g> der Produkte funktioniert.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how long we'll stay.<br><r>One idea would be that we</r> also ask how the <g>marketing</g> of the products works.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки ми там пробудемо.<br><r>Була б ідея, щоб ми</r> ще запитали, як працює <g>маркетинг</g> продукції.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки ми там пробудемо.<br><r>Була б ідея, щоб ми</r> ще запитали, як працює <g>маркетинг</g> продукції.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько мы там пробудем.<br><r>Была бы идея, чтобы мы</r> ещё спросили, как работает <g>маркетинг</g> продукции.<br><r>Что ты на это скажешь?</r>",
       "gram": "nomen_auf_ung"
     },
@@ -53917,7 +53761,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie wir das mit der Sicherheit machen.<br><r>Eine Idee wäre, dass wir</r> vorher fragen, wie oft die Tiere dort <g>kontrolliert werden</g>.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how we handle safety.<br><r>One idea would be that we</r> ask beforehand how often the animals <g>are checked</g> there.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як ми вирішимо питання безпеки.<br><r>Була б ідея, щоб ми</r> заздалегідь запитали, як часто там <g>перевіряють</g> тварин.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> як ми вирішимо питання безпеки.<br><r>Була б ідея, щоб ми</r> заздалегідь запитали, як часто там <g>перевіряють</g> тварин.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как мы решим вопрос безопасности.<br><r>Была бы идея, чтобы мы</r> заранее спросили, как часто там <g>проверяют</g> животных.<br><r>Что ты на это скажешь?</r>",
       "gram": "passiv_praesens_b1"
     },
@@ -54000,7 +53844,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Zeit wir dafür haben.<br><r>Eine Idee wäre, dass wir</r> auch praktische Tipps geben, wie man nachhaltiger leben kann.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how much time we have for that.<br><r>One idea would be that we</r> also give practical tips on how to live more sustainably.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу в нас на це є.<br><r>Була б ідея, щоб ми</r> також дали практичні поради, як жити більш екологічно.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки часу в нас на це є.<br><r>Була б ідея, щоб ми</r> також дали практичні поради, як жити більш екологічно.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько у нас на это времени.<br><r>Была бы идея, чтобы мы</r> также дали практические советы, как жить более экологично.<br><r>Что ты на это скажешь?</r>",
       "gram": ""
     },
@@ -54021,7 +53865,7 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> eine Expertin oder einen Experten fragen, ob sie oder er am Freitagabend kommen kann.<br><r>Bist du damit einverstanden</r>, Mark?",
       "en": "<r>I like that a lot</r>.<br><r>Let's</r> ask an expert whether they can come on Friday evening.<br><r>Are you okay with that</r>, Mark?",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> запитаємо експерта чи експертку, чи зможе він або вона прийти в п'ятницю ввечері.<br><r>Ти з цим згоден</r>, Марку?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> запитаємо експерта чи експертку, чи зможе він або вона прийти в пʼятницю ввечері.<br><r>Ти з цим згоден</r>, Марку?",
       "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> спросим эксперта или экспертку, сможет ли он или она прийти в пятницу вечером.<br><r>Ты с этим согласен</r>, Марк?",
       "gram": ""
     },
@@ -54069,7 +53913,7 @@ var DIALOGE = [
     "a1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> uns beide online anmelden, <g>weil</g> die Anmeldung Pflicht ist.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Perfect, let's do it that way</r>.<br><r>My suggestion would be that we</r> both register online, <g>because</g> registration is required.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> обидві зареєструємося онлайн, <g>бо</g> реєстрація обов'язкова.<br><r>Ти згодна з цим?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, що ми</r> обидві зареєструємося онлайн, <g>бо</g> реєстрація обовʼязкова.<br><r>Ти згодна з цим?</r>",
       "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> обе зарегистрируемся онлайн, <g>потому что</g> регистрация обязательна.<br><r>Ты согласна с этим?</r>",
       "gram": "konnektoren_wdh_b1"
     },
@@ -54083,7 +53927,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viele Leute mitkommen können.<br><r>Eine Idee wäre, dass wir</r> beide bei der Arbeit um Erlaubnis fragen, weil die Veranstaltung schon am Nachmittag beginnt.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how many people can come along.<br><r>One idea would be that we</r> both ask for permission at work, since the event already starts in the afternoon.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки людей можуть піти з нами.<br><r>Була б ідея, щоб ми</r> обидві попросили дозволу на роботі, бо захід починається вже вдень.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки людей можуть піти з нами.<br><r>Була б ідея, щоб ми</r> обидві попросили дозволу на роботі, бо захід починається вже вдень.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько людей смогут пойти с нами.<br><r>Была бы идея, чтобы мы</r> обе попросили разрешения на работе, потому что мероприятие начинается уже днём.<br><r>Что ты на это скажешь?</r>",
       "gram": ""
     },
@@ -54166,7 +54010,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie wir anreisen.<br><r>Eine Idee wäre, dass wir</r> noch <g>auf die Bestätigung</g> von den Ticketverkäufern warten, bevor wir alles andere planen.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how we'll get there.<br><r>One idea would be that we</r> still wait <g>for the confirmation</g> from the ticket sellers before we plan everything else.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як ми туди дістанемося.<br><r>Була б ідея, щоб ми</r> ще почекали <g>на підтвердження</g> від продавців квитків, перш ніж планувати решту.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> як ми туди дістанемося.<br><r>Була б ідея, щоб ми</r> ще почекали <g>на підтвердження</g> від продавців квитків, перш ніж планувати решту.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как мы туда доберёмся.<br><r>Была бы идея, чтобы мы</r> ещё подождали <g>подтверждения</g> от продавцов билетов, прежде чем планировать остальное.<br><r>Что ты на это скажешь?</r>",
       "gram": "verben_mit_praep_wdh_b1"
     },
@@ -54206,7 +54050,7 @@ var DIALOGE = [
     "task": {
       "de": "Situation: Sie und Ihr Freund/Ihre Freundin waren zusammen auf dem Festival und möchten jetzt gemeinsam eine Bewertung darüber schreiben.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWorauf sind Sie stolz?\nWorüber möchten Sie sich beschweren?\nWovon waren Sie enttäuscht?\nWoran erinnern Sie sich am meisten?\nWorauf sind Sie neugierig?",
       "en": "Situation: You and your friend were at the festival together and now want to write a review about it together.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nWhat are you proud of?\nWhat do you want to complain about?\nWhat were you disappointed by?\nWhat do you remember most?\nWhat are you curious about?",
-      "uk": "Ситуація: Ви та Ваш друг/Ваша подруга разом були на фестивалі й тепер хочете разом написати про це відгук.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЧим Ви пишаєтеся?\nНа що хочете поскаржитися?\nЧим Ви були розчаровані?\nЩо Ви пам'ятаєте найбільше?\nЩо Вас цікавить?",
+      "uk": "Ситуація: Ви та Ваш друг/Ваша подруга разом були на фестивалі й тепер хочете разом написати про це відгук.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЧим Ви пишаєтеся?\nНа що хочете поскаржитися?\nЧим Ви були розчаровані?\nЩо Ви памʼятаєте найбільше?\nЩо Вас цікавить?",
       "ru": "Ситуация: Вы и Ваш друг/Ваша подруга вместе были на фестивале и теперь хотите вместе написать об этом отзыв.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nЧем Вы гордитесь?\nНа что хотите пожаловаться?\nЧем Вы были разочарованы?\nЧто Вы помните больше всего?\nЧто Вас интересует?"
     },
     "name_q": "de_w_nina",
@@ -54249,21 +54093,21 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie ehrlich wir schreiben.<br><r>Eine Idee wäre, dass wir</r> ehrlich schreiben, dass ich nur ein bisschen <g>davon</g> enttäuscht war, dass die Bühne so weit weg war.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how honest we want to be.<br><r>One idea would be that we</r> honestly write that I was only a little disappointed <g>by that</g> – that the stage was so far away.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> наскільки чесно ми писатимемо.<br><r>Була б ідея, щоб ми</r> чесно написали, що я був лише трохи розчарований <g>цим</g> – тим, що сцена була так далеко.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> наскільки чесно ми писатимемо.<br><r>Була б ідея, щоб ми</r> чесно написали, що я був лише трохи розчарований <g>цим</g> – тим, що сцена була так далеко.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> насколько честно мы будем писать.<br><r>Была бы идея, чтобы мы</r> честно написали, что я был лишь немного разочарован <g>этим</g> – тем, что сцена была так далеко.<br><r>Что ты на это скажешь?</r>",
       "gram": "fragewoerter_wor_dar"
     },
     "q3": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> auch schreiben, <g>woran</g> wir uns am längsten erinnern werden?<br><r>Passt dir das so?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> also write about <g>what</g> we'll remember the longest?<br><r>Does that work for you?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> також напишемо, <g>що</g> ми запам'ятаємо найдовше?<br><r>Тобі це підходить?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> також напишемо, <g>що</g> ми запамʼятаємо найдовше?<br><r>Тобі це підходить?</r>",
       "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> также напишем, <g>что</g> мы запомним дольше всего?<br><r>Тебе это подходит?</r>",
       "gram": "fragewoerter_wor_dar"
     },
     "a3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir alles in einen Text packen können.<br><r>Vielleicht wäre es am besten, wenn wir</r> schreiben, dass ich mich bestimmt am längsten <g>daran</g> erinnern werde, wie gut die Stimmung am letzten Abend war.<br><r>Was meinst du dazu?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether we can fit everything into one text.<br><r>Maybe it would be best if we</r> write that I'll definitely remember <g>that</g> the longest – how great the mood was on the last evening.<br><r>What do you think about that?</r>",
-      "uk": "<r>Хм, я не зовсім впевнений</r>, чи ми зможемо вмістити все в один текст.<br><r>Можливо, було б найкраще, якби ми</r> написали, що я точно найдовше пам'ятатиму <g>про це</g> – про те, яка чудова була атмосфера останнього вечора.<br><r>Що ти про це думаєш?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи ми зможемо вмістити все в один текст.<br><r>Можливо, було б найкраще, якби ми</r> написали, що я точно найдовше памʼятатиму <g>про це</g> – про те, яка чудова була атмосфера останнього вечора.<br><r>Що ти про це думаєш?</r>",
       "ru": "<r>Хм, я не совсем уверен</r>, сможем ли мы уместить всё в один текст.<br><r>Может быть, было бы лучше, если бы мы</r> написали, что я точно дольше всего буду помнить <g>об этом</g> – о том, какая классная была атмосфера в последний вечер.<br><r>Что ты об этом думаешь?</r>",
       "gram": "fragewoerter_wor_dar"
     },
@@ -54325,14 +54169,14 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Einverstanden, das passt gut</r>.<br><r>Ich würde vorschlagen, dass</r> wir uns gleich merken, wie lang die Frist zum Zurückgeben ist, damit wir nichts vergessen.<br><r>Wie siehst du das?</r>",
       "en": "<r>Agreed, that works well</r>.<br><r>I would suggest that</r> we note right away how long the deadline for returning is, so we don't forget anything.<br><r>How do you see it?</r>",
-      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ми одразу запам'ятали, який строк повернення, щоб нічого не забути.<br><r>Як ти на це дивишся?</r>",
+      "uk": "<r>Погоджуюсь, це підходить</r>.<br><r>Я б запропонувала, щоб</r> ми одразу запамʼятали, який строк повернення, щоб нічого не забути.<br><r>Як ти на це дивишся?</r>",
       "ru": "<r>Согласна, это подходит</r>.<br><r>Я бы предложила, чтобы</r> мы сразу запомнили, какой срок возврата, чтобы ничего не забыть.<br><r>Как ты на это смотришь?</r>",
       "gram": ""
     },
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie oft man die Bücher behalten darf.<br><r>Eine Idee wäre, dass wir</r> auch fragen, ob man die Frist online verlängern kann, falls wir mal länger brauchen.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how often you're allowed to keep the books.<br><r>One idea would be that we</r> also ask whether you can extend the deadline online, in case we need more time.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як часто можна тримати книжки.<br><r>Була б ідея, щоб ми</r> ще запитали, чи можна продовжити строк онлайн, якщо нам знадобиться більше часу.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> як часто можна тримати книжки.<br><r>Була б ідея, щоб ми</r> ще запитали, чи можна продовжити строк онлайн, якщо нам знадобиться більше часу.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как часто можно держать книги.<br><r>Была бы идея, чтобы мы</r> ещё спросили, можно ли продлить срок онлайн, если нам понадобится больше времени.<br><r>Что ты на это скажешь?</r>",
       "gram": ""
     },
@@ -54360,7 +54204,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, klar! Also, wir machen es so: Wir holen uns morgen einen Ausweis, reservieren Bücher, merken uns die Frist und geben alles gemeinsam zurück. Ich freue mich schon auf unser neues Mitglied-Abenteuer! Danke für die Idee, Julia!",
       "en": "Yes, of course! So, here's what we'll do: tomorrow we'll get a library card, reserve books, note the deadline, and return everything together. I'm already looking forward to our new member adventure! Thanks for the idea, Julia!",
-      "uk": "Так, звісно! Отже, зробимо так: завтра оформимо квиток, зарезервуємо книжки, запам'ятаємо строк і повертатимемо все разом. Я вже чекаю на нашу нову бібліотечну пригоду! Дякую за ідею, Юліє!",
+      "uk": "Так, звісно! Отже, зробимо так: завтра оформимо квиток, зарезервуємо книжки, запамʼятаємо строк і повертатимемо все разом. Я вже чекаю на нашу нову бібліотечну пригоду! Дякую за ідею, Юліє!",
       "ru": "Да, конечно! Итак, сделаем так: завтра оформим билет, зарезервируем книги, запомним срок и будем возвращать всё вместе. Я уже жду нашего нового библиотечного приключения! Спасибо за идею, Юлия!",
       "gram": ""
     }
@@ -54415,7 +54259,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie lange die Führung dauert.<br><r>Eine Idee wäre, dass wir</r> uns auch die besondere Sammlung alter Bücher zeigen lassen.<br><r>Was hältst du <g>eigentlich</g> davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how long the tour lasts.<br><r>One idea would be that we</r> also have the special collection of old books shown to us.<br><r>What do you <g>actually</g> think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки триває екскурсія.<br><r>Була б ідея, щоб ми</r> також попросили показати нам особливу колекцію старих книжок.<br><r>Що ти <g>взагалі</g> про це думаєш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки триває екскурсія.<br><r>Була б ідея, щоб ми</r> також попросили показати нам особливу колекцію старих книжок.<br><r>Що ти <g>взагалі</g> про це думаєш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько длится экскурсия.<br><r>Была бы идея, чтобы мы</r> также попросим показать нам особую коллекцию старых книг.<br><r>Что ты <g>вообще</g> об этом думаешь?</r>",
       "gram": "interesse_denn_eigentlich"
     },
@@ -54436,7 +54280,7 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> uns gleich für die nächste Führung anmelden, dann haben wir alles geklärt.<br><r>Bist du <g>denn</g> damit einverstanden</r>, David?",
       "en": "<r>I like that a lot</r>.<br><r>Let's</r> sign up for the next tour right away, then we'll have everything sorted out.<br><r><g>So</g>, are you okay with that</r>, David?",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> одразу запишемося на найближчу екскурсію, тоді все буде з'ясовано.<br><r><g>То</g> ти з цим згоден</r>, Девіде?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> одразу запишемося на найближчу екскурсію, тоді все буде зʼясовано.<br><r><g>То</g> ти з цим згоден</r>, Девіде?",
       "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> сразу запишемся на ближайшую экскурсию, тогда всё будет выяснено.<br><r><g>А</g> ты с этим согласен</r>, Дэвид?",
       "gram": "interesse_denn_eigentlich"
     },
@@ -54498,7 +54342,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Zeit wir dort verbringen.<br><r>Eine Idee wäre, dass wir</r> uns nur die wichtigsten Werke ansehen, weil die genaue Reihenfolge eigentlich <g>unwichtig</g> ist.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how much time we'll spend there.<br><r>One idea would be that we</r> only look at the most important works, since the exact order is actually <g>unimportant</g>.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу ми там проведемо.<br><r>Була б ідея, щоб ми</r> подивилися лише найважливіші роботи, бо точний порядок насправді <g>неважливий</g>.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки часу ми там проведемо.<br><r>Була б ідея, щоб ми</r> подивилися лише найважливіші роботи, бо точний порядок насправді <g>неважливий</g>.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько времени мы там проведём.<br><r>Была бы идея, чтобы мы</r> посмотрели только самые важные работы, потому что точный порядок на самом деле <g>неважен</g>.<br><r>Что ты на это скажешь?</r>",
       "gram": "adjektive_mit_un"
     },
@@ -54581,7 +54425,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie realistisch das ist.<br><r>Eine Idee wäre, dass wir</r> zuerst an den Überstunden arbeiten – ich <g>würde</g> doch so gern weniger Überstunden machen.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how realistic that is.<br><r>One idea would be that we</r> first work on the overtime – I really <g>would</g> love to work fewer overtime hours.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> наскільки це реалістично.<br><r>Була б ідея, щоб ми</r> спершу попрацювали над понаднормовими – я <g>б</g> дуже хотів менше працювати понаднормово.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> наскільки це реалістично.<br><r>Була б ідея, щоб ми</r> спершу попрацювали над понаднормовими – я <g>б</g> дуже хотів менше працювати понаднормово.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> насколько это реалистично.<br><r>Была бы идея, чтобы мы</r> сначала поработали над сверхурочными – я <g>бы</g> очень хотел меньше работать сверхурочно.<br><r>Что ты на это скажешь?</r>",
       "gram": "konjunktiv2_wuensche_b1"
     },
@@ -54609,7 +54453,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, klar! Also, wir machen es so: Wir suchen nach flexiblen Stellen, sprechen übers Gehalt und die Beförderung, helfen uns beim Anschreiben und üben für das Gespräch. Ich freue mich schon auf unsere neuen Karrieren! Danke für die Idee, Nina!",
       "en": "Yes, of course! So, here's what we'll do: we'll search for flexible positions, talk about the salary and the promotion, help each other with the cover letter, and practice for the interview. I'm already looking forward to our new careers! Thanks for the idea, Nina!",
-      "uk": "Так, звісно! Отже, зробимо так: пошукаємо гнучкі посади, поговоримо про зарплату й підвищення, допоможемо одне одному із супровідним листом і потренуємося перед співбесідою. Я вже тішуся нашій новій кар'єрі! Дякую за ідею, Ніно!",
+      "uk": "Так, звісно! Отже, зробимо так: пошукаємо гнучкі посади, поговоримо про зарплату й підвищення, допоможемо одне одному із супровідним листом і потренуємося перед співбесідою. Я вже тішуся нашій новій карʼєрі! Дякую за ідею, Ніно!",
       "ru": "Да, конечно! Итак, сделаем так: поищем гибкие должности, поговорим о зарплате и повышении, поможем друг другу с сопроводительным письмом и потренируемся перед собеседованием. Я уже жду нашей новой карьеры! Спасибо за идею, Нина!",
       "gram": ""
     }
@@ -54664,7 +54508,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Zeit wir wirklich haben.<br><r>Eine Idee wäre, dass wir</r> über Teilzeit nachdenken – <g>wenn ich in Teilzeit arbeiten könnte, hätte ich mehr Zeit für die Bewerbungen</g>.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how much time we really have.<br><r>One idea would be that we</r> think about part-time work – <g>if I could work part-time, I would have more time for applications</g>.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу в нас справді є.<br><r>Була б ідея, щоб ми</r> подумали про неповну зайнятість – <g>якби я могла працювати неповний день, у мене було б більше часу на подання заявок</g>.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки часу в нас справді є.<br><r>Була б ідея, щоб ми</r> подумали про неповну зайнятість – <g>якби я могла працювати неповний день, у мене було б більше часу на подання заявок</g>.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько времени у нас действительно есть.<br><r>Была бы идея, чтобы мы</r> подумали о неполной занятости – <g>если бы я могла работать неполный день, у меня было бы больше времени на подачу заявок</g>.<br><r>Что ты на это скажешь?</r>",
       "gram": "nebensatz_wenn_konjunktiv2_irreal"
     },
@@ -54747,21 +54591,21 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Zeit wir noch haben.<br><r>Eine Idee wäre, dass wir</r> ehrlich sind – ich mache mir Sorgen <g>darum, dass</g> wir nicht alle Unterlagen rechtzeitig fertig haben.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how much time we have left.<br><r>One idea would be that we</r> are honest – I'<g>m worried that</g> we won't have all the documents ready in time.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу в нас ще є.<br><r>Була б ідея, щоб ми</r> були чесними – я хвилююся <g>через те, що</g> ми не встигнемо підготувати всі документи вчасно.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки часу в нас ще є.<br><r>Була б ідея, щоб ми</r> були чесними – я хвилююся <g>через те, що</g> ми не встигнемо підготувати всі документи вчасно.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько времени у нас ещё есть.<br><r>Была бы идея, чтобы мы</r> были честными – я переживаю <g>из-за того, что</g> мы не успеем подготовить все документы вовремя.<br><r>Что ты на это скажешь?</r>",
       "gram": "verben_praep_dass_satz"
     },
     "q3": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> das zuerst klären? Ich ärgere mich total <g>darüber, dass</g> mein Zeugnis noch fehlt.<br><r>Passt dir das so?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> clarify that first? It really <g>annoys me that</g> my certificate is still missing.<br><r>Does that work for you?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> спершу з'ясуємо це? Мене дуже <g>дратує те, що</g> мого свідоцтва ще немає.<br><r>Тобі це підходить?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> спершу зʼясуємо це? Мене дуже <g>дратує те, що</g> мого свідоцтва ще немає.<br><r>Тобі це підходить?</r>",
       "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> сначала выясним это? Меня очень <g>раздражает то, что</g> моей справки ещё нет.<br><r>Тебе это подходит?</r>",
       "gram": "verben_praep_dass_satz"
     },
     "a3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob das jetzt so wichtig ist.<br><r>Vielleicht wäre es am besten, wenn wir</r> zuerst <g>daran denken, dass</g> wir den Personalchef gut beeindrucken müssen.<br><r>Was meinst du dazu?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether that's so important right now.<br><r>Maybe it would be best if we</r> first <g>keep in mind that</g> we need to impress the HR manager.<br><r>What do you think about that?</r>",
-      "uk": "<r>Хм, я не зовсім впевнена</r>, чи це зараз так важливо.<br><r>Можливо, було б найкраще, якби ми</r> спершу <g>пам'ятали про те, що</g> нам потрібно справити гарне враження на керівника відділу кадрів.<br><r>Що ти про це думаєш?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи це зараз так важливо.<br><r>Можливо, було б найкраще, якби ми</r> спершу <g>памʼятали про те, що</g> нам потрібно справити гарне враження на керівника відділу кадрів.<br><r>Що ти про це думаєш?</r>",
       "ru": "<r>Хм, я не совсем уверена</r>, так ли это сейчас важно.<br><r>Может быть, было бы лучше, если бы мы</r> сначала <g>помнили о том, что</g> нам нужно произвести хорошее впечатление на начальника отдела кадров.<br><r>Что ты об этом думаешь?</r>",
       "gram": "verben_praep_dass_satz"
     },
@@ -54830,7 +54674,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie wir auf Kritik reagieren.<br><r>Eine Idee wäre, dass wir</r> auch üben, wie man <g>auf eine kritische Frage</g> ruhig und höflich reagiert.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how we react to criticism.<br><r>One idea would be that we</r> also practice how to react calmly and politely <g>to a critical question</g>.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як ми реагуємо на критику.<br><r>Була б ідея, щоб ми</r> також потренувалися, як спокійно й ввічливо реагувати <g>на критичне питання</g>.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> як ми реагуємо на критику.<br><r>Була б ідея, щоб ми</r> також потренувалися, як спокійно й ввічливо реагувати <g>на критичне питання</g>.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как мы реагируем на критику.<br><r>Была бы идея, чтобы мы</r> также потренировались спокойно и вежливо реагировать <g>на критический вопрос</g>.<br><r>Что ты на это скажешь?</r>",
       "gram": "adjektive_auf_ig_isch"
     },
@@ -54913,14 +54757,14 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Zeit das kostet.<br><r>Eine Idee wäre, dass wir</r> ehrlich über den Lohn sprechen, <g>denn</g> unsere Wünsche und die Wirklichkeit passen manchmal nicht zusammen.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how much time that takes.<br><r>One idea would be that we</r> talk honestly about the wage, <g>because</g> our wishes and reality sometimes don't match up.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу це забере.<br><r>Була б ідея, щоб ми</r> чесно поговорили про зарплату, <g>бо</g> наші бажання й дійсність іноді не збігаються.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки часу це забере.<br><r>Була б ідея, щоб ми</r> чесно поговорили про зарплату, <g>бо</g> наші бажання й дійсність іноді не збігаються.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько времени это займёт.<br><r>Была бы идея, чтобы мы</r> честно поговорили о зарплате, <g>потому что</g> наши желания и действительность иногда не совпадают.<br><r>Что ты на это скажешь?</r>",
       "gram": "konnektoren_wdh_b1"
     },
     "q3": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns eine feste Gewohnheit angewöhnen, jeden Freitag über die Woche zu sprechen?<br><r>Passt dir das so?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> develop a fixed habit of talking about the week every Friday?<br><r>Does that work for you?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> виробимо чітку звичку щоп'ятниці обговорювати тиждень?<br><r>Тобі це підходить?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> виробимо чітку звичку щопʼятниці обговорювати тиждень?<br><r>Тобі це підходить?</r>",
       "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> выработаем чёткую привычку каждую пятницу обсуждать неделю?<br><r>Тебе это подходит?</r>",
       "gram": ""
     },
@@ -54996,7 +54840,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie wir mit der Nervosität umgehen.<br><r>Eine Idee wäre, dass wir</r> ein paarmal tief durchatmen, <g>bevor wir zu nervös werden</g>.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how we deal with nervousness.<br><r>One idea would be that we</r> take a few deep breaths <g>before we get too nervous</g>.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як ми впораємося з нервозністю.<br><r>Була б ідея, щоб ми</r> кілька разів глибоко подихали, <g>перш ніж занадто занервуємо</g>.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> як ми впораємося з нервозністю.<br><r>Була б ідея, щоб ми</r> кілька разів глибоко подихали, <g>перш ніж занадто занервуємо</g>.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как мы справимся с нервозностью.<br><r>Была бы идея, чтобы мы</r> несколько раз глубоко подышали, <g>прежде чем слишком занервничаем</g>.<br><r>Что ты на это скажешь?</r>",
       "gram": "nebensatz_mit_bevor"
     },
@@ -55010,14 +54854,14 @@ var DIALOGE = [
     "a3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob wir daran denken werden.<br><r>Vielleicht wäre es am besten, wenn wir</r> genug trinken, <g>bevor wir uns richtig anstrengen</g>.<br><r>Was meinst du dazu?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether we'll remember that.<br><r>Maybe it would be best if we</r> drink enough <g>before we really push ourselves</g>.<br><r>What do you think about that?</r>",
-      "uk": "<r>Хм, я не зовсім впевнений</r>, чи ми про це пам'ятатимемо.<br><r>Можливо, було б найкраще, якби ми</r> пили достатньо, <g>перш ніж по-справжньому докладемо зусиль</g>.<br><r>Що ти про це думаєш?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи ми про це памʼятатимемо.<br><r>Можливо, було б найкраще, якби ми</r> пили достатньо, <g>перш ніж по-справжньому докладемо зусиль</g>.<br><r>Що ти про це думаєш?</r>",
       "ru": "<r>Хм, я не совсем уверен</r>, вспомним ли мы об этом.<br><r>Может быть, было бы лучше, если бы мы</r> пили достаточно, <g>прежде чем по-настоящему приложим усилия</g>.<br><r>Что ты об этом думаешь?</r>",
       "gram": "nebensatz_mit_bevor"
     },
     "q4": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> uns noch leicht bewegen, <g>bevor die Muskeln kalt werden</g>.<br><r>Bist du damit einverstanden</r>, Alex?",
       "en": "<r>I like that a lot</r>.<br><r>Let's</r> also move around a bit <g>before our muscles get cold</g>.<br><r>Are you okay with that</r>, Alex?",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> ще трохи порухаємося, <g>перш ніж м'язи охолонуть</g>.<br><r>Ти з цим згоден</r>, Алексе?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> ще трохи порухаємося, <g>перш ніж мʼязи охолонуть</g>.<br><r>Ти з цим згоден</r>, Алексе?",
       "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> ещё немного подвигаемся, <g>прежде чем мышцы остынут</g>.<br><r>Ты с этим согласен</r>, Алекс?",
       "gram": "nebensatz_mit_bevor"
     },
@@ -55036,7 +54880,7 @@ var DIALOGE = [
     "task": {
       "de": "Situation: Sie und Ihre Teamkollegin/Ihr Teamkollege haben einen neuen Trainer/eine neue Trainerin bekommen und möchten gemeinsam planen, wie das neue Team gut startet.\nAufgabe: Planen Sie zusammen mit Ihrer Gesprächspartnerin oder Ihrem Gesprächspartner, wie Sie das machen möchten.\nDiese Punkte helfen Ihnen:\nWie begrüßen Sie den neuen Trainer?\nWelche Taktik schlagen Sie vor?\nWie zeigen Sie Ihr Talent?\nWelchen Erfolg wollen Sie erreichen?\nWie gehen Sie mit der neuen Herausforderung um?",
       "en": "Situation: You and your teammate have gotten a new coach and want to plan together how the new team gets off to a good start.\nTask: Plan together with your conversation partner how you would like to do this.\nThese points will help you:\nHow do you welcome the new coach?\nWhat tactics do you suggest?\nHow do you show your talent?\nWhat success do you want to achieve?\nHow do you deal with the new challenge?",
-      "uk": "Ситуація: У Вас та Вашого товариша/товаришки по команді з'явився новий тренер/нова тренерка, і Ви хочете разом спланувати, як нова команда добре стартує.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯк Ви привітаєте нового тренера?\nЯку тактику Ви запропонуєте?\nЯк Ви покажете свій талант?\nЯкого успіху Ви хочете досягти?\nЯк Ви впораєтеся з новим викликом?",
+      "uk": "Ситуація: У Вас та Вашого товариша/товаришки по команді зʼявився новий тренер/нова тренерка, і Ви хочете разом спланувати, як нова команда добре стартує.\nЗавдання: Сплануйте разом зі своїм співрозмовником чи співрозмовницею, як Ви хочете це зробити.\nЦі пункти Вам допоможуть:\nЯк Ви привітаєте нового тренера?\nЯку тактику Ви запропонуєте?\nЯк Ви покажете свій талант?\nЯкого успіху Ви хочете досягти?\nЯк Ви впораєтеся з новим викликом?",
       "ru": "Ситуация: У Вас и Вашего товарища/товарища по команде появился новый тренер/новая тренер, и Вы хотите вместе спланировать, как новая команда хорошо стартует.\nЗадание: Спланируйте вместе со своим собеседником/собеседницей, как Вы хотите это сделать.\nЭти пункты Вам помогут:\nКак Вы поприветствуете нового тренера?\nКакую тактику Вы предложите?\nКак Вы покажете свой талант?\nКакого успеха Вы хотите достичь?\nКак Вы справитесь с новым вызовом?"
     },
     "name_q": "de_m_mark",
@@ -55079,7 +54923,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel wir schon wissen.<br><r>Eine Idee wäre, dass wir</r> fragen, wie <g>die neue Taktik</g> aussehen wird, bevor wir zu viel planen.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how much we already know.<br><r>One idea would be that we</r> ask what <g>the new tactics</g> will look like, before we plan too much.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки ми вже знаємо.<br><r>Була б ідея, щоб ми</r> запитали, якою буде <g>нова тактика</g>, перш ніж занадто багато планувати.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки ми вже знаємо.<br><r>Була б ідея, щоб ми</r> запитали, якою буде <g>нова тактика</g>, перш ніж занадто багато планувати.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько мы уже знаем.<br><r>Была бы идея, чтобы мы</r> спросили, какой будет <g>новая тактика</g>, прежде чем слишком много планировать.<br><r>Что ты на это скажешь?</r>",
       "gram": "adjektivdeklination_bestimmter_artikel"
     },
@@ -55162,7 +55006,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wer die Konkurrenz ist.<br><r>Eine Idee wäre, dass wir</r> uns informieren, wer <g>der stärkere Gegner</g> in unserer Gruppe sein könnte.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> who the competition is.<br><r>One idea would be that we</r> find out who <g>the stronger opponent</g> in our group might be.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> хто наші конкуренти.<br><r>Була б ідея, щоб ми</r> дізналися, хто може бути <g>сильнішим суперником</g> у нашій групі.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> хто наші конкуренти.<br><r>Була б ідея, щоб ми</r> дізналися, хто може бути <g>сильнішим суперником</g> у нашій групі.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> кто наши конкуренты.<br><r>Была бы идея, чтобы мы</r> узнали, кто может быть <g>более сильным соперником</g> в нашей группе.<br><r>Что ты на это скажешь?</r>",
       "gram": "komparativ_superlativ_vor_nomen"
     },
@@ -55245,7 +55089,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> welchen Betrag wir erwarten.<br><r>Eine Idee wäre, dass wir</r> den Erlös für <g>das Beste</g> aus dem Verein verwenden – zum Beispiel für neue Ausrüstung.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> what amount we expect.<br><r>One idea would be that we</r> use the proceeds for <g>the best thing</g> for the club – for example new equipment.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> яку суму ми очікуємо.<br><r>Була б ідея, щоб ми</r> використали виторг на <g>найкраще</g> для клубу – наприклад, на нове спорядження.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> яку суму ми очікуємо.<br><r>Була б ідея, щоб ми</r> використали виторг на <g>найкраще</g> для клубу – наприклад, на нове спорядження.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> какую сумму мы ожидаем.<br><r>Была бы идея, чтобы мы</r> использовали выручку на <g>самое лучшее</g> для клуба – например, на новое снаряжение.<br><r>Что ты на это скажешь?</r>",
       "gram": "adjektive_als_nomen"
     },
@@ -55328,7 +55172,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wann wir Zeit haben.<br><r>Eine Idee wäre, dass wir</r> ein kleines Event veranstalten, bei dem alle die neue Sportart einfach ausprobieren können.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> when we have time.<br><r>One idea would be that we</r> organize a small event where everyone can simply try out the new sport.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> коли в нас є час.<br><r>Була б ідея, щоб ми</r> організували невелику подію, де всі просто зможуть спробувати новий вид спорту.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> коли в нас є час.<br><r>Була б ідея, щоб ми</r> організували невелику подію, де всі просто зможуть спробувати новий вид спорту.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> когда у нас есть время.<br><r>Была бы идея, чтобы мы</r> организовали небольшое мероприятие, где все просто смогут попробовать новый вид спорта.<br><r>Что ты на это скажешь?</r>",
       "gram": ""
     },
@@ -55390,7 +55234,7 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> den Mutterschutz <r>bedenken</r>.<br><r>Wir könnten doch</r> auch klären, wann genau mein Mutterschutz beginnt, damit ich rechtzeitig aufhöre zu arbeiten.<br><r>Wie findest du das?</r>",
       "en": "<r>That sounds good, but maybe we should also think about</r> maternity protection.<br><r>We could</r> also clarify exactly when my maternity leave begins, so I stop working in time.<br><r>How do you find that?</r>",
-      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> охорону материнства.<br><r>Ми могли б</r> також з'ясувати, коли саме починається моя декретна відпустка, щоб я вчасно перестала працювати.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> охорону материнства.<br><r>Ми могли б</r> також зʼясувати, коли саме починається моя декретна відпустка, щоб я вчасно перестала працювати.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать об</r> охране материнства.<br><r>Мы могли бы</r> также выяснить, когда именно начинается мой декретный отпуск, чтобы я вовремя перестала работать.<br><r>Как тебе такая идея?</r>",
       "gram": ""
     },
@@ -55411,7 +55255,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Geld wir dafür haben.<br><r>Eine Idee wäre, dass wir</r> schon jetzt besprechen, wie wir uns beim Stillen und Wickeln abwechseln.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how much money we have for that.<br><r>One idea would be that we</r> discuss now how we'll take turns with breastfeeding and changing nappies.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки грошей у нас на це є.<br><r>Була б ідея, щоб ми</r> вже зараз обговорили, як ми чергуватимемося з годуванням груддю та переодяганням підгузків.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки грошей у нас на це є.<br><r>Була б ідея, щоб ми</r> вже зараз обговорили, як ми чергуватимемося з годуванням груддю та переодяганням підгузків.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько денег у нас на это есть.<br><r>Была бы идея, чтобы мы</r> уже сейчас обсудили, как мы будем чередоваться с кормлением грудью и сменой подгузников.<br><r>Что ты на это скажешь?</r>",
       "gram": ""
     },
@@ -55439,7 +55283,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, klar! Also, wir machen es so: Wir suchen eine Hebamme, klären den Mutterschutz und den Vaterschaftsurlaub, kaufen einen Kinderwagen und melden uns für einen Kita-Platz an. Ich freue mich schon auf unser Neugeborenes! Danke für die Idee, Anna!",
       "en": "Yes, of course! So, here's what we'll do: we'll look for a midwife, clarify the maternity and paternity leave, buy a stroller, and register for a daycare spot. I'm already looking forward to our newborn! Thanks for the idea, Anna!",
-      "uk": "Так, звісно! Отже, зробимо так: пошукаємо акушерку, з'ясуємо декретну й батьківську відпустку, купимо коляску й запишемося на місце в дитячому садку. Я вже чекаю на нашого новонародженого! Дякую за ідею, Анно!",
+      "uk": "Так, звісно! Отже, зробимо так: пошукаємо акушерку, зʼясуємо декретну й батьківську відпустку, купимо коляску й запишемося на місце в дитячому садку. Я вже чекаю на нашого новонародженого! Дякую за ідею, Анно!",
       "ru": "Да, конечно! Итак, сделаем так: поищем акушерку, выясним декретный и отцовский отпуск, купим коляску и запишемся на место в детском саду. Я уже жду нашего новорождённого! Спасибо за идею, Анна!",
       "gram": ""
     }
@@ -55494,7 +55338,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie oft ich anrufen darf.<br><r>Eine Idee wäre, dass wir</r> vereinbaren: Ich <g>brauche nicht zu zögern</g>, dich einfach anzurufen, wenn ich Hilfe brauche.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how often I'm allowed to call.<br><r>One idea would be that we</r> agree: I <g>don't need to hesitate</g> to just call you when I need help.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як часто мені можна дзвонити.<br><r>Була б ідея, щоб ми</r> домовилися: мені <g>не потрібно вагатися</g> просто зателефонувати тобі, коли мені потрібна допомога.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> як часто мені можна дзвонити.<br><r>Була б ідея, щоб ми</r> домовилися: мені <g>не потрібно вагатися</g> просто зателефонувати тобі, коли мені потрібна допомога.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как часто мне можно звонить.<br><r>Была бы идея, чтобы мы</r> договорились: мне <g>не нужно колебаться</g> просто позвонить тебе, когда мне нужна помощь.<br><r>Что ты на это скажешь?</r>",
       "gram": "nicht_brauchen_zu"
     },
@@ -55577,7 +55421,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie lange die Elternzeit dauert.<br><r>Eine Idee wäre, dass wir</r> uns bei der Elternzeit abwechseln: <g>Während einer von uns zu Hause bleibt, ist der andere berufstätig</g>.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how long the parental leave lasts.<br><r>One idea would be that we</r> take turns with parental leave: <g>while one of us stays at home, the other works</g>.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як довго триває батьківська відпустка.<br><r>Була б ідея, щоб ми</r> чергувалися з батьківською відпусткою: <g>поки один із нас удома, інший працює</g>.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> як довго триває батьківська відпустка.<br><r>Була б ідея, щоб ми</r> чергувалися з батьківською відпусткою: <g>поки один із нас удома, інший працює</g>.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как долго длится отпуск по уходу за ребёнком.<br><r>Была бы идея, чтобы мы</r> чередовались с отпуском по уходу за ребёнком: <g>пока один из нас дома, другой работает</g>.<br><r>Что ты на это скажешь?</r>",
       "gram": "nebensatz_mit_waehrend"
     },
@@ -55660,7 +55504,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wer welche Aufgabe übernimmt.<br><r>Eine Idee wäre, dass wir</r> die Aufgaben klar aufteilen – diese Aufgabe hier ist <g>meins</g>, die andere teilen wir uns.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> who takes which task.<br><r>One idea would be that we</r> divide the tasks clearly – this task here is <g>mine</g>, we'll share the other one.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> хто яке завдання бере на себе.<br><r>Була б ідея, щоб ми</r> чітко розподілили завдання – це завдання тут <g>моє</g>, а те інше ми поділимо.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> хто яке завдання бере на себе.<br><r>Була б ідея, щоб ми</r> чітко розподілили завдання – це завдання тут <g>моє</g>, а те інше ми поділимо.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> кто какое задание берёт на себя.<br><r>Была бы идея, чтобы мы</r> чётко распределили задания – это задание здесь <g>моё</g>, а то другое мы поделим.<br><r>Что ты на это скажешь?</r>",
       "gram": "indefinitpronomen_possessivpronomen"
     },
@@ -55674,7 +55518,7 @@ var DIALOGE = [
     "a3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob unser Sohn das schon versteht.<br><r>Vielleicht wäre es am besten, wenn wir</r> ihm einfach zeigen: Wenn er eine Puppe will, ist das <g>seins</g>, genauso wie ein Ball.<br><r>Was meinst du dazu?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether our son already understands that.<br><r>Maybe it would be best if we</r> simply show him: if he wants a doll, that's <g>his</g>, just like a ball.<br><r>What do you think about that?</r>",
-      "uk": "<r>Хм, я не зовсім впевнений</r>, чи наш син уже це розуміє.<br><r>Можливо, було б найкраще, якби ми</r> просто показали йому: якщо він хоче ляльку, це <g>його</g>, так само як м'яч.<br><r>Що ти про це думаєш?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи наш син уже це розуміє.<br><r>Можливо, було б найкраще, якби ми</r> просто показали йому: якщо він хоче ляльку, це <g>його</g>, так само як мʼяч.<br><r>Що ти про це думаєш?</r>",
       "ru": "<r>Хм, я не совсем уверен</r>, понимает ли уже наш сын это.<br><r>Может быть, было бы лучше, если бы мы</r> просто показали ему: если он хочет куклу, это <g>его</g>, так же как мяч.<br><r>Что ты об этом думаешь?</r>",
       "gram": "indefinitpronomen_possessivpronomen"
     },
@@ -55743,7 +55587,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wer sich um das Tier kümmert.<br><r>Eine Idee wäre, dass wir</r> zuerst ein <g>Bildchen</g> von unserer ganzen Familie in beide Zimmer hängen, damit sie sich verbunden fühlt.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> who takes care of the animal.<br><r>One idea would be that we</r> first hang a little <g>picture</g> of our whole family in both rooms, so she feels connected.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> хто піклуватиметься про тварину.<br><r>Була б ідея, щоб ми</r> спершу повісили в обох кімнатах <g>картинку</g> всієї нашої родини, щоб вона відчувала зв'язок.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> хто піклуватиметься про тварину.<br><r>Була б ідея, щоб ми</r> спершу повісили в обох кімнатах <g>картинку</g> всієї нашої родини, щоб вона відчувала звʼязок.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> кто будет заботиться о животном.<br><r>Была бы идея, чтобы мы</r> сначала повесили в обеих комнатах <g>картинку</g> всей нашей семьи, чтобы она чувствовала связь.<br><r>Что ты на это скажешь?</r>",
       "gram": "nomen_auf_chen"
     },
@@ -55791,7 +55635,7 @@ var DIALOGE = [
     "q": {
       "de": "Hallo, Anna! <g>Nachdem wir jetzt beide hier angekommen sind</g>, sollten wir überlegen, wie es beruflich weitergeht. Wollen wir das zusammen planen?",
       "en": "Hi, Anna! <g>Now that we've both arrived here</g>, we should think about how things continue professionally. Shall we plan that together?",
-      "uk": "Привіт, Анно! <g>Тепер, коли ми обидві сюди приїхали</g>, нам варто подумати, як розвиватиметься наша кар'єра. Може, сплануємо це разом?",
+      "uk": "Привіт, Анно! <g>Тепер, коли ми обидві сюди приїхали</g>, нам варто подумати, як розвиватиметься наша карʼєра. Може, сплануємо це разом?",
       "ru": "Привет, Анна! <g>Теперь, когда мы обе сюда приехали</g>, нам стоит подумать, как будет развиваться карьера. Может, спланируем это вместе?",
       "gram": "nebensatz_mit_nachdem"
     },
@@ -55826,7 +55670,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie lange das dauert.<br><r>Eine Idee wäre, dass wir</r> den Antrag heute noch stellen: <g>Nachdem wir den Antrag gestellt haben, müssen wir nur noch warten</g>.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how long that takes.<br><r>One idea would be that we</r> submit the application already today: <g>now that we've submitted the application, we just need to wait</g>.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки це триває.<br><r>Була б ідея, щоб ми</r> подали заяву вже сьогодні: <g>тепер, коли ми подали заяву, нам залишається тільки чекати</g>.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки це триває.<br><r>Була б ідея, щоб ми</r> подали заяву вже сьогодні: <g>тепер, коли ми подали заяву, нам залишається тільки чекати</g>.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько это длится.<br><r>Была бы идея, чтобы мы</r> подали заявление уже сегодня: <g>теперь, когда мы подали заявление, нам остаётся только ждать</g>.<br><r>Что ты на это скажешь?</r>",
       "gram": "nebensatz_mit_nachdem"
     },
@@ -55847,7 +55691,7 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch daran denken: <g>Nachdem wir die Wohnung gefunden hatten, ging danach wirklich alles viel schneller</g>.<br><r>Bist du damit einverstanden</r>, Anna?",
       "en": "<r>I like that a lot</r>.<br><r>Let's</r> also keep in mind: <g>after we had found the apartment, everything really went much faster afterwards</g>.<br><r>Are you okay with that</r>, Anna?",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також пам'ятаємо: <g>після того як ми знайшли квартиру, потім усе справді пішло набагато швидше</g>.<br><r>Ти з цим згодна</r>, Анно?",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також памʼятаємо: <g>після того як ми знайшли квартиру, потім усе справді пішло набагато швидше</g>.<br><r>Ти з цим згодна</r>, Анно?",
       "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также помним: <g>после того как мы нашли квартиру, потом всё действительно пошло намного быстрее</g>.<br><r>Ты с этим согласна</r>, Анна?",
       "gram": "nebensatz_mit_nachdem"
     },
@@ -55881,7 +55725,7 @@ var DIALOGE = [
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> <g>Bevor ich hierhergekommen bin, hatte ich schon zehn Jahre Erfahrung auf dem Arbeitsmarkt gesammelt</g> – das sollte ich unbedingt erwähnen.<br><r>Was denkst du?</r>",
       "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> <g>before I came here, I had already gained ten years of experience on the labour market</g> – I should definitely mention that.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> <g>перш ніж я сюди приїхав, я вже здобув десять років досвіду на ринку праці</g> – це варто обов'язково згадати.<br><r>Що ти думаєш?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> <g>перш ніж я сюди приїхав, я вже здобув десять років досвіду на ринку праці</g> – це варто обовʼязково згадати.<br><r>Що ти думаєш?</r>",
       "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> <g>прежде чем я сюда приехал, я уже приобрёл десять лет опыта на рынке труда</g> – это стоит обязательно упомянуть.<br><r>Что ты думаешь?</r>",
       "gram": "plusquamperfekt"
     },
@@ -55909,7 +55753,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viele Details wir schreiben.<br><r>Eine Idee wäre, dass wir</r> den Abschluss klar hervorheben: <g>Bevor ich nach Deutschland kam, hatte ich schon meinen Abschluss gemacht</g>.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how many details we write.<br><r>One idea would be that we</r> clearly highlight the degree: <g>before I came to Germany, I had already finished my degree</g>.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки деталей ми напишемо.<br><r>Була б ідея, щоб ми</r> чітко виділили диплом: <g>перш ніж я приїхав до Німеччини, я вже здобув свій диплом</g>.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки деталей ми напишемо.<br><r>Була б ідея, щоб ми</r> чітко виділили диплом: <g>перш ніж я приїхав до Німеччини, я вже здобув свій диплом</g>.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько деталей мы напишем.<br><r>Была бы идея, чтобы мы</r> чётко выделили диплом: <g>прежде чем я приехал в Германию, я уже получил свой диплом</g>.<br><r>Что ты на это скажешь?</r>",
       "gram": "plusquamperfekt"
     },
@@ -55971,7 +55815,7 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> den Zeitplan <r>bedenken</r>.<br><r>Wir könnten doch</r> zuerst klären: <g>Das Planen</g> des Ablaufs ist der nächste Schritt, dann teilen wir die Themen auf zwei Vormittage auf.<br><r>Wie findest du das?</r>",
       "en": "<r>That sounds good, but maybe we should also think about</r> the schedule.<br><r>We could</r> clarify that first: <g>Planning</g> the schedule is the next step, and then we divide the topics between two mornings.<br><r>How do you find that?</r>",
-      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> графік.<br><r>Ми могли б</r> спершу з'ясувати: <g>Планування</g> порядку — наступний крок, а потім розподілимо теми на два ранки.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> графік.<br><r>Ми могли б</r> спершу зʼясувати: <g>Планування</g> порядку — наступний крок, а потім розподілимо теми на два ранки.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> графике.<br><r>Мы могли бы</r> сначала выяснить: <g>Планирование</g> порядка — следующий шаг, а потом распределим темы на два утра.<br><r>Как тебе такая идея?</r>",
       "gram": "infinitiv_als_nomen"
     },
@@ -55992,7 +55836,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wer die restlichen Aufgaben bekommt.<br><r>Eine Idee wäre, dass wir</r> <g>das Delegieren</g> der kleineren Aufgaben den neuen Kollegen aus der Ausbildung überlassen – das wäre auch eine gute Übung für sie.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> who gets the remaining tasks.<br><r>One idea would be that we</r> leave <g>delegating</g> the smaller tasks to the new colleagues in training – that would also be good practice for them.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> хто отримає решту завдань.<br><r>Була б ідея, щоб ми</r> залишили <g>делегування</g> дрібніших завдань новим колегам, які проходять навчання, – це стало б для них гарною практикою.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> хто отримає решту завдань.<br><r>Була б ідея, щоб ми</r> залишили <g>делегування</g> дрібніших завдань новим колегам, які проходять навчання, – це стало б для них гарною практикою.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> кто получит остальные задачи.<br><r>Была бы идея, чтобы мы</r> оставили <g>делегирование</g> более мелких задач новым коллегам, которые проходят обучение, – это стало бы для них хорошей практикой.<br><r>Что ты на это скажешь?</r>",
       "gram": "infinitiv_als_nomen"
     },
@@ -56075,7 +55919,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie sie sich zwischen Schule und Betrieb organisiert.<br><r>Eine Idee wäre, dass wir</r> ihr ein paar Tipps für einen <g>problemlosen</g> Wechsel zwischen Berufsschule und Betrieb geben.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how she organises herself between school and the company.<br><r>One idea would be that we</r> give her a few tips for a <g>problem-free</g> transition between vocational school and the company.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як вона організує себе між школою і підприємством.<br><r>Була б ідея, щоб ми</r> дали їй кілька порад для <g>безпроблемного</g> переходу між професійною школою і підприємством.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> як вона організує себе між школою і підприємством.<br><r>Була б ідея, щоб ми</r> дали їй кілька порад для <g>безпроблемного</g> переходу між професійною школою і підприємством.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как она организует себя между школой и предприятием.<br><r>Была бы идея, чтобы мы</r> дали ей несколько советов для <g>беспроблемного</g> перехода между профессиональной школой и предприятием.<br><r>Что ты на это скажешь?</r>",
       "gram": "adjektive_auf_bar_los"
     },
@@ -56144,7 +55988,7 @@ var DIALOGE = [
     "a1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> auch klären, ob ich schon eine Arbeitserlaubnis brauche, <g>bevor</g> ich mich bewerbe.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> also clarify whether I already need a work permit <g>before</g> I apply.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> також з'ясували, чи потрібен мені вже дозвіл на роботу, <g>перш ніж</g> я подам заявку.<br><r>Ти згоден з цим?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> також зʼясували, чи потрібен мені вже дозвіл на роботу, <g>перш ніж</g> я подам заявку.<br><r>Ти згоден з цим?</r>",
       "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> также выяснили, нужно ли мне уже разрешение на работу, <g>прежде чем</g> я подам заявку.<br><r>Ты согласен с этим?</r>",
       "gram": "nebensatz_mit_bevor"
     },
@@ -56158,7 +56002,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie lange die Prüfung meiner Qualifikation dauert.<br><r>Eine Idee wäre, dass wir</r> das direkt bei der zuständigen Stelle nachfragen.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how long the assessment of my qualification takes.<br><r>One idea would be that we</r> ask the responsible office about it directly.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу займає перевірка моєї кваліфікації.<br><r>Була б ідея, щоб ми</r> запитали про це прямо у відповідальному органі.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки часу займає перевірка моєї кваліфікації.<br><r>Була б ідея, щоб ми</r> запитали про це прямо у відповідальному органі.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько времени займёт проверка моей квалификации.<br><r>Была бы идея, чтобы мы</r> спросили об этом напрямую в ответственном органе.<br><r>Что ты на это скажешь?</r>",
       "gram": ""
     },
@@ -56186,7 +56030,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, klar! Also, wir sammeln zuerst meine Nachweise, prüfen mein Berufsprofil und die Arbeitserlaubnis, informieren uns bei der Gewerkschaft, klären meine Qualifikation und meinen Titel, und schauen, ob es innerhalb oder außerhalb meines Bundeslandes Unterschiede gibt. Dann steht meinem Erfolg als Arbeitnehmer nichts mehr im Wege! Danke für deine Hilfe, Mark!",
       "en": "Yes, of course! So, first we gather my proof of qualifications, check my job profile and the work permit, get information from the trade union, clarify my qualification and my title, and check whether there are differences within or outside my federal state. Then nothing will stand in the way of my success as an employee! Thanks for your help, Mark!",
-      "uk": "Так, звісно! Отже, спочатку ми зберемо мої підтвердження кваліфікації, перевіримо мій профіль професії та дозвіл на роботу, дізнаємося більше в профспілці, з'ясуємо мою кваліфікацію і мій титул, а також перевіримо, чи є відмінності в межах чи поза межами моєї федеральної землі. Тоді нічого не стоятиме на шляху мого успіху як найманого працівника! Дякую за допомогу, Марку!",
+      "uk": "Так, звісно! Отже, спочатку ми зберемо мої підтвердження кваліфікації, перевіримо мій профіль професії та дозвіл на роботу, дізнаємося більше в профспілці, зʼясуємо мою кваліфікацію і мій титул, а також перевіримо, чи є відмінності в межах чи поза межами моєї федеральної землі. Тоді нічого не стоятиме на шляху мого успіху як найманого працівника! Дякую за допомогу, Марку!",
       "ru": "Да, конечно! Итак, сначала мы соберём мои подтверждения квалификации, проверим мой профиль профессии и разрешение на работу, узнаем больше в профсоюзе, выясним мою квалификацию и мой титул, а также проверим, есть ли отличия в пределах или за пределами моей федеральной земли. Тогда ничто не будет стоять на пути моего успеха как наёмного работника! Спасибо за помощь, Марк!",
       "gram": ""
     }
@@ -56220,7 +56064,7 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> das Werkzeug <r>bedenken</r>.<br><r>Wir könnten doch</r> zuerst klären, welches Werkzeug beschädigt ist – das <g>muss nämlich sofort repariert werden</g>.<br><r>Wie findest du das?</r>",
       "en": "<r>That sounds good, but maybe we should also think about</r> the tools.<br><r>We could</r> first clarify which tools are damaged – <g>they need to be repaired right away</g>.<br><r>How do you find that?</r>",
-      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> інструменти.<br><r>Ми могли б</r> спершу з'ясувати, які інструменти пошкоджені – їх <g>треба одразу відремонтувати</g>.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> інструменти.<br><r>Ми могли б</r> спершу зʼясувати, які інструменти пошкоджені – їх <g>треба одразу відремонтувати</g>.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать об</r> инструментах.<br><r>Мы могли бы</r> сначала выяснить, какие инструменты повреждены – их <g>нужно сразу же отремонтировать</g>.<br><r>Как тебе такая идея?</r>",
       "gram": "passiv_mit_modalverben"
     },
@@ -56241,7 +56085,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viele Helfer wir insgesamt brauchen.<br><r>Eine Idee wäre, dass wir</r> eine Liste machen: <g>Die Route muss vorher genau geplant werden</g>, damit wir keine Zeit verlieren.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how many helpers we need in total.<br><r>One idea would be that we</r> make a list: <g>the route needs to be planned carefully in advance</g>, so we don't lose any time.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки волонтерів нам загалом потрібно.<br><r>Була б ідея, щоб ми</r> склали список: <g>маршрут треба заздалегідь ретельно спланувати</g>, щоб не втрачати часу.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки волонтерів нам загалом потрібно.<br><r>Була б ідея, щоб ми</r> склали список: <g>маршрут треба заздалегідь ретельно спланувати</g>, щоб не втрачати часу.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько помощников нам всего нужно.<br><r>Была бы идея, чтобы мы</r> составили список: <g>маршрут нужно заранее тщательно спланировать</g>, чтобы не терять времени.<br><r>Что ты на это скажешь?</r>",
       "gram": "passiv_mit_modalverben"
     },
@@ -56303,7 +56147,7 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> unsere Gesundheit <r>bedenken</r>.<br><r>Wir könnten doch</r> daran denken: <g>Trotz einer Krankheit</g> muss man ja nicht zu Hause bleiben, es gibt auch leichtere Aufgaben.<br><r>Wie findest du das?</r>",
       "en": "<r>That sounds good, but maybe we should also think about</r> our health.<br><r>We could</r> keep in mind: <g>despite an illness</g>, you don't have to stay home, there are also lighter tasks.<br><r>How do you find that?</r>",
-      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> наше здоров'я.<br><r>Ми могли б</r> пам'ятати: <g>попри хворобу</g>, не обов'язково залишатися вдома, є й легші завдання.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> наше здоровʼя.<br><r>Ми могли б</r> памʼятати: <g>попри хворобу</g>, не обовʼязково залишатися вдома, є й легші завдання.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> нашем здоровье.<br><r>Мы могли бы</r> помнить: <g>несмотря на болезнь</g>, не обязательно оставаться дома, есть и более лёгкие задания.<br><r>Как тебе такая идея?</r>",
       "gram": "praepositionen_mit_genitiv"
     },
@@ -56324,7 +56168,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> was bei schlechtem Wetter passiert.<br><r>Eine Idee wäre, dass wir</r> <g>trotz des schlechten Wetters</g> draußen weitermachen, wenn wir uns warm genug anziehen.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> what happens in bad weather.<br><r>One idea would be that we</r> keep going outside <g>despite the bad weather</g>, if we dress warmly enough.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> що робити в погану погоду.<br><r>Була б ідея, щоб ми</r> продовжували працювати надворі <g>попри погану погоду</g>, якщо одягнемося достатньо тепло.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> що робити в погану погоду.<br><r>Була б ідея, щоб ми</r> продовжували працювати надворі <g>попри погану погоду</g>, якщо одягнемося достатньо тепло.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> что делать в плохую погоду.<br><r>Была бы идея, чтобы мы</r> продолжали работать на улице <g>несмотря на плохую погоду</g>, если оденемся достаточно тепло.<br><r>Что ты на это скажешь?</r>",
       "gram": "praepositionen_mit_genitiv"
     },
@@ -56386,7 +56230,7 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Kosten <r>bedenken</r>.<br><r>Wir könnten doch</r> bedenken: <g>Trotz des hohen Einsatzes</g>, den das Fest bedeutet, lohnt es sich bestimmt für den Zusammenhalt.<br><r>Wie findest du das?</r>",
       "en": "<r>That sounds good, but maybe we should also think about</r> the costs.<br><r>We could</r> keep in mind: <g>despite the great effort</g> the festival requires, it's definitely worth it for the community spirit.<br><r>How do you find that?</r>",
-      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> витрати.<br><r>Ми могли б</r> пам'ятати: <g>попри великі зусилля</g>, яких вимагає свято, це точно варте того заради єднання.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> витрати.<br><r>Ми могли б</r> памʼятати: <g>попри великі зусилля</g>, яких вимагає свято, це точно варте того заради єднання.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> расходах.<br><r>Мы могли бы</r> помнить: <g>несмотря на большие усилия</g>, которых требует праздник, это точно того стоит ради сплочённости.<br><r>Как тебе такая идея?</r>",
       "gram": "adjektivendung_genitiv"
     },
@@ -56400,21 +56244,21 @@ var DIALOGE = [
     "q2": {
       "de": "<r>Genau, das finde ich auch</r>.<br><r>Wie wäre es, wenn wir</r> uns <g>während der spannenden Initiative</g> auch an andere Vereine wenden, damit noch mehr Leute mitmachen?<br><r>Passt dir das so?</r>",
       "en": "<r>Exactly, I think so too</r>.<br><r>How about we</r> also reach out to other clubs <g>during this exciting initiative</g>, so that even more people join in?<br><r>Does that work for you?</r>",
-      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> <g>під час цієї захопливої ініціативи</g> також звернемося до інших об'єднань, щоб долучилося ще більше людей?<br><r>Тобі це підходить?</r>",
+      "uk": "<r>Точно, я теж так думаю</r>.<br><r>Що якщо ми</r> <g>під час цієї захопливої ініціативи</g> також звернемося до інших обʼєднань, щоб долучилося ще більше людей?<br><r>Тобі це підходить?</r>",
       "ru": "<r>Точно, я тоже так думаю</r>.<br><r>Что если мы</r> <g>во время этой увлекательной инициативы</g> также обратимся к другим объединениям, чтобы присоединилось ещё больше людей?<br><r>Тебе это подходит?</r>",
       "gram": "adjektivendung_genitiv"
     },
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wer sich um die Anmeldung kümmert.<br><r>Eine Idee wäre, dass wir</r> jeden <g>wegen seines wichtigen Beitrags</g> persönlich einladen, dann fühlen sich alle mit eingebunden.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> who takes care of the registration.<br><r>One idea would be that we</r> invite everyone personally <g>because of their important contribution</g>, then everyone feels included.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> хто займеться реєстрацією.<br><r>Була б ідея, щоб ми</r> запросили кожного особисто <g>через його важливий внесок</g>, тоді всі почуватимуться залученими.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> хто займеться реєстрацією.<br><r>Була б ідея, щоб ми</r> запросили кожного особисто <g>через його важливий внесок</g>, тоді всі почуватимуться залученими.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> кто займётся регистрацией.<br><r>Была бы идея, чтобы мы</r> пригласили каждого лично <g>из-за его важного вклада</g>, тогда все почувствуют себя вовлечёнными.<br><r>Что ты на это скажешь?</r>",
       "gram": "adjektivendung_genitiv"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob eine kleine Organisation das allein stemmen kann.<br><r>Vielleicht wäre es am besten, wenn wir</r> <g>trotz unserer kleinen Organisation</g> lieber mit dem Nachbarschaftsverein zusammenarbeiten.<br><r>Was meinst du dazu?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether a small organisation can manage that alone.<br><r>Maybe it would be best if we</r> work together with the neighbourhood association instead, <g>despite our small organisation</g>.<br><r>What do you think about that?</r>",
-      "uk": "<r>Хм, я не зовсім впевнена</r>, чи зможе маленька організація впоратися з цим сама.<br><r>Можливо, було б найкраще, якби ми</r> <g>попри нашу невелику організацію</g> краще співпрацювали із сусідським об'єднанням.<br><r>Що ти про це думаєш?</r>",
+      "uk": "<r>Хм, я не зовсім впевнена</r>, чи зможе маленька організація впоратися з цим сама.<br><r>Можливо, було б найкраще, якби ми</r> <g>попри нашу невелику організацію</g> краще співпрацювали із сусідським обʼєднанням.<br><r>Що ти про це думаєш?</r>",
       "ru": "<r>Хм, я не совсем уверена</r>, справится ли маленькая организация с этим одна.<br><r>Может быть, было бы лучше, если бы мы</r> <g>несмотря на нашу небольшую организацию</g> лучше сотрудничали с соседским объединением.<br><r>Что ты об этом думаешь?</r>",
       "gram": "adjektivendung_genitiv"
     },
@@ -56428,14 +56272,14 @@ var DIALOGE = [
     "q4": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> am Ende noch <g>wegen der schnellen Hilfe</g> vom Nachbarschaftsverein Danke sagen.<br><r>Bist du damit einverstanden</r>, Julia?",
       "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> say thank you at the end <g>because of the quick help</g> from the neighbourhood association.<br><r>Are you okay with that</r>, Julia?",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> наприкінці ще подякуємо сусідському об'єднанню <g>за швидку допомогу</g>.<br><r>Ти з цим згодна</r>, Юліє?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> наприкінці ще подякуємо сусідському обʼєднанню <g>за швидку допомогу</g>.<br><r>Ти з цим згодна</r>, Юліє?",
       "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> в конце ещё поблагодарим соседское объединение <g>за быструю помощь</g>.<br><r>Ты с этим согласна</r>, Юлия?",
       "gram": "adjektivendung_genitiv"
     },
     "a4": {
       "de": "Ja, klar! Also, wegen des großen Engagements vieler Nachbarn organisieren wir das Straßenfest, dank der Spende haben wir Startkapital, wir arbeiten mit anderen Vereinen zusammen und laden alle wegen ihres Beitrags persönlich ein. So können wir gemeinsam mehr Toleranz in der Nachbarschaft fördern! Ich freue mich schon auf unsere Initiative! Danke für die Idee, Anna!",
       "en": "Yes, of course! So, because of the great commitment of many neighbours we'll organise the street festival, thanks to the donation we have starting capital, we'll work together with other associations, and we'll personally invite everyone because of their contribution. That way we can promote more tolerance in the neighbourhood together! I'm already looking forward to our initiative! Thanks for the idea, Anna!",
-      "uk": "Так, звісно! Отже, завдяки великій відданості багатьох сусідів ми організуємо вуличне свято, завдяки пожертвуванню в нас є стартовий капітал, ми співпрацюємо з іншими об'єднаннями і запрошуємо кожного особисто через його внесок. Так ми зможемо разом сприяти більшій толерантності в районі! Я вже тішуся нашій ініціативі! Дякую за ідею, Анно!",
+      "uk": "Так, звісно! Отже, завдяки великій відданості багатьох сусідів ми організуємо вуличне свято, завдяки пожертвуванню в нас є стартовий капітал, ми співпрацюємо з іншими обʼєднаннями і запрошуємо кожного особисто через його внесок. Так ми зможемо разом сприяти більшій толерантності в районі! Я вже тішуся нашій ініціативі! Дякую за ідею, Анно!",
       "ru": "Да, конечно! Итак, благодаря большой вовлечённости многих соседей мы организуем уличный праздник, благодаря пожертвованию у нас есть стартовый капитал, мы сотрудничаем с другими объединениями и приглашаем каждого лично из-за его вклада. Так мы сможем вместе способствовать большей толерантности в районе! Я уже жду нашей инициативы! Спасибо за идею, Анна!",
       "gram": ""
     }
@@ -56469,7 +56313,7 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Empathie <r>bedenken</r>.<br><r>Wir könnten doch</r> eine <g>liebevolle</g> Unterstützung anbieten, gerade wenn jemand gesundheitliche Probleme hat.<br><r>Wie findest du das?</r>",
       "en": "<r>That sounds good, but maybe we should also think about</r> empathy.<br><r>We could</r> offer <g>loving</g> support, especially when someone has health problems.<br><r>How do you find that?</r>",
-      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> емпатію.<br><r>Ми могли б</r> пропонувати <g>турботливу</g> підтримку, особливо коли в когось проблеми зі здоров'ям.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> емпатію.<br><r>Ми могли б</r> пропонувати <g>турботливу</g> підтримку, особливо коли в когось проблеми зі здоровʼям.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать об</r> эмпатии.<br><r>Мы могли бы</r> предлагать <g>заботливую</g> поддержку, особенно когда у кого-то проблемы со здоровьем.<br><r>Как тебе такая идея?</r>",
       "gram": "adjektive_auf_voll_reich"
     },
@@ -56490,7 +56334,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie wir neue Mitglieder finden.<br><r>Eine Idee wäre, dass wir</r> einen <g>respektvollen</g> Ton in der Gruppe festlegen, damit sich jeder sicher fühlt, um Hilfe zu bitten.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how we find new members.<br><r>One idea would be that we</r> establish a <g>respectful</g> tone in the group, so that everyone feels safe asking for help.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як ми знаходимо нових учасників.<br><r>Була б ідея, щоб ми</r> встановили <g>поважний</g> тон у групі, щоб кожен почувався безпечно, прохаючи про допомогу.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> як ми знаходимо нових учасників.<br><r>Була б ідея, щоб ми</r> встановили <g>поважний</g> тон у групі, щоб кожен почувався безпечно, прохаючи про допомогу.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как мы находим новых участников.<br><r>Была бы идея, чтобы мы</r> установили <g>уважительный</g> тон в группе, чтобы каждый чувствовал себя спокойно, прося о помощи.<br><r>Что ты на это скажешь?</r>",
       "gram": "adjektive_auf_voll_reich"
     },
@@ -56573,7 +56417,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie viel Zeit wir wirklich haben.<br><r>Eine Idee wäre, dass wir</r> uns einen festen Tag in der Woche für unsere Idee reservieren, dann wird das auch wirklich zur Gewohnheit.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how much time we really have.<br><r>One idea would be that we</r> set aside a fixed day each week for our idea, then it will really become a habit.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> скільки часу в нас насправді є.<br><r>Була б ідея, щоб ми</r> зарезервували собі постійний день на тиждень для нашої ідеї, тоді це справді стане звичкою.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> скільки часу в нас насправді є.<br><r>Була б ідея, щоб ми</r> зарезервували собі постійний день на тиждень для нашої ідеї, тоді це справді стане звичкою.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> сколько времени у нас на самом деле есть.<br><r>Была бы идея, чтобы мы</r> зарезервировали себе постоянный день в неделю для нашей идеи, тогда это действительно станет привычкой.<br><r>Что ты на это скажешь?</r>",
       "gram": ""
     },
@@ -56601,7 +56445,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, klar! Also, wir fragen unseren Freundeskreis, informieren uns über die Gefahr und die Aufgaben, holen uns Unterstützung von einer Organisation, probieren ein kleines Projekt aus, reservieren einen festen Tag und erinnern uns immer an den Wert unserer Arbeit. So können wir wirklich zusammenhalten und Vertrauen aufbauen! Danke für die Idee, David!",
       "en": "Yes, of course! So, we ask our circle of friends, find out about the dangers and the tasks, get support from an organisation, try out a small project, set aside a fixed day, and always remember the value of our work. That way we can really stick together and build trust! Thanks for the idea, David!",
-      "uk": "Так, звісно! Отже, ми запитуємо наше коло друзів, дізнаємося про небезпеки й завдання, отримуємо підтримку від організації, пробуємо невеликий проєкт, резервуємо постійний день і завжди пам'ятаємо про цінність нашої роботи. Так ми зможемо справді триматися разом і будувати довіру! Дякую за ідею, Девіде!",
+      "uk": "Так, звісно! Отже, ми запитуємо наше коло друзів, дізнаємося про небезпеки й завдання, отримуємо підтримку від організації, пробуємо невеликий проєкт, резервуємо постійний день і завжди памʼятаємо про цінність нашої роботи. Так ми зможемо справді триматися разом і будувати довіру! Дякую за ідею, Девіде!",
       "ru": "Да, конечно! Итак, мы спрашиваем наш круг друзей, узнаём об опасностях и задачах, получаем поддержку от организации, пробуем небольшой проект, резервируем постоянный день и всегда помним о ценности нашей работы. Так мы сможем действительно держаться вместе и строить доверие! Спасибо за идею, Дэвид!",
       "gram": ""
     }
@@ -56656,7 +56500,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob wir genug Platz für alle haben.<br><r>Eine Idee wäre, dass wir</r> auch <g>den Journalisten</g> aus dem zweiten Stock einladen, vielleicht schreibt er sogar einen netten Artikel über unser Haus.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> whether we have enough space for everyone.<br><r>One idea would be that we</r> also invite <g>the journalist</g> from the second floor, maybe he'll even write a nice article about our building.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи вистачить нам місця для всіх.<br><r>Була б ідея, щоб ми</r> також запросили <g>журналіста</g> з другого поверху, можливо, він навіть напише гарну статтю про наш будинок.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> чи вистачить нам місця для всіх.<br><r>Була б ідея, щоб ми</r> також запросили <g>журналіста</g> з другого поверху, можливо, він навіть напише гарну статтю про наш будинок.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> хватит ли нам места для всех.<br><r>Была бы идея, чтобы мы</r> также пригласили <g>журналиста</g> со второго этажа, возможно, он даже напишет хорошую статью о нашем доме.<br><r>Что ты на это скажешь?</r>",
       "gram": "n_deklination"
     },
@@ -56739,7 +56583,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wer sich um die Renovierung kümmert.<br><r>Eine Idee wäre, dass wir</r> vorher klären, wer für <g>die Renovierung, für die</g> die Vormieter wohl noch zuständig sind, bezahlt.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> who takes care of the renovation.<br><r>One idea would be that we</r> first clarify who pays for <g>the renovation the previous tenants are probably still responsible for</g>.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> хто займеться ремонтом.<br><r>Була б ідея, щоб ми</r> заздалегідь з'ясували, хто платить за <g>ремонт, за який</g>, напевно, ще відповідають попередні орендарі.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> хто займеться ремонтом.<br><r>Була б ідея, щоб ми</r> заздалегідь зʼясували, хто платить за <g>ремонт, за який</g>, напевно, ще відповідають попередні орендарі.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> кто займётся ремонтом.<br><r>Была бы идея, чтобы мы</r> заранее выяснили, кто платит за <g>ремонт, за который</g>, наверное, ещё отвечают предыдущие арендаторы.<br><r>Что ты на это скажешь?</r>",
       "gram": "relativsatz_mit_praeposition"
     },
@@ -56767,7 +56611,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, klar! Also, wir rufen den Vermieter an, sparen für die Kaution, lesen den Mietvertrag genau durch, schauen uns noch mal den Balkon an, klären die Renovierung, fragen beim Immobilienmakler nach der Kaltmiete, überlegen schon mal an einen möglichen Nachmieter und lesen die Kündigungsfrist genau nach. Ich freue mich schon auf unsere neue Wohnung! Danke für die Idee, Anna!",
       "en": "Yes, of course! So, we call the landlord, save up for the deposit, carefully read through the rental contract, take another look at the balcony, clarify the renovation, ask the real estate agent about the cold rent, already think about a possible next tenant, and carefully read up on the notice period. I'm already looking forward to our new flat! Thanks for the idea, Anna!",
-      "uk": "Так, звісно! Отже, ми дзвонимо орендодавцю, заощаджуємо на заставу, уважно читаємо договір оренди, ще раз дивимося на балкон, з'ясовуємо ремонт, запитуємо маклера з нерухомості про орендну плату, вже думаємо про можливого наступного орендаря і уважно читаємо про термін розірвання договору. Я вже тішуся нашій новій квартирі! Дякую за ідею, Анно!",
+      "uk": "Так, звісно! Отже, ми дзвонимо орендодавцю, заощаджуємо на заставу, уважно читаємо договір оренди, ще раз дивимося на балкон, зʼясовуємо ремонт, запитуємо маклера з нерухомості про орендну плату, вже думаємо про можливого наступного орендаря і уважно читаємо про термін розірвання договору. Я вже тішуся нашій новій квартирі! Дякую за ідею, Анно!",
       "ru": "Да, конечно! Итак, мы звоним арендодателю, копим на залог, внимательно читаем договор аренды, ещё раз смотрим на балкон, выясняем ремонт, спрашиваем риелтора об аренде, уже думаем о возможном следующем арендаторе и внимательно читаем про срок расторжения договора. Я уже жду нашей новой квартиры! Спасибо за идею, Анна!",
       "gram": ""
     }
@@ -56822,7 +56666,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie groß das Café sein soll, das wir suchen.<br><r>Eine Idee wäre, dass wir</r> uns ein Café, <g>wo</g> wir uns regelmäßig treffen können, in der Nähe suchen.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how big the café we're looking for should be.<br><r>One idea would be that we</r> look for a café nearby <g>where</g> we can meet regularly.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> яким має бути кафе, яке ми шукаємо.<br><r>Була б ідея, щоб ми</r> пошукали поблизу кафе, <g>де</g> ми могли б регулярно зустрічатися.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> яким має бути кафе, яке ми шукаємо.<br><r>Була б ідея, щоб ми</r> пошукали поблизу кафе, <g>де</g> ми могли б регулярно зустрічатися.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> каким должно быть кафе, которое мы ищем.<br><r>Была бы идея, чтобы мы</r> поискали рядом кафе, <g>где</g> мы могли бы регулярно встречаться.<br><r>Что ты на это скажешь?</r>",
       "gram": "relativsatz_wo_was"
     },
@@ -56905,7 +56749,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob die Hausverwaltung schon Bescheid weiß.<br><r>Eine Idee wäre, dass wir</r> uns bei der Hausverwaltung, <g>der</g> wir alle Fragen stellen können, informieren.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> whether the property management already knows.<br><r>One idea would be that we</r> get information from the property management <g>who</g> we can ask all our questions.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи вже знає управління будинком.<br><r>Була б ідея, щоб ми</r> дізналися все в управлінні будинком, <g>якому</g> ми можемо поставити всі запитання.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> чи вже знає управління будинком.<br><r>Була б ідея, щоб ми</r> дізналися все в управлінні будинком, <g>якому</g> ми можемо поставити всі запитання.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> знает ли уже управление домом.<br><r>Была бы идея, чтобы мы</r> узнали всё в управлении домом, <g>которому</g> мы можем задать все вопросы.<br><r>Что ты на это скажешь?</r>",
       "gram": "relativpronomen_dativ_wdh_b1"
     },
@@ -56988,7 +56832,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie hoch die Nachfrage für so eine Wohnung wirklich ist.<br><r>Eine Idee wäre, dass wir</r> uns vorstellen, ob die Küche wirklich <g>superhell</g> ist, oder ob das nur ein Werbetrick ist.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how high the demand for a flat like this really is.<br><r>One idea would be that we</r> imagine whether the kitchen is really <g>super bright</g>, or whether that's just an advertising trick.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> наскільки насправді високий попит на таку квартиру.<br><r>Була б ідея, щоб ми</r> уявили, чи справді кухня <g>надзвичайно світла</g>, чи це просто рекламний трюк.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> наскільки насправді високий попит на таку квартиру.<br><r>Була б ідея, щоб ми</r> уявили, чи справді кухня <g>надзвичайно світла</g>, чи це просто рекламний трюк.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> насколько на самом деле высок спрос на такую квартиру.<br><r>Была бы идея, чтобы мы</r> представили, действительно ли кухня <g>сверхсветлая</g>, или это просто рекламный трюк.<br><r>Что ты на это скажешь?</r>",
       "gram": "adjektive_super_hoch_ueber_extra"
     },
@@ -57028,7 +56872,7 @@ var DIALOGE = [
     "task": {
       "de": "Situation: David und Nina möchten wegen einer Wohnung bei der Hausverwaltung anrufen.\nAufgabe: Bereiten Sie zusammen mit Ihrem Gesprächspartner das formelle Telefongespräch vor.\nDiese Punkte helfen Ihnen:\nWie melden Sie sich höflich am Telefon?\nWonach fragen Sie zur Wohnung (Wohnfläche, Lage, Nachbarschaft)?\nWas machen Sie, wenn Sie falsch verbunden sind?\nWas sagen Sie, wenn niemand rangeht?\nWie verabschieden Sie sich höflich?",
       "en": "Situation: David and Nina want to call the property management about a flat.\nTask: Prepare the formal phone call together with your conversation partner.\nThese points will help you:\nHow do you politely answer/identify yourself on the phone?\nWhat do you ask about the flat (living space, location, neighbourhood)?\nWhat do you do if you're connected to the wrong person?\nWhat do you say if no one picks up?\nHow do you politely say goodbye?",
-      "uk": "Ситуація: Девід і Ніна хочуть зателефонувати в управління будинком щодо квартири.\nЗавдання: Підготуйте разом зі своїм співрозмовником офіційну телефонну розмову.\nЦі пункти Вам допоможуть:\nЯк Ви ввічливо називаєте себе телефоном?\nПро що Ви запитаєте щодо квартири (житлова площа, розташування, сусідство)?\nЩо Ви робите, якщо вас з'єднали не з тією людиною?\nЩо Ви скажете, якщо ніхто не відповідає?\nЯк Ви ввічливо прощаєтеся?",
+      "uk": "Ситуація: Девід і Ніна хочуть зателефонувати в управління будинком щодо квартири.\nЗавдання: Підготуйте разом зі своїм співрозмовником офіційну телефонну розмову.\nЦі пункти Вам допоможуть:\nЯк Ви ввічливо називаєте себе телефоном?\nПро що Ви запитаєте щодо квартири (житлова площа, розташування, сусідство)?\nЩо Ви робите, якщо вас зʼєднали не з тією людиною?\nЩо Ви скажете, якщо ніхто не відповідає?\nЯк Ви ввічливо прощаєтеся?",
       "ru": "Ситуация: Дэвид и Нина хотят позвонить в управление домом насчёт квартиры.\nЗадание: Подготовьте вместе со своим собеседником официальный телефонный разговор.\nЭти пункты Вам помогут:\nКак Вы вежливо представляетесь по телефону?\nО чём Вы спросите насчёт квартиры (жилая площадь, расположение, соседство)?\nЧто Вы делаете, если Вас соединили не с тем человеком?\nЧто Вы скажете, если никто не отвечает?\nКак Вы вежливо прощаетесь?"
     },
     "name_q": "de_m_david",
@@ -57050,14 +56894,14 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Durchwahl <r>bedenken</r>.<br><r>Wir könnten doch</r> gleich nach der richtigen Durchwahl für die Vermietung fragen, falls wir falsch verbunden sind.<br><r>Wie findest du das?</r>",
       "en": "<r>That sounds good, but maybe we should also think about</r> the extension number.<br><r>We could</r> ask right away for the correct extension for the rental department, in case we're connected to the wrong person.<br><r>How do you find that?</r>",
-      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> внутрішній номер.<br><r>Ми могли б</r> одразу запитати правильний внутрішній номер відділу оренди, якщо нас з'єднають не з тією людиною.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> внутрішній номер.<br><r>Ми могли б</r> одразу запитати правильний внутрішній номер відділу оренди, якщо нас зʼєднають не з тією людиною.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> внутреннем номере.<br><r>Мы могли бы</r> сразу спросить правильный внутренний номер отдела аренды, если нас соединят не с тем человеком.<br><r>Как тебе такая идея?</r>",
       "gram": ""
     },
     "a1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> höflich fragen, ob man uns weiterverbinden kann, falls die falsche Person rangeht.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> politely ask whether they can transfer us, in case the wrong person picks up.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> ввічливо запитали, чи можуть нас з'єднати з потрібною людиною, якщо відповість не той, хто треба.<br><r>Ти згоден з цим?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> ввічливо запитали, чи можуть нас зʼєднати з потрібною людиною, якщо відповість не той, хто треба.<br><r>Ти згоден з цим?</r>",
       "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> вежливо спросили, могут ли нас соединить с нужным человеком, если ответит не тот, кто нужен.<br><r>Ты согласен с этим?</r>",
       "gram": ""
     },
@@ -57071,7 +56915,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob wir auch nach der Nachbarschaftshilfe fragen sollen.<br><r>Eine Idee wäre, dass wir</r> auch fragen, ob es im Haus eine Nachbarschaftshilfe gibt, das wäre für uns wichtig.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> whether we should also ask about neighbourhood help.<br><r>One idea would be that we</r> also ask whether there's neighbourhood help in the building, that would matter to us.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи варто нам також запитати про сусідську взаємодопомогу.<br><r>Була б ідея, щоб ми</r> також запитали, чи є в будинку сусідська взаємодопомога, це було б для нас важливо.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> чи варто нам також запитати про сусідську взаємодопомогу.<br><r>Була б ідея, щоб ми</r> також запитали, чи є в будинку сусідська взаємодопомога, це було б для нас важливо.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> стоит ли нам также спросить о соседской взаимопомощи.<br><r>Была бы идея, чтобы мы</r> также спросили, есть ли в доме соседская взаимопомощь, это было бы для нас важно.<br><r>Что ты на это скажешь?</r>",
       "gram": ""
     },
@@ -57099,7 +56943,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, klar! Also, wir melden uns höflich, fragen nach der Durchwahl, lassen uns notfalls weiterverbinden, fragen nach der Wohnfläche, der Nachbarschaftshilfe, ob das Viertel kinderfreundlich und lebendig ist, und wie weit es bis zur Innenstadt ist. Falls niemand rangeht, sprechen wir auf den Anrufbeantworter und verabschieden uns freundlich. Ich freue mich schon auf das Gespräch! Danke für die Idee, David!",
       "en": "Yes, of course! So, we politely identify ourselves, ask for the extension, get transferred if needed, ask about the living space, the neighbourhood help, whether the area is child-friendly and lively, and how far it is to the city centre. If no one picks up, we leave a message on the answering machine and say a friendly goodbye. I'm already looking forward to the call! Thanks for the idea, David!",
-      "uk": "Так, звісно! Отже, ми ввічливо представляємося, запитуємо внутрішній номер, за потреби просимо з'єднати нас із потрібною людиною, запитуємо про житлову площу, сусідську взаємодопомогу, чи дружній квартал до дітей і жвавий, і як далеко до центру міста. Якщо ніхто не відповість, залишаємо повідомлення на автовідповідачі й дружньо прощаємося. Я вже тішуся розмові! Дякую за ідею, Девіде!",
+      "uk": "Так, звісно! Отже, ми ввічливо представляємося, запитуємо внутрішній номер, за потреби просимо зʼєднати нас із потрібною людиною, запитуємо про житлову площу, сусідську взаємодопомогу, чи дружній квартал до дітей і жвавий, і як далеко до центру міста. Якщо ніхто не відповість, залишаємо повідомлення на автовідповідачі й дружньо прощаємося. Я вже тішуся розмові! Дякую за ідею, Девіде!",
       "ru": "Да, конечно! Итак, мы вежливо представляемся, спрашиваем внутренний номер, при необходимости просим соединить нас с нужным человеком, спрашиваем о жилой площади, соседской взаимопомощи, дружелюбен ли квартал к детям и оживлён ли он, и как далеко до центра города. Если никто не ответит, оставляем сообщение на автоответчике и дружелюбно прощаемся. Я уже жду разговора! Спасибо за идею, Дэвид!",
       "gram": ""
     }
@@ -57133,7 +56977,7 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> seine Zeit <r>bedenken</r>.<br><r>Wir könnten doch</r> auch daran denken: <g>Harte Arbeit</g> allein reicht oft nicht, er braucht auch unsere Unterstützung beim Deutschlernen.<br><r>Wie findest du das?</r>",
       "en": "<r>That sounds good, but maybe we should also think about</r> his time.<br><r>We could</r> also keep in mind: <g>hard work</g> alone often isn't enough, he also needs our support with learning German.<br><r>How do you find that?</r>",
-      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> його час.<br><r>Ми могли б</r> також пам'ятати: <g>важка праця</g> сама по собі часто не є достатньою, йому потрібна ще й наша підтримка у вивченні німецької.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> його час.<br><r>Ми могли б</r> також памʼятати: <g>важка праця</g> сама по собі часто не є достатньою, йому потрібна ще й наша підтримка у вивченні німецької.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать о</r> его времени.<br><r>Мы могли бы</r> также помнить: <g>тяжёлая работа</g> сама по себе часто недостаточна, ему нужна ещё и наша поддержка в изучении немецкого.<br><r>Как тебе такая идея?</r>",
       "gram": "adjektivdeklination_ohne_artikel"
     },
@@ -57154,7 +56998,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob er überhaupt schon weiß, wie der Antrag genau funktioniert.<br><r>Eine Idee wäre, dass wir</r> ihm zeigen, wie ein <g>neues Leben</g> mit deutschem Pass für ihn aussehen könnte.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> whether he even already knows how the application exactly works.<br><r>One idea would be that we</r> show him what a <g>new life</g> with a German passport could look like for him.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи він взагалі вже знає, як саме працює ця заява.<br><r>Була б ідея, щоб ми</r> показали йому, як могло б виглядати <g>нове життя</g> з німецьким паспортом.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> чи він взагалі вже знає, як саме працює ця заява.<br><r>Була б ідея, щоб ми</r> показали йому, як могло б виглядати <g>нове життя</g> з німецьким паспортом.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> знает ли он вообще уже, как именно работает это заявление.<br><r>Была бы идея, чтобы мы</r> показали ему, как могла бы выглядеть <g>новая жизнь</g> с немецким паспортом.<br><r>Что ты на это скажешь?</r>",
       "gram": "adjektivdeklination_ohne_artikel"
     },
@@ -57216,7 +57060,7 @@ var DIALOGE = [
     "q1": {
       "de": "<r>Das klingt gut, aber vielleicht sollten wir auch</r> die Grundrechte <r>bedenken</r>.<br><r>Wir könnten doch</r> auch daran denken, dass dort bestimmt eine <g>wartende Menge</g> an anderen Menschen steht, die auch ihre Staatsbürgerschaft bekommen.<br><r>Wie findest du das?</r>",
       "en": "<r>That sounds good, but maybe we should also think about</r> the fundamental rights.<br><r>We could</r> also keep in mind that there will surely be a <g>waiting crowd</g> of other people who are also getting their citizenship.<br><r>How do you find that?</r>",
-      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> основні права.<br><r>Ми могли б</r> також пам'ятати, що там точно буде <g>натовп, який чекає</g> – інші люди, які теж отримають своє громадянство.<br><r>Як тобі така ідея?</r>",
+      "uk": "<r>Це звучить непогано, але, можливо, нам варто ще подумати про</r> основні права.<br><r>Ми могли б</r> також памʼятати, що там точно буде <g>натовп, який чекає</g> – інші люди, які теж отримають своє громадянство.<br><r>Як тобі така ідея?</r>",
       "ru": "<r>Это звучит неплохо, но, возможно, нам стоит ещё подумать об</r> основных правах.<br><r>Мы могли бы</r> также помнить, что там точно будет <g>ожидающая толпа</g> других людей, которые тоже получат своё гражданство.<br><r>Как тебе такая идея?</r>",
       "gram": "partizip1_als_adjektiv"
     },
@@ -57237,7 +57081,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob es bei der Behörde noch ein wachsendes Problem mit Terminen gibt.<br><r>Eine Idee wäre, dass wir</r> ihm sagen, dass das <g>wachsende Problem</g> mit den Wartezeiten bei der Behörde bald besser werden soll.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> whether there's still a growing problem with appointments at the authority.<br><r>One idea would be that we</r> tell him that the <g>growing problem</g> with waiting times at the authority is supposed to get better soon.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи є у відомстві ще проблема із записом на прийом.<br><r>Була б ідея, щоб ми</r> сказали йому, що <g>зростаюча проблема</g> з часом очікування у відомстві скоро має покращитися.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> чи є у відомстві ще проблема із записом на прийом.<br><r>Була б ідея, щоб ми</r> сказали йому, що <g>зростаюча проблема</g> з часом очікування у відомстві скоро має покращитися.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> есть ли в ведомстве ещё проблема с записью на приём.<br><r>Была бы идея, чтобы мы</r> сказали ему, что <g>растущая проблема</g> со временем ожидания в ведомстве скоро должна улучшиться.<br><r>Что ты на это скажешь?</r>",
       "gram": "partizip1_als_adjektiv"
     },
@@ -57320,7 +57164,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob die Glaubensfreiheit im Grundgesetz-Test überhaupt drankommt.<br><r>Eine Idee wäre, dass wir</r> eine Kopie der <g>eingereichten Bewerbung</g> für ihn selbst aufheben.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> whether freedom of religion even comes up in the constitution test.<br><r>One idea would be that we</r> keep a copy of the <g>submitted application</g> for himself.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи взагалі трапляється свобода віросповідання в тесті з основ права.<br><r>Була б ідея, щоб ми</r> зберегли для нього самого копію <g>поданої заявки</g>.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> чи взагалі трапляється свобода віросповідання в тесті з основ права.<br><r>Була б ідея, щоб ми</r> зберегли для нього самого копію <g>поданої заявки</g>.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> встречается ли вообще свобода вероисповедания в тесте по основам права.<br><r>Была бы идея, чтобы мы</r> сохранили для него самого копию <g>поданной заявки</g>.<br><r>Что ты на это скажешь?</r>",
       "gram": "partizip2_als_adjektiv"
     },
@@ -57403,21 +57247,21 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> ob er überhaupt einen Zeugen braucht.<br><r>Eine Idee wäre, dass wir</r> ihm erklären: <g>Entweder</g> nimmt er einen Zeugen mit, <g>oder</g> er geht allein, das hängt vom Amt ab.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> whether he even needs a witness.<br><r>One idea would be that we</r> explain to him: <g>either</g> he brings a witness along, <g>or</g> he goes alone, that depends on the office.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> чи потрібен йому взагалі свідок.<br><r>Була б ідея, щоб ми</r> пояснили йому: <g>або</g> він візьме із собою свідка, <g>або</g> піде сам, це залежить від відомства.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> чи потрібен йому взагалі свідок.<br><r>Була б ідея, щоб ми</r> пояснили йому: <g>або</g> він візьме із собою свідка, <g>або</g> піде сам, це залежить від відомства.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> нужен ли ему вообще свидетель.<br><r>Была бы идея, чтобы мы</r> объяснили ему: <g>либо</g> он возьмёт с собой свидетеля, <g>либо</g> пойдёт один, это зависит от ведомства.<br><r>Что ты на это скажешь?</r>",
       "gram": "entweder_oder"
     },
     "q3": {
       "de": "<r>Hmm, ich weiß nicht so recht</r>, ob das Amt überhaupt Kopien akzeptiert.<br><r>Vielleicht wäre es am besten, wenn wir</r> vorher fragen: <g>Entweder</g> akzeptiert das Amt eine Kopie, <g>oder</g> wir brauchen unbedingt das Original.<br><r>Was meinst du dazu?</r>",
       "en": "<r>Hmm, I'm not so sure</r> whether the office even accepts copies.<br><r>Maybe it would be best if we</r> ask beforehand: <g>either</g> the office accepts a copy, <g>or</g> we definitely need the original.<br><r>What do you think about that?</r>",
-      "uk": "<r>Хм, я не зовсім впевнений</r>, чи взагалі приймає відомство копії.<br><r>Можливо, було б найкраще, якби ми</r> заздалегідь запитали: <g>або</g> відомство прийме копію, <g>або</g> нам обов'язково потрібен оригінал.<br><r>Що ти про це думаєш?</r>",
+      "uk": "<r>Хм, я не зовсім впевнений</r>, чи взагалі приймає відомство копії.<br><r>Можливо, було б найкраще, якби ми</r> заздалегідь запитали: <g>або</g> відомство прийме копію, <g>або</g> нам обовʼязково потрібен оригінал.<br><r>Що ти про це думаєш?</r>",
       "ru": "<r>Хм, я не совсем уверен</r>, принимает ли ведомство вообще копии.<br><r>Может быть, было бы лучше, если бы мы</r> заранее спросили: <g>либо</g> ведомство примет копию, <g>либо</g> нам обязательно нужен оригинал.<br><r>Что ты об этом думаешь?</r>",
       "gram": "entweder_oder"
     },
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch klären, ob er <g>entweder</g> heute <g>oder</g> erst morgen einen Termin bekommt.<br><r>Wie siehst du das?</r>",
       "en": "<r>I like that a lot</r>.<br><r>Let's</r> also clarify whether he gets an appointment <g>either</g> today <g>or</g> only tomorrow.<br><r>How do you see it?</r>",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також з'ясуємо, чи отримає він запис <g>або</g> сьогодні, <g>або</g> лише завтра.<br><r>Як ти на це дивишся?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також зʼясуємо, чи отримає він запис <g>або</g> сьогодні, <g>або</g> лише завтра.<br><r>Як ти на це дивишся?</r>",
       "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также выясним, получит ли он запись <g>либо</g> сегодня, <g>либо</g> только завтра.<br><r>Как ты на это смотришь?</r>",
       "gram": "entweder_oder"
     },
@@ -57486,7 +57330,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wie er mit der ganzen Bürokratie am besten klarkommt.<br><r>Eine Idee wäre, dass wir</r> ihm eine Liste mit allen Schritten machen, damit er nichts vergisst.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> how he can best deal with all the bureaucracy.<br><r>One idea would be that we</r> make him a list with all the steps, so he doesn't forget anything.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> як йому найкраще впоратися з усією бюрократією.<br><r>Була б ідея, щоб ми</r> зробили йому список з усіма кроками, щоб він нічого не забув.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> як йому найкраще впоратися з усією бюрократією.<br><r>Була б ідея, щоб ми</r> зробили йому список з усіма кроками, щоб він нічого не забув.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> как ему лучше справиться со всей бюрократией.<br><r>Была бы идея, чтобы мы</r> сделали ему список со всеми шагами, чтобы он ничего не забыл.<br><r>Что ты на это скажешь?</r>",
       "gram": ""
     },
@@ -57569,7 +57413,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> wann wir am besten abreisen.<br><r>Eine Idee wäre, dass wir</r> die Reise erst eine Woche nach dem Fest planen, <g>weil</g> wir uns danach richtig erholen <g>wollen</g>.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> when we should best depart.<br><r>One idea would be that we</r> plan the trip only a week after the party, <g>because</g> we want to properly recover afterwards.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> коли нам краще виїжджати.<br><r>Була б ідея, щоб ми</r> запланували подорож лише через тиждень після свята, <g>бо</g> ми хочемо потім по-справжньому відпочити.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> коли нам краще виїжджати.<br><r>Була б ідея, щоб ми</r> запланували подорож лише через тиждень після свята, <g>бо</g> ми хочемо потім по-справжньому відпочити.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> когда нам лучше отправляться.<br><r>Была бы идея, чтобы мы</r> запланировали поездку только через неделю после праздника, <g>потому что</g> мы хотим потом по-настоящему отдохнуть.<br><r>Что ты на это скажешь?</r>",
       "gram": "satzverbindungen_ueberblick"
     },
@@ -57609,7 +57453,7 @@ var DIALOGE = [
     "task": {
       "de": "Situation: Sie und Ihre Freundin planen die letzten Details vor Ihrer gemeinsamen Reise.\nAufgabe: Planen Sie zusammen, was Sie noch vor der Abreise erledigen müssen.\nDiese Punkte helfen Ihnen:\nWer kommt später nach?\nWas schicken Sie zurück?\nWohin fahren Sie weiter?\nWas bringen Sie für Freunde mit?\nWann kommen Sie zurück, und wer holt Sie ab?",
       "en": "Situation: You and your friend are planning the final details before your trip together.\nTask: Plan together what you still need to take care of before departure.\nThese points will help you:\nWho is coming along later?\nWhat are you sending back?\nWhere are you driving on to?\nWhat are you bringing for friends?\nWhen are you coming back, and who is picking you up?",
-      "uk": "Ситуація: Ви та Ваша подруга плануєте останні деталі перед спільною подорожжю.\nЗавдання: Сплануйте разом, що Вам ще потрібно зробити перед від'їздом.\nЦі пункти Вам допоможуть:\nХто приєднається пізніше?\nЩо Ви відправите назад?\nКуди Ви поїдете далі?\nЩо Ви візьмете для друзів?\nКоли Ви повернетеся і хто Вас забере?",
+      "uk": "Ситуація: Ви та Ваша подруга плануєте останні деталі перед спільною подорожжю.\nЗавдання: Сплануйте разом, що Вам ще потрібно зробити перед відʼїздом.\nЦі пункти Вам допоможуть:\nХто приєднається пізніше?\nЩо Ви відправите назад?\nКуди Ви поїдете далі?\nЩо Ви візьмете для друзів?\nКоли Ви повернетеся і хто Вас забере?",
       "ru": "Ситуация: Вы и Ваша подруга планируете последние детали перед совместной поездкой.\nЗадание: Спланируйте вместе, что Вам ещё нужно сделать перед отъездом.\nЭти пункты Вам помогут:\nКто присоединится позже?\nЧто Вы отправите обратно?\nКуда Вы поедете дальше?\nЧто Вы возьмёте для друзей?\nКогда Вы вернётесь и кто Вас заберёт?"
     },
     "name_q": "de_w_nina",
@@ -57617,7 +57461,7 @@ var DIALOGE = [
     "q": {
       "de": "Hallo, Anna! <g>Bevor</g> wir verreisen, müssen wir noch ein paar Dinge klären. Wollen wir zusammen die letzten Schritte planen?",
       "en": "Hi, Anna! <g>Before</g> we go on our trip, we still need to clarify a few things. Shall we plan the final steps together?",
-      "uk": "Привіт, Анно! <g>Перш ніж</g> ми вирушимо в подорож, нам потрібно з'ясувати ще кілька речей. Може, разом сплануємо останні кроки?",
+      "uk": "Привіт, Анно! <g>Перш ніж</g> ми вирушимо в подорож, нам потрібно зʼясувати ще кілька речей. Може, разом сплануємо останні кроки?",
       "ru": "Привет, Анна! <g>Прежде чем</g> мы отправимся в путешествие, нам нужно выяснить ещё несколько вещей. Может, вместе спланируем последние шаги?",
       "gram": "nebensatz_mit_bevor"
     },
@@ -57638,7 +57482,7 @@ var DIALOGE = [
     "a1": {
       "de": "<r>Perfekt, so machen wir es</r>.<br><r>Mein Vorschlag wäre, dass wir</r> das so machen: Wir <g>werfen</g> vor der Abreise noch die alten Sachen im Kühlschrank <g>weg</g>.<br><r>Bist du damit einverstanden?</r>",
       "en": "<r>Perfect, that's what we'll do</r>.<br><r>My suggestion would be that we</r> do it like this: before departure we'll <g>throw away</g> the old things in the fridge.<br><r>Do you agree with that?</r>",
-      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> зробили так: перед від'їздом ми <g>викинемо</g> старі речі з холодильника.<br><r>Ти згодна з цим?</r>",
+      "uk": "<r>Чудово, так і зробимо</r>.<br><r>Моя пропозиція така, щоб ми</r> зробили так: перед відʼїздом ми <g>викинемо</g> старі речі з холодильника.<br><r>Ти згодна з цим?</r>",
       "ru": "<r>Отлично, так и сделаем</r>.<br><r>Моё предложение в том, чтобы мы</r> сделали так: перед отъездом мы <g>выбросим</g> старые вещи из холодильника.<br><r>Ты согласна с этим?</r>",
       "gram": "trennbare_verben_praefixe_wdh_b1"
     },
@@ -57652,7 +57496,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> was wir für unsere Freunde mitbringen sollen.<br><r>Eine Idee wäre, dass wir</r> das machen: Wir <g>bringen</g> jedem ein kleines Geschenk <g>mit</g>.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> what we should bring for our friends.<br><r>One idea would be that we</r> do this: we'll <g>bring</g> everyone a small present.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> що взяти для наших друзів.<br><r>Була б ідея, щоб ми</r> зробили так: <g>візьмемо</g> для кожного невеликий подарунок.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> що взяти для наших друзів.<br><r>Була б ідея, щоб ми</r> зробили так: <g>візьмемо</g> для кожного невеликий подарунок.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> что взять для наших друзей.<br><r>Была бы идея, чтобы мы</r> сделали так: <g>возьмём</g> для каждого небольшой подарок.<br><r>Что ты на это скажешь?</r>",
       "gram": "trennbare_verben_praefixe_wdh_b1"
     },
@@ -57666,21 +57510,21 @@ var DIALOGE = [
     "a3": {
       "de": "<r>Das gefällt mir sehr gut</r>.<br><r>Lass uns doch</r> auch klären: <g>Holen</g> wir jemanden vom Bahnhof <g>ab</g>, oder nehmen wir ein Taxi?<br><r>Wie siehst du das?</r>",
       "en": "<r>I like that a lot</r>.<br><r>Let's</r> also clarify: do we <g>pick</g> someone up from the station, or do we take a taxi?<br><r>How do you see it?</r>",
-      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також з'ясуємо: ми <g>заберемо</g> когось із вокзалу, чи візьмемо таксі?<br><r>Як ти на це дивишся?</r>",
+      "uk": "<r>Мені це дуже подобається</r>.<br><r>Давай</r> також зʼясуємо: ми <g>заберемо</g> когось із вокзалу, чи візьмемо таксі?<br><r>Як ти на це дивишся?</r>",
       "ru": "<r>Мне это очень нравится</r>.<br><r>Давай</r> также выясним: мы <g>заберём</g> кого-то с вокзала, или возьмём такси?<br><r>Как ты на это смотришь?</r>",
       "gram": "trennbare_verben_praefixe_wdh_b1"
     },
     "q4": {
       "de": "<r>Gute Idee, das machen wir</r>.<br><r>Ich schlage vor, dass wir</r> das noch erledigen: Wir <g>räumen</g> vor der Abreise noch schnell die Wohnung <g>auf</g>.<br><r>Bist du damit einverstanden</r>, Anna?",
       "en": "<r>Good idea, let's do that</r>.<br><r>I suggest that we</r> also take care of this: before departure we'll quickly <g>tidy up</g> the flat.<br><r>Are you okay with that</r>, Anna?",
-      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> ще й це владнали: перед від'їздом ми швидко <g>приберемо</g> квартиру.<br><r>Ти з цим згодна</r>, Анно?",
+      "uk": "<r>Гарна ідея, так і зробимо</r>.<br><r>Пропоную, щоб ми</r> ще й це владнали: перед відʼїздом ми швидко <g>приберемо</g> квартиру.<br><r>Ти з цим згодна</r>, Анно?",
       "ru": "<r>Хорошая идея, так и сделаем</r>.<br><r>Предлагаю, чтобы мы</r> ещё и это уладим: перед отъездом мы быстро <g>уберём</g> квартиру.<br><r>Ты с этим согласна</r>, Анна?",
       "gram": "trennbare_verben_praefixe_wdh_b1"
     },
     "a4": {
       "de": "Ja, klar! Also, Julia kommt zwei Tage später nach, wir schicken unnötige Sachen zurück, werfen die alten Sachen weg, fahren nach der ersten Übernachtung weiter, bringen allen ein Geschenk mit, kommen am Sonntagabend zurück, holen jemanden vom Bahnhof ab oder nehmen ein Taxi, und räumen vorher noch die Wohnung auf. Ich freue mich schon auf unsere Reise! Danke für die Idee, Nina!",
       "en": "Yes, of course! So, Julia will join us two days later, we'll send back things we don't need, throw away the old things, drive on after the first overnight stay, bring everyone a present, come back on Sunday evening, either pick someone up from the station or take a taxi, and quickly tidy up the flat beforehand. I'm already looking forward to our trip! Thanks for the idea, Nina!",
-      "uk": "Так, звісно! Отже, Юлія приєднається через два дні, ми відправимо назад непотрібні речі, викинемо старі речі, поїдемо далі після першої ночівлі, візьмемо подарунок для кожного, повернемося в неділю ввечері, заберемо когось із вокзалу або візьмемо таксі, і швидко приберемо квартиру перед від'їздом. Я вже тішуся нашій подорожі! Дякую за ідею, Ніно!",
+      "uk": "Так, звісно! Отже, Юлія приєднається через два дні, ми відправимо назад непотрібні речі, викинемо старі речі, поїдемо далі після першої ночівлі, візьмемо подарунок для кожного, повернемося в неділю ввечері, заберемо когось із вокзалу або візьмемо таксі, і швидко приберемо квартиру перед відʼїздом. Я вже тішуся нашій подорожі! Дякую за ідею, Ніно!",
       "ru": "Да, конечно! Итак, Юлия присоединится через два дня, мы отправим обратно ненужные вещи, выбросим старые вещи, поедем дальше после первой ночёвки, возьмём подарок для каждого, вернёмся в воскресенье вечером, заберём кого-то с вокзала или возьмём такси, и быстро уберём квартиру перед отъездом. Я уже жду нашей поездки! Спасибо за идею, Нина!",
       "gram": ""
     }
@@ -57735,7 +57579,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> was wir genau aussagen sollen.<br><r>Eine Idee wäre, dass wir</r> uns vorher überlegen, was wir bei der Polizei genau aussagen wollen, damit wir nichts vergessen.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> what exactly we should testify.<br><r>One idea would be that we</r> think in advance about what exactly we want to testify to the police, so that we don't forget anything.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> що саме нам казати як свідчення.<br><r>Була б ідея, щоб ми</r> заздалегідь подумали, що саме ми хочемо сказати поліції, щоб нічого не забути.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> що саме нам казати як свідчення.<br><r>Була б ідея, щоб ми</r> заздалегідь подумали, що саме ми хочемо сказати поліції, щоб нічого не забути.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> что именно нам говорить в качестве показаний.<br><r>Была бы идея, чтобы мы</r> заранее подумали, что именно мы хотим сказать полиции, чтобы ничего не забыть.<br><r>Что ты на это скажешь?</r>",
       "gram": ""
     },
@@ -57790,7 +57634,7 @@ var DIALOGE = [
     "a": {
       "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Wir könnten von der Jugendherberge aus zu Fuß zum größten Wahrzeichen der Stadt gehen.<br><r>Was denkst du?</r>",
       "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> We could walk from the youth hostel to the city's biggest landmark.<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Ми могли б піти пішки з хостелу до найбільшої визначної пам'ятки міста.<br><r>Що ти думаєш?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> Ми могли б піти пішки з хостелу до найбільшої визначної памʼятки міста.<br><r>Що ти думаєш?</r>",
       "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> Мы могли бы пойти пешком от хостела к самой большой достопримечательности города.<br><r>Что ты думаешь?</r>",
       "gram": ""
     },
@@ -57818,7 +57662,7 @@ var DIALOGE = [
     "a2": {
       "de": "<r>Das ist okay für mich, allerdings müssten wir noch klären,</r> an welcher Haltestelle wir aussteigen müssen.<br><r>Eine Idee wäre, dass wir</r> uns die richtige Haltestelle zum Aussteigen schon vorher genau notieren.<br><r>Was hältst du davon?</r>",
       "en": "<r>That's okay with me, however we'd still need to clarify</r> at which stop we need to get off.<br><r>One idea would be that we</r> note down the correct stop to get off at beforehand.<br><r>What do you think of that?</r>",
-      "uk": "<r>Мене це влаштовує, однак нам ще потрібно з'ясувати,</r> на якій зупинці нам виходити.<br><r>Була б ідея, щоб ми</r> заздалегідь точно записали потрібну зупинку для виходу.<br><r>Що ти на це скажеш?</r>",
+      "uk": "<r>Мене це влаштовує, однак нам ще потрібно зʼясувати,</r> на якій зупинці нам виходити.<br><r>Була б ідея, щоб ми</r> заздалегідь точно записали потрібну зупинку для виходу.<br><r>Що ти на це скажеш?</r>",
       "ru": "<r>Меня это устраивает, однако нам ещё нужно выяснить,</r> на какой остановке нам выходить.<br><r>Была бы идея, чтобы мы</r> заранее точно записали нужную остановку для выхода.<br><r>Что ты на это скажешь?</r>",
       "gram": ""
     },
@@ -57846,7 +57690,7 @@ var DIALOGE = [
     "a4": {
       "de": "Ja, klar! Also, wir gehen von der Jugendherberge zum Wahrzeichen, achten selbst auf unsere Sicherheit, besuchen das Denkmal in der Altstadt, steigen in die Straßenbahn ein und einmal um, merken uns die richtige Haltestelle zum Aussteigen, konzentrieren uns auf die schönste Architektur, fliehen bei Regen ins Museum und fällen am Ende ein Urteil über unseren Lieblingsort. Ich freue mich schon auf den Tag! Danke für die Idee, Alex!",
       "en": "Yes, of course! So, we walk from the youth hostel to the landmark, take care of our own safety, visit the monument in the old town, board the tram and transfer once, remember the right stop to get off at, focus on the most beautiful architecture, flee to a museum if it rains, and reach a verdict at the end about our favourite place. I'm already looking forward to the day! Thanks for the idea, Alex!",
-      "uk": "Так, звісно! Отже, ми йдемо з хостелу до пам'ятки, дбаємо про власну безпеку, відвідуємо памʼятник у старому місті, сідаємо в трамвай і один раз пересідаємо, пам'ятаємо потрібну зупинку для виходу, зосереджуємося на найкрасивішій архітектурі, тікаємо до музею, якщо піде дощ, і наприкінці виносимо вирок про наше улюблене місце. Я вже тішуся цьому дню! Дякую за ідею, Алексе!",
+      "uk": "Так, звісно! Отже, ми йдемо з хостелу до памʼятки, дбаємо про власну безпеку, відвідуємо памʼятник у старому місті, сідаємо в трамвай і один раз пересідаємо, памʼятаємо потрібну зупинку для виходу, зосереджуємося на найкрасивішій архітектурі, тікаємо до музею, якщо піде дощ, і наприкінці виносимо вирок про наше улюблене місце. Я вже тішуся цьому дню! Дякую за ідею, Алексе!",
       "ru": "Да, конечно! Итак, мы идём от хостела к достопримечательности, заботимся о собственной безопасности, посещаем памятник в старом городе, садимся в трамвай и один раз пересаживаемся, помним нужную остановку для выхода, сосредотачиваемся на самой красивой архитектуре, убегаем в музей, если пойдёт дождь, и в конце выносим вердикт о нашем любимом месте. Я уже жду этот день! Спасибо за идею, Алекс!",
       "gram": ""
     }
@@ -57861,21 +57705,21 @@ var SCHREIBEN = [
     "topic": {
       "de": "Lärm im Treppenhaus",
       "en": "Noise in the stairwell",
-      "uk": "Шум у під’їзді",
+      "uk": "Шум у підʼїзді",
       "ru": "Шум в подъезде"
     },
     "task": {
       "de": "Sie wohnen in einem Mehrfamilienhaus. Seit einigen Wochen gibt es abends im Treppenhaus sehr laute Musik und Streit. Sie schreiben an die Hausverwaltung.<br><br>1. Grund für Ihr Schreiben<br>2. Seit wann und wie oft der Lärm auftritt<br>3. Welche Folgen der Lärm für Sie hat<br>4. Was Sie von der Hausverwaltung erwarten",
       "en": "You live in an apartment building. For a few weeks now, there has been very loud music and arguing in the stairwell in the evenings. You are writing to the property management.<br><br>1. Reason for your letter<br>2. Since when and how often the noise occurs<br>3. What consequences the noise has for you<br>4. What you expect from the property management",
-      "uk": "Ви живете в багатоквартирному будинку. Уже кілька тижнів увечері в під’їзді дуже гучна музика та сварки. Ви пишете до управління будинком.<br><br>1. Причина Вашого звернення<br>2. Відколи і як часто виникає шум<br>3. Які наслідки шум має для Вас<br>4. Чого Ви очікуєте від управління будинком",
+      "uk": "Ви живете в багатоквартирному будинку. Уже кілька тижнів увечері в підʼїзді дуже гучна музика та сварки. Ви пишете до управління будинком.<br><br>1. Причина Вашого звернення<br>2. Відколи і як часто виникає шум<br>3. Які наслідки шум має для Вас<br>4. Чого Ви очікуєте від управління будинком",
       "ru": "Вы живёте в многоквартирном доме. Уже несколько недель по вечерам в подъезде очень громкая музыка и ссоры. Вы пишете в управление домом.<br><br>1. Причина Вашего обращения<br>2. С каких пор и как часто возникает шум<br>3. Какие последствия шум имеет для Вас<br>4. Что Вы ожидаете от управления домом"
     },
     "name": "de_w_julia",
     "parts": [
       { "role": "ort_datum", "gram": "", "de": "Leipzig, den 15. Januar 2025", "en": "Leipzig, 15 January 2025", "uk": "Лейпциг, 15 січня 2025 р.", "ru": "Лейпциг, 15 января 2025 г." },
       { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
-      { "role": "einleitung", "gram": "komposita_nomen_nomen", "de": "<r>Ich schreibe Ihnen, weil</r> es in unserem <g>Mehrfamilienhaus</g> im <c>Treppenhaus</c> abends sehr laute Musik und Streit gibt.", "en": "<r>I am writing to you because</r> there is very loud music and arguing in the stairwell of our apartment building in the evenings.", "uk": "<r>Пишу Вам, тому що</r> у нашому багатоквартирному будинку в під’їзді ввечері дуже гучна музика та сварки.", "ru": "<r>Пишу Вам, потому что</r> в нашем многоквартирном доме в подъезде по вечерам очень громкая музыка и ссоры." },
-      { "role": "punkt2", "gram": "nebensatz_seit_seitdem", "de": "<k>Seitdem</k> ein neuer Nachbar im dritten Stockwerk <g>eingezogen ist</g>, höre ich <r>fast jeden Abend</r> laute Musik aus dem Treppenhaus.", "en": "Ever since a new neighbor moved in on the third floor, I have heard loud music from the stairwell <r>almost every evening</r>.", "uk": "Відтоді як на третьому поверсі оселився новий сусід, я чую гучну музику з під’їзду <r>майже щовечора</r>.", "ru": "С тех пор как на третьем этаже поселился новый сосед, я слышу громкую музыку из подъезда <r>почти каждый вечер</r>." },
+      { "role": "einleitung", "gram": "komposita_nomen_nomen", "de": "<r>Ich schreibe Ihnen, weil</r> es in unserem <g>Mehrfamilienhaus</g> im <c>Treppenhaus</c> abends sehr laute Musik und Streit gibt.", "en": "<r>I am writing to you because</r> there is very loud music and arguing in the stairwell of our apartment building in the evenings.", "uk": "<r>Пишу Вам, тому що</r> у нашому багатоквартирному будинку в підʼїзді ввечері дуже гучна музика та сварки.", "ru": "<r>Пишу Вам, потому что</r> в нашем многоквартирном доме в подъезде по вечерам очень громкая музыка и ссоры." },
+      { "role": "punkt2", "gram": "nebensatz_seit_seitdem", "de": "<k>Seitdem</k> ein neuer Nachbar im dritten Stockwerk <g>eingezogen ist</g>, höre ich <r>fast jeden Abend</r> laute Musik aus dem Treppenhaus.", "en": "Ever since a new neighbor moved in on the third floor, I have heard loud music from the stairwell <r>almost every evening</r>.", "uk": "Відтоді як на третьому поверсі оселився новий сусід, я чую гучну музику з підʼїзду <r>майже щовечора</r>.", "ru": "С тех пор как на третьем этаже поселился новый сосед, я слышу громкую музыку из подъезда <r>почти каждый вечер</r>." },
       { "role": "punkt3", "gram": "perfekt_wdh_b1", "de": "<r>Das bedeutet für mich, dass</r> ich abends nicht mehr zur Ruhe komme <k>und</k> deshalb schon oft schlecht <g>geschlafen habe</g>.", "en": "<r>This means for me that</r> I can no longer relax in the evenings and have often slept badly because of it.", "uk": "<r>Для мене це означає, що</r> я більше не можу відпочити ввечері і через це вже часто погано спала.", "ru": "<r>Для меня это означает, что</r> я больше не могу отдохнуть вечером и из-за этого уже часто плохо спала." },
       { "role": "punkt4", "gram": "hoefliche_bitten_konjunktiv_b1", "de": "<r>Ich bitte Sie deshalb,</r> mit dem Nachbarn zu sprechen. <k>Außerdem</k> <g>wären Sie</g> sehr freundlich, wenn Sie ihn an die Hausordnung erinnern könnten.", "en": "<r>I therefore ask you to</r> speak with the neighbor. It would also be very kind of you to remind him of the house rules.", "uk": "<r>Тому прошу Вас</r> поговорити із сусідом. Крім того, буду вдячна, якщо Ви нагадаєте йому про правила будинку.", "ru": "<r>Поэтому прошу Вас</r> поговорить с соседом. Кроме того, буду благодарна, если Вы напомните ему о правилах дома." },
       { "role": "schluss", "gram": "", "de": "<r>Ich hoffe auf eine baldige Antwort von Ihnen.</r>", "en": "<r>I hope to hear back from you soon.</r>", "uk": "<r>Сподіваюся на Вашу швидку відповідь.</r>", "ru": "<r>Надеюсь на Ваш скорый ответ.</r>" },
@@ -57906,7 +57750,7 @@ var SCHREIBEN = [
       { "role": "einleitung", "gram": "wechselpraepositionen_wdh_b1", "de": "<r>Ich möchte euch herzlich zu einem kleinen Fest einladen</r>, damit wir uns als <c>Nachbarn im Haus</c> endlich besser kennenlernen <k>und</k> gemeinsam <g>im Hof</g> feiern können.", "en": "<r>I would like to warmly invite you all to a small party</r> so that we as neighbors in the building can finally get to know each other better and celebrate together in the courtyard.", "uk": "<r>Хочу щиро запросити вас усіх на невелике свято</r>, щоб ми, сусіди в будинку, нарешті краще познайомилися і разом відсвяткували у дворі.", "ru": "<r>Хочу тепло пригласить вас всех на небольшой праздник</r>, чтобы мы, соседи в доме, наконец лучше познакомились и вместе отпраздновали во дворе." },
       { "role": "punkt2", "gram": "futur_werden", "de": "<r>Die Feier findet am Samstag, den 20. September, um 15 Uhr statt.</r> Falls es regnet, <g>werden</g> wir stattdessen im Gemeinschaftsraum feiern.", "en": "<r>The party will take place on Saturday, 20 September, at 3 p.m.</r> If it rains, we will celebrate in the community room instead.", "uk": "<r>Свято відбудеться в суботу, 20 вересня, о 15:00.</r> Якщо піде дощ, ми натомість відсвяткуємо у спільній кімнаті.", "ru": "<r>Праздник состоится в субботу, 20 сентября, в 15:00.</r> Если пойдёт дождь, мы вместо этого отпразднуем в общей комнате." },
       { "role": "punkt3", "gram": "modalverben_wdh_b1", "de": "<r>Ich wäre euch sehr dankbar, wenn</r> jeder etwas zu essen oder zu trinken mitbringen <g>kann</g>, <k>damit</k> wir gemeinsam ein kleines Buffet haben.", "en": "<r>I would be very grateful if</r> everyone could bring something to eat or drink, so that we have a small buffet together.", "uk": "<r>Я був би вам дуже вдячний, якби</r> кожен міг принести щось поїсти чи попити, щоб у нас разом вийшов невеликий фуршет.", "ru": "<r>Я был бы вам очень благодарен, если бы</r> каждый мог принести что-нибудь поесть или попить, чтобы у нас получился небольшой фуршет." },
-      { "role": "punkt4", "gram": "konjunktiv2_wuensche_b1", "de": "<r>Ich würde mich sehr freuen, wenn</r> ihr mir bis Freitag kurz <g>Bescheid geben würdet</g>, ob ihr kommt.", "en": "<r>I would be very happy if</r> you could let me know by Friday whether you're coming.", "uk": "<r>Я був би дуже радий, якби</r> ви повідомили мені до п’ятниці, чи прийдете.", "ru": "<r>Я был бы очень рад, если бы</r> вы сообщили мне до пятницы, придёте ли вы." },
+      { "role": "punkt4", "gram": "konjunktiv2_wuensche_b1", "de": "<r>Ich würde mich sehr freuen, wenn</r> ihr mir bis Freitag kurz <g>Bescheid geben würdet</g>, ob ihr kommt.", "en": "<r>I would be very happy if</r> you could let me know by Friday whether you're coming.", "uk": "<r>Я був би дуже радий, якби</r> ви повідомили мені до пʼятниці, чи прийдете.", "ru": "<r>Я был бы очень рад, если бы</r> вы сообщили мне до пятницы, придёте ли вы." },
       { "role": "schluss", "gram": "", "de": "<r>Ich freue mich schon auf einen schönen Nachmittag mit euch.</r>", "en": "<r>I'm already looking forward to a nice afternoon with you all.</r>", "uk": "<r>Уже тішуся гарному дню з вами.</r>", "ru": "<r>Уже радуюсь приятному дню с вами.</r>" },
       { "role": "grussformel", "gram": "", "de": "Liebe Grüße", "en": "Best,", "uk": "Теплі вітання,", "ru": "Тёплые пожелания," },
       { "role": "name", "gram": "", "de": "Mark Fischer", "en": "Mark Fischer", "uk": "Марк Фішер", "ru": "Марк Фишер" }
@@ -57948,20 +57792,20 @@ var SCHREIBEN = [
     "topic": {
       "de": "Ein Putzplan fürs Treppenhaus",
       "en": "A cleaning schedule for the stairwell",
-      "uk": "Графік прибирання під’їзду",
+      "uk": "Графік прибирання підʼїзду",
       "ru": "График уборки подъезда"
     },
     "task": {
       "de": "In Ihrem Mehrfamilienhaus putzt bisher niemand regelmäßig das Treppenhaus. Sie schlagen den Mieterinnen und Mietern einen gemeinsamen Putzplan vor. Schreiben Sie eine E-Mail an alle Mieter.<br><br>1. Grund für Ihr Schreiben<br>2. Warum ein Putzplan sinnvoll ist<br>3. Wie der Plan aussehen soll<br>4. Bitte um Rückmeldung",
       "en": "In your apartment building, no one has been cleaning the stairwell regularly so far. You propose a shared cleaning schedule to the tenants. Write an email to all tenants.<br><br>1. Reason for your email<br>2. Why a cleaning schedule makes sense<br>3. What the plan should look like<br>4. A request for feedback",
-      "uk": "У Вашому багатоквартирному будинку досі ніхто регулярно не прибирає під’їзд. Ви пропонуєте мешканцям спільний графік прибирання. Напишіть електронного листа всім мешканцям.<br><br>1. Причина Вашого листа<br>2. Чому графік прибирання має сенс<br>3. Яким має бути план<br>4. Прохання про відповідь",
+      "uk": "У Вашому багатоквартирному будинку досі ніхто регулярно не прибирає підʼїзд. Ви пропонуєте мешканцям спільний графік прибирання. Напишіть електронного листа всім мешканцям.<br><br>1. Причина Вашого листа<br>2. Чому графік прибирання має сенс<br>3. Яким має бути план<br>4. Прохання про відповідь",
       "ru": "В Вашем многоквартирном доме до сих пор никто регулярно не убирает подъезд. Вы предлагаете жильцам общий график уборки. Напишите электронное письмо всем жильцам.<br><br>1. Причина Вашего письма<br>2. Почему график уборки имеет смысл<br>3. Каким должен быть план<br>4. Просьба о ответе"
     },
     "name": "de_m_david",
     "parts": [
-      { "role": "betreff", "gram": "", "de": "Betreff: Vorschlag für einen Putzplan im Treppenhaus", "en": "Subject: Proposal for a cleaning schedule in the stairwell", "uk": "Тема: Пропозиція графіка прибирання під’їзду", "ru": "Тема: Предложение графика уборки подъезда" },
+      { "role": "betreff", "gram": "", "de": "Betreff: Vorschlag für einen Putzplan im Treppenhaus", "en": "Subject: Proposal for a cleaning schedule in the stairwell", "uk": "Тема: Пропозиція графіка прибирання підʼїзду", "ru": "Тема: Предложение графика уборки подъезда" },
       { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
-      { "role": "einleitung", "gram": "infinitiv_mit_zu", "de": "<r>Ich möchte Ihnen mitteilen, dass</r> es in unserem Haus schwierig ist, das <c>Treppenhaus</c> regelmäßig sauber <g>zu halten</g>, <k>weil</k> sich bisher niemand richtig darum kümmert.", "en": "<r>I would like to let you know that</r> it is difficult to keep the stairwell in our building clean regularly, because so far no one really takes care of it.", "uk": "<r>Хочу повідомити Вам, що</r> у нашому будинку складно регулярно підтримувати під’їзд у чистоті, тому що досі ніхто цим по-справжньому не займається.", "ru": "<r>Хочу сообщить Вам, что</r> в нашем доме сложно регулярно поддерживать подъезд в чистоте, потому что до сих пор никто этим по-настоящему не занимается." },
+      { "role": "einleitung", "gram": "infinitiv_mit_zu", "de": "<r>Ich möchte Ihnen mitteilen, dass</r> es in unserem Haus schwierig ist, das <c>Treppenhaus</c> regelmäßig sauber <g>zu halten</g>, <k>weil</k> sich bisher niemand richtig darum kümmert.", "en": "<r>I would like to let you know that</r> it is difficult to keep the stairwell in our building clean regularly, because so far no one really takes care of it.", "uk": "<r>Хочу повідомити Вам, що</r> у нашому будинку складно регулярно підтримувати підʼїзд у чистоті, тому що досі ніхто цим по-справжньому не займається.", "ru": "<r>Хочу сообщить Вам, что</r> в нашем доме сложно регулярно поддерживать подъезд в чистоте, потому что до сих пор никто этим по-настоящему не занимается." },
       { "role": "punkt2", "gram": "satz_mit_um_zu", "de": "<r>Deshalb schlage ich vor,</r> einen festen Plan zu machen, <g>um die Kosten für eine Reinigungsfirma zu sparen</g> <k>und</k> die Verantwortung fair zu teilen.", "en": "<r>I therefore suggest</r> making a fixed schedule in order to save the cost of a cleaning company and share the responsibility fairly.", "uk": "<r>Тому пропоную</r> зробити чіткий графік, щоб заощадити на послугах клінінгової компанії і справедливо розподілити відповідальність.", "ru": "<r>Поэтому предлагаю</r> составить чёткий график, чтобы сэкономить на услугах клининговой компании и справедливо распределить ответственность." },
       { "role": "punkt3", "gram": "relativsatz_akkusativ_b1", "de": "<r>Ich stelle mir vor, dass</r> jede Familie eine Woche <g>übernimmt, die wir gemeinsam festlegen</g>, <k>und</k> danach an die nächste Familie weitergibt.", "en": "<r>I imagine that</r> each family takes on a week, which we determine together, and then passes it on to the next family.", "uk": "<r>Я уявляю це так, що</r> кожна родина бере на себе тиждень, який ми визначимо разом, і потім передає наступній родині.", "ru": "<r>Я представляю это так, что</r> каждая семья берёт на себя неделю, которую мы определим вместе, и затем передаёт следующей семье." },
       { "role": "punkt4", "gram": "deshalb_deswegen_trotzdem", "de": "<r>Ich wäre Ihnen sehr dankbar, wenn</r> Sie mir kurz Ihre Meinung mitteilen. <k>Deshalb</k> <g>bitte ich Sie</g> um eine Antwort bis Ende des Monats.", "en": "<r>I would be very grateful if</r> you could share your opinion with me briefly. That's why I am asking you to reply by the end of the month.", "uk": "<r>Я був би Вам дуже вдячний, якби</r> Ви коротко повідомили свою думку. Тому прошу Вас відповісти до кінця місяця.", "ru": "<r>Я был бы Вам очень благодарен, если бы</r> Вы коротко сообщили своё мнение. Поэтому прошу Вас ответить до конца месяца." },
@@ -57990,7 +57834,7 @@ var SCHREIBEN = [
     "parts": [
       { "role": "ort_datum", "gram": "", "de": "München, den 12. Februar 2025", "en": "Munich, 12 February 2025", "uk": "Мюнхен, 12 лютого 2025 р.", "ru": "Мюнхен, 12 февраля 2025 г." },
       { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
-      { "role": "einleitung", "gram": "modalverben_wdh_b1", "de": "<r>Ich schreibe Ihnen, weil</r> ich vor Kurzem in Ihr Haus gezogen bin <k>und</k> noch einige Fragen zur <c>Hausordnung</c> habe, die ich gerne <g>klären möchte</g>.", "en": "<r>I am writing to you because</r> I recently moved into your building and still have a few questions about the house rules that I would like to clarify.", "uk": "<r>Пишу Вам, тому що</r> я нещодавно переїхала до Вашого будинку і маю ще кілька запитань щодо правил будинку, які хотіла б з’ясувати.", "ru": "<r>Пишу Вам, потому что</r> я недавно переехала в Ваш дом и у меня есть ещё несколько вопросов о правилах дома, которые я хотела бы прояснить." },
+      { "role": "einleitung", "gram": "modalverben_wdh_b1", "de": "<r>Ich schreibe Ihnen, weil</r> ich vor Kurzem in Ihr Haus gezogen bin <k>und</k> noch einige Fragen zur <c>Hausordnung</c> habe, die ich gerne <g>klären möchte</g>.", "en": "<r>I am writing to you because</r> I recently moved into your building and still have a few questions about the house rules that I would like to clarify.", "uk": "<r>Пишу Вам, тому що</r> я нещодавно переїхала до Вашого будинку і маю ще кілька запитань щодо правил будинку, які хотіла б зʼясувати.", "ru": "<r>Пишу Вам, потому что</r> я недавно переехала в Ваш дом и у меня есть ещё несколько вопросов о правилах дома, которые я хотела бы прояснить." },
       { "role": "punkt2", "gram": "fragewoerter_wor_dar", "de": "<r>Ich möchte Sie fragen,</r> <g>woran</g> ich mich bei den Ruhezeiten genau halten muss, <k>denn</k> in der Hausordnung steht dazu leider nichts Genaues.", "en": "<r>I would like to ask you</r> exactly what I need to follow regarding the quiet hours, because unfortunately the house rules don't say anything specific about that.", "uk": "<r>Хочу запитати Вас</r>, чого саме мені слід дотримуватися щодо годин тиші, бо в правилах будинку про це, на жаль, нічого конкретного не написано.", "ru": "<r>Хочу спросить Вас</r>, чего именно мне следует придерживаться в отношении часов тишины, потому что в правилах дома об этом, к сожалению, ничего конкретного не написано." },
       { "role": "punkt3", "gram": "relativsatz_mit_praeposition", "de": "<r>Außerdem interessiert mich,</r> ob es feste Regeln gibt, <g>an die ich mich bei der Mülltrennung und beim Parken halten muss</g>.", "en": "<r>I would also like to know</r> whether there are fixed rules that I need to follow regarding waste separation and parking.", "uk": "<r>Крім того, мені цікаво,</r> чи є чіткі правила, яких я маю дотримуватися щодо сортування сміття та паркування.", "ru": "<r>Кроме того, мне интересно,</r> есть ли чёткие правила, которых мне нужно придерживаться в отношении сортировки мусора и парковки." },
       { "role": "punkt4", "gram": "verben_praep_dass_satz", "de": "<r>Ich bitte Sie deshalb,</r> mir die vollständige Hausordnung schriftlich zuzusenden. <k>Außerdem</k> <g>würde ich mich darüber freuen, dass</g> ich dann alle Regeln auf einen Blick habe.", "en": "<r>I therefore ask you to</r> send me the complete house rules in writing. I would also be glad to have all the rules at a glance then.", "uk": "<r>Тому прошу Вас</r> надіслати мені повні правила будинку письмово. Крім того, я була б рада мати тоді всі правила в одному місці.", "ru": "<r>Поэтому прошу Вас</r> прислать мне полные правила дома в письменном виде. Кроме того, я была бы рада иметь тогда все правила в одном месте." },
@@ -58050,7 +57894,7 @@ var SCHREIBEN = [
       { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
       { "role": "einleitung", "gram": "relativsatz_akkusativ_b1", "de": "<r>Ich schreibe Ihnen wegen meiner Reservierung,</r> <g>die ich letzte Woche gemacht habe</g>, <k>denn</k> ich kann den <c>Abholtermin</c> heute leider nicht einhalten.", "en": "<r>I am writing to you regarding my reservation</r>, which I made last week, because I unfortunately cannot keep the pickup appointment today.", "uk": "<r>Пишу Вам щодо моєї резервації</r>, яку я зробила минулого тижня, бо, на жаль, не можу сьогодні дотримати термін отримання товару.", "ru": "<r>Пишу Вам по поводу моей резервации</r>, которую я сделала на прошлой неделе, потому что, к сожалению, не могу сегодня сдержать срок получения товара." },
       { "role": "punkt2", "gram": "nebensatz_mit_bevor", "de": "<r>Leider kann ich den Termin nicht einhalten,</r> <k>weil</k> ich heute kurzfristig zu einem Arzttermin muss. <g>Bevor ich zu Ihnen komme, ist der Laden schon geschlossen.</g>", "en": "<r>Unfortunately, I cannot keep the appointment</r> because I have to go to a short-notice doctor's appointment today. Before I can come to you, the shop will already be closed.", "uk": "<r>На жаль, я не можу дотримати термін,</r> тому що сьогодні мені раптово потрібно до лікаря. Перш ніж я встигну до Вас прийти, магазин уже буде зачинений.", "ru": "<r>К сожалению, я не могу сдержать срок,</r> потому что сегодня мне срочно нужно к врачу. Прежде чем я успею к Вам прийти, магазин уже будет закрыт." },
-      { "role": "punkt3", "gram": "verben_als_nomen", "de": "<r>Ich würde den Artikel gerne</r> <g>am Freitagnachmittag zum Abholen</g> vorbeikommen, <k>falls</k> das für Sie möglich ist.", "en": "<r>I would like to</r> come by to pick up the item on Friday afternoon instead, if that's possible for you.", "uk": "<r>Я хотіла б</r> натомість зайти забрати товар у п’ятницю вдень, якщо це для Вас можливо.", "ru": "<r>Я хотела бы</r> вместо этого зайти забрать товар в пятницу днём, если это для Вас возможно." },
+      { "role": "punkt3", "gram": "verben_als_nomen", "de": "<r>Ich würde den Artikel gerne</r> <g>am Freitagnachmittag zum Abholen</g> vorbeikommen, <k>falls</k> das für Sie möglich ist.", "en": "<r>I would like to</r> come by to pick up the item on Friday afternoon instead, if that's possible for you.", "uk": "<r>Я хотіла б</r> натомість зайти забрати товар у пʼятницю вдень, якщо це для Вас можливо.", "ru": "<r>Я хотела бы</r> вместо этого зайти забрать товар в пятницу днём, если это для Вас возможно." },
       { "role": "punkt4", "gram": "nicht_brauchen_zu", "de": "<r>Ich wäre Ihnen dankbar, wenn</r> Sie mir kurz Bescheid geben könnten. <k>Dafür</k> <g>brauchen Sie nicht extra anzurufen</g>, eine kurze E-Mail reicht völlig.", "en": "<r>I would be grateful if</r> you could let me know briefly. You don't need to call specially for that — a short email is completely enough.", "uk": "<r>Я була б Вам вдячна, якби</r> Ви коротко повідомили мене. Для цього не потрібно окремо телефонувати, достатньо короткого листа.", "ru": "<r>Я была бы Вам благодарна, если бы</r> Вы коротко сообщили мне. Для этого не нужно отдельно звонить, достаточно короткого письма." },
       { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihr Verständnis.</r>", "en": "<r>Thank you for your understanding.</r>", "uk": "<r>Дякую за розуміння.</r>", "ru": "<r>Спасибо за понимание.</r>" },
       { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
@@ -58168,7 +58012,7 @@ var SCHREIBEN = [
       { "role": "punkt2", "gram": "genitiv", "de": "<r>Zu Ihrer Information:</r> Ich habe den Betrag bereits <g>Ende des Monats</g> per Überweisung bezahlt, <k>und</k> ich habe dafür auch einen Beleg.", "en": "<r>For your information:</r> I already paid the amount by bank transfer at the end of the month, and I also have a receipt for it.", "uk": "<r>Для Вашої інформації:</r> я вже оплатила суму банківським переказом наприкінці місяця, і в мене є квитанція про це.", "ru": "<r>Для Вашей информации:</r> я уже оплатила сумму банковским переводом в конце месяца, и у меня есть квитанция об этом." },
       { "role": "punkt3", "gram": "modalverben_vermutung", "de": "<r>Ich war deshalb sehr überrascht,</r> <k>denn</k> die Zahlung <g>müsste</g> längst bei Ihnen angekommen sein.", "en": "<r>I was therefore very surprised,</r> because the payment should have reached you long ago.", "uk": "<r>Тому я була дуже здивована,</r> бо оплата, мабуть, уже давно мала до Вас надійти.", "ru": "<r>Поэтому я была очень удивлена,</r> потому что оплата, должно быть, уже давно к Вам поступила." },
       { "role": "punkt4", "gram": "entweder_oder", "de": "<r>Ich bitte Sie deshalb,</r> das zu überprüfen: <g>Entweder wurde die Zahlung noch nicht verbucht, oder es liegt ein Irrtum vor</g>.", "en": "<r>I therefore ask you to</r> check this: either the payment has not yet been recorded, or there is a mistake.", "uk": "<r>Тому прошу Вас</r> це перевірити: або оплату ще не зареєстровано, або сталася помилка.", "ru": "<r>Поэтому прошу Вас</r> это проверить: либо оплата ещё не зарегистрирована, либо произошла ошибка." },
-      { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihre schnelle Klärung.</r>", "en": "<r>Thank you for clarifying this quickly.</r>", "uk": "<r>Дякую за швидке з'ясування.</r>", "ru": "<r>Спасибо за быстрое выяснение.</r>" },
+      { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihre schnelle Klärung.</r>", "en": "<r>Thank you for clarifying this quickly.</r>", "uk": "<r>Дякую за швидке зʼясування.</r>", "ru": "<r>Спасибо за быстрое выяснение.</r>" },
       { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
       { "role": "name", "gram": "", "de": "Nina Falk", "en": "Nina Falk", "uk": "Ніна Фальк", "ru": "Нина Фальк" }
     ]
@@ -58195,7 +58039,7 @@ var SCHREIBEN = [
       { "role": "anrede", "gram": "", "de": "Liebe Sabine,", "en": "Dear Sabine,", "uk": "Люба Сабіно,", "ru": "Дорогая Сабина," },
       { "role": "einleitung", "gram": "komparativ_superlativ_vor_nomen", "de": "<r>Ich wollte dir unbedingt schreiben, dass</r> ich in dem <c>Geschäft mit den tollen Rabatten</c> war, <k>und</k> es war wirklich <g>der beste Tipp</g> von dir!", "en": "<r>I just had to write and tell you that</r> I went to the shop you recommended, and it was really the best tip from you!", "uk": "<r>Мушу неодмінно написати тобі, що</r> я був у магазині, який ти мені порадила, і це справді була найкраща порада від тебе!", "ru": "<r>Должен обязательно написать тебе, что</r> я был в магазине, который ты мне посоветовала, и это действительно был лучший совет от тебя!" },
       { "role": "punkt2", "gram": "partizip2_als_adjektiv", "de": "<r>Ich habe mir</r> die <g>reduzierten Schuhe</g> gekauft, <k>und</k> sie passen mir perfekt.", "en": "<r>I bought myself</r> the discounted shoes, and they fit me perfectly.", "uk": "<r>Я купив собі</r> ті уцінені кросівки, і вони сидять на мені ідеально.", "ru": "<r>Я купил себе</r> те уценённые кроссовки, и они сидят на мне идеально." },
-      { "role": "punkt3", "gram": "adjektive_super_hoch_ueber_extra", "de": "<r>Stell dir vor,</r> ich habe dabei <g>super viel Geld</g> gespart, <k>denn</k> die Schuhe waren um fast fünfzig Prozent reduziert.", "en": "<r>Just imagine,</r> I saved a ton of money doing it, because the shoes were almost fifty percent off.", "uk": "<r>Уяви собі,</r> я заощадив на цьому купу грошей, бо кросівки були зі знижкою майже п'ятдесят відсотків.", "ru": "<r>Представь себе,</r> я сэкономил на этом кучу денег, потому что кроссовки были со скидкой почти пятьдесят процентов." },
+      { "role": "punkt3", "gram": "adjektive_super_hoch_ueber_extra", "de": "<r>Stell dir vor,</r> ich habe dabei <g>super viel Geld</g> gespart, <k>denn</k> die Schuhe waren um fast fünfzig Prozent reduziert.", "en": "<r>Just imagine,</r> I saved a ton of money doing it, because the shoes were almost fifty percent off.", "uk": "<r>Уяви собі,</r> я заощадив на цьому купу грошей, бо кросівки були зі знижкою майже пʼятдесят відсотків.", "ru": "<r>Представь себе,</r> я сэкономил на этом кучу денег, потому что кроссовки были со скидкой почти пятьдесят процентов." },
       { "role": "punkt4", "gram": "verben_praep_personen_sachen", "de": "<r>Ich möchte mich deshalb ganz herzlich</r> <g>bei dir für diesen Tipp bedanken</g>, <k>denn</k> ohne dich hätte ich das Geschäft nie gefunden.", "en": "<r>I therefore want to</r> thank you very much for this tip, because without you I would never have found the shop.", "uk": "<r>Тому хочу</r> щиро подякувати тобі за цю пораду, бо без тебе я б ніколи не знайшов цей магазин.", "ru": "<r>Поэтому хочу</r> искренне поблагодарить тебя за этот совет, потому что без тебя я бы никогда не нашёл этот магазин." },
       { "role": "schluss", "gram": "", "de": "<r>Lass uns bald wieder zusammen einkaufen gehen!</r>", "en": "<r>Let's go shopping together again soon!</r>", "uk": "<r>Давай незабаром знову підемо разом за покупками!</r>", "ru": "<r>Давай скоро снова сходим вместе за покупками!</r>" },
       { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
@@ -58282,7 +58126,7 @@ var SCHREIBEN = [
       { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
       { "role": "einleitung", "gram": "praeteritum_wdh_b1", "de": "<r>Ich schreibe Ihnen, weil</r> mir gestern Abend meine <c>Bankkarte</c> <g>gestohlen wurde</g>.", "en": "<r>I am writing to you because</r> my bank card was stolen from me yesterday evening.", "uk": "<r>Пишу Вам, тому що</r> вчора ввечері в мене вкрали банківську картку.", "ru": "<r>Пишу Вам, потому что</r> вчера вечером у меня украли банковскую карту." },
       { "role": "punkt2", "gram": "komposita_verb_nomen", "de": "<r>Genauer gesagt,</r> ich habe sofort beim <g>Sperrnotruf</g> angerufen, <k>und</k> die Karte ist inzwischen gesperrt.", "en": "<r>More specifically,</r> I immediately called the card-blocking hotline, and the card is now blocked.", "uk": "<r>Точніше кажучи,</r> я одразу зателефонувала на гарячу лінію блокування карток, і картку вже заблоковано.", "ru": "<r>Точнее говоря,</r> я сразу позвонила на горячую линию блокировки карт, и карта уже заблокирована." },
-      { "role": "punkt3", "gram": "relativsatz_wo_was", "de": "<r>Außerdem habe ich</r> bereits die Polizei informiert <k>und</k> eine Anzeige erstattet, <g>was</g> hoffentlich hilft, den Fall schnell zu klären.", "en": "<r>I have also</r> already informed the police and filed a report, which will hopefully help clarify the case quickly.", "uk": "<r>Крім того, я вже</r> повідомила поліцію і подала заяву, що, сподіваюся, допоможе швидко з'ясувати справу.", "ru": "<r>Кроме того, я уже</r> сообщила в полицию и подала заявление, что, надеюсь, поможет быстро прояснить дело." },
+      { "role": "punkt3", "gram": "relativsatz_wo_was", "de": "<r>Außerdem habe ich</r> bereits die Polizei informiert <k>und</k> eine Anzeige erstattet, <g>was</g> hoffentlich hilft, den Fall schnell zu klären.", "en": "<r>I have also</r> already informed the police and filed a report, which will hopefully help clarify the case quickly.", "uk": "<r>Крім того, я вже</r> повідомила поліцію і подала заяву, що, сподіваюся, допоможе швидко зʼясувати справу.", "ru": "<r>Кроме того, я уже</r> сообщила в полицию и подала заявление, что, надеюсь, поможет быстро прояснить дело." },
       { "role": "punkt4", "gram": "adjektive_auf_bar_los", "de": "<r>Ich bitte Sie deshalb,</r> mir schnell eine Ersatzkarte zu schicken. <k>Außerdem</k> möchte ich wissen, ob das <g>kostenlos</g> ist.", "en": "<r>I therefore ask you to</r> send me a replacement card quickly. I would also like to know whether that is free of charge.", "uk": "<r>Тому прошу Вас</r> швидко надіслати мені нову картку. Крім того, хотіла б знати, чи це безкоштовно.", "ru": "<r>Поэтому прошу Вас</r> быстро прислать мне новую карту. Кроме того, хотела бы знать, бесплатно ли это." },
       { "role": "schluss", "gram": "", "de": "<r>Vielen Dank für Ihre schnelle Hilfe.</r>", "en": "<r>Thank you for your quick help.</r>", "uk": "<r>Дякую за Вашу швидку допомогу.</r>", "ru": "<r>Спасибо за Вашу быструю помощь.</r>" },
       { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
@@ -58340,7 +58184,7 @@ var SCHREIBEN = [
       { "role": "anrede", "gram": "", "de": "Sehr geehrte Frau Weber,", "en": "Dear Ms. Weber,", "uk": "Шановна пані Вебер,", "ru": "Уважаемая госпожа Вебер," },
       { "role": "einleitung", "gram": "komposita_verb_nomen", "de": "<r>Vielen Dank für Ihre Einladung</r> zum <g>Beratungsgespräch</g>, <k>und</k> ich möchte gerne daran teilnehmen.", "en": "<r>Thank you very much for your invitation</r> to the consultation, and I would love to take part.", "uk": "<r>Щиро дякую за Ваше запрошення</r> на консультацію, і я з радістю візьму в ній участь.", "ru": "<r>Большое спасибо за Ваше приглашение</r> на консультацию, и я с радостью приму в ней участие." },
       { "role": "punkt2", "gram": "nebensatz_mit_bevor", "de": "<r>Leider passt mir der vorgeschlagene Termin nicht,</r> <k>denn</k> <g>bevor ich zu Ihnen kommen kann, habe ich an dem Tag bereits einen Arzttermin</g>.", "en": "<r>Unfortunately, the proposed date doesn't work for me,</r> because I already have a doctor's appointment that day before I could come to you.", "uk": "<r>На жаль, запропонована дата мені не підходить,</r> бо того дня в мене вже є запис до лікаря, перш ніж я зможу до Вас прийти.", "ru": "<r>К сожалению, предложенная дата мне не подходит,</r> потому что в тот день у меня уже есть запись к врачу, прежде чем я смогу к Вам прийти." },
-      { "role": "punkt3", "gram": "adjektivdeklination_ohne_artikel", "de": "<r>Wäre es möglich,</r> <c>ein anderes Datum</c> zu finden, <g>an kommendem Freitag</g> zum Beispiel? <k>Dann</k> hätte ich definitiv Zeit.", "en": "<r>Would it be possible</r> to find a different date, next Friday for example? Then I would definitely have time.", "uk": "<r>Чи можливо було б</r> знайти іншу дату, наприклад, наступної п'ятниці? Тоді в мене точно був би час.", "ru": "<r>Было бы возможно</r> найти другую дату, например, в следующую пятницу? Тогда у меня точно было бы время." },
+      { "role": "punkt3", "gram": "adjektivdeklination_ohne_artikel", "de": "<r>Wäre es möglich,</r> <c>ein anderes Datum</c> zu finden, <g>an kommendem Freitag</g> zum Beispiel? <k>Dann</k> hätte ich definitiv Zeit.", "en": "<r>Would it be possible</r> to find a different date, next Friday for example? Then I would definitely have time.", "uk": "<r>Чи можливо було б</r> знайти іншу дату, наприклад, наступної пʼятниці? Тоді в мене точно був би час.", "ru": "<r>Было бы возможно</r> найти другую дату, например, в следующую пятницу? Тогда у меня точно было бы время." },
       { "role": "punkt4", "gram": "adjektivendung_genitiv", "de": "<r>Ich bitte Sie deshalb,</r> mir kurz zu bestätigen, ob der neue Termin möglich ist. <g>Trotz meines vollen Terminkalenders</g> würde ich mir dafür gerne Zeit nehmen.", "en": "<r>I therefore ask you to</r> confirm briefly whether the new date is possible. Despite my full schedule, I would gladly make time for it.", "uk": "<r>Тому прошу Вас</r> коротко підтвердити, чи можлива нова дата. Попри свій завантажений графік, я з радістю виділю на це час.", "ru": "<r>Поэтому прошу Вас</r> коротко подтвердить, возможна ли новая дата. Несмотря на свой загруженный график, я с радостью выделю на это время." },
       { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf unser Gespräch.</r>", "en": "<r>I look forward to our conversation.</r>", "uk": "<r>Із нетерпінням чекаю на нашу розмову.</r>", "ru": "<r>С нетерпением жду нашего разговора.</r>" },
       { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
@@ -58397,9 +58241,9 @@ var SCHREIBEN = [
       { "role": "betreff", "gram": "", "de": "Betreff: Krankmeldung für heute", "en": "Subject: Sick note for today", "uk": "Тема: Довідка про хворобу на сьогодні", "ru": "Тема: Больничный на сегодня" },
       { "role": "anrede", "gram": "", "de": "Hallo Tom,", "en": "Hi Tom,", "uk": "Привіт, Томе,", "ru": "Привет, Том," },
       { "role": "einleitung", "gram": "nebensatz_wenn_konjunktiv2_irreal", "de": "<r>Ich muss dir leider mitteilen, dass</r> ich heute nicht zur Arbeit kommen kann. <g>Wenn ich gewusst hätte, wie schlecht mir wird, hätte ich das Essen gestern nicht angerührt.</g>", "en": "<r>I unfortunately have to let you know that</r> I can't come to work today. If I had known how sick I would feel, I wouldn't have touched the food yesterday.", "uk": "<r>Мушу, на жаль, повідомити тобі, що</r> сьогодні я не можу прийти на роботу. Якби я знала, як мені стане погано, я б учора не торкалася тієї їжі.", "ru": "<r>Должна, к сожалению, сообщить тебе, что</r> сегодня я не могу прийти на работу. Если бы я знала, как мне станет плохо, я бы вчера не притронулась к этой еде." },
-      { "role": "punkt2", "gram": "nomen_auf_chen", "de": "<r>Genauer gesagt,</r> ich habe gestern Abend ein <g>Würstchen</g> <c>vom Imbiss</c> gegessen, <k>und</k> seitdem geht es mir richtig schlecht.", "en": "<r>More specifically,</r> I ate a sausage from the snack stand yesterday evening, and I've felt really bad ever since.", "uk": "<r>Точніше кажучи,</r> учора ввечері я з'їла сосиску в кіоску, і відтоді почуваюся справді погано.", "ru": "<r>Точнее говоря,</r> вчера вечером я съела сосиску в киоске, и с тех пор чувствую себя действительно плохо." },
+      { "role": "punkt2", "gram": "nomen_auf_chen", "de": "<r>Genauer gesagt,</r> ich habe gestern Abend ein <g>Würstchen</g> <c>vom Imbiss</c> gegessen, <k>und</k> seitdem geht es mir richtig schlecht.", "en": "<r>More specifically,</r> I ate a sausage from the snack stand yesterday evening, and I've felt really bad ever since.", "uk": "<r>Точніше кажучи,</r> учора ввечері я зʼїла сосиску в кіоску, і відтоді почуваюся справді погано.", "ru": "<r>Точнее говоря,</r> вчера вечером я съела сосиску в киоске, и с тех пор чувствую себя действительно плохо." },
       { "role": "punkt3", "gram": "adjektive_auf_ig_isch", "de": "<r>Der Arzt hat gesagt,</r> dass es sich vermutlich um eine leichte Vergiftung handelt, <k>und</k> ich mich deshalb <g>schwindelig</g> und schwach fühle.", "en": "<r>The doctor said</r> that it's probably a mild case of food poisoning, and that's why I feel dizzy and weak.", "uk": "<r>Лікар сказав,</r> що це, ймовірно, легке отруєння, тому в мене паморочиться в голові і я почуваюся слабко.", "ru": "<r>Врач сказал,</r> что это, вероятно, лёгкое отравление, поэтому у меня кружится голова и я чувствую слабость." },
-      { "role": "punkt4", "gram": "n_deklination", "de": "<r>Ich denke,</r> dass ich meinem <g>Kollegen</g> Bescheid geben sollte, <k>denn</k> ich werde wahrscheinlich bis Freitag fehlen.", "en": "<r>I think</r> I should let my colleague know, because I will probably be absent until Friday.", "uk": "<r>Гадаю,</r> що варто повідомити мого колегу, бо я, ймовірно, буду відсутня до п'ятниці.", "ru": "<r>Думаю,</r> что стоит сообщить моему коллеге, потому что я, вероятно, буду отсутствовать до пятницы." },
+      { "role": "punkt4", "gram": "n_deklination", "de": "<r>Ich denke,</r> dass ich meinem <g>Kollegen</g> Bescheid geben sollte, <k>denn</k> ich werde wahrscheinlich bis Freitag fehlen.", "en": "<r>I think</r> I should let my colleague know, because I will probably be absent until Friday.", "uk": "<r>Гадаю,</r> що варто повідомити мого колегу, бо я, ймовірно, буду відсутня до пʼятниці.", "ru": "<r>Думаю,</r> что стоит сообщить моему коллеге, потому что я, вероятно, буду отсутствовать до пятницы." },
       { "role": "schluss", "gram": "", "de": "<r>Ich melde mich, sobald es mir besser geht.</r>", "en": "<r>I'll be in touch as soon as I feel better.</r>", "uk": "<r>Дам знати, щойно почуватимусь краще.</r>", "ru": "<r>Дам знать, как только почувствую себя лучше.</r>" },
       { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
       { "role": "name", "gram": "", "de": "Julia Neumann", "en": "Julia Neumann", "uk": "Юлія Нойманн", "ru": "Юлия Нойманн" }
@@ -58426,7 +58270,7 @@ var SCHREIBEN = [
       { "role": "ort_datum", "gram": "", "de": "Bremen, den 9. Oktober 2025", "en": "Bremen, 9 October 2025", "uk": "Бремен, 9 жовтня 2025 р.", "ru": "Бремен, 9 октября 2025 г." },
       { "role": "anrede", "gram": "", "de": "Lieber Felix,", "en": "Dear Felix,", "uk": "Любий Феліксе,", "ru": "Дорогой Феликс," },
       { "role": "einleitung", "gram": "praeteritum_wdh_b1", "de": "<r>Ich musste neulich an dich denken, weil</r> ich an unsere <c>Schulzeit</c> dachte, <k>als</k> es in der Kantine ständig Pizza <g>gab</g>.", "en": "<r>I recently had to think of you because</r> I was thinking about our school days, when there was always pizza in the cafeteria.", "uk": "<r>Нещодавно я про тебе згадав, тому що</r> думав про наші шкільні часи, коли в їдальні завжди була піца.", "ru": "<r>Недавно я о тебе вспомнил, потому что</r> думал о наших школьных временах, когда в столовой всегда была пицца." },
-      { "role": "punkt2", "gram": "genitiv_alternativen", "de": "<r>Weißt du noch,</r> wie gut uns damals der Geschmack <g>von der Pizza</g> geschmeckt hat? <k>Und</k> wie wir immer zusammen gelacht haben?", "en": "<r>Do you remember</r> how much we loved the taste of that pizza back then? And how we always laughed together?", "uk": "<r>Пам'ятаєш,</r> як нам тоді дуже смакувала та піца? І як ми завжди разом сміялися?", "ru": "<r>Помнишь,</r> как нам тогда очень нравился вкус той пиццы? И как мы всегда вместе смеялись?" },
+      { "role": "punkt2", "gram": "genitiv_alternativen", "de": "<r>Weißt du noch,</r> wie gut uns damals der Geschmack <g>von der Pizza</g> geschmeckt hat? <k>Und</k> wie wir immer zusammen gelacht haben?", "en": "<r>Do you remember</r> how much we loved the taste of that pizza back then? And how we always laughed together?", "uk": "<r>Памʼятаєш,</r> як нам тоді дуже смакувала та піца? І як ми завжди разом сміялися?", "ru": "<r>Помнишь,</r> как нам тогда очень нравился вкус той пиццы? И как мы всегда вместе смеялись?" },
       { "role": "punkt3", "gram": "adjektivdeklination_bestimmter_artikel", "de": "<r>Ich würde gerne</r> mit dir <g>die berühmte Pizza</g> von damals nachkochen, <k>denn</k> ich habe endlich ein gutes Rezept gefunden.", "en": "<r>I would love to</r> recreate that famous pizza from back then with you, because I finally found a good recipe.", "uk": "<r>Я хотів би</r> разом з тобою приготувати ту знамениту піцу з тих часів, бо я нарешті знайшов хороший рецепт.", "ru": "<r>Я хотел бы</r> вместе с тобой приготовить ту знаменитую пиццу из тех времён, потому что я наконец нашёл хороший рецепт." },
       { "role": "punkt4", "gram": "satzverbindungen_ueberblick", "de": "<r>Wärst du dieses Wochenende frei?</r> <g>Ich könnte am Samstag kochen, du müsstest aber vorher kurz Bescheid geben, damit ich rechtzeitig einkaufen kann.</g>", "en": "<r>Would you be free this weekend?</r> I could cook on Saturday, but you'd need to let me know briefly beforehand so I can shop in time.", "uk": "<r>Чи був би ти вільний цих вихідних?</r> Я міг би готувати в суботу, але тобі потрібно заздалегідь коротко повідомити, щоб я встиг вчасно закупитися.", "ru": "<r>Ты был бы свободен в эти выходные?</r> Я мог бы готовить в субботу, но тебе нужно заранее коротко сообщить, чтобы я успел вовремя закупиться." },
       { "role": "schluss", "gram": "", "de": "<r>Ich freue mich schon auf unseren Kochabend!</r>", "en": "<r>I'm already looking forward to our cooking evening!</r>", "uk": "<r>Уже тішуся нашому кулінарному вечору!</r>", "ru": "<r>Уже радуюсь нашему кулинарному вечеру!</r>" },
@@ -58455,7 +58299,7 @@ var SCHREIBEN = [
       { "role": "ort_datum", "gram": "", "de": "Leipzig, den 14. April 2026", "en": "Leipzig, 14 April 2026", "uk": "Лейпциг, 14 квітня 2026 р.", "ru": "Лейпциг, 14 апреля 2026 г." },
       { "role": "anrede", "gram": "", "de": "Lieber Tobias,", "en": "Dear Tobias,", "uk": "Любий Тобіасе,", "ru": "Дорогой Тобиас," },
       { "role": "einleitung", "gram": "deshalb_deswegen_trotzdem", "de": "<r>Ich wollte dir schon lange schreiben, denn</r> ich habe in den letzten Monaten meine <c>Ernährung</c> bewusst verändert. <k>Deshalb</k> <g>geht es mir jetzt viel besser</g>.", "en": "<r>I've wanted to write to you for a long time, because</r> I have consciously changed my diet over the last few months. That's why I feel much better now.", "uk": "<r>Я вже давно хотіла тобі написати, бо</r> останніми місяцями я свідомо змінила своє харчування. Тому мені тепер набагато краще.", "ru": "<r>Я уже давно хотела тебе написать, потому что</r> в последние месяцы я сознательно изменила своё питание. Поэтому мне теперь намного лучше." },
-      { "role": "punkt2", "gram": "adjektive_mit_un", "de": "<r>Genauer gesagt,</r> ich habe fünf Kilo abgenommen, <k>und</k> ich esse nicht mehr so <g>ungesund</g> wie früher.", "en": "<r>More specifically,</r> I have lost five kilos, and I no longer eat as unhealthily as before.", "uk": "<r>Точніше кажучи,</r> я схудла на п'ять кілограмів, і вже не їм так нездорово, як раніше.", "ru": "<r>Точнее говоря,</r> я похудела на пять килограммов, и уже не ем так вредно, как раньше." },
+      { "role": "punkt2", "gram": "adjektive_mit_un", "de": "<r>Genauer gesagt,</r> ich habe fünf Kilo abgenommen, <k>und</k> ich esse nicht mehr so <g>ungesund</g> wie früher.", "en": "<r>More specifically,</r> I have lost five kilos, and I no longer eat as unhealthily as before.", "uk": "<r>Точніше кажучи,</r> я схудла на пʼять кілограмів, і вже не їм так нездорово, як раніше.", "ru": "<r>Точнее говоря,</r> я похудела на пять килограммов, и уже не ем так вредно, как раньше." },
       { "role": "punkt3", "gram": "komparativ_superlativ_vor_nomen", "de": "<r>Das ist mir wichtig, weil</r> ich <g>die bessere Version</g> von mir selbst geworden bin, <k>und</k> das fühlt sich einfach großartig an.", "en": "<r>This matters to me because</r> I have become a better version of myself, and that simply feels great.", "uk": "<r>Для мене це важливо, бо</r> я стала кращою версією себе, і це просто чудове відчуття.", "ru": "<r>Для меня это важно, потому что</r> я стала лучшей версией себя, и это просто прекрасное ощущение." },
       { "role": "punkt4", "gram": "adjektive_auf_voll_reich", "de": "<r>Ich möchte mich deshalb ganz herzlich bei dir bedanken,</r> <k>denn</k> deine Tipps waren wirklich <g>hilfreich</g> für meinen erfolgreichen Weg.", "en": "<r>I therefore want to thank you very much,</r> because your tips were really helpful for my successful journey.", "uk": "<r>Тому хочу щиро подякувати тобі,</r> бо твої поради справді допомогли мені на цьому успішному шляху.", "ru": "<r>Поэтому хочу искренне поблагодарить тебя,</r> потому что твои советы действительно помогли мне на этом успешном пути." },
       { "role": "schluss", "gram": "", "de": "<r>Lass uns bald mal wieder zusammen kochen!</r>", "en": "<r>Let's cook together again sometime soon!</r>", "uk": "<r>Давай незабаром знову разом щось приготуємо!</r>", "ru": "<r>Давай скоро снова вместе что-нибудь приготовим!</r>" },
@@ -58476,7 +58320,7 @@ var SCHREIBEN = [
     "task": {
       "de": "Sie möchten für den Geburtstag Ihrer Tochter eine Torte backen, aber Sie kennen das Familienrezept Ihrer Großmutter nicht mehr genau. Schreiben Sie ihr einen Brief.<br><br>1. Grund für Ihr Schreiben<br>2. Für welchen Anlass Sie die Torte brauchen<br>3. Was Sie über das Rezept noch wissen<br>4. Bitte, ihr das Rezept zu schicken",
       "en": "You want to bake a cake for your daughter's birthday, but you no longer remember your grandmother's family recipe exactly. Write her a letter.<br><br>1. Reason for your letter<br>2. What occasion you need the cake for<br>3. What you still remember about the recipe<br>4. A request for her to send you the recipe",
-      "uk": "Ви хочете спекти торт на день народження доньки, але вже не пам'ятаєте точно бабусин сімейний рецепт. Напишіть їй листа.<br><br>1. Причина Вашого листа<br>2. З якої нагоди Вам потрібен торт<br>3. Що Ви ще пам'ятаєте про рецепт<br>4. Прохання надіслати рецепт",
+      "uk": "Ви хочете спекти торт на день народження доньки, але вже не памʼятаєте точно бабусин сімейний рецепт. Напишіть їй листа.<br><br>1. Причина Вашого листа<br>2. З якої нагоди Вам потрібен торт<br>3. Що Ви ще памʼятаєте про рецепт<br>4. Прохання надіслати рецепт",
       "ru": "Вы хотите испечь торт на день рождения дочери, но уже не помните точно бабушкин семейный рецепт. Напишите ей письмо.<br><br>1. Причина Вашего письма<br>2. По какому поводу Вам нужен торт<br>3. Что Вы ещё помните о рецепте<br>4. Просьба прислать рецепт"
     },
     "name": "de_m_david",
@@ -58485,10 +58329,10 @@ var SCHREIBEN = [
       { "role": "anrede", "gram": "", "de": "Liebe Oma,", "en": "Dear Grandma,", "uk": "Люба бабусю,", "ru": "Дорогая бабушка," },
       { "role": "einleitung", "gram": "komposita_fugenelemente", "de": "<r>Ich habe eine Bitte an dich,</r> <k>denn</k> ich möchte für Julias <g>Geburtstagstorte</g> dein <c>Familienrezept</c> verwenden.", "en": "<r>I have a favor to ask you</r>, because I would like to use your family recipe for Julia's birthday cake.", "uk": "<r>У мене до тебе прохання</r>, бо я хотів би використати твій сімейний рецепт для торта на день народження Юлії.", "ru": "<r>У меня к тебе просьба</r>, потому что я хотел бы использовать твой семейный рецепт для торта на день рождения Юлии." },
       { "role": "punkt2", "gram": "infinitiv_mit_zu", "de": "<r>Ich habe vor,</r> <g>eine Torte zu backen</g>, <k>und</k> es wäre schön, wenn sie genauso schmeckt wie deine.", "en": "<r>I'm planning</r> to bake a cake, and it would be nice if it tasted just like yours.", "uk": "<r>Я планую</r> спекти торт, і було б добре, якби він мав такий самий смак, як твій.", "ru": "<r>Я планирую</r> испечь торт, и было бы хорошо, если бы он был на вкус таким же, как твой." },
-      { "role": "punkt3", "gram": "relativsatz_mit_praeposition", "de": "<r>Das Problem ist,</r> dass ich mich nicht mehr an alle Zutaten erinnere, <g>an die du dich damals gehalten hast</g>, <k>und</k> ich möchte nichts falsch machen.", "en": "<r>The problem is</r> that I no longer remember all the ingredients that you used back then, and I don't want to get anything wrong.", "uk": "<r>Проблема в тому,</r> що я вже не пам'ятаю всіх інгредієнтів, яких ти тоді дотримувалася, і я не хочу нічого зробити неправильно.", "ru": "<r>Проблема в том,</r> что я уже не помню всех ингредиентов, которых ты тогда придерживалась, и я не хочу ничего сделать неправильно." },
+      { "role": "punkt3", "gram": "relativsatz_mit_praeposition", "de": "<r>Das Problem ist,</r> dass ich mich nicht mehr an alle Zutaten erinnere, <g>an die du dich damals gehalten hast</g>, <k>und</k> ich möchte nichts falsch machen.", "en": "<r>The problem is</r> that I no longer remember all the ingredients that you used back then, and I don't want to get anything wrong.", "uk": "<r>Проблема в тому,</r> що я вже не памʼятаю всіх інгредієнтів, яких ти тоді дотримувалася, і я не хочу нічого зробити неправильно.", "ru": "<r>Проблема в том,</r> что я уже не помню всех ингредиентов, которых ты тогда придерживалась, и я не хочу ничего сделать неправильно." },
       { "role": "punkt4", "gram": "hoefliche_bitten_konjunktiv_b1", "de": "<r>Könntest du mir</r> das Rezept vielleicht aufschreiben <k>und</k> mir schicken? <g>Das wäre</g> eine große Hilfe für mich.", "en": "<r>Could you</r> maybe write down the recipe and send it to me? That would be a great help to me.", "uk": "<r>Чи не могла б ти</r> записати рецепт і надіслати мені? Це було б для мене великою допомогою.", "ru": "<r>Не могла бы ты</r> записать рецепт и прислать мне? Это было бы для меня большой помощью." },
       { "role": "schluss", "gram": "", "de": "<r>Ich freue mich schon darauf, die Torte mit dir zu teilen.</r>", "en": "<r>I'm already looking forward to sharing the cake with you.</r>", "uk": "<r>Уже тішуся, що зможу поділитися тортом з тобою.</r>", "ru": "<r>Уже радуюсь, что смогу поделиться тортом с тобой.</r>" },
-      { "role": "grussformel", "gram": "", "de": "Viele liebe Grüße", "en": "Lots of love,", "uk": "З любов'ю,", "ru": "С любовью," },
+      { "role": "grussformel", "gram": "", "de": "Viele liebe Grüße", "en": "Lots of love,", "uk": "З любовʼю,", "ru": "С любовью," },
       { "role": "name", "gram": "", "de": "David Berger", "en": "David Berger", "uk": "Давид Бергер", "ru": "Давид Бергер" }
     ]
   },
@@ -58673,23 +58517,23 @@ var SCHREIBEN = [
     "topic": {
       "de": "Ein Missverständnis klären",
       "en": "Clearing up a misunderstanding",
-      "uk": "З'ясувати непорозуміння",
+      "uk": "Зʼясувати непорозуміння",
       "ru": "Прояснить недоразумение"
     },
     "task": {
       "de": "Es gab neulich ein Missverständnis zwischen Ihnen und einem Kollegen, über das Sie sich geärgert haben. Sie möchten das klären. Schreiben Sie ihm eine E-Mail.<br><br>1. Grund für Ihr Schreiben<br>2. Worüber Sie sich geärgert haben<br>3. Wie es zu dem Missverständnis kam<br>4. Vorschlag, wie Sie es klären können",
       "en": "There was recently a misunderstanding between you and a colleague that annoyed you. You want to clear it up. Write him an email.<br><br>1. Reason for your email<br>2. What annoyed you<br>3. How the misunderstanding happened<br>4. A suggestion for how to clear it up",
-      "uk": "Нещодавно між Вами й колегою виникло непорозуміння, через яке Ви розсердилися. Ви хочете це з'ясувати. Напишіть йому електронного листа.<br><br>1. Причина Вашого листа<br>2. Через що Ви розсердилися<br>3. Як виникло це непорозуміння<br>4. Пропозиція, як це з'ясувати",
+      "uk": "Нещодавно між Вами й колегою виникло непорозуміння, через яке Ви розсердилися. Ви хочете це зʼясувати. Напишіть йому електронного листа.<br><br>1. Причина Вашого листа<br>2. Через що Ви розсердилися<br>3. Як виникло це непорозуміння<br>4. Пропозиція, як це зʼясувати",
       "ru": "Недавно между Вами и коллегой возникло недоразумение, из-за которого Вы разозлились. Вы хотите это прояснить. Напишите ему электронное письмо.<br><br>1. Причина Вашего письма<br>2. Из-за чего Вы разозлились<br>3. Как возникло это недоразумение<br>4. Предложение, как это прояснить"
     },
     "name": "de_w_nina",
     "parts": [
-      { "role": "betreff", "gram": "", "de": "Betreff: Lass uns das kurz klären", "en": "Subject: Let's quickly clear this up", "uk": "Тема: Давай швидко це з'ясуємо", "ru": "Тема: Давай быстро это проясним" },
+      { "role": "betreff", "gram": "", "de": "Betreff: Lass uns das kurz klären", "en": "Subject: Let's quickly clear this up", "uk": "Тема: Давай швидко це зʼясуємо", "ru": "Тема: Давай быстро это проясним" },
       { "role": "anrede", "gram": "", "de": "Hallo Ben,", "en": "Hi Ben,", "uk": "Привіт, Бене,", "ru": "Привет, Бен," },
-      { "role": "einleitung", "gram": "praepositionaladverbien_b1", "de": "<r>Ich muss ehrlich sagen,</r> <g>darüber</g> habe ich mich wegen des <c>Missverständnisses</c> ziemlich geärgert, <k>und</k> ich möchte das gerne klären.", "en": "<r>I have to be honest,</r> I was quite annoyed about that because of the misunderstanding, and I would like to clear it up.", "uk": "<r>Маю чесно сказати,</r> я через це непорозуміння досить розсердилася, і хочу це з'ясувати.", "ru": "<r>Должна честно сказать,</r> я из-за этого недоразумения довольно разозлилась, и хочу это прояснить." },
+      { "role": "einleitung", "gram": "praepositionaladverbien_b1", "de": "<r>Ich muss ehrlich sagen,</r> <g>darüber</g> habe ich mich wegen des <c>Missverständnisses</c> ziemlich geärgert, <k>und</k> ich möchte das gerne klären.", "en": "<r>I have to be honest,</r> I was quite annoyed about that because of the misunderstanding, and I would like to clear it up.", "uk": "<r>Маю чесно сказати,</r> я через це непорозуміння досить розсердилася, і хочу це зʼясувати.", "ru": "<r>Должна честно сказать,</r> я из-за этого недоразумения довольно разозлилась, и хочу это прояснить." },
       { "role": "punkt2", "gram": "n_deklination", "de": "<r>Genauer gesagt,</r> ich habe mich darüber geärgert, dass du in der Besprechung nichts gesagt hast, <k>obwohl</k> du meinem <g>Kollegen</g> genau davon erzählt hast.", "en": "<r>More specifically,</r> I was annoyed that you said nothing in the meeting, even though you had told my colleague exactly about it.", "uk": "<r>Точніше кажучи,</r> мене роздратувало те, що ти нічого не сказав на нараді, хоча моєму колезі розповів про це якраз усе.", "ru": "<r>Точнее говоря,</r> меня разозлило то, что ты ничего не сказал на совещании, хотя моему коллеге рассказал об этом как раз всё." },
       { "role": "punkt3", "gram": "indefinitpronomen_possessivpronomen", "de": "<r>Ich glaube,</r> <g>jemand</g> hat unser Gespräch falsch verstanden <k>und</k> es dann falsch weitergegeben.", "en": "<r>I think</r> someone misunderstood our conversation and then passed it on incorrectly.", "uk": "<r>Гадаю,</r> хтось неправильно зрозумів нашу розмову і потім неправильно її переказав.", "ru": "<r>Думаю,</r> кто-то неправильно понял наш разговор и потом неправильно его передал." },
-      { "role": "punkt4", "gram": "satz_mit_um_zu", "de": "<r>Lass uns doch kurz telefonieren,</r> <g>um alles in Ruhe zu klären</g>. <k>Dann</k> können wir das schnell aus der Welt schaffen.", "en": "<r>Let's just have a quick phone call</r> to sort everything out calmly. Then we can quickly get this out of the way.", "uk": "<r>Давай коротко зателефонуємо одне одному,</r> щоб спокійно все з'ясувати. Тоді ми зможемо швидко це владнати.", "ru": "<r>Давай коротко созвонимся,</r> чтобы спокойно всё прояснить. Тогда мы сможем быстро это уладить." },
+      { "role": "punkt4", "gram": "satz_mit_um_zu", "de": "<r>Lass uns doch kurz telefonieren,</r> <g>um alles in Ruhe zu klären</g>. <k>Dann</k> können wir das schnell aus der Welt schaffen.", "en": "<r>Let's just have a quick phone call</r> to sort everything out calmly. Then we can quickly get this out of the way.", "uk": "<r>Давай коротко зателефонуємо одне одному,</r> щоб спокійно все зʼясувати. Тоді ми зможемо швидко це владнати.", "ru": "<r>Давай коротко созвонимся,</r> чтобы спокойно всё прояснить. Тогда мы сможем быстро это уладить." },
       { "role": "schluss", "gram": "", "de": "<r>Ich bin sicher, das ist schnell aus der Welt.</r>", "en": "<r>I'm sure this will be sorted out quickly.</r>", "uk": "<r>Я впевнена, що це швидко владнається.</r>", "ru": "<r>Я уверена, что это быстро уладится.</r>" },
       { "role": "grussformel", "gram": "", "de": "Liebe Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
       { "role": "name", "gram": "", "de": "Nina Falk", "en": "Nina Falk", "uk": "Ніна Фальк", "ru": "Нина Фальк" }
@@ -58795,7 +58639,7 @@ var SCHREIBEN = [
     "task": {
       "de": "Sie haben vor Kurzem bei einem Notfall in Ihrer Nachbarschaft geholfen. Sie möchten wissen, wie es der Person jetzt geht. Schreiben Sie einen Brief an die Familie.<br><br>1. Grund für Ihr Schreiben<br>2. Was bei dem Notfall passiert ist<br>3. Was Sie getan haben<br>4. Bitte um Neuigkeiten zum Gesundheitszustand",
       "en": "You recently helped during an emergency in your neighborhood. You would like to know how the person is doing now. Write a letter to the family.<br><br>1. Reason for your letter<br>2. What happened during the emergency<br>3. What you did<br>4. A request for news about their health",
-      "uk": "Ви нещодавно допомогли під час надзвичайної ситуації у Вашому районі. Ви хочете дізнатися, як зараз почувається ця людина. Напишіть листа родині.<br><br>1. Причина Вашого листа<br>2. Що сталося під час надзвичайної ситуації<br>3. Що Ви зробили<br>4. Прохання повідомити новини про стан здоров'я",
+      "uk": "Ви нещодавно допомогли під час надзвичайної ситуації у Вашому районі. Ви хочете дізнатися, як зараз почувається ця людина. Напишіть листа родині.<br><br>1. Причина Вашого листа<br>2. Що сталося під час надзвичайної ситуації<br>3. Що Ви зробили<br>4. Прохання повідомити новини про стан здоровʼя",
       "ru": "Вы недавно помогли во время экстренной ситуации в Вашем районе. Вы хотите узнать, как сейчас чувствует себя этот человек. Напишите письмо семье.<br><br>1. Причина Вашего письма<br>2. Что произошло во время экстренной ситуации<br>3. Что Вы сделали<br>4. Просьба сообщить новости о состоянии здоровья"
     },
     "name": "de_w_anna",
@@ -58807,7 +58651,7 @@ var SCHREIBEN = [
       { "role": "punkt3", "gram": "trennbare_verben_praefixe_wdh_b1", "de": "<r>Ich habe sofort</r> den Krankenwagen <g>angerufen</g> <k>und</k> bis zu seiner Ankunft bei ihm gewartet.", "en": "<r>I immediately</r> called the ambulance and waited with him until it arrived.", "uk": "<r>Я одразу</r> зателефонувала у швидку і чекала з ним до її приїзду.", "ru": "<r>Я сразу же</r> позвонила в скорую и ждала с ним до её приезда." },
       { "role": "punkt4", "gram": "praepositionaladverbien_b1", "de": "<r>Ich wäre euch dankbar, wenn</r> ihr mir kurz Bescheid geben könntet. <g>Darüber</g> würde ich mich sehr freuen. <k>Außerdem</k> möchte ich wissen, ob ich noch etwas tun kann.", "en": "<r>I would be grateful if</r> you could let me know briefly. I would be very happy about that. I would also like to know if there is anything else I can do.", "uk": "<r>Я була б вам вдячна, якби</r> ви могли коротко повідомити мені. Я була б цьому дуже рада. Крім того, хотіла б знати, чи можу я ще чимось допомогти.", "ru": "<r>Я была бы вам благодарна, если бы</r> вы могли коротко сообщить мне. Я была бы этому очень рада. Кроме того, хотела бы знать, могу ли я ещё чем-то помочь." },
       { "role": "schluss", "gram": "", "de": "<r>Ich denke ganz fest an euch.</r>", "en": "<r>I'm thinking of you all.</r>", "uk": "<r>Я всім серцем з вами.</r>", "ru": "<r>Я всем сердцем с вами.</r>" },
-      { "role": "grussformel", "gram": "", "de": "Alles Liebe", "en": "With love,", "uk": "З любов'ю,", "ru": "С любовью," },
+      { "role": "grussformel", "gram": "", "de": "Alles Liebe", "en": "With love,", "uk": "З любовʼю,", "ru": "С любовью," },
       { "role": "name", "gram": "", "de": "Anna Vogel", "en": "Anna Vogel", "uk": "Анна Фогель", "ru": "Анна Фогель" }
     ]
   },
@@ -59037,7 +58881,7 @@ var SCHREIBEN = [
       { "role": "einleitung", "gram": "passiv_praesens_b1", "de": "<r>Ich schreibe dir, weil</r> ich unseren Termin für die <c>Erntehilfe</c> leider verschieben muss, <k>denn</k> bei mir in der Arbeit <g>wird gerade vieles umorganisiert</g>.", "en": "<r>I'm writing to you because</r> I unfortunately have to postpone our appointment for the harvest help, because a lot is currently being reorganized at my work.", "uk": "<r>Пишу тобі, бо</r> мені, на жаль, доводиться перенести нашу домовленість щодо допомоги на жнивах, оскільки в мене на роботі зараз багато що реорганізовують.", "ru": "<r>Пишу тебе, потому что</r> мне, к сожалению, приходится перенести нашу договорённость о помощи на сборе урожая, так как у меня на работе сейчас многое реорганизуют." },
       { "role": "punkt2", "gram": "nebensatz_mit_obwohl", "de": "<r>Der Termin passt mir leider nicht mehr,</r> <g>obwohl ich mich wirklich sehr auf den Tag gefreut habe</g>, <k>denn</k> ich muss an diesem Wochenende zusätzliche Schichten übernehmen.", "en": "<r>The appointment unfortunately no longer works for me,</r> even though I was really looking forward to the day, because I have to take extra shifts this weekend.", "uk": "<r>Ця дата мені, на жаль, більше не підходить,</r> хоча я справді дуже чекала на цей день, бо цих вихідних мені доведеться взяти додаткові зміни.", "ru": "<r>Эта дата мне, к сожалению, больше не подходит,</r> хотя я действительно очень ждала этого дня, потому что в эти выходные мне придётся взять дополнительные смены." },
       { "role": "punkt3", "gram": "futur_werden", "de": "<r>Ich schlage vor,</r> dass wir den Termin auf das übernächste Wochenende verschieben, <k>denn</k> dann <g>werde ich wieder mehr Zeit haben</g>.", "en": "<r>I suggest</r> that we postpone the appointment to the weekend after next, because by then I'll have more time again.", "uk": "<r>Пропоную</r> перенести зустріч на позанаступні вихідні, бо тоді в мене знову буде більше часу.", "ru": "<r>Предлагаю</r> перенести встречу на выходные через одну неделю, потому что тогда у меня снова будет больше времени." },
-      { "role": "punkt4", "gram": "modalverben_wdh_b1", "de": "<r>Kannst du mir bitte</r> kurz Bescheid geben, ob der neue Termin für dich auch passt? Du <g>musst</g> nicht sofort antworten, <k>aber</k> eine kurze Nachricht würde mir schon reichen.", "en": "<r>Could you please</r> let me know briefly whether the new date also works for you? You don't have to reply right away, but a short message would already be enough.", "uk": "<r>Чи могла б ти</r> коротко дати мені знати, чи підходить тобі нова дата? Тобі не обов'язково відповідати одразу, але коротке повідомлення мене б цілком влаштувало.", "ru": "<r>Не могла бы ты</r> коротко дать мне знать, подходит ли тебе новая дата? Тебе не обязательно отвечать сразу, но короткого сообщения мне было бы вполне достаточно." },
+      { "role": "punkt4", "gram": "modalverben_wdh_b1", "de": "<r>Kannst du mir bitte</r> kurz Bescheid geben, ob der neue Termin für dich auch passt? Du <g>musst</g> nicht sofort antworten, <k>aber</k> eine kurze Nachricht würde mir schon reichen.", "en": "<r>Could you please</r> let me know briefly whether the new date also works for you? You don't have to reply right away, but a short message would already be enough.", "uk": "<r>Чи могла б ти</r> коротко дати мені знати, чи підходить тобі нова дата? Тобі не обовʼязково відповідати одразу, але коротке повідомлення мене б цілком влаштувало.", "ru": "<r>Не могла бы ты</r> коротко дать мне знать, подходит ли тебе новая дата? Тебе не обязательно отвечать сразу, но короткого сообщения мне было бы вполне достаточно." },
       { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf deine Antwort.</r>", "en": "<r>I look forward to your reply.</r>", "uk": "<r>Чекаю на твою відповідь.</r>", "ru": "<r>Жду твоего ответа.</r>" },
       { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
       { "role": "name", "gram": "", "de": "Nina Falk", "en": "Nina Falk", "uk": "Ніна Фальк", "ru": "Нина Фальк" }
@@ -59124,7 +58968,7 @@ var SCHREIBEN = [
       { "role": "einleitung", "gram": "verben_mit_praep_wdh_b1", "de": "<r>Vielen Dank für deine Einladung</r> zum <c>Musikfestival</c>, ich <g>freue mich total auf den Abend</g>, <k>und</k> ich komme natürlich sehr gerne mit.", "en": "<r>Thank you so much for your invitation</r> to the music festival, I'm really looking forward to the evening, and of course I'll be very happy to come along.", "uk": "<r>Дуже дякую за твоє запрошення</r> на музичний фестиваль, я справді дуже чекаю на цей вечір, і, звісно, я залюбки приєднаюся.", "ru": "<r>Большое спасибо за твоё приглашение</r> на музыкальный фестиваль, я действительно очень жду этого вечера, и, конечно, я с радостью присоединюсь." },
       { "role": "punkt2", "gram": "reflexivpronomen_akkusativ_wdh_b1", "de": "<r>Ich bereite mich schon seit ein paar Tagen vor,</r> indem ich mir die passende Kleidung raussuche <k>und</k> <g>mich um gute Ohrstöpsel kümmere</g>.", "en": "<r>I've been preparing for a few days already,</r> by picking out the right clothes and taking care of getting some good earplugs.", "uk": "<r>Я готуюся вже кілька днів,</r> підбираю відповідний одяг і турбуюся про хороші беруші.", "ru": "<r>Я готовлюсь уже несколько дней,</r> подбираю подходящую одежду и забочусь о хороших берушах." },
       { "role": "punkt3", "gram": "verben_praep_dass_satz", "de": "<r>Am meisten freue ich mich darauf,</r> <g>dass wir endlich unsere Lieblingsband live sehen können</g>, <k>denn</k> davon habe ich schon lange geträumt.", "en": "<r>What I'm looking forward to most</r> is that we can finally see our favorite band live, because I've been dreaming of that for a long time.", "uk": "<r>Найбільше я чекаю на те,</r> що ми нарешті зможемо побачити наш улюблений гурт наживо, бо про це я мрію вже давно.", "ru": "<r>Больше всего я жду того,</r> что мы наконец сможем увидеть нашу любимую группу вживую, потому что об этом я мечтаю уже давно." },
-      { "role": "punkt4", "gram": "fragewoerter_wor_dar", "de": "<r>Ich habe noch eine kurze Frage:</r> <g>Worauf</g> muss ich unbedingt achten, <k>und</k> wo genau treffen wir uns vor dem Festival?", "en": "<r>I still have a quick question:</r> what should I definitely pay attention to, and exactly where are we meeting before the festival?", "uk": "<r>У мене ще одне коротке запитання:</r> на що мені обов'язково варто звернути увагу, і де саме ми зустрічаємось перед фестивалем?", "ru": "<r>У меня ещё один короткий вопрос:</r> на что мне обязательно стоит обратить внимание, и где именно мы встречаемся перед фестивалем?" },
+      { "role": "punkt4", "gram": "fragewoerter_wor_dar", "de": "<r>Ich habe noch eine kurze Frage:</r> <g>Worauf</g> muss ich unbedingt achten, <k>und</k> wo genau treffen wir uns vor dem Festival?", "en": "<r>I still have a quick question:</r> what should I definitely pay attention to, and exactly where are we meeting before the festival?", "uk": "<r>У мене ще одне коротке запитання:</r> на що мені обовʼязково варто звернути увагу, і де саме ми зустрічаємось перед фестивалем?", "ru": "<r>У меня ещё один короткий вопрос:</r> на что мне обязательно стоит обратить внимание, и где именно мы встречаемся перед фестивалем?" },
       { "role": "schluss", "gram": "", "de": "<r>Ich freue mich schon riesig darauf!</r>", "en": "<r>I'm already really looking forward to it!</r>", "uk": "<r>Я вже дуже сильно тішуся з цього!</r>", "ru": "<r>Я уже очень сильно рад этому!</r>" },
       { "role": "grussformel", "gram": "", "de": "Viele Grüße", "en": "Take care,", "uk": "Бувай,", "ru": "Пока," },
       { "role": "name", "gram": "", "de": "Mark Fischer", "en": "Mark Fischer", "uk": "Марк Фішер", "ru": "Марк Фишер" }
@@ -59230,14 +59074,14 @@ var SCHREIBEN = [
     "task": {
       "de": "An der Wand eures Hauses ist ein neues Graffiti-Kunstwerk entstanden. Du schreibst deiner Nachbarin einen Brief darüber.<br><br>1. Grund für deinen Brief<br>2. Wie du das Kunstwerk findest<br>3. Was die anderen Nachbarn darüber denken<br>4. Vorschlag, sich das gemeinsam anzusehen",
       "en": "A new graffiti artwork has appeared on the wall of your building. You write your neighbor a letter about it.<br><br>1. Reason for your letter<br>2. What you think of the artwork<br>3. What the other neighbors think about it<br>4. A suggestion to go look at it together",
-      "uk": "На стіні вашого будинку з'явилося нове графіті. Ти пишеш сусідці листа про це.<br><br>1. Причина твого листа<br>2. Що ти думаєш про цей витвір мистецтва<br>3. Що думають про це інші сусіди<br>4. Пропозиція оглянути це разом",
+      "uk": "На стіні вашого будинку зʼявилося нове графіті. Ти пишеш сусідці листа про це.<br><br>1. Причина твого листа<br>2. Що ти думаєш про цей витвір мистецтва<br>3. Що думають про це інші сусіди<br>4. Пропозиція оглянути це разом",
       "ru": "На стене вашего дома появилось новое граффити. Ты пишешь соседке письмо об этом.<br><br>1. Причина твоего письма<br>2. Что ты думаешь об этом произведении искусства<br>3. Что думают об этом другие соседи<br>4. Предложение посмотреть на это вместе"
     },
     "name": "de_m_alex",
     "parts": [
       { "role": "ort_datum", "gram": "", "de": "Leipzig, den 12. September 2026", "en": "Leipzig, 12 September 2026", "uk": "Лейпциг, 12 вересня 2026 р.", "ru": "Лейпциг, 12 сентября 2026 г." },
       { "role": "anrede", "gram": "", "de": "Liebe Petra,", "en": "Dear Petra,", "uk": "Люба Петро,", "ru": "Дорогая Петра," },
-      { "role": "einleitung", "gram": "adjektive_mit_un", "de": "<r>Ich schreibe dir, weil</r> an unserer Hauswand über Nacht ein großes <c>Graffiti-Kunstwerk</c> entstanden ist, <k>und</k> ich finde die ganze Aktion ziemlich <g>ungewöhnlich</g>.", "en": "<r>I'm writing to you because</r> a big graffiti artwork appeared on our building wall overnight, and I find the whole thing pretty unusual.", "uk": "<r>Пишу тобі, бо</r> на стіні нашого будинку за одну ніч з'явилося велике графіті, і вся ця історія здається мені досить незвичайною.", "ru": "<r>Пишу тебе, потому что</r> на стене нашего дома за одну ночь появилось большое граффити, и вся эта история кажется мне довольно необычной." },
+      { "role": "einleitung", "gram": "adjektive_mit_un", "de": "<r>Ich schreibe dir, weil</r> an unserer Hauswand über Nacht ein großes <c>Graffiti-Kunstwerk</c> entstanden ist, <k>und</k> ich finde die ganze Aktion ziemlich <g>ungewöhnlich</g>.", "en": "<r>I'm writing to you because</r> a big graffiti artwork appeared on our building wall overnight, and I find the whole thing pretty unusual.", "uk": "<r>Пишу тобі, бо</r> на стіні нашого будинку за одну ніч зʼявилося велике графіті, і вся ця історія здається мені досить незвичайною.", "ru": "<r>Пишу тебе, потому что</r> на стене нашего дома за одну ночь появилось большое граффити, и вся эта история кажется мне довольно необычной." },
       { "role": "punkt2", "gram": "partizip1_als_adjektiv", "de": "<r>Ich finde das Kunstwerk eigentlich toll,</r> <k>denn</k> der Sprayer hat wirklich <g>ein beeindruckendes Bild</g> an die Wand gesprüht.", "en": "<r>I actually think the artwork is great,</r> because the sprayer really painted an impressive picture on the wall.", "uk": "<r>Мені взагалі це графіті дуже подобається,</r> бо спрей-художник справді намалював вражаюче зображення на стіні.", "ru": "<r>Мне это произведение искусства на самом деле очень нравится,</r> потому что художник действительно нарисовал впечатляющую картину на стене." },
       { "role": "punkt3", "gram": "modalverben_vermutung", "de": "<r>Ich glaube allerdings,</r> dass nicht alle Nachbarn im Haus davon begeistert sind, <k>denn</k> <g>manche dürften das eher als Schmiererei ansehen</g>.", "en": "<r>I do think, though,</r> that not all the neighbors in the building are thrilled about it, because some are probably more likely to see it as vandalism.", "uk": "<r>Однак думаю,</r> що не всі сусіди в будинку в захваті, бо дехто, напевно, сприймає це радше як псування стіни.", "ru": "<r>Однако думаю,</r> что не все соседи в доме в восторге, потому что некоторые, наверное, воспринимают это скорее как порчу стены." },
       { "role": "punkt4", "gram": "satz_mit_um_zu", "de": "<r>Ich schlage vor,</r> dass wir uns morgen gemeinsam treffen, <g>um uns das Kunstwerk in Ruhe anzusehen</g>, <k>und</k> dann können wir auch gleich unsere Meinungen austauschen.", "en": "<r>I suggest</r> that we meet up together tomorrow to take a proper look at the artwork, and then we can also share our opinions right away.", "uk": "<r>Пропоную</r> завтра зустрітися разом, щоб спокійно роздивитися це графіті, а потім одразу зможемо обмінятися думками.", "ru": "<r>Предлагаю</r> завтра встретиться вместе, чтобы спокойно рассмотреть это произведение, а потом сразу сможем обменяться мнениями." },
@@ -59442,7 +59286,7 @@ var SCHREIBEN = [
       { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
       { "role": "einleitung", "gram": "adjektivdeklination_bestimmter_artikel", "de": "<r>Vielen Dank für die Einladung</r> zur Feier für <g>den neuen Trainer</g> unseres Vereins, <k>und</k> ich sage gerne <c>zur Begrüßungsfeier</c> zu.", "en": "<r>Thank you so much for the invitation</r> to the celebration for our club's new coach, and I'm happy to say yes to the welcome celebration.", "uk": "<r>Дуже дякую за запрошення</r> на свято з нагоди нового тренера нашого клубу, і я із задоволенням погоджуюся прийти на святкування.", "ru": "<r>Большое спасибо за приглашение</r> на праздник в честь нового тренера нашего клуба, и я с удовольствием соглашаюсь прийти на праздник." },
       { "role": "punkt2", "gram": "genitiv", "de": "<r>Ich freue mich schon riesig darauf,</r> <k>denn</k> ich habe schon sehr viel <g>über die großen Erfolge des neuen Trainers</g> gehört.", "en": "<r>I'm already really looking forward to it,</r> because I've already heard a lot about the great successes of the new coach.", "uk": "<r>Я вже дуже сильно чекаю на це,</r> бо я вже дуже багато чула про великі успіхи нового тренера.", "ru": "<r>Я уже очень сильно жду этого,</r> потому что уже очень много слышала о больших успехах нового тренера." },
-      { "role": "punkt3", "gram": "komposita_nomen_nomen", "de": "<r>Ich habe fest vor,</r> ein kleines <g>Mannschaftsfoto</g> von uns allen mitzubringen, <k>damit</k> wir uns auch später noch gut daran erinnern können.", "en": "<r>I'm firmly planning</r> to bring a small team photo of all of us, so that we can still remember it well later on.", "uk": "<r>Я твердо планую</r> принести невелике командне фото нас усіх, щоб ми могли ще довго добре це пам'ятати.", "ru": "<r>Я твёрдо планирую</r> принести небольшое командное фото всех нас, чтобы мы могли ещё долго хорошо это вспоминать." },
+      { "role": "punkt3", "gram": "komposita_nomen_nomen", "de": "<r>Ich habe fest vor,</r> ein kleines <g>Mannschaftsfoto</g> von uns allen mitzubringen, <k>damit</k> wir uns auch später noch gut daran erinnern können.", "en": "<r>I'm firmly planning</r> to bring a small team photo of all of us, so that we can still remember it well later on.", "uk": "<r>Я твердо планую</r> принести невелике командне фото нас усіх, щоб ми могли ще довго добре це памʼятати.", "ru": "<r>Я твёрдо планирую</r> принести небольшое командное фото всех нас, чтобы мы могли ещё долго хорошо это вспоминать." },
       { "role": "punkt4", "gram": "interesse_denn_eigentlich", "de": "<r>Ich habe noch eine kurze Frage:</r> <g>Wie lange dauert die Feier eigentlich genau</g>, <k>und</k> muss ich mich vorher irgendwo dafür anmelden?", "en": "<r>I still have a quick question:</r> how long does the celebration actually last, and do I need to register somewhere beforehand?", "uk": "<r>У мене ще одне коротке запитання:</r> скільки взагалі триватиме свято, і чи треба мені десь заздалегідь зареєструватися?", "ru": "<r>У меня ещё один короткий вопрос:</r> сколько вообще будет длиться праздник, и нужно ли мне где-то заранее зарегистрироваться?" },
       { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf die Feier.</r>", "en": "<r>I'm looking forward to the celebration.</r>", "uk": "<r>Чекаю на це свято.</r>", "ru": "<r>Жду этого праздника.</r>" },
       { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
@@ -59502,7 +59346,7 @@ var SCHREIBEN = [
       { "role": "punkt2", "gram": "adjektivendung_genitiv", "de": "<r>Das Problem ist,</r> dass der Verein <g>trotz des ausstehenden Erlöses</g> bisher keine Erklärung gegeben hat, <k>obwohl</k> der Lauf schon vor drei Wochen stattfand.", "en": "<r>The problem is</r> that the club has not given any explanation despite the outstanding proceeds, even though the run already took place three weeks ago.", "uk": "<r>Проблема в тому,</r> що клуб, попри неперераховану виручку, досі не надав жодного пояснення, хоча забіг відбувся вже три тижні тому.", "ru": "<r>Проблема в том,</r> что клуб, несмотря на невыплаченную выручку, до сих пор не дал никакого объяснения, хотя забег прошёл уже три недели назад." },
       { "role": "punkt3", "gram": "passiv_praesens_b1", "de": "<r>Das führt leider dazu,</r> dass <g>die geplante finanzielle Unterstützung für die örtliche Kinderklinik erheblich verzögert wird</g>, <k>und</k> viele Spender sind inzwischen ziemlich verunsichert.", "en": "<r>This unfortunately means</r> that the planned financial support for the local children's hospital is being significantly delayed, and many donors are by now quite unsettled.", "uk": "<r>Це, на жаль, призводить до того,</r> що заплановану фінансову підтримку місцевої дитячої лікарні суттєво затримують, і багато донорів наразі досить занепокоєні.", "ru": "<r>Это, к сожалению, приводит к тому,</r> что запланированная финансовая поддержка местной детской больницы существенно задерживается, и многие доноры сейчас довольно обеспокоены." },
       { "role": "punkt4", "gram": "modalverben_wdh_b1", "de": "<r>Ich erwarte deshalb,</r> dass Sie den gesamten Erlös schnellstmöglich überweisen, <k>denn</k> alle Spender <g>sollten</g> darüber transparent und rechtzeitig informiert werden.", "en": "<r>I therefore expect</r> that you will transfer the entire proceeds as soon as possible, because all donors should be informed about it transparently and promptly.", "uk": "<r>Тому я очікую,</r> що Ви якнайшвидше перерахуєте всю виручку, бо всіх донорів слід прозоро й вчасно про це поінформувати.", "ru": "<r>Поэтому я ожидаю,</r> что Вы как можно скорее переведёте всю выручку, ведь всех доноров следует прозрачно и своевременно об этом информировать." },
-      { "role": "schluss", "gram": "", "de": "<r>Ich bitte um eine baldige Klärung.</r>", "en": "<r>I ask for a prompt clarification.</r>", "uk": "<r>Прошу якнайшвидше все з'ясувати.</r>", "ru": "<r>Прошу как можно скорее всё прояснить.</r>" },
+      { "role": "schluss", "gram": "", "de": "<r>Ich bitte um eine baldige Klärung.</r>", "en": "<r>I ask for a prompt clarification.</r>", "uk": "<r>Прошу якнайшвидше все зʼясувати.</r>", "ru": "<r>Прошу как можно скорее всё прояснить.</r>" },
       { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
       { "role": "name", "gram": "", "de": "Anna Vogel", "en": "Anna Vogel", "uk": "Анна Фогель", "ru": "Анна Фогель" }
     ]
@@ -59587,7 +59431,7 @@ var SCHREIBEN = [
       { "role": "anrede", "gram": "", "de": "Sehr geehrte Eltern,", "en": "Dear Parents,", "uk": "Шановні батьки,", "ru": "Уважаемые родители," },
       { "role": "einleitung", "gram": "nebensatz_mit_waehrend", "de": "<r>Ich möchte Sie herzlich zu einem</r> <c>Elternabend zum Thema Erziehung und Familie</c> einladen, <k>denn</k> <g>während die Kinder im Hort betreut werden, können wir Eltern uns in Ruhe austauschen</g>.", "en": "<r>I would like to warmly invite you to a</r> parents' evening on the topic of upbringing and family, because while the children are being looked after at the after-school club, we parents can talk things over in peace.", "uk": "<r>Хочу щиро запросити Вас на</r> батьківські збори на тему виховання й родини, бо поки дітей доглядають у групі продовженого дня, ми, батьки, зможемо спокійно поспілкуватися.", "ru": "<r>Хочу сердечно пригласить Вас на</r> родительское собрание на тему воспитания и семьи, потому что пока за детьми присматривают в группе продлённого дня, мы, родители, сможем спокойно пообщаться." },
       { "role": "punkt2", "gram": "relativpronomen_dativ_wdh_b1", "de": "<r>Der Abend findet statt am</r> Donnerstag, den 1. Oktober, um 19 Uhr im Klassenzimmer, <g>in dem die Kinder normalerweise Unterricht haben</g>.", "en": "<r>The evening takes place on</r> Thursday, 1 October, at 7 pm in the classroom in which the children normally have lessons.", "uk": "<r>Збори відбудуться</r> у четвер, 1 жовтня, о 19:00 у класі, в якому діти зазвичай навчаються.", "ru": "<r>Собрание состоится</r> в четверг, 1 октября, в 19:00 в классе, в котором дети обычно занимаются." },
-      { "role": "punkt3", "gram": "nomen_auf_ung", "de": "<r>Wir werden vor allem über</r> Fragen zur <g>Erziehung</g> <k>sowie</k> zur gerechten Verteilung der Hausarbeit sprechen.", "en": "<r>We will mainly talk about</r> questions on upbringing as well as the fair division of housework.", "uk": "<r>Ми говоритимемо насамперед про</r> питання виховання, а також про справедливий розподіл домашніх обов'язків.", "ru": "<r>Мы будем говорить прежде всего о</r> вопросах воспитания, а также о справедливом распределении домашних обязанностей." },
+      { "role": "punkt3", "gram": "nomen_auf_ung", "de": "<r>Wir werden vor allem über</r> Fragen zur <g>Erziehung</g> <k>sowie</k> zur gerechten Verteilung der Hausarbeit sprechen.", "en": "<r>We will mainly talk about</r> questions on upbringing as well as the fair division of housework.", "uk": "<r>Ми говоритимемо насамперед про</r> питання виховання, а також про справедливий розподіл домашніх обовʼязків.", "ru": "<r>Мы будем говорить прежде всего о</r> вопросах воспитания, а также о справедливом распределении домашних обязанностей." },
       { "role": "punkt4", "gram": "hoefliche_bitten_konjunktiv_b1", "de": "<r>Ich wäre Ihnen dankbar, wenn</r> Sie sich bis Montag kurz <g>anmelden könnten</g>, <k>damit</k> wir genug Stühle bereitstellen können.", "en": "<r>I would be grateful if</r> you could briefly register by Monday, so that we can provide enough chairs.", "uk": "<r>Я був би Вам вдячний, якби</r> Ви змогли коротко зареєструватися до понеділка, щоб ми могли підготувати достатньо стільців.", "ru": "<r>Я был бы Вам благодарен, если бы</r> Вы смогли коротко зарегистрироваться до понедельника, чтобы мы могли подготовить достаточно стульев." },
       { "role": "schluss", "gram": "", "de": "<r>Ich freue mich auf einen regen Austausch.</r>", "en": "<r>I look forward to a lively exchange.</r>", "uk": "<r>Чекаю на жваве спілкування.</r>", "ru": "<r>Жду живого общения.</r>" },
       { "role": "grussformel", "gram": "", "de": "Mit freundlichen Grüßen", "en": "Best regards,", "uk": "З повагою,", "ru": "С уважением," },
@@ -59701,7 +59545,7 @@ var SCHREIBEN = [
     "parts": [
       { "role": "ort_datum", "gram": "", "de": "Dortmund, den 2. Oktober 2026", "en": "Dortmund, 2 October 2026", "uk": "Дортмунд, 2 жовтня 2026 р.", "ru": "Дортмунд, 2 октября 2026 г." },
       { "role": "anrede", "gram": "", "de": "Sehr geehrte Damen und Herren,", "en": "Dear Sir or Madam,", "uk": "Шановні пані та панове,", "ru": "Уважаемые дамы и господа," },
-      { "role": "einleitung", "gram": "nebensatz_mit_nachdem", "de": "<r>Ich schreibe Ihnen, weil</r> ich eine Bestätigung für meine neue <c>Wohnung</c> benötige, <k>und</k> <g>nachdem ich vor Kurzem eingezogen war, brauche ich dieses Dokument für die Behörde</g>.", "en": "<r>I'm writing to you because</r> I need a confirmation for my new apartment, and after I had recently moved in, I need this document for the authorities.", "uk": "<r>Пишу Вам, тому що</r> мені потрібне підтвердження для моєї нової квартири, і після того, як я нещодавно в'їхав, мені потрібен цей документ для органів влади.", "ru": "<r>Пишу Вам, потому что</r> мне нужно подтверждение для моей новой квартиры, и после того как я недавно въехал, мне нужен этот документ для органов власти." },
+      { "role": "einleitung", "gram": "nebensatz_mit_nachdem", "de": "<r>Ich schreibe Ihnen, weil</r> ich eine Bestätigung für meine neue <c>Wohnung</c> benötige, <k>und</k> <g>nachdem ich vor Kurzem eingezogen war, brauche ich dieses Dokument für die Behörde</g>.", "en": "<r>I'm writing to you because</r> I need a confirmation for my new apartment, and after I had recently moved in, I need this document for the authorities.", "uk": "<r>Пишу Вам, тому що</r> мені потрібне підтвердження для моєї нової квартири, і після того, як я нещодавно вʼїхав, мені потрібен цей документ для органів влади.", "ru": "<r>Пишу Вам, потому что</r> мне нужно подтверждение для моей новой квартиры, и после того как я недавно въехал, мне нужен этот документ для органов власти." },
       { "role": "punkt2", "gram": "praepositionaladverbien_b1", "de": "<r>Ich benötige das Dokument</r> <g>dafür, dass ich meine Anmeldung bei der Behörde abschließen kann</g>, <k>denn</k> ohne die Bestätigung geht das leider nicht.", "en": "<r>I need the document</r> so that I can complete my registration with the authorities, because without the confirmation that's unfortunately not possible.", "uk": "<r>Мені потрібен цей документ для того,</r> щоб я міг завершити реєстрацію в органах влади, бо без підтвердження це, на жаль, неможливо.", "ru": "<r>Мне нужен этот документ для того,</r> чтобы я мог завершить регистрацию в органах власти, потому что без подтверждения это, к сожалению, невозможно." },
       { "role": "punkt3", "gram": "genitiv", "de": "<r>Ich bräuchte das Dokument</r> <g>innerhalb der nächsten zwei Wochen</g>, <k>denn</k> mein Termin bei der Behörde ist schon bald.", "en": "<r>I would need the document</r> within the next two weeks, because my appointment with the authorities is coming up soon.", "uk": "<r>Мені потрібен цей документ</r> протягом наступних двох тижнів, бо моя зустріч в органах влади вже скоро.", "ru": "<r>Мне нужен этот документ</r> в течение следующих двух недель, потому что моя встреча в органах власти уже скоро." },
       { "role": "punkt4", "gram": "hoefliche_bitten_konjunktiv_b1", "de": "<r>Ich wäre Ihnen sehr dankbar, wenn</r> Sie die Bestätigung möglichst schnell <g>ausstellen könnten</g>, <k>damit</k> ich meinen Antrag rechtzeitig einreichen kann.", "en": "<r>I would be very grateful if</r> you could issue the confirmation as quickly as possible, so that I can submit my application on time.", "uk": "<r>Я був би Вам дуже вдячний, якби</r> Ви могли якнайшвидше видати підтвердження, щоб я міг вчасно подати заяву.", "ru": "<r>Я был бы Вам очень благодарен, если бы</r> Вы могли как можно скорее выдать подтверждение, чтобы я мог вовремя подать заявление." },
@@ -59723,7 +59567,7 @@ var SCHREIBEN = [
     "task": {
       "de": "Ihre ehemalige Hochschule hat Sie zu einem Alumni-Treffen für Absolventen eingeladen. Schreiben Sie eine E-Mail und sagen Sie zu.<br><br>1. Dank für die Einladung und Zusage<br>2. Warum Ihnen das Treffen wichtig ist<br>3. Was Sie über Ihren beruflichen Werdegang berichten möchten<br>4. Frage zu den Details",
       "en": "Your former university invited you to an alumni meeting for graduates. Write an email accepting the invitation.<br><br>1. Thanks for the invitation and your acceptance<br>2. Why the meeting matters to you<br>3. What you'd like to share about your professional path<br>4. A question about the details",
-      "uk": "Ваш колишній університет запросив Вас на зустріч випускників. Напишіть електронного листа й погодьтеся.<br><br>1. Подяка за запрошення та згода прийти<br>2. Чому ця зустріч для Вас важлива<br>3. Про що Ви хочете розповісти щодо своєї професійної кар'єри<br>4. Запитання про деталі",
+      "uk": "Ваш колишній університет запросив Вас на зустріч випускників. Напишіть електронного листа й погодьтеся.<br><br>1. Подяка за запрошення та згода прийти<br>2. Чому ця зустріч для Вас важлива<br>3. Про що Ви хочете розповісти щодо своєї професійної карʼєри<br>4. Запитання про деталі",
       "ru": "Ваш бывший университет пригласил Вас на встречу выпускников. Напишите электронное письмо и согласитесь.<br><br>1. Благодарность за приглашение и согласие прийти<br>2. Почему эта встреча для Вас важна<br>3. О чём Вы хотите рассказать о своей профессиональной карьере<br>4. Вопрос о деталях"
     },
     "name": "de_w_nina",
@@ -59750,7 +59594,7 @@ var SB_CATS = [
     "id": "hoefliche_bitten_konjunktiv_b1",
     "de": "Höfliche Bitten (Konjunktiv II): Könnten Sie …?",
     "en": "Polite requests (Subjunctive II): Could you …?",
-    "uk": "Ввічливі прохання (Кон'юнктив II): Могли б Ви …?",
+    "uk": "Ввічливі прохання (Конʼюнктив II): Могли б Ви …?",
     "ru": "Вежливые просьбы (Конъюнктив II): Могли бы Вы …?",
     "i": "heart", "e": ""
   },
@@ -60010,7 +59854,7 @@ var SPRACHBAUSTEINE = [
     "sentence": {
       "de": "{{BLANK}} Sie so freundlich und reichen mir das Salz?",
       "en": "Would you be so kind as to pass me the salt?",
-      "uk": "Чи не були б Ви такі люб’язні і подали мені сіль?",
+      "uk": "Чи не були б Ви такі любʼязні і подали мені сіль?",
       "ru": "Не были бы Вы так любезны и передали мне соль?"
     },
     "answer": {
