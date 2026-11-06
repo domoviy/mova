@@ -187,6 +187,12 @@ COURSES = [
     'Leben-in-Deutschland',
 ]
 
+# Курси, у яких озвучується var QUIZ (запитання + правильна відповідь).
+# В інших курсах QUIZ, як і раніше, НЕ озвучується — щоб ця фіча не запустила
+# несподівану генерацію для вже готових курсів. Захочете озвучити QUIZ ще
+# в якомусь курсі — просто додайте його сюди.
+QUIZ_AUDIO_COURSES = {'Leben-in-Deutschland'}
+
 AUDIO_ROOT = pathlib.Path('audio')
 
 def manifest_path(course):
@@ -382,6 +388,14 @@ VOICE_MAPPING = {
     "gram": {
         "word": {"de": "de-DE-AmalaNeural", "uk": "uk-UA-PolinaNeural", "en": "en-GB-SoniaNeural", "ru": "ru-RU-SvetlanaNeural"}
     }
+}
+
+# QUIZ: запитання звучить ТИМ САМИМ голосом, що vocab.term, а правильна
+# відповідь — тим самим, що vocab.short. Посилаємось на ті самі словники,
+# а не дублюємо назви голосів: змінили голос term/short — квіз зміниться разом.
+VOICE_MAPPING["quiz"] = {
+    "question": VOICE_MAPPING["vocab"]["term"],
+    "answer":   VOICE_MAPPING["vocab"]["short"],
 }
 
 # Пул дистракторів Grammatik-Trainer — ТОЧНА копія GRAM_DISTRACTOR_POOL
@@ -719,6 +733,16 @@ def eml_field_text(item, field):
             return {k: v for k, v in part.items() if k != 'role'}
     return {}
 
+def quiz_correct_answer(item):
+    """Мовний dict ({de,en,uk,ru,correct:True}) правильної відповіді картки
+    з var QUIZ — перший запис answers[] з correct:true. Службовий ключ
+    'correct' мовою не є: викликач відсіює його перевіркою `lang in audio_config`.
+    Порожній dict, якщо правильної відповіді в картці немає."""
+    for a in item.get('answers') or []:
+        if isinstance(a, dict) and a.get('correct'):
+            return a
+    return {}
+
 def clean_text(text, lang=None):
     if not text:
         return ""
@@ -850,7 +874,135 @@ def _single_to_double_quoted_values(s):
     return re.sub(r":\s*'((?:[^'\\]|\\.)*)'", repl, s)
 
 
-def _parse_js_array_blocks(content, file_path):
+_JS_NUMBER_RE = re.compile(r'-?(?:\d+\.?\d*|\.\d+)(?:[eE][+-]?\d+)?')
+_JS_IDENT_RE = re.compile(r'[A-Za-z_$][\w$]*')
+_JS_KEY_COLON_RE = re.compile(r'\s*:')
+
+
+def _js_literal_to_json(src):
+    r"""Посимвольний перетворювач JS-літералу масиву/об'єкта на JSON. Це
+    ТРЕТІЙ, останній fallback у _parse_js_array_blocks — він підхоплює все,
+    що не змогли ні строгий json.loads, ні regex-нормалізація.
+
+    Розуміє те, що валідне в JS, але не в JSON:
+      - рядки в ОДИНАРНИХ лапках ВСЮДИ — і як значення об'єкта, і як елементи
+        масиву (['all_001','all_002'] — саме це ламало масив LESSONS: старий
+        regex міняв лапки лише одразу після ':', а в масивах не чіпав);
+      - ключі об'єктів без лапок ({id:'x'});
+      - коментарі // та /* */ (розпізнаються лише ПОЗА рядками, тож 'http://'
+        усередині тексту не псується);
+      - кому перед ']' або '}';
+      - escape-послідовності: \' \" \n \xHH \uXXXX \u{...}.
+    Кидає ValueError з позицією, якщо зустріла щось, чого JSON не передає
+    (напр. посилання на змінну на кшталт CHARACTER_AVATARS.x)."""
+    out = []
+    i, n = 0, len(src)
+    while i < n:
+        ch = src[i]
+        if ch.isspace():
+            i += 1
+            continue
+        if src.startswith('//', i):
+            j = src.find('\n', i)
+            i = n if j == -1 else j + 1
+            continue
+        if src.startswith('/*', i):
+            j = src.find('*/', i + 2)
+            if j == -1:
+                raise ValueError(f"незакритий коментар /* на позиції {i}")
+            i = j + 2
+            continue
+        if ch in '"\'':
+            quote = ch
+            start = i
+            i += 1
+            body = []
+            while True:
+                if i >= n:
+                    raise ValueError(f"незакритий рядок, що починається на позиції {start}")
+                c = src[i]
+                if c == quote:
+                    i += 1
+                    break
+                if c == '\\':
+                    i += 1
+                    if i >= n:
+                        raise ValueError(f"обірваний escape-символ у кінці тексту (рядок з позиції {start})")
+                    e = src[i]
+                    if e == 'u':
+                        if src[i + 1:i + 2] == '{':
+                            j = src.index('}', i)
+                            body.append(json.dumps(chr(int(src[i + 2:j], 16)))[1:-1])
+                            i = j + 1
+                        else:
+                            body.append('\\u' + src[i + 1:i + 5])
+                            i += 5
+                    elif e == 'x':
+                        body.append('\\u00' + src[i + 1:i + 3])
+                        i += 3
+                    elif e in 'ntrbf':
+                        body.append('\\' + e)
+                        i += 1
+                    elif e == 'v':
+                        body.append('\\u000b')
+                        i += 1
+                    elif e == '0':
+                        body.append('\\u0000')
+                        i += 1
+                    elif e in '\r\n':
+                        # продовження рядка через backslash + перенос — нічого не додає
+                        if e == '\r' and src[i + 1:i + 2] == '\n':
+                            i += 1
+                        i += 1
+                    else:
+                        body.append(json.dumps(e)[1:-1])   # \' \" \\ \/ та будь-який інший символ
+                        i += 1
+                elif c == '"':
+                    body.append('\\"')
+                    i += 1
+                elif ord(c) < 0x20:
+                    body.append(json.dumps(c)[1:-1])
+                    i += 1
+                else:
+                    body.append(c)
+                    i += 1
+            out.append('"' + ''.join(body) + '"')
+            continue
+        m = _JS_NUMBER_RE.match(src, i)
+        if m and (ch.isdigit() or ch in '-.'):
+            token = m.group(0)
+            i = m.end()
+            out.append(json.dumps(token) if _JS_KEY_COLON_RE.match(src, i) else token)
+            continue
+        m = _JS_IDENT_RE.match(src, i)
+        if m:
+            ident = m.group(0)
+            i = m.end()
+            if _JS_KEY_COLON_RE.match(src, i):
+                out.append(json.dumps(ident))
+            elif ident in ('true', 'false', 'null'):
+                out.append(ident)
+            elif ident == 'undefined':
+                out.append('null')
+            else:
+                raise ValueError(f"невідомий токен '{ident}' на позиції {i - len(ident)} — "
+                                 f"це посилання на змінну/вираз, а не літерал")
+            continue
+        if ch in '}]':
+            if out and out[-1] == ',':
+                out.pop()          # кома перед закриваючою дужкою
+            out.append(ch)
+            i += 1
+            continue
+        if ch in '{[,:':
+            out.append(ch)
+            i += 1
+            continue
+        raise ValueError(f"неочікуваний символ {ch!r} на позиції {i}")
+    return ''.join(out)
+
+
+def _parse_js_array_blocks(content, file_path, skip_vars=()):
     """Спільна логіка розбору 'var/let/const/export NAME = [...]' блоків
     з тексту JS-файлу — використовується і для файлів курсів
     (load_js_database), і для спільного characters.js
@@ -870,6 +1022,11 @@ def _parse_js_array_blocks(content, file_path):
 
     results = []
     for var_name, array_content, _ in blocks:
+        # skip_vars — масиви, які цьому викликачу не потрібні: не парсимо їх
+        # взагалі (не засмічуємо лог помилками про дані, які генератор усе
+        # одно ігнорує, напр. LESSONS/CATS у gen_audio).
+        if var_name in skip_vars:
+            continue
         clean_array = re.sub(r'//.*', '', array_content)
         clean_array = re.sub(r'/\*.*?\*/', '', clean_array, flags=re.DOTALL)
         clean_array = re.sub(r',\s*([\]\}])', r'\1', clean_array)
@@ -890,21 +1047,36 @@ def _parse_js_array_blocks(content, file_path):
             # двокрапки/апострофи всередині ПОДВІЙНОлапкових рядкових
             # значень (DIALOGE тощо), уже парсяться строгим json.loads()
             # вище і НІКОЛИ не доходять до цього regex.
+            e_fallback = None
+            normalized = None
             try:
                 normalized = re.sub(r'([{,]\s*)([a-zA-Z_]\w*)\s*:', r'\1"\2":', clean_array)
                 normalized = _single_to_double_quoted_values(normalized)
                 items = json.loads(normalized)
                 if isinstance(items, list):
                     results.append((var_name, items))
-            except json.JSONDecodeError as e_fallback:
+                continue
+            except Exception as e:
+                e_fallback = e
+
+            # Третій fallback — посимвольний перетворювач JS -> JSON (див.
+            # _js_literal_to_json). Працює з СИРИМ текстом масиву (не з
+            # clean_array: той уже пройшов через грубе вирізання //-коментарів).
+            try:
+                items = json.loads(_js_literal_to_json(array_content))
+                if isinstance(items, list):
+                    results.append((var_name, items))
+                continue
+            except Exception as e_js:
                 print(f"\n❌ Не вдалося розпарсити масив '{var_name}' у файлі {file_path}.", flush=True)
                 print(f"   Строгий парсинг:   {e_strict.msg} (рядок {e_strict.lineno}, колонка {e_strict.colno})", flush=True)
-                print(f"   Fallback-парсинг:  {e_fallback.msg} (рядок {e_fallback.lineno}, колонка {e_fallback.colno})", flush=True)
-                print(f"   Фрагмент навколо помилки fallback-парсингу:", flush=True)
-                print(f"   ...{_error_snippet(normalized, e_fallback.pos)}...\n", flush=True)
-            except Exception as e_fallback:
-                print(f"\n❌ Не вдалося розпарсити масив '{var_name}' у файлі {file_path}: "
-                      f"{type(e_fallback).__name__}: {e_fallback}\n", flush=True)
+                if isinstance(e_fallback, json.JSONDecodeError):
+                    print(f"   Fallback-парсинг:  {e_fallback.msg} (рядок {e_fallback.lineno}, колонка {e_fallback.colno})", flush=True)
+                    print(f"   Фрагмент навколо помилки fallback-парсингу:", flush=True)
+                    print(f"   ...{_error_snippet(normalized, e_fallback.pos)}...", flush=True)
+                else:
+                    print(f"   Fallback-парсинг:  {type(e_fallback).__name__}: {e_fallback}", flush=True)
+                print(f"   JS-парсер:         {type(e_js).__name__}: {e_js}\n", flush=True)
     return results
 
 
@@ -986,9 +1158,7 @@ def load_js_database(file_path):
     # спільний characters.js, див. load_characters_file() вище) — але
     # якщо раптом і трапиться в старому/ще не мігрованому файлі курсу,
     # просто ігноруємо його тут: джерело правди тепер одне.
-    for var_name, items in _parse_js_array_blocks(content, file_path):
-        if var_name in ["CATS", "LESSONS", "CHARACTERS"]:
-            continue
+    for var_name, items in _parse_js_array_blocks(content, file_path, skip_vars=("CATS", "LESSONS", "CHARACTERS")):
         for item in items:
             if isinstance(item, dict) and "id" in item:
                 item["_fallback_var"] = var_name
@@ -1729,6 +1899,59 @@ async def main():
 
       for item in raw_items:
         item_id = item["id"]
+
+        if item.get("_fallback_var") == "QUIZ":
+            # ── QUIZ (var QUIZ, id на кшталт lid_001): озвучуємо ЗАПИТАННЯ
+            # (голос vocab.term) і ПРАВИЛЬНУ відповідь (голос vocab.short) —
+            # див. VOICE_MAPPING["quiz"]. Мови — усі з AUDIO_CONFIG курсу,
+            # так само, як у vocab. Неправильні варіанти й пояснення (expl)
+            # не озвучуються. Таймінг слів не потрібен (quiz не входить у
+            # CATEGORIES_WITH_TIMING). Лише для курсів із QUIZ_AUDIO_COURSES;
+            # в інших курсах QUIZ, як і раніше, мовчки ігнорується.
+            if course not in QUIZ_AUDIO_COURSES:
+                continue
+            cat_lower = item_id.split('_')[0].lower()
+            for field, source in (("question", item.get("question")),
+                                  ("answer", quiz_correct_answer(item))):
+                if not isinstance(source, dict):
+                    continue
+                for lang, text in source.items():
+                    if lang not in audio_config: continue
+                    if not isinstance(text, str) or not text.strip(): continue
+
+                    cleaned = clean_text(text, lang)
+                    if not cleaned:
+                        continue
+
+                    voice = get_voice_id("quiz", field, lang)
+                    for rate in audio_config.get(lang, ["100"]):
+                        filename = f"{item_id}_{field}_{lang}_{rate}.mp3"
+                        mkey = f"{course}/{lang}/{rate}/{cat_lower}/{item_id}_{field}_{lang}_{rate}"
+
+                        content_hash = compute_content_hash(cleaned, voice, rate)
+                        existing_value = manifest_data.get(mkey)
+                        existing_hash = manifest_hash_part(existing_value)
+
+                        if existing_value != content_hash:
+                            tasks.append({
+                                "id": item_id,
+                                "course": course,
+                                "audio_base": audio_base,
+                                "internal_cat": "quiz",
+                                "cat_lower": cat_lower,
+                                "sub": field,
+                                "lang": lang,
+                                "rate": rate,
+                                "cleaned": cleaned,
+                                "voice": voice,
+                                "filename": filename,
+                                "mkey": mkey,
+                                "content_hash": content_hash,
+                                "existing_hash": existing_hash,
+                                "want_timing": False,
+                                "primary_lang": primary_lang
+                            })
+            continue
 
         internal_cat = "vocab"
         if item_id.startswith("sbs_"):
