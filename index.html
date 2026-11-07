@@ -5442,7 +5442,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '971-288cc84';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -6333,18 +6333,26 @@ function buildLearningPath(rawLessons, courseLevel){
 // init() повертає false і loadCourseScript() завантажує старий монолітний <course>.js.
 // Після збирання глобальні масиви (VOCAB, DIALOGE, …) виглядають так само, як після
 // монолітного скрипта, тож решта коду застосунку не змінюється.
+//
+// ГРАМАТИКА. Курс може не мати власної GRAMMAR, а посилатися на спільний файл рівня:
+// GRAMMAR_FILE = "Deutsch-C1" (у core.globals або в монолітному скрипті). Тоді GRAMMAR береться з
+//   data/grammar/<файл>/core.json + all.json + all.<lang>.json  (розбитий, як курс; ті самі мови)
+//   або grammar/<файл>.js                                       (монолітний запасний шлях, усі мови).
+// Розбита граматика — це ще один «пакет» курсу (parts['@grammar'] зі своєю текою), тож
+// ensureLangs() довантажує й її переклади. Курс зі старою вбудованою GRAMMAR працює як раніше.
 const MovaCourse = (function(){
-  let st = null;   // { id, core, parts:{name:{base}}, langs:Set, gen }
+  let st = null;   // { id, core, parts:{name:{base,dir,rel}}, order, langs:Set, gen }
   let gen = 0;     // номер завантаження: відкидає відповіді застарілого (перемкнутого) курсу
   let lastFail = '';   // чому розбита база не завантажилась (для діагностики; див. loadCourseScript)
 
-  function url(rel){ return 'data/' + st.id + '/' + rel + '?v=' + APP_VERSION; }
+  function courseDir(){ return 'data/' + st.id + '/'; }
+  function url(rel, dir){ return (dir || courseDir()) + rel + '?v=' + APP_VERSION; }
   function relOf(name, lang){
     return (name === 'all' ? 'all' : 'b/' + name) + (lang ? '.' + lang : '') + '.json';
   }
-  async function getJson(rel, optional){
-    const r = await fetch(url(rel));
-    if(!r.ok){ lastFail = rel + ' → HTTP ' + r.status; if(optional) return null; throw new Error(rel + ' → HTTP ' + r.status); }
+  async function getJson(rel, optional, dir){
+    const r = await fetch(url(rel, dir));
+    if(!r.ok){ lastFail = (dir || '') + rel + ' → HTTP ' + r.status; if(optional) return null; throw new Error((dir || '') + rel + ' → HTTP ' + r.status); }
     return await r.json();
   }
   // Накладає sidecar на target НА МІСЦІ (масиви — за індексом, null = нічого).
@@ -6365,17 +6373,31 @@ const MovaCourse = (function(){
     if(!side) return;
     for(const n of Object.keys(side)) mergeInto(part.base[n], side[n]);
   }
-  async function loadPart(name){
+  // key — ключ у st.parts; name — назва пакета у файлах (all | <модуль>); dir — тека (за замовч. тека курсу).
+  async function loadPart(name, dir, key){
     const my = st;
     const langs = [...my.langs];
     const [base, ...sides] = await Promise.all([
-      getJson(relOf(name)),
-      ...langs.map(l => getJson(relOf(name, l), true)),
+      getJson(relOf(name), false, dir),
+      ...langs.map(l => getJson(relOf(name, l), true, dir)),
     ]);
     if(my !== st) return;
-    const part = { base, langs: new Set(langs) };
+    const part = { base, langs: new Set(langs), dir, name };
     sides.forEach(sd => applySide(part, sd));
-    my.parts[name] = part;
+    my.parts[key || name] = part;
+  }
+  // Спільна граматика рівня (GRAMMAR_FILE) у розбитому вигляді. false — розбитої нема
+  // (тоді loadCourseScript підвантажить монолітний grammar/<файл>.js).
+  async function loadGrammar(file){
+    const my = st;
+    const dir = 'data/grammar/' + encodeURIComponent(file) + '/';
+    const gcore = await getJson('core.json', true, dir);
+    if(my !== st) return false;
+    if(!gcore || gcore.format !== 1 || !gcore.order || !gcore.hasAll) return false;
+    await loadPart('all', dir, '@grammar');
+    if(my !== st) return false;
+    my.order = Object.assign({}, gcore.order, my.core.order);   // порядок курсу має пріоритет
+    return true;
   }
   // Збирає глобальні масиви з завантажених пакетів у початковому порядку; масиви
   // оновлюються НА МІСЦІ, щоб уже збережені посилання лишались чинними.
@@ -6386,10 +6408,11 @@ const MovaCourse = (function(){
         const m = byId[n] = byId[n] || {};
         part.base[n].forEach(it => { m[it.id] = it; });
       }
-    for(const n of Object.keys(st.core.order)){
+    const order = st.order || st.core.order;
+    for(const n of Object.keys(order)){
       const m = byId[n] || {};
       const list = [];
-      st.core.order[n].forEach(id => { if(m[id]) list.push(m[id]); });
+      order[n].forEach(id => { if(m[id]) list.push(m[id]); });
       const g = window[n];
       if(Array.isArray(g)){ g.length = 0; for(let i = 0; i < list.length; i++) g.push(list[i]); }
       else window[n] = list;
@@ -6406,7 +6429,7 @@ const MovaCourse = (function(){
 
   // true — база зібрана з розбитих файлів; false — розбитої бази нема (потрібен монолітний скрипт).
   async function init(course){
-    const my = st = { id: course.id, core: null, parts: {}, langs: new Set(), gen: ++gen };
+    const my = st = { id: course.id, core: null, parts: {}, order: null, grammarFile: '', grammarSplit: false, langs: new Set(), gen: ++gen };
     lastFail = '';
     try{
       const core = await getJson('core.json', true);
@@ -6418,9 +6441,24 @@ const MovaCourse = (function(){
       my.core = core;
       wantedLangs(core).forEach(l => my.langs.add(l));
       const names = core.hasAll ? ['all'] : Object.keys(core.buckets);
-      await Promise.all(names.map(loadPart));
+      await Promise.all(names.map(n => loadPart(n)));
       if(my !== st) return false;
+      // Спільна граматика рівня: курс без власної GRAMMAR, але з GRAMMAR_FILE.
+      const gfile = (core.globals && core.globals.GRAMMAR_FILE) || '';
+      if(gfile && !(core.order && core.order.GRAMMAR)){
+        my.grammarFile = gfile;
+        try{ my.grammarSplit = await loadGrammar(gfile); }
+        catch(e){ my.grammarSplit = false; console.warn('[MovaCourse] розбита граматика ' + gfile + ' недоступна:', e); }
+        if(my !== st) return false;
+      }
       for(const k of Object.keys(core.globals)) window[k] = core.globals[k];
+      // F (прапори мов) у core.json — текстовий запасний варіант: split-course.js виконує курс без
+      // movaFlag. Тут movaFlag є, тож малюємо ті самі SVG-прапори, що й монолітний файл курсу.
+      if(core.globals.F && typeof movaFlag === 'function'){
+        const f = {};
+        Object.keys(core.globals.F).forEach(l => { try{ f[l] = movaFlag(l, 'mf-inline'); }catch(e){ f[l] = core.globals.F[l]; } });
+        window.F = f;
+      }
       assemble();
       return true;
     }catch(e){
@@ -6437,9 +6475,10 @@ const MovaCourse = (function(){
     if(!my || !my.core) return false;
     const ls = wantedLangs(my.core).filter(l => !my.langs.has(l));
     if(!ls.length) return false;
-    await Promise.all(ls.map(l => Promise.all(Object.keys(my.parts).map(async name => {
-      const side = await getJson(relOf(name, l), true);
-      if(my === st) applySide(my.parts[name], side);
+    await Promise.all(ls.map(l => Promise.all(Object.keys(my.parts).map(async key => {
+      const part = my.parts[key];
+      const side = await getJson(relOf(part.name || key, l), true, part.dir);
+      if(my === st) applySide(part, side);
     }))));
     if(my !== st) return false;
     ls.forEach(l => my.langs.add(l));
@@ -6451,15 +6490,37 @@ const MovaCourse = (function(){
     if(!my || !my.core || !my.core.hasBuckets) return false;
     const miss = [...new Set(names)].filter(n => !my.parts[n] && my.core.buckets[n]);
     if(!miss.length) return false;
-    await Promise.all(miss.map(loadPart));
+    await Promise.all(miss.map(n => loadPart(n)));
     if(my !== st) return false;
     assemble();
     return true;
   }
   function ensureLesson(lessonId){ return ensureBuckets((st && st.core && st.core.needs[lessonId]) || []); }
-  return { get lastFail(){ return lastFail; }, init, ensureLangs, ensureLang: ensureLangs, ensureBuckets, ensureLesson, get state(){ return st; } };
+  // true — GRAMMAR курсу вже зібрана з data/grammar/… (монолітний grammar/<файл>.js не потрібен).
+  function grammarReady(){ return !!(st && st.grammarSplit); }
+  return { get lastFail(){ return lastFail; }, init, ensureLangs, ensureLang: ensureLangs, ensureBuckets, ensureLesson, grammarReady, get state(){ return st; } };
 })();
 // </MovaCourse>
+
+// Монолітний файл спільної граматики grammar/<файл>.js (оголошує лише GRAMMAR_LANG і GRAMMAR).
+// Запасний шлях, коли розбитої data/grammar/<файл>/ нема, і основний — для монолітних курсів.
+// Помилка завантаження НЕ зупиняє курс: він відкриється, лише без граматики (як курс без GRAMMAR).
+function loadGrammarScript(file){
+  return new Promise(resolve=>{
+    const old = document.getElementById('grammar-script');
+    if(old) old.remove();
+    const s = document.createElement('script');
+    s.id  = 'grammar-script';
+    s.src = 'grammar/' + encodeURIComponent(file) + '.js?v=' + APP_VERSION;
+    s.onload  = ()=>resolve(true);
+    s.onerror = ()=>{
+      console.warn('[grammar] не вдалося завантажити grammar/' + file + '.js');
+      try{ if(typeof logErr === 'function') logErr('course:grammar', 'grammar file failed: ' + file, (typeof activeCourse !== 'undefined' && activeCourse && activeCourse.id) || ''); }catch(e){}
+      resolve(false);
+    };
+    document.head.appendChild(s);
+  });
+}
 
 function loadCourseScript(courseId){
   return new Promise((resolve, reject)=>{
@@ -6470,6 +6531,10 @@ function loadCourseScript(courseId){
     if(window.VOCAB) window.VOCAB = [];
     // PRIMARY_LANG_1 — необов'язкова змінна файлу курсу: без скидання лишилась би від попереднього курсу.
     window.PRIMARY_LANG_1 = '';
+    // Граматика теж: курс без GRAMMAR (напр. Financial-Accounting) інакше показував би теми
+    // попереднього курсу, а GRAMMAR_FILE попереднього курсу підвантажив би чужу граматику.
+    window.GRAMMAR_FILE = '';
+    window.GRAMMAR = [];
     _lp = null;
     _lpPathReady = false;   // шлях нового курсу ще не побудовано (див. _lessonDoneMap)
     // CHARACTERS сюди НЕ входить: персонажі тепер живуть у спільному
@@ -6531,17 +6596,26 @@ function loadCourseScript(courseId){
       try{ GRAM_CARDS = buildGramCards(); GRAM_CATS = buildGramCats(); }catch(e){ GRAM_CARDS=[]; GRAM_CATS=[]; }
       resolve(course);
     };
+    // Спільна граматика рівня (GRAMMAR_FILE): якщо курс на неї посилається, а GRAMMAR ще не зібрана
+    // з розбитої data/grammar/… — довантажуємо монолітний grammar/<файл>.js і лише тоді продовжуємо.
+    // Курс зі старою вбудованою GRAMMAR (GRAMMAR_FILE нема) — без змін.
+    const _withGrammar = (fromSplit)=>{
+      const gf = (typeof GRAMMAR_FILE !== 'undefined' && GRAMMAR_FILE) || '';
+      const has = Array.isArray(window.GRAMMAR) && window.GRAMMAR.length > 0;
+      if(!gf || has || (fromSplit && MovaCourse.grammarReady())){ _onCourseData(); return; }
+      loadGrammarScript(gf).then(_onCourseData);
+    };
     // Запасний шлях: старий монолітний <course>.js (курси без data/<course>/core.json).
     const _loadMonolith = ()=>{
       const s = document.createElement('script');
       s.id  = 'course-script';
       s.src = _srcUrl;
-      s.onload  = _onCourseData;
+      s.onload  = ()=>_withGrammar(false);
       s.onerror = ()=>reject(new Error('Failed to load: '+course.id+'.js'));
       document.head.appendChild(s);
     };
     MovaCourse.init(course).catch(()=>false).then(ok=>{
-      if(ok){ _onCourseData(); return; }
+      if(ok){ _withGrammar(true); return; }
       // Діагностика: у логу видно, ЧОМУ використано монолітний файл (404, HTML замість JSON, format тощо).
       try{ const why = MovaCourse.lastFail || 'невідомо'; console.warn('[course] монолітний ' + course.id + '.js; причина:', why); if(typeof logErr === 'function') logErr('course:split', 'fallback to monolith: ' + why, course.id); }catch(e){}
       _loadMonolith();
