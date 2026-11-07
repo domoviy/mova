@@ -163,6 +163,13 @@ CATEGORIES_WITH_TIMING = {
     # forum_XXX (task + parts, один автор card['name']), тому той самий
     # принцип: усі поля, лише PRIMARY_LANG.
     "brief":       None,
+    # QUIZ (Leben-in-Deutschland та інші курси з QUIZ_AUDIO_COURSES):
+    # запитання й правильна відповідь — клієнт (_quizSpeak в index.html)
+    # уже вміє підсвічувати обидва поля, але вмикає karaoke лише коли в
+    # маніфесті є позначка таймінгу "+t". Без цього рядка .words.json для
+    # квізу не генерувався взагалі — звідси «немає караоке» в LiD.
+    # Лише PRIMARY_LANG, як і скрізь.
+    "quiz":        {"question", "answer"},
 }
 
 def field_wants_timing(internal_cat, field, lang, primary_lang):
@@ -185,6 +192,7 @@ COURSES = [
     'Deutsch-B1',
     'Deutsch-C1',
     'Leben-in-Deutschland',
+    'Deutsch-C1-Beruf',
 ]
 
 # Курси, у яких озвучується var QUIZ (запитання + правильна відповідь).
@@ -1224,6 +1232,9 @@ def _norm_word(w):
     return w.lower()
 
 
+PERCENT_WORDS = {"prozent", "percent", "відсоток", "відсотки", "відсотків", "процент", "процента", "процентов"}
+
+
 def _looks_truncated(cleaned_text, boundary_words):
     """Перевірка ЦІЛІСНОСТІ потоку Edge TTS — не плутати з перевіркою
     ВИМОВИ (це недосяжно без ASR, і скрипт цього свідомо не робить, див.
@@ -1288,9 +1299,12 @@ def _looks_truncated(cleaned_text, boundary_words):
         # наний очікуваний токен лишається "buddy-person", а отриманий —
         # "buddyperson"; без .replace('-', '') рядки НІКОЛИ не збігаються
         # і легітимна інша сегментація хибно карається як "обрив".
-        expected_joined = ''.join(expected_norm[i1:i2]).replace('-', '')
-        got_joined = ''.join(got_norm[j1:j2]).replace('-', '')
-        if expected_joined and expected_joined == got_joined:
+        # Слово "відсоток", яке Edge TTS може звітувати окремою подією
+        # для символу "%" ("5%" → "5" + "Prozent"), у тексті не записане
+        # словом — тож на відрізку розбіжності його не рахуємо.
+        expected_joined = ''.join(w for w in expected_norm[i1:i2] if w not in PERCENT_WORDS).replace('-', '')
+        got_joined = ''.join(w for w in got_norm[j1:j2] if w not in PERCENT_WORDS).replace('-', '')
+        if expected_joined == got_joined and (expected_joined or j2 > j1):
             # Той самий зміст, лише інша сегментація (об'єднання/поділ
             # токенів Edge TTS) — нічого не загублено.
             continue
@@ -1493,6 +1507,15 @@ async def synthesize_speech(text, voice, rate_str, output_path, want_timing=Fals
                     except json.JSONDecodeError:
                         continue
                     if meta.get('type') != 'WordBoundary':
+                        continue
+                    # Подія без жодної літери/цифри (самостійний "-", "%",
+                    # "%-" тощо). Edge TTS інколи звітує такий шматок окремою
+                    # WordBoundary-подією — напр. "5%-Hürde" дає 3 події
+                    # замість 2, і _looks_truncated() хибно бачив "обрив"
+                    # (LiD lid_121/123/127). Токенізатор фронтенду такий
+                    # шматок теж не вважає словом, тож у таймінгу він лише
+                    # заважав би вирівнюванню підсвітки.
+                    if not _norm_word(meta.get('text', '')):
                         continue
                     words.append({
                         'word':  meta['text'],
@@ -1905,8 +1928,8 @@ async def main():
             # (голос vocab.term) і ПРАВИЛЬНУ відповідь (голос vocab.short) —
             # див. VOICE_MAPPING["quiz"]. Мови — усі з AUDIO_CONFIG курсу,
             # так само, як у vocab. Неправильні варіанти й пояснення (expl)
-            # не озвучуються. Таймінг слів не потрібен (quiz не входить у
-            # CATEGORIES_WITH_TIMING). Лише для курсів із QUIZ_AUDIO_COURSES;
+            # не озвучуються. Таймінг слів (.words.json) — для PRIMARY_LANG,
+            # див. "quiz" у CATEGORIES_WITH_TIMING. Лише для курсів із QUIZ_AUDIO_COURSES;
             # в інших курсах QUIZ, як і раніше, мовчки ігнорується.
             if course not in QUIZ_AUDIO_COURSES:
                 continue
@@ -1929,10 +1952,14 @@ async def main():
                         mkey = f"{course}/{lang}/{rate}/{cat_lower}/{item_id}_{field}_{lang}_{rate}"
 
                         content_hash = compute_content_hash(cleaned, voice, rate)
+                        want_timing = field_wants_timing("quiz", field, lang, primary_lang)
                         existing_value = manifest_data.get(mkey)
                         existing_hash = manifest_hash_part(existing_value)
 
-                        if existing_value != content_hash:
+                        # Як у vocab: порівнюємо з очікуваним значенням (хеш + "+t",
+                        # якщо потрібен таймінг) — старі записи квізу без таймінгу
+                        # підуть на TIMING-BACKFILL (mp3 + .words.json разом).
+                        if existing_value != manifest_value(content_hash, want_timing):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -1948,7 +1975,7 @@ async def main():
                                 "mkey": mkey,
                                 "content_hash": content_hash,
                                 "existing_hash": existing_hash,
-                                "want_timing": False,
+                                "want_timing": want_timing,
                                 "primary_lang": primary_lang
                             })
             continue
