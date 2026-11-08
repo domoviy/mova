@@ -791,6 +791,48 @@ body{
 }
 .bn-item{height:64px}
 
+/* ══ ДОВІДНИК (view-ref) ══
+   Другорядний розділ «для тих, хто хоче глибше»: міні-сайт без верхніх вкладок —
+   головна з рядками-посиланнями (Граматика, Словник), далі вглиб зі «‹ назад».
+   Головний шлях — «Навчання»; тут лише довідка + тренування теми. */
+.ref-page{max-width:640px;margin:0 auto;padding:4px 2px calc(var(--nav-h) + var(--safe-b) + 16px)}
+.ref-back{display:inline-flex;align-items:center;gap:4px;border:0;background:none;padding:6px 2px;margin:0 0 6px;color:var(--muted);font:inherit;font-size:15px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ref-back .mi{width:18px;height:18px}
+.ref-h1{font-size:24px;font-weight:800;color:var(--ink);margin:2px 0 4px;line-height:1.2}
+.ref-h1-sub{font-size:15px;color:var(--muted);margin:0 0 18px;line-height:1.4}
+.ref-rows{display:flex;flex-direction:column;gap:10px}
+.ref-row{display:flex;align-items:center;gap:14px;width:100%;text-align:left;border:1px solid var(--border);background:var(--paper);border-radius:16px;padding:14px 14px 14px 16px;font:inherit;color:var(--ink);cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ref-row:active{transform:scale(.99);background:var(--soft)}
+.ref-row-ic{flex:none;width:40px;height:40px;border-radius:12px;background:var(--gold-dim);color:var(--forest);display:flex;align-items:center;justify-content:center}
+.ref-row-ic .mi{width:22px;height:22px}
+.ref-row-txt{flex:1;min-width:0}
+.ref-row-title{display:block;font-size:17px;font-weight:700;line-height:1.3}
+.ref-row-sub{display:block;font-size:14px;color:var(--muted);margin-top:2px;line-height:1.35}
+.ref-row-chev{flex:none;color:var(--muted);font-size:22px;line-height:1}
+.ref-row.is-empty .ref-row-title{color:var(--warm)}
+.ref-section{font-size:13px;font-weight:700;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);margin:22px 2px 8px}
+.ref-text{font-size:16px;line-height:1.6;color:var(--warm)}
+.ref-text g{font-weight:700;color:var(--g-accent)}
+.ref-more{display:inline-flex;align-items:center;gap:6px;margin-top:12px;border:1px solid var(--border);background:var(--paper);border-radius:999px;padding:8px 14px;font:inherit;font-size:15px;font-weight:600;color:var(--forest);cursor:pointer}
+.ref-more .mi{width:18px;height:18px}
+.ref-ex{border:1px solid var(--border);background:var(--paper);border-radius:14px;padding:12px 14px;margin-bottom:8px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ref-ex:active{background:var(--soft)}
+.ref-ex-de{font-size:16px;line-height:1.5;color:var(--ink)}
+.ref-ex-tr{font-size:14px;line-height:1.45;color:var(--muted);margin-top:4px}
+.ref-ex-tr g,.ref-ex-tr b{font-weight:inherit;color:inherit}
+.ref-cta-wrap{position:sticky;bottom:calc(var(--nav-h) + var(--safe-b));margin-top:6px;padding:14px 0 8px;background:linear-gradient(to bottom,rgba(248,245,238,0),var(--cream) 30%)}
+.ref-cta{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;border:0;border-radius:16px;padding:16px;font:inherit;font-size:17px;font-weight:800;color:var(--forest);background:linear-gradient(135deg,var(--gold-lt),var(--gold));cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ref-cta:active{transform:scale(.98)}
+.ref-cta .mi{width:20px;height:20px}
+.ref-cta-note{font-size:13px;color:var(--muted);text-align:center;margin-top:8px}
+/* Підменю словника: «‹ Довідник» + «Усі · Обране» (вкладки — лише тут, бо це один список із фільтром) */
+.ref-subnav{display:flex;align-items:center;gap:10px;margin:0 0 10px}
+.ref-subnav .ref-back{margin:0;padding:6px 0}
+.ref-seg{display:inline-flex;margin-left:auto;background:var(--soft);border:1px solid var(--border);border-radius:999px;padding:3px}
+.ref-seg button{border:0;background:none;font:inherit;font-size:14px;font-weight:700;color:var(--muted);padding:6px 14px;border-radius:999px;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.ref-seg button.on{background:var(--paper);color:var(--forest);box-shadow:0 1px 3px rgba(0,0,0,.08)}
+#view-favs .ref-subnav{margin-bottom:14px}
+
 /* ══ HEADER ELEMENTS ══ */
 .h-logo{display:flex;align-items:center;gap:9px;flex-shrink:0}
 .h-logo-icon{height:26px;width:46px;flex-shrink:0}
@@ -969,6 +1011,13 @@ body{
   border-bottom:2px solid transparent;margin-bottom:-2px;
 }
 .vtab.active{color:var(--ink);border-bottom-color:var(--gold)}
+/* Словник: «Список» — першою вкладкою (режим за замовчуванням), «Картки» — другою.
+   Лише візуальний порядок: індекси switchVocabTab(0=картки, 1=список) не змінюються. */
+#vocab-tabs .vtab:nth-child(2){order:-1}
+/* Словник у режимі картки (поза уроком): нижнє меню ховаємо — інакше кнопки
+   «Далі»/🔊 картки накладаються на нього (як в уроці; повернення — «← Довідник»). */
+body.vocab-card-free #bottom-nav{display:none !important}
+body.vocab-card-free{--lm-nav:0px}
 
 /* ══ FLASHCARD ══ */
 /* Base: shared perspective + flex-fill for SB and any future panel */
@@ -4772,6 +4821,7 @@ body{
       </div>
 
       <div class="vocab-top">
+        <div class="ref-subnav" id="vocab-subnav"></div>
         <div class="vplayer">
           <button class="vplay" id="vplaybtn" onclick="toggleVocabListenMode()"><i data-mi="play"></i></button>
           <button class="vstop" onclick="stopVocabListenMode()"><i data-mi="stop"></i></button>
@@ -4951,7 +5001,7 @@ body{
 
     <!-- FAVORITEN -->
     <div id="view-favs" class="view">
-      <div class="sh"><h2><i data-mi="star" class="mi-inline"></i><span data-i18n="nav_favs">Favoriten</span></h2></div>
+      <div class="ref-subnav" id="favs-subnav"></div>
       <div class="vocab-grid" id="fav-grid"></div>
       <!-- Empty state: перше враження нового користувача про фічу Favoriten.
            Замість голого тексту — іконка в стилі логотипу MOVA (той самий
@@ -4968,9 +5018,12 @@ body{
         </div>
         <div class="fav-empty-title" data-i18n="favs_empty_title">Hier erscheinen deine Favoriten</div>
         <div class="fav-empty-sub" data-i18n="favs_empty_sub">Tippe ☆ auf einer Wortkarte — sie landet sofort hier, zum schnellen Wiederholen.</div>
-        <button class="lr-btn-primary fav-empty-cta" onclick="showView('vocab')" data-i18n="favs_empty_cta">Zu den Vokabeln</button>
+        <button class="lr-btn-primary fav-empty-cta" onclick="openMainDictionary()" data-i18n="favs_empty_cta">Zu den Vokabeln</button>
       </div>
     </div>
+
+    <!-- ДОВІДНИК — міні-сайт (renderReference): головна → Граматика → тема -->
+    <div id="view-ref" class="view"><div id="ref-root" class="ref-page"></div></div>
 
     <!-- LERNPFAD -->
     <div id="view-lernpfad" class="view">
@@ -5418,12 +5471,8 @@ body{
   <button class="bn-item" onclick="showView('lernpfad')" data-view="lernpfad">
     <span class="bn-icon"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M2.8 9.6 12 5l9.2 4.6L12 14.2z"/><path d="M6.6 11.8v4.4c1.4 1.5 3.3 2.2 5.4 2.2s4-.7 5.4-2.2v-4.4"/><path d="M21.2 9.6v5"/></svg></span><span id="lp-nav-label">Lernen</span>
   </button>
-  <button class="bn-item" onclick="showView('favs')" data-view="favs">
-    <span class="bn-icon"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3.9l2.5 5.2 5.7.8-4.1 4 1 5.7-5.1-2.7-5.1 2.7 1-5.7-4.1-4 5.7-.8z"/></svg></span><span id="bn-favs-label">Закладки</span>
-    <span class="bn-badge" id="nb-favs">0</span>
-  </button>
-  <button class="bn-item" onclick="openMainDictionary()" data-view="vocab">
-    <span class="bn-icon"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.2C9.9 5.7 7 5.2 4 5.7v12.6c3-.5 5.9 0 8 1.5 2.1-1.5 5-2 8-1.5V5.7c-3-.5-5.9 0-8 1.5z"/><path d="M12 7.2v12.6"/></svg></span><span id="bn-vocab-label">Словник</span>
+  <button class="bn-item" onclick="openReference()" data-view="ref">
+    <span class="bn-icon"><svg class="mi" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 7.2C9.9 5.7 7 5.2 4 5.7v12.6c3-.5 5.9 0 8 1.5 2.1-1.5 5-2 8-1.5V5.7c-3-.5-5.9 0-8 1.5z"/><path d="M12 7.2v12.6"/></svg></span><span id="bn-ref-label">Довідник</span>
   </button>
 </div>
 
@@ -5447,7 +5496,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '985-4492243';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -8070,6 +8119,8 @@ function applyI18n(){
   // Lernpfad nav label
   const lpNav = document.getElementById('lp-nav-label');
   if(lpNav) lpNav.textContent = t('nav_lernpfad');
+  const refNav = document.getElementById('bn-ref-label');
+  if(refNav && typeof refT === 'function') refNav.textContent = refT('title');
   // Labels by data-i18n attribute (підхоплює nav_sb через span)
   // Lernpfad header
   const lpLoad = document.getElementById('lp-overall-text');
@@ -8896,6 +8947,7 @@ function srRecordAnswer(cardId, rating, examPart, side){
     // щоб усі підрахунки жили в одній структурі.
     updated.totalPlays = (root.totalPlays ?? 0) + 1;
     updated.lastSeen = Date.now();
+    updated.firstSeen = _srFirstSeen(root);
     updated.partHistory = {...(root.partHistory??{})};
     parts.forEach(part=>{
       updated.partHistory[part] = [...(root.partHistory?.[part]??[]), rating].slice(-10);
@@ -8908,6 +8960,7 @@ function srRecordAnswer(cardId, rating, examPart, side){
     const newRoot = {...root};
     newRoot.totalPlays = (root.totalPlays ?? 0) + 1;
     newRoot.lastSeen = Date.now();
+    newRoot.firstSeen = _srFirstSeen(root);
     newRoot.partHistory = {...(root.partHistory??{})};
     parts.forEach(part=>{
       newRoot.partHistory[part] = [...(root.partHistory?.[part]??[]), rating].slice(-10);
@@ -8947,6 +9000,7 @@ function srRecordPassiveSignal(cardId, rating, examPart){
   const updated = {...cs}; // SM-2 поля (repetitions/interval/nextReview) лишаються як були
   updated.totalPlays = (cs.totalPlays ?? 0) + 1;
   updated.lastSeen = Date.now();
+  updated.firstSeen = _srFirstSeen(cs);
   updated.partHistory = {...(cs.partHistory??{})};
   parts.forEach(part=>{
     updated.partHistory[part] = [...(cs.partHistory?.[part]??[]), rating].slice(-10);
@@ -9748,6 +9802,40 @@ function srPriorityFromState(state, id){
   const isDue = Date.now() >= dueDate;
   const interval = root.interval || 1;
   return (isDue ? 1e9 : 0) - interval;
+}
+
+// ── РІВЕНЬ ЗАСВОЄННЯ ГРАНІ КАРТКИ (адаптивний склад уроку) ─────────
+// Кожна грань (term — лицьовий бік, def — речення-приклад) має власний
+// SM-2 (див. srRecordAnswer), тож і рівень рахуємо окремо:
+//   0 NEW       — менше SR_TIER_MIN_PLAYS контактів або грань ще не оцінювалась;
+//   1 LEARNING  — інтервал < 7 дн. АБО остання відповідь помилкова (страховка:
+//                 помилка повертає грань на повний показ);
+//   2 FAMILIAR  — інтервал ≥ 7 дн. і слово знайоме щонайменше 2 дні;
+//   3 MASTERED  — інтервал ≥ 30 дн. і слово знайоме щонайменше 14 днів.
+// Вік (firstSeen) — захист від «зубріння за вечір»: кілька «Знаю» поспіль в один
+// день дають SM-2 інтервал 15+ днів, але це ще не довготривала пам'ять.
+// Урок показує повну картку (грань) лише для NEW/LEARNING; FAMILIAR+ — швидкими
+// вправами (Знайди пару, Впиши слово) без перегляду картки.
+const SR_TIER = { NEW:0, LEARNING:1, FAMILIAR:2, MASTERED:3 };
+const SR_TIER_MIN_PLAYS = 3;
+const SR_TIER_FAMILIAR_DAYS = 7, SR_TIER_MASTERED_DAYS = 30;
+const SR_TIER_FAMILIAR_AGE = 2, SR_TIER_MASTERED_AGE = 14;   // днів від першої зустрічі
+// firstSeen: момент першої зустрічі зі словом. Для карток, які вже мали історію ДО
+// появи цього поля, — 0 («давно, точна дата невідома»), щоб не вважати їх свіжими.
+function _srFirstSeen(root){
+  if(root && root.firstSeen != null) return root.firstSeen;
+  return (root && (root.totalPlays || 0) > 0) ? 0 : Date.now();
+}
+function srSideTier(state, id, side){
+  const root = state.cards?.[id];
+  if(!root || (root.totalPlays || 0) < SR_TIER_MIN_PLAYS) return SR_TIER.NEW;
+  const cs = (!side || side === 'term') ? root : root.sides?.[side];
+  if(!cs || !Number.isFinite(cs.interval) || !Array.isArray(cs.history) || !cs.history.length) return SR_TIER.NEW;
+  if(cs.history[cs.history.length - 1] < 3) return SR_TIER.LEARNING;
+  const ageDays = root.firstSeen ? (Date.now() - root.firstSeen) / 86400000 : Infinity;
+  if(cs.interval >= SR_TIER_MASTERED_DAYS && ageDays >= SR_TIER_MASTERED_AGE) return SR_TIER.MASTERED;
+  if(cs.interval >= SR_TIER_FAMILIAR_DAYS && ageDays >= SR_TIER_FAMILIAR_AGE) return SR_TIER.FAMILIAR;
+  return SR_TIER.LEARNING;
 }
 
 // Чи слово взагалі ще ЖОДНОГО разу не показувалось користувачу (totalPlays
@@ -10815,7 +10903,11 @@ function showView(id, opts){
   // Sprachbausteine, щоб не дублювати весь модуль практики).
   const domId = id==='gram' ? 'sb' : id;
   document.getElementById('view-'+domId).classList.add('active');
-  const btn=document.querySelector('[data-view="'+id+'"]');if(btn)btn.classList.add('active');
+  // Словник і Обране — підрозділи Довідника: підсвічуємо кнопку «Довідник» у нижньому меню.
+  const navId = (id==='vocab' || id==='favs') ? 'ref' : id;
+  const btn=document.querySelector('#bottom-nav [data-view="'+navId+'"]');if(btn)btn.classList.add('active');
+  if(id==='ref') renderReference();
+  if(id==='vocab' || id==='favs') _refRenderSubnav(id);
   if(id==='vocab'){initVocab();initVocabChips();}
   if(id==='dialogue'){initDialogue();initDialogueChips();}
   if(id==='sb')  sbSetDataSource('sb');
@@ -10841,6 +10933,7 @@ function showView(id, opts){
     const sb=document.getElementById('lf-sb-next-btn');
     if(sb) sb.remove();
   }
+  _syncVocabCardNav();
   document.getElementById('content').scrollTo(0,0);
 }
 
@@ -10875,7 +10968,8 @@ function initVocab(){initVocabFilters();applyVocabLangUI();updateVocabPlaySideBt
   // switchCourse() при зміні курсу, коли на екрані геть інший view, і
   // раніше в цьому випадку теж зайво стартувало озвучення випадкової
   // картки нового курсу.
-  if(document.getElementById('view-vocab')?.classList.contains('active')) startVocabCardMode();
+  if(document.getElementById('view-vocab')?.classList.contains('active') &&
+     document.getElementById('vocab-panel-card')?.style.display !== 'none') startVocabCardMode();
 }
 function initVocabFilters(){
   if(typeof CATS === 'undefined') return; // курс ще не завантажено
@@ -12311,7 +12405,7 @@ function _runBonusLessonFlow(lesson){
     cards:      [],
     matchCards: [],
     matchExtraPools: {},
-    tilesCards: [],
+    tilesCards: lesson._tilesBonusPool || [],   // тренування теми з Довідника («Збери речення»)
     allCards:   [],
     sbCards:    [],
     sbIdx:      0,
@@ -12399,6 +12493,9 @@ function startReviewLesson(chapterNums, labelKey){
 // уроків у localStorage), з невеликою випадковістю.
 // Усі числа нижче — оцінка; підлаштовуються за відчуттям тривалості.
 const LF_LESSON_BUDGET = 9;
+// Скільки знайомих слів «на повторенні сьогодні» додавати в урок для швидкого
+// освіження (≈ третина уроку поруч із 4 картками нового/того, що вивчається).
+const LF_QUICK_MAX = 2;
 const LF_COST = { cards:3, def:1.5, sb_prac:3, deftype:1.5, matchPair:0.6, tile:1.2, speechPhrase:0.9, dlgTurn:0.5 };
 const LF_HIST_KEY = 'mova_lf_step_hist';
 // Порядок кроків у уроці (від впізнавання до продукування й мовлення)
@@ -12513,11 +12610,30 @@ function _runLessonFlow(lesson, allCards){
     if(raw && raw.date === today) seenToday = raw.ids || [];
   }catch(e){}
 
-  const fresh = sorted.filter(c => !seenToday.includes(c.id));
+  // Адаптивний склад: «повна картка» — лише для слів, де хоч одна грань ще
+  // NEW/LEARNING; знайомі (FAMILIAR+) й «на повторенні сьогодні» — у швидкі
+  // вправи (LF.quickCards: Знайди пару, Впиши слово). Якщо незнайомих нема
+  // зовсім — урок лишається з тих самих карток, але без перегляду знайомих граней.
+  const _defOf   = c => c.def && c.def[pLang];
+  const _tierT   = c => srSideTier(state, c.id, 'term');
+  const _tierD   = c => _defOf(c) ? srSideTier(state, c.id, 'def') : SR_TIER.MASTERED;
+  const _needsCard = c => _tierT(c) <= SR_TIER.LEARNING || _tierD(c) <= SR_TIER.LEARNING;
+  const fullSorted = sorted.filter(_needsCard);
+  const pickFrom = fullSorted.length ? fullSorted : sorted;
+  const fresh = pickFrom.filter(c => !seenToday.includes(c.id));
   // Беремо нові (ще не бачені сьогодні в цьому уроці), якщо їх достатньо;
   // якщо пул вичерпано — довивчуємо рештою (весь урок вже пройдено сьогодні).
-  const basePool = (fresh.length >= Math.min(4, sorted.length) ? fresh : sorted);
-  let flowCards = basePool.slice(0, Math.min(4, sorted.length));
+  const basePool = (fresh.length >= Math.min(4, pickFrom.length) ? fresh : pickFrom);
+  let flowCards = basePool.slice(0, Math.min(4, pickFrom.length));
+  const _flowIdSet = new Set(flowCards.map(c => c.id));
+  const quickCards = sorted
+    .filter(c => !_flowIdSet.has(c.id) && !_needsCard(c) && srPriorityFromState(state, c.id) >= 5e8)   // due: ≈1e9 − interval
+    .slice(0, LF_QUICK_MAX);
+  // Які грані показувати карткою в кроці «Картки» (решта — лише у вправах)
+  const cardSides = {};
+  flowCards.forEach(c => {
+    cardSides[c.id] = { term: _tierT(c) <= SR_TIER.LEARNING, def: !!_defOf(c) && _tierD(c) <= SR_TIER.LEARNING };
+  });
 
   // Вправа "Вимова" (🎤) в кінці уроку: слова САМЕ цього уроку (flowCards) + п'яте, обране ТИМ САМИМ
   // алгоритмом вибірки: наступне за SM-2 пріоритетом у тому ж пулі; якщо "нових" (не бачених
@@ -12622,7 +12738,9 @@ function _runLessonFlow(lesson, allCards){
   //  3) далі — уже бачені, але ще не due (ближчі до повторення першими);
   //  4) в останню чергу — ще не бачені слова модуля.
   const _matchOk = c => c.term?.[primaryLang()] && c.term?.[transLang()] && (transLang()!==primaryLang() || c.short?.[primaryLang()]);
-  const _flowOk  = flowCards.filter(_matchOk);
+  // Знайомі слова на повторенні (quickCards) — одразу після карток уроку:
+  // «Знайди пару» для них — легке освіження пам'яті без повного перегляду.
+  const _flowOk  = flowCards.filter(_matchOk).concat(quickCards.filter(_matchOk));
   const _flowIds = new Set(_flowOk.map(c => c.id));
   const _rest    = matchPool.filter(c => !_flowIds.has(c.id));   // matchPool уже за SM-2-пріоритетом
   const _isNew   = c => srIsCardNew(state, c.id);
@@ -12715,6 +12833,8 @@ function _runLessonFlow(lesson, allCards){
     lessonId:  lesson.id,
     lesson,
     cards:     flowCards,
+    quickCards,
+    cardSides,
     speechCards: speechCardsPlanned,
     matchCards,
     matchAudioCards,
@@ -12732,6 +12852,13 @@ function _runLessonFlow(lesson, allCards){
     _xpAtStart: xpGetTotal(),
   };
   _mLogLessonStart(lesson);
+  if(typeof window.mlog === 'function') window.mlog('lesson_mix', {
+    lesson_id: lesson.id || '',
+    full_cards: flowCards.length,
+    term_shown: flowCards.filter(c => cardSides[c.id].term).length,
+    def_shown:  flowCards.filter(c => cardSides[c.id].def).length,
+    quick_cards: quickCards.length,
+  });
   window._xpDisplayFrozen = true;
 
   V.lessonId    = lesson.id;
@@ -13824,7 +13951,12 @@ function clearVocabFilter(){
 // поточного курсу (навіть якщо до цього був відкритий скоуп уроку/глави/курсу).
 function openMainDictionary(){
   clearVocabFilter();
+  // За замовчуванням — режим списку (огляд/пошук слів); картки — другою вкладкою.
+  // Спершу перемикаємо панелі (view ще неактивний → без автоозвучення картки),
+  // потім показуємо view і рендеримо список.
+  switchVocabTab(1);
   showView('vocab');
+  switchVocabTab(1);
 }
 
 // Відкриває Словник (той самий вигляд — 🃏 картки + 📋 список — що й з
@@ -16748,6 +16880,7 @@ function tilesCheck(){
   const ansEl = document.getElementById('tiles-answer');
   ansEl.className = 'tiles-answer ' + (isOk?'correct':'wrong');
   recordCardEvent(tilesState.current.id, isOk ? 'task_correct' : 'task_wrong');
+  if(typeof _refGramTopicRecord === 'function') _refGramTopicRecord('tiles', isOk, tilesState.current);
 
   // Показуємо модальний результат — кнопка "Далі" в ньому прихована до
   // завершення озвучення (tilesRevealResultBtn нижче).
@@ -20249,6 +20382,7 @@ function lfSetLessonMode(active){
   if(vtabs)     vtabs.style.display     = active ? 'none' : '';
   if(bottomNav) bottomNav.style.display = active ? 'none' : '';
   if(sortBtn)   sortBtn.style.display   = active ? 'none' : '';
+  if(active) document.body.classList.remove('vocab-card-free');
   // При виході з уроку — відновлюємо vocab-top і vplayer
   if(!active){
     const vocabTopRestore = document.querySelector('#view-vocab .vocab-top');
@@ -20534,7 +20668,11 @@ function lfStartDefType(){
   if(!LF) return;
   const lang = defGetDisplayLang();
   const _srState = srLoadState();
-  let pool = LF.cards.filter(c => srIsTypeReady(_srState, c.id) && /<b>.+?<\/b>/i.test(c.def?.[lang] || ''));
+  // Знайомі слова (LF.quickCards) — першими: «Впиши слово» для них — коротке
+  // активне пригадування замість повного перегляду картки.
+  const _dtOk = c => srIsTypeReady(_srState, c.id) && /<b>.+?<\/b>/i.test(c.def?.[lang] || '');
+  const _quickDt = (LF.quickCards || []).filter(_dtOk);
+  let pool = _quickDt.length ? _quickDt : LF.cards.filter(_dtOk);
   if(!pool.length){ lfStepDone('deftype', 1); return; }
   // Не повторюємо речення, яке щойно було в кроці «Доповни речення» (якщо є вибір)
   const fresh = pool.filter(c => c.id !== LF.defCardId);
@@ -22362,6 +22500,10 @@ function showGrammarModal(id){
           '</button>' +
         '</div>'
       : '') +
+      // «Тренувати цю тему» — лише поза уроком (посеред уроку новий міні-урок перервав би поточний)
+      ((!LF && typeof _refPracticePlan === 'function' && _refPracticePlan(id).total) ?
+        '<div class="grammar-modal-footer"><button class="ref-cta" onclick="startGrammarTopicPractice(\''+String(id).replace(/[^\w-]/g,'')+'\')">'+movaIcon('play')+refT('trainTopic')+'</button></div>'
+      : '') +
     '</div>';
   document.body.appendChild(overlay);
   _gramWrapTables(overlay);
@@ -23274,16 +23416,21 @@ function _lfUnitTeardown(){
 // зі старим прогресом), def — у власну грань sides.def (srsRate(id,q,'def')).
 // ★ обране — на рівні картки (cardId), однакове для обох граней.
 
-function _lfVocabBuildUnits(){
+function _lfVocabBuildUnits(lessonSides){
   var cards = V.queue || [];
   var units = [];
   var pl = primaryLang();
+  // lessonSides (= LF.cardSides, лише з кроку «Картки» уроку) — показуємо тільки
+  // грані, які ще NEW/LEARNING; знайомі освіжають швидкі вправи уроку.
+  // Вільний режим словника (startVocabCardMode) передає нічого — усі грані, як завжди.
+  var sides = lessonSides || null;
   cards.forEach(function(card){
-    units.push({ kind:'vocab', cardId: card.id, side:'term', card: card });
+    var cs = sides && sides[card.id];
+    if(!cs || cs.term) units.push({ kind:'vocab', cardId: card.id, side:'term', card: card });
     // Грань 'def' має сенс лише якщо у картки є реальний текст
     // def[primaryLang()] — інакше показувати нічого і крок стає
     // порожнім/зламаним. Пропускаємо його повністю для таких карток.
-    if(card.def && card.def[pl]) {
+    if(card.def && card.def[pl] && (!cs || cs.def)) {
       units.push({ kind:'vocab', cardId: card.id, side:'def',  card: card });
     }
   });
@@ -23614,7 +23761,9 @@ function lfStartVocabLearn(){
 
   switchVocabTab(0);
 
-  var units = _lfVocabBuildUnits();
+  var units = _lfVocabBuildUnits(LF.cardSides);
+  // Усі грані карток уроку вже знайомі — перегляд не потрібен, одразу до вправ.
+  if(!units.length){ _lfVocabLearnDone(); return; }
   lfRunUnitStep(units, _lfVocabHandlers, _lfVocabLearnDone);
 }
 
@@ -23933,7 +24082,14 @@ function lfShowResult(){
   const isQuizOnly = !!LF._quizOnly;
   const _qs = LF._quizStats || {correct:0, total:0};
   let improved = 0, pct = 0, emoji, titleText;
-  if(isQuizOnly){
+  if(LF.lesson && LF.lesson._gramTopic){
+    // Тренування теми з Довідника — оцінка за точністю відповідей (sb_prac + tiles)
+    var _gts = _refGramPracStats();
+    LF._gramTopicStats = _gts;
+    pct = _gts.pct;
+    emoji = pct>=80?'🏆':pct>=50?'🎉':'💪';
+    titleText = refT(pct>=80 ? 'resGreat' : pct>=50 ? 'resGood' : 'resKeep');
+  } else if(isQuizOnly){
     pct = _qs.total ? Math.round(_qs.correct / _qs.total * 100) : 0;
     emoji = pct>=80?'🏆':pct>=50?'🎉':'💪';
     titleText = t(pct>=80 ? 'lr_t_great' : pct>=50 ? 'lr_t_good' : 'lr_t_keep');
@@ -24078,7 +24234,11 @@ function lfShowResult(){
     const xpRow = [movaIcon('mpoint'), t('lr_l_xp'), xpEarnedThisLesson, 'xp'];
     const timeRow = [movaIcon('timer'), t('lr_l_time'), timeStr];
     const _ss = LF._speechStats || { correct: 0, total: (LF.speechCards||[]).length };
-    const rows = isQuizOnly ? [
+    const _gts2 = LF._gramTopicStats;
+    const rows = _gts2 ? [
+      [movaIcon('check'), refT('correct'), _gts2.correct + '/' + _gts2.total],
+      timeRow, xpRow,
+    ] : isQuizOnly ? [
       [movaIcon('quiz'), t('lr_l_quiz_q'), _qs.total],
       [movaIcon('check'), t('lr_l_quiz_ok'), _qs.correct + '/' + _qs.total],
       timeRow, xpRow,
@@ -24153,7 +24313,9 @@ function lfShowResult(){
     // щойно пройдений урок. Саме це й виглядало як "на лінії лишився
     // той самий урок".
     try{
-      const completedId = LF._bonusForLessonId || LF.lessonId;
+      // Тренування теми з Довідника — не вузол стежки: «останній завершений» не чіпаємо,
+      // щоб findCurrentLesson() і далі вказував на справжній наступний урок.
+      const completedId = LF.lesson._gramTopic ? null : (LF._bonusForLessonId || LF.lessonId);
       if(completedId){
         lastCompletedSet(completedId);
         // Реальне завершення вузла стежки (синтетичні id повторень сюди не потрапляють).
@@ -24186,6 +24348,10 @@ function lfShowResult(){
       streakResult: streakResult,
       frozenDaysUsed: streakResult ? streakResult.frozenDaysUsed : 0,
       onDone: function(){
+        if(LF && LF._gramTopicStats){
+          if(_lrOfferGramTopic(LF._gramTopicStats)) return;
+          goToLernpfadActivePoint(); return;
+        }
         if(!_moduleJustCompleted){
           // Урок без модуля закрив главу — святкуємо главу (модульного святкування тут нема).
           if(_chapterJustCompleted){ showChapterCelebration(_chapterCompletedInfo, goToLernpfadActivePoint); return; }
@@ -25905,6 +26071,15 @@ function _runVocabQueueAsUnits(units, autoAdvance, onAllDone){
 // Звичайний (ручний) режим перегляду — картка, аудіо один раз, кнопка
 // "Далі" після нього, свайп вгору/вниз для SM-2. Викликається при вході
 // на вкладку 🃏 і після завершення черги (нескінченний перегляд).
+// Ховає нижнє меню, коли відкрито Словник у режимі картки поза уроком.
+// В уроці навігацію керує lfSetLessonMode — тут не втручаємось.
+function _syncVocabCardNav(){
+  var on = !LF &&
+    !!document.getElementById('view-vocab')?.classList.contains('active') &&
+    document.getElementById('vocab-panel-card')?.style.display !== 'none';
+  document.body.classList.toggle('vocab-card-free', on);
+}
+
 function startVocabCardMode(){
   if(typeof VOCAB === 'undefined' || !VOCAB.length) return;
   if(!V.queue || !V.queue.length) V.queue = buildVocabQueue();
@@ -26225,6 +26400,309 @@ function openFavCard(vocabIdx){
   showView('vocab');
 }
 
+// ══ ДОВІДНИК ═════════════════════════════════════════════════════
+// Другий (другорядний) розділ нижнього меню. Головний напрям — «Навчання»
+// (алгоритм сам веде); Довідник — для тих, хто хоче копнути глибше:
+// Граматика (правила + тренування теми) і Словник (Усі · Обране).
+// Побудований як міні-сайт: головна з рядками-посиланнями → вглиб зі «‹ назад»,
+// без верхніх вкладок, щоб не з'їдати висоту й не ускладнювати структуру.
+var REF_I18N = {
+  title:      {uk:'Довідник', de:'Nachschlagen', en:'Reference', ru:'Справочник'},
+  sub:        {uk:'Правила й слова — коли хочеш розібратися глибше', de:'Regeln und Wörter – wenn du tiefer einsteigen willst', en:'Rules and words — when you want to dig deeper', ru:'Правила и слова — когда хочется разобраться глубже'},
+  grammar:    {uk:'Граматика', de:'Grammatik', en:'Grammar', ru:'Грамматика'},
+  dict:       {uk:'Словник', de:'Wörterbuch', en:'Dictionary', ru:'Словарь'},
+  favs:       {uk:'Обране', de:'Favoriten', en:'Favourites', ru:'Избранное'},
+  all:        {uk:'Усі', de:'Alle', en:'All', ru:'Все'},
+  topics:     {uk:'{n} тем', de:'{n} Themen', en:'{n} topics', ru:'{n} тем'},
+  words:      {uk:'{n} слів', de:'{n} Wörter', en:'{n} words', ru:'{n} слов'},
+  inFavs:     {uk:'{n} в обраному', de:'{n} in Favoriten', en:'{n} in favourites', ru:'{n} в избранном'},
+  examplesN:  {uk:'{n} прикладів у курсі', de:'{n} Beispiele im Kurs', en:'{n} examples in the course', ru:'{n} примеров в курсе'},
+  noExamples: {uk:'лише правило', de:'nur Regel', en:'rule only', ru:'только правило'},
+  gramSub:    {uk:'Теми рівня твого курсу. Прочитай правило — і одразу закріпи.', de:'Themen deines Kursniveaus. Regel lesen – und gleich üben.', en:'Topics at your course level. Read the rule — then practise right away.', ru:'Темы уровня твоего курса. Прочитай правило — и сразу закрепи.'},
+  noGrammar:  {uk:'Для цього курсу граматики поки немає.', de:'Für diesen Kurs gibt es noch keine Grammatik.', en:'No grammar for this course yet.', ru:'Для этого курса грамматики пока нет.'},
+  rule:       {uk:'Детальніше про правило', de:'Ausführliche Regel', en:'Full rule', ru:'Подробнее о правиле'},
+  examples:   {uk:'Приклади з курсу', de:'Beispiele aus dem Kurs', en:'Examples from the course', ru:'Примеры из курса'},
+  exHint:     {uk:'Торкнись прикладу, щоб послухати', de:'Tippe auf ein Beispiel zum Anhören', en:'Tap an example to listen', ru:'Коснись примера, чтобы послушать'},
+  train:      {uk:'Тренувати', de:'Üben', en:'Practise', ru:'Тренировать'},
+  trainNote:  {uk:'{n} завдань · бали й стрік — як за урок', de:'{n} Aufgaben · Punkte und Serie wie bei einer Lektion', en:'{n} tasks · points and streak like a lesson', ru:'{n} заданий · баллы и стрик — как за урок'},
+  trainTopic: {uk:'Тренувати цю тему', de:'Dieses Thema üben', en:'Practise this topic', ru:'Тренировать эту тему'},
+  // Результат тренування теми
+  resGreat:   {uk:'Тему закріплено!', de:'Thema sitzt!', en:'Topic mastered!', ru:'Тема закреплена!'},
+  resGood:    {uk:'Майже! Ще трохи практики', de:'Fast! Noch etwas Übung', en:'Almost! A little more practice', ru:'Почти! Ещё немного практики'},
+  resKeep:    {uk:'Тема ще складна — розберімося', de:'Noch schwierig – gehen wir es an', en:'Still tricky — let’s work on it', ru:'Тема ещё сложная — разберёмся'},
+  correct:    {uk:'Правильно', de:'Richtig', en:'Correct', ru:'Правильно'},
+  ctaGreatH:  {uk:'Чудово. Тепер — далі за планом', de:'Super. Jetzt weiter nach Plan', en:'Great. Now back to your plan', ru:'Отлично. Теперь — дальше по плану'},
+  ctaGoodH:   {uk:'Кілька помилок — повтори саме їх', de:'Ein paar Fehler – übe genau diese', en:'A few mistakes — practise exactly those', ru:'Несколько ошибок — повтори именно их'},
+  ctaKeepH:   {uk:'Перечитай правило — і спробуй ще раз', de:'Lies die Regel noch einmal – dann neuer Versuch', en:'Reread the rule — then try again', ru:'Перечитай правило — и попробуй ещё раз'},
+  bContinue:  {uk:'Продовжити навчання', de:'Weiterlernen', en:'Continue learning', ru:'Продолжить обучение'},
+  bMistakes:  {uk:'Ще раз — лише помилки', de:'Nochmal – nur Fehler', en:'Again — mistakes only', ru:'Ещё раз — только ошибки'},
+  bRule:      {uk:'Перечитати правило', de:'Regel nochmal lesen', en:'Reread the rule', ru:'Перечитать правило'},
+  bOther:     {uk:'Інша тема', de:'Anderes Thema', en:'Another topic', ru:'Другая тема'},
+  bLessons:   {uk:'До уроків', de:'Zu den Lektionen', en:'To lessons', ru:'К урокам'},
+  noTasks:    {uk:'Для цієї теми ще немає завдань', de:'Für dieses Thema gibt es noch keine Aufgaben', en:'No tasks for this topic yet', ru:'Для этой темы ещё нет заданий'},
+};
+function refT(key, n){
+  var d = REF_I18N[key] || {};
+  var s = d[uiLang] || d.uk || d.en || '';
+  return n != null ? s.replace('{n}', n) : s;
+}
+function _refEsc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+
+// Поточна «сторінка» Довідника (міні-сайт): {page:'home'|'grammar'|'topic', id?}
+var REF = { page: 'home', id: null };
+
+function openReference(page, id){
+  REF.page = page || 'home';
+  REF.id = id || null;
+  showView('ref');
+}
+function refGo(page, id){
+  REF.page = page; REF.id = id || null;
+  renderReference();
+  var v = document.getElementById('view-ref'); if(v) v.scrollTo(0, 0);
+}
+
+function _refGrammarList(){ return (typeof GRAMMAR !== 'undefined' && Array.isArray(GRAMMAR)) ? GRAMMAR : []; }
+function _refTopicCards(topicId){
+  var vocab = typeof VOCAB !== 'undefined' ? VOCAB : [];
+  return vocab.filter(function(v){ return v.gram === topicId; });
+}
+
+function renderReference(){
+  var root = document.getElementById('ref-root');
+  if(!root) return;
+  var lbl = document.getElementById('bn-ref-label'); if(lbl) lbl.textContent = refT('title');
+  if(REF.page === 'grammar') root.innerHTML = _refGrammarHtml();
+  else if(REF.page === 'topic' && getGrammarRule(REF.id)) root.innerHTML = _refTopicHtml(REF.id);
+  else { REF.page = 'home'; root.innerHTML = _refHomeHtml(); }
+}
+
+function _refRowHtml(icon, title, sub, onclick, extraCls){
+  return '<button type="button" class="ref-row'+(extraCls?' '+extraCls:'')+'" onclick="'+onclick+'">'+
+    '<span class="ref-row-ic">'+movaIcon(icon)+'</span>'+
+    '<span class="ref-row-txt"><span class="ref-row-title">'+title+'</span>'+(sub?'<span class="ref-row-sub">'+sub+'</span>':'')+'</span>'+
+    '<span class="ref-row-chev">›</span></button>';
+}
+
+function _refHomeHtml(){
+  var nTopics = _refGrammarList().length;
+  var nWords = typeof VOCAB !== 'undefined' ? VOCAB.length : 0;
+  var nFav = typeof _favCount === 'function' ? _favCount() : 0;
+  var rows = '';
+  if(nTopics) rows += _refRowHtml('grammar', refT('grammar'), refT('topics', nTopics), "refGo('grammar')");
+  rows += _refRowHtml('book', refT('dict'), refT('words', nWords) + (nFav ? ' · ' + refT('inFavs', nFav) : ''), "openMainDictionary()");
+  return '<div class="ref-h1">'+refT('title')+'</div>'+
+    '<div class="ref-h1-sub">'+refT('sub')+'</div>'+
+    '<div class="ref-rows">'+rows+'</div>';
+}
+
+function _refGrammarHtml(){
+  var list = _refGrammarList();
+  var head = '<button type="button" class="ref-back" onclick="refGo(\'home\')">'+movaIcon('back')+refT('title')+'</button>'+
+    '<div class="ref-h1">'+refT('grammar')+'</div>';
+  if(!list.length) return head + '<div class="ref-h1-sub">'+refT('noGrammar')+'</div>';
+  var rows = list.map(function(rule){
+    var tp = grammarTitleParts(rule);
+    var n = _refTopicCards(rule.id).length;
+    var sub = (tp.sub ? _refEsc(tp.sub) + ' · ' : '') + (n ? refT('examplesN', n) : refT('noExamples'));
+    return _refRowHtml('grammar', _refEsc(tp.main), sub, "refGo('topic','"+String(rule.id).replace(/[^\w-]/g,'')+"')", n ? '' : 'is-empty');
+  }).join('');
+  return head + '<div class="ref-h1-sub">'+refT('gramSub')+'</div><div class="ref-rows">'+rows+'</div>';
+}
+
+// Приклади теми — спершу картки, які користувач уже бачив (знайомі слова
+// краще ілюструють правило), далі решта; максимум 4.
+function _refTopicExamples(topicId){
+  var cards = _refTopicCards(topicId).filter(function(c){ return c.def && c.def[primaryLang()]; });
+  var st = null; try{ st = srLoadState(); }catch(e){}
+  var seen = st ? cards.filter(function(c){ return !srIsCardNew(st, c.id); }) : [];
+  var rest = cards.filter(function(c){ return seen.indexOf(c) === -1; });
+  return seen.concat(rest).slice(0, 4);
+}
+
+function _refTopicHtml(topicId){
+  var rule = getGrammarRule(topicId);
+  var tp = grammarTitleParts(rule);
+  var expl = rule.explanation || {};
+  var explText = expl[uiLang] || expl[primaryLang()] || expl.en || expl.de || '';
+  var ruleObj = rule.rule || {};
+  var hasRule = !!(ruleObj[uiLang] || ruleObj[primaryLang()] || ruleObj.en || ruleObj.de);
+  var safeId = String(topicId).replace(/[^\w-]/g,'');
+  var pl = primaryLang(), tl = transLang();
+  var ex = _refTopicExamples(topicId);
+  var exHtml = ex.map(function(c){
+    var tr = (tl !== pl && c.def[tl]) ? '<div class="ref-ex-tr">'+c.def[tl]+'</div>' : '';
+    return '<div class="ref-ex" onclick="refPlayExample(\''+String(c.id).replace(/[^\w-]/g,'')+'\', this)">'+
+      '<div class="ref-ex-de" data-audio-field="def">'+c.def[pl]+'</div>'+tr+'</div>';
+  }).join('');
+  var poolN = _refPracticePlan(topicId).total;
+  return '<button type="button" class="ref-back" onclick="refGo(\'grammar\')">'+movaIcon('back')+refT('grammar')+'</button>'+
+    '<div class="ref-h1">'+_refEsc(tp.main)+'</div>'+
+    (tp.sub ? '<div class="ref-h1-sub">'+_refEsc(tp.sub)+'</div>' : '<div style="height:10px"></div>')+
+    '<div class="ref-text">'+explText+'</div>'+
+    (hasRule ? '<button type="button" class="ref-more" onclick="showGrammarRuleFullscreen(\''+safeId+'\')">'+movaIcon('book')+refT('rule')+' ›</button>' : '')+
+    (exHtml ? '<div class="ref-section">'+refT('examples')+'</div>'+exHtml+'<div class="ref-cta-note" style="text-align:left;margin:2px 2px 0">'+refT('exHint')+'</div>' : '')+
+    (poolN ?
+      '<div class="ref-cta-wrap"><button type="button" class="ref-cta" onclick="startGrammarTopicPractice(\''+safeId+'\')">'+movaIcon('play')+refT('train')+'</button>'+
+      '<div class="ref-cta-note">'+refT('trainNote', poolN)+'</div></div>'
+    : '');
+}
+
+function refPlayExample(cardId, el){
+  var card = (typeof VOCAB !== 'undefined' ? VOCAB : []).find(function(v){ return v.id === cardId; });
+  if(!card || !card.def) return;
+  var hl = el && el.querySelector('[data-audio-field="def"]');
+  try{ speak(card.def[primaryLang()], primaryLang(), null, card.id, 'def', false, hl); }catch(e){}
+}
+
+// Підменю Словника: «‹ Довідник» + «Усі · Обране». Лише поза уроком (у вправах
+// уроку .vocab-top і так прихована).
+function _refRenderSubnav(id){
+  var el = document.getElementById(id === 'favs' ? 'favs-subnav' : 'vocab-subnav');
+  if(!el) return;
+  if(LF){ el.innerHTML = ''; el.style.display = 'none'; return; }
+  el.style.display = '';
+  el.innerHTML =
+    '<button type="button" class="ref-back" onclick="openReference()">'+movaIcon('back')+refT('title')+'</button>'+
+    '<span class="ref-seg">'+
+      '<button type="button" class="'+(id === 'vocab' ? 'on' : '')+'" onclick="openMainDictionary()">'+refT('all')+'</button>'+
+      '<button type="button" class="'+(id === 'favs' ? 'on' : '')+'" onclick="showView(\'favs\')">'+movaIcon('star','mi mi-inline')+' '+refT('favs')+'</button>'+
+    '</span>';
+}
+
+// ── Тренування теми (міні-урок) ──────────────────────────────────
+// Ті самі вправи, що й у звичайних уроках, лише з картками однієї теми:
+//   • «Граматика» (заповни пропуск, sb_prac + GRAM_CARDS) — там, де для теми є
+//     готові дистрактори (GRAM_DISTRACTOR_POOL);
+//   • «Збери речення» (tiles у режимі def) — речення-приклад з цією конструкцією;
+//     доступне для БУДЬ-якої теми, тож тренування є в кожному курсі й рівні.
+// Через _runBonusLessonFlow → lfShowResult: XP, стрік, SM-2 і анімації —
+// стандартні, як за звичайний урок. Рахується зворотний бік картки (речення),
+// лицьовий (term/short) окремим лічильником не «накручується».
+// Добір: спершу картки зі знайомими словами; якщо їх замало — решта карток теми.
+var REF_TRAIN_SB_MAX = 6, REF_TRAIN_TILES_WITH_SB = 3, REF_TRAIN_TILES_ONLY = 6;
+function _refTilesCandidates(topicId){
+  var pl = primaryLang();
+  var st = null; try{ st = srLoadState(); }catch(e){}
+  var ok = _refTopicCards(topicId).filter(function(c){
+    var d = c.def && c.def[pl];
+    if(!d || d.indexOf('<b>') === -1) return false;
+    var n = d.replace(/<[^>]+>/g,'').split(' ').filter(Boolean).length;
+    return n >= 3 && n <= 15;
+  });
+  var seen = st ? ok.filter(function(c){ return !srIsCardNew(st, c.id); }) : [];
+  var rest = ok.filter(function(c){ return seen.indexOf(c) === -1; });
+  if(st){
+    seen.sort(function(a,b){ return srPriorityFromState(st,b.id) - srPriorityFromState(st,a.id); });
+  }
+  return seen.concat(rest.sort(function(){ return Math.random() - .5; }));
+}
+function _refPracticePlan(topicId){
+  var seenIds = null, sb = [];
+  try{
+    var st = srLoadState();
+    seenIds = new Set(_refTopicCards(topicId).filter(function(c){ return !srIsCardNew(st, c.id); }).map(function(c){ return c.id; }));
+  }catch(e){}
+  try{
+    sb = (seenIds && seenIds.size) ? buildGrammarBonusPool([topicId], seenIds) : [];
+    if(sb.length < 4) sb = buildGrammarBonusPool([topicId], null);
+  }catch(e){ sb = []; }
+  sb = sb.slice(0, REF_TRAIN_SB_MAX);
+  var tilesN = sb.length ? REF_TRAIN_TILES_WITH_SB : REF_TRAIN_TILES_ONLY;
+  var tiles = _refTilesCandidates(topicId).slice(0, tilesN);
+  return { sb: sb, tiles: tiles, total: sb.length + tiles.length };
+}
+
+function startGrammarTopicPractice(topicId, presetPlan){
+  closeGrammarModal();
+  closeGrammarRuleFullscreen();
+  var rule = getGrammarRule(topicId);
+  var plan = (presetPlan && presetPlan.total) ? presetPlan : _refPracticePlan(topicId);
+  if(!rule || !plan.total){ notify('⚠️ ' + refT('noTasks')); return; }
+  var tp = grammarTitleParts(rule);
+  var name = tp.sub ? tp.main + ' · ' + tp.sub : tp.main;
+  var steps = [];
+  if(plan.sb.length) steps.push('sb_prac');
+  if(plan.tiles.length) steps.push('tiles');
+  steps.push('result');
+  _runBonusLessonFlow({
+    id: '_gram_topic_' + topicId,
+    title: { de: name, uk: name, en: name, ru: name },
+    _isBonusLesson: true,
+    _gramTopic: topicId,
+    steps: steps,
+    _grammarBonusPool: plan.sb.map(function(c){ return Object.assign({}, c, {_isGram:true}); }),
+    _tilesBonusPool: plan.tiles.map(function(c){ return { card: c, mode: 'def' }; }),
+  });
+  // ✕ посеред тренування — назад у Довідник (на сторінку теми), а не на стежку.
+  if(LF){ LF.soloReturn = 'ref'; LF._gramTopicTally = []; REF.page = 'topic'; REF.id = topicId; }
+}
+
+// Відповіді тренування теми — sbPracAnswer і tilesCheck дописують у LF._gramTopicTally.
+function _refGramTopicRecord(kind, ok, item){
+  if(LF && LF._gramTopicTally) LF._gramTopicTally.push({ kind: kind, ok: !!ok, item: item });
+}
+function _refGramPracStats(){
+  var tally = (LF && LF._gramTopicTally) || [];
+  var correct = tally.filter(function(x){ return x.ok; }).length;
+  var wrong = tally.filter(function(x){ return !x.ok; });
+  return {
+    total: tally.length, correct: correct,
+    pct: tally.length ? Math.round(correct / tally.length * 100) : 0,
+    wrongSb: wrong.filter(function(x){ return x.kind === 'sb'; }).map(function(x){ return x.item; }),
+    wrongTiles: wrong.filter(function(x){ return x.kind === 'tiles'; }).map(function(x){ return x.item; }),
+  };
+}
+
+// Екран результату тренування теми: ОДНА головна кнопка, яку обирає алгоритм
+// за точністю, і тиха альтернатива-посилання під нею.
+//   80%+   → «Продовжити навчання»     · «Інша тема»
+//   50–79% → «Ще раз — лише помилки»   · «До уроків»
+//   < 50%  → «Перечитати правило»      · «Ще раз — лише помилки»
+function _lrOfferGramTopic(stats){
+  var box = document.getElementById('lr-cta');
+  if(!box || !LF) return false;
+  var topicId = LF.lesson._gramTopic;
+  var msgEl = document.getElementById('lr-cta-msg');
+  var subEl = document.getElementById('lr-cta-sub');
+  var btn   = document.getElementById('lr-cta-btn');
+  var skip  = document.getElementById('lr-cta-skip');
+  var hint  = document.getElementById('lr-continue-hint'); if(hint) hint.style.display = 'none';
+
+  // «Лише помилки»: помилкові завдання (обох типів) + добір з теми до 5.
+  var mistakesPlan = function(){
+    var uniq = function(arr){ var seen = {}; return arr.filter(function(c){ if(!c || seen[c.id]) return false; seen[c.id] = 1; return true; }); };
+    var sb = uniq(stats.wrongSb), tiles = uniq(stats.wrongTiles);
+    if(sb.length + tiles.length < 5){
+      var full = _refPracticePlan(topicId);
+      var have = {}; sb.concat(tiles).forEach(function(c){ have[c.id] = 1; });
+      full.sb.forEach(function(c){ if(sb.length + tiles.length < 5 && !have[c.id]){ have[c.id] = 1; sb.push(c); } });
+      full.tiles.forEach(function(c){ if(sb.length + tiles.length < 5 && !have[c.id]){ have[c.id] = 1; tiles.push(c); } });
+    }
+    return { sb: sb, tiles: tiles, total: sb.length + tiles.length };
+  };
+  var leave = function(){ box.style.display = 'none'; LF.soloReturn = null; exitLessonFlow(); };
+  var actions = {
+    continue: function(){ leave(); },                                        // exitLessonFlow → стежка «Навчання»
+    lessons:  function(){ leave(); },
+    other:    function(){ box.style.display = 'none'; LF.soloReturn = 'ref'; REF.page = 'grammar'; exitLessonFlow(); },
+    rule:     function(){ box.style.display = 'none'; LF.soloReturn = 'ref'; REF.page = 'topic'; REF.id = topicId; exitLessonFlow(); },
+    mistakes: function(){ var p = mistakesPlan(); box.style.display = 'none'; LF.soloReturn = 'ref'; exitLessonFlow(); setTimeout(function(){ startGrammarTopicPractice(topicId, p); }, 0); },
+  };
+  var plan = stats.pct >= 80 ? { h:'ctaGreatH', b:['bContinue','continue'], s:['bOther','other'] }
+           : stats.pct >= 50 ? { h:'ctaGoodH',  b:['bMistakes','mistakes'], s:['bLessons','lessons'] }
+           :                   { h:'ctaKeepH',  b:['bRule','rule'],         s:['bMistakes','mistakes'] };
+  msgEl.textContent = refT(plan.h); msgEl.style.display = '';
+  subEl.textContent = ''; subEl.style.display = 'none';
+  btn.textContent = refT(plan.b[0]);
+  skip.textContent = refT(plan.s[0]);
+  box.style.display = 'flex';
+  box.style.animation = 'none'; void box.offsetWidth; box.style.animation = '';
+  btn.onclick  = function(ev){ ev.stopPropagation(); if(window.mlog) window.mlog('gram_topic_cta', {action: plan.b[1], pct: stats.pct}); actions[plan.b[1]](); };
+  skip.onclick = function(ev){ ev.stopPropagation(); if(window.mlog) window.mlog('gram_topic_cta', {action: plan.s[1], pct: stats.pct}); actions[plan.s[1]](); };
+  return true;
+}
+
 // ── STATS ─────────────────────────────────────────────────────
 // saveCardPlay() видалено — totalPlays/lastSeen тепер пишуться
 // всередині srRecordAnswer() (єдина точка запису), яка теж сама
@@ -26436,6 +26914,7 @@ function switchVocabTab(tab){
   // уроку) — саме тоді, коли на екрані вже геть інший view. Без цієї
   // перевірки такий "службовий" виклик так само запускав озвучення
   // випадкової картки і показував кнопку "Далі" поверх чужого екрана.
+  _syncVocabCardNav();
   if(!document.getElementById('view-vocab')?.classList.contains('active')) return;
   if(tab===0 && !(LF && (LF.steps[LF.step]==='cards'))) startVocabCardMode();
   if(tab===1) renderVocabBrowse();
@@ -27630,6 +28109,7 @@ function sbPracAnswer(btn,chosen,cardId,audioField) {
   // статистики з основним словником немає.
   try{ recordCardEvent(card.id, ok ? 'task_correct' : 'task_wrong', card._isGram ? 'Grammatik' : 'Sprachbausteine'); }catch(e){}
   SB.pracResults[SB.pracIdx]=ok;
+  if(typeof _refGramTopicRecord === 'function') _refGramTopicRecord('sb', ok, card);
 
   // Explanation always in UI language; result label in UI language
   var explLang = typeof uiLang !== 'undefined' ? uiLang : 'de';
