@@ -145,7 +145,7 @@ GIT_TIMEOUT = float(os.environ.get('TTS_GIT_TIMEOUT', '180'))
 # те саме обмеження, що вже діяло для redemittel). Додати нову
 # категорію/поле в область дії підсвітки — один рядок тут.
 CATEGORIES_WITH_TIMING = {
-    "vocab":       {"term", "short", "def"},
+    "vocab":       {"term", "short", "def", "forms"},
     "sprachbau":   {"sentence"},
     "redemittel":  None,
     # Forumsbeitrag (forum_XXX) — той самий принцип, що redemittel:
@@ -2502,9 +2502,15 @@ async def main():
                         filename = f"{item_id}_{field}_{primary_lang}_{rate}.mp3"
                         mkey = f"{course}/{primary_lang}/{rate}/{cat_lower}/{item_id}_{field}_{primary_lang}_{rate}"
                         content_hash = compute_content_hash(cleaned, voice, rate)
+                        # Форми озвучуються автоматично (term → forms → short) з
+                        # karaoke-підсвіткою по словах — потрібен таймінг (див.
+                        # "forms" у CATEGORIES_WITH_TIMING). Один mp3 + один
+                        # .words.json на всі форми картки. Старі записи без "+t"
+                        # підуть на TIMING-BACKFILL.
+                        want_timing = field_wants_timing("vocab", field, primary_lang, primary_lang)
                         existing_value = manifest_data.get(mkey)
                         existing_hash = manifest_hash_part(existing_value)
-                        if existing_value != content_hash:
+                        if existing_value != manifest_value(content_hash, want_timing):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -2520,7 +2526,7 @@ async def main():
                                 "mkey": mkey,
                                 "content_hash": content_hash,
                                 "existing_hash": existing_hash,
-                                "want_timing": False,
+                                "want_timing": want_timing,
                                 "primary_lang": primary_lang
                             })
 

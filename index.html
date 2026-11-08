@@ -1062,12 +1062,17 @@ body{
 
 /* ══ FORMS (поле VOCAB[].forms): форми слова — Stammformen дієслів, множина іменників.
    Схема слотів/міток — глобальна FORMS курсу (або вбудований дефолт). Лише показ + кнопка 🔊. ══ */
-.forms-row{display:flex;flex-wrap:wrap;align-items:flex-end;gap:4px 16px;margin:6px 0 4px}
-.forms-item{display:inline-flex;flex-direction:column;line-height:1.25}
-.forms-item small{font-size:11px;font-weight:600;opacity:.6;text-transform:none}
-.forms-item b{font-size:var(--fs-card);font-weight:600;line-height:1.3;opacity:.95}
-.forms-play{border:0;background:rgba(255,255,255,.12);color:inherit;border-radius:999px;width:44px;height:44px;margin:-6px 0 -6px auto;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;align-self:center;-webkit-tap-highlight-color:transparent}
-.forms-play svg{width:22px;height:22px;display:block}
+/* Варіант «полиця»: форми — окрема тонована плашка ПІД словом, звичайною вагою
+   й нейтральним кольором (не золотим жирним, як сам термін), в один рядок через «·».
+   Ієрархію тримають фон/вага/колір, а не дрібний шрифт. Кнопка 🔊 форм — усередині
+   плашки, завжди праворуч (flex:none), тож більше не «з'їжджає» на новий рядок.
+   Підписи (Präteritum/Perfekt) — лише в title/aria-label: порядок форм стандартний. */
+.forms-row{display:flex;align-items:center;gap:10px;margin:12px 0 10px;padding:7px 6px 7px 14px;min-height:46px;box-sizing:border-box;background:var(--soft);border:1px solid var(--border);border-radius:14px}
+.forms-list{flex:1;min-width:0;font-size:calc(var(--fs-card) * 0.87);font-weight:400;line-height:1.35;color:var(--warm)}
+.forms-v{white-space:nowrap}
+.forms-sep{color:var(--muted);opacity:.7;margin:0 3px 0 7px}
+.forms-play{flex:none;border:1px solid var(--border);background:var(--paper);color:var(--warm);border-radius:999px;width:36px;height:36px;margin:0;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;padding:0;-webkit-tap-highlight-color:transparent}
+.forms-play svg{width:19px;height:19px;display:block}
 .syn-row{margin:3px 0 1px;font-size:13px;opacity:.85}
 .syn-lab{font-weight:700;opacity:.55;margin-right:5px;font-size:11px;letter-spacing:.3px;text-transform:uppercase}
 
@@ -5442,7 +5447,7 @@ body{
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '984-3c58dac';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -7882,15 +7887,35 @@ function formsAudioAvailable(cardId){
     return !!(audioManifestKnown(mkey) && audioManifestHas(mkey));
   }catch(e){ return false; }
 }
-function formsHtml(card){
+// Поступове розкриття форм (progressive disclosure). На ПЕРШИХ зустрічах зі словом
+// увага має йти на звʼязок «форма слова ↔ значення»: за моделлю TOPRA (Barcroft)
+// ресурси обробки обмежені, і додаткове навантаження на старті зменшує засвоєння
+// основного; за Nation граматичні особливості й інші форми слова засвоюються вже
+// ПІСЛЯ рецептивного знання. Тож у навчальних режимах (урок, картки) форми
+// показуються лише з (FORMS_MIN_EXPOSURES+1)-ї зустрічі — 3-тя, а не 5-та, щоб
+// користувач побачив їх ще в межах проходження уроків. Лічильник — totalPlays
+// (усі контакти з карткою, і активні, і пасивні). У довідкових списках — завжди.
+const FORMS_MIN_EXPOSURES = 2;
+function formsUnlocked(cardId){
+  try{
+    const cs = srLoadState().cards[cardId];
+    return ((cs && cs.totalPlays) || 0) >= FORMS_MIN_EXPOSURES;
+  }catch(e){ return true; }
+}
+function formsHtml(card, opts){
   const f = card && card.forms;
   if(!f || !Array.isArray(f.v) || !f.v.length) return '';
+  if(opts && opts.gated && !formsUnlocked(card.id)) return '';
   const sch = formsSchema(f.t);
   const lab = (sch && sch.label && (sch.label[uiLang] || sch.label.de)) || [];
-  const items = f.v.map(function(val, i){
-    const l = lab[i] ? '<small>' + _escapeHtmlText(lab[i]) + '</small>' : '';
-    return '<span class="forms-item">' + l + '<b>' + _escapeHtmlText(String(val)) + '</b></span>';
-  }).join('');
+  const items = '<div class="forms-list" data-audio-field="forms">' + f.v.map(function(val, i){
+    const v = _escapeHtmlText(String(val));
+    const ttl = lab[i] ? ' title="' + _escapeHtmlText(lab[i]) + '"' : '';
+    // Роздільник «·» — у КІНЦІ nowrap-спану форми, а між спанами — пробіл: довгі
+    // форми (sich zurechtfinden) переносяться цілими, рядок не починається з «·».
+    const sep = i < f.v.length - 1 ? '<span class="forms-sep" aria-hidden="true">·</span>' : '';
+    return '<span class="forms-v"' + ttl + '><span class="forms-w">' + v + '</span>' + sep + '</span>';
+  }).join(' ') + '</div>';
   let btn = '';
   if(sch && sch.voice && formsAudioAvailable(card.id)){
     const tt = _escapeHtmlText(t('forms_listen'));
@@ -7898,6 +7923,18 @@ function formsHtml(card){
         + '<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4z"/></svg></button>';
   }
   return '<div class="forms-row">' + items + btn + '</div>';
+}
+// Авто-озвучення форм у потоці картки: term → forms → short. Лише коли плашка форм
+// справді показана в цій картці (поріг FORMS_MIN_EXPOSURES пройдено) і для форм є
+// pregen-аудіо. Karaoke по словах — за data-audio-field="forms" на .forms-list
+// (.words.json форм генерує gen_audio.py; поки його нема — звучить без підсвітки).
+function formsAudioItem(card, scopeSel){
+  try{
+    if(!card || !card.forms || !Array.isArray(card.forms.v) || !card.forms.v.length) return null;
+    if(!document.querySelector((scopeSel || '') + ' [data-audio-field="forms"]')) return null;
+    if(!formsAudioAvailable(card.id)) return null;
+    return { text: card.forms.v.join(', '), field: 'forms' };
+  }catch(e){ return null; }
 }
 function playFormsAudio(cardId){
   const card = (typeof VOCAB !== 'undefined' ? VOCAB : []).find(function(v){ return v.id === cardId; });
@@ -10922,7 +10959,7 @@ function renderVocabCard(){
   const cat=CATS.find(c=>c.id===v.cat);
   const al=getActiveLangs();
   if(!V.flipped){trackCardToday(v.id);window.mlog?.('card_viewed',{cat:v.cat,mode:V.mode});}
-  const termRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term" data-audio-field="term" data-lang="${l}">${v.term?.[l]||''}</div>${l===primaryLang()?infoHtml(v)+formsHtml(v):''}<div class="fc-short" data-audio-field="short" data-lang="${l}">${v.short?.[l]||''}</div></div></div>`).join('');
+  const termRows=al.map(l=>`<div class="fc-lang-row"><span class="fc-flag">${F[l]}</span><div><div class="fc-term" data-audio-field="term" data-lang="${l}">${v.term?.[l]||''}</div>${l===primaryLang()?infoHtml(v)+formsHtml(v,{gated:true}):''}<div class="fc-short" data-audio-field="short" data-lang="${l}">${v.short?.[l]||''}</div></div></div>`).join('');
   const defRows=al.map(l=>`<div class="fc-def-block"><div class="fc-def-lang-label">${F[l]} ${LN[l]}</div><div class="fc-def" data-audio-field="def" data-lang="${l}">${v.def?.[l]||''}</div></div>`).join('<hr style="border:none;border-top:1px solid var(--soft);margin:7px 0">');
   const card=document.getElementById('flashcard');if(!card)return;
   card.classList.toggle('flipped',V.flipped);
@@ -23317,7 +23354,9 @@ async function _lfVocabPrefetchCardFields(card, fields){
   for(var i=0;i<fields.length;i++){
     if(_lfVocabPrefetchGen !== myGen) return; // новіший юніт уже скасував цей ланцюжок
     var field = fields[i];
-    var text = card[field] && card[field][pl];
+    var text = field === 'forms'
+      ? (card.forms && Array.isArray(card.forms.v) && card.forms.v.length)   // forms — не мовний dict, а список
+      : (card[field] && card[field][pl]);
     if(!text) continue; // немає тексту цим полем узагалі — качати нічого, до наступного поля
     var url = getAudioUrl(card.id, field, pl);
     var mkey = urlToAudioMkey(url);
@@ -23406,7 +23445,7 @@ var _lfVocabHandlers = {
       var shortTranslation = ul !== pl ? (card.short?.[ul] || '') : '';
       body.innerHTML =
         '<div class="lf-unit-main-row">'+
-          '<div><div class="lf-unit-term" data-audio-field="term">'+term+'</div>'+infoHtml(card)+formsHtml(card)+synHtml(card)+
+          '<div><div class="lf-unit-term" data-audio-field="term">'+term+'</div>'+infoHtml(card)+formsHtml(card,{gated:true})+synHtml(card)+
           (short ? '<div class="lf-unit-short" data-audio-field="short">'+short+'</div>' : '')+'</div>'+
         '</div>'+
         (termTranslation ?
@@ -23421,7 +23460,7 @@ var _lfVocabHandlers = {
       // відтворення природним чином дійде до short/def, файл уже буде
       // готовий у кеші, без затримки на мережу саме в момент програвання.
       _lfVocabPrefetchGen++;
-      _lfVocabPrefetchCardFields(card, ['term','short','def']);
+      _lfVocabPrefetchCardFields(card, formsAudioItem(card, '#lf-unit-card') ? ['term','forms','short','def'] : ['term','short','def']);
     } else { // def
       var def = card.def?.[pl] || '';
       var defTranslation = ul !== pl ? (card.def?.[ul] || '') : '';
@@ -23491,6 +23530,11 @@ var _lfVocabHandlers = {
         var text = card[field] && card[field][lang];
         if(text) items.push({ text: text, field: field, lang: lang });
       });
+      // Форми (лише мова курсу) — одразу після всіх мов term, перед short.
+      if(field === 'term'){
+        var fItem = formsAudioItem(card, '#lf-unit-card');
+        if(fItem) items.push(fItem);
+      }
     });
     return items;
   },
@@ -23499,10 +23543,12 @@ var _lfVocabHandlers = {
     var card = unit.card;
     var pl = primaryLang();
     if(unit.side === 'term'){
+      var fItem = formsAudioItem(card, '#lf-unit-card');
       return [
         { text: card.term?.[pl]||'', field: 'term' },
+      ].concat(fItem ? [fItem] : []).concat([
         { text: card.short?.[pl]||'', field: 'short' },
-      ];
+      ]);
     }
     return [
       { text: card.def?.[pl]||'', field: 'def' },
