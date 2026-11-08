@@ -2545,15 +2545,6 @@ body.vocab-card-free{--lm-nav:0px}
   font-family:inherit;flex-shrink:0;
 }
 .lf-exit:active{color:#fff;}
-/* 🐞 «Повідомити про помилку» в шапці уроку — видима на КОЖНОМУ кроці (вправи, мовлення, Story).
-   Окремий клас, не .lf-exit: код нижче шукає bar.querySelector('.lf-exit') для кнопки «✕». */
-.lf-hdr-bug{
-  background:none;border:none;color:rgba(255,255,255,.5);
-  cursor:pointer;padding:2px 6px;border-radius:6px;
-  font-family:inherit;flex-shrink:0;
-}
-.lf-hdr-bug:active{color:#fff;}
-.lf-hdr-bug .mi{ width:20px;height:20px; }
 .lf-steps{
   display:flex;
 }
@@ -3332,7 +3323,13 @@ body.vocab-card-free{--lm-nav:0px}
 }
 .lf-repeat-btn:active{opacity:.8;transform:scale(.96);background:var(--soft);}
 .lf-repeat-btn .mi{ width:1.15em;height:1.15em; }
-.lf-bug-btn{ color:var(--muted); }   /* 🐞 справа від «Далі»: приглушена, щоб не конкурувати з основною дією */
+.lf-bug-btn{ color:var(--muted); }
+/* 🐞 у модалках результату (Склади речення, Доповни речення, Впиши слово, Вимова):
+   кнопка «Далі» + квадратна 🐞 справа — один рядок, як .lf-next-row уроку. */
+.tiles-result-actions{ display:flex; gap:10px; width:100%; max-width:320px; }
+.tiles-result-actions .tiles-result-btn{ flex:1; max-width:none; width:auto; }
+.tiles-result-actions .lf-bug-btn{ border-radius:14px; }
+.sb-prac-modal-secondary-btn.lf-bug-btn{ color:var(--muted); }   /* 🐞 справа від «Далі»: приглушена, щоб не конкурувати з основною дією */
 
 /* Фінальний рядок Mündliche Prüfung Teil 1 (Story): один рядок у стилі
    решти уроків — зліва квадратні кнопки-піктограми (.lf-repeat-btn:
@@ -4713,7 +4710,6 @@ body.vocab-card-free{--lm-nav:0px}
 <div id="lesson-flow-bar">
   <div class="lf-header">
     <div class="lf-title" id="lf-title"></div>
-    <button class="lf-hdr-bug" type="button" onclick="showBugReportModal()" title="Повідомити про помилку" data-i18n-title="bugreport_title" aria-label="Повідомити про помилку"><i data-mi="bug"></i></button>
     <button class="lf-exit" onclick="lfRequestExit()" title="Завершити урок" data-i18n-title="lf_exit_tip"><i data-mi="cross"></i></button>
   </div>
   <div class="lf-steps" id="lf-steps"></div>
@@ -5496,7 +5492,7 @@ body.vocab-card-free{--lm-nav:0px}
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '986-5578513';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -15443,11 +15439,41 @@ function _lfAddBugBtn(row){
   b.onclick = function(){ showBugReportModal(); };
   row.appendChild(b);
 }
+function _bugMakeBtn(cls){
+  var b = document.createElement('button');
+  b.type = 'button';
+  b.className = cls + ' lf-bug-btn';
+  b.innerHTML = movaIcon('bug');
+  b.title = t('bugreport_title');
+  b.setAttribute('aria-label', t('bugreport_title'));
+  b.onclick = function(e){ e.stopPropagation(); showBugReportModal(); };
+  return b;
+}
+// Модалки відповіді вправ — теж з 🐞 справа від «Далі»:
+//  • .tiles-result-overlay з одним .tiles-result-btn — Склади речення, Доповни речення,
+//    Впиши слово, Вимова (модалка відповіді). Підсумкові вікна з кількома кнопками
+//    («Ще раз»/«Завершити») пропускаємо — це не крок з «Далі».
+//  • .sb-prac-feedback-modal — Граматика / Sprachbausteine (рядок дій уже є).
+function _lfAddBugBtnModal(n){
+  if(!n || !n.classList) return;
+  if(n.classList.contains('tiles-result-overlay')){
+    var btns = n.querySelectorAll('.tiles-result-btn');
+    if(btns.length !== 1 || n.querySelector('.lf-bug-btn')) return;
+    var main = btns[0], row = document.createElement('div');
+    row.className = 'tiles-result-actions';
+    main.parentNode.insertBefore(row, main);
+    row.appendChild(main);
+    row.appendChild(_bugMakeBtn('lf-repeat-btn'));
+  } else if(n.classList.contains('sb-prac-feedback-modal')){
+    var act = n.querySelector('.sb-prac-modal-actions');
+    if(act && !act.querySelector('.lf-bug-btn')) act.appendChild(_bugMakeBtn('sb-prac-modal-secondary-btn'));
+  }
+}
 (function(){
   function start(){
     new MutationObserver(function(muts){
       muts.forEach(function(m){
-        m.addedNodes.forEach(function(n){ if(n.nodeType === 1) _lfAddBugBtn(n); });
+        m.addedNodes.forEach(function(n){ if(n.nodeType === 1){ _lfAddBugBtn(n); _lfAddBugBtnModal(n); } });
       });
     }).observe(document.body, { childList:true });
     _lfAddBugBtn(document.getElementById('lf-next-row'));
