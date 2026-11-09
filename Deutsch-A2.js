@@ -112,7 +112,10 @@ var LESSONS = [
       "k1_031"
     ],
     "unlockAfter": "k1m1",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_001",
+      "sbs_002"
+    ],
     "dlgCards": [
       "dlg_002",
       "dlg_034"
@@ -375,7 +378,12 @@ var LESSONS = [
       "k2_032"
     ],
     "unlockAfter": "k2m1",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_026",
+      "sbs_027",
+      "sbs_028",
+      "sbs_030"
+    ],
     "dlgCards": [
       "dlg_006",
       "dlg_038"
@@ -415,7 +423,10 @@ var LESSONS = [
       "k2_036"
     ],
     "unlockAfter": "k2m2",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_003",
+      "sbs_004"
+    ],
     "dlgCards": [
       "dlg_007",
       "dlg_039"
@@ -613,7 +624,13 @@ var LESSONS = [
       "k3_030"
     ],
     "unlockAfter": "k3m1",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_006",
+      "sbs_007",
+      "sbs_008",
+      "sbs_009",
+      "sbs_010"
+    ],
     "dlgCards": [
       "dlg_010",
       "dlg_041"
@@ -653,7 +670,10 @@ var LESSONS = [
       "k3_035"
     ],
     "unlockAfter": "k3m2",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_024",
+      "sbs_025"
+    ],
     "dlgCards": [
       "dlg_011",
       "dlg_042"
@@ -911,7 +931,10 @@ var LESSONS = [
       "k4_031"
     ],
     "unlockAfter": "k4m1",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_036",
+      "sbs_037"
+    ],
     "dlgCards": [
       "dlg_014",
       "dlg_045"
@@ -951,7 +974,10 @@ var LESSONS = [
       "k4_035"
     ],
     "unlockAfter": "k4m2",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_038",
+      "sbs_039"
+    ],
     "dlgCards": [
       "dlg_015",
       "dlg_047"
@@ -1114,7 +1140,11 @@ var LESSONS = [
       "k5_025"
     ],
     "unlockAfter": "k4m4",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_011",
+      "sbs_012",
+      "sbs_013"
+    ],
     "dlgCards": [
       "dlg_017",
       "dlg_049"
@@ -1154,7 +1184,10 @@ var LESSONS = [
       "k5_030"
     ],
     "unlockAfter": "k5m1",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_005",
+      "sbs_001"
+    ],
     "dlgCards": [
       "dlg_018",
       "dlg_050"
@@ -1194,7 +1227,12 @@ var LESSONS = [
       "k5_035"
     ],
     "unlockAfter": "k5m2",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_016",
+      "sbs_017",
+      "sbs_018",
+      "sbs_020"
+    ],
     "dlgCards": [
       "dlg_019",
       "dlg_051"
@@ -1283,7 +1321,9 @@ var LESSONS = [
       "tlc_670"
     ],
     "unlockAfter": "k5m3",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_019"
+    ],
     "dlgCards": [
       "dlg_020",
       "dlg_052"
@@ -1322,7 +1362,11 @@ var LESSONS = [
       "k6_024"
     ],
     "unlockAfter": "k5m4",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_021",
+      "sbs_022",
+      "sbs_023"
+    ],
     "dlgCards": [
       "dlg_021",
       "dlg_053"
@@ -1485,7 +1529,11 @@ var LESSONS = [
       "k7_023"
     ],
     "unlockAfter": "k6m4",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_014",
+      "sbs_015",
+      "sbs_035"
+    ],
     "dlgCards": [
       "dlg_025",
       "dlg_057"
@@ -1666,7 +1714,9 @@ var LESSONS = [
       "k8_022"
     ],
     "unlockAfter": "k7m4",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_029"
+    ],
     "dlgCards": [
       "dlg_029",
       "dlg_061"
@@ -1706,7 +1756,9 @@ var LESSONS = [
       "k8_027"
     ],
     "unlockAfter": "k8m1",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_029"
+    ],
     "dlgCards": [
       "dlg_030",
       "dlg_062"
@@ -1745,7 +1797,10 @@ var LESSONS = [
       "k8_032"
     ],
     "unlockAfter": "k8m2",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_040",
+      "sbs_036"
+    ],
     "dlgCards": [
       "dlg_031",
       "dlg_063"
@@ -1875,7 +1930,14 @@ var LESSONS = [
       "k9_027"
     ],
     "unlockAfter": "k9m1",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_001",
+      "sb_a22_002",
+      "sb_a22_003",
+      "sb_a22_004",
+      "sb_a22_005",
+      "sb_a22_006"
+    ],
     "dlgCards": [
       "dlg_a22_002",
       "dlg_066"
@@ -2056,7 +2118,11 @@ var LESSONS = [
       "k10_024"
     ],
     "unlockAfter": "k9m4",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_007",
+      "sb_a22_008",
+      "sb_a22_009"
+    ],
     "dlgCards": [
       "dlg_a22_005",
       "dlg_069"
@@ -2096,7 +2162,14 @@ var LESSONS = [
       "k10_028"
     ],
     "unlockAfter": "k10m1",
-    "sbCards": [],
+    "sbCards": [
+      "sbs_031",
+      "sbs_032",
+      "sbs_033",
+      "sbs_034",
+      "sb_a22_010",
+      "sb_a22_011"
+    ],
     "dlgCards": [
       "dlg_a22_006",
       "dlg_070"
@@ -2237,7 +2310,10 @@ var LESSONS = [
       "k11_024"
     ],
     "unlockAfter": "k10m4",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_014",
+      "sb_a22_015"
+    ],
     "dlgCards": [
       "dlg_a22_009",
       "dlg_073"
@@ -2277,7 +2353,10 @@ var LESSONS = [
       "k11_028"
     ],
     "unlockAfter": "k11m1",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_016",
+      "sb_a22_017"
+    ],
     "dlgCards": [
       "dlg_a22_010",
       "dlg_074"
@@ -2441,7 +2520,11 @@ var LESSONS = [
       "k12_024"
     ],
     "unlockAfter": "k11m4",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_018",
+      "sb_a22_019",
+      "sb_a22_020"
+    ],
     "dlgCards": [
       "dlg_a22_013",
       "dlg_077"
@@ -2481,7 +2564,10 @@ var LESSONS = [
       "k12_028"
     ],
     "unlockAfter": "k12m1",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_014",
+      "sb_a22_015"
+    ],
     "dlgCards": [
       "dlg_a22_014",
       "dlg_078"
@@ -2617,7 +2703,11 @@ var LESSONS = [
       "k13_024"
     ],
     "unlockAfter": "k12m4",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_021",
+      "sb_a22_022",
+      "sb_a22_023"
+    ],
     "dlgCards": [
       "dlg_a22_017",
       "dlg_081"
@@ -2657,7 +2747,10 @@ var LESSONS = [
       "k13_028"
     ],
     "unlockAfter": "k13m1",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_012",
+      "sb_a22_013"
+    ],
     "dlgCards": [
       "dlg_a22_018",
       "dlg_082"
@@ -2697,7 +2790,11 @@ var LESSONS = [
       "k13_033"
     ],
     "unlockAfter": "k13m2",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_034",
+      "sb_a22_035",
+      "sb_a22_036"
+    ],
     "dlgCards": [
       "dlg_a22_019",
       "dlg_083"
@@ -2923,7 +3020,14 @@ var LESSONS = [
       "k14_028"
     ],
     "unlockAfter": "k14m1",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_024",
+      "sb_a22_025",
+      "sb_a22_026",
+      "sb_a22_027",
+      "sb_a22_028",
+      "sb_a22_029"
+    ],
     "dlgCards": [
       "dlg_a22_022",
       "dlg_086"
@@ -3062,7 +3166,10 @@ var LESSONS = [
       "k15_024"
     ],
     "unlockAfter": "k14m4",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_030",
+      "sb_a22_032"
+    ],
     "dlgCards": [
       "dlg_a22_025",
       "dlg_089"
@@ -3102,7 +3209,10 @@ var LESSONS = [
       "k15_028"
     ],
     "unlockAfter": "k15m1",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_031",
+      "sb_a22_033"
+    ],
     "dlgCards": [
       "dlg_a22_026",
       "dlg_090"
@@ -3142,7 +3252,10 @@ var LESSONS = [
       "k15_033"
     ],
     "unlockAfter": "k15m2",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_030",
+      "sb_a22_032"
+    ],
     "dlgCards": [
       "dlg_a22_027",
       "dlg_091"
@@ -3374,7 +3487,12 @@ var LESSONS = [
       "k16_024"
     ],
     "unlockAfter": "k15m4",
-    "sbCards": [],
+    "sbCards": [
+      "sb_a22_037",
+      "sb_a22_038",
+      "sb_a22_039",
+      "sb_a22_040"
+    ],
     "dlgCards": [
       "dlg_a22_029",
       "dlg_093"
