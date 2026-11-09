@@ -5597,7 +5597,7 @@ body.lidx-open .grammar-modal-overlay{z-index:9500;}
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '988-ca3ddf2';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -12980,6 +12980,16 @@ function _runLessonFlow(lesson, allCards){
   V.mode        = 'srs';
   const _vshBtn = document.getElementById('vshuffle-btn');
   if(_vshBtn){ _vshBtn.classList.remove('shuffle'); _vshBtn.classList.add('smart'); _vshBtn.innerHTML=movaIcon('timer'); }
+
+  // Усі слова уроку вже знайомі (жодної грані для показу карткою) — крок «Картки» прибираємо
+  // з плану ЗАЗДАЛЕГІДЬ: смуга прогресу стартує з 0, а не «з середини», і пояснюємо чому.
+  const _noCards = flowCards.length && !flowCards.some(c => cardSides[c.id] && (cardSides[c.id].term || cardSides[c.id].def));
+  if(_noCards && LF.steps.length > 2 && LF.steps[0] === 'cards'){
+    LF.steps = LF.steps.slice(1);
+    const _msg = { uk:'Ці слова вже знайомі — одразу до вправ', ru:'Эти слова уже знакомы — сразу к упражнениям',
+                   de:'Diese Wörter kennst du schon — direkt zu den Übungen', en:'You already know these words — straight to practice' };
+    setTimeout(()=>{ try{ notify(_msg[uiLang] || _msg.en, 'check'); }catch(e){} }, 400);
+  }
 
   showView('vocab');
   lfRenderBar();
@@ -20917,7 +20927,13 @@ function _lfStepUnits(step){
   try{
     if(step === 'cards' && LF.cards && LF.cards.length){
       var pl = primaryLang();
-      return Math.max(1, LF.cards.reduce(function(n,c){ return n + 1 + ((c && c.def && c.def[pl]) ? 1 : 0); }, 0));
+      // Адаптивний урок: рахуємо лише грані, які справді покажемо карткою (LF.cardSides)
+      var cs = LF.cardSides || {};
+      return Math.max(1, LF.cards.reduce(function(n,c){
+        var sd = c && cs[c.id];
+        var hasDef = !!(c && c.def && c.def[pl]);
+        return n + (sd ? (sd.term ? 1 : 0) + (hasDef && sd.def ? 1 : 0) : 1 + (hasDef ? 1 : 0));
+      }, 0));
     }
     if(step === 'dlg_learn'){
       if(LF.dlgCards && LF.dlgCards.length) return Math.max(1, _dlgCardsToUnits(LF.dlgCards).length);
