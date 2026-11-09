@@ -2971,6 +2971,111 @@ body.vocab-card-free{--lm-nav:0px}
 .acc-btn-danger-solid:active{background:var(--red);border-color:var(--red);opacity:.85}
 .acc-btn-wide{width:100%;box-sizing:border-box;flex:none}
 .acc-btn:disabled{opacity:.55;pointer-events:none}
+/* ── ПРОБНИЙ ІСПИТ (type:'lidexam') ─────────────────────────────── */
+#lidx{display:none;position:fixed;inset:0;z-index:9000;background:var(--cream);flex-direction:column;}
+body.lidx-open{overflow:hidden;}
+.lidx-head{background:var(--forest);padding:calc(env(safe-area-inset-top,0px) + 12px) 16px 12px;flex-shrink:0;}
+.lidx-head-row{display:flex;align-items:center;justify-content:space-between;gap:8px;min-height:44px;}
+.lidx-hbtn,.lidx-hbtn-ph{width:44px;height:44px;flex-shrink:0;}
+.lidx-hbtn{background:none;border:none;color:rgba(255,255,255,.6);border-radius:12px;display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.lidx-hbtn .mi{width:24px;height:24px;}
+.lidx-hbtn.on{background:rgba(201,168,76,.18);color:var(--gold);}
+.lidx-timer{color:var(--gold);font-size:var(--fs-emphasis);font-weight:800;font-variant-numeric:tabular-nums;transition:color .2s;}
+.lidx-timer.urgent{color:#ff8a7a;}
+.lidx-head-title{color:var(--gold);font-size:var(--fs-card);font-weight:800;text-align:center;flex:1;min-width:0;}
+.lidx-qnum{display:flex;align-items:center;gap:6px;margin:6px auto 8px;background:none;border:none;color:rgba(255,255,255,.75);font:inherit;font-size:var(--fs-secondary);cursor:pointer;padding:4px 10px;border-radius:10px;}
+.lidx-qnum b{color:#fff;}
+.lidx-qnum-grid{display:inline-flex;opacity:.7;}
+.lidx-qnum-grid .mi{width:18px;height:18px;}
+.lidx-bar{height:6px;border-radius:3px;background:rgba(255,255,255,.12);overflow:hidden;}
+.lidx-bar-fill{height:100%;background:var(--gold);border-radius:3px;transition:width .25s;}
+.lidx-body{flex:1;min-height:0;overflow-y:auto;padding:14px 14px 24px;-webkit-overflow-scrolling:touch;}
+#lidx .quiz-q-tr{display:none;}
+#lidx.lidx-show-tr .quiz-q-tr[data-has="1"]{display:block;}
+#lidx .lidx-tr{display:none;}
+#lidx.lidx-show-tr .lidx-tr{display:block;}
+body.lidx-open .grammar-modal-overlay{z-index:9500;}
+.lidx-nav-cell.ok{background:rgba(46,204,113,.15);border-color:rgba(46,204,113,.5);color:#27ae60;}
+.lidx-nav-cell.bad{background:rgba(231,76,60,.1);border-color:rgba(231,76,60,.45);color:#c0392b;}
+.lidx-rv-expl{align-self:flex-start;display:inline-flex;align-items:center;gap:6px;background:none;border:1.5px solid var(--border);border-radius:12px;padding:8px 12px;font:inherit;font-size:var(--fs-secondary);font-weight:700;color:var(--ink);cursor:pointer;}
+.lidx-rv-expl .mi{color:var(--gold);}
+#lidx .quiz-opt.lidx-sel{border-color:var(--gold);background:rgba(201,168,76,.12);}
+#lidx .quiz-opt.lidx-sel .quiz-opt-letter{background:var(--gold);color:var(--forest);}
+.lidx-foot{flex-shrink:0;display:flex;gap:10px;padding:10px 14px calc(env(safe-area-inset-bottom,0px) + 12px);background:var(--cream);border-top:1px solid var(--border);}
+.lidx-main{flex:1;min-height:56px;border:none;border-radius:16px;background:linear-gradient(135deg,#c9a84c,#b8893a);color:var(--forest);font:inherit;font-size:var(--fs-card);font-weight:800;cursor:pointer;}
+.lidx-main:disabled{opacity:.45;cursor:default;}
+.lidx-main.dim{opacity:.6;}
+.lidx-sec{min-width:56px;min-height:56px;border:1.5px solid var(--border);border-radius:16px;background:var(--card);color:var(--ink);font:inherit;font-size:var(--fs-card);font-weight:700;display:flex;align-items:center;justify-content:center;cursor:pointer;}
+.lidx-sec.wide{flex:1;}
+.lidx-sec:disabled{opacity:.35;cursor:default;}
+.lidx-sec .mi{width:22px;height:22px;}
+/* briefing */
+.lidx-brief{display:flex;flex-direction:column;gap:12px;padding-top:20px;}
+.lidx-fact{display:flex;gap:14px;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px 16px;}
+.lidx-fact-ic{width:44px;height:44px;border-radius:12px;background:rgba(201,168,76,.15);color:var(--gold);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.lidx-fact-ic .mi{width:24px;height:24px;}
+.lidx-fact-main{font-size:var(--fs-card);color:var(--ink);line-height:1.25;}
+.lidx-fact-main b{font-size:var(--fs-emphasis);font-weight:800;}
+.lidx-fact-sub{font-size:var(--fs-secondary);color:var(--muted);margin-top:2px;line-height:1.3;}
+.lidx-brief-note{font-size:var(--fs-secondary);color:var(--muted);line-height:1.4;padding:4px 4px 0;}
+.lidx-brief-note .mi{color:var(--gold);}
+.lidx-brief-note p{margin:0;}
+.lidx-brief-note p + p{margin-top:14px;}
+.lidx-brief-region{display:flex;align-items:center;gap:10px;font:inherit;font-size:var(--fs-secondary);color:var(--ink);background:var(--soft);border:1px solid var(--border);border-radius:14px;padding:12px 14px;text-align:left;}
+.lidx-brief-region .mi{color:var(--gold);flex-shrink:0;}
+.lidx-brief-region span{flex:1;}
+.lidx-brief-region.need{border-color:var(--gold);background:rgba(201,168,76,.1);cursor:pointer;font-weight:600;}
+.lidx-link{background:none;border:none;color:var(--gold);font:inherit;font-weight:700;cursor:pointer;padding:4px;}
+/* navigator */
+.lidx-nav-ov{position:absolute;inset:0;z-index:2;background:rgba(0,0,0,.5);display:flex;align-items:flex-end;}
+.lidx-nav{width:100%;background:var(--cream);border-radius:20px 20px 0 0;padding:18px 16px calc(env(safe-area-inset-bottom,0px) + 14px);display:flex;flex-direction:column;gap:14px;max-height:80%;overflow:auto;}
+.lidx-nav-h{display:flex;justify-content:space-between;align-items:baseline;font-size:var(--fs-card);color:var(--ink);}
+.lidx-nav-h span{font-size:var(--fs-secondary);color:var(--muted);}
+.lidx-nav-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;}
+.lidx-nav-cell{aspect-ratio:1;border-radius:12px;border:1.5px solid var(--border);background:var(--card);color:var(--muted);font:inherit;font-size:var(--fs-secondary);font-weight:700;cursor:pointer;}
+.lidx-nav-cell.ans{background:rgba(201,168,76,.18);border-color:rgba(201,168,76,.5);color:var(--ink);}
+.lidx-nav-cell.cur{border-color:var(--forest);box-shadow:0 0 0 2px var(--forest) inset;}
+/* result */
+.lidx-res{display:flex;flex-direction:column;align-items:stretch;gap:10px;}
+.lidx-timeup{background:rgba(201,168,76,.15);border:1px solid rgba(201,168,76,.5);border-radius:12px;padding:10px 14px;text-align:center;color:var(--ink);font-weight:700;font-size:var(--fs-secondary);}
+.lidx-score{align-self:center;flex-shrink:0;width:128px;height:128px;border-radius:50%;border:5px solid var(--gold);display:flex;flex-direction:column;align-items:center;justify-content:center;margin-top:8px;}
+.lidx-score.ok{border-color:#2ecc71;} .lidx-score.no{border-color:#e74c3c;}
+.lidx-score-num{font-size:40px;font-weight:800;color:var(--ink);line-height:1;}
+.lidx-score-num span{font-size:var(--fs-card);color:var(--muted);font-weight:700;}
+.lidx-score-l{font-size:var(--fs-secondary);color:var(--muted);margin-top:4px;}
+.lidx-verdict{text-align:center;font-size:var(--fs-emphasis);font-weight:800;color:var(--ink);margin-top:4px;}
+.lidx-verdict.ok{color:#27ae60;} .lidx-verdict.no{color:#c0392b;}
+.lidx-verdict-sub{text-align:center;font-size:var(--fs-secondary);color:var(--muted);line-height:1.4;padding:0 8px;}
+.lidx-res-stats{display:flex;justify-content:center;gap:20px;font-size:var(--fs-secondary);color:var(--ink);font-weight:700;margin:4px 0 6px;}
+.lidx-res-stats .mi{color:var(--gold);}
+.lidx-rv-h{font-size:var(--fs-card);font-weight:800;color:var(--ink);margin-top:10px;}
+.lidx-rv-none{color:var(--muted);font-size:var(--fs-secondary);}
+.lidx-rv{display:flex;gap:12px;background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;}
+.lidx-rv-n{width:32px;height:32px;border-radius:50%;background:var(--soft);color:var(--muted);font-weight:800;font-size:var(--fs-secondary);display:flex;align-items:center;justify-content:center;flex-shrink:0;}
+.lidx-rv-body{flex:1;min-width:0;display:flex;flex-direction:column;gap:8px;}
+.lidx-rv-q{font-weight:700;color:var(--ink);font-size:var(--fs-card);line-height:1.3;}
+.lidx-rv-tr{font-weight:400;color:var(--muted);font-size:var(--fs-secondary);margin-top:3px;}
+.lidx-rv-a{display:flex;flex-direction:column;gap:2px;padding:8px 10px;border-radius:10px;font-size:var(--fs-secondary);}
+.lidx-rv-a.bad{background:rgba(231,76,60,.08);}
+.lidx-rv-a.good{background:rgba(46,204,113,.1);}
+.lidx-rv-l{font-size:var(--fs-utility);font-weight:700;text-transform:uppercase;letter-spacing:.4px;}
+.lidx-rv-a.bad .lidx-rv-l{color:#c0392b;} .lidx-rv-a.good .lidx-rv-l{color:#27ae60;}
+.lidx-rv-t{color:var(--ink);line-height:1.35;}
+
+/* Вибір федеральної землі (quizPickRegion) */
+.region-pick-ov{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:16px;}
+.region-pick{background:var(--card);color:var(--ink);border-radius:20px;width:100%;max-width:440px;max-height:85vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 12px 40px rgba(0,0,0,.25);}
+.region-pick-head{display:flex;align-items:flex-start;gap:12px;padding:20px 12px 14px 20px;border-bottom:1px solid var(--border);flex-shrink:0;}
+.region-pick-tw{flex:1;min-width:0;}
+.region-pick-title{font-size:var(--fs-card);font-weight:800;line-height:1.25;}
+.region-pick-sub{font-size:var(--fs-secondary);color:var(--muted);margin-top:4px;line-height:1.3;}
+.region-pick-x{width:44px;height:44px;flex-shrink:0;margin-top:-8px;background:none;border:none;border-radius:12px;color:var(--muted);display:flex;align-items:center;justify-content:center;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.region-pick-x .mi{width:24px;height:24px;}
+.region-pick-list{flex:1 1 auto;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:10px 12px calc(env(safe-area-inset-bottom,0px) + 14px);display:flex;flex-direction:column;gap:8px;}
+.region-pick-item{display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;min-height:56px;padding:12px 16px;border:1.5px solid var(--border);border-radius:14px;background:var(--card);color:var(--ink);font:inherit;font-size:var(--fs-card);font-weight:500;text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent;}
+.region-pick-item:active{border-color:var(--gold);background:rgba(201,168,76,.08);}
+.region-pick-item.on{border-color:var(--gold);background:rgba(201,168,76,.12);font-weight:700;}
+.region-pick-item .mi{width:22px;height:22px;color:var(--gold);flex-shrink:0;}
 /* ── Власні діалоги замість confirm()/alert() ── */
 .mova-dlg-ov{position:fixed;inset:0;z-index:100000;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;padding:20px;animation:movaDlgFade .15s ease-out}
 .mova-dlg{background:var(--paper);color:var(--ink);border-radius:14px;padding:20px 18px 16px;max-width:360px;width:100%;box-sizing:border-box;box-shadow:0 10px 40px rgba(0,0,0,.35);max-height:85vh;overflow-y:auto}
@@ -5492,7 +5597,7 @@ body.vocab-card-free{--lm-nav:0px}
 <script>
 // ── VERSION ───────────────────────────────────────────────────
 // Змінюйте при кожному деплої → SW автоматично оновиться
-const APP_VERSION = '987-1013bda';
+const APP_VERSION = '177-52a5d5f';
 const BUILD_ID = '1779690311'; // змінюється при кожному деплої
 
 // ── COURSE ENGINE ─────────────────────────────────────────────
@@ -5532,6 +5637,13 @@ const COURSES = [
     langs:    ['de','uk','en'],
   },
   {
+    id:       'Leben-in-Deutschland',
+    emoji:    '🇩🇪',
+    icon:     'flag',
+    level:    'LiD',
+    langs:    ['de','uk','en','ru'],
+  },
+  {
     id:       'Deutsch-B2-Beruf',
     emoji:    '💼',
     icon:     'briefcase',
@@ -5555,19 +5667,12 @@ const COURSES = [
     debugOnly: true,   // курс ще в розробці: не показується в списку курсів/онбордингу, лише в Налаштування → Налагодження
   },
   {
-    id:       'Leben-in-Deutschland',
-    emoji:    '🇩🇪',
-    icon:     'flag',
-    level:    'LiD',
-    langs:    ['de','uk','en','ru'],
-    debugOnly: true,   // курс ще в розробці: не показується в списку курсів/онбордингу, лише в Налаштування → Налагодження
-  },
-  {
     id:       'Financial-Accounting-Foundations',
     emoji:    '💰',
     icon:     'chart',
     level:    'Foundations',
     langs:    ['de','en','uk','ru'],   // PRIMARY_LANG=de, PRIMARY_LANG_1=en (див. Financial-Accounting-Foundations.js)
+    debugOnly: true,   // курс ще в розробці: не показується в списку курсів/онбордингу, лише в Налаштування → Налагодження
   },
   // Приклад як додати новий курс:
   // {
@@ -5601,7 +5706,7 @@ function getSavedCourseId(){
   if(saved && COURSES.some(c=>c.id===saved)) return saved;
   return 'Deutsch-B2-Beruf';
 }
-// Курс для ХОЛОДНОГО СТАРТУ. Курс «у розробці» (debugOnly: Leben-in-Deutschland, Deutsch-C1…), відкритий
+// Курс для ХОЛОДНОГО СТАРТУ. Курс «у розробці» (debugOnly: Financial-Accounting-Foundations, Deutsch-C1…), відкритий
 // через Налаштування → Налагодження, після перезавантаження НЕ відновлюється: застосунок повертається
 // до останнього звичайного курсу (а якщо його немає — до Deutsch-B2-Beruf). Інакше розробник, який
 // протестував debug-курс, після перезапуску бачив би його замість свого основного курсу.
@@ -6065,7 +6170,7 @@ function _lessonDoneMigrate(key){
   let changed = false;
   if(need1){
     for(const l of lessons){
-      if(l.type === 'speech' || l.type === 'examsim' || _ldCache[l.id]) continue;
+      if(l.type === 'speech' || l.type === 'examsim' || l.type === 'lidexam' || _ldCache[l.id]) continue;
       if(lessonProgress(l).pct >= 80){ _ldCache[l.id] = 1; changed = true; }
     }
   }
@@ -13138,7 +13243,7 @@ function renderLernpfad(opts){
       // cardIds, lessonProgress завжди {pct:0}) — якби рахувати її в
       // знаменнику nodes.length, дріб типу "39/40" ніколи не дійшов би
       // до 100%, хоча реально всі СПРАВЖНІ картки модуля пройдені.
-      const countableNodes = grp.nodes.filter(n => n.type !== 'examsim' && n.type !== 'speech');
+      const countableNodes = grp.nodes.filter(n => n.type !== 'examsim' && n.type !== 'lidexam' && n.type !== 'speech');
       const doneCount = countableNodes.filter(n=>lessonDone(n)).length;
       const hasModuleCurrent = grp.nodes.some(n=>findCurrentLesson()?.id===n.id);
       // Той самий принцип, що глава вище: розгорнутий лише модуль з
@@ -13179,9 +13284,11 @@ function renderLernpfad(opts){
         <div class="lp-chapter-num ${allDone?'done':''} ${ch.isExamPrep?'examprep':''}">${ch.isExamPrep?movaIcon('cap'):ch.num}</div>
         <div class="lp-chapter-info">
           <div class="lp-chapter-title">${ch.title[uiLang]||ch.title[primaryLang()]||ch.title.en||ch.title.de}</div>
-          <div class="lp-chapter-sub">${ch.modules.length} ${ch.modules.every(m => m.module == null) ? t('lp_lessons_unit') : t('lp_module_prefix')} · ${
+          <div class="lp-chapter-sub">${ch.modules.every(m => m.type === 'lidexam')
+            ? (ch.modules.length > 1 ? lidxT('ch_meta') : lidxRowMeta(_lidxCfg(ch.modules[0]), ' · '))
+            : `${ch.modules.length} ${ch.modules.every(m => m.module == null) ? t('lp_lessons_unit') : t('lp_module_prefix')} · ${
             ch.modules.filter(m=>_lpCounted(m)).length
-          }/${ch.modules.length} ${t('lp_done').toLowerCase()}</div>
+          }/${ch.modules.length} ${t('lp_done').toLowerCase()}`}</div>
         </div>
         ${renderChapterDividerVocabBtn(ch.num, reviewUnlocked)}
         ${renderChapterDividerGramBtn(ch.num, ch.modules, reviewUnlocked)}
@@ -13543,6 +13650,9 @@ function _lpNodeVisual(node){
   if(node.type === 'examsim'){
     return { icon: movaIcon('pen'), cls: 'lp-node-examsim' };
   }
+  if(node.type === 'lidexam'){
+    return { icon: movaIcon('timer'), cls: 'lp-node-examsim' };
+  }
   if(node.type === 'speech'){
     return { icon: movaIcon('mic'), cls: 'lp-node-speech' };
   }
@@ -13672,7 +13782,9 @@ function dlgCardTopicBilingual(card){
 }
 
 function renderExamPrepRow(node){
-  const isExamSim = node.type === 'examsim';
+  // lidexam (пробний іспит LiD) — так само повторювана спроба, як examsim
+  const isLidExam = node.type === 'lidexam';
+  const isExamSim = node.type === 'examsim' || isLidExam;
   const {done, total, pct} = lessonProgress(node);
   const unlocked  = lessonUnlocked(node);
   // examsim — не "картки, що заповнюються" (немає cardIds), а повторювана
@@ -13689,6 +13801,7 @@ function renderExamPrepRow(node){
   const statusClass = !unlocked ? 'locked' : isDone ? 'done' : isCurrent ? 'current' : '';
   const clickHandler = !unlocked
     ? 'showLockedLessonModal()'
+    : isLidExam ? `startLidExam('${node.id}')`
     : isExamSim ? `examSimOpenFromNodeId('${node.id}')`
     : isDialogue ? `startModuleDialogueBonus('${node.id}')`
     : isForum ? `startModuleForumBonus('${node.id}')`
@@ -13706,10 +13819,13 @@ function renderExamPrepRow(node){
   // картка) — саме число не несе користі, статус і так видно з
   // ✓/▶/🔒 праворуч. Лишаємо метадані лише там, де вони РЕАЛЬНО щось
   // повідомляють: заблоковано, чи (examsim) що спроб необмежено.
+  const _lc = isLidExam ? _lidxCfg(node) : null;
   const metaText = !unlocked ? t('lp_locked')
+    : isLidExam ? lidxRowMeta(_lc)
     : isExamSim ? t('exam_sim_row_meta')
     : '';
-  const chipLabel = isExamSim
+  const chipLabel = isLidExam ? lidxT('row_chip')
+    : isExamSim
     ? t('exam_sim_row_chip')
     : pct > 0
       ? ({uk:'▶ Продовжити', en:'▶ Continue', ru:'▶ Продолжить', de:'▶ Weiter'}[uiLang] || '▶ Weiter')
@@ -19898,6 +20014,503 @@ async function debugDeleteProfile(){
     notify('⚠️ '+(e && (e.message||e.code) || e));
   }
 }
+// ════════════════════════════════════════════════════════════════════
+//  ПРОБНИЙ ІСПИТ (вузол LESSONS type:'lidexam', напр. курс Leben in Deutschland)
+//  Формат реального тесту BAMF (EinbTestV § 1): 33 питання — 30 загальних
+//  + 3 про землю користувача, 60 хвилин; бал: 17/33 — Einbürgerungstest,
+//  15/33 — «Leben in Deutschland» (Orientierungskurs).
+//  Параметри — з вузла: lesson.exam = {mode, general, region, minutes, pass, passLid}.
+//  Два режими (exam.mode):
+//   • 'practice' — тренувальний: після кожної відповіді видно правильність,
+//     💡 пояснення (q.expl), переклад «підглянути» (🌐, лише поточне питання);
+//     секундомір без ліміту часу. Теми перемішані — головна різниця з квізами уроків.
+//   • 'strict' — іспит: 60 хв, без перекладу й підказок, правильність лише в кінці;
+//     відповідь можна змінити, повернутись, перейти до будь-якого питання.
+//  В огляді помилок (обидва режими) — переклад і пояснення доступні.
+// ════════════════════════════════════════════════════════════════════
+const LIDX_T = {
+  uk:{ mode_practice_note:'Після кожної відповіді побачиш, чи правильно, і зможеш відкрити пояснення {b}|Переклад поточного питання — кнопка {i}',
+       mode_strict_note:'Без перекладу і підказок — як на справжньому іспиті. Правильні відповіді й переклад побачиш після здачі.',
+       strict_hint:'Порада: спробуй, коли в тренувальному іспиті стабільно набираєш 25+.',
+       f_notime:'Без обмеження часу', f_notime_sub:'секундомір показує, скільки минуло',
+       row_meta_practice:'{n} {qw}|відповіді й пояснення одразу', row_meta_strict:'{n} {qw} · {m} хв|без підказок',
+       ch_meta:'Тренування та іспит', expl:'Пояснення',
+       brief_title:'Пробний іспит', q:'Питання', of:'з', start:'Почати іспит', next:'Далі', back:'Назад', submit:'Здати',
+       f_q:'питання', f_q_sub:'{g} загальних + {r} про твою землю', f_time:'хвилин', f_time_sub:'як на справжньому іспиті',
+       f_pass:'правильних — прохідний бал', f_pass_sub:'Einbürgerungstest · для «Leben in Deutschland» достатньо {p2}',
+       f_tr:'Переклади приховані — натисни {i}, щоб побачити переклад питання й відповідей.',
+       region:'Земля', region_change:'змінити', region_need:'Обери свою землю — 3 питання будуть про неї.',
+       tr_on:'Сховати переклад', tr_off:'Показати переклад',
+       nav_title:'Усі питання', answered:'відповіді', unanswered_confirm:'Без відповіді: {n}. Здати іспит зараз?',
+       exit_confirm:'Перервати іспит? Відповіді не збережуться.', exit_ok:'Перервати', stay:'Продовжити іспит',
+       timeup:'Час вийшов — іспит здано автоматично.',
+       res_pass:'Іспит складено!', res_pass_sub:'Цього достатньо і для Einbürgerungstest (від {p}).',
+       res_lid:'«Leben in Deutschland» складено', res_lid_sub:'Для Einbürgerungstest треба {p} — бракує {k}.',
+       res_fail:'Поки що не складено', res_fail_sub:'Потрібно щонайменше {p2} (LiD) або {p} (Einbürgerung). Ще трохи практики!',
+       res_time:'Час', res_correct:'правильно', res_mistakes:'Помилки', res_none:'Жодної помилки — чудово!',
+       your:'Твоя відповідь', correct:'Правильно', no_answer:'без відповіді',
+       again:'Новий іспит', finish:'Завершити',
+       row_meta:'{n} {qw} · {m} хв · необмежено спроб', row_chip:'▶ Почати' },
+  de:{ mode_practice_note:'Nach jeder Antwort siehst du, ob sie richtig ist, und kannst die Erklärung {b} öffnen|Übersetzung der aktuellen Frage — Taste {i}',
+       mode_strict_note:'Ohne Übersetzung und Hilfen — wie in der echten Prüfung. Lösungen und Übersetzungen siehst du nach der Abgabe.',
+       strict_hint:'Tipp: Versuch es, wenn du in der Übungsprüfung stabil 25+ schaffst.',
+       f_notime:'Ohne Zeitlimit', f_notime_sub:'die Stoppuhr zeigt die vergangene Zeit',
+       row_meta_practice:'{n} {qw}|Lösung und Erklärung sofort', row_meta_strict:'{n} {qw} · {m} Min.|ohne Hilfen',
+       ch_meta:'Übung und Prüfung', expl:'Erklärung',
+       brief_title:'Probeprüfung', q:'Frage', of:'von', start:'Prüfung starten', next:'Weiter', back:'Zurück', submit:'Abgeben',
+       f_q:'Fragen', f_q_sub:'{g} allgemeine + {r} zu deinem Bundesland', f_time:'Minuten', f_time_sub:'wie in der echten Prüfung',
+       f_pass:'richtige — zum Bestehen', f_pass_sub:'Einbürgerungstest · für „Leben in Deutschland“ reichen {p2}',
+       f_tr:'Übersetzungen sind ausgeblendet — tippe auf {i}, um sie für Frage und Antworten zu sehen.',
+       region:'Bundesland', region_change:'ändern', region_need:'Wähle dein Bundesland — 3 Fragen beziehen sich darauf.',
+       tr_on:'Übersetzung ausblenden', tr_off:'Übersetzung zeigen',
+       nav_title:'Alle Fragen', answered:'beantwortet', unanswered_confirm:'Unbeantwortet: {n}. Prüfung jetzt abgeben?',
+       exit_confirm:'Prüfung abbrechen? Die Antworten gehen verloren.', exit_ok:'Abbrechen', stay:'Weitermachen',
+       timeup:'Die Zeit ist um — die Prüfung wurde automatisch abgegeben.',
+       res_pass:'Bestanden!', res_pass_sub:'Das reicht auch für den Einbürgerungstest (ab {p}).',
+       res_lid:'„Leben in Deutschland“ bestanden', res_lid_sub:'Für den Einbürgerungstest braucht man {p} — es fehlen {k}.',
+       res_fail:'Noch nicht bestanden', res_fail_sub:'Nötig sind mindestens {p2} (LiD) bzw. {p} (Einbürgerung). Weiter üben!',
+       res_time:'Zeit', res_correct:'richtig', res_mistakes:'Fehler', res_none:'Kein einziger Fehler — super!',
+       your:'Deine Antwort', correct:'Richtig', no_answer:'keine Antwort',
+       again:'Neue Prüfung', finish:'Beenden',
+       row_meta:'{n} {qw} · {m} Min. · beliebig oft', row_chip:'▶ Starten' },
+  en:{ mode_practice_note:'After each answer you will see whether it is right and can open the explanation {b}|Translation of the current question — button {i}',
+       mode_strict_note:'No translation and no hints — just like the real exam. Answers and translations are shown after you submit.',
+       strict_hint:'Tip: try it once you consistently score 25+ in the practice exam.',
+       f_notime:'No time limit', f_notime_sub:'the stopwatch shows the time elapsed',
+       row_meta_practice:'{n} {qw}|answers and explanations right away', row_meta_strict:'{n} {qw} · {m} min|no hints',
+       ch_meta:'Practice and exam', expl:'Explanation',
+       brief_title:'Practice exam', q:'Question', of:'of', start:'Start exam', next:'Next', back:'Back', submit:'Submit',
+       f_q:'questions', f_q_sub:'{g} general + {r} about your state', f_time:'minutes', f_time_sub:'just like the real exam',
+       f_pass:'correct to pass', f_pass_sub:'Einbürgerungstest · {p2} is enough for “Leben in Deutschland”',
+       f_tr:'Translations are hidden — tap {i} to see the question and answers translated.',
+       region:'State', region_change:'change', region_need:'Choose your state — 3 questions are about it.',
+       tr_on:'Hide translation', tr_off:'Show translation',
+       nav_title:'All questions', answered:'answered', unanswered_confirm:'Unanswered: {n}. Submit the exam now?',
+       exit_confirm:'Quit the exam? Your answers will be lost.', exit_ok:'Quit', stay:'Keep going',
+       timeup:'Time is up — the exam was submitted automatically.',
+       res_pass:'Passed!', res_pass_sub:'That is also enough for the Einbürgerungstest ({p}+).',
+       res_lid:'“Leben in Deutschland” passed', res_lid_sub:'The Einbürgerungstest needs {p} — {k} short.',
+       res_fail:'Not passed yet', res_fail_sub:'You need at least {p2} (LiD) or {p} (citizenship). Keep practising!',
+       res_time:'Time', res_correct:'correct', res_mistakes:'Mistakes', res_none:'Not a single mistake — great!',
+       your:'Your answer', correct:'Correct', no_answer:'no answer',
+       again:'New exam', finish:'Finish',
+       row_meta:'{n} {qw} · {m} min · unlimited attempts', row_chip:'▶ Start' },
+  ru:{ mode_practice_note:'После каждого ответа увидишь, правильно ли, и сможешь открыть объяснение {b}|Перевод текущего вопроса — кнопка {i}',
+       mode_strict_note:'Без перевода и подсказок — как на настоящем экзамене. Правильные ответы и перевод увидишь после сдачи.',
+       strict_hint:'Совет: попробуй, когда в тренировочном экзамене стабильно набираешь 25+.',
+       f_notime:'Без ограничения времени', f_notime_sub:'секундомер показывает, сколько прошло',
+       row_meta_practice:'{n} {qw}|ответы и объяснения сразу', row_meta_strict:'{n} {qw} · {m} мин|без подсказок',
+       ch_meta:'Тренировка и экзамен', expl:'Объяснение',
+       brief_title:'Пробный экзамен', q:'Вопрос', of:'из', start:'Начать экзамен', next:'Далее', back:'Назад', submit:'Сдать',
+       f_q:'вопросов', f_q_sub:'{g} общих + {r} о твоей земле', f_time:'минут', f_time_sub:'как на настоящем экзамене',
+       f_pass:'правильных — проходной балл', f_pass_sub:'Einbürgerungstest · для «Leben in Deutschland» достаточно {p2}',
+       f_tr:'Переводы скрыты — нажми {i}, чтобы увидеть перевод вопроса и ответов.',
+       region:'Земля', region_change:'изменить', region_need:'Выбери свою землю — 3 вопроса будут о ней.',
+       tr_on:'Скрыть перевод', tr_off:'Показать перевод',
+       nav_title:'Все вопросы', answered:'отвечено', unanswered_confirm:'Без ответа: {n}. Сдать экзамен сейчас?',
+       exit_confirm:'Прервать экзамен? Ответы не сохранятся.', exit_ok:'Прервать', stay:'Продолжить экзамен',
+       timeup:'Время вышло — экзамен сдан автоматически.',
+       res_pass:'Экзамен сдан!', res_pass_sub:'Этого достаточно и для Einbürgerungstest (от {p}).',
+       res_lid:'«Leben in Deutschland» сдан', res_lid_sub:'Для Einbürgerungstest нужно {p} — не хватает {k}.',
+       res_fail:'Пока не сдан', res_fail_sub:'Нужно минимум {p2} (LiD) или {p} (Einbürgerung). Ещё немного практики!',
+       res_time:'Время', res_correct:'правильно', res_mistakes:'Ошибки', res_none:'Ни одной ошибки — отлично!',
+       your:'Твой ответ', correct:'Правильно', no_answer:'без ответа',
+       again:'Новый экзамен', finish:'Завершить',
+       row_meta:'{n} {qw} · {m} мин · без ограничений', row_chip:'▶ Начать' },
+};
+function lidxT(k, vars){
+  var s = (LIDX_T[uiLang] && LIDX_T[uiLang][k]) || LIDX_T.de[k] || k;
+  if(vars) Object.keys(vars).forEach(function(v){ s = s.split('{'+v+'}').join(vars[v]); });
+  return s;
+}
+// Узгодження слова з числом: uk/ru — 1 / 2–4 / 5+ (з винятком 11–14), de/en — 1 / решта.
+const LIDX_WORDS = {
+  q: { uk:['питання','питання','питань'], ru:['вопрос','вопроса','вопросов'], de:['Frage','Fragen'], en:['question','questions'] },
+  m: { uk:['хвилина','хвилини','хвилин'], ru:['минута','минуты','минут'],     de:['Minute','Minuten'], en:['minute','minutes'] },
+};
+function lidxWord(kind, n){
+  var f = LIDX_WORDS[kind][uiLang] || LIDX_WORDS[kind].de;
+  if(f.length === 2) return n === 1 ? f[0] : f[1];
+  var m10 = n % 10, m100 = n % 100;
+  if(m10 === 1 && m100 !== 11) return f[0];
+  if(m10 >= 2 && m10 <= 4 && (m100 < 12 || m100 > 14)) return f[1];
+  return f[2];
+}
+// Підпис пункту на стежці: 1-й рядок — к-сть питань (і час), 2-й — підказка про режим ('|' у тексті = перенос).
+function lidxRowMeta(c, sep){
+  var n = c.general + (_lidxNeedsRegion(c) ? c.region : 0);
+  return lidxT(c.mode === 'practice' ? 'row_meta_practice' : 'row_meta_strict', {n: n, qw: lidxWord('q', n), m: c.minutes})
+    .split('|').join(sep == null ? '<br>' : sep);
+}
+function _lidxCfg(lesson){
+  var e = (lesson && lesson.exam) || {};
+  return { mode: e.mode === 'practice' ? 'practice' : 'strict', general: e.general || 30, region: e.region == null ? 3 : e.region, minutes: e.minutes || 60,
+           pass: e.pass || 17, passLid: e.passLid || 15 };
+}
+let LIDX = null;   // стан поточної спроби
+
+function _lidxEsc(s){ return String(s == null ? '' : s).replace(/[&<>"]/g, function(c){ return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]; }); }
+function _lidxShuffle(a){ a = a.slice(); for(var i=a.length-1;i>0;i--){ var j=Math.floor(Math.random()*(i+1)); var t0=a[i]; a[i]=a[j]; a[j]=t0; } return a; }
+function _lidxNeedsRegion(cfg){ return cfg.region > 0 && typeof REGIONS !== 'undefined' && Array.isArray(REGIONS) && REGIONS.length; }
+
+// Вибір питань: загальні (без region) + регіональні для землі користувача — останніми, як у тесті.
+function _lidxPick(cfg){
+  var all = typeof QUIZ !== 'undefined' ? QUIZ : [];
+  var isReg = function(q){ return q.region && !(Array.isArray(q.region) && !q.region.length); };
+  var gen = _lidxShuffle(all.filter(function(q){ return !isReg(q); })).slice(0, cfg.general);
+  var reg = [];
+  if(_lidxNeedsRegion(cfg)){
+    var r = quizUserRegion();
+    reg = _lidxShuffle(all.filter(function(q){ return isReg(q) && r && [].concat(q.region).indexOf(r) !== -1; })).slice(0, cfg.region);
+  }
+  return gen.concat(reg).map(function(q){ return { q: q, answers: _lidxShuffle(q.answers || []), chosen: -1 }; });
+}
+
+function _lidxRoot(){
+  var el = document.getElementById('lidx');
+  if(!el){ el = document.createElement('div'); el.id = 'lidx'; document.body.appendChild(el); }
+  return el;
+}
+
+function startLidExam(lessonId){
+  var lesson = (typeof LESSONS !== 'undefined' ? LESSONS : []).find(function(l){ return l.id === lessonId; });
+  if(!lesson) return;
+  try{ stopVocab(); }catch(e){}
+  LIDX = { lesson: lesson, cfg: _lidxCfg(lesson), items: [], idx: 0, tr: false, endsAt: 0, startedAt: 0, timerId: null, done: false };
+  _lidxRenderBrief();
+  var root = _lidxRoot(); root.style.display = 'flex';
+  document.body.classList.add('lidx-open');
+}
+
+function _lidxRegionName(){
+  var r = quizUserRegion();
+  var o = r && REGIONS.find(function(x){ return x.id === r; });
+  return o ? (o[uiLang] || o.de || o.id) : '';
+}
+
+function _lidxRenderBrief(){
+  var c = LIDX.cfg, root = _lidxRoot();
+  var total = c.general + (_lidxNeedsRegion(c) ? c.region : 0);
+  var title = LIDX.lesson.title ? (LIDX.lesson.title[uiLang] || LIDX.lesson.title.de) : lidxT('brief_title');
+  var regHtml = '';
+  if(_lidxNeedsRegion(c)){
+    var rn = _lidxRegionName();
+    regHtml = rn
+      ? '<div class="lidx-brief-region">' + movaIcon('flag') + '<span>' + lidxT('region') + ': <b>' + _lidxEsc(rn) + '</b></span>' +
+        '<button type="button" class="lidx-link" onclick="quizPickRegion(_lidxRenderBrief)">' + lidxT('region_change') + '</button></div>'
+      : '<button type="button" class="lidx-brief-region need" onclick="quizPickRegion(_lidxRenderBrief)">' + movaIcon('flag') + '<span>' + lidxT('region_need') + '</span></button>';
+  }
+  var fact = function(icon, big, label, sub){
+    return '<div class="lidx-fact"><span class="lidx-fact-ic">' + movaIcon(icon) + '</span><div><div class="lidx-fact-main"><b>' + big + '</b> ' + label + '</div><div class="lidx-fact-sub">' + sub + '</div></div></div>';
+  };
+  root.innerHTML =
+    '<div class="lidx-head"><div class="lidx-head-row"><span class="lidx-hbtn-ph"></span>' +
+      '<div class="lidx-head-title">' + _lidxEsc(title) + '</div>' +
+      '<button type="button" class="lidx-hbtn" onclick="closeLidExam()" aria-label="✕">' + movaIcon('cross') + '</button></div></div>' +
+    '<div class="lidx-body lidx-brief">' +
+      fact('quiz', total, lidxWord('q', total), lidxT('f_q_sub', {g: c.general, r: _lidxNeedsRegion(c) ? c.region : 0})) +
+      (c.mode === 'practice'
+        ? fact('timer', '', lidxT('f_notime'), lidxT('f_notime_sub'))
+        : fact('timer', c.minutes, lidxWord('m', c.minutes), lidxT('f_time_sub'))) +
+      fact('trophy', c.pass, lidxT('f_pass'), lidxT('f_pass_sub', {p2: c.passLid})) +
+      // Абзаци примітки — окремими <p> з відступом; після іконки крапки немає (інакше переноситься сама на рядок)
+      '<div class="lidx-brief-note">' + (c.mode === 'practice'
+        ? lidxT('mode_practice_note', {i: movaIcon('translate', 'mi mi-inline'), b: movaIcon('bulb', 'mi mi-inline')}).split('|')
+        : [lidxT('mode_strict_note'), lidxT('strict_hint')]).map(function(p){ return '<p>' + p.replace(/ <svg/g, '\u00a0<svg') + '</p>'; }).join('') + '</div>' +
+      regHtml +
+    '</div>' +
+    '<div class="lidx-foot"><button type="button" class="lidx-main" id="lidx-start" onclick="_lidxBegin()">' + _lidxEsc(lidxT('start')) + '</button></div>';
+  var st = document.getElementById('lidx-start');
+  if(st && _lidxNeedsRegion(c) && !quizUserRegion()) st.disabled = true;
+}
+
+function _lidxBegin(){
+  if(_lidxNeedsRegion(LIDX.cfg) && !quizUserRegion()){ quizPickRegion(_lidxRenderBrief); return; }
+  LIDX.items = _lidxPick(LIDX.cfg);
+  if(!LIDX.items.length){ notify('⚠️ QUIZ: —'); return; }
+  LIDX.idx = 0; LIDX.done = false; LIDX.tr = false; LIDX._trIdx = -1;
+  LIDX.startedAt = Date.now();
+  LIDX.practice = LIDX.cfg.mode === 'practice';
+  LIDX.endsAt = LIDX.practice ? 0 : LIDX.startedAt + LIDX.cfg.minutes * 60000;
+  try{ _examSimRequestWakeLock(); }catch(e){}
+  if(typeof window.mlog === 'function') window.mlog('lid_exam_start', { lesson_id: LIDX.lesson.id, mode: LIDX.cfg.mode, questions: LIDX.items.length });
+  var root = _lidxRoot();
+  root.innerHTML =
+    '<div class="lidx-head">' +
+      '<div class="lidx-head-row">' +
+        // Переклад — лише в тренувальному режимі; в іспиті місце порожнє (таймер лишається по центру)
+        (LIDX.practice ? '<button type="button" class="lidx-hbtn" id="lidx-tr-btn" onclick="_lidxToggleTr()">' + movaIcon('translate') + '</button>' : '<span class="lidx-hbtn-ph"></span>') +
+        '<div class="lidx-timer' + (LIDX.practice ? ' up' : '') + '" id="lidx-timer">' + (LIDX.practice ? '0:00' : LIDX.cfg.minutes + ':00') + '</div>' +
+        '<button type="button" class="lidx-hbtn" onclick="closeLidExam()" aria-label="✕">' + movaIcon('cross') + '</button>' +
+      '</div>' +
+      '<button type="button" class="lidx-qnum" id="lidx-qnum" onclick="_lidxOpenNav()"></button>' +
+      '<div class="lidx-bar"><div class="lidx-bar-fill" id="lidx-bar-fill"></div></div>' +
+    '</div>' +
+    '<div class="lidx-body" id="lidx-body">' +
+      '<div class="quiz-question"><div class="quiz-q-text" id="lidx-q-text"></div><div class="quiz-q-tr" id="lidx-q-tr"></div><div class="quiz-q-img" id="lidx-q-img"></div></div>' +
+      '<div class="quiz-options" id="lidx-opts"></div>' +
+    '</div>' +
+    '<div class="lidx-foot">' +
+      '<button type="button" class="lidx-sec" id="lidx-back" onclick="_lidxGo(-1)" aria-label="' + _lidxEsc(lidxT('back')) + '">' + movaIcon('back') + '</button>' +
+      '<button type="button" class="lidx-sec" id="lidx-expl" style="display:none" onclick="_lidxShowExpl()" title="' + _lidxEsc(lidxT('expl')) + '" aria-label="' + _lidxEsc(lidxT('expl')) + '">' + movaIcon('bulb') + '</button>' +
+      '<button type="button" class="lidx-main" id="lidx-next" onclick="_lidxNext()"></button>' +
+    '</div>';
+  _lidxSyncTrBtn();
+  _lidxRenderQ();
+  if(LIDX.timerId) clearInterval(LIDX.timerId);
+  LIDX.timerId = setInterval(_lidxTick, 250);
+  _lidxTick();
+}
+
+function _lidxTick(){
+  if(!LIDX || LIDX.done) return;
+  if(LIDX.practice){   // секундомір угору, без ліміту
+    var up = Math.floor((Date.now() - LIDX.startedAt) / 1000);
+    var te = document.getElementById('lidx-timer');
+    if(te) te.textContent = Math.floor(up / 60) + ':' + (up % 60 < 10 ? '0' : '') + (up % 60);
+    return;
+  }
+  var ms = LIDX.endsAt - Date.now();
+  var sec = Math.max(0, Math.ceil(ms / 1000)), m = Math.floor(sec / 60), s = sec % 60;
+  var el = document.getElementById('lidx-timer');
+  if(el){ el.textContent = m + ':' + (s < 10 ? '0' : '') + s; el.classList.toggle('urgent', sec <= 300); }
+  if(!LIDX.warned5 && sec <= 300 && LIDX.cfg.minutes > 5){ LIDX.warned5 = true; try{ _examSimPlayWarningBeep(); }catch(e){} }
+  if(ms <= 0){ try{ _examSimPlayBeep(); }catch(e){} _lidxSubmit(true); }
+}
+
+function _lidxTexts(obj){
+  var pl = primaryLang();
+  var main = (obj && (obj[pl] || obj.de || obj.en)) || '';
+  var tr = (obj && uiLang !== pl && obj[uiLang] && obj[uiLang] !== main) ? obj[uiLang] : '';
+  return { main: main, tr: tr };
+}
+
+function _lidxRenderQ(){
+  var it = LIDX.items[LIDX.idx], q = it.q, n = LIDX.items.length;
+  // Переклад — лише «підглянути» поточне питання: на іншому питанні знову вимкнений.
+  // (Вибір відповіді перемальовує те саме питання — переклад тоді лишається.)
+  if(LIDX._trIdx !== LIDX.idx){ LIDX.tr = false; LIDX._trIdx = LIDX.idx; _lidxSyncTrBtn(); }
+  document.getElementById('lidx-qnum').innerHTML = lidxT('q') + ' <b>' + (LIDX.idx + 1) + '</b> ' + lidxT('of') + ' ' + n + ' <span class="lidx-qnum-grid">' + movaIcon('list') + '</span>';
+  var answered = LIDX.items.filter(function(x){ return x.chosen >= 0; }).length;
+  document.getElementById('lidx-bar-fill').style.width = Math.round(answered / n * 100) + '%';
+  var qt = _lidxTexts(q.question);
+  document.getElementById('lidx-q-text').textContent = qt.main;
+  var trEl = document.getElementById('lidx-q-tr');
+  trEl.textContent = qt.tr; trEl.dataset.has = qt.tr ? '1' : '';
+  var imgBox = document.getElementById('lidx-q-img');
+  imgBox.innerHTML = '';
+  var im = q.img && (typeof q.img === 'string' ? {src: q.img} : q.img);
+  if(im && im.src){ var e = document.createElement('img'); e.src = quizImgUrl(im.src); e.alt = ''; imgBox.appendChild(e); imgBox.style.display = ''; }
+  else imgBox.style.display = 'none';
+  var box = document.getElementById('lidx-opts');
+  box.innerHTML = '';
+  box.classList.toggle('has-img', it.answers.some(function(a){ return a.img; }));
+  var locked = LIDX.practice && it.chosen >= 0;   // тренувальний: відповідь одна, одразу з результатом
+  it.answers.forEach(function(a, i){
+    var b = document.createElement('button');
+    b.type = 'button';
+    var cls = 'quiz-opt';
+    if(locked){
+      if(a.correct) cls += (i === it.chosen ? ' correct' : ' reveal');
+      else if(i === it.chosen) cls += ' wrong';
+      b.style.pointerEvents = 'none';
+    } else if(it.chosen === i) cls += ' lidx-sel';
+    b.className = cls;
+    var at = _lidxTexts(a);
+    var html = '<span class="quiz-opt-letter">' + 'ABCD'[i] + '</span>';
+    if(a.img) html += '<img class="quiz-opt-img" src="' + _lidxEsc(quizImgUrl(typeof a.img === 'string' ? a.img : a.img.src)) + '" alt="">';
+    if(at.main || at.tr) html += '<span class="quiz-opt-txt">' + (at.main ? '<span class="quiz-opt-main">' + _lidxEsc(at.main) + '</span>' : '') +
+      (at.tr ? '<span class="quiz-opt-tr lidx-tr">' + _lidxEsc(at.tr) + '</span>' : '') + '</span>';
+    b.innerHTML = html;
+    b.onclick = function(){
+      if(LIDX.practice){
+        if(it.chosen >= 0) return;
+        it.chosen = i;
+        var ok = !!a.correct;
+        try{ haptic[ok ? 'success' : 'error'](); answerFeedback(ok); }catch(e){}
+        _lidxRenderQ();
+        // Озвучуємо правильну відповідь (як у квізі уроку), якщо є аудіо
+        var ce = document.querySelector('#lidx-opts .quiz-opt.correct .quiz-opt-main, #lidx-opts .quiz-opt.reveal .quiz-opt-main');
+        if(ce) try{ _quizSpeak(q, 'answer', ce); }catch(e){}
+        return;
+      }
+      it.chosen = i; _lidxRenderQ();
+    };
+    box.appendChild(b);
+  });
+  document.getElementById('lidx-back').disabled = LIDX.idx === 0;
+  var last = LIDX.idx === n - 1;
+  var nx = document.getElementById('lidx-next');
+  nx.textContent = last ? lidxT('submit') : lidxT('next');
+  nx.classList.toggle('dim', !last && it.chosen < 0);
+  var eb = document.getElementById('lidx-expl');
+  if(eb) eb.style.display = (locked && _quizHasExpl(q)) ? '' : 'none';
+  _lidxApplyTr();
+}
+
+function _lidxShowExpl(q){
+  q = q || (LIDX && LIDX.items[LIDX.idx] && LIDX.items[LIDX.idx].q);
+  if(q) try{ _quizShowExpl(q); }catch(e){}
+}
+function _lidxShowExplAt(i){ if(LIDX && LIDX.items[i]) _lidxShowExpl(LIDX.items[i].q); }
+function _lidxApplyTr(){
+  var root = _lidxRoot();
+  root.classList.toggle('lidx-show-tr', !!LIDX.tr);
+  _lidxSyncTrBtn();
+}
+function _lidxSyncTrBtn(){
+  var b = document.getElementById('lidx-tr-btn');
+  if(!b) return;
+  b.classList.toggle('on', !!LIDX.tr);
+  b.title = lidxT(LIDX.tr ? 'tr_on' : 'tr_off');
+  b.setAttribute('aria-label', b.title);
+  b.setAttribute('aria-pressed', LIDX.tr ? 'true' : 'false');
+}
+function _lidxToggleTr(){
+  LIDX.tr = !LIDX.tr;
+  _lidxSyncTrBtn(); _lidxApplyTr();
+  if(typeof window.mlog === 'function') window.mlog('lid_exam_translate', { on: LIDX.tr ? 1 : 0, q: LIDX.idx + 1 });
+}
+
+function _lidxGo(d){
+  var j = LIDX.idx + d;
+  if(j < 0 || j >= LIDX.items.length) return;
+  LIDX.idx = j; _lidxRenderQ();
+  var body = document.getElementById('lidx-body'); if(body) body.scrollTop = 0;
+}
+function _lidxNext(){
+  if(LIDX.idx < LIDX.items.length - 1){ _lidxGo(1); return; }
+  _lidxAskSubmit();
+}
+function _lidxAskSubmit(){
+  var left = LIDX.items.filter(function(x){ return x.chosen < 0; }).length;
+  if(!left){ _lidxSubmit(false); return; }
+  movaConfirm(lidxT('unanswered_confirm', {n: left}), { okText: lidxT('submit'), cancelText: lidxT('back') })
+    .then(function(ok){ if(ok) _lidxSubmit(false); });
+}
+
+function _lidxOpenNav(){
+  var old = document.getElementById('lidx-nav'); if(old) old.remove();
+  var ov = document.createElement('div');
+  ov.id = 'lidx-nav'; ov.className = 'lidx-nav-ov';
+  var answered = LIDX.items.filter(function(x){ return x.chosen >= 0; }).length;
+  var cells = LIDX.items.map(function(x, i){
+    var st = x.chosen < 0 ? '' : !LIDX.practice ? ' ans' : (x.answers[x.chosen] && x.answers[x.chosen].correct ? ' ok' : ' bad');
+    return '<button type="button" class="lidx-nav-cell' + st + (i === LIDX.idx ? ' cur' : '') + '" data-i="' + i + '">' + (i + 1) + '</button>';
+  }).join('');
+  ov.innerHTML = '<div class="lidx-nav"><div class="lidx-nav-h"><b>' + lidxT('nav_title') + '</b><span>' + answered + '/' + LIDX.items.length + ' ' + lidxT('answered') + '</span></div>' +
+    '<div class="lidx-nav-grid">' + cells + '</div>' +
+    '<button type="button" class="lidx-main" id="lidx-nav-submit">' + _lidxEsc(lidxT('submit')) + '</button></div>';
+  ov.onclick = function(e){
+    if(e.target === ov){ ov.remove(); return; }
+    var c = e.target.closest('.lidx-nav-cell');
+    if(c){ ov.remove(); LIDX.idx = +c.dataset.i; _lidxRenderQ(); return; }
+    if(e.target.closest('#lidx-nav-submit')){ ov.remove(); _lidxAskSubmit(); }
+  };
+  _lidxRoot().appendChild(ov);
+}
+
+function _lidxSubmit(timeUp){
+  if(!LIDX || LIDX.done) return;
+  LIDX.done = true;
+  if(LIDX.timerId){ clearInterval(LIDX.timerId); LIDX.timerId = null; }
+  try{ _examSimReleaseWakeLock(); }catch(e){}
+  var nav = document.getElementById('lidx-nav'); if(nav) nav.remove();
+  var c = LIDX.cfg, n = LIDX.items.length;
+  var correct = 0;
+  LIDX.items.forEach(function(it){
+    var a = it.answers[it.chosen];
+    it.ok = !!(a && a.correct);
+    if(it.ok) correct++;
+    // SM-2: відповіді іспиту теж рахуються як повторення питання (без відповіді — не записуємо)
+    if(it.chosen >= 0) try{ quizRecordAnswer(it.q, it.ok); }catch(e){}
+  });
+  LIDX.correct = correct;
+  LIDX.timeSec = Math.round((Date.now() - LIDX.startedAt) / 1000);
+  if(c.mode === 'strict') LIDX.timeSec = Math.min(c.minutes * 60, LIDX.timeSec);
+  // XP: як за завдання з вибором варіанта (за кожну правильну) + бонус за завершення; стрік — як після уроку
+  var xp = 0;
+  try{
+    xp = correct * (XP_TASK_WEIGHT.General || 2) + XP_LESSON_COMPLETE_BONUS;
+    xpAward(xp);
+    var sr = srUpdateStreak();
+    if(typeof renderStreakUI === 'function') renderStreakUI();
+    if(typeof renderXPUI === 'function') renderXPUI();
+  }catch(e){ console.warn('[lidExam] xp/streak:', e); }
+  LIDX.xp = xp;
+  // Складено (бал Einbürgerungstest) — вузол позначається пройденим
+  if(c.mode === 'strict' && correct >= c.pass) try{ lessonMarkDone(LIDX.lesson.id); }catch(e){}
+  if(typeof window.mlog === 'function') window.mlog('lid_exam_finish', {
+    lesson_id: LIDX.lesson.id, mode: c.mode, correct: correct, total: n, time_sec: LIDX.timeSec, time_up: timeUp ? 1 : 0,
+    passed: correct >= c.pass ? 'einb' : correct >= c.passLid ? 'lid' : 'no' });
+  _lidxRenderResult(timeUp);
+}
+
+function _lidxRenderResult(timeUp){
+  LIDX.tr = false;   // огляд помилок — теж без перекладу, доки не натиснути 🌐
+  var c = LIDX.cfg, n = LIDX.items.length, k = LIDX.correct, root = _lidxRoot();
+  var verdict, sub, cls;
+  if(k >= c.pass){ verdict = lidxT('res_pass'); sub = lidxT('res_pass_sub', {p: c.pass}); cls = 'ok'; }
+  else if(k >= c.passLid){ verdict = lidxT('res_lid'); sub = lidxT('res_lid_sub', {p: c.pass, k: c.pass - k}); cls = 'mid'; }
+  else { verdict = lidxT('res_fail'); sub = lidxT('res_fail_sub', {p: c.pass, p2: c.passLid}); cls = 'no'; }
+  var m = Math.floor(LIDX.timeSec / 60), s = LIDX.timeSec % 60;
+  var wrong = LIDX.items.map(function(it, i){ return {it: it, i: i}; }).filter(function(x){ return !x.it.ok; });
+  var ansLine = function(a, label, kind){
+    if(!a) return '<div class="lidx-rv-a ' + kind + '"><span class="lidx-rv-l">' + label + '</span><span class="lidx-rv-t">—</span></div>';
+    var t0 = _lidxTexts(a);
+    var main = t0.main || (a.img ? '🖼' : '');
+    return '<div class="lidx-rv-a ' + kind + '"><span class="lidx-rv-l">' + label + '</span><span class="lidx-rv-t">' + _lidxEsc(main) +
+      (t0.tr ? '<span class="lidx-rv-tr lidx-tr">' + _lidxEsc(t0.tr) + '</span>' : '') + '</span></div>';
+  };
+  var rv = wrong.map(function(x){
+    var it = x.it, qt = _lidxTexts(it.q.question);
+    var right = it.answers.find(function(a){ return a.correct; });
+    var mine = it.chosen >= 0 ? it.answers[it.chosen] : null;
+    var eBtn = _quizHasExpl(it.q) ? '<button type="button" class="lidx-rv-expl" onclick="_lidxShowExplAt(' + x.i + ')">' + movaIcon('bulb', 'mi mi-inline') + ' ' + _lidxEsc(lidxT('expl')) + '</button>' : '';
+    return '<div class="lidx-rv"><div class="lidx-rv-n">' + (x.i + 1) + '</div><div class="lidx-rv-body">' +
+      '<div class="lidx-rv-q">' + _lidxEsc(qt.main) + (qt.tr ? '<span class="lidx-rv-tr lidx-tr">' + _lidxEsc(qt.tr) + '</span>' : '') + '</div>' +
+      (mine ? ansLine(mine, lidxT('your'), 'bad') : '<div class="lidx-rv-a bad"><span class="lidx-rv-l">' + lidxT('your') + '</span><span class="lidx-rv-t"><i>' + lidxT('no_answer') + '</i></span></div>') +
+      ansLine(right, lidxT('correct'), 'good') + eBtn +
+      '</div></div>';
+  }).join('');
+  root.innerHTML =
+    '<div class="lidx-head"><div class="lidx-head-row">' +
+      '<button type="button" class="lidx-hbtn" id="lidx-tr-btn" onclick="_lidxToggleTr()">' + movaIcon('translate') + '</button>' +
+      '<div class="lidx-head-title">' + _lidxEsc(LIDX.lesson.title ? (LIDX.lesson.title[uiLang] || LIDX.lesson.title.de) : lidxT('brief_title')) + '</div>' +
+      '<button type="button" class="lidx-hbtn" onclick="closeLidExam()" aria-label="✕">' + movaIcon('cross') + '</button></div></div>' +
+    '<div class="lidx-body lidx-res">' +
+      (timeUp ? '<div class="lidx-timeup">' + movaIcon('timer', 'mi mi-inline') + ' ' + lidxT('timeup') + '</div>' : '') +
+      '<div class="lidx-score ' + cls + '"><div class="lidx-score-num">' + k + '<span>/' + n + '</span></div><div class="lidx-score-l">' + lidxT('res_correct') + '</div></div>' +
+      '<div class="lidx-verdict ' + cls + '">' + _lidxEsc(verdict) + '</div>' +
+      '<div class="lidx-verdict-sub">' + _lidxEsc(sub) + '</div>' +
+      '<div class="lidx-res-stats"><span>' + movaIcon('timer', 'mi mi-inline') + ' ' + m + ':' + (s < 10 ? '0' : '') + s + '</span>' +
+        '<span>' + movaIcon('mpoint', 'mi mi-inline') + ' +' + (LIDX.xp || 0) + ' XP</span></div>' +
+      '<div class="lidx-rv-h">' + lidxT('res_mistakes') + (wrong.length ? ' · ' + wrong.length : '') + '</div>' +
+      (wrong.length ? rv : '<div class="lidx-rv-none">' + lidxT('res_none') + '</div>') +
+    '</div>' +
+    '<div class="lidx-foot">' +
+      '<button type="button" class="lidx-sec wide" onclick="_lidxRenderBrief()">' + _lidxEsc(lidxT('again')) + '</button>' +
+      '<button type="button" class="lidx-main" onclick="closeLidExam(true)">' + _lidxEsc(lidxT('finish')) + '</button>' +
+    '</div>';
+  _lidxSyncTrBtn(); _lidxApplyTr();
+}
+
+function closeLidExam(force){
+  var running = LIDX && LIDX.items.length && !LIDX.done && LIDX.timerId;
+  if(running && !force){
+    movaConfirm(lidxT('exit_confirm'), { okText: lidxT('exit_ok'), cancelText: lidxT('stay'), danger: true })
+      .then(function(ok){ if(ok) closeLidExam(true); });
+    return;
+  }
+  if(LIDX && LIDX.timerId){ clearInterval(LIDX.timerId); LIDX.timerId = null; }
+  try{ _examSimReleaseWakeLock(); }catch(e){}
+  var root = document.getElementById('lidx');
+  if(root){ root.style.display = 'none'; root.innerHTML = ''; }
+  document.body.classList.remove('lidx-open');
+  LIDX = null;
+  try{ renderLernpfad({skipAutoScroll:true}); }catch(e){}
+}
+
 // ── Власні діалоги замість confirm()/alert() ─────────────────────────────────
 // movaConfirm(текст, {okText, cancelText, danger}) → Promise<boolean>
 // movaAlert(текст, {okText})                         → Promise<void>
@@ -20160,6 +20773,7 @@ function startLessonFlow(lessonId){
   const lesson  = lessons.find(l=>l.id===lessonId);
   if(!lesson) return;
   if(lesson.type === 'quiz'){ startQuizLesson(lessonId); return; }
+  if(lesson.type === 'lidexam'){ startLidExam(lessonId); return; }
   try{ localStorage.setItem("mova_last_lesson", lessonId); }catch(e){}
 
   const vocab   = typeof VOCAB!=='undefined' ? VOCAB : [];
@@ -20229,29 +20843,45 @@ function startQuizLesson(lessonId){
   lfGoStep(0);
 }
 
-// Вибір федеральної землі (для регіональних питань) — модальне вікно з 16 кнопками.
+// Вибір федеральної землі (для регіональних питань) — модальне вікно: шапка з назвою і ✕ справа
+// зверху (завжди видно), нижче — список земель по одній у рядок із власною прокруткою.
+// Шрифт — стандартний розмір карток (--fs-card), тобто масштабується налаштуванням розміру тексту.
 function quizPickRegion(done){
   const old = document.getElementById('region-picker');
   if(old) old.remove();
+  const cur = quizUserRegion();
   const ov = document.createElement('div');
   ov.id = 'region-picker';
-  ov.style.cssText = 'position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,.6);display:flex;align-items:center;justify-content:center;padding:16px';
+  ov.className = 'region-pick-ov';
   const box = document.createElement('div');
-  box.style.cssText = 'background:var(--card,#fff);color:var(--ink,#111);border-radius:16px;padding:16px;max-width:420px;width:100%;max-height:85vh;overflow:auto';
+  box.className = 'region-pick';
+  box.setAttribute('role', 'dialog'); box.setAttribute('aria-modal', 'true');
+  const head = document.createElement('div');
+  head.className = 'region-pick-head';
+  const tw = document.createElement('div');
+  tw.className = 'region-pick-tw';
   const h = document.createElement('div');
-  h.style.cssText = 'font-weight:700;font-size:17px;margin-bottom:2px';
+  h.className = 'region-pick-title';
   h.textContent = t('region_pick_title');
   const sub = document.createElement('div');
-  sub.style.cssText = 'font-size:13px;opacity:.7;margin-bottom:12px';
+  sub.className = 'region-pick-sub';
   sub.textContent = t('region_pick_sub');
-  const grid = document.createElement('div');
-  grid.style.cssText = 'display:grid;grid-template-columns:1fr 1fr;gap:8px';
+  tw.appendChild(h); tw.appendChild(sub);
+  const x = document.createElement('button');
+  x.type = 'button';
+  x.className = 'region-pick-x';
+  x.setAttribute('aria-label', '✕');
+  x.innerHTML = movaIcon('cross');
+  x.onclick = ()=> ov.remove();
+  head.appendChild(tw); head.appendChild(x);
+  const list = document.createElement('div');
+  list.className = 'region-pick-list';
   REGIONS.forEach(r=>{
     const b = document.createElement('button');
     b.type = 'button';
-    b.className = 'btn btn-s';
-    b.style.cssText = 'text-align:left;padding:10px';
-    b.textContent = r[uiLang] || r.de || r.id;
+    b.className = 'region-pick-item' + (r.id === cur ? ' on' : '');
+    b.innerHTML = '<span></span>' + (r.id === cur ? movaIcon('check') : '');
+    b.firstChild.textContent = r[uiLang] || r.de || r.id;
     b.onclick = ()=>{
       setQuizRegion(r.id);
       ov.remove();
@@ -20259,18 +20889,14 @@ function quizPickRegion(done){
       try{ renderLernpfad({skipAutoScroll:true}); }catch(e){}
       if(done) done();
     };
-    grid.appendChild(b);
+    list.appendChild(b);
   });
-  const cancel = document.createElement('button');
-  cancel.type = 'button';
-  cancel.className = 'btn btn-s';
-  cancel.style.cssText = 'width:100%;margin-top:10px';
-  cancel.textContent = '✕';
-  cancel.onclick = ()=> ov.remove();
-  box.appendChild(h); box.appendChild(sub); box.appendChild(grid); box.appendChild(cancel);
+  box.appendChild(head); box.appendChild(list);
   ov.appendChild(box);
   ov.addEventListener('click', e=>{ if(e.target === ov) ov.remove(); });
   document.body.appendChild(ov);
+  const on = list.querySelector('.on');
+  if(on) on.scrollIntoView({block:'center'});
 }
 
 // ── Єдиний підрахунок прогресу уроку ─────────────────────────────────────────
