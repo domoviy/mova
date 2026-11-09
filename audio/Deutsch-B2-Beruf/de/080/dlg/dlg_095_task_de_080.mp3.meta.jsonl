@@ -21,3 +21,10 @@
 {"type": "WordBoundary", "offset": 90187500, "duration": 2656250, "text": "zum"}
 {"type": "WordBoundary", "offset": 92843750, "duration": 9062500, "text": "Liefertermin"}
 {"type": "WordBoundary", "offset": 102843750, "duration": 2500000, "text": "oder"}
+{"type": "WordBoundary", "offset": 105343750, "duration": 1718750, "text": "zur"}
+{"type": "WordBoundary", "offset": 107062500, "duration": 11562500, "text": "Rechnungsadresse"}
+{"type": "WordBoundary", "offset": 122843750, "duration": 3437500, "text": "Das"}
+{"type": "WordBoundary", "offset": 126281250, "duration": 3750000, "text": "f\u00fchrte"}
+{"type": "WordBoundary", "offset": 130031250, "duration": 1718750, "text": "zu"}
+{"type": "WordBoundary", "offset": 131750000, "duration": 10468750, "text": "Verz\u00f6gerungen"}
+{"type": "WordBoundary", "offset": 142218750, "duration": 2343750, "text": "und"}
