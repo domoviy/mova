@@ -1299,7 +1299,34 @@ def _looks_truncated(cleaned_text, boundary_words):
     got_norm = [_norm_word(w) for w in boundary_words]
 
     sm = difflib.SequenceMatcher(None, expected_norm, got_norm, autojunk=False)
-    for tag, i1, i2, j1, j2 in sm.get_opcodes():
+    opcodes = sm.get_opcodes()
+
+    # ТРЕТЯ ІТЕРАЦІЯ (2026-11-10): обрив потоку фізично губить лише КІНЕЦЬ
+    # аудіо — слова посередині при цьому не зникають. Живий прогін показав
+    # стабільні (однакові на кожній спробі) розбіжності ПОСЕРЕДИНІ фрази при
+    # повністю збіжному кінці: цитати в одинарних лапках ('Uns ist ...'),
+    # номери й дати в листах (AN-2026-057, "30. April", Nr. 2026-1183) —
+    # Edge TTS звітує такі місця іншими подіями/формами. Тому: якщо останні
+    # слова тексту збіглися з останніми отриманими подіями — це НЕ обрив
+    # (на обрив "метадані є, аудіо нема" є окрема перевірка turn.end, на
+    # розсинхрон аудіо — _looks_timing_desynced). Розбіжність посередині
+    # лише виводимо в лог для діагностики.
+    TAIL_WORDS = 2
+    last = opcodes[-1] if opcodes else None
+    tail_ok = (
+        last is not None and last[0] == 'equal'
+        and last[2] == len(expected_norm) and last[4] == len(got_norm)
+        and (last[2] - last[1]) >= min(TAIL_WORDS, len(expected_norm))
+    )
+    if tail_ok:
+        diffs = [(expected[i1:i2], boundary_words[j1:j2])
+                 for tag, i1, i2, j1, j2 in opcodes if tag != 'equal']
+        if diffs:
+            shown = '; '.join(f"{' '.join(e) or '∅'} → {' '.join(g) or '∅'}" for e, g in diffs[:4])
+            print(f"   ℹ️  Кінець фрази збігся, розбіжність лише посередині (не обрив): {shown}", flush=True)
+        return False
+
+    for tag, i1, i2, j1, j2 in opcodes:
         if tag == 'equal':
             continue
         # .replace('-', '') — порівнюємо ЗМІСТ, а не запис: дефіс сам по
