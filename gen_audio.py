@@ -109,6 +109,16 @@ RETRY_BASE_DELAY = float(os.environ.get('TTS_RETRY_BASE_DELAY', '2.0'))
 # (суцільні зависання) — це 10с × 3 спроби × кілька завдань до спрацювання
 # fail-fast, а не години.
 SYNTH_TIMEOUT = float(os.environ.get('TTS_SYNTH_TIMEOUT', '10.0'))
+# Додаток до таймауту на кожен символ тексту. Edge TTS віддає аудіо
+# потоком приблизно в темпі мовлення, тож довгі поля (task діалогів B2 —
+# 400+ символів, ~35с аудіо) фізично не встигали за фіксовані 10с і
+# падали з "Синтез не завершився за 10с", хоча з'єднання не зависало.
+# 0.05с/символ: картка VOCAB (~40 символів) ≈ 12с, task (~450) ≈ 32с.
+SYNTH_TIMEOUT_PER_CHAR = float(os.environ.get('TTS_SYNTH_TIMEOUT_PER_CHAR', '0.05'))
+
+
+def synth_timeout_for(text):
+    return SYNTH_TIMEOUT + len(text or '') * SYNTH_TIMEOUT_PER_CHAR
 # Скільки ПОСПІЛЬ повністю провалених завдань (усі RETRY_ATTEMPTS спроб
 # невдалі) означають "зупинити прогін" замість "продовжувати й далі".
 # Причина: "No audio was received" від Edge TTS у переважній більшості
@@ -1688,10 +1698,11 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
             # у гіршому разі одна зайва спроба встигне стартувати).
             if stats.get("stop_requested"):
                 return
+            synth_timeout = synth_timeout_for(task["cleaned"])
             try:
                 await asyncio.wait_for(
                     synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path, want_timing=task.get("want_timing", False)),
-                    timeout=SYNTH_TIMEOUT
+                    timeout=synth_timeout
                 )
                 synthesized = True
                 break
@@ -1709,7 +1720,7 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
                     pass
                 raise
             except asyncio.TimeoutError:
-                last_error = f"Синтез не завершився за {SYNTH_TIMEOUT:.0f}с (ймовірно, зависле з'єднання Edge TTS)"
+                last_error = f"Синтез не завершився за {synth_timeout:.0f}с (ймовірно, зависле з'єднання Edge TTS)"
                 if file_path.exists():
                     file_path.unlink()
                 timing_path = file_path.with_suffix('.words.json')
