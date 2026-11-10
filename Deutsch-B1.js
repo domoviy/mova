@@ -53700,10 +53700,10 @@ var DIALOGE = [
       "gram": ""
     },
     "a": {
-      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Lass uns mit <g>einer wichtigen Frage</g> anfangen – zum Beispiel: 'Warum wollen Sie bei uns arbeiten?'<br><r>Was denkst du?</r>",
-      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> let's start with <g>an important question</g> – for example: 'Why do you want to work here?'<br><r>What do you think?</r>",
-      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> давай почнемо з <g>важливого питання</g> – наприклад: 'Чому ви хочете працювати в нас?'<br><r>Що ти думаєш?</r>",
-      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> давай начнём с <g>важного вопроса</g> – например: 'Почему вы хотите у нас работать?'<br><r>Что ты думаешь?</r>",
+      "de": "<r>Klingt super, machen wir so</r>.<br><r>Ich hätte einen Vorschlag:</r> Lass uns mit <g>einer wichtigen Frage</g> anfangen – zum Beispiel: „Warum wollen Sie bei uns arbeiten?“<br><r>Was denkst du?</r>",
+      "en": "<r>Sounds great, let's do that</r>.<br><r>I have a suggestion:</r> let's start with <g>an important question</g> – for example: „Why do you want to work here?“<br><r>What do you think?</r>",
+      "uk": "<r>Звучить чудово, зробімо так</r>.<br><r>У мене є пропозиція:</r> давай почнемо з <g>важливого питання</g> – наприклад: «Чому ви хочете працювати в нас?»<br><r>Що ти думаєш?</r>",
+      "ru": "<r>Звучит отлично, сделаем так</r>.<br><r>У меня есть предложение:</r> давай начнём с <g>важного вопроса</g> – например: «Почему вы хотите у нас работать?»<br><r>Что ты думаешь?</r>",
       "gram": "adjektive_auf_ig_isch"
     },
     "q1": {
