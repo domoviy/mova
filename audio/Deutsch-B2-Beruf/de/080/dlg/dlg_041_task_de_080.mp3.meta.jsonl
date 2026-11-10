@@ -25,7 +25,3 @@
 {"type": "WordBoundary", "offset": 125031250, "duration": 2187500, "text": "Sie"}
 {"type": "WordBoundary", "offset": 127218750, "duration": 1093750, "text": "in"}
 {"type": "WordBoundary", "offset": 128312500, "duration": 3281250, "text": "dieser"}
-{"type": "WordBoundary", "offset": 131593750, "duration": 7343750, "text": "Situation"}
-{"type": "WordBoundary", "offset": 138937500, "duration": 8437500, "text": "reagieren"}
-{"type": "WordBoundary", "offset": 156250000, "duration": 3750000, "text": "Diese"}
-{"type": "WordBoundary", "offset": 160000000, "duration": 8437500, "text": "Stichpunkte"}

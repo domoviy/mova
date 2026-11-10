@@ -72,9 +72,3 @@
 {"type": "WordBoundary", "offset": 371468750, "duration": 1093750, "text": "in"}
 {"type": "WordBoundary", "offset": 372562500, "duration": 1250000, "text": "der"}
 {"type": "WordBoundary", "offset": 373812500, "duration": 7500000, "text": "verbleibenden"}
-{"type": "WordBoundary", "offset": 381312500, "duration": 3906250, "text": "Zeit"}
-{"type": "WordBoundary", "offset": 385218750, "duration": 10468750, "text": "organisieren"}
-{"type": "WordBoundary", "offset": 400625000, "duration": 11562500, "text": "Dokumentation"}
-{"type": "WordBoundary", "offset": 417343750, "duration": 2187500, "text": "Was"}
-{"type": "WordBoundary", "offset": 419531250, "duration": 3750000, "text": "sollte"}
-{"type": "WordBoundary", "offset": 423281250, "duration": 6250000, "text": "schriftlich"}
