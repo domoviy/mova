@@ -1,0 +1,74 @@
+# Копіює теку audio/ з репозиторію в Cloudflare R2 (бакет mova-audio, префікс audio/).
+# Розмістити в репозиторії сайту як  .github/workflows/sync-audio-r2.yml
+#
+# Потрібні секрети репозиторію (Settings → Secrets and variables → Actions):
+#   R2_ACCESS_KEY_ID, R2_SECRET_ACCESS_KEY — ключі API-токена R2 (Object Read & Write, лише mova-audio)
+#   R2_ENDPOINT — https://<ACCOUNT_ID>.r2.cloudflarestorage.com (без назви бакета)
+#
+# Запуск: Actions → Sync audio to R2 → Run workflow. Спершу dry_run = true (лише список змін).
+# Порядок: спершу mp3 і .words.json, потім маніфести — щоб маніфест ніколи не посилався
+# на файл, якого ще немає в R2. sync видаляє з R2 файли, яких немає в репозиторії,
+# але не чіпає маніфести (вони виключені з першого кроку).
+
+name: Sync audio to R2
+
+on:
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'true = лише показати, що буде залито/видалено; false = залити'
+        required: true
+        default: 'true'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sync-audio-r2
+  cancel-in-progress: false
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    timeout-minutes: 180
+    env:
+      RCLONE_CONFIG_R2_TYPE: s3
+      RCLONE_CONFIG_R2_PROVIDER: Cloudflare
+      RCLONE_CONFIG_R2_ACCESS_KEY_ID: ${{ secrets.R2_ACCESS_KEY_ID }}
+      RCLONE_CONFIG_R2_SECRET_ACCESS_KEY: ${{ secrets.R2_SECRET_ACCESS_KEY }}
+      RCLONE_CONFIG_R2_ENDPOINT: ${{ secrets.R2_ENDPOINT }}
+      RCLONE_CONFIG_R2_ACL: private
+      RCLONE_CONFIG_R2_NO_CHECK_BUCKET: 'true'
+      DRY: ${{ inputs.dry_run != 'false' && '--dry-run' || '' }}
+    steps:
+      - name: Checkout audio/ (лише остання версія, без історії)
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 1
+          sparse-checkout: audio
+          sparse-checkout-cone-mode: true
+
+      - name: Install rclone
+        run: curl -fsSL https://rclone.org/install.sh | sudo bash
+
+      - name: Перевірка доступу до бакета
+        run: rclone lsf r2:mova-audio --max-depth 1
+
+      - name: mp3 і .words.json
+        run: >
+          rclone sync audio r2:mova-audio/audio $DRY
+          --checksum --transfers 32 --checkers 32
+          --exclude "manifest.json" --exclude "index.json"
+          --header-upload "Cache-Control: public, max-age=600"
+          --stats 60s --stats-one-line -v
+
+      - name: Маніфести (manifest.json, index.json)
+        run: >
+          rclone copy audio r2:mova-audio/audio $DRY
+          --checksum --transfers 16
+          --include "manifest.json" --include "index.json"
+          --header-upload "Cache-Control: no-cache"
+          --stats 60s --stats-one-line -v
+
+      - name: Підсумок
+        run: rclone size r2:mova-audio/audio
