@@ -1,1 +1,12 @@
-
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "now.mova.app",
+      "sha256_cert_fingerprints": [
+        "FA:17:CB:27:47:73:C9:39:40:11:43:EF:26:4C:BD:3B:31:75:B7:A6:7F:42:EC:E7:00:06:85:6B:D1:F3:E9:36"
+      ]
+    }
+  }
+]
