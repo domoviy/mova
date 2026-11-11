@@ -137,6 +137,20 @@ CONSECUTIVE_FAILURE_LIMIT = int(os.environ.get('TTS_FAIL_FAST_LIMIT', '10'))
 # event loop — без ліміту завислий push (мережа/блокування) заморожував би весь скрипт,
 # зокрема й обробку сигналу скасування.
 GIT_TIMEOUT = float(os.environ.get('TTS_GIT_TIMEOUT', '180'))
+# Куди зберігати згенероване аудіо (кожну пачку з COMMIT_LIMIT файлів і фінальний залишок):
+#   'git'  — коміт + push у репозиторій (як було завжди; значення за замовчуванням);
+#   'r2'   — заливка в Cloudflare R2 через rclone, БЕЗ git. Аудіо в репозиторії тоді немає,
+#            тож перед генерацією скрипт сам стягує з R2 лише маніфести (r2_pull_manifests);
+#   'both' — і коміт, і R2: перехідний період, поки сайт ще віддає аудіо з GitHub Pages.
+# Для 'r2'/'both' потрібен rclone з віддаленим сховищем 'r2' (у GitHub Actions — змінні
+# RCLONE_CONFIG_R2_*, див. tools/github/sync-audio-r2.yml).
+STORAGE = os.environ.get('TTS_STORAGE', 'git').strip().lower()
+if STORAGE not in ('git', 'r2', 'both'):
+    raise SystemExit(f"❌ TTS_STORAGE='{STORAGE}': допустимо лише git, r2 або both.")
+# Куди в R2 кладеться вміст локальної теки audio/ (той самий шлях, що бачить застосунок:
+# https://audio.mova.now/audio/<курс>/...).
+R2_DEST = os.environ.get('TTS_R2_DEST', 'r2:mova-audio/audio')
+R2_TIMEOUT = float(os.environ.get('TTS_R2_TIMEOUT', '300'))
 # Поля, для яких генерується .words.json (таймінг слів для karaoke-
 # підсвітки) — рішення на рівні ГЕНЕРАТОРА, не бази: додавати однаковий
 # "wordTiming": true в кожен з тисяч записів бази безглуздо (роздуває
@@ -1638,12 +1652,96 @@ def git_commit_and_push(count):
             subprocess.run(["git", "push"], check=True, timeout=GIT_TIMEOUT)
         print("--- [Git Bot] Запушено ---", flush=True)
 
+# ── Cloudflare R2 (TTS_STORAGE = r2 | both) ─────────────────────
+# Заливаємо лише файли ПОТОЧНОЇ пачки (список шляхів, --files-from-raw + --no-traverse), а не
+# всю теку audio/: у бакеті сотні тисяч об'єктів, і перебирати їх на кожну пачку з 20 файлів
+# було б повільно. Порядок — спершу mp3/.words.json, потім маніфести: маніфест ніколи не
+# посилається на файл, якого ще немає в R2. Списки очищаються лише після успішної заливки —
+# невдала спроба повториться з наступною пачкою або у фінальному збереженні.
+_R2_PENDING_FILES = set()       # шляхи відносно AUDIO_ROOT (mp3 і .words.json)
+_R2_PENDING_MANIFESTS = set()   # шляхи відносно AUDIO_ROOT (manifest.json шардів, index.json)
+
+def _audio_rel(path):
+    return pathlib.Path(path).relative_to(AUDIO_ROOT).as_posix()
+
+def r2_mark_generated(file_path):
+    """Запам'ятовує щойно згенерований mp3 (і його .words.json, якщо є) для заливки в R2."""
+    if STORAGE == 'git':
+        return
+    p = pathlib.Path(file_path)
+    for f in (p, p.with_suffix('.words.json')):
+        if f.exists():
+            _R2_PENDING_FILES.add(_audio_rel(f))
+
+def r2_mark_manifests(course, mkey):
+    if STORAGE == 'git':
+        return
+    _, lang, rate, _ = split_mkey(mkey)
+    for f in (shard_path(course, lang, rate), index_path(course)):
+        if f.exists():
+            _R2_PENDING_MANIFESTS.add(_audio_rel(f))
+
+def _rclone_copy_list(rel_paths, cache_control):
+    if not rel_paths:
+        return
+    import tempfile
+    with tempfile.NamedTemporaryFile('w', suffix='.txt', delete=False, encoding='utf-8') as f:
+        f.write('\n'.join(sorted(rel_paths)) + '\n')
+        list_file = f.name
+    try:
+        subprocess.run([
+            "rclone", "copy", str(AUDIO_ROOT), R2_DEST,
+            "--files-from-raw", list_file, "--no-traverse", "--checksum",
+            "--transfers", "8", "--retries", "3", "--low-level-retries", "10",
+            "--header-upload", f"Cache-Control: {cache_control}",
+        ], check=True, timeout=R2_TIMEOUT)
+    finally:
+        os.unlink(list_file)
+
+def r2_upload_pending():
+    files, manifests = set(_R2_PENDING_FILES), set(_R2_PENDING_MANIFESTS)
+    if not files and not manifests:
+        return
+    _rclone_copy_list(files, "public, max-age=600")
+    _rclone_copy_list(manifests, "no-cache")
+    _R2_PENDING_FILES.difference_update(files)
+    _R2_PENDING_MANIFESTS.difference_update(manifests)
+    print(f"--- [R2] Залито {len(files)} аудіофайлів і {len(manifests)} маніфестів ---", flush=True)
+
+def r2_pull_manifests():
+    """Режим 'r2': аудіо в репозиторії немає, тож ManifestStore не мав би з чого читати — і
+    скрипт вирішив би, що НІЧОГО ще не згенеровано, та почав би перегенеровувати все аудіо.
+    Тому перед генерацією стягуємо з R2 лише manifest.json/index.json, а якщо не прийшло
+    жодного index.json — зупиняємось (TTS_ALLOW_EMPTY_R2=1 — свідомий старт з порожнього бакета)."""
+    AUDIO_ROOT.mkdir(parents=True, exist_ok=True)
+    print(f"— [R2] Стягую маніфести з {R2_DEST} ...", flush=True)
+    subprocess.run([
+        "rclone", "copy", R2_DEST, str(AUDIO_ROOT),
+        "--include", "manifest.json", "--include", "index.json",
+        "--checksum", "--fast-list", "--retries", "3",
+    ], check=True, timeout=R2_TIMEOUT)
+    n = len(list(AUDIO_ROOT.glob(f'*/{INDEX_FILE}')))
+    if n == 0 and os.environ.get('TTS_ALLOW_EMPTY_R2') != '1':
+        raise SystemExit("❌ [R2] З бакета не прийшло жодного index.json — зупиняюсь, щоб не "
+                         "перегенерувати все аудіо заново. Перевірте R2_DEST і ключі rclone "
+                         "(або задайте TTS_ALLOW_EMPTY_R2=1, якщо бакет справді порожній).")
+    print(f"— [R2] Маніфести отримано: {n} курс(ів).", flush=True)
+
+def save_batch(count):
+    """Зберігає пачку туди, куди вказує TTS_STORAGE. Падає (raise) при невдачі — виклики
+    нижче тоді не обнуляють batch_counter, і спроба повториться."""
+    if STORAGE in ('r2', 'both'):
+        r2_upload_pending()
+    if STORAGE in ('git', 'both'):
+        git_commit_and_push(count)
+
 def write_to_manifest_file(course, mkey, value):
     """Записує значення в шард (мова × швидкість) манифесту курсу — атомарно й одразу."""
     store = STORES.get(course)
     if store is None:
         store = STORES[course] = ManifestStore(course)
     store.set(mkey, value)
+    r2_mark_manifests(course, mkey)
 
 # ── Основний асинхронний воркер ─────────────────────────────────
 async def worker_task(task, semaphore, stats, lock, total_tasks):
@@ -1815,15 +1913,16 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
         # фінальному флаші (в кінці main()).
         async with lock:
             write_to_manifest_file(task["course"], task["mkey"], manifest_value(task["content_hash"], task.get("want_timing", False)))
+            r2_mark_generated(file_path)
             stats["generated"] += 1
             stats["batch_counter"] += 1
 
             if stats["batch_counter"] >= COMMIT_LIMIT:
                 try:
-                    git_commit_and_push(stats["batch_counter"])
+                    save_batch(stats["batch_counter"])
                     stats["batch_counter"] = 0
                 except Exception as e:
-                    print(f"⚠️  Проміжний коміт/пуш пачки не вдався: {e} — спробуємо знову на наступній пачці або в кінці роботи.", flush=True)
+                    print(f"⚠️  Проміжне збереження пачки ({STORAGE}) не вдалося: {e} — спробуємо знову на наступній пачці або в кінці роботи.", flush=True)
 
         if DELAY_SEC > 0:
             await asyncio.sleep(DELAY_SEC)
@@ -1917,7 +2016,13 @@ def migrate_course_manifests_to_shards():
 
 
 async def main():
-    print("Запуск генератора MOVA TTS (Edge TTS).", flush=True)
+    print(f"Запуск генератора MOVA TTS (Edge TTS). Сховище: {STORAGE}.", flush=True)
+    if STORAGE in ('r2', 'both'):
+        import shutil
+        if not shutil.which('rclone'):
+            raise SystemExit("❌ TTS_STORAGE=" + STORAGE + ": не знайдено rclone (встановіть його в workflow перед запуском).")
+    if STORAGE == 'r2':
+        r2_pull_manifests()
     migrate_legacy_manifest()
     migrate_course_manifests_to_shards()
 
@@ -2751,12 +2856,12 @@ async def main():
     # fail-fast (stop_requested) — усе згенероване й записане в manifest.json
     # до моменту зупинки має бути збережено в репозиторії, а не загублене на
     # диску ефемерного runner'а.
-    if stats["batch_counter"] > 0:
+    if stats["batch_counter"] > 0 or _R2_PENDING_FILES or _R2_PENDING_MANIFESTS:
         try:
-            git_commit_and_push(stats["batch_counter"])
+            save_batch(stats["batch_counter"])
         except Exception as e:
-            print(f"❌ Фінальний коміт/push не вдався: {e}", flush=True)
-            print("   Аудіофайли й записи manifest.json цієї пачки НЕ потрапили в репозиторій", flush=True)
+            print(f"❌ Фінальне збереження ({STORAGE}) не вдалося: {e}", flush=True)
+            print("   Аудіофайли й записи manifest.json цієї пачки НЕ потрапили в сховище", flush=True)
             print("   (лишились би лише на диску ефемерного runner'а і загубились би без сліду).", flush=True)
             sys.exit(1)
 

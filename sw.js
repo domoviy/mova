@@ -1,12 +1,18 @@
 // sw.js — Service Worker для MOVA PWA
 // CACHE_VERSION оновлюється автоматично GitHub Actions при кожному деплої
-const CACHE_VERSION = '1001-7339fff';
+const CACHE_VERSION = '960-e3706da';
 const CACHE_NAME = `mova-${CACHE_VERSION}`;
 // Аудіо (mp3) живе в ОКРЕМОМУ кеші без версії. CACHE_NAME змінюється на кожен деплой, а
 // activate нижче видаляє всі старі кеші — тож mp3 у ньому перекачувались би після кожного
 // релізу, хоча самі файли не змінились. Актуальність mp3, як і раніше, перевіряє клієнт за
 // хешем із манифесту (index.html сам видаляє застарілий запис із УСІХ кешів).
 const AUDIO_CACHE = 'mova-audio';
+// Аудіо, маніфести аудіо й .words.json лежать у Cloudflare R2 на власному домені (AUDIO_BASE
+// в index.html). Для SW це чужий домен, тому нижче він явно дозволений: правила для маніфестів
+// і mp3 перевіряють лише шлях (/audio/...), тож працюють для нього так само, як раніше для
+// mova.now/audio/... R2 віддає CORS (Access-Control-Allow-Origin: *), тож відповіді не opaque
+// і їх можна класти в кеш.
+const AUDIO_ORIGIN = 'https://audio.mova.now';
 
 const PRECACHE = [
   '/',
@@ -36,6 +42,15 @@ self.addEventListener('activate', event => {
     caches.keys().then(keys =>
       Promise.all(keys.filter(k => k !== CACHE_NAME && k !== AUDIO_CACHE).map(k => caches.delete(k)))
     )
+    // mp3, закешовані до переносу аудіо в R2 (адреси mova.now/audio/...), застосунок більше не
+    // запитує — вони лише займали б місце на телефоні. Прибираємо з AUDIO_CACHE записи з
+    // власного домену; записи з AUDIO_ORIGIN не чіпаємо. Після першого прибирання таких
+    // записів уже немає, і наступні активації проходять цей крок миттєво.
+    .then(() => caches.open(AUDIO_CACHE))
+    .then(cache => cache.keys().then(reqs => Promise.all(
+      reqs.filter(r => new URL(r.url).origin === self.location.origin).map(r => cache.delete(r))
+    )))
+    .catch(() => {})
   );
   self.clients.claim();
 });
@@ -46,10 +61,11 @@ self.addEventListener('fetch', event => {
 
   // Не втручаємось у те, що не є нашою статикою: POST/PUT (баг-репорти в Cloudflare Worker,
   // Firebase Auth) і чужі домени (Firestore, googleapis, gtag тощо) — браузер обробляє їх сам,
-  // без кешування. Єдиний виняток — Firebase SDK з www.gstatic.com (версійні незмінні модулі
-  // firebasejs/<версія>/…): його, як і раніше, віддаємо з кешу, щоб офлайн-старт не ламався.
+  // без кешування. Винятки: Firebase SDK з www.gstatic.com (версійні незмінні модулі
+  // firebasejs/<версія>/…) — віддаємо з кешу, щоб офлайн-старт не ламався; і аудіо з R2
+  // (AUDIO_ORIGIN) — обробляється правилами для маніфестів і mp3 нижче.
   if (event.request.method !== 'GET') return;
-  if (url.origin !== self.location.origin && url.hostname !== 'www.gstatic.com') return;
+  if (url.origin !== self.location.origin && url.hostname !== 'www.gstatic.com' && url.origin !== AUDIO_ORIGIN) return;
 
   // Cache First: шрифти, іконки — рідко змінюються
   if (url.pathname.startsWith('/fonts/') || url.pathname.match(/\.(png|ico|webp)$/)) {
