@@ -9,18 +9,7 @@ on:
     workflows: ['Update SW Cache Version']
     types:
       - completed
-  workflow_dispatch:   # Ручне керування режимами швидкості
-    inputs:
-      run_turbo:
-        description: 'Увімкнути режим TURBO (швидкий потік)'
-        required: false
-        default: false
-        type: boolean
-      run_free:
-        description: 'Увімкнути режим FREE (повільний потік, менша пачка коміту)'
-        required: false
-        default: false
-        type: boolean
+  workflow_dispatch:   # Ручний запуск
 
 # Не даємо двом запускам (напр. ручному й автоматичному) одночасно
 # писати в audio/ — це саме та ситуація, що призводила до застарілого
@@ -161,21 +150,14 @@ jobs:
       - name: Перевірка доступу до R2
         run: rclone lsf r2:mova-audio --max-depth 1
 
-      # Виставляємо параметри швидкості та ліміти збереження залежно від типу запуску
+      # Один потік із паузою 1.2с між запитами (менше ризик rate-limit від Edge TTS);
+      # проміжна заливка в R2 — пачками по 5 файлів (маленьке вікно ризику втрати прогресу).
       - name: Generate audio files
         env:
           TTS_STORAGE: r2
-          # Якщо активовано 'run_turbo' — ставимо 15 потоків, інакше — 1 потік
-          TTS_WORKERS: ${{ github.event.inputs.run_turbo == 'true' && '15' || '1' }}
-          # Якщо активовано 'run_turbo' — ставимо паузу 0.05, інакше — 1.2 сек
-          TTS_DELAY:   ${{ github.event.inputs.run_turbo == 'true' && '0.05' || '1.2' }}
-          # Кількість файлів у пачці для проміжної заливки в R2:
-          # 15 — TURBO, 25 — FREE, 5 — звичайний автозапуск чи ручний без прапорців
-          # (мала пачка тримає маленьким вікно ризику втрати прогресу при збої).
-          TTS_COMMIT_LIMIT: >-
-            ${{ github.event.inputs.run_turbo == 'true' && '15'
-             || github.event.inputs.run_free == 'true' && '25'
-             || '5' }}
+          TTS_WORKERS: '1'
+          TTS_DELAY: '1.2'
+          TTS_COMMIT_LIMIT: '5'
         run: python gen_audio.py
 
       # ЗБЕРЕЖЕННЯ ПІСЛЯ СКАСУВАННЯ: при натисканні "Cancel workflow" скрипт за секунди
