@@ -138,13 +138,14 @@ CONSECUTIVE_FAILURE_LIMIT = int(os.environ.get('TTS_FAIL_FAST_LIMIT', '10'))
 # зокрема й обробку сигналу скасування.
 GIT_TIMEOUT = float(os.environ.get('TTS_GIT_TIMEOUT', '180'))
 # Куди зберігати згенероване аудіо (кожну пачку з COMMIT_LIMIT файлів і фінальний залишок):
-#   'git'  — коміт + push у репозиторій (як було завжди; значення за замовчуванням);
-#   'r2'   — заливка в Cloudflare R2 через rclone, БЕЗ git. Аудіо в репозиторії тоді немає,
-#            тож перед генерацією скрипт сам стягує з R2 лише маніфести (r2_pull_manifests);
+#   'r2'   — заливка в Cloudflare R2 через rclone, БЕЗ git (значення за замовчуванням з
+#            13.11.2026: аудіо з репозиторію прибрано). Перед генерацією скрипт сам стягує
+#            з R2 лише маніфести (r2_pull_manifests);
+#   'git'  — коміт + push у репозиторій (старий спосіб, до переносу аудіо в R2);
 #   'both' — і коміт, і R2: перехідний період, поки сайт ще віддає аудіо з GitHub Pages.
 # Для 'r2'/'both' потрібен rclone з віддаленим сховищем 'r2' (у GitHub Actions — змінні
 # RCLONE_CONFIG_R2_*, див. tools/github/sync-audio-r2.yml).
-STORAGE = os.environ.get('TTS_STORAGE', 'git').strip().lower()
+STORAGE = os.environ.get('TTS_STORAGE', 'r2').strip().lower()
 if STORAGE not in ('git', 'r2', 'both'):
     raise SystemExit(f"❌ TTS_STORAGE='{STORAGE}': допустимо лише git, r2 або both.")
 # Куди в R2 кладеться вміст локальної теки audio/ (той самий шлях, що бачить застосунок:
