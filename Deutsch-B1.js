@@ -216,16 +216,7 @@ var LESSONS = [
     ],
     "grammar": null,
     "cardIds": [
-      "k1_003",
       "k1_007",
-      "k1_008",
-      "k1_016",
-      "k1_017",
-      "k1_018",
-      "k1_019",
-      "k14_029",
-      "k1_021",
-      "k1_022",
       "k1_061"
     ],
     "unlockAfter": null,
@@ -261,15 +252,9 @@ var LESSONS = [
     "grammar": "wechselpraepositionen_wdh_b1",
     "cardIds": [
       "k1_001",
-      "k1_002",
       "k1_023",
-      "k1_024",
-      "k1_025",
       "k1_026",
-      "k1_027",
       "k1_028",
-      "k1_029",
-      "k1_030",
       "k1_062",
       "k1_063"
     ],
@@ -313,16 +298,13 @@ var LESSONS = [
     ],
     "grammar": "hoefliche_bitten_konjunktiv_b1",
     "cardIds": [
-      "k1_012",
       "k1_013",
       "k1_031",
       "k1_032",
       "k1_033",
       "k1_034",
-      "k1_035",
       "k1_036",
       "k1_037",
-      "k1_038",
       "k1_064",
       "k1_065",
       "k1_066",
@@ -420,32 +402,24 @@ var LESSONS = [
     ],
     "grammar": "modalverben_wdh_b1",
     "cardIds": [
-      "k1_004",
       "k1_005",
       "k1_009",
       "k1_047",
-      "k1_048",
       "k1_049",
       "k1_050",
-      "k1_051",
-      "k1_052",
       "k1_053",
       "k1_078",
-      "k1_079",
       "k1_080",
       "k1_081",
       "k1_082",
       "k1_083",
       "k1_084",
-      "k1_085",
-      "k1_086",
       "k1_087",
       "k1_088",
       "k1_089",
       "k1_090",
       "k1_091",
       "k1_092",
-      "k1_093",
       "k1_094"
     ],
     "unlockAfter": "k1m4",
@@ -484,12 +458,9 @@ var LESSONS = [
     ],
     "grammar": "sowohl_als_auch_weder_noch",
     "cardIds": [
-      "k1_010",
       "k1_011",
-      "k1_014",
       "k1_054",
       "k1_055",
-      "k1_056",
       "k1_057",
       "k1_058",
       "k1_059",
@@ -502,7 +473,6 @@ var LESSONS = [
       "k1_100",
       "k1_101",
       "k1_102",
-      "k1_103",
       "k1_104",
       "k1_105",
       "k1_106",
@@ -548,15 +518,9 @@ var LESSONS = [
     ],
     "grammar": null,
     "cardIds": [
-      "k8_048",
       "k2_008",
       "k2_016",
-      "k8_015",
       "k2_018",
-      "k2_019",
-      "k2_020",
-      "k2_021",
-      "k2_022",
       "k2_023",
       "k2_061",
       "k2_062",
@@ -568,7 +532,8 @@ var LESSONS = [
       "k2_068",
       "k2_069",
       "k2_070",
-      "k2_071"
+      "k2_071",
+      "k2_140"
     ],
     "unlockAfter": null,
     "sbCards": [],
@@ -603,11 +568,9 @@ var LESSONS = [
     "grammar": "reflexivpronomen_akkusativ_wdh_b1",
     "cardIds": [
       "k2_012",
-      "k2_013",
       "k2_024",
       "k2_025",
       "k2_026",
-      "k2_027",
       "k2_028",
       "k2_029",
       "k2_030",
@@ -665,7 +628,6 @@ var LESSONS = [
     "grammar": "relativsatz_nominativ_sondern",
     "cardIds": [
       "k2_001",
-      "k2_002",
       "k2_010",
       "k2_032",
       "k2_033",
@@ -673,7 +635,6 @@ var LESSONS = [
       "k2_035",
       "k2_036",
       "k2_037",
-      "k2_038",
       "k2_083",
       "k2_084",
       "k2_085",
@@ -720,7 +681,6 @@ var LESSONS = [
     "grammar": "komposita_nomen_nomen",
     "cardIds": [
       "k2_009",
-      "k2_014",
       "k2_039",
       "k2_040",
       "k2_041",
@@ -735,7 +695,6 @@ var LESSONS = [
       "k2_094",
       "k2_095",
       "k2_096",
-      "k2_097",
       "k2_098",
       "k2_099",
       "k2_100",
@@ -782,12 +741,8 @@ var LESSONS = [
     "cardIds": [
       "k2_003",
       "k2_004",
-      "k2_005",
       "k2_047",
       "k2_048",
-      "k2_049",
-      "k2_050",
-      "k2_051",
       "k2_052",
       "k2_053",
       "k2_110",
@@ -840,12 +795,8 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k2_006",
-      "k2_007",
       "k2_011",
       "k2_054",
-      "k2_055",
-      "k2_056",
-      "k2_057",
       "k2_058",
       "k2_059",
       "k2_060",
@@ -865,7 +816,8 @@ var LESSONS = [
       "k2_135",
       "k2_136",
       "k2_137",
-      "k2_138"
+      "k2_138",
+      "k2_139"
     ],
     "unlockAfter": "k2m5",
     "sbCards": [],
@@ -898,16 +850,11 @@ var LESSONS = [
     ],
     "grammar": "modalverben_vermutung",
     "cardIds": [
-      "k3_001",
       "k3_002",
-      "k3_016",
-      "k3_017",
       "k3_018",
-      "k3_019",
       "k3_020",
-      "k3_021",
       "k3_022",
-      "k3_023"
+      "k3_102"
     ],
     "unlockAfter": null,
     "sbCards": [
@@ -947,12 +894,9 @@ var LESSONS = [
     "cardIds": [
       "k3_003",
       "k3_004",
-      "k3_024",
-      "k3_025",
       "k3_026",
       "k3_027",
       "k3_028",
-      "k3_029",
       "k3_030",
       "k3_031",
       "k3_061"
@@ -996,13 +940,9 @@ var LESSONS = [
       "k3_005",
       "k3_006",
       "k3_032",
-      "k3_033",
-      "k3_034",
       "k3_035",
-      "k3_036",
-      "k3_037",
       "k3_038",
-      "k3_039"
+      "k3_103"
     ],
     "unlockAfter": "k3m2",
     "sbCards": [],
@@ -1110,12 +1050,10 @@ var LESSONS = [
       "k3_049",
       "k3_050",
       "k3_051",
-      "k3_052",
       "k3_053",
       "k3_054",
       "k3_083",
       "k3_084",
-      "k3_085",
       "k3_086",
       "k3_087",
       "k3_088",
@@ -1156,8 +1094,6 @@ var LESSONS = [
     ],
     "grammar": "konnektoren_wdh_b1",
     "cardIds": [
-      "k2_051",
-      "k2_049",
       "k3_014",
       "k3_015",
       "k3_055",
@@ -1216,13 +1152,7 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k4_001",
-      "k4_004",
-      "k4_016",
-      "k4_017",
-      "k4_018",
-      "k4_019",
       "k4_020",
-      "k4_021",
       "k4_022",
       "k4_023",
       "k4_061",
@@ -1233,8 +1163,7 @@ var LESSONS = [
       "k4_066",
       "k4_067",
       "k4_068",
-      "k4_069",
-      "k4_070"
+      "k4_069"
     ],
     "unlockAfter": null,
     "sbCards": [],
@@ -1270,13 +1199,6 @@ var LESSONS = [
     "cardIds": [
       "k4_002",
       "k4_003",
-      "k4_024",
-      "k4_025",
-      "k4_026",
-      "k4_027",
-      "k4_028",
-      "k4_029",
-      "k4_030",
       "k4_031",
       "k4_071",
       "k4_072",
@@ -1321,8 +1243,6 @@ var LESSONS = [
     "grammar": "deshalb_deswegen_trotzdem",
     "cardIds": [
       "k4_012",
-      "k4_013",
-      "k4_032",
       "k4_033",
       "k4_034",
       "k4_035",
@@ -1380,10 +1300,7 @@ var LESSONS = [
     "cardIds": [
       "k4_005",
       "k4_006",
-      "k4_007",
-      "k4_040",
       "k4_041",
-      "k4_042",
       "k4_043",
       "k4_044",
       "k4_045",
@@ -1399,7 +1316,8 @@ var LESSONS = [
       "k4_096",
       "k4_097",
       "k4_098",
-      "k4_099"
+      "k4_099",
+      "k4_121"
     ],
     "unlockAfter": "k4m3",
     "sbCards": [],
@@ -1433,14 +1351,11 @@ var LESSONS = [
     ],
     "grammar": "genitiv_alternativen",
     "cardIds": [
-      "k4_008",
-      "k4_047",
       "k4_048",
       "k4_049",
       "k4_050",
       "k4_051",
       "k4_052",
-      "k4_053",
       "k4_054",
       "k4_055",
       "k4_100",
@@ -1496,9 +1411,6 @@ var LESSONS = [
     ],
     "grammar": null,
     "cardIds": [
-      "k4_009",
-      "k4_010",
-      "k4_011",
       "k4_014",
       "k4_015",
       "k4_056",
@@ -1513,7 +1425,8 @@ var LESSONS = [
       "k4_116",
       "k4_117",
       "k4_118",
-      "k4_119"
+      "k4_119",
+      "k4_120"
     ],
     "unlockAfter": "k4m5",
     "sbCards": [],
@@ -1552,7 +1465,6 @@ var LESSONS = [
       "k5_016",
       "k5_017",
       "k5_018",
-      "k5_019",
       "k5_020",
       "k5_021",
       "k5_022",
@@ -1572,10 +1484,11 @@ var LESSONS = [
       "k5_073",
       "k5_074",
       "k5_075",
-      "k5_076",
       "k5_077",
       "k5_078",
-      "k5_079"
+      "k5_079",
+      "k5_127",
+      "k5_130"
     ],
     "unlockAfter": null,
     "sbCards": [
@@ -1683,7 +1596,6 @@ var LESSONS = [
       "k5_090",
       "k5_091",
       "k5_092",
-      "k5_093",
       "k5_094",
       "k5_095",
       "k5_096",
@@ -1691,7 +1603,8 @@ var LESSONS = [
       "k5_098",
       "k5_099",
       "k5_100",
-      "k5_101"
+      "k5_101",
+      "k5_128"
     ],
     "unlockAfter": "k5m2",
     "sbCards": [
@@ -1729,7 +1642,6 @@ var LESSONS = [
     ],
     "grammar": "verben_als_nomen",
     "cardIds": [
-      "k5_010",
       "k5_011",
       "k5_040",
       "k5_041",
@@ -1745,7 +1657,6 @@ var LESSONS = [
       "k5_105",
       "k5_106",
       "k5_107",
-      "k5_108",
       "k5_109",
       "k5_110",
       "k5_111",
@@ -1790,10 +1701,8 @@ var LESSONS = [
     ],
     "grammar": "praepositionaladverbien_b1",
     "cardIds": [
-      "k5_003",
       "k5_008",
       "k2_029",
-      "k5_049",
       "k5_050",
       "k5_051",
       "k5_052",
@@ -1801,10 +1710,10 @@ var LESSONS = [
       "k5_054",
       "k5_055",
       "k5_120",
-      "k5_121",
       "k5_122",
       "k5_123",
-      "k5_124"
+      "k5_124",
+      "k5_129"
     ],
     "unlockAfter": "k5m4",
     "sbCards": [
@@ -1848,11 +1757,9 @@ var LESSONS = [
     "cardIds": [
       "k5_004",
       "k5_005",
-      "k5_006",
       "k5_014",
       "k5_015",
       "k5_056",
-      "k5_057",
       "k5_058",
       "k5_059",
       "k5_060",
@@ -1892,13 +1799,9 @@ var LESSONS = [
     "cardIds": [
       "k6_001",
       "k6_003",
-      "k6_016",
-      "k6_017",
-      "k6_018",
       "k6_019",
       "k6_020",
       "k6_021",
-      "k6_022",
       "k6_023",
       "k6_061"
     ],
@@ -1938,17 +1841,18 @@ var LESSONS = [
     ],
     "grammar": "futur_werden",
     "cardIds": [
-      "k6_005",
       "k6_008",
       "k6_024",
       "k6_025",
       "k6_026",
       "k6_027",
       "k6_028",
-      "k6_029",
       "k6_030",
       "k6_031",
-      "k6_062"
+      "k6_062",
+      "k6_093",
+      "k6_094",
+      "k6_100"
     ],
     "unlockAfter": "k6m1",
     "sbCards": [
@@ -2016,7 +1920,9 @@ var LESSONS = [
       "k6_080",
       "k6_081",
       "k6_082",
-      "k6_083"
+      "k6_083",
+      "k6_096",
+      "k6_098"
     ],
     "unlockAfter": "k6m2",
     "sbCards": [
@@ -2054,17 +1960,9 @@ var LESSONS = [
     ],
     "grammar": "satz_mit_um_zu",
     "cardIds": [
-      "k6_010",
-      "k6_004",
       "k6_039",
-      "k8_021",
-      "k6_041",
       "k6_042",
-      "k6_043",
-      "k6_044",
-      "k6_045",
-      "k6_046",
-      "k6_084"
+      "k6_045"
     ],
     "unlockAfter": "k6m3",
     "sbCards": [
@@ -2151,10 +2049,7 @@ var LESSONS = [
     "grammar": "nomen_auf_heit_keit",
     "cardIds": [
       "k6_007",
-      "k6_012",
-      "k6_014",
       "k6_015",
-      "k6_055",
       "k6_056",
       "k6_057",
       "k6_058",
@@ -2166,7 +2061,10 @@ var LESSONS = [
       "k6_089",
       "k6_090",
       "k6_091",
-      "k6_092"
+      "k6_092",
+      "k6_095",
+      "k6_097",
+      "k6_099"
     ],
     "unlockAfter": "k6m5",
     "sbCards": [],
@@ -2199,7 +2097,6 @@ var LESSONS = [
     ],
     "grammar": null,
     "cardIds": [
-      "k7_001",
       "k7_003",
       "k7_016",
       "k7_017",
@@ -2225,7 +2122,8 @@ var LESSONS = [
       "k7_074",
       "k7_075",
       "k7_076",
-      "k7_077"
+      "k7_077",
+      "k7_156"
     ],
     "unlockAfter": null,
     "sbCards": [],
@@ -2275,7 +2173,6 @@ var LESSONS = [
       "k7_030",
       "k7_078",
       "k7_079",
-      "k7_080",
       "k7_081",
       "k7_082",
       "k7_083",
@@ -2286,7 +2183,6 @@ var LESSONS = [
       "k7_088",
       "k7_089",
       "k7_090",
-      "k7_091",
       "k7_092",
       "k7_093",
       "k7_094",
@@ -2331,12 +2227,9 @@ var LESSONS = [
       "k7_012",
       "k1_041",
       "k7_031",
-      "k7_032",
       "k7_033",
       "k7_034",
       "k7_035",
-      "k7_036",
-      "k7_037",
       "k7_038",
       "k7_097",
       "k7_098",
@@ -2351,7 +2244,13 @@ var LESSONS = [
       "k7_107",
       "k7_108",
       "k7_109",
-      "k7_110"
+      "k7_110",
+      "k7_150",
+      "k7_151",
+      "k7_152",
+      "k7_153",
+      "k7_154",
+      "k7_155"
     ],
     "unlockAfter": "k7m2",
     "sbCards": [
@@ -2397,7 +2296,6 @@ var LESSONS = [
       "k7_042",
       "k7_043",
       "k7_044",
-      "k7_045",
       "k7_046",
       "k7_111",
       "k7_112",
@@ -2463,7 +2361,8 @@ var LESSONS = [
       "k7_130",
       "k7_131",
       "k7_132",
-      "k7_133"
+      "k7_133",
+      "k7_157"
     ],
     "unlockAfter": "k7m4",
     "sbCards": [
@@ -2524,8 +2423,8 @@ var LESSONS = [
       "k7_145",
       "k7_146",
       "k7_147",
-      "k7_148",
-      "k7_149"
+      "k7_149",
+      "k7_158"
     ],
     "unlockAfter": "k7m5",
     "sbCards": [],
@@ -2558,15 +2457,6 @@ var LESSONS = [
     ],
     "grammar": null,
     "cardIds": [
-      "k8_001",
-      "k8_011",
-      "k8_016",
-      "k8_017",
-      "k8_018",
-      "k13_027",
-      "k8_020",
-      "k8_021",
-      "k8_022",
       "k8_023",
       "k8_061",
       "k8_062",
@@ -2586,7 +2476,8 @@ var LESSONS = [
       "k8_076",
       "k8_077",
       "k8_078",
-      "k8_079"
+      "k8_079",
+      "k8_108"
     ],
     "unlockAfter": null,
     "sbCards": [],
@@ -2621,7 +2512,6 @@ var LESSONS = [
     "grammar": "verben_mit_praep_wdh_b1",
     "cardIds": [
       "k8_008",
-      "k8_002",
       "k8_024",
       "k8_025",
       "k8_026",
@@ -2635,7 +2525,6 @@ var LESSONS = [
       "k8_082",
       "k8_083",
       "k8_084",
-      "k8_085",
       "k8_086",
       "k8_087",
       "k8_088"
@@ -2695,7 +2584,9 @@ var LESSONS = [
       "k8_095",
       "k8_096",
       "k8_097",
-      "k8_098"
+      "k8_098",
+      "k8_107",
+      "k8_109"
     ],
     "unlockAfter": "k8m2",
     "sbCards": [
@@ -2737,15 +2628,9 @@ var LESSONS = [
     ],
     "grammar": null,
     "cardIds": [
-      "k8_004",
-      "k8_015",
-      "k8_040",
       "k2_047",
       "k8_042",
-      "k2_051",
-      "k8_044",
       "k8_045",
-      "k8_046",
       "k8_047"
     ],
     "unlockAfter": "k8m3",
@@ -2780,19 +2665,14 @@ var LESSONS = [
     ],
     "grammar": "interesse_denn_eigentlich",
     "cardIds": [
-      "k8_005",
-      "k8_013",
-      "k8_048",
       "k8_049",
       "k8_050",
-      "k8_051",
       "k8_052",
       "k8_053",
       "k8_054",
       "k15_030",
       "k8_099",
-      "k8_100",
-      "k8_101"
+      "k8_100"
     ],
     "unlockAfter": "k8m4",
     "sbCards": [
@@ -2832,9 +2712,6 @@ var LESSONS = [
     "cardIds": [
       "k8_006",
       "k8_007",
-      "k8_009",
-      "k8_010",
-      "k8_014",
       "k8_056",
       "k8_057",
       "k8_058",
@@ -2843,7 +2720,9 @@ var LESSONS = [
       "k8_102",
       "k8_103",
       "k8_104",
-      "k8_105"
+      "k8_105",
+      "k8_106",
+      "k8_110"
     ],
     "unlockAfter": "k8m5",
     "sbCards": [],
@@ -2877,16 +2756,13 @@ var LESSONS = [
     ],
     "grammar": "konjunktiv2_wuensche_b1",
     "cardIds": [
-      "k9_001",
       "k9_002",
       "k9_007",
       "k9_017",
       "k9_018",
       "k9_019",
       "k9_020",
-      "k9_021",
       "k9_022",
-      "k7_037",
       "k9_051",
       "k9_052",
       "k9_053",
@@ -2895,11 +2771,12 @@ var LESSONS = [
       "k9_056",
       "k9_057",
       "k9_058",
-      "k9_059",
       "k9_060",
       "k9_061",
       "k9_062",
-      "k9_063"
+      "k9_063",
+      "k9_120",
+      "k9_124"
     ],
     "unlockAfter": "k8m6",
     "sbCards": [],
@@ -2937,16 +2814,10 @@ var LESSONS = [
     ],
     "grammar": "nebensatz_wenn_konjunktiv2_irreal",
     "cardIds": [
-      "k9_003",
       "k9_008",
       "k9_024",
       "k9_025",
-      "k9_026",
-      "k9_027",
-      "k12_004",
       "k9_029",
-      "k9_030",
-      "k9_031",
       "k9_064",
       "k9_065",
       "k9_066",
@@ -2962,7 +2833,8 @@ var LESSONS = [
       "k9_076",
       "k9_077",
       "k9_078",
-      "k9_079"
+      "k9_079",
+      "k9_126"
     ],
     "unlockAfter": "k9m1",
     "sbCards": [],
@@ -2996,11 +2868,9 @@ var LESSONS = [
     ],
     "grammar": "verben_praep_dass_satz",
     "cardIds": [
-      "k9_004",
       "k9_005",
       "k9_009",
       "k9_032",
-      "k9_033",
       "k9_034",
       "k9_035",
       "k9_036",
@@ -3014,13 +2884,14 @@ var LESSONS = [
       "k9_085",
       "k9_086",
       "k9_087",
-      "k9_088",
       "k9_089",
       "k9_090",
       "k9_091",
       "k9_092",
       "k9_093",
-      "k9_094"
+      "k9_094",
+      "k9_118",
+      "k9_122"
     ],
     "unlockAfter": "k9m2",
     "sbCards": [],
@@ -3054,12 +2925,8 @@ var LESSONS = [
     ],
     "grammar": "adjektive_auf_ig_isch",
     "cardIds": [
-      "k9_010",
-      "k9_011",
-      "k9_039",
       "k9_040",
       "k9_041",
-      "k9_042",
       "k5_023",
       "k9_044",
       "k9_045",
@@ -3070,7 +2937,8 @@ var LESSONS = [
       "k9_098",
       "k9_099",
       "k9_100",
-      "k9_101"
+      "k9_101",
+      "k9_121"
     ],
     "unlockAfter": "k9m3",
     "sbCards": [],
@@ -3110,9 +2978,6 @@ var LESSONS = [
       "k9_014",
       "k9_015",
       "k7_023",
-      "k9_047",
-      "k9_048",
-      "k9_049",
       "k5_016",
       "k9_102",
       "k9_103",
@@ -3129,7 +2994,10 @@ var LESSONS = [
       "k9_114",
       "k9_115",
       "k9_116",
-      "k9_117"
+      "k9_117",
+      "k9_119",
+      "k9_123",
+      "k9_125"
     ],
     "unlockAfter": "k9m4",
     "sbCards": [],
@@ -3181,7 +3049,9 @@ var LESSONS = [
       "k10_056",
       "k10_057",
       "k10_058",
-      "k10_059"
+      "k10_059",
+      "k10_083",
+      "k10_084"
     ],
     "unlockAfter": "k9m5",
     "sbCards": [],
@@ -3220,7 +3090,6 @@ var LESSONS = [
     "grammar": "adjektivdeklination_bestimmter_artikel",
     "cardIds": [
       "k10_003",
-      "k10_004",
       "k10_024",
       "k10_025",
       "k10_026",
@@ -3274,11 +3143,9 @@ var LESSONS = [
       "k10_006",
       "k10_007",
       "k10_032",
-      "k10_033",
       "k10_034",
       "k10_035",
       "k10_036",
-      "k10_037",
       "k10_038",
       "k10_039",
       "k10_069",
@@ -3291,7 +3158,8 @@ var LESSONS = [
       "k10_076",
       "k10_077",
       "k10_078",
-      "k10_079"
+      "k10_079",
+      "k10_082"
     ],
     "unlockAfter": "k10m2",
     "sbCards": [],
@@ -3369,16 +3237,12 @@ var LESSONS = [
     ],
     "grammar": null,
     "cardIds": [
-      "k10_010",
       "k7_031",
       "k10_012",
       "k10_013",
-      "k10_015",
       "k10_016",
       "k1_044",
       "k10_048",
-      "k10_049",
-      "k10_050",
       "k10_081"
     ],
     "unlockAfter": "k10m4",
@@ -3417,17 +3281,16 @@ var LESSONS = [
       "k11_009",
       "k11_010",
       "k6_015",
-      "k1_008",
       "k11_019",
       "k11_020",
       "k11_021",
       "k11_022",
       "k11_023",
-      "k11_051",
       "k11_052",
       "k11_053",
       "k11_054",
-      "k11_055"
+      "k11_055",
+      "k11_072"
     ],
     "unlockAfter": "k10m5",
     "sbCards": [],
@@ -3463,11 +3326,9 @@ var LESSONS = [
     "cardIds": [
       "k5_054",
       "k11_006",
-      "k11_024",
       "k6_023",
       "k11_026",
       "k11_027",
-      "k11_028",
       "k11_029",
       "k11_030",
       "k11_031",
@@ -3475,7 +3336,8 @@ var LESSONS = [
       "k11_057",
       "k11_058",
       "k11_059",
-      "k11_060"
+      "k11_060",
+      "k11_073"
     ],
     "unlockAfter": "k11m1",
     "sbCards": [],
@@ -3515,7 +3377,6 @@ var LESSONS = [
     "cardIds": [
       "k11_003",
       "k11_007",
-      "k13_039",
       "k11_033",
       "k11_034",
       "k9_014",
@@ -3524,7 +3385,8 @@ var LESSONS = [
       "k13_022",
       "k11_039",
       "k11_061",
-      "k11_062"
+      "k11_062",
+      "k11_070"
     ],
     "unlockAfter": "k11m2",
     "sbCards": [],
@@ -3560,12 +3422,10 @@ var LESSONS = [
     "cardIds": [
       "k11_004",
       "k11_005",
-      "k11_008",
       "k11_040",
       "k11_041",
       "k11_042",
       "k1_046",
-      "k11_044",
       "k5_001",
       "k11_046",
       "k11_063",
@@ -3616,7 +3476,11 @@ var LESSONS = [
       "k11_049",
       "k11_050",
       "k11_067",
-      "k11_068"
+      "k11_068",
+      "k11_069",
+      "k11_071",
+      "k11_074",
+      "k11_075"
     ],
     "unlockAfter": "k11m4",
     "sbCards": [],
@@ -3655,12 +3519,9 @@ var LESSONS = [
       "k5_011",
       "k12_018",
       "k12_019",
-      "k12_020",
       "k12_021",
-      "k12_022",
       "k12_023",
       "k12_024",
-      "k12_051",
       "k12_052",
       "k12_053",
       "k12_054",
@@ -3672,7 +3533,9 @@ var LESSONS = [
       "k12_060",
       "k12_061",
       "k12_062",
-      "k12_063"
+      "k12_063",
+      "k12_106",
+      "k12_112"
     ],
     "unlockAfter": "k11m5",
     "sbCards": [],
@@ -3711,15 +3574,11 @@ var LESSONS = [
     "grammar": "plusquamperfekt",
     "cardIds": [
       "k12_003",
-      "k12_004",
       "k5_009",
       "k12_026",
       "k12_027",
       "k12_028",
       "k12_029",
-      "k12_030",
-      "k12_031",
-      "k7_037",
       "k12_064",
       "k12_065",
       "k12_066",
@@ -3739,8 +3598,7 @@ var LESSONS = [
       "k12_080",
       "k12_081",
       "k12_082",
-      "k12_083",
-      "k12_084"
+      "k12_083"
     ],
     "unlockAfter": "k12m1",
     "sbCards": [],
@@ -3776,7 +3634,6 @@ var LESSONS = [
     "cardIds": [
       "k12_005",
       "k12_012",
-      "k12_033",
       "k8_008",
       "k12_035",
       "k12_036",
@@ -3788,7 +3645,9 @@ var LESSONS = [
       "k12_086",
       "k12_087",
       "k12_088",
-      "k12_089"
+      "k12_089",
+      "k12_107",
+      "k12_109"
     ],
     "unlockAfter": "k12m2",
     "sbCards": [],
@@ -3818,21 +3677,14 @@ var LESSONS = [
     ],
     "grammar": "adjektive_auf_bar_los",
     "cardIds": [
-      "k12_006",
       "k12_007",
       "k12_013",
-      "k9_010",
-      "k12_042",
-      "k12_043",
-      "k11_044",
-      "k12_045",
       "k12_046",
-      "k12_047",
       "k12_090",
       "k12_091",
       "k12_092",
       "k12_093",
-      "k12_094"
+      "k12_111"
     ],
     "unlockAfter": "k12m3",
     "sbCards": [],
@@ -3864,14 +3716,11 @@ var LESSONS = [
     "cardIds": [
       "k12_008",
       "k12_009",
-      "k12_010",
       "k12_011",
       "k12_014",
-      "k12_015",
       "k10_030",
       "k3_058",
       "k12_049",
-      "k12_050",
       "k12_095",
       "k12_096",
       "k12_097",
@@ -3882,7 +3731,9 @@ var LESSONS = [
       "k12_102",
       "k12_103",
       "k12_104",
-      "k12_105"
+      "k12_105",
+      "k12_108",
+      "k12_110"
     ],
     "unlockAfter": "k12m4",
     "sbCards": [],
@@ -3919,10 +3770,11 @@ var LESSONS = [
       "k1_033",
       "k13_019",
       "k8_008",
-      "k13_021",
       "k13_022",
       "k13_023",
-      "k13_051"
+      "k13_051",
+      "k13_058",
+      "k13_059"
     ],
     "unlockAfter": "k12m5",
     "sbCards": [],
@@ -3953,15 +3805,12 @@ var LESSONS = [
     "grammar": "praepositionen_mit_genitiv",
     "cardIds": [
       "k3_045",
-      "k7_032",
       "k5_009",
-      "k13_025",
       "k13_026",
-      "k13_027",
       "k13_028",
       "k13_029",
       "k13_030",
-      "k13_031"
+      "k13_060"
     ],
     "unlockAfter": "k13m1",
     "sbCards": [],
@@ -3992,7 +3841,6 @@ var LESSONS = [
     "grammar": "adjektivendung_genitiv",
     "cardIds": [
       "k7_034",
-      "k13_010",
       "k13_032",
       "k13_033",
       "k13_034",
@@ -4000,8 +3848,8 @@ var LESSONS = [
       "k13_036",
       "k13_037",
       "k13_038",
-      "k13_039",
-      "k13_052"
+      "k13_052",
+      "k13_061"
     ],
     "unlockAfter": "k13m2",
     "sbCards": [],
@@ -4036,13 +3884,15 @@ var LESSONS = [
       "k13_011",
       "k10_030",
       "k13_041",
-      "k13_042",
       "k13_043",
       "k13_044",
       "k1_006",
       "k13_046",
       "k13_053",
-      "k13_054"
+      "k13_054",
+      "k13_056",
+      "k13_057",
+      "k13_062"
     ],
     "unlockAfter": "k13m3",
     "sbCards": [],
@@ -4074,14 +3924,12 @@ var LESSONS = [
     "cardIds": [
       "k13_008",
       "k10_046",
-      "k13_013",
       "k13_014",
       "k13_015",
       "k13_016",
       "k13_047",
-      "k13_048",
-      "k13_049",
-      "k13_050"
+      "k13_050",
+      "k13_055"
     ],
     "unlockAfter": "k13m4",
     "sbCards": [],
@@ -4115,16 +3963,12 @@ var LESSONS = [
     ],
     "grammar": "n_deklination",
     "cardIds": [
-      "k1_003",
-      "k14_002",
-      "k14_017",
       "k14_018",
-      "k3_025",
       "k14_020",
-      "k14_021",
       "k14_022",
       "k14_023",
-      "k14_024"
+      "k14_024",
+      "k14_083"
     ],
     "unlockAfter": "k13m5",
     "sbCards": [],
@@ -4156,11 +4000,8 @@ var LESSONS = [
     "cardIds": [
       "k14_003",
       "k14_004",
-      "k1_016",
       "k14_026",
-      "k14_027",
       "k14_028",
-      "k14_029",
       "k3_049",
       "k14_031",
       "k14_032",
@@ -4172,7 +4013,9 @@ var LESSONS = [
       "k14_066",
       "k14_067",
       "k14_068",
-      "k14_069"
+      "k14_069",
+      "k14_085",
+      "k14_086"
     ],
     "unlockAfter": "k14m1",
     "sbCards": [],
@@ -4206,16 +4049,8 @@ var LESSONS = [
     ],
     "grammar": "relativsatz_wo_was",
     "cardIds": [
-      "k14_005",
       "k14_011",
-      "k14_033",
-      "k1_025",
-      "k14_035",
       "k14_036",
-      "k14_037",
-      "k14_038",
-      "k14_039",
-      "k14_040",
       "k14_070",
       "k14_071",
       "k14_072",
@@ -4251,14 +4086,8 @@ var LESSONS = [
     "cardIds": [
       "k14_006",
       "k14_007",
-      "k14_041",
-      "k14_042",
       "k1_015",
-      "k14_044",
-      "k14_045",
       "k14_046",
-      "k14_047",
-      "k14_048",
       "k14_074",
       "k14_075"
     ],
@@ -4298,7 +4127,6 @@ var LESSONS = [
       "k14_051",
       "k14_052",
       "k14_053",
-      "k14_054",
       "k14_055",
       "k14_076"
     ],
@@ -4334,17 +4162,17 @@ var LESSONS = [
       "k14_010",
       "k14_014",
       "k14_015",
-      "k14_016",
       "k14_056",
       "k14_057",
       "k14_058",
       "k14_059",
-      "k14_060",
       "k14_077",
       "k14_078",
       "k14_079",
       "k14_080",
-      "k14_081"
+      "k14_081",
+      "k14_082",
+      "k14_084"
     ],
     "unlockAfter": "k14m5",
     "sbCards": [],
@@ -4376,11 +4204,8 @@ var LESSONS = [
     "cardIds": [
       "k15_001",
       "k15_002",
-      "k15_017",
-      "k15_018",
       "k15_019",
       "k10_030",
-      "k15_021",
       "k13_044",
       "k15_023",
       "k15_024",
@@ -4391,11 +4216,11 @@ var LESSONS = [
       "k15_055",
       "k15_056",
       "k15_057",
-      "k15_058",
       "k15_059",
       "k15_060",
       "k15_061",
-      "k15_062"
+      "k15_062",
+      "k15_123"
     ],
     "unlockAfter": "k14m6",
     "sbCards": [],
@@ -4427,11 +4252,8 @@ var LESSONS = [
     "cardIds": [
       "k15_003",
       "k15_009",
-      "k15_025",
       "k15_026",
-      "k15_027",
       "k15_028",
-      "k15_029",
       "k15_030",
       "k15_031",
       "k15_032",
@@ -4480,15 +4302,10 @@ var LESSONS = [
     "grammar": "partizip2_als_adjektiv",
     "cardIds": [
       "k15_004",
-      "k15_005",
       "k15_010",
-      "k15_033",
       "k3_058",
-      "k12_043",
       "k2_047",
       "k15_037",
-      "k9_001",
-      "k13_027",
       "k15_078",
       "k15_079",
       "k15_080",
@@ -4538,7 +4355,6 @@ var LESSONS = [
       "k15_006",
       "k15_011",
       "k15_040",
-      "k15_041",
       "k15_042",
       "k8_042",
       "k15_044",
@@ -4591,16 +4407,11 @@ var LESSONS = [
     ],
     "grammar": null,
     "cardIds": [
-      "k15_007",
       "k15_008",
-      "k15_012",
       "k15_013",
       "k15_014",
       "k15_015",
       "k15_016",
-      "k2_051",
-      "k15_049",
-      "k15_050",
       "k15_108",
       "k15_109",
       "k15_110",
@@ -4612,7 +4423,10 @@ var LESSONS = [
       "k15_116",
       "k15_117",
       "k15_118",
-      "k15_119"
+      "k15_119",
+      "k15_120",
+      "k15_121",
+      "k15_122"
     ],
     "unlockAfter": "k15m4",
     "sbCards": [],
@@ -4647,12 +4461,9 @@ var LESSONS = [
       "k16_003",
       "k16_017",
       "k16_018",
-      "k16_019",
       "k8_008",
-      "k16_021",
       "k9_034",
       "k16_023",
-      "k16_041",
       "k16_042",
       "k16_043",
       "k16_044",
@@ -4665,11 +4476,14 @@ var LESSONS = [
       "k16_051",
       "k16_052",
       "k16_053",
-      "k16_054",
       "k16_055",
       "k16_056",
       "k16_057",
-      "k16_058"
+      "k16_058",
+      "k16_112",
+      "k16_114",
+      "k16_115",
+      "k16_116"
     ],
     "unlockAfter": "k15m5",
     "sbCards": [],
@@ -4703,27 +4517,18 @@ var LESSONS = [
     ],
     "grammar": "trennbare_verben_praefixe_wdh_b1",
     "cardIds": [
-      "k16_004",
-      "k16_005",
       "k16_024",
       "k2_036",
       "k16_026",
       "k16_027",
-      "k1_035",
       "k16_029",
-      "k1_038",
-      "k16_031",
       "k16_059",
       "k16_060",
       "k16_061",
-      "k16_062",
       "k16_063",
       "k16_064",
-      "k16_065",
-      "k16_066",
       "k16_067",
       "k16_068",
-      "k16_069",
       "k16_070",
       "k16_071",
       "k16_072",
@@ -4731,11 +4536,9 @@ var LESSONS = [
       "k16_074",
       "k16_075",
       "k16_076",
-      "k16_077",
       "k16_078",
       "k16_079",
       "k16_080",
-      "k16_081",
       "k16_082",
       "k16_083"
     ],
@@ -4768,7 +4571,6 @@ var LESSONS = [
     "grammar": null,
     "cardIds": [
       "k16_009",
-      "k3_034",
       "k16_011",
       "k16_012",
       "k16_032",
@@ -4788,7 +4590,13 @@ var LESSONS = [
       "k16_092",
       "k16_093",
       "k16_094",
-      "k16_095"
+      "k16_095",
+      "k16_113",
+      "k16_117",
+      "k16_118",
+      "k16_119",
+      "k16_120",
+      "k16_122"
     ],
     "unlockAfter": "k16m2",
     "sbCards": [],
@@ -4821,16 +4629,9 @@ var LESSONS = [
       "k16_006",
       "k16_007",
       "k16_008",
-      "k16_013",
       "k16_014",
       "k16_015",
-      "k16_016",
-      "k16_038",
-      "k16_039",
-      "k16_040",
       "k16_096",
-      "k16_097",
-      "k16_098",
       "k16_099",
       "k16_100",
       "k16_101",
@@ -4843,7 +4644,9 @@ var LESSONS = [
       "k16_108",
       "k16_109",
       "k16_110",
-      "k16_111"
+      "k16_111",
+      "k16_121",
+      "k16_123"
     ],
     "unlockAfter": "k16m3",
     "sbCards": [],
@@ -9773,94 +9576,8 @@ var VOCAB = [
       "uk": "Минулого тижня ми переїхали в це нове <b>сусідство</b>.",
       "ru": "На прошлой неделе мы переехали в это новое <b>соседство</b>."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
-  },
-  {
-    "id": "k1_002",
-    "cat": "k1",
-    "term": {
-      "de": "der Nachbar / die Nachbarin",
-      "en": "neighbour",
-      "uk": "сусід / сусідка",
-      "ru": "сосед / соседка"
-    },
-    "short": {
-      "de": "eine Person, die direkt neben dir oder in deinem Haus wohnt",
-      "en": "a person who lives right next to you or in your building",
-      "uk": "людина, яка живе поруч з тобою або в твоєму будинку",
-      "ru": "человек, который живёт рядом с тобой или в твоём доме"
-    },
-    "def": {
-      "de": "Unser neuer <b>Nachbar</b> wohnt schon seit zehn Jahren <g>in dem</g> Haus gegenüber.",
-      "en": "Our new <b>neighbour</b> has already lived in the building across the street for ten years.",
-      "uk": "Наш новий <b>сусід</b> вже десять років живе в будинку навпроти.",
-      "ru": "Наш новый <b>сосед</b> уже десять лет живёт в доме напротив."
-    },
     "gram": "wechselpraepositionen_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Nachbarn / die Nachbarinnen"
-      ]
-    }
-  },
-  {
-    "id": "k1_003",
-    "cat": "k1",
-    "term": {
-      "de": "das Mehrfamilienhaus",
-      "en": "apartment building",
-      "uk": "багатоквартирний будинок",
-      "ru": "многоквартирный дом"
-    },
-    "short": {
-      "de": "ein Haus, in dem mehrere Familien oder Personen in verschiedenen Wohnungen leben",
-      "en": "a building where several families or people live in different flats",
-      "uk": "будинок, у якому кілька сімей чи людей живуть у різних квартирах",
-      "ru": "дом, в котором несколько семей или людей живут в разных квартирах"
-    },
-    "def": {
-      "de": "Meine Schwester wohnt <g>in einem</g> modernen <b>Mehrfamilienhaus</b> mit zwölf Wohnungen.",
-      "en": "My sister lives in a modern <b>apartment building</b> with twelve flats.",
-      "uk": "Моя сестра живе в сучасному <b>багатоквартирному будинку</b> з дванадцятьма квартирами.",
-      "ru": "Моя сестра живёт в современном <b>многоквартирном доме</b> с двенадцатью квартирами."
-    },
-    "gram": "wechselpraepositionen_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Mehrfamilienhäuser"
-      ]
-    }
-  },
-  {
-    "id": "k1_004",
-    "cat": "k1",
-    "term": {
-      "de": "die Hausordnung",
-      "en": "house rules",
-      "uk": "правила будинку",
-      "ru": "правила дома"
-    },
-    "short": {
-      "de": "die Regeln, die für alle Bewohner in einem Haus gelten",
-      "en": "the rules that apply to all residents in a building",
-      "uk": "правила, які діють для всіх мешканців будинку",
-      "ru": "правила, которые действуют для всех жителей дома"
-    },
-    "def": {
-      "de": "In der <b>Hausordnung</b> steht, dass man nach 22 Uhr keine laute Musik <g>hören darf</g>.",
-      "en": "The <b>house rules</b> say that you <g>must not listen</g> to loud music after 10 p.m.",
-      "uk": "У <b>правилах будинку</b> написано, що після 22:00 <g>не можна слухати</g> голосну музику.",
-      "ru": "В <b>правилах дома</b> написано, что после 22:00 <g>нельзя слушать</g> громкую музыку."
-    },
-    "gram": "modalverben_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Hausordnungen"
-      ]
-    }
+    "prio": 2
   },
   {
     "id": "k1_005",
@@ -9938,29 +9655,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k1_008",
-    "cat": "k1",
-    "term": {
-      "de": "der Kinderwagen",
-      "en": "baby stroller",
-      "uk": "дитяча коляска",
-      "ru": "детская коляска"
-    },
-    "short": {
-      "de": "ein kleines Fahrzeug mit Rädern, in dem ein Baby liegt oder sitzt",
-      "en": "a small vehicle with wheels in which a baby lies or sits",
-      "uk": "маленький засіб на колесах, у якому лежить або сидить малюк",
-      "ru": "маленькое средство на колёсах, в котором лежит или сидит малыш"
-    },
-    "def": {
-      "de": "Frau Berger stellt ihren <b>Kinderwagen</b> immer <g>neben die Treppe</g>.",
-      "en": "Mrs Berger always puts her <b>stroller</b> next to the stairs.",
-      "uk": "Пані Бергер завжди ставить свою <b>дитячу коляску</b> біля сходів.",
-      "ru": "Госпожа Бергер всегда ставит свою <b>детскую коляску</b> возле лестницы."
-    },
-    "gram": "wechselpraepositionen_wdh_b1"
-  },
-  {
     "id": "k1_009",
     "cat": "k1",
     "term": {
@@ -9984,29 +9678,6 @@ var VOCAB = [
     "gram": "modalverben_wdh_b1"
   },
   {
-    "id": "k1_010",
-    "cat": "k1",
-    "term": {
-      "de": "sich beschweren",
-      "en": "to complain",
-      "uk": "скаржитися",
-      "ru": "жаловаться"
-    },
-    "short": {
-      "de": "sagen, dass man mit etwas nicht zufrieden ist",
-      "en": "to say that you are not satisfied with something",
-      "uk": "казати, що ти чимось незадоволений",
-      "ru": "говорить, что ты чем-то недоволен"
-    },
-    "def": {
-      "de": "Herr Koch <g>hat sich weder</g> beim Vermieter <g>noch</g> bei den Nachbarn über den Lärm <b>beschwert</b>.",
-      "en": "Mr Koch <g>has neither</g> <b>complained</b> to the landlord <g>nor</g> to the neighbours about the noise.",
-      "uk": "Пан Кох <g>ні</g> орендодавцю, <g>ні</g> сусідам <b>не поскаржився</b> на шум.",
-      "ru": "Господин Кох <g>ни</g> арендодателю, <g>ни</g> соседям <b>не пожаловался</b> на шум."
-    },
-    "gram": "sowohl_als_auch_weder_noch"
-  },
-  {
     "id": "k1_011",
     "cat": "k1",
     "term": {
@@ -10027,30 +9698,8 @@ var VOCAB = [
       "uk": "Молодий чоловік <g>як</g> перед сусідкою, <g>так і</g> перед двірником <b>вибачився</b>.",
       "ru": "Молодой человек <g>как</g> перед соседкой, <g>так и</g> перед дворником <b>извинился</b>."
     },
-    "gram": "sowohl_als_auch_weder_noch"
-  },
-  {
-    "id": "k1_012",
-    "cat": "k1",
-    "term": {
-      "de": "erlauben",
-      "en": "to allow",
-      "uk": "дозволяти",
-      "ru": "разрешать"
-    },
-    "short": {
-      "de": "sagen, dass jemand etwas machen darf",
-      "en": "to say that someone is allowed to do something",
-      "uk": "казати, що комусь можна щось робити",
-      "ru": "говорить, что кому-то можно что-то делать"
-    },
-    "def": {
-      "de": "<g>Würden Sie</g> mir <b>erlauben</b>, meinen Kinderwagen kurz im Flur stehen zu lassen?",
-      "en": "<g>Would you</g> <b>allow</b> me to leave my stroller in the hallway for a moment?",
-      "uk": "<g>Могли б Ви</g> <b>дозволити</b> мені залишити коляску в коридорі на хвилинку?",
-      "ru": "<g>Могли бы Вы</g> <b>разрешить</b> мне оставить коляску в коридоре на минутку?"
-    },
-    "gram": "hoefliche_bitten_konjunktiv_b1"
+    "gram": "sowohl_als_auch_weder_noch",
+    "prio": 2
   },
   {
     "id": "k1_013",
@@ -10073,30 +9722,8 @@ var VOCAB = [
       "uk": "<g>Могли б Ви</g>, будь ласка, говорити тихіше? Музика <b>заважає</b> нашій дитині спати.",
       "ru": "<g>Могли бы Вы</g>, пожалуйста, потише? Музыка <b>мешает</b> нашему ребёнку спать."
     },
-    "gram": "hoefliche_bitten_konjunktiv_b1"
-  },
-  {
-    "id": "k1_014",
-    "cat": "k1",
-    "term": {
-      "de": "der Umzug",
-      "en": "move",
-      "uk": "переїзд",
-      "ru": "переезд"
-    },
-    "short": {
-      "de": "wenn man mit allen Möbeln in eine andere Wohnung zieht",
-      "en": "when you move with all your furniture to another flat",
-      "uk": "коли ти переїжджаєш з усіма меблями в іншу квартиру",
-      "ru": "когда ты переезжаешь со всей мебелью в другую квартиру"
-    },
-    "def": {
-      "de": "Beim <b>Umzug</b> haben uns <g>sowohl</g> die Nachbarn <g>als auch</g> unsere Freunde geholfen.",
-      "en": "<g>Both</g> the neighbours <g>and</g> our friends helped us with the <b>move</b>.",
-      "uk": "Під час <b>переїзду</b> нам допомогли <g>як</g> сусіди, <g>так і</g> наші друзі.",
-      "ru": "Во время <b>переезда</b> нам помогли <g>как</g> соседи, <g>так и</g> наши друзья."
-    },
-    "gram": "sowohl_als_auch_weder_noch"
+    "gram": "hoefliche_bitten_konjunktiv_b1",
+    "prio": 2
   },
   {
     "id": "k1_015",
@@ -10120,168 +9747,6 @@ var VOCAB = [
       "ru": "Каждый новый <b>арендатор</b> получает задание подписать правила дома."
     },
     "gram": "infinitiv_mit_zu"
-  },
-  {
-    "id": "k1_016",
-    "cat": "k1",
-    "term": {
-      "de": "der Vermieter / die Vermieterin",
-      "en": "landlord / landlady",
-      "uk": "орендодавець / орендодавиця",
-      "ru": "арендодатель / арендодательница"
-    },
-    "short": {
-      "de": "die Person, die eine Wohnung an andere Menschen vermietet",
-      "en": "the person who rents out a flat to other people",
-      "uk": "людина, яка здає квартиру іншим людям в оренду",
-      "ru": "человек, который сдаёт квартиру другим людям в аренду"
-    },
-    "def": {
-      "de": "<g>Könnten Sie</g> bitte unseren <b>Vermieter</b> informieren, dass die Heizung kaputt ist?",
-      "en": "<g>Could you</g> please inform our <b>landlord</b> that the heating is broken?",
-      "uk": "<g>Могли б Ви</g>, будь ласка, повідомити нашого <b>орендодавця</b>, що опалення зламалося?",
-      "ru": "<g>Могли бы Вы</g>, пожалуйста, сообщить нашему <b>арендодателю</b>, что отопление сломалось?"
-    },
-    "gram": "hoefliche_bitten_konjunktiv_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Vermieter / die Vermieterinnen"
-      ]
-    }
-  },
-  {
-    "id": "k1_017",
-    "cat": "k1",
-    "term": {
-      "de": "die Miete",
-      "en": "rent",
-      "uk": "орендна плата",
-      "ru": "арендная плата"
-    },
-    "short": {
-      "de": "das Geld, das man jeden Monat für die Wohnung bezahlt",
-      "en": "the money you pay every month for the flat",
-      "uk": "гроші, які щомісяця платиш за квартиру",
-      "ru": "деньги, которые ежемесячно платишь за квартиру"
-    },
-    "def": {
-      "de": "Es ist nicht leicht, jeden Monat pünktlich die <b>Miete</b> <g>zu bezahlen</g>.",
-      "en": "It isn't easy <g>to pay</g> the <b>rent</b> on time every month.",
-      "uk": "Нелегко щомісяця вчасно платити <b>орендну плату</b>.",
-      "ru": "Нелегко каждый месяц вовремя платить <b>арендную плату</b>."
-    },
-    "gram": "infinitiv_mit_zu",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Mieten"
-      ]
-    }
-  },
-  {
-    "id": "k1_018",
-    "cat": "k1",
-    "term": {
-      "de": "der Aufzug",
-      "en": "elevator",
-      "uk": "ліфт",
-      "ru": "лифт"
-    },
-    "short": {
-      "de": "eine Maschine, die Menschen zwischen den Stockwerken nach oben und unten bringt",
-      "en": "a machine that takes people up and down between floors",
-      "uk": "пристрій, який піднімає та спускає людей між поверхами",
-      "ru": "устройство, которое поднимает и спускает людей между этажами"
-    },
-    "def": {
-      "de": "Bei einem Brand <g>darf</g> man den <b>Aufzug</b> nicht <g>benutzen</g>.",
-      "en": "In case of fire, you <g>must not use</g> the <b>elevator</b>.",
-      "uk": "У разі пожежі <g>не можна користуватися</g> <b>ліфтом</b>.",
-      "ru": "При пожаре <g>нельзя пользоваться</g> <b>лифтом</b>."
-    },
-    "gram": "modalverben_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Aufzüge"
-      ]
-    }
-  },
-  {
-    "id": "k1_019",
-    "cat": "k1",
-    "term": {
-      "de": "der Keller",
-      "en": "basement",
-      "uk": "підвал",
-      "ru": "подвал"
-    },
-    "short": {
-      "de": "der Raum unter dem Haus, in dem man zum Beispiel alte Sachen aufbewahrt",
-      "en": "the room under the building where you keep, for example, old things",
-      "uk": "приміщення під будинком, де зберігають, наприклад, старі речі",
-      "ru": "помещение под домом, где хранят, например, старые вещи"
-    },
-    "def": {
-      "de": "Ich stelle die alten Fahrräder <g>in den</g> <b>Keller</b>, weil im Flur kein Platz mehr ist.",
-      "en": "I'm putting the old bicycles in the <b>basement</b> because there is no more space in the hallway.",
-      "uk": "Я ставлю старі велосипеди в <b>підвал</b>, бо в коридорі більше немає місця.",
-      "ru": "Я ставлю старые велосипеды в <b>подвал</b>, потому что в коридоре больше нет места."
-    },
-    "gram": "wechselpraepositionen_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Keller"
-      ]
-    }
-  },
-  {
-    "id": "k1_021",
-    "cat": "k1",
-    "term": {
-      "de": "das Stockwerk",
-      "en": "floor",
-      "uk": "поверх",
-      "ru": "этаж"
-    },
-    "short": {
-      "de": "eine Ebene in einem Haus, zum Beispiel das erste oder zweite Stockwerk",
-      "en": "a level in a building, for example the first or second floor",
-      "uk": "рівень у будинку, наприклад перший чи другий поверх",
-      "ru": "уровень в доме, например первый или второй этаж"
-    },
-    "def": {
-      "de": "Es ist anstrengend, jeden Tag bis in das dritte <b>Stockwerk</b> <g>zu laufen</g>, wenn der Aufzug kaputt ist.",
-      "en": "It is exhausting <g>to walk</g> up to the third <b>floor</b> every day when the lift is broken.",
-      "uk": "Це виснажливо — щодня ходити на третій <b>поверх</b>, коли ліфт не працює.",
-      "ru": "Это утомительно — каждый день ходить на третий <b>этаж</b>, когда лифт не работает."
-    },
-    "gram": "infinitiv_mit_zu"
-  },
-  {
-    "id": "k1_022",
-    "cat": "k1",
-    "term": {
-      "de": "der Briefkasten",
-      "en": "mailbox",
-      "uk": "поштова скринька",
-      "ru": "почтовый ящик"
-    },
-    "short": {
-      "de": "eine kleine Box am Haus, in die die Post gelegt wird",
-      "en": "a small box on the building where post is put",
-      "uk": "невелика скринька біля будинку, куди кладуть пошту",
-      "ru": "небольшой ящик у дома, куда кладут почту"
-    },
-    "def": {
-      "de": "<g>Könnten Sie</g> bitte in meinen <b>Briefkasten</b> schauen, solange ich im Urlaub bin?",
-      "en": "<g>Could you</g> please check my <b>mailbox</b> while I'm on holiday?",
-      "uk": "<g>Могли б Ви</g>, будь ласка, заглядати в мою <b>поштову скриньку</b>, поки я у відпустці?",
-      "ru": "<g>Могли бы Вы</g>, пожалуйста, заглядывать в мой <b>почтовый ящик</b>, пока я в отпуске?"
-    },
-    "gram": "hoefliche_bitten_konjunktiv_b1"
   },
   {
     "id": "k1_023",
@@ -10310,65 +9775,8 @@ var VOCAB = [
       "v": [
         "die Flure"
       ]
-    }
-  },
-  {
-    "id": "k1_024",
-    "cat": "k1",
-    "term": {
-      "de": "die Garage",
-      "en": "garage",
-      "uk": "гараж",
-      "ru": "гараж"
     },
-    "short": {
-      "de": "ein Raum oder Gebäude, in dem man das Auto parkt",
-      "en": "a room or building where you park the car",
-      "uk": "приміщення чи будівля, де паркують машину",
-      "ru": "помещение или здание, где паркуют машину"
-    },
-    "def": {
-      "de": "Herr Schmidt stellt sein Auto jeden Abend <g>in die</g> <b>Garage</b>.",
-      "en": "Mr Schmidt parks his car in the <b>garage</b> every evening.",
-      "uk": "Пан Шмідт щовечора ставить свою машину в <b>гараж</b>.",
-      "ru": "Господин Шмидт каждый вечер ставит свою машину в <b>гараж</b>."
-    },
-    "gram": "wechselpraepositionen_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Garagen"
-      ]
-    }
-  },
-  {
-    "id": "k1_025",
-    "cat": "k1",
-    "term": {
-      "de": "der Garten",
-      "en": "garden",
-      "uk": "сад",
-      "ru": "сад"
-    },
-    "short": {
-      "de": "ein Stück Land bei einem Haus, wo Blumen, Gemüse oder Bäume wachsen",
-      "en": "a piece of land by a building where flowers, vegetables or trees grow",
-      "uk": "ділянка землі біля будинку, де ростуть квіти, овочі чи дерева",
-      "ru": "участок земли рядом с домом, где растут цветы, овощи или деревья"
-    },
-    "def": {
-      "de": "Die Kinder spielen den ganzen Nachmittag <g>im</g> <b>Garten</b>.",
-      "en": "The children play in the <b>garden</b> the whole afternoon.",
-      "uk": "Діти цілий день грають у <b>саду</b>.",
-      "ru": "Дети целый день играют в <b>саду</b>."
-    },
-    "gram": "wechselpraepositionen_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Gärten"
-      ]
-    }
+    "prio": 2
   },
   {
     "id": "k1_026",
@@ -10391,36 +9799,8 @@ var VOCAB = [
       "uk": "На вихідних багато сусідів зустрічаються у <b>дворі</b>.",
       "ru": "На выходных многие соседи встречаются во <b>дворе</b>."
     },
-    "gram": "wechselpraepositionen_wdh_b1"
-  },
-  {
-    "id": "k1_027",
-    "cat": "k1",
-    "term": {
-      "de": "das Erdgeschoss",
-      "en": "ground floor",
-      "uk": "перший поверх",
-      "ru": "первый этаж"
-    },
-    "short": {
-      "de": "das Stockwerk direkt auf der Höhe der Straße, ohne Treppen nach oben",
-      "en": "the floor at street level, without stairs going up",
-      "uk": "поверх на рівні вулиці, без сходів вгору",
-      "ru": "этаж на уровне улицы, без лестниц наверх"
-    },
-    "def": {
-      "de": "Familie Yilmaz wohnt <g>im</g> <b>Erdgeschoss</b>, direkt neben dem Eingang.",
-      "en": "The Yilmaz family lives on the <b>ground floor</b>, right next to the entrance.",
-      "uk": "Родина Їлмаз живе на <b>першому поверсі</b>, прямо біля входу.",
-      "ru": "Семья Йылмаз живёт на <b>первом этаже</b>, прямо у входа."
-    },
     "gram": "wechselpraepositionen_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Erdgeschosse"
-      ]
-    }
+    "prio": 2
   },
   {
     "id": "k1_028",
@@ -10444,64 +9824,6 @@ var VOCAB = [
       "ru": "Мы отнесли нашу старую мебель на <b>чердак</b>."
     },
     "gram": "wechselpraepositionen_wdh_b1"
-  },
-  {
-    "id": "k1_029",
-    "cat": "k1",
-    "term": {
-      "de": "der Spielplatz",
-      "en": "playground",
-      "uk": "дитячий майданчик",
-      "ru": "детская площадка"
-    },
-    "short": {
-      "de": "ein Ort mit Schaukeln und Rutschen, wo Kinder draußen spielen",
-      "en": "a place with swings and slides where children play outside",
-      "uk": "місце з гойдалками та гірками, де діти граються надворі",
-      "ru": "место с качелями и горками, где дети играют на улице"
-    },
-    "def": {
-      "de": "Am Nachmittag gehen die Kinder gern <g>auf den</g> <b>Spielplatz</b>.",
-      "en": "In the afternoon, the children like to go to the <b>playground</b>.",
-      "uk": "Пополудні діти люблять ходити на <b>дитячий майданчик</b>.",
-      "ru": "После обеда дети любят ходить на <b>детскую площадку</b>."
-    },
-    "gram": "wechselpraepositionen_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Spielplätze"
-      ]
-    }
-  },
-  {
-    "id": "k1_030",
-    "cat": "k1",
-    "term": {
-      "de": "der Parkplatz",
-      "en": "parking spot",
-      "uk": "паркувальне місце",
-      "ru": "парковочное место"
-    },
-    "short": {
-      "de": "ein Platz, wo man das Auto abstellen kann",
-      "en": "a place where you can leave the car",
-      "uk": "місце, де можна залишити машину",
-      "ru": "место, где можно оставить машину"
-    },
-    "def": {
-      "de": "Wir stellen unser Auto jeden Tag <g>auf den</g> <b>Parkplatz</b> Nummer sieben.",
-      "en": "We park our car in <b>parking spot</b> number seven every day.",
-      "uk": "Ми щодня ставимо машину на <b>паркувальне місце</b> номер сім.",
-      "ru": "Мы каждый день ставим машину на <b>парковочное место</b> номер семь."
-    },
-    "gram": "wechselpraepositionen_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Parkplätze"
-      ]
-    }
   },
   {
     "id": "k1_031",
@@ -10547,7 +9869,8 @@ var VOCAB = [
       "uk": "<g>Могли б Ви</g> зробити мені <b>послугу</b> і забирати мою пошту, поки я у відпустці?",
       "ru": "<g>Могли бы Вы</g> сделать мне <b>одолжение</b> и забирать мою почту, пока я в отпуске?"
     },
-    "gram": "hoefliche_bitten_konjunktiv_b1"
+    "gram": "hoefliche_bitten_konjunktiv_b1",
+    "prio": 2
   },
   {
     "id": "k1_033",
@@ -10592,29 +9915,6 @@ var VOCAB = [
       "en": "<g>Would you</g> please <b>pass</b> me the package? I can't reach it.",
       "uk": "<g>Могли б Ви</g>, будь ласка, <b>подати</b> мені пакунок? Я не можу дотягнутися.",
       "ru": "<g>Могли бы Вы</g>, пожалуйста, <b>подать</b> мне посылку? Я не могу дотянуться."
-    },
-    "gram": "hoefliche_bitten_konjunktiv_b1"
-  },
-  {
-    "id": "k1_035",
-    "cat": "k1",
-    "term": {
-      "de": "mitbringen",
-      "en": "to bring along",
-      "uk": "приносити з собою",
-      "ru": "приносить с собой"
-    },
-    "short": {
-      "de": "etwas von zu Hause zu einem anderen Ort bringen",
-      "en": "to bring something from home to another place",
-      "uk": "приносити щось з дому в інше місце",
-      "ru": "приносить что-то из дома в другое место"
-    },
-    "def": {
-      "de": "<g>Könnten Sie</g> morgen bitte den Ersatzschlüssel <b>mitbringen</b>?",
-      "en": "<g>Could you</g> please <b>bring</b> the spare key tomorrow?",
-      "uk": "<g>Могли б Ви</g>, будь ласка, завтра <b>принести</b> запасний ключ?",
-      "ru": "<g>Могли бы Вы</g>, пожалуйста, завтра <b>принести</b> запасной ключ?"
     },
     "gram": "hoefliche_bitten_konjunktiv_b1"
   },
@@ -10668,29 +9968,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k1_038",
-    "cat": "k1",
-    "term": {
-      "de": "abholen",
-      "en": "to pick up",
-      "uk": "забирати когось або щось",
-      "ru": "забирать кого-то или что-то"
-    },
-    "short": {
-      "de": "irgendwohin gehen, um jemanden oder etwas von dort mitzunehmen",
-      "en": "to go somewhere to collect someone or something",
-      "uk": "прийти кудись, щоб забрати когось або щось звідти",
-      "ru": "прийти куда-то, чтобы забрать кого-то или что-то оттуда"
-    },
-    "def": {
-      "de": "<g>Würden Sie</g> meinen Sohn bitte von der Schule <b>abholen</b>? Ich habe heute keine Zeit.",
-      "en": "<g>Would you</g> please <b>pick up</b> my son from school? I have no time today.",
-      "uk": "<g>Могли б Ви</g>, будь ласка, <b>забрати</b> мого сина зі школи? У мене сьогодні немає часу.",
-      "ru": "<g>Могли бы Вы</g>, пожалуйста, <b>забрать</b> моего сына из школы? У меня сегодня нет времени."
-    },
-    "gram": "hoefliche_bitten_konjunktiv_b1"
-  },
-  {
     "id": "k1_039",
     "cat": "k1",
     "term": {
@@ -10737,7 +10014,8 @@ var VOCAB = [
     "gram": "infinitiv_mit_zu",
     "info": {
       "case": "A"
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k1_041",
@@ -10760,7 +10038,8 @@ var VOCAB = [
       "uk": "Важливо <b>уникати</b> сварок із сусідами.",
       "ru": "Важно <b>избегать</b> ссор с соседями."
     },
-    "gram": "infinitiv_mit_zu"
+    "gram": "infinitiv_mit_zu",
+    "prio": 2
   },
   {
     "id": "k1_042",
@@ -10878,7 +10157,8 @@ var VOCAB = [
       "uk": "Приємно <b>ділити</b> сад із сусідами.",
       "ru": "Приятно <b>делить</b> сад с соседями."
     },
-    "gram": "infinitiv_mit_zu"
+    "gram": "infinitiv_mit_zu",
+    "prio": 2
   },
   {
     "id": "k1_047",
@@ -10900,29 +10180,6 @@ var VOCAB = [
       "en": "In our building, you <g>have to</g> follow the rules of <b>waste separation</b> carefully.",
       "uk": "У нашому будинку <g>потрібно</g> ретельно дотримуватися <b>сортування сміття</b>.",
       "ru": "В нашем доме <g>нужно</g> тщательно соблюдать <b>сортировку мусора</b>."
-    },
-    "gram": "modalverben_wdh_b1"
-  },
-  {
-    "id": "k1_048",
-    "cat": "k1",
-    "term": {
-      "de": "grillen",
-      "en": "to grill",
-      "uk": "смажити на грилі",
-      "ru": "жарить на гриле"
-    },
-    "short": {
-      "de": "Fleisch oder Gemüse draußen über dem Feuer kochen",
-      "en": "to cook meat or vegetables outside over a fire",
-      "uk": "готувати мʼясо чи овочі надворі на вогні",
-      "ru": "готовить мясо или овощи на улице на огне"
-    },
-    "def": {
-      "de": "Auf dem Balkon <g>darf</g> man leider nicht <b>grillen</b>.",
-      "en": "Unfortunately, you <g>are not allowed to</g> <b>grill</b> on the balcony.",
-      "uk": "На балконі, на жаль, <g>не можна</g> <b>смажити на грилі</b>.",
-      "ru": "На балконе, к сожалению, <g>нельзя</g> <b>жарить на гриле</b>."
     },
     "gram": "modalverben_wdh_b1"
   },
@@ -10969,52 +10226,6 @@ var VOCAB = [
       "en": "You <g>should</g> <b>air out</b> the room briefly every morning, that's also in the house rules.",
       "uk": "<g>Слід</g> щоранку недовго <b>провітрювати</b>, про це також написано в правилах будинку.",
       "ru": "<g>Следует</g> каждое утро недолго <b>проветривать</b>, об этом также написано в правилах дома."
-    },
-    "gram": "modalverben_wdh_b1"
-  },
-  {
-    "id": "k1_051",
-    "cat": "k1",
-    "term": {
-      "de": "putzen",
-      "en": "to clean",
-      "uk": "прибирати",
-      "ru": "убирать"
-    },
-    "short": {
-      "de": "einen Ort mit Wasser, Seife oder einem Tuch sauber machen",
-      "en": "to make a place clean with water, soap or a cloth",
-      "uk": "робити місце чистим за допомогою води, мила чи ганчірки",
-      "ru": "делать место чистым с помощью воды, мыла или тряпки"
-    },
-    "def": {
-      "de": "Jeder Mieter <g>muss</g> einmal im Monat das Treppenhaus <b>putzen</b>.",
-      "en": "Every tenant <g>has to</g> <b>clean</b> the stairwell once a month.",
-      "uk": "Кожен орендар <g>повинен</g> раз на місяць <b>прибирати</b> підʼїзд.",
-      "ru": "Каждый арендатор <g>должен</g> раз в месяц <b>убирать</b> подъезд."
-    },
-    "gram": "modalverben_wdh_b1"
-  },
-  {
-    "id": "k1_052",
-    "cat": "k1",
-    "term": {
-      "de": "parken",
-      "en": "to park",
-      "uk": "паркуватися",
-      "ru": "парковаться"
-    },
-    "short": {
-      "de": "das Auto irgendwo abstellen",
-      "en": "to leave the car somewhere",
-      "uk": "залишати машину десь",
-      "ru": "оставлять машину где-то"
-    },
-    "def": {
-      "de": "Vor der Garageneinfahrt <g>darf</g> man nicht <b>parken</b>.",
-      "en": "You <g>are not allowed to</g> <b>park</b> in front of the garage entrance.",
-      "uk": "Перед вʼїздом до гаража <g>не можна</g> <b>паркуватися</b>.",
-      "ru": "Перед въездом в гараж <g>нельзя</g> <b>парковаться</b>."
     },
     "gram": "modalverben_wdh_b1"
   },
@@ -11088,36 +10299,8 @@ var VOCAB = [
       "uk": "Обидва сусіди <g>як</g> через сад, <g>так і</g> через парковку <b>посварилися</b>.",
       "ru": "Оба соседа <g>как</g> из-за сада, <g>так и</g> из-за парковки <b>поссорились</b>."
     },
-    "gram": "sowohl_als_auch_weder_noch"
-  },
-  {
-    "id": "k1_056",
-    "cat": "k1",
-    "term": {
-      "de": "die Beschwerde",
-      "en": "complaint",
-      "uk": "скарга",
-      "ru": "жалоба"
-    },
-    "short": {
-      "de": "das, was man sagt oder schreibt, wenn man mit etwas nicht zufrieden ist",
-      "en": "what you say or write when you are not satisfied with something",
-      "uk": "те, що ти кажеш чи пишеш, коли чимось незадоволений",
-      "ru": "то, что ты говоришь или пишешь, когда чем-то недоволен"
-    },
-    "def": {
-      "de": "Die <b>Beschwerde</b> kam <g>weder</g> vom Hausmeister <g>noch</g> vom Vermieter, sondern direkt von den Nachbarn.",
-      "en": "The <b>complaint</b> came <g>neither</g> from the caretaker <g>nor</g> from the landlord, but directly from the neighbours.",
-      "uk": "<b>Скарга</b> надійшла <g>ні</g> від двірника, <g>ні</g> від орендодавця, а безпосередньо від сусідів.",
-      "ru": "<b>Жалоба</b> поступила <g>ни</g> от дворника, <g>ни</g> от арендодателя, а напрямую от соседей."
-    },
     "gram": "sowohl_als_auch_weder_noch",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Beschwerden"
-      ]
-    }
+    "prio": 2
   },
   {
     "id": "k1_057",
@@ -11632,29 +10815,6 @@ var VOCAB = [
     "gram": "modalverben_wdh_b1"
   },
   {
-    "id": "k1_079",
-    "cat": "k1",
-    "term": {
-      "de": "aufmachen",
-      "en": "to open",
-      "uk": "відкривати",
-      "ru": "открывать"
-    },
-    "short": {
-      "de": "etwas öffnen, zum Beispiel eine Tür oder ein Fenster",
-      "en": "to open something, for example a door or a window",
-      "uk": "відкрити щось, наприклад двері чи вікно",
-      "ru": "открыть что-то, например дверь или окно"
-    },
-    "def": {
-      "de": "Im Winter <g>soll</g> man die Fenster nicht lange <b>aufmachen</b>.",
-      "en": "In winter you <g>should</g> not <b>open</b> the windows for long.",
-      "uk": "Узимку вікна <g>не слід</g> довго <b>відкривати</b>.",
-      "ru": "Зимой окна <g>не следует</g> долго <b>открывать</b>."
-    },
-    "gram": "modalverben_wdh_b1"
-  },
-  {
     "id": "k1_080",
     "cat": "k1",
     "term": {
@@ -11766,52 +10926,6 @@ var VOCAB = [
       "en": "Children <g>may</g> have a <b>guinea pig</b>, but not a dog.",
       "uk": "Дітям <g>можна</g> мати <b>морську свинку</b>, але не собаку.",
       "ru": "Детям <g>можно</g> иметь <b>морскую свинку</b>, но не собаку."
-    },
-    "gram": "modalverben_wdh_b1"
-  },
-  {
-    "id": "k1_085",
-    "cat": "k1",
-    "term": {
-      "de": "offen",
-      "en": "open",
-      "uk": "відчинений",
-      "ru": "открытый"
-    },
-    "short": {
-      "de": "nicht geschlossen, zum Beispiel eine Tür oder ein Fenster",
-      "en": "not closed, for example a door or a window",
-      "uk": "не закритий, наприклад двері чи вікно",
-      "ru": "не закрытый, например дверь или окно"
-    },
-    "def": {
-      "de": "Die Haustür <g>darf</g> nachts nicht <b>offen</b> bleiben.",
-      "en": "The front door <g>must not</g> stay <b>open</b> at night.",
-      "uk": "Вхідні двері <g>не можна</g> залишати <b>відчиненими</b> вночі.",
-      "ru": "Входную дверь <g>нельзя</g> оставлять <b>открытой</b> на ночь."
-    },
-    "gram": "modalverben_wdh_b1"
-  },
-  {
-    "id": "k1_086",
-    "cat": "k1",
-    "term": {
-      "de": "schmutzig",
-      "en": "dirty",
-      "uk": "брудний",
-      "ru": "грязный"
-    },
-    "short": {
-      "de": "nicht sauber",
-      "en": "not clean",
-      "uk": "не чистий",
-      "ru": "не чистый"
-    },
-    "def": {
-      "de": "Wenn der Flur <b>schmutzig</b> ist, <g>muss</g> der Mieter ihn putzen.",
-      "en": "If the hallway is <b>dirty</b>, the tenant <g>has to</g> clean it.",
-      "uk": "Якщо коридор <b>брудний</b>, орендар <g>мусить</g> його прибрати.",
-      "ru": "Если коридор <b>грязный</b>, арендатор <g>должен</g> его убрать."
     },
     "gram": "modalverben_wdh_b1"
   },
@@ -11950,29 +11064,6 @@ var VOCAB = [
       "en": "After 10 p.m. you <g>have to</g> listen to music at a <b>moderate volume</b>.",
       "uk": "Після 22-ї години музику <g>треба</g> слухати на <b>помірній гучності</b>.",
       "ru": "После 22 часов музыку <g>нужно</g> слушать на <b>умеренной громкости</b>."
-    },
-    "gram": "modalverben_wdh_b1"
-  },
-  {
-    "id": "k1_093",
-    "cat": "k1",
-    "term": {
-      "de": "zumachen",
-      "en": "to close",
-      "uk": "зачиняти",
-      "ru": "закрывать"
-    },
-    "short": {
-      "de": "etwas schließen, zum Beispiel eine Tür oder ein Fenster",
-      "en": "to close something, for example a door or a window",
-      "uk": "закрити щось, наприклад двері чи вікно",
-      "ru": "закрыть что-то, например дверь или окно"
-    },
-    "def": {
-      "de": "Im Treppenhaus <g>muss</g> man die Tür immer <b>zumachen</b>.",
-      "en": "In the stairwell you <g>must</g> always <b>close</b> the door.",
-      "uk": "У сходовій клітці двері <g>треба</g> завжди <b>зачиняти</b>.",
-      "ru": "На лестничной клетке дверь <g>нужно</g> всегда <b>закрывать</b>."
     },
     "gram": "modalverben_wdh_b1"
   },
@@ -12184,29 +11275,6 @@ var VOCAB = [
     "gram": "sowohl_als_auch_weder_noch"
   },
   {
-    "id": "k1_103",
-    "cat": "k1",
-    "term": {
-      "de": "dumm",
-      "en": "stupid",
-      "uk": "нерозумний",
-      "ru": "глупый"
-    },
-    "short": {
-      "de": "nicht klug, man denkt oder versteht nicht gut",
-      "en": "not clever, you do not think or understand well",
-      "uk": "нерозумний, ти погано думаєш або розумієш",
-      "ru": "неумный, ты плохо думаешь или понимаешь"
-    },
-    "def": {
-      "de": "Sein Verhalten war <g>sowohl</g> <b>dumm</b> <g>als auch</g> unhöflich.",
-      "en": "His behaviour was <g>both</g> <b>stupid</b> <g>and</g> rude.",
-      "uk": "Його поведінка була <g>як</g> <b>нерозумною</b>, <g>так і</g> нечемною.",
-      "ru": "Его поведение было <g>как</g> <b>глупым</b>, <g>так и</g> невежливым."
-    },
-    "gram": "sowohl_als_auch_weder_noch"
-  },
-  {
     "id": "k1_104",
     "cat": "k1",
     "term": {
@@ -12414,29 +11482,6 @@ var VOCAB = [
     "gram": "relativsatz_nominativ_sondern"
   },
   {
-    "id": "k2_002",
-    "cat": "k2",
-    "term": {
-      "de": "reklamieren",
-      "en": "to file a complaint",
-      "uk": "подавати рекламацію",
-      "ru": "подавать претензию"
-    },
-    "short": {
-      "de": "einer Firma sagen, dass man mit einer Ware oder einem Service nicht zufrieden ist",
-      "en": "to tell a company that you are not satisfied with a product or service",
-      "uk": "повідомити фірмі, що ти незадоволений товаром чи послугою",
-      "ru": "сообщить фирме, что ты недоволен товаром или услугой"
-    },
-    "def": {
-      "de": "Frau Yilmaz wollte nicht schreiben, <g>sondern</g> direkt beim Kundenservice <b>reklamieren</b>, <g>der</g> ihr sofort half.",
-      "en": "Mrs Yilmaz didn't want to write an email <g>but</g> <b>complain</b> directly to customer service, <g>who</g> helped her right away.",
-      "uk": "Пані Йилмаз не хотіла писати, <g>а</g> хотіла <b>поскаржитися</b> прямо в службу підтримки, <g>яка</g> відразу їй допомогла.",
-      "ru": "Госпожа Йилмаз не хотела писать, <g>а</g> хотела <b>пожаловаться</b> прямо в службу поддержки, <g>которая</g> сразу ей помогла."
-    },
-    "gram": "relativsatz_nominativ_sondern"
-  },
-  {
     "id": "k2_003",
     "cat": "k2",
     "term": {
@@ -12483,35 +11528,6 @@ var VOCAB = [
     "gram": "relativsatz_akkusativ_b1"
   },
   {
-    "id": "k2_005",
-    "cat": "k2",
-    "term": {
-      "de": "die Rechnung",
-      "en": "invoice",
-      "uk": "рахунок до оплати",
-      "ru": "счёт к оплате"
-    },
-    "short": {
-      "de": "ein Dokument, auf dem steht, wie viel Geld man für etwas bezahlen muss",
-      "en": "a document that shows how much money you have to pay for something",
-      "uk": "документ, у якому написано, скільки грошей потрібно заплатити за щось",
-      "ru": "документ, в котором написано, сколько денег нужно заплатить за что-то"
-    },
-    "def": {
-      "de": "Die <b>Rechnung</b>, <g>die</g> wir letzte Woche bekommen haben, war leider falsch.",
-      "en": "The <b>invoice</b> <g>that</g> we received last week was unfortunately wrong.",
-      "uk": "<b>Рахунок</b>, <g>який</g> ми отримали минулого тижня, на жаль, був неправильним.",
-      "ru": "<b>Счёт</b>, <g>который</g> мы получили на прошлой неделе, к сожалению, был неправильным."
-    },
-    "gram": "relativsatz_akkusativ_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Rechnungen"
-      ]
-    }
-  },
-  {
     "id": "k2_006",
     "cat": "k2",
     "term": {
@@ -12539,29 +11555,6 @@ var VOCAB = [
         "die Quittungen"
       ]
     }
-  },
-  {
-    "id": "k2_007",
-    "cat": "k2",
-    "term": {
-      "de": "umtauschen",
-      "en": "to exchange goods",
-      "uk": "обмінювати товар",
-      "ru": "обменивать товар"
-    },
-    "short": {
-      "de": "eine Ware gegen eine andere Ware im Geschäft tauschen",
-      "en": "to exchange one product for another in a shop",
-      "uk": "обмінювати товар на інший у магазині",
-      "ru": "обменивать товар на другой в магазине"
-    },
-    "def": {
-      "de": "Das Kleid, <g>das</g> ich <b>umtauschen</b> möchte, ist leider zu klein.",
-      "en": "The dress <g>that</g> I would like to <b>exchange</b> is unfortunately too small.",
-      "uk": "Плаття, <g>яке</g> я хочу <b>обміняти</b>, на жаль, замале.",
-      "ru": "Платье, <g>которое</g> я хочу <b>обменять</b>, к сожалению, слишком маленькое."
-    },
-    "gram": "relativsatz_akkusativ_b1"
   },
   {
     "id": "k2_008",
@@ -12607,7 +11600,8 @@ var VOCAB = [
       "uk": "Інтернет-магазин зазвичай <b>доставляє</b> товар протягом строку доставки в два дні.",
       "ru": "Интернет-магазин обычно <b>доставляет</b> товар в течение срока доставки в два дня."
     },
-    "gram": "komposita_nomen_nomen"
+    "gram": "komposita_nomen_nomen",
+    "prio": 2
   },
   {
     "id": "k2_010",
@@ -12676,59 +11670,8 @@ var VOCAB = [
       "uk": "Я <g>собі</g> <b>замовив</b> новий телефон.",
       "ru": "Я <g>себе</g> <b>заказал</b> новый телефон."
     },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1"
-  },
-  {
-    "id": "k2_013",
-    "cat": "k2",
-    "term": {
-      "de": "die Bestellung",
-      "en": "order",
-      "uk": "замовлення",
-      "ru": "заказ"
-    },
-    "short": {
-      "de": "ein Auftrag, mit dem man etwas in einem Geschäft oder online kauft",
-      "en": "a request with which you buy something in a shop or online",
-      "uk": "замовлення, яким ти купуєш щось у магазині або онлайн",
-      "ru": "заказ, с помощью которого ты покупаешь что-то в магазине или онлайн"
-    },
-    "def": {
-      "de": "Ich habe <g>mich</g> heute über meine neue <b>Bestellung</b> sehr gefreut.",
-      "en": "I was very happy about my new <b>order</b> today.",
-      "uk": "Я сьогодні дуже зрадів(-ла) своєму новому <b>замовленню</b>.",
-      "ru": "Я сегодня очень обрадовался(-лась) своему новому <b>заказу</b>."
-    },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1"
-  },
-  {
-    "id": "k2_014",
-    "cat": "k2",
-    "term": {
-      "de": "der Kassenbon",
-      "en": "till receipt",
-      "uk": "касовий чек",
-      "ru": "кассовый чек"
-    },
-    "short": {
-      "de": "ein kleines Papier von der Kasse, das zeigt, was man gekauft hat",
-      "en": "a small piece of paper from the till that shows what you bought",
-      "uk": "маленький папір з каси, який показує, що ти купив",
-      "ru": "маленькая бумага из кассы, которая показывает, что ты купил"
-    },
-    "def": {
-      "de": "Ohne den <g><b>Kassenbon</b></g> kann das Geschäft die Ware nicht umtauschen.",
-      "en": "Without the <b>receipt</b>, the shop cannot exchange the item.",
-      "uk": "Без <b>касового чека</b> магазин не може обміняти товар.",
-      "ru": "Без <b>кассового чека</b> магазин не может обменять товар."
-    },
-    "gram": "komposita_nomen_nomen",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Kassenbons"
-      ]
-    }
+    "gram": "reflexivpronomen_akkusativ_wdh_b1",
+    "prio": 2
   },
   {
     "id": "k2_016",
@@ -12775,110 +11718,6 @@ var VOCAB = [
       "ru": "У нас дома есть <g>как</g> большой <b>запас</b> риса, <g>так и</g> макарон."
     },
     "gram": "sowohl_als_auch_weder_noch"
-  },
-  {
-    "id": "k2_019",
-    "cat": "k2",
-    "term": {
-      "de": "frisch",
-      "en": "fresh",
-      "uk": "свіжий",
-      "ru": "свежий"
-    },
-    "short": {
-      "de": "wenn ein Lebensmittel noch neu und nicht alt ist",
-      "en": "when food is still new and not old",
-      "uk": "коли продукт ще новий і не старий",
-      "ru": "когда продукт ещё новый и не старый"
-    },
-    "def": {
-      "de": "Der Fisch auf dem Markt ist <g>weder</g> billig <g>noch</g> immer <b>frisch</b>.",
-      "en": "The fish at the market is <g>neither</g> cheap <g>nor</g> always <b>fresh</b>.",
-      "uk": "Риба на ринку <g>ні</g> дешева, <g>ні</g> завжди <b>свіжа</b>.",
-      "ru": "Рыба на рынке <g>ни</g> дешёвая, <g>ни</g> всегда <b>свежая</b>."
-    },
-    "gram": "sowohl_als_auch_weder_noch"
-  },
-  {
-    "id": "k2_020",
-    "cat": "k2",
-    "term": {
-      "de": "günstig",
-      "en": "affordable",
-      "uk": "вигідний за ціною",
-      "ru": "выгодный по цене"
-    },
-    "short": {
-      "de": "wenn ein Preis niedrig und fair ist",
-      "en": "when a price is low and fair",
-      "uk": "коли ціна низька і справедлива",
-      "ru": "когда цена низкая и справедливая"
-    },
-    "def": {
-      "de": "Dieser Laden ist <g>sowohl</g> <b>günstig</b> <g>als auch</g> sehr freundlich zu den Kunden.",
-      "en": "This shop is <g>both</g> <b>affordable</b> <g>and</g> very friendly to its customers.",
-      "uk": "Цей магазин <g>як</g> <b>вигідний</b> за цінами, <g>так і</g> дуже привітний до клієнтів.",
-      "ru": "Этот магазин <g>как</g> <b>выгодный</b> по ценам, <g>так и</g> очень дружелюбный к клиентам."
-    },
-    "gram": "sowohl_als_auch_weder_noch"
-  },
-  {
-    "id": "k2_021",
-    "cat": "k2",
-    "term": {
-      "de": "die Kasse",
-      "en": "checkout",
-      "uk": "каса",
-      "ru": "касса"
-    },
-    "short": {
-      "de": "der Ort im Geschäft, wo man für die Ware bezahlt",
-      "en": "the place in a shop where you pay for the goods",
-      "uk": "місце в магазині, де оплачуєш товар",
-      "ru": "место в магазине, где оплачиваешь товар"
-    },
-    "def": {
-      "de": "An der <b>Kasse</b> gab es <g>weder</g> eine lange Schlange <g>noch</g> Probleme mit der Karte.",
-      "en": "At the <b>checkout</b>, there was <g>neither</g> a long queue <g>nor</g> any problems with the card.",
-      "uk": "На <b>касі</b> не було <g>ні</g> довгої черги, <g>ні</g> проблем із карткою.",
-      "ru": "На <b>кассе</b> не было <g>ни</g> длинной очереди, <g>ни</g> проблем с картой."
-    },
-    "gram": "sowohl_als_auch_weder_noch",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Kassen"
-      ]
-    }
-  },
-  {
-    "id": "k2_022",
-    "cat": "k2",
-    "term": {
-      "de": "das Sonderangebot",
-      "en": "special offer",
-      "uk": "спеціальна пропозиція",
-      "ru": "специальное предложение"
-    },
-    "short": {
-      "de": "eine Ware, die für kurze Zeit besonders billig verkauft wird",
-      "en": "a product sold especially cheaply for a short time",
-      "uk": "товар, який на короткий час продається особливо дешево",
-      "ru": "товар, который на короткое время продаётся особенно дёшево"
-    },
-    "def": {
-      "de": "Das <b>Sonderangebot</b> gilt <g>sowohl</g> im Geschäft <g>als auch</g> im Onlineshop.",
-      "en": "The <b>special offer</b> is valid <g>both</g> in the shop <g>and</g> in the online store.",
-      "uk": "<b>Спеціальна пропозиція</b> діє <g>як</g> у магазині, <g>так і</g> в інтернет-магазині.",
-      "ru": "<b>Специальное предложение</b> действует <g>как</g> в магазине, <g>так и</g> в интернет-магазине."
-    },
-    "gram": "sowohl_als_auch_weder_noch",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Sonderangebote"
-      ]
-    }
   },
   {
     "id": "k2_023",
@@ -12950,7 +11789,8 @@ var VOCAB = [
       "uk": "Нам треба <b>поспішити</b>, магазин зачиняється через десять хвилин.",
       "ru": "Нам нужно <b>поторопиться</b>, магазин закрывается через десять минут."
     },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+    "gram": "reflexivpronomen_akkusativ_wdh_b1",
+    "prio": 2
   },
   {
     "id": "k2_026",
@@ -12972,32 +11812,6 @@ var VOCAB = [
       "en": "Before buying, she <b>informed</b> herself well about the product.",
       "uk": "Перед покупкою вона добре <b>дізналася</b> про товар.",
       "ru": "Перед покупкой она хорошо <b>разузнала</b> о товаре."
-    },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1",
-    "info": {
-      "case": "A"
-    }
-  },
-  {
-    "id": "k2_027",
-    "cat": "k2",
-    "term": {
-      "de": "sich ärgern über",
-      "en": "to get annoyed about",
-      "uk": "сердитися через",
-      "ru": "сердиться из-за"
-    },
-    "short": {
-      "de": "negative Gefühle haben, weil etwas nicht gut gelaufen ist",
-      "en": "to feel negative because something didn't go well",
-      "uk": "відчувати негативні емоції через те, що щось пішло не так",
-      "ru": "испытывать негативные эмоции из-за того, что что-то пошло не так"
-    },
-    "def": {
-      "de": "Er hat <g>sich</g> sehr über die hohen Preise <b>geärgert</b>.",
-      "en": "He got very <b>annoyed</b> about the high prices.",
-      "uk": "Він дуже <b>розсердився</b> через високі ціни.",
-      "ru": "Он очень <b>рассердился</b> из-за высоких цен."
     },
     "gram": "reflexivpronomen_akkusativ_wdh_b1",
     "info": {
@@ -13028,7 +11842,8 @@ var VOCAB = [
     "gram": "reflexivpronomen_akkusativ_wdh_b1",
     "info": {
       "case": "A"
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k2_029",
@@ -13054,7 +11869,8 @@ var VOCAB = [
     "gram": "reflexivpronomen_akkusativ_wdh_b1",
     "info": {
       "case": "A"
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k2_030",
@@ -13077,7 +11893,8 @@ var VOCAB = [
       "uk": "Новий продавець привітно <b>представився</b> всім колегам.",
       "ru": "Новый продавец дружелюбно <b>представился</b> всем коллегам."
     },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1"
+    "gram": "reflexivpronomen_akkusativ_wdh_b1",
+    "prio": 2
   },
   {
     "id": "k2_031",
@@ -13244,30 +12061,8 @@ var VOCAB = [
     "gram": "relativsatz_nominativ_sondern",
     "info": {
       "case": "A"
-    }
-  },
-  {
-    "id": "k2_038",
-    "cat": "k2",
-    "term": {
-      "de": "fehlen",
-      "en": "to be missing",
-      "uk": "бути відсутнім",
-      "ru": "отсутствовать"
     },
-    "short": {
-      "de": "nicht da sein, obwohl es da sein sollte",
-      "en": "to not be there, although it should be",
-      "uk": "бути відсутнім, хоча має бути",
-      "ru": "отсутствовать, хотя должно быть"
-    },
-    "def": {
-      "de": "Das war kein normales Zubehör, <g>sondern</g> ein wichtiges Teil, <g>das</g> in der Packung <b>fehlte</b>.",
-      "en": "That was not just an accessory <g>but</g> an important part <g>that</g> was <b>missing</b> from the package.",
-      "uk": "Це був не просто аксесуар, <g>а</g> важлива деталь, <g>яка</g> <b>була відсутня</b> в упаковці.",
-      "ru": "Это был не просто аксессуар, <g>а</g> важная деталь, <g>которая</g> <b>отсутствовала</b> в упаковке."
-    },
-    "gram": "relativsatz_nominativ_sondern"
+    "prio": 2
   },
   {
     "id": "k2_039",
@@ -13359,7 +12154,8 @@ var VOCAB = [
       "uk": "Будь ласка, завжди вказуйте свій <b>номер замовлення</b>, якщо маєте питання.",
       "ru": "Пожалуйста, всегда указывайте свой <b>номер заказа</b>, если есть вопросы."
     },
-    "gram": "komposita_nomen_nomen"
+    "gram": "komposita_nomen_nomen",
+    "prio": 2
   },
   {
     "id": "k2_043",
@@ -13506,87 +12302,6 @@ var VOCAB = [
     "gram": "relativsatz_akkusativ_b1"
   },
   {
-    "id": "k2_049",
-    "cat": "k2",
-    "term": {
-      "de": "die Überweisung",
-      "en": "bank transfer",
-      "uk": "банківський переказ",
-      "ru": "банковский перевод"
-    },
-    "short": {
-      "de": "wenn man Geld von einem Bankkonto auf ein anderes schickt",
-      "en": "when you send money from one bank account to another",
-      "uk": "коли переказуєш гроші з одного банківського рахунку на інший",
-      "ru": "когда переводишь деньги с одного банковского счёта на другой"
-    },
-    "def": {
-      "de": "Die <b>Überweisung</b>, <g>die</g> ich gestern gemacht habe, dauert meistens zwei Tage.",
-      "en": "The <b>bank transfer</b> <g>that</g> I made yesterday usually takes two days.",
-      "uk": "<b>Банківський переказ</b>, <g>який</g> я зробив(-ла) вчора, зазвичай триває два дні.",
-      "ru": "<b>Банковский перевод</b>, <g>который</g> я сделал(-а) вчера, обычно занимает два дня."
-    },
-    "gram": "relativsatz_akkusativ_b1"
-  },
-  {
-    "id": "k2_050",
-    "cat": "k2",
-    "term": {
-      "de": "das Konto",
-      "en": "account",
-      "uk": "банківський рахунок",
-      "ru": "банковский счёт"
-    },
-    "short": {
-      "de": "der Ort bei einer Bank, wo man sein Geld aufbewahrt",
-      "en": "the place at a bank where you keep your money",
-      "uk": "місце в банку, де зберігаються твої гроші",
-      "ru": "место в банке, где хранятся твои деньги"
-    },
-    "def": {
-      "de": "Das <b>Konto</b>, <g>das</g> ich vor einem Jahr eröffnet habe, nutze ich fast jeden Tag.",
-      "en": "The <b>account</b> <g>that</g> I opened a year ago, I use almost every day.",
-      "uk": "<b>Рахунок</b>, <g>який</g> я відкрив(-ла) рік тому, я використовую майже щодня.",
-      "ru": "<b>Счёт</b>, <g>который</g> я открыл(-а) год назад, я использую почти каждый день."
-    },
-    "gram": "relativsatz_akkusativ_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Konten"
-      ]
-    }
-  },
-  {
-    "id": "k2_051",
-    "cat": "k2",
-    "term": {
-      "de": "die Gebühr",
-      "en": "fee",
-      "uk": "комісія",
-      "ru": "комиссия"
-    },
-    "short": {
-      "de": "ein Geldbetrag, den man für eine Leistung bezahlen muss",
-      "en": "an amount of money you have to pay for a service",
-      "uk": "сума грошей, яку потрібно заплатити за послугу",
-      "ru": "сумма денег, которую нужно заплатить за услугу"
-    },
-    "def": {
-      "de": "Die <b>Gebühr</b>, <g>die</g> die Bank für die Überweisung verlangt, finde ich sehr hoch.",
-      "en": "I find the <b>fee</b> <g>that</g> the bank charges for the transfer very high.",
-      "uk": "<b>Комісія</b>, <g>яку</g> вимагає банк за переказ, здається мені дуже високою.",
-      "ru": "<b>Комиссия</b>, <g>которую</g> требует банк за перевод, кажется мне очень высокой."
-    },
-    "gram": "relativsatz_akkusativ_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Gebühren"
-      ]
-    }
-  },
-  {
     "id": "k2_052",
     "cat": "k2",
     "term": {
@@ -13613,7 +12328,8 @@ var VOCAB = [
       "v": [
         "die Verträge"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k2_053",
@@ -13661,75 +12377,6 @@ var VOCAB = [
       "en": "The <b>price comparison</b> <g>that</g> I did online saved me a lot of money.",
       "uk": "<b>Порівняння цін</b>, <g>яке</g> я зробив(-ла) онлайн, заощадило мені багато грошей.",
       "ru": "<b>Сравнение цен</b>, <g>которое</g> я сделал(-а) онлайн, сэкономило мне много денег."
-    },
-    "gram": "relativsatz_akkusativ_b1"
-  },
-  {
-    "id": "k2_055",
-    "cat": "k2",
-    "term": {
-      "de": "sparen",
-      "en": "to save money",
-      "uk": "економити",
-      "ru": "экономить"
-    },
-    "short": {
-      "de": "weniger Geld ausgeben oder Geld für später aufbewahren",
-      "en": "to spend less money or keep money for later",
-      "uk": "витрачати менше грошей або відкладати гроші на потім",
-      "ru": "тратить меньше денег или откладывать деньги на потом"
-    },
-    "def": {
-      "de": "Das Geld, <g>das</g> wir durch den Rabatt <b>gespart</b> haben, legen wir zur Seite.",
-      "en": "We put aside the money <g>that</g> we <b>saved</b> through the discount.",
-      "uk": "Гроші, <g>які</g> ми <b>заощадили</b> завдяки знижці, ми відкладаємо.",
-      "ru": "Деньги, <g>которые</g> мы <b>сэкономили</b> благодаря скидке, мы откладываем."
-    },
-    "gram": "relativsatz_akkusativ_b1"
-  },
-  {
-    "id": "k2_056",
-    "cat": "k2",
-    "term": {
-      "de": "die Qualität",
-      "en": "quality",
-      "uk": "якість",
-      "ru": "качество"
-    },
-    "short": {
-      "de": "wie gut oder schlecht ein Produkt gemacht ist",
-      "en": "how well or badly a product is made",
-      "uk": "наскільки добре чи погано зроблений товар",
-      "ru": "насколько хорошо или плохо сделан товар"
-    },
-    "def": {
-      "de": "Die <b>Qualität</b>, <g>die</g> wir bei diesem Produkt erwartet haben, haben wir leider nicht bekommen.",
-      "en": "We unfortunately didn't get the <b>quality</b> <g>that</g> we expected from this product.",
-      "uk": "<b>Якість</b>, <g>яку</g> ми очікували від цього товару, ми, на жаль, не отримали.",
-      "ru": "<b>Качество</b>, <g>которое</g> мы ожидали от этого товара, мы, к сожалению, не получили."
-    },
-    "gram": "relativsatz_akkusativ_b1"
-  },
-  {
-    "id": "k2_057",
-    "cat": "k2",
-    "term": {
-      "de": "vergleichen",
-      "en": "to compare",
-      "uk": "порівнювати",
-      "ru": "сравнивать"
-    },
-    "short": {
-      "de": "zwei oder mehr Dinge nebeneinanderstellen, um Unterschiede zu sehen",
-      "en": "to put two or more things side by side to see the differences",
-      "uk": "ставити поряд дві чи більше речей, щоб побачити різницю",
-      "ru": "ставить рядом две или более вещи, чтобы увидеть разницу"
-    },
-    "def": {
-      "de": "Die zwei Angebote, <g>die</g> ich <b>verglichen</b> habe, waren fast gleich teuer.",
-      "en": "The two offers <g>that</g> I <b>compared</b> were almost equally expensive.",
-      "uk": "Дві пропозиції, <g>які</g> я <b>порівняв(-ла)</b>, коштували майже однаково.",
-      "ru": "Два предложения, <g>которые</g> я <b>сравнил(-а)</b>, стоили почти одинаково."
     },
     "gram": "relativsatz_akkusativ_b1"
   },
@@ -14638,35 +13285,6 @@ var VOCAB = [
       "ru": "При <b>наложенном платеже</b> платишь только у двери квартиры."
     },
     "gram": "komposita_nomen_nomen"
-  },
-  {
-    "id": "k2_097",
-    "cat": "k2",
-    "term": {
-      "de": "das Paket",
-      "en": "parcel",
-      "uk": "посилка",
-      "ru": "посылка"
-    },
-    "short": {
-      "de": "eine Sendung in einem Karton, die man mit der Post schickt",
-      "en": "a consignment in a box that you send by post",
-      "uk": "відправлення в коробці, яке пересилають поштою",
-      "ru": "отправление в коробке, которое пересылают по почте"
-    },
-    "def": {
-      "de": "Das <b>Paket</b> steht vor der <g>Haustür</g>.",
-      "en": "The <b>parcel</b> is in front of the front door.",
-      "uk": "<b>Посилка</b> стоїть перед вхідними дверима.",
-      "ru": "<b>Посылка</b> стоит перед входной дверью."
-    },
-    "gram": "komposita_nomen_nomen",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Pakete"
-      ]
-    }
   },
   {
     "id": "k2_098",
@@ -15618,27 +14236,65 @@ var VOCAB = [
     "gram": "relativsatz_akkusativ_b1"
   },
   {
-    "id": "k3_001",
-    "cat": "k3",
+    "id": "k2_139",
+    "cat": "k2",
     "term": {
-      "de": "das Girokonto",
-      "en": "checking account",
-      "uk": "поточний рахунок",
-      "ru": "текущий счёт"
+      "de": "der Händler",
+      "en": "trader",
+      "uk": "торговець",
+      "ru": "торговец"
     },
     "short": {
-      "de": "ein Bankkonto, mit dem man normalerweise bezahlt und Geld bekommt",
-      "en": "a bank account that you normally use to pay and receive money",
-      "uk": "банківський рахунок, яким зазвичай платять і отримують гроші",
-      "ru": "банковский счёт, которым обычно платят и получают деньги"
+      "de": "eine Person oder Firma, die Waren kauft und verkauft",
+      "en": "a person or company that buys and sells goods",
+      "uk": "людина чи фірма, яка купує й продає товари",
+      "ru": "человек или фирма, которые покупают и продают товары"
     },
     "def": {
-      "de": "Ohne <b>Girokonto</b> <g>dürfte</g> es schwierig sein, das Gehalt zu bekommen.",
-      "en": "Without a <b>checking account</b>, it might be difficult to receive your salary.",
-      "uk": "Без <b>поточного рахунку</b>, ймовірно, важко отримати зарплату.",
-      "ru": "Без <b>текущего счёта</b>, вероятно, сложно получить зарплату."
+      "de": "Der <b>Händler</b>, <g>den</g> ich auf dem Markt kennengelernt habe, verkauft Obst aus der Region.",
+      "en": "The <b>trader</b> <g>whom</g> I met at the market sells fruit from the region.",
+      "uk": "<b>Торговець</b>, <g>якого</g> я зустріла на ринку, продає фрукти з регіону.",
+      "ru": "<b>Торговец</b>, <g>которого</g> я встретила на рынке, продаёт фрукты из региона."
     },
-    "gram": "modalverben_vermutung"
+    "gram": "relativsatz_akkusativ_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Händler"
+      ]
+    }
+  },
+  {
+    "id": "k2_140",
+    "cat": "k2",
+    "term": {
+      "de": "der Stoff",
+      "en": "fabric",
+      "uk": "тканина",
+      "ru": "ткань"
+    },
+    "short": {
+      "de": "das Material, aus dem man Kleidung macht",
+      "en": "the material clothes are made of",
+      "uk": "матеріал, з якого шиють одяг",
+      "ru": "материал, из которого шьют одежду"
+    },
+    "def": {
+      "de": "Diese Jacke ist aus einem leichten <b>Stoff</b>, <g>der</g> im Sommer angenehm ist.",
+      "en": "This jacket is made of a light <b>fabric</b> <g>that</g> is pleasant in summer.",
+      "uk": "Ця куртка з легкої <b>тканини</b>, <g>яка</g> приємна влітку.",
+      "ru": "Эта куртка из лёгкой <b>ткани</b>, <g>которая</g> приятна летом."
+    },
+    "gram": "relativsatz_nominativ_sondern",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Stoffe"
+      ]
+    },
+    "info": {
+      "sense": "Material"
+    }
   },
   {
     "id": "k3_002",
@@ -15661,7 +14317,8 @@ var VOCAB = [
       "uk": "Пан Демір, мабуть, уже <b>відкрив</b> свій новий рахунок.",
       "ru": "Господин Демир, наверное, уже <b>открыл</b> свой новый счёт."
     },
-    "gram": "modalverben_vermutung"
+    "gram": "modalverben_vermutung",
+    "prio": 2
   },
   {
     "id": "k3_003",
@@ -15684,7 +14341,8 @@ var VOCAB = [
       "uk": "Вартість <b>страхування</b> цього року, на жаль, зросла.",
       "ru": "Стоимость <b>страхования</b> в этом году, к сожалению, выросла."
     },
-    "gram": "genitiv"
+    "gram": "genitiv",
+    "prio": 2
   },
   {
     "id": "k3_004",
@@ -15900,52 +14558,6 @@ var VOCAB = [
     "gram": "konnektoren_wdh_b1"
   },
   {
-    "id": "k3_016",
-    "cat": "k3",
-    "term": {
-      "de": "die Kontonummer",
-      "en": "account number",
-      "uk": "номер рахунку",
-      "ru": "номер счёта"
-    },
-    "short": {
-      "de": "eine Zahl, die ein Bankkonto eindeutig identifiziert",
-      "en": "a number that uniquely identifies a bank account",
-      "uk": "число, яке однозначно ідентифікує банківський рахунок",
-      "ru": "число, которое однозначно идентифицирует банковский счёт"
-    },
-    "def": {
-      "de": "Die <b>Kontonummer</b> <g>müsste</g> auf der Rückseite der Karte stehen.",
-      "en": "The <b>account number</b> <g>should</g> be on the back of the card.",
-      "uk": "<b>Номер рахунку</b>, <g>мабуть</g>, вказаний на звороті картки.",
-      "ru": "<b>Номер счёта</b>, <g>наверное</g>, указан на обратной стороне карты."
-    },
-    "gram": "modalverben_vermutung"
-  },
-  {
-    "id": "k3_017",
-    "cat": "k3",
-    "term": {
-      "de": "der Kontostand",
-      "en": "account balance",
-      "uk": "баланс рахунку",
-      "ru": "баланс счёта"
-    },
-    "short": {
-      "de": "die Menge Geld, die gerade auf einem Konto ist",
-      "en": "the amount of money currently in an account",
-      "uk": "кількість грошей, яка зараз є на рахунку",
-      "ru": "количество денег, которое сейчас есть на счёте"
-    },
-    "def": {
-      "de": "Der <b>Kontostand</b> <g>dürfte</g> nach dem Einkauf ziemlich niedrig sein.",
-      "en": "The <b>account balance</b> is <g>probably</g> quite low after the shopping trip.",
-      "uk": "<b>Баланс рахунку</b>, <g>ймовірно</g>, досить низький після покупок.",
-      "ru": "<b>Баланс счёта</b>, <g>вероятно</g>, довольно низкий после покупок."
-    },
-    "gram": "modalverben_vermutung"
-  },
-  {
     "id": "k3_018",
     "cat": "k3",
     "term": {
@@ -15965,29 +14577,6 @@ var VOCAB = [
       "en": "He <g>could</g> have already <b>withdrawn</b> money at the cash machine.",
       "uk": "Він, <g>можливо</g>, уже <b>зняв</b> гроші в банкоматі.",
       "ru": "Он, <g>возможно</g>, уже <b>снял</b> деньги в банкомате."
-    },
-    "gram": "modalverben_vermutung"
-  },
-  {
-    "id": "k3_019",
-    "cat": "k3",
-    "term": {
-      "de": "einzahlen",
-      "en": "to deposit",
-      "uk": "вносити гроші",
-      "ru": "вносить деньги"
-    },
-    "short": {
-      "de": "Geld auf ein Bankkonto bringen",
-      "en": "to put money into a bank account",
-      "uk": "класти гроші на банківський рахунок",
-      "ru": "класть деньги на банковский счёт"
-    },
-    "def": {
-      "de": "Frau Nowak <g>müsste</g> das Geld schon <b>eingezahlt</b> haben, sie war heute Morgen bei der Bank.",
-      "en": "Mrs Nowak <g>must</g> have already <b>deposited</b> the money, she was at the bank this morning.",
-      "uk": "Пані Новак, <g>напевно</g>, уже <b>внесла</b> гроші, вона сьогодні вранці була в банку.",
-      "ru": "Госпожа Новак, <g>наверное</g>, уже <b>внесла</b> деньги, она сегодня утром была в банке."
     },
     "gram": "modalverben_vermutung"
   },
@@ -16015,29 +14604,6 @@ var VOCAB = [
     "gram": "modalverben_vermutung"
   },
   {
-    "id": "k3_021",
-    "cat": "k3",
-    "term": {
-      "de": "das Online-Banking",
-      "en": "online banking",
-      "uk": "онлайн-банкінг",
-      "ru": "онлайн-банкинг"
-    },
-    "short": {
-      "de": "wenn man seine Bankgeschäfte über das Internet erledigt",
-      "en": "when you do your banking over the internet",
-      "uk": "коли банківські операції виконуєш через інтернет",
-      "ru": "когда банковские операции выполняешь через интернет"
-    },
-    "def": {
-      "de": "Mit <b>Online-Banking</b> <g>könnte</g> das Ganze viel schneller gehen.",
-      "en": "With <b>online banking</b>, the whole thing <g>could</g> go much faster.",
-      "uk": "З <b>онлайн-банкінгом</b> усе, <g>можливо</g>, пройде набагато швидше.",
-      "ru": "С <b>онлайн-банкингом</b> всё, <g>возможно</g>, пройдёт намного быстрее."
-    },
-    "gram": "modalverben_vermutung"
-  },
-  {
     "id": "k3_022",
     "cat": "k3",
     "term": {
@@ -16059,81 +14625,6 @@ var VOCAB = [
       "ru": "Он, <g>наверное</g>, забыл свой <b>ПИН-код</b>, он уже в третий раз пытается его ввести."
     },
     "gram": "modalverben_vermutung"
-  },
-  {
-    "id": "k3_023",
-    "cat": "k3",
-    "term": {
-      "de": "gültig",
-      "en": "valid",
-      "uk": "дійсний",
-      "ru": "действительный"
-    },
-    "short": {
-      "de": "wenn ein Dokument oder eine Karte noch benutzt werden darf",
-      "en": "when a document or card may still be used",
-      "uk": "коли документ чи картка ще можуть використовуватися",
-      "ru": "когда документ или карта ещё могут использоваться"
-    },
-    "def": {
-      "de": "Die alte Karte <g>dürfte</g> nicht mehr <b>gültig</b> sein.",
-      "en": "The old card is <g>probably</g> no longer <b>valid</b>.",
-      "uk": "Стара картка, <g>ймовірно</g>, уже не <b>дійсна</b>.",
-      "ru": "Старая карта, <g>вероятно</g>, уже не <b>действительна</b>."
-    },
-    "gram": "modalverben_vermutung"
-  },
-  {
-    "id": "k3_024",
-    "cat": "k3",
-    "term": {
-      "de": "der Kontoauszug",
-      "en": "bank statement",
-      "uk": "виписка з рахунку",
-      "ru": "выписка со счёта"
-    },
-    "short": {
-      "de": "ein Papier oder eine Datei, die alle Bewegungen auf einem Konto zeigt",
-      "en": "a document that shows all transactions on an account",
-      "uk": "документ, який показує всі рухи коштів на рахунку",
-      "ru": "документ, который показывает все движения средств на счёте"
-    },
-    "def": {
-      "de": "Die letzte Seite <g>des</g> <b>Kontoauszugs</b> zeigt den aktuellen Kontostand.",
-      "en": "The last page <g>of the</g> <b>bank statement</b> shows the current balance.",
-      "uk": "Остання сторінка <b>виписки з рахунку</b> показує актуальний баланс.",
-      "ru": "Последняя страница <b>выписки со счёта</b> показывает актуальный баланс."
-    },
-    "gram": "genitiv"
-  },
-  {
-    "id": "k3_025",
-    "cat": "k3",
-    "term": {
-      "de": "der Kunde / die Kundin",
-      "en": "customer",
-      "uk": "клієнт / клієнтка",
-      "ru": "клиент / клиентка"
-    },
-    "short": {
-      "de": "eine Person, die bei einer Firma etwas kauft oder einen Service nutzt",
-      "en": "a person who buys something or uses a service from a company",
-      "uk": "людина, яка купує щось або користується послугою фірми",
-      "ru": "человек, который покупает что-то или пользуется услугой фирмы"
-    },
-    "def": {
-      "de": "Die Zufriedenheit <g>des</g> <b>Kunden</b> ist der Bank sehr wichtig.",
-      "en": "The satisfaction <g>of the</g> <b>customer</b> is very important to the bank.",
-      "uk": "Задоволеність <b>клієнта</b> дуже важлива для банку.",
-      "ru": "Удовлетворённость <b>клиента</b> очень важна для банка."
-    },
-    "gram": "genitiv",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Kunden / die Kundinnen"
-      ]
-    }
   },
   {
     "id": "k3_026",
@@ -16205,35 +14696,6 @@ var VOCAB = [
     "gram": "genitiv"
   },
   {
-    "id": "k3_029",
-    "cat": "k3",
-    "term": {
-      "de": "die Kreditkarte",
-      "en": "credit card",
-      "uk": "кредитна картка",
-      "ru": "кредитная карта"
-    },
-    "short": {
-      "de": "eine Karte, mit der man bezahlen kann, ohne sofort Geld vom Konto zu nehmen",
-      "en": "a card you can use to pay without immediately taking money from your account",
-      "uk": "картка, якою можна платити, не знімаючи одразу гроші з рахунку",
-      "ru": "карта, которой можно платить, не снимая сразу деньги со счёта"
-    },
-    "def": {
-      "de": "Die Gültigkeit <g>der</g> <b>Kreditkarte</b> endet in zwei Monaten.",
-      "en": "The validity <g>of the</g> <b>credit card</b> ends in two months.",
-      "uk": "Термін дії <b>кредитної картки</b> закінчується через два місяці.",
-      "ru": "Срок действия <b>кредитной карты</b> заканчивается через два месяца."
-    },
-    "gram": "genitiv",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Kreditkarten"
-      ]
-    }
-  },
-  {
     "id": "k3_030",
     "cat": "k3",
     "term": {
@@ -16254,7 +14716,8 @@ var VOCAB = [
       "uk": "На звороті <b>банківської картки</b> вказаний номер гарячої лінії для блокування.",
       "ru": "На обратной стороне <b>банковской карты</b> указан номер горячей линии для блокировки."
     },
-    "gram": "genitiv"
+    "gram": "genitiv",
+    "prio": 2
   },
   {
     "id": "k3_031",
@@ -16303,52 +14766,6 @@ var VOCAB = [
     "gram": "genitiv"
   },
   {
-    "id": "k3_033",
-    "cat": "k3",
-    "term": {
-      "de": "verlieren",
-      "en": "to lose",
-      "uk": "втрачати",
-      "ru": "терять"
-    },
-    "short": {
-      "de": "etwas nicht mehr finden können, weil man nicht weiß, wo es ist",
-      "en": "to no longer be able to find something because you don't know where it is",
-      "uk": "не могти знайти щось, бо не знаєш, де воно",
-      "ru": "не мочь найти что-то, потому что не знаешь, где оно"
-    },
-    "def": {
-      "de": "Der Ärger <g>des</g> <b>Verlierens</b> der Karte war groß, aber die Bank half schnell.",
-      "en": "The frustration <g>of</g> <b>losing</b> the card was big, but the bank helped quickly.",
-      "uk": "Прикрість через <b>втрату</b> картки була великою, але банк швидко допоміг.",
-      "ru": "Досада из-за <b>потери</b> карты была большой, но банк быстро помог."
-    },
-    "gram": "genitiv"
-  },
-  {
-    "id": "k3_034",
-    "cat": "k3",
-    "term": {
-      "de": "stehlen",
-      "en": "to steal",
-      "uk": "красти",
-      "ru": "красть"
-    },
-    "short": {
-      "de": "etwas nehmen, das einer anderen Person gehört, ohne zu fragen",
-      "en": "to take something that belongs to another person without asking",
-      "uk": "брати щось, що належить іншій людині, без дозволу",
-      "ru": "брать что-то, что принадлежит другому человеку, без разрешения"
-    },
-    "def": {
-      "de": "Die Folgen <g>des</g> <b>Stehlens</b> der Karte spürte sie erst am nächsten Tag.",
-      "en": "She only felt the consequences <g>of</g> the card being <b>stolen</b> the next day.",
-      "uk": "Наслідки <b>крадіжки</b> картки вона відчула лише наступного дня.",
-      "ru": "Последствия <b>кражи</b> карты она почувствовала только на следующий день."
-    },
-    "gram": "genitiv"
-  },
-  {
     "id": "k3_035",
     "cat": "k3",
     "term": {
@@ -16378,55 +14795,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k3_036",
-    "cat": "k3",
-    "term": {
-      "de": "die Polizei",
-      "en": "police",
-      "uk": "поліція",
-      "ru": "полиция"
-    },
-    "short": {
-      "de": "die Organisation, die für Sicherheit sorgt und Verbrechen untersucht",
-      "en": "the organisation that provides security and investigates crimes",
-      "uk": "організація, яка забезпечує безпеку та розслідує злочини",
-      "ru": "организация, которая обеспечивает безопасность и расследует преступления"
-    },
-    "def": {
-      "de": "Die Nummer <g>der</g> <b>Polizei</b> hatte sie zum Glück im Handy gespeichert.",
-      "en": "Luckily, she had the <b>police</b>'s number saved in her phone.",
-      "uk": "Номер <b>поліції</b> вона, на щастя, зберегла у телефоні.",
-      "ru": "Номер <b>полиции</b> она, к счастью, сохранила в телефоне."
-    },
-    "gram": "genitiv",
-    "info": {
-      "num": "sg"
-    }
-  },
-  {
-    "id": "k3_037",
-    "cat": "k3",
-    "term": {
-      "de": "ersetzen",
-      "en": "to replace",
-      "uk": "замінювати",
-      "ru": "заменять"
-    },
-    "short": {
-      "de": "etwas Neues anstelle von etwas Kaputtem oder Verlorenem geben",
-      "en": "to give something new instead of something broken or lost",
-      "uk": "давати щось нове замість зламаного чи втраченого",
-      "ru": "давать что-то новое вместо сломанного или утраченного"
-    },
-    "def": {
-      "de": "Die Kosten <g>des</g> <b>Ersetzens</b> der Karte trägt normalerweise die Bank.",
-      "en": "The costs <g>of</g> <b>replacing</b> the card are usually covered by the bank.",
-      "uk": "Витрати на <b>заміну</b> картки зазвичай несе банк.",
-      "ru": "Расходы на <b>замену</b> карты обычно несёт банк."
-    },
-    "gram": "genitiv"
-  },
-  {
     "id": "k3_038",
     "cat": "k3",
     "term": {
@@ -16446,29 +14814,6 @@ var VOCAB = [
       "en": "The delivery time <g>of the</g> <b>replacement card</b> is usually about a week.",
       "uk": "Час доставки <b>нової картки</b> зазвичай становить близько тижня.",
       "ru": "Срок доставки <b>новой карты</b> обычно составляет около недели."
-    },
-    "gram": "genitiv"
-  },
-  {
-    "id": "k3_039",
-    "cat": "k3",
-    "term": {
-      "de": "melden",
-      "en": "to report",
-      "uk": "повідомляти",
-      "ru": "сообщать"
-    },
-    "short": {
-      "de": "einer offiziellen Stelle sagen, dass etwas passiert ist",
-      "en": "to tell an official body that something has happened",
-      "uk": "повідомляти офіційній інстанції, що щось сталося",
-      "ru": "сообщать официальной инстанции, что что-то произошло"
-    },
-    "def": {
-      "de": "Die Wichtigkeit <g>des</g> schnellen <b>Meldens</b> wurde ihr am Telefon erklärt.",
-      "en": "The importance <g>of</g> <b>reporting</b> quickly was explained to her on the phone.",
-      "uk": "Важливість швидкого <b>повідомлення</b> їй пояснили по телефону.",
-      "ru": "Важность быстрого <b>сообщения</b> ей объяснили по телефону."
     },
     "gram": "genitiv"
   },
@@ -16608,7 +14953,8 @@ var VOCAB = [
       "uk": "Це страхування <b>добровільне</b>, <g>хоча</g> багато людей все одно його оформлюють.",
       "ru": "Это страхование <b>добровольное</b>, <g>хотя</g> многие люди всё равно его оформляют."
     },
-    "gram": "nebensatz_mit_obwohl"
+    "gram": "nebensatz_mit_obwohl",
+    "prio": 2
   },
   {
     "id": "k3_046",
@@ -16631,7 +14977,8 @@ var VOCAB = [
       "uk": "Страхування цивільної відповідальності справді <b>необхідне</b>, <g>хоча</g> багато молодих людей це недооцінюють.",
       "ru": "Страхование гражданской ответственности действительно <b>необходимо</b>, <g>хотя</g> многие молодые люди это недооценивают."
     },
-    "gram": "nebensatz_mit_obwohl"
+    "gram": "nebensatz_mit_obwohl",
+    "prio": 2
   },
   {
     "id": "k3_047",
@@ -16755,29 +15102,6 @@ var VOCAB = [
     "gram": "komposita_verb_nomen"
   },
   {
-    "id": "k3_052",
-    "cat": "k3",
-    "term": {
-      "de": "das Beratungsgespräch",
-      "en": "consultation",
-      "uk": "консультаційна бесіда",
-      "ru": "консультационная беседа"
-    },
-    "short": {
-      "de": "ein Gespräch, in dem man Informationen und Rat zu einem Thema bekommt",
-      "en": "a conversation in which you get information and advice on a topic",
-      "uk": "розмова, під час якої отримуєш інформацію та поради щодо теми",
-      "ru": "разговор, во время которого получаешь информацию и советы по теме"
-    },
-    "def": {
-      "de": "Beim <g><b>Beratungsgespräch</b></g> hat die Vertreterin alle Fragen genau beantwortet.",
-      "en": "During the <b>consultation</b>, the representative answered all questions precisely.",
-      "uk": "Під час <b>консультаційної бесіди</b> представниця точно відповіла на всі запитання.",
-      "ru": "Во время <b>консультационной беседы</b> представитель точно ответил на все вопросы."
-    },
-    "gram": "komposita_verb_nomen"
-  },
-  {
     "id": "k3_053",
     "cat": "k3",
     "term": {
@@ -16844,7 +15168,8 @@ var VOCAB = [
       "uk": "Фірма написала мені, <g>що</g> вона <b>підтверджує</b> розірвання договору.",
       "ru": "Фирма написала мне, <g>что</g> она <b>подтверждает</b> расторжение договора."
     },
-    "gram": "konnektoren_wdh_b1"
+    "gram": "konnektoren_wdh_b1",
+    "prio": 2
   },
   {
     "id": "k3_056",
@@ -17526,29 +15851,6 @@ var VOCAB = [
     "gram": "komposita_verb_nomen"
   },
   {
-    "id": "k3_085",
-    "cat": "k3",
-    "term": {
-      "de": "enden",
-      "en": "to end",
-      "uk": "закінчуватися",
-      "ru": "заканчиваться"
-    },
-    "short": {
-      "de": "aufhören, zu Ende sein",
-      "en": "to stop, to be over",
-      "uk": "припинятися, бути завершеним",
-      "ru": "прекращаться, быть завершённым"
-    },
-    "def": {
-      "de": "Der Vertrag <b>endet</b> bald, deshalb suche ich im <g>Lesesaal</g> der Bibliothek nach Informationen.",
-      "en": "The contract <b>ends</b> soon, so I am looking for information in the reading room of the library.",
-      "uk": "Договір скоро <b>закінчується</b>, тому я шукаю інформацію в читальній залі бібліотеки.",
-      "ru": "Договор скоро <b>заканчивается</b>, поэтому я ищу информацию в читальном зале библиотеки."
-    },
-    "gram": "komposita_verb_nomen"
-  },
-  {
     "id": "k3_086",
     "cat": "k3",
     "term": {
@@ -17920,6 +16222,66 @@ var VOCAB = [
     "gram": "konnektoren_wdh_b1"
   },
   {
+    "id": "k3_102",
+    "cat": "k3",
+    "term": {
+      "de": "vermuten",
+      "en": "to suspect",
+      "uk": "припускати",
+      "ru": "предполагать"
+    },
+    "short": {
+      "de": "denken, dass etwas wahrscheinlich so ist",
+      "en": "to think that something is probably so",
+      "uk": "думати, що щось, імовірно, так",
+      "ru": "думать, что что-то, вероятно, так"
+    },
+    "def": {
+      "de": "Die Karte <g>könnte</g> noch im Bus liegen, <b>vermute</b> ich.",
+      "en": "The card <g>could</g> still be on the bus, I <b>suspect</b>.",
+      "uk": "Картка <g>могла б</g> ще лежати в автобусі, <b>припускаю</b> я.",
+      "ru": "Карта <g>могла бы</g> ещё лежать в автобусе, <b>предполагаю</b> я."
+    },
+    "gram": "modalverben_vermutung",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "vermutet",
+        "vermutete",
+        "hat vermutet"
+      ]
+    }
+  },
+  {
+    "id": "k3_103",
+    "cat": "k3",
+    "term": {
+      "de": "der Verlust",
+      "en": "loss",
+      "uk": "втрата",
+      "ru": "потеря"
+    },
+    "short": {
+      "de": "wenn man etwas nicht mehr hat, weil man es verloren hat",
+      "en": "when you no longer have something because you lost it",
+      "uk": "коли більше не маєш чогось, бо загубив",
+      "ru": "когда больше не имеешь чего-то, потому что потерял"
+    },
+    "def": {
+      "de": "Den <b>Verlust</b> <g>des Ausweises</g> muss man sofort bei der Polizei melden.",
+      "en": "You must report the <b>loss</b> <g>of your ID card</g> to the police immediately.",
+      "uk": "Про <b>втрату</b> <g>посвідчення</g> треба одразу повідомити поліцію.",
+      "ru": "О <b>потере</b> <g>удостоверения</g> нужно сразу сообщить в полицию."
+    },
+    "gram": "genitiv",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Verluste"
+      ]
+    }
+  },
+  {
     "id": "k4_001",
     "cat": "k4",
     "term": {
@@ -17989,35 +16351,6 @@ var VOCAB = [
     "gram": "praeteritum_wdh_b1"
   },
   {
-    "id": "k4_004",
-    "cat": "k4",
-    "term": {
-      "de": "der Automat",
-      "en": "vending machine",
-      "uk": "торговий автомат",
-      "ru": "торговый автомат"
-    },
-    "short": {
-      "de": "eine Maschine, aus der man Essen, Getränke oder Tickets kaufen kann",
-      "en": "a machine from which you can buy food, drinks or tickets",
-      "uk": "автомат, з якого можна купити їжу, напої чи квитки",
-      "ru": "автомат, из которого можно купить еду, напитки или билеты"
-    },
-    "def": {
-      "de": "Der <b>Automat</b> war leider kaputt, <g>deshalb</g> konnte ich keinen Kaffee kaufen.",
-      "en": "The <b>vending machine</b> was unfortunately broken, <g>therefore</g> I could not buy any coffee.",
-      "uk": "<b>Автомат</b> був, на жаль, зламаний, <g>тому</g> я не міг купити каву.",
-      "ru": "<b>Автомат</b> был, к сожалению, сломан, <g>поэтому</g> я не мог купить кофе."
-    },
-    "gram": "konnektoren_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Automaten"
-      ]
-    }
-  },
-  {
     "id": "k4_005",
     "cat": "k4",
     "term": {
@@ -18064,121 +16397,6 @@ var VOCAB = [
     "gram": "komposita_fugenelemente"
   },
   {
-    "id": "k4_007",
-    "cat": "k4",
-    "term": {
-      "de": "probieren",
-      "en": "to try",
-      "uk": "пробувати",
-      "ru": "пробовать"
-    },
-    "short": {
-      "de": "etwas zum ersten Mal essen oder trinken, um es kennenzulernen",
-      "en": "to eat or drink something for the first time to get to know it",
-      "uk": "скуштувати щось уперше, щоб пізнати смак",
-      "ru": "попробовать что-то в первый раз, чтобы узнать вкус"
-    },
-    "def": {
-      "de": "Wir haben beim <g>Länderabend</g> viele neue Gerichte <b>probiert</b>.",
-      "en": "We <b>tried</b> many new dishes at the international evening.",
-      "uk": "Ми <b>спробували</b> багато нових страв на вечорі культур.",
-      "ru": "Мы <b>попробовали</b> много новых блюд на вечере культур."
-    },
-    "gram": "komposita_fugenelemente"
-  },
-  {
-    "id": "k4_008",
-    "cat": "k4",
-    "term": {
-      "de": "die Umfrage",
-      "en": "survey",
-      "uk": "опитування",
-      "ru": "опрос"
-    },
-    "short": {
-      "de": "wenn man vielen Menschen die gleichen Fragen stellt, um ihre Meinung zu erfahren",
-      "en": "when you ask many people the same questions to find out their opinion",
-      "uk": "коли багатьом людям задають одні й ті самі питання, щоб дізнатися їхню думку",
-      "ru": "когда многим людям задают одни и те же вопросы, чтобы узнать их мнение"
-    },
-    "def": {
-      "de": "Die Ergebnisse <g>von der</g> <b>Umfrage</b> waren wirklich überraschend.",
-      "en": "The results <g>of the</g> <b>survey</b> were really surprising.",
-      "uk": "Результати <b>опитування</b> були справді дивовижними.",
-      "ru": "Результаты <b>опроса</b> были действительно удивительными."
-    },
-    "gram": "genitiv_alternativen"
-  },
-  {
-    "id": "k4_009",
-    "cat": "k4",
-    "term": {
-      "de": "gesund / ungesund",
-      "en": "healthy / unhealthy",
-      "uk": "здоровий / нездоровий",
-      "ru": "здоровый / нездоровый"
-    },
-    "short": {
-      "de": "gut oder schlecht für den Körper und das Wohlbefinden",
-      "en": "good or bad for the body and well-being",
-      "uk": "добре чи погано для тіла та самопочуття",
-      "ru": "хорошо или плохо для тела и самочувствия"
-    },
-    "def": {
-      "de": "Die Ernährung <g>von den</g> meisten Jugendlichen ist leider nicht sehr <b>gesund</b>.",
-      "en": "The diet <g>of</g> most teenagers is unfortunately not very <b>healthy</b>.",
-      "uk": "Харчування більшості підлітків, на жаль, не дуже <b>здорове</b>.",
-      "ru": "Питание большинства подростков, к сожалению, не очень <b>здоровое</b>."
-    },
-    "gram": "genitiv_alternativen"
-  },
-  {
-    "id": "k4_010",
-    "cat": "k4",
-    "term": {
-      "de": "der Snack",
-      "en": "snack",
-      "uk": "снек",
-      "ru": "снек"
-    },
-    "short": {
-      "de": "eine kleine Mahlzeit zwischen den Hauptmahlzeiten",
-      "en": "a small meal between main meals",
-      "uk": "невеликий прийом їжі між основними прийомами їжі",
-      "ru": "небольшой приём еды между основными приёмами еды"
-    },
-    "def": {
-      "de": "Der Preis <g>von dem</g> <b>Snack</b> am Bahnhof war viel zu hoch.",
-      "en": "The price <g>of the</g> <b>snack</b> at the station was much too high.",
-      "uk": "Ціна <b>снеку</b> на вокзалі була занадто високою.",
-      "ru": "Цена <b>снека</b> на вокзале была слишком высокой."
-    },
-    "gram": "genitiv_alternativen"
-  },
-  {
-    "id": "k4_011",
-    "cat": "k4",
-    "term": {
-      "de": "die Portion",
-      "en": "portion",
-      "uk": "порція",
-      "ru": "порция"
-    },
-    "short": {
-      "de": "die Menge Essen, die man auf einmal isst",
-      "en": "the amount of food you eat at once",
-      "uk": "кількість їжі, яку ти їси за один раз",
-      "ru": "количество еды, которое ты ешь за один раз"
-    },
-    "def": {
-      "de": "Die Größe <g>von der</g> <b>Portion</b> war für mich viel zu groß.",
-      "en": "The size <g>of the</g> <b>portion</b> was much too big for me.",
-      "uk": "Розмір <b>порції</b> був для мене занадто великим.",
-      "ru": "Размер <b>порции</b> был для меня слишком большим."
-    },
-    "gram": "genitiv_alternativen"
-  },
-  {
     "id": "k4_012",
     "cat": "k4",
     "term": {
@@ -18198,29 +16416,6 @@ var VOCAB = [
       "en": "We have <b>changed</b> our eating habits a lot, <g>that's why</g> we feel much fitter.",
       "uk": "Ми сильно <b>змінили</b> свої харчові звички, <g>тому</g> почуваємося набагато краще.",
       "ru": "Мы сильно <b>изменили</b> свои привычки питания, <g>поэтому</g> чувствуем себя намного лучше."
-    },
-    "gram": "deshalb_deswegen_trotzdem"
-  },
-  {
-    "id": "k4_013",
-    "cat": "k4",
-    "term": {
-      "de": "regelmäßig",
-      "en": "regularly",
-      "uk": "регулярно",
-      "ru": "регулярно"
-    },
-    "short": {
-      "de": "immer wieder zur gleichen Zeit oder auf die gleiche Art",
-      "en": "again and again at the same time or in the same way",
-      "uk": "знову і знову в той самий час чи так само",
-      "ru": "снова и снова в то же время или так же"
-    },
-    "def": {
-      "de": "Er isst nicht <b>regelmäßig</b>, <g>trotzdem</g> ist er sehr gesund.",
-      "en": "He doesn't eat <b>regularly</b>; <g>nevertheless</g>, he is very healthy.",
-      "uk": "Він не їсть <b>регулярно</b>, <g>проте</g> він дуже здоровий.",
-      "ru": "Он не ест <b>регулярно</b>, <g>однако</g> он очень здоров."
     },
     "gram": "deshalb_deswegen_trotzdem"
   },
@@ -18271,104 +16466,6 @@ var VOCAB = [
     "gram": "genitiv_alternativen"
   },
   {
-    "id": "k4_016",
-    "cat": "k4",
-    "term": {
-      "de": "das Frühstück",
-      "en": "breakfast",
-      "uk": "сніданок",
-      "ru": "завтрак"
-    },
-    "short": {
-      "de": "die erste Mahlzeit am Morgen",
-      "en": "the first meal in the morning",
-      "uk": "перший прийом їжі вранці",
-      "ru": "первый приём пищи утром"
-    },
-    "def": {
-      "de": "Ich esse selten <b>Frühstück</b>, <g>weil</g> ich morgens keinen Hunger habe.",
-      "en": "I rarely eat <b>breakfast</b> <g>because</g> I'm not hungry in the morning.",
-      "uk": "Я рідко їм <b>сніданок</b>, <g>тому що</g> вранці не відчуваю голоду.",
-      "ru": "Я редко ем <b>завтрак</b>, <g>потому что</g> утром не чувствую голода."
-    },
-    "gram": "konnektoren_wdh_b1"
-  },
-  {
-    "id": "k4_017",
-    "cat": "k4",
-    "term": {
-      "de": "der Hunger",
-      "en": "hunger",
-      "uk": "голод",
-      "ru": "голод"
-    },
-    "short": {
-      "de": "das Gefühl, dass man essen möchte",
-      "en": "the feeling that you want to eat",
-      "uk": "відчуття, що хочеш їсти",
-      "ru": "ощущение, что хочешь есть"
-    },
-    "def": {
-      "de": "Ich merke, <g>dass</g> ich großen <b>Hunger</b> habe.",
-      "en": "I notice <g>that</g> I'm very <b>hungry</b>.",
-      "uk": "Я помічаю, <g>що</g> дуже <b>голодний(-а)</b>.",
-      "ru": "Я замечаю, <g>что</g> очень <b>голоден / голодна</b>."
-    },
-    "gram": "konnektoren_wdh_b1",
-    "info": {
-      "num": "sg"
-    }
-  },
-  {
-    "id": "k4_018",
-    "cat": "k4",
-    "term": {
-      "de": "der Appetit",
-      "en": "appetite",
-      "uk": "апетит",
-      "ru": "аппетит"
-    },
-    "short": {
-      "de": "die Lust, etwas zu essen",
-      "en": "the desire to eat something",
-      "uk": "бажання щось поїсти",
-      "ru": "желание что-то поесть"
-    },
-    "def": {
-      "de": "<g>Wenn</g> ich Stress habe, verliere ich meistens meinen <b>Appetit</b>.",
-      "en": "<g>When</g> I'm stressed, I usually lose my <b>appetite</b>.",
-      "uk": "<g>Коли</g> я в стресі, я зазвичай втрачаю <b>апетит</b>.",
-      "ru": "<g>Когда</g> я в стрессе, я обычно теряю <b>аппетит</b>."
-    },
-    "gram": "konnektoren_wdh_b1",
-    "info": {
-      "num": "sg"
-    }
-  },
-  {
-    "id": "k4_019",
-    "cat": "k4",
-    "term": {
-      "de": "süß",
-      "en": "sweet",
-      "uk": "солодкий",
-      "ru": "сладкий"
-    },
-    "short": {
-      "de": "wie Zucker oder Honig schmeckt",
-      "en": "tastes like sugar or honey",
-      "uk": "смакує як цукор чи мед",
-      "ru": "на вкус как сахар или мёд"
-    },
-    "def": {
-      "de": "Der Kuchen war sehr <b>süß</b>, <g>obwohl</g> wir kaum Zucker benutzt haben.",
-      "en": "The cake was very <b>sweet</b>, <g>although</g> we hardly used any sugar.",
-      "uk": "Торт був дуже <b>солодким</b>, <g>хоча</g> ми майже не використовували цукор.",
-      "ru": "Торт был очень <b>сладким</b>, <g>хотя</g> мы почти не использовали сахар."
-    },
-    "gram": "konnektoren_wdh_b1"
-  },
-  {
     "id": "k4_020",
     "cat": "k4",
     "term": {
@@ -18388,29 +16485,6 @@ var VOCAB = [
       "en": "The soup was <b>salty</b>, <g>but</g> still very tasty.",
       "uk": "Суп був <b>солоним</b>, <g>але</g> все одно дуже смачним.",
       "ru": "Суп был <b>солёным</b>, <g>но</g> всё равно очень вкусным."
-    },
-    "gram": "konnektoren_wdh_b1"
-  },
-  {
-    "id": "k4_021",
-    "cat": "k4",
-    "term": {
-      "de": "vegetarisch",
-      "en": "vegetarian",
-      "uk": "вегетаріанський",
-      "ru": "вегетарианский"
-    },
-    "short": {
-      "de": "ohne Fleisch und Fisch",
-      "en": "without meat and fish",
-      "uk": "без мʼяса та риби",
-      "ru": "без мяса и рыбы"
-    },
-    "def": {
-      "de": "Wir essen jetzt meistens <b>vegetarisch</b>, <g>denn</g> das ist gesünder für uns.",
-      "en": "We now mostly eat <b>vegetarian</b>, <g>as</g> it's healthier for us.",
-      "uk": "Тепер ми переважно їмо <b>вегетаріанську</b> їжу, <g>бо</g> це для нас здоровіше.",
-      "ru": "Теперь мы в основном едим <b>вегетарианскую</b> пищу, <g>потому что</g> это для нас полезнее."
     },
     "gram": "konnektoren_wdh_b1"
   },
@@ -18461,167 +16535,6 @@ var VOCAB = [
     "gram": "konnektoren_wdh_b1"
   },
   {
-    "id": "k4_024",
-    "cat": "k4",
-    "term": {
-      "de": "kochen",
-      "en": "to cook",
-      "uk": "готувати їжу",
-      "ru": "готовить еду"
-    },
-    "short": {
-      "de": "Essen mit Hitze zubereiten",
-      "en": "to prepare food using heat",
-      "uk": "готувати їжу за допомогою тепла",
-      "ru": "готовить еду с помощью тепла"
-    },
-    "def": {
-      "de": "Meine Oma <g><b>kochte</b></g> jeden Sonntag ein großes Mittagessen.",
-      "en": "My grandma <b>cooked</b> a big lunch every Sunday.",
-      "uk": "Моя бабуся <b>готувала</b> велику обідню страву щонеділі.",
-      "ru": "Моя бабушка <b>готовила</b> большой обед каждое воскресенье."
-    },
-    "gram": "praeteritum_wdh_b1"
-  },
-  {
-    "id": "k4_025",
-    "cat": "k4",
-    "term": {
-      "de": "backen",
-      "en": "to bake",
-      "uk": "пекти",
-      "ru": "печь"
-    },
-    "short": {
-      "de": "Brot, Kuchen oder Ähnliches im Ofen zubereiten",
-      "en": "to prepare bread, cake or similar in the oven",
-      "uk": "готувати хліб, пиріг тощо в духовці",
-      "ru": "готовить хлеб, пирог и подобное в духовке"
-    },
-    "def": {
-      "de": "Als Kind <g><b>backte</b></g> ich mit meiner Mutter jedes Weihnachten Plätzchen.",
-      "en": "As a child, I <b>baked</b> cookies with my mother every Christmas.",
-      "uk": "У дитинстві я <b>пекла (пік)</b> з мамою печиво щороку на Різдво.",
-      "ru": "В детстве я <b>пёк(-ла)</b> с мамой печенье каждое Рождество."
-    },
-    "gram": "praeteritum_wdh_b1"
-  },
-  {
-    "id": "k4_026",
-    "cat": "k4",
-    "term": {
-      "de": "schmecken",
-      "en": "to taste",
-      "uk": "мати смак",
-      "ru": "иметь вкус"
-    },
-    "short": {
-      "de": "einen bestimmten Geschmack haben",
-      "en": "to have a certain taste",
-      "uk": "мати певний смак",
-      "ru": "иметь определённый вкус"
-    },
-    "def": {
-      "de": "Das Essen bei meiner Großmutter <g><b>schmeckte</b></g> immer besonders gut.",
-      "en": "The food at my grandmother's always <b>tasted</b> especially good.",
-      "uk": "Їжа в моєї бабусі завжди <b>смакувала</b> особливо добре.",
-      "ru": "Еда у моей бабушки всегда <b>была на вкус</b> особенно хороша."
-    },
-    "gram": "praeteritum_wdh_b1"
-  },
-  {
-    "id": "k4_027",
-    "cat": "k4",
-    "term": {
-      "de": "essen",
-      "en": "to eat",
-      "uk": "їсти",
-      "ru": "есть"
-    },
-    "short": {
-      "de": "Nahrung zu sich nehmen",
-      "en": "to consume food",
-      "uk": "споживати їжу",
-      "ru": "потреблять еду"
-    },
-    "def": {
-      "de": "Wir <g><b>aßen</b></g> als Kinder fast jeden Freitag Fisch.",
-      "en": "As children, we <b>ate</b> fish almost every Friday.",
-      "uk": "У дитинстві ми <b>їли</b> рибу майже щопʼятниці.",
-      "ru": "В детстве мы <b>ели</b> рыбу почти каждую пятницу."
-    },
-    "gram": "praeteritum_wdh_b1"
-  },
-  {
-    "id": "k4_028",
-    "cat": "k4",
-    "term": {
-      "de": "trinken",
-      "en": "to drink",
-      "uk": "пити",
-      "ru": "пить"
-    },
-    "short": {
-      "de": "eine Flüssigkeit zu sich nehmen",
-      "en": "to consume a liquid",
-      "uk": "споживати рідину",
-      "ru": "потреблять жидкость"
-    },
-    "def": {
-      "de": "Zum Frühstück <g><b>trank</b></g> ich früher immer heißen Kakao.",
-      "en": "For breakfast, I always used to <b>drink</b> hot cocoa.",
-      "uk": "На сніданок я раніше завжди <b>пив (пила)</b> гарячий какао.",
-      "ru": "На завтрак я раньше всегда <b>пил(-а)</b> горячее какао."
-    },
-    "gram": "praeteritum_wdh_b1"
-  },
-  {
-    "id": "k4_029",
-    "cat": "k4",
-    "term": {
-      "de": "mögen",
-      "en": "to like",
-      "uk": "любити",
-      "ru": "любить"
-    },
-    "short": {
-      "de": "etwas gern haben",
-      "en": "to be fond of something",
-      "uk": "щось любити",
-      "ru": "что-то любить"
-    },
-    "def": {
-      "de": "Als Kind <g><b>mochte</b></g> ich kein Gemüse, heute esse ich es sehr gern.",
-      "en": "As a child, I did not <b>like</b> vegetables; today I like eating them very much.",
-      "uk": "У дитинстві я не <b>любив(-ла)</b> овочі, сьогодні я їх дуже люблю.",
-      "ru": "В детстве я не <b>любил(-а)</b> овощи, сегодня я их очень люблю."
-    },
-    "gram": "praeteritum_wdh_b1"
-  },
-  {
-    "id": "k4_030",
-    "cat": "k4",
-    "term": {
-      "de": "holen",
-      "en": "to get",
-      "uk": "приносити",
-      "ru": "приносить"
-    },
-    "short": {
-      "de": "irgendwohin gehen, um etwas zu bekommen und zurückzubringen",
-      "en": "to go somewhere to get something and bring it back",
-      "uk": "йти кудись, щоб взяти щось і принести назад",
-      "ru": "идти куда-то, чтобы взять что-то и принести обратно"
-    },
-    "def": {
-      "de": "Mein Vater <g><b>holte</b></g> samstags immer frische Brötchen vom Bäcker.",
-      "en": "My father always <b>got</b> fresh rolls from the bakery on Saturdays.",
-      "uk": "Мій тато щосуботи завжди <b>приносив</b> свіжі булочки з пекарні.",
-      "ru": "Мой отец каждую субботу всегда <b>приносил</b> свежие булочки из пекарни."
-    },
-    "gram": "praeteritum_wdh_b1"
-  },
-  {
     "id": "k4_031",
     "cat": "k4",
     "term": {
@@ -18642,30 +16555,8 @@ var VOCAB = [
       "uk": "Ми як родина <b>проводили</b> багато часу разом на кухні.",
       "ru": "Мы как семья <b>проводили</b> много времени вместе на кухне."
     },
-    "gram": "praeteritum_wdh_b1"
-  },
-  {
-    "id": "k4_032",
-    "cat": "k4",
-    "term": {
-      "de": "früher",
-      "en": "in the past",
-      "uk": "раніше",
-      "ru": "раньше"
-    },
-    "short": {
-      "de": "in einer vergangenen Zeit, nicht heute",
-      "en": "in a past time, not today",
-      "uk": "у минулому, не сьогодні",
-      "ru": "в прошлом, не сегодня"
-    },
-    "def": {
-      "de": "<b>Früher</b> war Fleisch sehr teuer, <g>trotzdem</g> aßen viele Familien es jeden Sonntag.",
-      "en": "In the <b>past</b>, meat was very expensive; <g>nevertheless</g>, many families ate it every Sunday.",
-      "uk": "<b>Раніше</b> мʼясо було дуже дорогим, <g>проте</g> багато сімей їли його щонеділі.",
-      "ru": "<b>Раньше</b> мясо было очень дорогим, <g>однако</g> многие семьи ели его каждое воскресенье."
-    },
-    "gram": "deshalb_deswegen_trotzdem"
+    "gram": "praeteritum_wdh_b1",
+    "prio": 2
   },
   {
     "id": "k4_033",
@@ -18688,7 +16579,8 @@ var VOCAB = [
       "uk": "Наше кулінарне мистецтво сильно <b>покращилося</b>, <g>тому</g> ми тепер набагато частіше готуємо вдома.",
       "ru": "Наше кулинарное мастерство сильно <b>улучшилось</b>, <g>поэтому</g> мы теперь намного чаще готовим дома."
     },
-    "gram": "deshalb_deswegen_trotzdem"
+    "gram": "deshalb_deswegen_trotzdem",
+    "prio": 2
   },
   {
     "id": "k4_034",
@@ -18826,30 +16718,8 @@ var VOCAB = [
       "uk": "Харчування раніше було нездоровим, <g>проте</g> сімʼя <b>і надалі</b> їсть багато фаст-фуду.",
       "ru": "Питание раньше было нездоровым, <g>однако</g> семья <b>по-прежнему</b> ест много фастфуда."
     },
-    "gram": "deshalb_deswegen_trotzdem"
-  },
-  {
-    "id": "k4_040",
-    "cat": "k4",
-    "term": {
-      "de": "die Lebensmittel",
-      "en": "groceries",
-      "uk": "продукти харчування",
-      "ru": "продукты питания"
-    },
-    "short": {
-      "de": "alles, was man kaufen und essen kann, zum Beispiel Brot, Obst oder Fleisch",
-      "en": "everything you can buy and eat, for example bread, fruit or meat",
-      "uk": "усе, що можна купити й зʼїсти, наприклад хліб, фрукти чи мʼясо",
-      "ru": "всё, что можно купить и съесть, например хлеб, фрукты или мясо"
-    },
-    "def": {
-      "de": "Wir kaufen unsere <g><b>Lebensmittel</b></g> meistens auf dem Wochenmarkt.",
-      "en": "We usually buy our <b>groceries</b> at the weekly market.",
-      "uk": "Ми зазвичай купуємо свої <b>продукти</b> на щотижневому ринку.",
-      "ru": "Мы обычно покупаем свои <b>продукты</b> на еженедельном рынке."
-    },
-    "gram": "komposita_fugenelemente"
+    "gram": "deshalb_deswegen_trotzdem",
+    "prio": 2
   },
   {
     "id": "k4_041",
@@ -18873,35 +16743,6 @@ var VOCAB = [
       "ru": "Стаканы стоят на верхней полке <b>кухонного шкафа</b>."
     },
     "gram": "komposita_fugenelemente"
-  },
-  {
-    "id": "k4_042",
-    "cat": "k4",
-    "term": {
-      "de": "die Geburtstagstorte",
-      "en": "birthday cake",
-      "uk": "торт на день народження",
-      "ru": "торт на день рождения"
-    },
-    "short": {
-      "de": "ein Kuchen, den man an einem Geburtstag isst",
-      "en": "a cake that you eat on a birthday",
-      "uk": "торт, який їдять на день народження",
-      "ru": "торт, который едят на день рождения"
-    },
-    "def": {
-      "de": "Meine Mutter backt jedes Jahr eine wunderschöne <g><b>Geburtstagstorte</b></g>.",
-      "en": "Every year, my mother bakes a beautiful <b>birthday cake</b>.",
-      "uk": "Щороку моя мама пече чудовий <b>торт на день народження</b>.",
-      "ru": "Каждый год моя мама печёт прекрасный <b>торт на день рождения</b>."
-    },
-    "gram": "komposita_fugenelemente",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Geburtstagstorten"
-      ]
-    }
   },
   {
     "id": "k4_043",
@@ -18996,35 +16837,6 @@ var VOCAB = [
     "gram": "komposita_fugenelemente"
   },
   {
-    "id": "k4_047",
-    "cat": "k4",
-    "term": {
-      "de": "das Ergebnis",
-      "en": "result",
-      "uk": "результат",
-      "ru": "результат"
-    },
-    "short": {
-      "de": "das, was am Ende von etwas herauskommt",
-      "en": "what comes out at the end of something",
-      "uk": "те, що виходить у результаті чогось",
-      "ru": "то, что получается в итоге чего-то"
-    },
-    "def": {
-      "de": "Das <b>Ergebnis</b> <g>von der</g> Umfrage hat uns alle überrascht.",
-      "en": "The <b>result</b> <g>of the</g> survey surprised us all.",
-      "uk": "<b>Результат</b> опитування здивував нас усіх.",
-      "ru": "<b>Результат</b> опроса удивил нас всех."
-    },
-    "gram": "genitiv_alternativen",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Ergebnisse"
-      ]
-    }
-  },
-  {
     "id": "k4_048",
     "cat": "k4",
     "term": {
@@ -19068,7 +16880,8 @@ var VOCAB = [
       "uk": "<b>Думка</b> клієнтів була дуже важливою для компанії.",
       "ru": "<b>Мнение</b> клиентов было очень важно для компании."
     },
-    "gram": "genitiv_alternativen"
+    "gram": "genitiv_alternativen",
+    "prio": 2
   },
   {
     "id": "k4_050",
@@ -19138,35 +16951,6 @@ var VOCAB = [
       "ru": "<b>Среднее значение</b> ответов составило около трёх приёмов пищи в день."
     },
     "gram": "genitiv_alternativen"
-  },
-  {
-    "id": "k4_053",
-    "cat": "k4",
-    "term": {
-      "de": "die Antwort",
-      "en": "answer",
-      "uk": "відповідь",
-      "ru": "ответ"
-    },
-    "short": {
-      "de": "das, was man sagt oder schreibt, wenn man auf eine Frage reagiert",
-      "en": "what you say or write when you respond to a question",
-      "uk": "те, що кажеш чи пишеш у відповідь на запитання",
-      "ru": "то, что говоришь или пишешь в ответ на вопрос"
-    },
-    "def": {
-      "de": "Die <b>Antwort</b> <g>von der</g> Mehrheit war eindeutig: Frühstück ist wichtig.",
-      "en": "The <b>answer</b> <g>of the</g> majority was clear: breakfast is important.",
-      "uk": "<b>Відповідь</b> більшості була однозначною: сніданок важливий.",
-      "ru": "<b>Ответ</b> большинства был однозначным: завтрак важен."
-    },
-    "gram": "genitiv_alternativen",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Antworten"
-      ]
-    }
   },
   {
     "id": "k4_054",
@@ -19535,35 +17319,6 @@ var VOCAB = [
       "ru": "<b>Употребление</b> алкоголя в парке запрещено, <g>потому что</g> там играет много детей."
     },
     "gram": "konnektoren_wdh_b1"
-  },
-  {
-    "id": "k4_070",
-    "cat": "k4",
-    "term": {
-      "de": "die Wurst",
-      "en": "sausage",
-      "uk": "ковбаса",
-      "ru": "колбаса"
-    },
-    "short": {
-      "de": "ein Essen aus Fleisch, das man kalt aufs Brot legt oder warm isst",
-      "en": "a food made of meat that you put on bread cold or eat hot",
-      "uk": "їжа з мʼяса, яку кладуть на хліб холодною або їдять гарячою",
-      "ru": "еда из мяса, которую кладут на хлеб холодной или едят горячей"
-    },
-    "def": {
-      "de": "Ich esse gern <b>Wurst</b>, <g>obwohl</g> sie nicht besonders gesund ist.",
-      "en": "I like eating <b>sausage</b> <g>although</g> it is not particularly healthy.",
-      "uk": "Я люблю їсти <b>ковбасу</b>, <g>хоча</g> вона не надто корисна.",
-      "ru": "Я люблю есть <b>колбасу</b>, <g>хотя</g> она не очень полезна."
-    },
-    "gram": "konnektoren_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Würste"
-      ]
-    }
   },
   {
     "id": "k4_071",
@@ -20696,6 +18451,60 @@ var VOCAB = [
     "gram": "genitiv_alternativen"
   },
   {
+    "id": "k4_120",
+    "cat": "k4",
+    "term": {
+      "de": "wiegen",
+      "en": "to weigh",
+      "uk": "важити",
+      "ru": "весить"
+    },
+    "short": {
+      "de": "ein bestimmtes Gewicht haben",
+      "en": "to have a certain weight",
+      "uk": "мати певну вагу",
+      "ru": "иметь определённый вес"
+    },
+    "def": {
+      "de": "Das Baby ist erst drei Monate alt und <b>wiegt</b> schon sechs Kilo.",
+      "en": "The baby is only three months old and already <b>weighs</b> six kilos.",
+      "uk": "Малюкові лише три місяці, а він уже <b>важить</b> шість кілограмів.",
+      "ru": "Малышу всего три месяца, а он уже <b>весит</b> шесть килограммов."
+    },
+    "gram": "",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "wiegt",
+        "wog",
+        "hat gewogen"
+      ]
+    }
+  },
+  {
+    "id": "k4_121",
+    "cat": "k4",
+    "term": {
+      "de": "getrennt",
+      "en": "separately",
+      "uk": "окремо",
+      "ru": "отдельно"
+    },
+    "short": {
+      "de": "nicht zusammen, jeder für sich",
+      "en": "not together, each for themselves",
+      "uk": "не разом, кожен сам за себе",
+      "ru": "не вместе, каждый сам за себя"
+    },
+    "def": {
+      "de": "Zahlen Sie zusammen oder <b>getrennt</b>? – <b>Getrennt</b>, bitte.",
+      "en": "Are you paying together or <b>separately</b>? – <b>Separately</b>, please.",
+      "uk": "Ви платите разом чи <b>окремо</b>? — <b>Окремо</b>, будь ласка.",
+      "ru": "Вы платите вместе или <b>отдельно</b>? — <b>Отдельно</b>, пожалуйста."
+    },
+    "gram": ""
+  },
+  {
     "id": "k5_001",
     "cat": "k5",
     "term": {
@@ -20716,7 +18525,8 @@ var VOCAB = [
       "uk": "Я бачу культурні <b>відмінності</b> набагато чіткіше, <g>відколи</g> живу тут.",
       "ru": "Я вижу культурные <b>различия</b> намного яснее, <g>с тех пор как</g> живу здесь."
     },
-    "gram": "nebensatz_seit_seitdem"
+    "gram": "nebensatz_seit_seitdem",
+    "prio": 2
   },
   {
     "id": "k5_002",
@@ -20740,29 +18550,6 @@ var VOCAB = [
       "ru": "Многое меня <b>удивило</b>, <g>с тех пор как</g> я работаю в Германии."
     },
     "gram": "nebensatz_seit_seitdem"
-  },
-  {
-    "id": "k5_003",
-    "cat": "k5",
-    "term": {
-      "de": "sich ärgern",
-      "en": "to get annoyed",
-      "uk": "сердитися",
-      "ru": "сердиться"
-    },
-    "short": {
-      "de": "ein schlechtes Gefühl haben, weil etwas nicht so ist, wie man möchte",
-      "en": "to feel bad because something is not the way you want it",
-      "uk": "мати погане почуття, бо щось не так, як хочеться",
-      "ru": "испытывать плохое чувство, потому что что-то не так, как хочется"
-    },
-    "def": {
-      "de": "<g>Worüber</g> hast du <b>dich</b> gestern so <b>geärgert</b>?",
-      "en": "What <g>were</g> you so <b>annoyed</b> <g>about</g> yesterday?",
-      "uk": "<g>Через що</g> ти вчора так <b>розсердився</b>?",
-      "ru": "<g>Из-за чего</g> ты вчера так <b>разозлился</b>?"
-    },
-    "gram": "praepositionaladverbien_b1"
   },
   {
     "id": "k5_004",
@@ -20807,29 +18594,6 @@ var VOCAB = [
       "en": "Talking about money is a <b>taboo</b> for us; we almost never talk <g>about it</g>.",
       "uk": "Говорити про гроші в нас <b>табу</b>, <g>про це</g> ми майже ніколи не говоримо.",
       "ru": "Говорить о деньгах у нас <b>табу</b>, <g>об этом</g> мы почти никогда не говорим."
-    },
-    "gram": "praepositionaladverbien_b1"
-  },
-  {
-    "id": "k5_006",
-    "cat": "k5",
-    "term": {
-      "de": "der Smalltalk",
-      "en": "small talk",
-      "uk": "невимушена розмова",
-      "ru": "непринуждённая беседа"
-    },
-    "short": {
-      "de": "ein kurzes, freundliches Gespräch über ein einfaches Thema",
-      "en": "a short, friendly conversation about a simple topic",
-      "uk": "коротка, приязна розмова на просту тему",
-      "ru": "короткий, приятный разговор на простую тему"
-    },
-    "def": {
-      "de": "Beim <b>Smalltalk</b> spricht man meist über das Wetter — <g>darüber</g> kann man immer reden.",
-      "en": "In <b>small talk</b>, people usually talk about the weather — you can always talk <g>about that</g>.",
-      "uk": "У <b>невимушеній розмові</b> зазвичай говорять про погоду — <g>про це</g> завжди можна говорити.",
-      "ru": "В <b>непринуждённой беседе</b> обычно говорят о погоде — <g>об этом</g> всегда можно говорить."
     },
     "gram": "praepositionaladverbien_b1"
   },
@@ -20906,33 +18670,8 @@ var VOCAB = [
       "v": [
         "die Erfahrungen"
       ]
-    }
-  },
-  {
-    "id": "k5_010",
-    "cat": "k5",
-    "term": {
-      "de": "der Alltag",
-      "en": "everyday life",
-      "uk": "повсякдення",
-      "ru": "повседневная жизнь"
     },
-    "short": {
-      "de": "das normale Leben mit den gewöhnlichen Aufgaben jeden Tag",
-      "en": "normal life with the usual tasks every day",
-      "uk": "звичайне життя зі звичайними справами щодня",
-      "ru": "обычная жизнь с обычными делами каждый день"
-    },
-    "def": {
-      "de": "<g>Das Einkaufen</g> und Kochen gehören fest zu meinem <b>Alltag</b>.",
-      "en": "Shopping and cooking are a firm part of my <b>everyday life</b>.",
-      "uk": "Покупки та приготування їжі — тверда частина мого <b>повсякдення</b>.",
-      "ru": "Покупки и готовка — твёрдая часть моей <b>повседневной жизни</b>."
-    },
-    "gram": "verben_als_nomen",
-    "info": {
-      "num": "sg"
-    }
+    "prio": 2
   },
   {
     "id": "k5_011",
@@ -21105,7 +18844,8 @@ var VOCAB = [
       "uk": "Я набагато краще розумію <b>поведінку</b> людей тут, <g>відколи</g> знаю культуру.",
       "ru": "Я намного лучше понимаю <b>поведение</b> людей здесь, <g>с тех пор как</g> знаю культуру."
     },
-    "gram": "nebensatz_seit_seitdem"
+    "gram": "nebensatz_seit_seitdem",
+    "prio": 2
   },
   {
     "id": "k5_018",
@@ -21128,30 +18868,8 @@ var VOCAB = [
       "uk": "Мене набагато більше цікавлять інші <b>культури</b>, <g>відколи</g> я живу за кордоном.",
       "ru": "Меня намного больше интересуют другие <b>культуры</b>, <g>с тех пор как</g> я живу за границей."
     },
-    "gram": "nebensatz_seit_seitdem"
-  },
-  {
-    "id": "k5_019",
-    "cat": "k5",
-    "term": {
-      "de": "fremd",
-      "en": "foreign",
-      "uk": "чужий",
-      "ru": "чужой"
-    },
-    "short": {
-      "de": "unbekannt oder ungewohnt, aus einem anderen Land oder einer anderen Kultur",
-      "en": "unknown or unfamiliar, from another country or culture",
-      "uk": "невідомий чи незвичний, з іншої країни чи культури",
-      "ru": "неизвестный или непривычный, из другой страны или культуры"
-    },
-    "def": {
-      "de": "Vieles fühlt sich nicht mehr <b>fremd</b> an, <g>seitdem</g> ich hier wohne.",
-      "en": "Many things no longer feel <b>foreign</b> <g>since</g> I have been living here.",
-      "uk": "Багато чого вже не здається <b>чужим</b>, <g>відколи</g> я тут живу.",
-      "ru": "Многое уже не кажется <b>чужим</b>, <g>с тех пор как</g> я здесь живу."
-    },
-    "gram": "nebensatz_seit_seitdem"
+    "gram": "nebensatz_seit_seitdem",
+    "prio": 2
   },
   {
     "id": "k5_020",
@@ -21203,7 +18921,8 @@ var VOCAB = [
       "v": [
         "die Regeln"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k5_022",
@@ -21275,7 +18994,8 @@ var VOCAB = [
     "gram": "verben_praep_personen_sachen",
     "info": {
       "case": "A"
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k5_025",
@@ -21301,7 +19021,8 @@ var VOCAB = [
     "gram": "verben_praep_personen_sachen",
     "info": {
       "case": "A"
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k5_026",
@@ -21353,7 +19074,8 @@ var VOCAB = [
     "gram": "verben_praep_personen_sachen",
     "info": {
       "case": "D"
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k5_028",
@@ -21601,7 +19323,8 @@ var VOCAB = [
       "uk": "Ми швидко бігли, <g>доки</g> ледь-ледь не <b>дісталися</b> вокзалу.",
       "ru": "Мы быстро бежали, <g>пока</g> едва не <b>добрались</b> до вокзала."
     },
-    "gram": "nebensatz_mit_bis"
+    "gram": "nebensatz_mit_bis",
+    "prio": 2
   },
   {
     "id": "k5_038",
@@ -21834,32 +19557,6 @@ var VOCAB = [
     "gram": "verben_als_nomen"
   },
   {
-    "id": "k5_049",
-    "cat": "k5",
-    "term": {
-      "de": "sich beschweren über",
-      "en": "to complain about",
-      "uk": "скаржитися на",
-      "ru": "жаловаться на"
-    },
-    "short": {
-      "de": "sagen, dass man mit etwas nicht zufrieden ist",
-      "en": "to say that you are not satisfied with something",
-      "uk": "казати, що ти чимось незадоволений",
-      "ru": "говорить, что ты чем-то недоволен"
-    },
-    "def": {
-      "de": "<g>Worüber</g> hat sich der Nachbar diesmal <b>beschwert</b>?",
-      "en": "What did the neighbour <b>complain</b> <g>about</g> this time?",
-      "uk": "<g>На що</g> цього разу <b>поскаржився</b> сусід?",
-      "ru": "<g>На что</g> на этот раз <b>пожаловался</b> сосед?"
-    },
-    "gram": "praepositionaladverbien_b1",
-    "info": {
-      "case": "A"
-    }
-  },
-  {
     "id": "k5_050",
     "cat": "k5",
     "term": {
@@ -21987,7 +19684,8 @@ var VOCAB = [
     "gram": "praepositionaladverbien_b1",
     "info": {
       "case": "A"
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k5_055",
@@ -22037,35 +19735,6 @@ var VOCAB = [
       "ru": "Мы долго разговаривали о местном <b>обычае</b> приветствия — об этом я раньше ничего не знал(-а)."
     },
     "gram": "praepositionaladverbien_b1"
-  },
-  {
-    "id": "k5_057",
-    "cat": "k5",
-    "term": {
-      "de": "der Brauch",
-      "en": "custom",
-      "uk": "звичай",
-      "ru": "обычай"
-    },
-    "short": {
-      "de": "eine Handlung, die in einer Gruppe oder Region seit Langem so gemacht wird",
-      "en": "an action that has been done that way in a group or region for a long time",
-      "uk": "дія, яку виконують у групі чи регіоні здавна",
-      "ru": "действие, которое выполняют в группе или регионе издавна"
-    },
-    "def": {
-      "de": "Der <b>Brauch</b> mit dem Weihnachtsbaum hat mich sehr fasziniert — <g>daran</g> denke ich noch oft.",
-      "en": "The <b>custom</b> of the Christmas tree fascinated me a lot — I still often think <g>about it</g>.",
-      "uk": "<b>Звичай</b> з різдвяною ялинкою мене дуже зачарував — я часто про це думаю.",
-      "ru": "<b>Обычай</b> с рождественской ёлкой меня очень восхитил — я часто об этом думаю."
-    },
-    "gram": "praepositionaladverbien_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Bräuche"
-      ]
-    }
   },
   {
     "id": "k5_058",
@@ -22485,29 +20154,6 @@ var VOCAB = [
     "gram": "nebensatz_seit_seitdem"
   },
   {
-    "id": "k5_076",
-    "cat": "k5",
-    "term": {
-      "de": "wahr",
-      "en": "true",
-      "uk": "правдивий",
-      "ru": "правдивый"
-    },
-    "short": {
-      "de": "so, wie es wirklich ist, nicht falsch",
-      "en": "as it really is, not false",
-      "uk": "такий, як є насправді, не хибний",
-      "ru": "такой, как есть на самом деле, не ложный"
-    },
-    "def": {
-      "de": "<g>Seitdem</g> er das erzählt hat, wissen alle: Es ist nicht <b>wahr</b>.",
-      "en": "<g>Since</g> he said that, everyone knows: it is not <b>true</b>.",
-      "uk": "<g>Відтоді як</g> він це розповів, усі знають: це не <b>правдиво</b>.",
-      "ru": "<g>С тех пор как</g> он это рассказал, все знают: это не <b>правдиво</b>."
-    },
-    "gram": "nebensatz_seit_seitdem"
-  },
-  {
     "id": "k5_077",
     "cat": "k5",
     "term": {
@@ -22876,29 +20522,6 @@ var VOCAB = [
     "gram": "nebensatz_mit_bis"
   },
   {
-    "id": "k5_093",
-    "cat": "k5",
-    "term": {
-      "de": "reiten",
-      "en": "to ride a horse",
-      "uk": "їздити верхи",
-      "ru": "ездить верхом"
-    },
-    "short": {
-      "de": "auf einem Pferd sitzen und mit ihm irgendwohin gehen",
-      "en": "to sit on a horse and go somewhere with it",
-      "uk": "сидіти на коні й кудись на ньому їхати",
-      "ru": "сидеть на лошади и куда-то на ней ехать"
-    },
-    "def": {
-      "de": "Ich übe <b>reiten</b>, <g>bis</g> das Pferd mir vertraut.",
-      "en": "I practise <b>riding</b> <g>until</g> the horse trusts me.",
-      "uk": "Я вправляюся в <b>їзді верхи</b>, <g>поки</g> кінь не повірить мені.",
-      "ru": "Я упражняюсь в <b>езде верхом</b>, <g>пока</g> лошадь мне не доверится."
-    },
-    "gram": "nebensatz_mit_bis"
-  },
-  {
     "id": "k5_094",
     "cat": "k5",
     "term": {
@@ -23221,35 +20844,6 @@ var VOCAB = [
     "gram": "verben_als_nomen"
   },
   {
-    "id": "k5_108",
-    "cat": "k5",
-    "term": {
-      "de": "der Kilometer",
-      "en": "kilometre",
-      "uk": "кілометр",
-      "ru": "километр"
-    },
-    "short": {
-      "de": "eine Strecke von tausend Metern",
-      "en": "a distance of one thousand metres",
-      "uk": "відстань у тисячу метрів",
-      "ru": "расстояние в тысячу метров"
-    },
-    "def": {
-      "de": "<g>Beim Joggen</g> laufe ich jeden Tag fünf <b>Kilometer</b>.",
-      "en": "<g>When jogging</g> I run five <b>kilometres</b> every day.",
-      "uk": "Під час бігу я щодня пробігаю пʼять <b>кілометрів</b>.",
-      "ru": "Во время бега я каждый день пробегаю пять <b>километров</b>."
-    },
-    "gram": "verben_als_nomen",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Kilometer"
-      ]
-    }
-  },
-  {
     "id": "k5_109",
     "cat": "k5",
     "term": {
@@ -23532,29 +21126,6 @@ var VOCAB = [
     "gram": "praepositionaladverbien_b1"
   },
   {
-    "id": "k5_121",
-    "cat": "k5",
-    "term": {
-      "de": "furchtbar",
-      "en": "terrible",
-      "uk": "жахливий",
-      "ru": "ужасный"
-    },
-    "short": {
-      "de": "sehr schlecht oder sehr unangenehm",
-      "en": "very bad or very unpleasant",
-      "uk": "дуже поганий або дуже неприємний",
-      "ru": "очень плохой или очень неприятный"
-    },
-    "def": {
-      "de": "Das Wetter war <b>furchtbar</b>, <g>darüber</g> haben wir uns sehr geärgert.",
-      "en": "The weather was <b>terrible</b>, we were very annoyed <g>about it</g>.",
-      "uk": "Погода була <b>жахливою</b>, ми дуже розсердилися <g>через це</g>.",
-      "ru": "Погода была <b>ужасной</b>, мы очень рассердились <g>из-за этого</g>."
-    },
-    "gram": "praepositionaladverbien_b1"
-  },
-  {
     "id": "k5_122",
     "cat": "k5",
     "term": {
@@ -23670,6 +21241,123 @@ var VOCAB = [
     "gram": "praepositionaladverbien_b1"
   },
   {
+    "id": "k5_127",
+    "cat": "k5",
+    "term": {
+      "de": "bemerken",
+      "en": "to notice",
+      "uk": "помічати",
+      "ru": "замечать"
+    },
+    "short": {
+      "de": "etwas sehen oder merken, das man vorher nicht wusste",
+      "en": "to see or realise something you didn't know before",
+      "uk": "побачити чи зрозуміти щось, чого раніше не знав",
+      "ru": "увидеть или понять что-то, чего раньше не знал"
+    },
+    "def": {
+      "de": "<g>Seitdem</g> ich in Deutschland lebe, <b>bemerke</b> ich, wie wichtig Pünktlichkeit ist.",
+      "en": "<g>Since</g> I have been living in Germany, I <b>notice</b> how important punctuality is.",
+      "uk": "<g>Відколи</g> я живу в Німеччині, я <b>помічаю</b>, наскільки важлива пунктуальність.",
+      "ru": "<g>С тех пор как</g> я живу в Германии, я <b>замечаю</b>, насколько важна пунктуальность."
+    },
+    "gram": "nebensatz_seit_seitdem",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "bemerkt",
+        "bemerkte",
+        "hat bemerkt"
+      ]
+    }
+  },
+  {
+    "id": "k5_128",
+    "cat": "k5",
+    "term": {
+      "de": "das Erlebnis",
+      "en": "experience",
+      "uk": "враження",
+      "ru": "впечатление"
+    },
+    "short": {
+      "de": "etwas Besonderes, das man erlebt hat und gut erinnert",
+      "en": "something special that you have experienced and remember well",
+      "uk": "щось особливе, що пережив і добре памʼятаєш",
+      "ru": "что-то особенное, что пережил и хорошо помнишь"
+    },
+    "def": {
+      "de": "Wir sind gewandert, <g>bis</g> es dunkel wurde – das war ein tolles <b>Erlebnis</b>.",
+      "en": "We hiked <g>until</g> it got dark – that was a great <b>experience</b>.",
+      "uk": "Ми йшли пішки, <g>доки</g> не стемніло, — це було чудове <b>враження</b>.",
+      "ru": "Мы шли пешком, <g>пока</g> не стемнело, — это было прекрасное <b>впечатление</b>."
+    },
+    "gram": "nebensatz_mit_bis",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Erlebnisse"
+      ]
+    }
+  },
+  {
+    "id": "k5_129",
+    "cat": "k5",
+    "term": {
+      "de": "der Ärger",
+      "en": "trouble",
+      "uk": "неприємності",
+      "ru": "неприятности"
+    },
+    "short": {
+      "de": "Probleme oder Streit, über die man sich aufregt",
+      "en": "problems or arguments that upset you",
+      "uk": "проблеми чи сварки, через які нервуєш",
+      "ru": "проблемы или ссоры, из-за которых нервничаешь"
+    },
+    "def": {
+      "de": "Ich hatte viel <b>Ärger</b> mit dem Vermieter, und <g>darüber</g> spreche ich nicht gern.",
+      "en": "I had a lot of <b>trouble</b> with the landlord, and I don't like talking <g>about it</g>.",
+      "uk": "У мене було багато <b>неприємностей</b> з орендодавцем, і <g>про це</g> я не люблю говорити.",
+      "ru": "У меня было много <b>неприятностей</b> с арендодателем, и <g>об этом</g> я не люблю говорить."
+    },
+    "gram": "praepositionaladverbien_b1",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
+    "id": "k5_130",
+    "cat": "k5",
+    "term": {
+      "de": "vorkommen",
+      "en": "to happen",
+      "uk": "траплятися",
+      "ru": "случаться"
+    },
+    "short": {
+      "de": "passieren, oft mehrmals",
+      "en": "to happen, often more than once",
+      "uk": "ставатися, часто не раз",
+      "ru": "происходить, часто не раз"
+    },
+    "def": {
+      "de": "<g>Seit</g> ich hier wohne, <b>kommt</b> es oft <b>vor</b>, dass der Bus zu spät ist.",
+      "en": "<g>Since</g> I have lived here, it often <b>happens</b> that the bus is late.",
+      "uk": "<g>Відколи</g> я тут живу, часто <b>трапляється</b>, що автобус запізнюється.",
+      "ru": "<g>С тех пор как</g> я здесь живу, часто <b>случается</b>, что автобус опаздывает."
+    },
+    "gram": "nebensatz_seit_seitdem",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "kommt vor",
+        "kam vor",
+        "ist vorgekommen"
+      ]
+    }
+  },
+  {
     "id": "k6_001",
     "cat": "k6",
     "term": {
@@ -23745,64 +21433,6 @@ var VOCAB = [
     "gram": "praepositionaladverbien_b1"
   },
   {
-    "id": "k6_004",
-    "cat": "k6",
-    "term": {
-      "de": "der Verband",
-      "en": "bandage",
-      "uk": "повʼязка",
-      "ru": "повязка"
-    },
-    "short": {
-      "de": "ein Stück Stoff, das man um eine Wunde legt",
-      "en": "a piece of cloth that you put around a wound",
-      "uk": "шматок тканини, який накладають на рану",
-      "ru": "кусок ткани, который накладывают на рану"
-    },
-    "def": {
-      "de": "Die Schwester legte einen <b>Verband</b> an, <g>um</g> die Wunde <g>zu</g> schützen.",
-      "en": "The nurse put on a <b>bandage</b> <g>in order to</g> protect the wound.",
-      "uk": "Медсестра наклала <b>повʼязку</b>, <g>щоб</g> захистити рану.",
-      "ru": "Медсестра наложила <b>повязку</b>, <g>чтобы</g> защитить рану."
-    },
-    "gram": "satz_mit_um_zu",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Verbände"
-      ]
-    }
-  },
-  {
-    "id": "k6_005",
-    "cat": "k6",
-    "term": {
-      "de": "die Untersuchung",
-      "en": "examination",
-      "uk": "обстеження",
-      "ru": "обследование"
-    },
-    "short": {
-      "de": "wenn ein Arzt genau prüft, was mit dem Körper los ist",
-      "en": "when a doctor carefully checks what is wrong with the body",
-      "uk": "коли лікар уважно перевіряє, що з тілом",
-      "ru": "когда врач внимательно проверяет, что с телом"
-    },
-    "def": {
-      "de": "Die <b>Untersuchung</b> <g>wird</g> morgen früh <g>stattfinden</g>.",
-      "en": "The <b>examination</b> <g>will take place</g> tomorrow morning.",
-      "uk": "<b>Обстеження</b> <g>відбудеться</g> завтра вранці.",
-      "ru": "<b>Обследование</b> <g>будет проходить</g> завтра утром."
-    },
-    "gram": "futur_werden",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Untersuchungen"
-      ]
-    }
-  },
-  {
     "id": "k6_006",
     "cat": "k6",
     "term": {
@@ -23846,7 +21476,8 @@ var VOCAB = [
       "uk": "<b>Лікування</b> було успішним, і здоровʼя пацієнта швидко покращилося.",
       "ru": "<b>Лечение</b> было успешным, и здоровье пациента быстро улучшилось."
     },
-    "gram": "nomen_auf_heit_keit"
+    "gram": "nomen_auf_heit_keit",
+    "prio": 2
   },
   {
     "id": "k6_008",
@@ -23892,36 +21523,8 @@ var VOCAB = [
       "uk": "Під час падіння він <g>не тільки</g> <b>травмував</b> руку, <g>а й</g> голову.",
       "ru": "Во время падения он <g>не только</g> <b>травмировал</b> руку, <g>но и</g> голову."
     },
-    "gram": "nicht_nur_sondern_auch"
-  },
-  {
-    "id": "k6_010",
-    "cat": "k6",
-    "term": {
-      "de": "das Formular",
-      "en": "form",
-      "uk": "бланк",
-      "ru": "бланк"
-    },
-    "short": {
-      "de": "ein Papier mit Feldern, die man ausfüllen muss",
-      "en": "a piece of paper with fields that you have to fill in",
-      "uk": "папір з полями, які потрібно заповнити",
-      "ru": "бумага с полями, которые нужно заполнить"
-    },
-    "def": {
-      "de": "Sie füllte das <b>Formular</b> sehr sorgfältig aus, <g>um</g> keine Fehler <g>zu</g> machen.",
-      "en": "She filled in the <b>form</b> very carefully <g>in order not to</g> make any mistakes.",
-      "uk": "Вона дуже уважно заповнила <b>бланк</b>, <g>щоб</g> не зробити помилок.",
-      "ru": "Она очень внимательно заполнила <b>бланк</b>, <g>чтобы</g> не сделать ошибок."
-    },
-    "gram": "satz_mit_um_zu",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Formulare"
-      ]
-    }
+    "gram": "nicht_nur_sondern_auch",
+    "prio": 2
   },
   {
     "id": "k6_011",
@@ -23947,35 +21550,6 @@ var VOCAB = [
     "gram": "nebensatz_mit_damit_wdh_b1"
   },
   {
-    "id": "k6_012",
-    "cat": "k6",
-    "term": {
-      "de": "das Medikament",
-      "en": "medication",
-      "uk": "медикамент",
-      "ru": "медикамент"
-    },
-    "short": {
-      "de": "etwas, das man gegen eine Krankheit nimmt, um gesund zu werden",
-      "en": "something you take against an illness to become healthy",
-      "uk": "те, що приймають проти хвороби, щоб стати здоровим",
-      "ru": "то, что принимают против болезни, чтобы стать здоровым"
-    },
-    "def": {
-      "de": "Dieses <b>Medikament</b> hilft schnell gegen die <g>Müdigkeit</g> nach der Operation.",
-      "en": "This <b>medication</b> quickly helps against the tiredness after the operation.",
-      "uk": "Цей <b>медикамент</b> швидко допомагає проти втоми після операції.",
-      "ru": "Этот <b>медикамент</b> быстро помогает против усталости после операции."
-    },
-    "gram": "nomen_auf_heit_keit",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Medikamente"
-      ]
-    }
-  },
-  {
     "id": "k6_013",
     "cat": "k6",
     "term": {
@@ -23996,30 +21570,8 @@ var VOCAB = [
       "uk": "У <b>аварії</b> постраждали <g>не тільки</g> водії, <g>а й</g> двоє пішоходів.",
       "ru": "В <b>аварии</b> пострадали <g>не только</g> водители, <g>но и</g> двое пешеходов."
     },
-    "gram": "nicht_nur_sondern_auch"
-  },
-  {
-    "id": "k6_014",
-    "cat": "k6",
-    "term": {
-      "de": "der Krankenpfleger / die Krankenpflegerin",
-      "en": "nurse",
-      "uk": "медбрат / медсестра",
-      "ru": "медбрат / медсестра"
-    },
-    "short": {
-      "de": "eine Person, die im Krankenhaus Patienten pflegt und ihnen hilft",
-      "en": "a person who takes care of patients in a hospital and helps them",
-      "uk": "людина, яка в лікарні доглядає пацієнтів і допомагає їм",
-      "ru": "человек, который в больнице ухаживает за пациентами и помогает им"
-    },
-    "def": {
-      "de": "Die <b>Krankenpflegerin</b> zeigte trotz der Müdigkeit große <g>Freundlichkeit</g> zu jedem Patienten.",
-      "en": "Despite being tired, the <b>nurse</b> showed great kindness to every patient.",
-      "uk": "<b>Медсестра</b>, незважаючи на втому, виявляла велику доброзичливість до кожного пацієнта.",
-      "ru": "<b>Медсестра</b>, несмотря на усталость, проявляла большую доброжелательность к каждому пациенту."
-    },
-    "gram": "nomen_auf_heit_keit"
+    "gram": "nicht_nur_sondern_auch",
+    "prio": 2
   },
   {
     "id": "k6_015",
@@ -24049,87 +21601,6 @@ var VOCAB = [
         "die Geburten"
       ]
     }
-  },
-  {
-    "id": "k6_016",
-    "cat": "k6",
-    "term": {
-      "de": "der Patient / die Patientin",
-      "en": "patient",
-      "uk": "пацієнт / пацієнтка",
-      "ru": "пациент / пациентка"
-    },
-    "short": {
-      "de": "eine Person, die im Krankenhaus oder beim Arzt behandelt wird",
-      "en": "a person who is treated in a hospital or by a doctor",
-      "uk": "людина, яку лікують у лікарні чи в лікаря",
-      "ru": "человек, которого лечат в больнице или у врача"
-    },
-    "def": {
-      "de": "Über den neuen <b>Patienten</b> haben die Ärzte lange gesprochen — <g>darüber</g> gab es viele Fragen.",
-      "en": "The doctors talked for a long time about the new <b>patient</b> — there were many questions <g>about it</g>.",
-      "uk": "Про нового <b>пацієнта</b> лікарі довго розмовляли — щодо цього було багато запитань.",
-      "ru": "О новом <b>пациенте</b> врачи долго разговаривали — по этому поводу было много вопросов."
-    },
-    "gram": "praepositionaladverbien_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Patienten / die Patientinnen"
-      ]
-    }
-  },
-  {
-    "id": "k6_017",
-    "cat": "k6",
-    "term": {
-      "de": "der Arzt / die Ärztin",
-      "en": "doctor",
-      "uk": "лікар / лікарка",
-      "ru": "врач"
-    },
-    "short": {
-      "de": "eine Person, die Menschen medizinisch behandelt",
-      "en": "a person who treats people medically",
-      "uk": "людина, яка медично лікує людей",
-      "ru": "человек, который медицински лечит людей"
-    },
-    "def": {
-      "de": "Über den <b>Arzt</b> haben wir nur Gutes gehört — <g>darüber</g> waren wir sehr froh.",
-      "en": "We only heard good things about the <b>doctor</b> — we were very happy <g>about that</g>.",
-      "uk": "Про <b>лікаря</b> ми чули лише хороше — цьому ми були дуже раді.",
-      "ru": "О <b>враче</b> мы слышали только хорошее — этому мы были очень рады."
-    },
-    "gram": "praepositionaladverbien_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Ärzte / die Ärztinnen"
-      ]
-    }
-  },
-  {
-    "id": "k6_018",
-    "cat": "k6",
-    "term": {
-      "de": "besuchen",
-      "en": "to visit",
-      "uk": "відвідувати",
-      "ru": "навещать"
-    },
-    "short": {
-      "de": "zu jemandem gehen, um bei ihm zu sein, zum Beispiel im Krankenhaus",
-      "en": "to go to someone to be with them, for example in a hospital",
-      "uk": "приходити до когось, щоб побути з ним, наприклад у лікарні",
-      "ru": "приходить к кому-то, чтобы побыть с ним, например в больнице"
-    },
-    "def": {
-      "de": "<g>Worüber</g> habt ihr gesprochen, als ihr eure Oma im Krankenhaus <b>besucht</b> habt?",
-      "en": "What did you talk about when you <b>visited</b> your grandma in the hospital?",
-      "uk": "<g>Про що</g> ви говорили, коли <b>відвідували</b> бабусю в лікарні?",
-      "ru": "<g>О чём</g> вы говорили, когда <b>навещали</b> бабушку в больнице?"
-    },
-    "gram": "praepositionaladverbien_b1"
   },
   {
     "id": "k6_019",
@@ -24202,35 +21673,6 @@ var VOCAB = [
       "ru": "<g>Чему</g> вы обрадовались, когда его наконец <b>выписали</b>?"
     },
     "gram": "praepositionaladverbien_b1"
-  },
-  {
-    "id": "k6_022",
-    "cat": "k6",
-    "term": {
-      "de": "der Besuch",
-      "en": "visit",
-      "uk": "візит",
-      "ru": "визит"
-    },
-    "short": {
-      "de": "wenn man zu jemandem geht, um ihn zu sehen",
-      "en": "when you go to see someone",
-      "uk": "коли приходиш до когось, щоб побачитися",
-      "ru": "когда приходишь к кому-то, чтобы увидеться"
-    },
-    "def": {
-      "de": "Über den kurzen <b>Besuch</b> bei ihr im Krankenhaus haben wir uns alle sehr gefreut — <g>darüber</g> reden wir noch oft.",
-      "en": "We were all very happy about the short <b>visit</b> to her in the hospital — we still talk <g>about it</g> often.",
-      "uk": "Ми всі дуже зраділи короткому <b>візиту</b> до неї в лікарні — <g>про це</g> ми досі часто говоримо.",
-      "ru": "Мы все очень обрадовались короткому <b>визиту</b> к ней в больницу — <g>об этом</g> мы до сих пор часто говорим."
-    },
-    "gram": "praepositionaladverbien_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Besuche"
-      ]
-    }
   },
   {
     "id": "k6_023",
@@ -24371,30 +21813,8 @@ var VOCAB = [
       "uk": "<b>Терапія</b> триватиме щонайменше шість тижнів.",
       "ru": "<b>Терапия</b> продлится минимум шесть недель."
     },
-    "gram": "futur_werden"
-  },
-  {
-    "id": "k6_029",
-    "cat": "k6",
-    "term": {
-      "de": "verschreiben",
-      "en": "to prescribe",
-      "uk": "призначати ліки",
-      "ru": "назначать лекарство"
-    },
-    "short": {
-      "de": "als Arzt ein Medikament für einen Patienten aufschreiben",
-      "en": "as a doctor, to write a medication for a patient",
-      "uk": "як лікар, призначати ліки пацієнту",
-      "ru": "как врач, назначать лекарство пациенту"
-    },
-    "def": {
-      "de": "Der Arzt <g>wird</g> ihr ein neues Medikament <g><b>verschreiben</b></g>.",
-      "en": "The doctor <g>will</g> <g><b>prescribe</b></g> her a new medication.",
-      "uk": "Лікар <g><b>призначить</b></g> їй нові ліки.",
-      "ru": "Врач <g><b>назначит</b></g> ей новое лекарство."
-    },
-    "gram": "futur_werden"
+    "gram": "futur_werden",
+    "prio": 2
   },
   {
     "id": "k6_030",
@@ -24627,29 +22047,6 @@ var VOCAB = [
     "gram": "satz_mit_um_zu"
   },
   {
-    "id": "k6_041",
-    "cat": "k6",
-    "term": {
-      "de": "die Wartezeit",
-      "en": "waiting time",
-      "uk": "час очікування",
-      "ru": "время ожидания"
-    },
-    "short": {
-      "de": "die Zeit, die man warten muss, bis man an der Reihe ist",
-      "en": "the time you have to wait until it is your turn",
-      "uk": "час, який потрібно чекати, доки настане твоя черга",
-      "ru": "время, которое нужно ждать, пока не наступит твоя очередь"
-    },
-    "def": {
-      "de": "Sie brachte ein Buch mit, <g>um</g> die <b>Wartezeit</b> sinnvoll <g>zu nutzen</g>.",
-      "en": "She brought a book <g>in order to</g> use the <b>waiting time</b> wisely.",
-      "uk": "Вона взяла з собою книжку, <g>щоб</g> корисно провести <b>час очікування</b>.",
-      "ru": "Она взяла с собой книгу, <g>чтобы</g> с пользой провести <b>время ожидания</b>."
-    },
-    "gram": "satz_mit_um_zu"
-  },
-  {
     "id": "k6_042",
     "cat": "k6",
     "term": {
@@ -24669,52 +22066,6 @@ var VOCAB = [
       "en": "He came early <g>in order to</g> <g><b>submit</b></g> all the documents on time.",
       "uk": "Він прийшов рано, <g>щоб</g> вчасно <g><b>подати</b></g> всі документи.",
       "ru": "Он пришёл рано, <g>чтобы</g> вовремя <g><b>подать</b></g> все документы."
-    },
-    "gram": "satz_mit_um_zu"
-  },
-  {
-    "id": "k6_043",
-    "cat": "k6",
-    "term": {
-      "de": "die Priorität",
-      "en": "priority",
-      "uk": "пріоритет",
-      "ru": "приоритет"
-    },
-    "short": {
-      "de": "was zuerst und am wichtigsten behandelt wird",
-      "en": "what is dealt with first and is most important",
-      "uk": "те, чим займаються насамперед і що найважливіше",
-      "ru": "то, чем занимаются в первую очередь и что важнее всего"
-    },
-    "def": {
-      "de": "Die Ärztin sortierte die Patienten nach <b>Priorität</b>, <g>um</g> den Schwerverletzten sofort <g>zu helfen</g>.",
-      "en": "The doctor sorted the patients by <b>priority</b> <g>in order to</g> help the severely injured immediately.",
-      "uk": "Лікарка розсортувала пацієнтів за <b>пріоритетом</b>, <g>щоб</g> одразу допомогти тяжкопораненим.",
-      "ru": "Врач рассортировала пациентов по <b>приоритету</b>, <g>чтобы</g> сразу помочь тяжелораненым."
-    },
-    "gram": "satz_mit_um_zu"
-  },
-  {
-    "id": "k6_044",
-    "cat": "k6",
-    "term": {
-      "de": "dringend",
-      "en": "urgent",
-      "uk": "терміновий",
-      "ru": "срочный"
-    },
-    "short": {
-      "de": "wenn etwas sehr schnell gemacht werden muss",
-      "en": "when something has to be done very quickly",
-      "uk": "коли щось потрібно зробити дуже швидко",
-      "ru": "когда что-то нужно сделать очень быстро"
-    },
-    "def": {
-      "de": "Sie rief laut nach dem Arzt, <g>um</g> auf den <b>dringenden</b> Fall <g>aufmerksam zu machen</g>.",
-      "en": "She called loudly for the doctor <g>in order to</g> draw attention to the <b>urgent</b> case.",
-      "uk": "Вона голосно покликала лікаря, <g>щоб</g> звернути увагу на <b>терміновий</b> випадок.",
-      "ru": "Она громко позвала врача, <g>чтобы</g> обратить внимание на <b>срочный</b> случай."
     },
     "gram": "satz_mit_um_zu"
   },
@@ -24739,30 +22090,8 @@ var VOCAB = [
       "uk": "Вона уважно прочитала формуляр, <g>щоб</g> потім правильно його <g><b>підписати</b></g>.",
       "ru": "Она внимательно прочитала формуляр, <g>чтобы</g> потом правильно его <g><b>подписать</b></g>."
     },
-    "gram": "satz_mit_um_zu"
-  },
-  {
-    "id": "k6_046",
-    "cat": "k6",
-    "term": {
-      "de": "abgeben",
-      "en": "to hand in",
-      "uk": "здавати документ",
-      "ru": "сдавать документ"
-    },
-    "short": {
-      "de": "etwas offiziell an eine zuständige Stelle geben",
-      "en": "to officially give something to the responsible office",
-      "uk": "офіційно передати щось відповідальній інстанції",
-      "ru": "официально передать что-то ответственной инстанции"
-    },
-    "def": {
-      "de": "Er beeilte sich, <g>um</g> das Formular noch vor Mittag <g><b>abzugeben</b></g>.",
-      "en": "He hurried <g>in order to</g> <g><b>hand in</b></g> the form before noon.",
-      "uk": "Він поспішав, <g>щоб</g> <g><b>здати</b></g> формуляр ще до обіду.",
-      "ru": "Он торопился, <g>чтобы</g> <g><b>сдать</b></g> формуляр ещё до обеда."
-    },
-    "gram": "satz_mit_um_zu"
+    "gram": "satz_mit_um_zu",
+    "prio": 2
   },
   {
     "id": "k6_047",
@@ -24946,33 +22275,8 @@ var VOCAB = [
       "uk": "Медсестра мала одразу <b>повідомити</b> родину, <g>щоб</g> вони приїхали до лікарні.",
       "ru": "Медсестра должна была сразу <b>сообщить</b> семье, <g>чтобы</g> они приехали в больницу."
     },
-    "gram": "nebensatz_mit_damit_wdh_b1"
-  },
-  {
-    "id": "k6_055",
-    "cat": "k6",
-    "term": {
-      "de": "die Gesundheit",
-      "en": "health",
-      "uk": "здоровʼя",
-      "ru": "здоровье"
-    },
-    "short": {
-      "de": "der Zustand, wenn der Körper und der Geist gut funktionieren",
-      "en": "the state when the body and mind function well",
-      "uk": "стан, коли тіло й розум добре функціонують",
-      "ru": "состояние, когда тело и разум хорошо функционируют"
-    },
-    "def": {
-      "de": "Die <g><b>Gesundheit</b></g> der Patienten hat für dieses Krankenhaus höchste Priorität.",
-      "en": "The <b>health</b> of the patients has the highest priority for this hospital.",
-      "uk": "<b>Здоровʼя</b> пацієнтів — найвищий пріоритет для цієї лікарні.",
-      "ru": "<b>Здоровье</b> пациентов — высший приоритет для этой больницы."
-    },
-    "gram": "nomen_auf_heit_keit",
-    "info": {
-      "num": "sg"
-    }
+    "gram": "nebensatz_mit_damit_wdh_b1",
+    "prio": 2
   },
   {
     "id": "k6_056",
@@ -24995,7 +22299,8 @@ var VOCAB = [
       "uk": "<b>Безпека</b> пацієнтів на першому місці під час кожної операції.",
       "ru": "<b>Безопасность</b> пациентов на первом месте во время каждой операции."
     },
-    "gram": "nomen_auf_heit_keit"
+    "gram": "nomen_auf_heit_keit",
+    "prio": 2
   },
   {
     "id": "k6_057",
@@ -25619,29 +22924,6 @@ var VOCAB = [
     "gram": "nicht_nur_sondern_auch"
   },
   {
-    "id": "k6_084",
-    "cat": "k6",
-    "term": {
-      "de": "eilig",
-      "en": "urgent",
-      "uk": "терміновий",
-      "ru": "срочный"
-    },
-    "short": {
-      "de": "so, dass es schnell gehen muss",
-      "en": "so that it has to be done quickly",
-      "uk": "такий, що має відбутися швидко",
-      "ru": "такой, что должно произойти быстро"
-    },
-    "def": {
-      "de": "Der Brief ist <b>eilig</b>, deshalb fährt er zur Post, <g>um</g> ihn heute noch <g>abzuschicken</g>.",
-      "en": "The letter is <b>urgent</b>, so he goes to the post office <g>in order to</g> send it today.",
-      "uk": "Лист <b>терміновий</b>, тому він їде на пошту, <g>щоб</g> відправити його сьогодні.",
-      "ru": "Письмо <b>срочное</b>, поэтому он едет на почту, <g>чтобы</g> отправить его сегодня."
-    },
-    "gram": "satz_mit_um_zu"
-  },
-  {
     "id": "k6_085",
     "cat": "k6",
     "term": {
@@ -25826,27 +23108,234 @@ var VOCAB = [
     "gram": "nomen_auf_heit_keit"
   },
   {
-    "id": "k7_001",
-    "cat": "k7",
+    "id": "k6_093",
+    "cat": "k6",
     "term": {
-      "de": "die Umwelt",
-      "en": "environment",
-      "uk": "довкілля",
-      "ru": "окружающая среда"
+      "de": "einnehmen",
+      "en": "to take",
+      "uk": "приймати",
+      "ru": "принимать"
     },
     "short": {
-      "de": "die Natur und alles um uns herum: Luft, Wasser, Pflanzen und Tiere",
-      "en": "nature and everything around us: air, water, plants and animals",
-      "uk": "природа і все навколо нас: повітря, вода, рослини й тварини",
-      "ru": "природа и всё вокруг нас: воздух, вода, растения и животные"
+      "de": "ein Medikament schlucken oder trinken, so wie der Arzt es sagt",
+      "en": "to swallow or drink a medicine as the doctor says",
+      "uk": "ковтати чи пити ліки так, як каже лікар",
+      "ru": "глотать или пить лекарство так, как говорит врач"
     },
     "def": {
-      "de": "Der Schutz der <b>Umwelt</b> braucht viel <g>Aufmerksamkeit</g> von uns allen.",
-      "en": "Protecting the <b>environment</b> requires a lot of attention from all of us.",
-      "uk": "Захист <b>довкілля</b> потребує великої уваги від усіх нас.",
-      "ru": "Защита <b>окружающей среды</b> требует большого внимания от всех нас."
+      "de": "Sie <g>werden</g> das Medikament zwei Wochen lang morgens und abends <g><b>einnehmen</b></g>.",
+      "en": "You <g>will</g> <b>take</b> the medicine morning and evening for two weeks.",
+      "uk": "Ви <g>будете</g> <b>приймати</b> ліки зранку й увечері протягом двох тижнів.",
+      "ru": "Вы <g>будете</g> <b>принимать</b> лекарство утром и вечером в течение двух недель."
+    },
+    "gram": "futur_werden",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "nimmt ein",
+        "nahm ein",
+        "hat eingenommen"
+      ]
+    },
+    "info": {
+      "sense": "Medikament"
+    }
+  },
+  {
+    "id": "k6_094",
+    "cat": "k6",
+    "term": {
+      "de": "die Nebenwirkung",
+      "en": "side effect",
+      "uk": "побічна дія",
+      "ru": "побочное действие"
+    },
+    "short": {
+      "de": "eine Wirkung von einem Medikament, die man nicht möchte",
+      "en": "an effect of a medicine that you don't want",
+      "uk": "дія ліків, якої не хочеш",
+      "ru": "действие лекарства, которого не хочешь"
+    },
+    "def": {
+      "de": "Die Ärztin sagt, dass das Medikament keine starken <b>Nebenwirkungen</b> haben <g>wird</g>.",
+      "en": "The doctor says that the medicine <g>will</g> not have any strong <b>side effects</b>.",
+      "uk": "Лікарка каже, що ці ліки не <g>матимуть</g> сильної <b>побічної дії</b>.",
+      "ru": "Врач говорит, что у лекарства не <g>будет</g> сильного <b>побочного действия</b>."
+    },
+    "gram": "futur_werden",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Nebenwirkungen"
+      ]
+    }
+  },
+  {
+    "id": "k6_095",
+    "cat": "k6",
+    "term": {
+      "de": "die Vorsorge",
+      "en": "preventive care",
+      "uk": "профілактика",
+      "ru": "профилактика"
+    },
+    "short": {
+      "de": "Untersuchungen beim Arzt, damit man gesund bleibt",
+      "en": "check-ups at the doctor's so that you stay healthy",
+      "uk": "обстеження в лікаря, щоб залишатися здоровим",
+      "ru": "обследования у врача, чтобы оставаться здоровым"
+    },
+    "def": {
+      "de": "Regelmäßige <b>Vorsorge</b> ist sehr wichtig für die <g>Gesundheit</g> von Kindern.",
+      "en": "Regular <b>preventive care</b> is very important for children's <g>health</g>.",
+      "uk": "Регулярна <b>профілактика</b> дуже важлива для <g>здоровʼя</g> дітей.",
+      "ru": "Регулярная <b>профилактика</b> очень важна для <g>здоровья</g> детей."
+    },
+    "gram": "nomen_auf_heit_keit",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
+    "id": "k6_096",
+    "cat": "k6",
+    "term": {
+      "de": "der Alarm",
+      "en": "alarm",
+      "uk": "тривога",
+      "ru": "тревога"
+    },
+    "short": {
+      "de": "ein lautes Signal, das vor Gefahr warnt",
+      "en": "a loud signal that warns of danger",
+      "uk": "гучний сигнал, що попереджає про небезпеку",
+      "ru": "громкий сигнал, который предупреждает об опасности"
+    },
+    "def": {
+      "de": "Bei Feuer gibt es <g>nicht nur</g> einen <b>Alarm</b>, <g>sondern auch</g> eine Durchsage.",
+      "en": "In case of fire there is <g>not only</g> an <b>alarm</b> <g>but also</g> an announcement.",
+      "uk": "Під час пожежі лунає <g>не тільки</g> <b>тривога</b>, <g>а й</g> оголошення.",
+      "ru": "При пожаре звучит <g>не только</g> <b>тревога</b>, <g>но и</g> объявление."
+    },
+    "gram": "nicht_nur_sondern_auch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Alarme"
+      ]
+    }
+  },
+  {
+    "id": "k6_097",
+    "cat": "k6",
+    "term": {
+      "de": "der Nerv",
+      "en": "nerve",
+      "uk": "нерв",
+      "ru": "нерв"
+    },
+    "short": {
+      "de": "eine Art Faden im Körper, der Signale zum Gehirn leitet",
+      "en": "a kind of thread in the body that carries signals to the brain",
+      "uk": "волокно в тілі, яке передає сигнали до мозку",
+      "ru": "волокно в теле, которое передаёт сигналы в мозг"
+    },
+    "def": {
+      "de": "Die Krankheit greift die <b>Nerven</b> an und führt zu großer <g>Müdigkeit</g>.",
+      "en": "The illness attacks the <b>nerves</b> and leads to great <g>tiredness</g>.",
+      "uk": "Хвороба вражає <b>нерви</b> й спричиняє сильну <g>втому</g>.",
+      "ru": "Болезнь поражает <b>нервы</b> и вызывает сильную <g>усталость</g>."
+    },
+    "gram": "nomen_auf_heit_keit",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Nerven"
+      ]
+    }
+  },
+  {
+    "id": "k6_098",
+    "cat": "k6",
+    "term": {
+      "de": "brechen",
+      "en": "to break",
+      "uk": "ламати",
+      "ru": "ломать"
+    },
+    "short": {
+      "de": "etwas mit Kraft in Stücke machen; auch: sich verletzen",
+      "en": "to break something into pieces; also: to injure yourself",
+      "uk": "розбивати щось на шматки; також: травмуватися",
+      "ru": "разбивать что-то на куски; также: травмироваться"
+    },
+    "def": {
+      "de": "Er hat sich <g>nicht nur</g> den Arm <b>gebrochen</b>, <g>sondern auch</g> das Bein.",
+      "en": "He <b>broke</b> <g>not only</g> his arm <g>but also</g> his leg.",
+      "uk": "Він <b>зламав</b> <g>не тільки</g> руку, <g>а й</g> ногу.",
+      "ru": "Он <b>сломал</b> <g>не только</g> руку, <g>но и</g> ногу."
+    },
+    "gram": "nicht_nur_sondern_auch",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "bricht",
+        "brach",
+        "hat gebrochen"
+      ]
+    }
+  },
+  {
+    "id": "k6_099",
+    "cat": "k6",
+    "term": {
+      "de": "das Rauchen aufgeben",
+      "en": "to give up smoking",
+      "uk": "кинути курити",
+      "ru": "бросить курить"
+    },
+    "short": {
+      "de": "mit dem Rauchen aufhören",
+      "en": "to stop smoking",
+      "uk": "перестати курити",
+      "ru": "перестать курить"
+    },
+    "def": {
+      "de": "Für meine <g>Gesundheit</g> habe ich <b>das Rauchen aufgegeben</b>.",
+      "en": "I <b>gave up smoking</b> for my <g>health</g>.",
+      "uk": "Заради свого <g>здоровʼя</g> я <b>кинула курити</b>.",
+      "ru": "Ради своего <g>здоровья</g> я <b>бросила курить</b>."
     },
     "gram": "nomen_auf_heit_keit"
+  },
+  {
+    "id": "k6_100",
+    "cat": "k6",
+    "term": {
+      "de": "die Dosierung",
+      "en": "dosage",
+      "uk": "дозування",
+      "ru": "дозировка"
+    },
+    "short": {
+      "de": "wie viel von einem Medikament man nehmen soll",
+      "en": "how much of a medicine you should take",
+      "uk": "скільки ліків треба приймати",
+      "ru": "сколько лекарства нужно принимать"
+    },
+    "def": {
+      "de": "Die Ärztin <g>wird</g> Ihnen die richtige <b>Dosierung</b> genau erklären.",
+      "en": "The doctor <g>will</g> explain the correct <b>dosage</b> to you exactly.",
+      "uk": "Лікарка точно <g>пояснить</g> вам правильне <b>дозування</b>.",
+      "ru": "Врач точно <g>объяснит</g> вам правильную <b>дозировку</b>."
+    },
+    "gram": "futur_werden",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Dosierungen"
+      ]
+    }
   },
   {
     "id": "k7_002",
@@ -25915,7 +23404,8 @@ var VOCAB = [
       "uk": "У Німеччині сміття дуже точно <b>сортують</b>.",
       "ru": "В Германии мусор очень точно <b>сортируют</b>."
     },
-    "gram": "passiv_praesens_b1"
+    "gram": "passiv_praesens_b1",
+    "prio": 2
   },
   {
     "id": "k7_005",
@@ -26522,29 +24012,6 @@ var VOCAB = [
     "gram": "perfekt_wdh_b1"
   },
   {
-    "id": "k7_032",
-    "cat": "k7",
-    "term": {
-      "de": "sich engagieren",
-      "en": "to get involved",
-      "uk": "активно займатися",
-      "ru": "активно заниматься"
-    },
-    "short": {
-      "de": "sich aktiv und mit Energie für ein Thema einsetzen",
-      "en": "to actively and energetically commit to a cause",
-      "uk": "активно й енергійно займатися темою",
-      "ru": "активно и энергично заниматься темой"
-    },
-    "def": {
-      "de": "Sie <g>hat</g> sich schon seit ihrer Jugend für den Umweltschutz <b>engagiert</b>.",
-      "en": "She <g>has</g> <b>been involved</b> in environmental protection since her youth.",
-      "uk": "Вона <b>займається</b> захистом довкілля ще з юності.",
-      "ru": "Она <b>занимается</b> защитой окружающей среды ещё с юности."
-    },
-    "gram": "perfekt_wdh_b1"
-  },
-  {
     "id": "k7_033",
     "cat": "k7",
     "term": {
@@ -26613,52 +24080,6 @@ var VOCAB = [
       "en": "The temperature <g>has</g> <b>risen</b> a lot this summer.",
       "uk": "Температура цього літа сильно <b>зросла</b>.",
       "ru": "Температура этим летом сильно <b>выросла</b>."
-    },
-    "gram": "perfekt_wdh_b1"
-  },
-  {
-    "id": "k7_036",
-    "cat": "k7",
-    "term": {
-      "de": "sinken",
-      "en": "to fall",
-      "uk": "знижуватися",
-      "ru": "снижаться"
-    },
-    "short": {
-      "de": "kleiner oder niedriger werden",
-      "en": "to become smaller or lower",
-      "uk": "ставати меншим чи нижчим",
-      "ru": "становиться меньше или ниже"
-    },
-    "def": {
-      "de": "Der Wasserstand des Flusses <g>ist</g> in diesem Jahr deutlich <b>gesunken</b>.",
-      "en": "The water level of the river <g>has</g> <b>fallen</b> significantly this year.",
-      "uk": "Рівень води в річці цього року значно <b>знизився</b>.",
-      "ru": "Уровень воды в реке в этом году значительно <b>снизился</b>."
-    },
-    "gram": "perfekt_wdh_b1"
-  },
-  {
-    "id": "k7_037",
-    "cat": "k7",
-    "term": {
-      "de": "wechseln",
-      "en": "to switch",
-      "uk": "змінювати",
-      "ru": "менять"
-    },
-    "short": {
-      "de": "etwas gegen etwas anderes tauschen, zum Beispiel den Stromanbieter",
-      "en": "to exchange something for something else, for example the electricity provider",
-      "uk": "міняти щось на інше, наприклад постачальника електроенергії",
-      "ru": "менять что-то на другое, например поставщика электроэнергии"
-    },
-    "def": {
-      "de": "Wir <g>sind</g> letztes Jahr zu einem grünen Stromanbieter <b>gewechselt</b>.",
-      "en": "We <g>have</g> <b>switched</b> to a green electricity provider last year.",
-      "uk": "Ми минулого року <b>змінили</b> постачальника електроенергії на екологічного.",
-      "ru": "Мы в прошлом году <b>сменили</b> поставщика электроэнергии на экологичного."
     },
     "gram": "perfekt_wdh_b1"
   },
@@ -26824,29 +24245,6 @@ var VOCAB = [
     "gram": "nomen_auf_ung"
   },
   {
-    "id": "k7_045",
-    "cat": "k7",
-    "term": {
-      "de": "die Verpackung",
-      "en": "packaging",
-      "uk": "упаковка",
-      "ru": "упаковка"
-    },
-    "short": {
-      "de": "das Material, in das eine Ware zum Schutz oder Transport eingepackt wird",
-      "en": "the material a product is wrapped in for protection or transport",
-      "uk": "матеріал, у який упаковують товар для захисту чи транспортування",
-      "ru": "материал, в который упаковывают товар для защиты или транспортировки"
-    },
-    "def": {
-      "de": "Die <g><b>Verpackung</b></g> der Eier besteht komplett aus recyceltem Karton.",
-      "en": "The <b>packaging</b> of the eggs is made entirely of recycled cardboard.",
-      "uk": "<b>Упаковка</b> яєць повністю виготовлена з переробленого картону.",
-      "ru": "<b>Упаковка</b> яиц полностью изготовлена из переработанного картона."
-    },
-    "gram": "nomen_auf_ung"
-  },
-  {
     "id": "k7_046",
     "cat": "k7",
     "term": {
@@ -27005,7 +24403,8 @@ var VOCAB = [
       "uk": "Якість яєць щодня ретельно <b>перевіряють</b>.",
       "ru": "Качество яиц ежедневно тщательно <b>проверяют</b>."
     },
-    "gram": "passiv_praesens_b1"
+    "gram": "passiv_praesens_b1",
+    "prio": 2
   },
   {
     "id": "k7_053",
@@ -27629,29 +25028,6 @@ var VOCAB = [
     "gram": "passiv_praesens_b1"
   },
   {
-    "id": "k7_080",
-    "cat": "k7",
-    "term": {
-      "de": "anmachen",
-      "en": "to switch on",
-      "uk": "вмикати",
-      "ru": "включать"
-    },
-    "short": {
-      "de": "ein Licht oder ein Gerät einschalten, das sagt man in der Alltagssprache",
-      "en": "to switch on a light or a device, you say this in everyday language",
-      "uk": "увімкнути світло чи прилад, так кажуть у повсякденному мовленні",
-      "ru": "включить свет или прибор, так говорят в повседневной речи"
-    },
-    "def": {
-      "de": "Das Licht <g>wird</g> abends automatisch <g><b>angemacht</b></g>.",
-      "en": "The light <g>is</g> automatically <g><b>switched on</b></g> in the evening.",
-      "uk": "Увечері світло автоматично <b>вмикається</b>.",
-      "ru": "Вечером свет автоматически <b>включается</b>."
-    },
-    "gram": "passiv_praesens_b1"
-  },
-  {
     "id": "k7_081",
     "cat": "k7",
     "term": {
@@ -27880,29 +25256,6 @@ var VOCAB = [
       "ru": "В Германии воду из-под крана <g>можно</g> использовать как <b>питьевую воду</b>."
     },
     "gram": "modalverben_wdh_b1"
-  },
-  {
-    "id": "k7_091",
-    "cat": "k7",
-    "term": {
-      "de": "tropfen",
-      "en": "to drip",
-      "uk": "капати",
-      "ru": "капать"
-    },
-    "short": {
-      "de": "in kleinen Mengen nach unten fallen, zum Beispiel Wasser aus einem Hahn",
-      "en": "to fall down in small amounts, for example water from a tap",
-      "uk": "падати вниз малими краплями, наприклад вода з крана",
-      "ru": "падать вниз малыми каплями, например вода из крана"
-    },
-    "def": {
-      "de": "Der Wasserhahn <b>tropft</b> schon <g>seit</g> gestern.",
-      "en": "The tap has been <b>dripping</b> <g>since</g> yesterday.",
-      "uk": "Кран <b>капає</b> ще з учорашнього дня.",
-      "ru": "Кран <b>капает</b> со вчерашнего дня."
-    },
-    "gram": "nebensatz_seit_seitdem"
   },
   {
     "id": "k7_092",
@@ -29193,35 +26546,6 @@ var VOCAB = [
     "gram": "satz_mit_um_zu"
   },
   {
-    "id": "k7_148",
-    "cat": "k7",
-    "term": {
-      "de": "der Wind",
-      "en": "wind",
-      "uk": "вітер",
-      "ru": "ветер"
-    },
-    "short": {
-      "de": "die Luft, die sich bewegt",
-      "en": "the air that moves",
-      "uk": "повітря, яке рухається",
-      "ru": "воздух, который движется"
-    },
-    "def": {
-      "de": "Wir bleiben im Hafen, <g>bis</g> der starke <b>Wind</b> nachlässt.",
-      "en": "We are staying in the harbour <g>until</g> the strong <b>wind</b> dies down.",
-      "uk": "Ми залишаємося в порту, <g>доки</g> сильний <b>вітер</b> не вщухне.",
-      "ru": "Мы остаёмся в порту, <g>пока</g> сильный <b>ветер</b> не утихнет."
-    },
-    "gram": "nebensatz_mit_bis",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Winde"
-      ]
-    }
-  },
-  {
     "id": "k7_149",
     "cat": "k7",
     "term": {
@@ -29245,56 +26569,234 @@ var VOCAB = [
     "gram": "perfekt_wdh_b1"
   },
   {
-    "id": "k8_001",
-    "cat": "k8",
+    "id": "k7_150",
+    "cat": "k7",
     "term": {
-      "de": "die Veranstaltung",
-      "en": "event",
-      "uk": "захід",
-      "ru": "мероприятие"
+      "de": "die Kritik",
+      "en": "criticism",
+      "uk": "критика",
+      "ru": "критика"
     },
     "short": {
-      "de": "ein organisiertes Ereignis, zum Beispiel ein Konzert oder Festival",
-      "en": "an organised event, for example a concert or festival",
-      "uk": "організована подія, наприклад концерт чи фестиваль",
-      "ru": "организованное событие, например концерт или фестиваль"
+      "de": "eine Meinung darüber, was an etwas nicht gut ist",
+      "en": "an opinion about what is not good about something",
+      "uk": "думка про те, що в чомусь недобре",
+      "ru": "мнение о том, что в чём-то нехорошо"
     },
     "def": {
-      "de": "Diese <b>Veranstaltung</b> <g>wird</g> dieses Jahr im Park <g>organisiert</g>.",
-      "en": "This <b>event</b> <g>is</g> <g>organised</g> in the park this year.",
-      "uk": "Цей <b>захід</b> цього року організовують у парку.",
-      "ru": "Это <b>мероприятие</b> в этом году организуют в парке."
+      "de": "Der Chef <g>hat</g> meine <b>Kritik</b> ernst <g>genommen</g>.",
+      "en": "The boss <g>took</g> my <b>criticism</b> seriously.",
+      "uk": "Шеф серйозно <g>поставився</g> до моєї <b>критики</b>.",
+      "ru": "Шеф серьёзно <g>отнёсся</g> к моей <b>критике</b>."
     },
-    "gram": "passiv_praesens_b1",
+    "gram": "perfekt_wdh_b1",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
+    "id": "k7_151",
+    "cat": "k7",
+    "term": {
+      "de": "die Meinungsverschiedenheit",
+      "en": "disagreement",
+      "uk": "розбіжність у поглядах",
+      "ru": "разногласие"
+    },
+    "short": {
+      "de": "wenn Menschen zu einem Thema unterschiedliche Meinungen haben",
+      "en": "when people have different opinions on a topic",
+      "uk": "коли люди мають різні думки щодо теми",
+      "ru": "когда у людей разные мнения по теме"
+    },
+    "def": {
+      "de": "Wir <g>haben</g> unsere <b>Meinungsverschiedenheit</b> ruhig <g>besprochen</g>.",
+      "en": "We <g>discussed</g> our <b>disagreement</b> calmly.",
+      "uk": "Ми спокійно <g>обговорили</g> нашу <b>розбіжність у поглядах</b>.",
+      "ru": "Мы спокойно <g>обсудили</g> наше <b>разногласие</b>."
+    },
+    "gram": "perfekt_wdh_b1",
     "forms": {
       "t": "noun",
       "v": [
-        "die Veranstaltungen"
+        "die Meinungsverschiedenheiten"
       ]
     }
   },
   {
-    "id": "k8_002",
-    "cat": "k8",
+    "id": "k7_152",
+    "cat": "k7",
     "term": {
-      "de": "das Festival",
-      "en": "festival",
-      "uk": "фестиваль",
-      "ru": "фестиваль"
+      "de": "meiner Meinung nach",
+      "en": "in my opinion",
+      "uk": "на мою думку",
+      "ru": "по моему мнению"
     },
     "short": {
-      "de": "ein großes Fest mit Musik, Kunst oder Filmen, oft über mehrere Tage",
-      "en": "a big celebration with music, art or films, often over several days",
-      "uk": "велике свято з музикою, мистецтвом чи фільмами, часто протягом кількох днів",
-      "ru": "большой праздник с музыкой, искусством или фильмами, часто на протяжении нескольких дней"
+      "de": "so sagt man, was man selbst denkt",
+      "en": "this is how you say what you think",
+      "uk": "так кажуть, що думаєш сам",
+      "ru": "так говорят, что думаешь сам"
     },
     "def": {
-      "de": "Ich freue mich schon sehr <g>auf</g> das <b>Festival</b> nächste Woche.",
-      "en": "I am already really looking forward <g>to</g> the <b>festival</b> next week.",
-      "uk": "Я вже дуже чекаю на <b>фестиваль</b> наступного тижня.",
-      "ru": "Я уже очень жду <b>фестиваль</b> на следующей неделе."
+      "de": "<b>Meiner Meinung nach</b> <g>hat</g> die Stadt zu wenig für die Umwelt <g>getan</g>.",
+      "en": "<b>In my opinion</b> the town <g>has done</g> too little for the environment.",
+      "uk": "<b>На мою думку</b>, місто <g>зробило</g> замало для довкілля.",
+      "ru": "<b>По моему мнению</b>, город <g>сделал</g> слишком мало для окружающей среды."
     },
-    "gram": "verben_mit_praep_wdh_b1"
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_153",
+    "cat": "k7",
+    "term": {
+      "de": "einverstanden sein",
+      "en": "to agree",
+      "uk": "бути згодним",
+      "ru": "быть согласным"
+    },
+    "short": {
+      "de": "„ja“ zu einem Vorschlag sagen",
+      "en": "to say yes to a suggestion",
+      "uk": "казати «так» на пропозицію",
+      "ru": "говорить «да» на предложение"
+    },
+    "def": {
+      "de": "Mit deinem Vorschlag <b>bin</b> ich <b>einverstanden</b>, wir <g>haben</g> lange genug <g>diskutiert</g>.",
+      "en": "I <b>agree</b> with your suggestion, we <g>have discussed</g> it long enough.",
+      "uk": "Я <b>згодна</b> з твоєю пропозицією, ми досить довго <g>обговорювали</g>.",
+      "ru": "Я <b>согласна</b> с твоим предложением, мы достаточно долго <g>обсуждали</g>."
+    },
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_154",
+    "cat": "k7",
+    "term": {
+      "de": "dafür sein",
+      "en": "to be in favour",
+      "uk": "бути за",
+      "ru": "быть за"
+    },
+    "short": {
+      "de": "eine Idee gut finden und sie unterstützen",
+      "en": "to like an idea and support it",
+      "uk": "вважати ідею доброю й підтримувати її",
+      "ru": "считать идею хорошей и поддерживать её"
+    },
+    "def": {
+      "de": "Fast alle Nachbarn <b>sind dafür</b>, dass im Hof ein Garten entsteht – das <g>hat</g> die Umfrage <g>gezeigt</g>.",
+      "en": "Almost all the neighbours <b>are in favour</b> of a garden in the courtyard – the survey <g>has shown</g> that.",
+      "uk": "Майже всі сусіди <b>за</b> те, щоб у дворі зʼявився сад, — це <g>показало</g> опитування.",
+      "ru": "Почти все соседи <b>за</b> то, чтобы во дворе появился сад, — это <g>показал</g> опрос."
+    },
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_155",
+    "cat": "k7",
+    "term": {
+      "de": "dagegen sein",
+      "en": "to be against it",
+      "uk": "бути проти",
+      "ru": "быть против"
+    },
+    "short": {
+      "de": "eine Idee nicht gut finden und sie nicht unterstützen",
+      "en": "to dislike an idea and not support it",
+      "uk": "не вважати ідею доброю й не підтримувати її",
+      "ru": "не считать идею хорошей и не поддерживать её"
+    },
+    "def": {
+      "de": "Herr Bauer <b>ist dagegen</b>, weil er schon einmal Ärger mit Lärm <g>gehabt hat</g>.",
+      "en": "Mr Bauer <b>is against it</b> because he <g>has</g> already <g>had</g> trouble with noise.",
+      "uk": "Пан Бауер <b>проти</b>, бо вже <g>мав</g> неприємності через шум.",
+      "ru": "Господин Бауэр <b>против</b>, потому что уже <g>имел</g> неприятности из-за шума."
+    },
+    "gram": "perfekt_wdh_b1"
+  },
+  {
+    "id": "k7_156",
+    "cat": "k7",
+    "term": {
+      "de": "der Schatten",
+      "en": "shade",
+      "uk": "тінь",
+      "ru": "тень"
+    },
+    "short": {
+      "de": "ein dunkler Ort, wo keine Sonne ist",
+      "en": "a dark place with no sun",
+      "uk": "темне місце, де немає сонця",
+      "ru": "тёмное место, где нет солнца"
+    },
+    "def": {
+      "de": "Im Sommer sitzen wir am liebsten im <b>Schatten</b> unter dem großen Baum.",
+      "en": "In summer we like sitting in the <b>shade</b> under the big tree best.",
+      "uk": "Улітку ми найбільше любимо сидіти в <b>тіні</b> під великим деревом.",
+      "ru": "Летом мы больше всего любим сидеть в <b>тени</b> под большим деревом."
+    },
+    "gram": "",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Schatten"
+      ]
+    }
+  },
+  {
+    "id": "k7_157",
+    "cat": "k7",
+    "term": {
+      "de": "transportieren",
+      "en": "to transport",
+      "uk": "перевозити",
+      "ru": "перевозить"
+    },
+    "short": {
+      "de": "etwas mit einem Fahrzeug von einem Ort zum anderen bringen",
+      "en": "to take something from one place to another by vehicle",
+      "uk": "доставляти щось транспортом з одного місця в інше",
+      "ru": "доставлять что-то транспортом из одного места в другое"
+    },
+    "def": {
+      "de": "Das Obst <g>wird</g> mit kleinen Lastwagen in die Stadt <g><b>transportiert</b></g>.",
+      "en": "The fruit <g>is</g> <b>transported</b> to the town in small lorries.",
+      "uk": "Фрукти <b>перевозять</b> до міста невеликими вантажівками.",
+      "ru": "Фрукты <b>перевозят</b> в город небольшими грузовиками."
+    },
+    "gram": "passiv_praesens_b1",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "transportiert",
+        "transportierte",
+        "hat transportiert"
+      ]
+    }
+  },
+  {
+    "id": "k7_158",
+    "cat": "k7",
+    "term": {
+      "de": "alternativ",
+      "en": "alternatively",
+      "uk": "як варіант",
+      "ru": "как вариант"
+    },
+    "short": {
+      "de": "als andere Möglichkeit",
+      "en": "as another option",
+      "uk": "як інша можливість",
+      "ru": "как другая возможность"
+    },
+    "def": {
+      "de": "<b>Alternativ</b> kann man mit dem Zug fahren – das ist besser für das Klima.",
+      "en": "<b>Alternatively</b> you can go by train – that is better for the climate.",
+      "uk": "<b>Як варіант</b>, можна поїхати потягом — це краще для клімату.",
+      "ru": "<b>Как вариант</b>, можно поехать на поезде — это лучше для климата."
+    },
+    "gram": ""
   },
   {
     "id": "k8_003",
@@ -29318,64 +26820,6 @@ var VOCAB = [
       "ru": "К чему именно относится твой <b>отзыв</b> — к музыке или к еде?"
     },
     "gram": "fragewoerter_wor_dar"
-  },
-  {
-    "id": "k8_004",
-    "cat": "k8",
-    "term": {
-      "de": "die Bibliothek",
-      "en": "library",
-      "uk": "бібліотека",
-      "ru": "библиотека"
-    },
-    "short": {
-      "de": "ein Ort, an dem man Bücher ausleihen und lesen kann",
-      "en": "a place where you can borrow and read books",
-      "uk": "місце, де можна позичити й почитати книжки",
-      "ru": "место, где можно взять и почитать книги"
-    },
-    "def": {
-      "de": "<g>Worüber</g> hat die E-Mail von der <b>Bibliothek</b> eigentlich informiert?",
-      "en": "What did the email from the <b>library</b> actually inform you about?",
-      "uk": "Про що взагалі повідомляв лист від <b>бібліотеки</b>?",
-      "ru": "О чём вообще сообщало письмо от <b>библиотеки</b>?"
-    },
-    "gram": "fragewoerter_wor_dar",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Bibliotheken"
-      ]
-    }
-  },
-  {
-    "id": "k8_005",
-    "cat": "k8",
-    "term": {
-      "de": "die Führung",
-      "en": "guided tour",
-      "uk": "екскурсія з гідом",
-      "ru": "экскурсия с гидом"
-    },
-    "short": {
-      "de": "ein geführter Rundgang, bei dem man etwas über einen Ort erklärt bekommt",
-      "en": "a guided walk where someone explains things about a place",
-      "uk": "екскурсія з гідом, під час якої тобі пояснюють про якесь місце",
-      "ru": "экскурсия с гидом, во время которой тебе объясняют о каком-то месте"
-    },
-    "def": {
-      "de": "Wie lange dauert die <b>Führung</b> <g>denn</g> genau?",
-      "en": "So, how long does the <b>guided tour</b> <g>actually</g> take?",
-      "uk": "А скільки <g>взагалі</g> триває <b>екскурсія</b>?",
-      "ru": "А сколько <g>вообще</g> длится <b>экскурсия</b>?"
-    },
-    "gram": "interesse_denn_eigentlich",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Führungen"
-      ]
-    }
   },
   {
     "id": "k8_006",
@@ -29444,76 +26888,8 @@ var VOCAB = [
       "uk": "Ми вже давно <b>плануємо</b> цю поїздку і дуже чекаємо на фестиваль.",
       "ru": "Мы уже давно <b>планируем</b> эту поездку и очень ждём фестиваль."
     },
-    "gram": "verben_mit_praep_wdh_b1"
-  },
-  {
-    "id": "k8_009",
-    "cat": "k8",
-    "term": {
-      "de": "die Ausstellung",
-      "en": "exhibition",
-      "uk": "виставка",
-      "ru": "выставка"
-    },
-    "short": {
-      "de": "ein Ort oder Ereignis, bei dem Kunst oder Objekte gezeigt werden",
-      "en": "a place or event where art or objects are shown",
-      "uk": "місце чи подія, де показують мистецтво чи предмети",
-      "ru": "место или событие, где показывают искусство или предметы"
-    },
-    "def": {
-      "de": "Die neue <b>Ausstellung</b> zeigt auch einige <g>ungewöhnliche</g> Fotografien.",
-      "en": "The new <b>exhibition</b> also shows some unusual photographs.",
-      "uk": "Нова <b>виставка</b> показує й кілька незвичних фотографій.",
-      "ru": "Новая <b>выставка</b> показывает и несколько необычных фотографий."
-    },
-    "gram": "adjektive_mit_un"
-  },
-  {
-    "id": "k8_010",
-    "cat": "k8",
-    "term": {
-      "de": "teilnehmen",
-      "en": "to take part",
-      "uk": "брати участь",
-      "ru": "принимать участие"
-    },
-    "short": {
-      "de": "bei etwas mitmachen, zum Beispiel bei einer Veranstaltung",
-      "en": "to take part in something, for example an event",
-      "uk": "брати участь у чомусь, наприклад у заході",
-      "ru": "принимать участие в чём-то, например в мероприятии"
-    },
-    "def": {
-      "de": "Trotz des <g>unsicheren</g> Wetters wollten viele Leute an der Führung <b>teilnehmen</b>.",
-      "en": "Despite the uncertain weather, many people wanted to <b>take part</b> in the tour.",
-      "uk": "Незважаючи на непевну погоду, багато людей хотіли <b>взяти участь</b> в екскурсії.",
-      "ru": "Несмотря на неопределённую погоду, многие люди хотели <b>принять участие</b> в экскурсии."
-    },
-    "gram": "adjektive_mit_un"
-  },
-  {
-    "id": "k8_011",
-    "cat": "k8",
-    "term": {
-      "de": "die Kunst",
-      "en": "art",
-      "uk": "мистецтво",
-      "ru": "искусство"
-    },
-    "short": {
-      "de": "Bilder, Musik, Filme oder andere Werke, die Menschen mit Fantasie schaffen",
-      "en": "pictures, music, films or other works that people create with imagination",
-      "uk": "картини, музика, фільми чи інші твори, які люди створюють за допомогою фантазії",
-      "ru": "картины, музыка, фильмы или другие произведения, которые люди создают с помощью фантазии"
-    },
-    "def": {
-      "de": "Moderne <b>Kunst</b> <g>wird</g> in diesem Museum sehr modern <g>präsentiert</g>.",
-      "en": "Modern <b>art</b> <g>is</g> <g>presented</g> in a very modern way in this museum.",
-      "uk": "Сучасне <b>мистецтво</b> у цьому музеї показують дуже сучасно.",
-      "ru": "Современное <b>искусство</b> в этом музее показывают очень современно."
-    },
-    "gram": "passiv_praesens_b1"
+    "gram": "verben_mit_praep_wdh_b1",
+    "prio": 2
   },
   {
     "id": "k8_012",
@@ -29537,231 +26913,6 @@ var VOCAB = [
       "ru": "Чем ты был больше всего <b>увлечён</b> на фестивале?"
     },
     "gram": "fragewoerter_wor_dar"
-  },
-  {
-    "id": "k8_013",
-    "cat": "k8",
-    "term": {
-      "de": "der Eintritt",
-      "en": "admission",
-      "uk": "плата за вхід",
-      "ru": "плата за вход"
-    },
-    "short": {
-      "de": "das Geld, das man bezahlt, um in eine Veranstaltung zu gehen",
-      "en": "the money you pay to go into an event",
-      "uk": "гроші, які платять, щоб потрапити на подію",
-      "ru": "деньги, которые платят, чтобы попасть на мероприятие"
-    },
-    "def": {
-      "de": "Wie viel kostet der <b>Eintritt</b> <g>eigentlich</g> für die Bibliotheksführung?",
-      "en": "So, how much does the <b>admission</b> for the library tour <g>actually</g> cost?",
-      "uk": "А скільки <g>взагалі</g> коштує <b>вхід</b> на екскурсію по бібліотеці?",
-      "ru": "А сколько <g>вообще</g> стоит <b>вход</b> на экскурсию по библиотеке?"
-    },
-    "gram": "interesse_denn_eigentlich"
-  },
-  {
-    "id": "k8_014",
-    "cat": "k8",
-    "term": {
-      "de": "empfehlen",
-      "en": "to recommend",
-      "uk": "рекомендувати",
-      "ru": "рекомендовать"
-    },
-    "short": {
-      "de": "jemandem sagen, dass etwas gut ist und man es machen oder kaufen sollte",
-      "en": "to tell someone that something is good and they should do or buy it",
-      "uk": "казати комусь, що щось хорошe і варто це зробити чи купити",
-      "ru": "говорить кому-то, что что-то хорошее и стоит это сделать или купить"
-    },
-    "def": {
-      "de": "Ich kann das Festival <g>uneingeschränkt</g> <b>empfehlen</b>.",
-      "en": "I can wholeheartedly <b>recommend</b> the festival.",
-      "uk": "Я можу беззастережно <b>порекомендувати</b> цей фестиваль.",
-      "ru": "Я могу безоговорочно <b>порекомендовать</b> этот фестиваль."
-    },
-    "gram": "adjektive_mit_un"
-  },
-  {
-    "id": "k8_015",
-    "cat": "k8",
-    "term": {
-      "de": "das Angebot",
-      "en": "offer",
-      "uk": "пропозиція",
-      "ru": "предложение"
-    },
-    "short": {
-      "de": "etwas, das eine Firma oder Organisation den Menschen anbietet",
-      "en": "something that a company or organisation offers to people",
-      "uk": "те, що фірма чи організація пропонує людям",
-      "ru": "то, что фирма или организация предлагает людям"
-    },
-    "def": {
-      "de": "<g>Worauf</g> bezieht sich das neue <b>Angebot</b> der Bibliothek genau?",
-      "en": "What exactly does the library's new <b>offer</b> refer to?",
-      "uk": "До чого саме стосується нова <b>пропозиція</b> бібліотеки?",
-      "ru": "К чему именно относится новое <b>предложение</b> библиотеки?"
-    },
-    "gram": "fragewoerter_wor_dar",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Angebote"
-      ]
-    }
-  },
-  {
-    "id": "k8_016",
-    "cat": "k8",
-    "term": {
-      "de": "die Einladung",
-      "en": "invitation",
-      "uk": "запрошення",
-      "ru": "приглашение"
-    },
-    "short": {
-      "de": "eine Nachricht, mit der man jemanden zu einem Ereignis bittet",
-      "en": "a message that invites someone to an event",
-      "uk": "повідомлення, яким когось запрошують на подію",
-      "ru": "сообщение, которым кого-то приглашают на мероприятие"
-    },
-    "def": {
-      "de": "Die <b>Einladung</b> zum Festival <g>wird</g> heute per E-Mail <g>verschickt</g>.",
-      "en": "The <b>invitation</b> to the festival <g>is</g> <g>sent</g> by email today.",
-      "uk": "<b>Запрошення</b> на фестиваль сьогодні надсилають електронною поштою.",
-      "ru": "<b>Приглашение</b> на фестиваль сегодня отправляют по электронной почте."
-    },
-    "gram": "passiv_praesens_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Einladungen"
-      ]
-    }
-  },
-  {
-    "id": "k8_017",
-    "cat": "k8",
-    "term": {
-      "de": "einladen",
-      "en": "to invite",
-      "uk": "запрошувати",
-      "ru": "приглашать"
-    },
-    "short": {
-      "de": "jemanden bitten, zu einem Ereignis zu kommen",
-      "en": "to ask someone to come to an event",
-      "uk": "просити когось прийти на подію",
-      "ru": "просить кого-то прийти на мероприятие"
-    },
-    "def": {
-      "de": "Sie <g>wird</g> herzlich zur Party <g><b>eingeladen</b></g>.",
-      "en": "She <g>is</g> warmly <g><b>invited</b></g> to the party.",
-      "uk": "Її щиро <b>запрошують</b> на вечірку.",
-      "ru": "Её тепло <b>приглашают</b> на вечеринку."
-    },
-    "gram": "passiv_praesens_b1"
-  },
-  {
-    "id": "k8_018",
-    "cat": "k8",
-    "term": {
-      "de": "stattfinden",
-      "en": "to take place",
-      "uk": "відбуватися",
-      "ru": "проходить"
-    },
-    "short": {
-      "de": "an einem bestimmten Ort und zu einer bestimmten Zeit passieren",
-      "en": "to happen at a certain place and time",
-      "uk": "відбуватися у певному місці й у певний час",
-      "ru": "происходить в определённом месте и в определённое время"
-    },
-    "def": {
-      "de": "Das Festival <g>wird</g> im nächsten Sommer wieder im Stadtpark <g><b>stattfinden</b></g>.",
-      "en": "The festival <g>will <b>take place</b></g> in the city park again next summer.",
-      "uk": "Фестиваль наступного літа знову <g><b>відбудеться</b></g> у міському парку.",
-      "ru": "Фестиваль в следующем году снова <g><b>будет проходить</b></g> в городском парке."
-    },
-    "gram": "futur_werden"
-  },
-  {
-    "id": "k8_020",
-    "cat": "k8",
-    "term": {
-      "de": "die Anmeldung",
-      "en": "registration",
-      "uk": "реєстрація",
-      "ru": "регистрация"
-    },
-    "short": {
-      "de": "der Vorgang, bei dem man sich offiziell für etwas einträgt",
-      "en": "the process of officially signing up for something",
-      "uk": "процес, коли людина офіційно записується на щось",
-      "ru": "процесс, когда человек официально записывается на что-то"
-    },
-    "def": {
-      "de": "Die <b>Anmeldung</b> für den Kurs <g>wird</g> ab morgen <g>freigeschaltet</g>.",
-      "en": "<b>Registration</b> for the course <g>is</g> <g>opened</g> from tomorrow.",
-      "uk": "<b>Реєстрацію</b> на курс відкривають із завтрашнього дня.",
-      "ru": "<b>Регистрацию</b> на курс открывают с завтрашнего дня."
-    },
-    "gram": "passiv_praesens_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Anmeldungen"
-      ]
-    }
-  },
-  {
-    "id": "k8_021",
-    "cat": "k8",
-    "term": {
-      "de": "sich anmelden",
-      "en": "to register",
-      "uk": "реєструватися",
-      "ru": "регистрироваться"
-    },
-    "short": {
-      "de": "sich offiziell für etwas eintragen, zum Beispiel für einen Kurs",
-      "en": "to officially sign up for something, for example a course",
-      "uk": "офіційно записуватися на щось, наприклад на курс",
-      "ru": "официально записываться на что-то, например на курс"
-    },
-    "def": {
-      "de": "Wir müssen <g>uns</g> bis Freitag online für den Kurs <b>anmelden</b>.",
-      "en": "We have to <b>register</b> online for the course by Friday.",
-      "uk": "Нам потрібно до пʼятниці онлайн <b>зареєструватися</b> на курс.",
-      "ru": "Нам нужно до пятницы онлайн <b>зарегистрироваться</b> на курс."
-    },
-    "gram": "reflexivpronomen_akkusativ_wdh_b1"
-  },
-  {
-    "id": "k8_022",
-    "cat": "k8",
-    "term": {
-      "de": "die Erlaubnis",
-      "en": "permission",
-      "uk": "дозвіл",
-      "ru": "разрешение"
-    },
-    "short": {
-      "de": "das offizielle Ja dazu, etwas machen zu dürfen",
-      "en": "official approval to be allowed to do something",
-      "uk": "офіційна згода на те, щоб щось робити",
-      "ru": "официальное согласие на то, чтобы что-то делать"
-    },
-    "def": {
-      "de": "Für das Projekt <g>wird</g> vorher extra eine <b>Erlaubnis</b> <g>eingeholt</g>.",
-      "en": "Special <b>permission</b> <g>is</g> <g>obtained</g> for the project beforehand.",
-      "uk": "Для цього проєкту заздалегідь окремо отримують <b>дозвіл</b>.",
-      "ru": "Для этого проекта заранее отдельно получают <b>разрешение</b>."
-    },
-    "gram": "passiv_praesens_b1"
   },
   {
     "id": "k8_023",
@@ -30132,35 +27283,6 @@ var VOCAB = [
     "gram": "fragewoerter_wor_dar"
   },
   {
-    "id": "k8_040",
-    "cat": "k8",
-    "term": {
-      "de": "die Nachricht",
-      "en": "message",
-      "uk": "повідомлення",
-      "ru": "сообщение"
-    },
-    "short": {
-      "de": "eine kurze Information, die man jemandem schickt",
-      "en": "a short piece of information sent to someone",
-      "uk": "коротка інформація, яку надсилають комусь",
-      "ru": "короткая информация, которую отправляют кому-то"
-    },
-    "def": {
-      "de": "<g>Worüber</g> informierte die <b>Nachricht</b> von der Bibliothek genau?",
-      "en": "What exactly did the <b>message</b> from the library inform you about?",
-      "uk": "Про що саме інформувало <b>повідомлення</b> від бібліотеки?",
-      "ru": "О чём именно информировало <b>сообщение</b> от библиотеки?"
-    },
-    "gram": "fragewoerter_wor_dar",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Nachrichten"
-      ]
-    }
-  },
-  {
     "id": "k8_042",
     "cat": "k8",
     "term": {
@@ -30182,29 +27304,6 @@ var VOCAB = [
       "ru": "Я попросил библиотеку <b>продлить</b> срок выдачи на две недели."
     },
     "gram": "fragewoerter_wor_dar"
-  },
-  {
-    "id": "k8_044",
-    "cat": "k8",
-    "term": {
-      "de": "zurückgeben",
-      "en": "to return",
-      "uk": "повертати",
-      "ru": "возвращать"
-    },
-    "short": {
-      "de": "etwas, das man ausgeliehen hat, wieder an den Besitzer bringen",
-      "en": "to bring something you borrowed back to its owner",
-      "uk": "приносити назад власнику те, що позичив",
-      "ru": "приносить обратно владельцу то, что одолжил"
-    },
-    "def": {
-      "de": "Ich achte immer <g>auf</g> das Datum, damit ich die Bücher pünktlich <b>zurückgeben</b> kann.",
-      "en": "I always pay attention <g>to</g> the date so that I can <b>return</b> the books on time.",
-      "uk": "Я завжди стежу за датою, щоб вчасно <b>повернути</b> книжки.",
-      "ru": "Я всегда слежу за датой, чтобы вовремя <b>вернуть</b> книги."
-    },
-    "gram": "verben_mit_praep_wdh_b1"
   },
   {
     "id": "k8_045",
@@ -30239,29 +27338,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k8_046",
-    "cat": "k8",
-    "term": {
-      "de": "reservieren",
-      "en": "to reserve",
-      "uk": "резервувати",
-      "ru": "резервировать"
-    },
-    "short": {
-      "de": "im Voraus dafür sorgen, dass etwas für einen bereitgehalten wird",
-      "en": "to arrange in advance for something to be kept for you",
-      "uk": "заздалегідь домовлятися, щоб щось залишили для тебе",
-      "ru": "заранее договариваться, чтобы что-то оставили для тебя"
-    },
-    "def": {
-      "de": "Ich warte <g>auf</g> das Buch, das ich online <b>reserviert</b> habe.",
-      "en": "I am waiting <g>for</g> the book that I <b>reserved</b> online.",
-      "uk": "Я чекаю на книгу, яку я <b>зарезервував</b> онлайн.",
-      "ru": "Я жду книгу, которую я <b>зарезервировал</b> онлайн."
-    },
-    "gram": "verben_mit_praep_wdh_b1"
-  },
-  {
     "id": "k8_047",
     "cat": "k8",
     "term": {
@@ -30283,29 +27359,6 @@ var VOCAB = [
       "ru": "От чего особенно выигрывают <b>члены</b> библиотеки?"
     },
     "gram": "fragewoerter_wor_dar"
-  },
-  {
-    "id": "k8_048",
-    "cat": "k8",
-    "term": {
-      "de": "die Öffnungszeiten",
-      "en": "opening hours",
-      "uk": "години роботи",
-      "ru": "часы работы"
-    },
-    "short": {
-      "de": "die Zeiten, zu denen ein Ort, zum Beispiel eine Bibliothek, geöffnet ist",
-      "en": "the times when a place, for example a library, is open",
-      "uk": "час, коли якесь місце, наприклад бібліотека, відкрите",
-      "ru": "время, когда какое-то место, например библиотека, открыто"
-    },
-    "def": {
-      "de": "Wie sind die <b>Öffnungszeiten</b> <g>denn</g> am Wochenende?",
-      "en": "So, what <g>actually</g> are the <b>opening hours</b> at the weekend?",
-      "uk": "А які <g>взагалі</g> <b>години роботи</b> у вихідні?",
-      "ru": "А какие <g>вообще</g> <b>часы работы</b> в выходные?"
-    },
-    "gram": "interesse_denn_eigentlich"
   },
   {
     "id": "k8_049",
@@ -30354,32 +27407,6 @@ var VOCAB = [
     "gram": "interesse_denn_eigentlich"
   },
   {
-    "id": "k8_051",
-    "cat": "k8",
-    "term": {
-      "de": "die Ruhe",
-      "en": "quiet",
-      "uk": "тиша",
-      "ru": "тишина"
-    },
-    "short": {
-      "de": "der Zustand, wenn es still ist und niemand stört",
-      "en": "the state of being quiet, when nobody disturbs you",
-      "uk": "стан тиші, коли ніхто не заважає",
-      "ru": "состояние тишины, когда никто не мешает"
-    },
-    "def": {
-      "de": "Warum ist hier <g>eigentlich</g> so viel <b>Ruhe</b> nötig?",
-      "en": "So, why is so much <b>quiet</b> <g>actually</g> necessary here?",
-      "uk": "А чому тут <g>взагалі</g> потрібна така <b>тиша</b>?",
-      "ru": "А почему тут <g>вообще</g> нужна такая <b>тишина</b>?"
-    },
-    "gram": "interesse_denn_eigentlich",
-    "info": {
-      "num": "sg"
-    }
-  },
-  {
     "id": "k8_052",
     "cat": "k8",
     "term": {
@@ -30406,7 +27433,8 @@ var VOCAB = [
       "v": [
         "die Bereiche"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k8_053",
@@ -30481,7 +27509,8 @@ var VOCAB = [
       "v": [
         "die Künstler"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k8_057",
@@ -31137,35 +28166,6 @@ var VOCAB = [
     "gram": "genitiv"
   },
   {
-    "id": "k8_085",
-    "cat": "k8",
-    "term": {
-      "de": "der Reporter",
-      "en": "reporter",
-      "uk": "репортер",
-      "ru": "репортёр"
-    },
-    "short": {
-      "de": "eine Person, die für Zeitung, Radio oder Fernsehen über Ereignisse berichtet",
-      "en": "a person who reports on events for a newspaper, radio or TV",
-      "uk": "особа, яка розповідає про події для газети, радіо чи телебачення",
-      "ru": "человек, который рассказывает о событиях для газеты, радио или телевидения"
-    },
-    "def": {
-      "de": "Der <b>Reporter</b> steht live <g>vor dem</g> Rathaus.",
-      "en": "The <b>reporter</b> is standing live in front of the town hall.",
-      "uk": "<b>Репортер</b> стоїть наживо перед ратушею.",
-      "ru": "<b>Репортёр</b> стоит в прямом эфире перед ратушей."
-    },
-    "gram": "wechselpraepositionen_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Reporter"
-      ]
-    }
-  },
-  {
     "id": "k8_086",
     "cat": "k8",
     "term": {
@@ -31511,35 +28511,6 @@ var VOCAB = [
     "gram": "wechselpraepositionen_wdh_b1"
   },
   {
-    "id": "k8_101",
-    "cat": "k8",
-    "term": {
-      "de": "das Rätsel",
-      "en": "puzzle",
-      "uk": "головоломка",
-      "ru": "головоломка"
-    },
-    "short": {
-      "de": "eine Frage oder Aufgabe, bei der man etwas herausfinden muss",
-      "en": "a question or task in which you have to find something out",
-      "uk": "запитання чи завдання, у якому треба щось зʼясувати",
-      "ru": "вопрос или задача, в которых нужно что-то выяснить"
-    },
-    "def": {
-      "de": "Wie lange brauchst du <g>denn</g> für so ein <b>Rätsel</b>?",
-      "en": "So, how long do you <g>actually</g> need for a <b>puzzle</b> like that?",
-      "uk": "А скільки часу тобі <g>взагалі</g> потрібно на таку <b>головоломку</b>?",
-      "ru": "А сколько времени тебе <g>вообще</g> нужно на такую <b>головоломку</b>?"
-    },
-    "gram": "interesse_denn_eigentlich",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Rätsel"
-      ]
-    }
-  },
-  {
     "id": "k8_102",
     "cat": "k8",
     "term": {
@@ -31632,32 +28603,144 @@ var VOCAB = [
     "gram": "modalverben_wdh_b1"
   },
   {
-    "id": "k9_001",
-    "cat": "k9",
+    "id": "k8_106",
+    "cat": "k8",
     "term": {
-      "de": "die Bewerbung",
-      "en": "job application",
-      "uk": "заява про прийом на роботу",
-      "ru": "заявление о приёме на работу"
+      "de": "im Vordergrund",
+      "en": "in the foreground",
+      "uk": "на передньому плані",
+      "ru": "на переднем плане"
     },
     "short": {
-      "de": "ein Brief oder Formular, mit dem man sich für eine Stelle bewirbt",
-      "en": "a letter or form that you use to apply for a job",
-      "uk": "лист або форма, за допомогою яких людина подає заявку на посаду",
-      "ru": "письмо или форма, с помощью которых человек подаёт заявку на должность"
+      "de": "vorne auf einem Bild, nah beim Betrachter",
+      "en": "at the front of a picture, close to the viewer",
+      "uk": "спереду на зображенні, близько до глядача",
+      "ru": "спереди на изображении, близко к зрителю"
     },
     "def": {
-      "de": "<g>Ich hätte gern</g> eine Rückmeldung zu meiner <b>Bewerbung</b>, denn ich warte schon zwei Wochen.",
-      "en": "<g>I would like</g> feedback on my <b>application</b>, because I have already been waiting two weeks.",
-      "uk": "<g>Я хотів би</g> отримати відповідь щодо моєї <b>заяви</b>, адже я чекаю вже два тижні.",
-      "ru": "<g>Я хотел бы</g> получить ответ по моей <b>заявке</b>, ведь я жду уже две недели."
+      "de": "<b>Im Vordergrund</b> des Graffitis sieht man ein <g>ungewöhnliches</g> Tier.",
+      "en": "<b>In the foreground</b> of the graffiti you can see an <g>unusual</g> animal.",
+      "uk": "<b>На передньому плані</b> графіті видно <g>незвичайну</g> тварину.",
+      "ru": "<b>На переднем плане</b> граффити видно <g>необычное</g> животное."
     },
-    "gram": "konjunktiv2_wuensche_b1",
+    "gram": "adjektive_mit_un"
+  },
+  {
+    "id": "k8_107",
+    "cat": "k8",
+    "term": {
+      "de": "der Musikstil",
+      "en": "style of music",
+      "uk": "музичний стиль",
+      "ru": "музыкальный стиль"
+    },
+    "short": {
+      "de": "eine Art von Musik, zum Beispiel Jazz oder Pop",
+      "en": "a kind of music, for example jazz or pop",
+      "uk": "вид музики, наприклад джаз чи поп",
+      "ru": "вид музыки, например джаз или поп"
+    },
+    "def": {
+      "de": "<g>Wofür</g> interessierst du dich? – Für jeden <b>Musikstil</b>, nur nicht für Techno.",
+      "en": "<g>What</g> are you interested in? – Every <b>style of music</b>, just not techno.",
+      "uk": "<g>Чим</g> ти цікавишся? — Кожним <b>музичним стилем</b>, тільки не техно.",
+      "ru": "<g>Чем</g> ты интересуешься? — Любым <b>музыкальным стилем</b>, только не техно."
+    },
+    "gram": "fragewoerter_wor_dar",
     "forms": {
       "t": "noun",
       "v": [
-        "die Bewerbungen"
+        "die Musikstile"
       ]
+    }
+  },
+  {
+    "id": "k8_108",
+    "cat": "k8",
+    "term": {
+      "de": "die Gelegenheit",
+      "en": "opportunity",
+      "uk": "нагода",
+      "ru": "возможность"
+    },
+    "short": {
+      "de": "ein guter Moment, um etwas zu tun",
+      "en": "a good moment to do something",
+      "uk": "слушний момент, щоб щось зробити",
+      "ru": "удобный момент, чтобы что-то сделать"
+    },
+    "def": {
+      "de": "Das Stadtfest ist eine gute <b>Gelegenheit</b>, neue Leute <g>kennenzulernen</g>.",
+      "en": "The town festival is a good <b>opportunity</b> <g>to meet</g> new people.",
+      "uk": "Міське свято — добра <b>нагода</b> <g>познайомитися</g> з новими людьми.",
+      "ru": "Городской праздник — хорошая <b>возможность</b> <g>познакомиться</g> с новыми людьми."
+    },
+    "gram": "infinitiv_mit_zu",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Gelegenheiten"
+      ]
+    }
+  },
+  {
+    "id": "k8_109",
+    "cat": "k8",
+    "term": {
+      "de": "aufnehmen",
+      "en": "to record",
+      "uk": "записувати",
+      "ru": "записывать"
+    },
+    "short": {
+      "de": "Ton oder Bilder speichern, zum Beispiel mit dem Handy",
+      "en": "to save sound or pictures, for example with your phone",
+      "uk": "зберігати звук чи зображення, наприклад телефоном",
+      "ru": "сохранять звук или изображение, например телефоном"
+    },
+    "def": {
+      "de": "Ich habe das ganze Konzert mit dem Handy <b>aufgenommen</b>.",
+      "en": "I <b>recorded</b> the whole concert on my phone.",
+      "uk": "Я <b>записала</b> весь концерт на телефон.",
+      "ru": "Я <b>записала</b> весь концерт на телефон."
+    },
+    "gram": "",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "nimmt auf",
+        "nahm auf",
+        "hat aufgenommen"
+      ]
+    },
+    "info": {
+      "sense": "Video"
+    }
+  },
+  {
+    "id": "k8_110",
+    "cat": "k8",
+    "term": {
+      "de": "die Inspiration",
+      "en": "inspiration",
+      "uk": "натхнення",
+      "ru": "вдохновение"
+    },
+    "short": {
+      "de": "eine Idee, die einem plötzlich Lust auf etwas Neues macht",
+      "en": "an idea that suddenly makes you want to do something new",
+      "uk": "ідея, яка раптом спонукає зробити щось нове",
+      "ru": "идея, которая вдруг побуждает сделать что-то новое"
+    },
+    "def": {
+      "de": "Für ihre Bilder findet die Künstlerin <b>Inspiration</b> an <g>ungewöhnlichen</g> Orten.",
+      "en": "The artist finds <b>inspiration</b> for her pictures in <g>unusual</g> places.",
+      "uk": "Для своїх картин художниця знаходить <b>натхнення</b> в <g>незвичних</g> місцях.",
+      "ru": "Для своих картин художница находит <b>вдохновение</b> в <g>необычных</g> местах."
+    },
+    "gram": "adjektive_mit_un",
+    "info": {
+      "num": "sg"
     }
   },
   {
@@ -31686,64 +28769,6 @@ var VOCAB = [
       "t": "noun",
       "v": [
         "die Anschreiben"
-      ]
-    }
-  },
-  {
-    "id": "k9_003",
-    "cat": "k9",
-    "term": {
-      "de": "die Stellenanzeige",
-      "en": "job advertisement",
-      "uk": "оголошення про вакансію",
-      "ru": "объявление о вакансии"
-    },
-    "short": {
-      "de": "eine Anzeige, in der eine Firma eine freie Stelle sucht",
-      "en": "an advertisement in which a company is looking to fill a position",
-      "uk": "оголошення, у якому фірма шукає працівника на вакантну посаду",
-      "ru": "объявление, в котором фирма ищет работника на вакантную должность"
-    },
-    "def": {
-      "de": "<g>Wenn</g> die <b>Stellenanzeige</b> nicht so interessant <g>wäre</g>, würde ich mich gar nicht erst bewerben.",
-      "en": "<g>If</g> the job <b>advertisement</b> <g>weren't</g> so interesting, I wouldn't even apply.",
-      "uk": "<g>Якби</g> це <b>оголошення про вакансію</b> не було таким цікавим, я б навіть не подавав заявку.",
-      "ru": "<g>Если бы</g> это <b>объявление о вакансии</b> не было таким интересным, я бы даже не подавал заявку."
-    },
-    "gram": "nebensatz_wenn_konjunktiv2_irreal",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Stellenanzeigen"
-      ]
-    }
-  },
-  {
-    "id": "k9_004",
-    "cat": "k9",
-    "term": {
-      "de": "das Vorstellungsgespräch",
-      "en": "job interview",
-      "uk": "співбесіда",
-      "ru": "собеседование"
-    },
-    "short": {
-      "de": "ein Gespräch zwischen einer Firma und einem Bewerber vor der Einstellung",
-      "en": "a conversation between a company and an applicant before hiring",
-      "uk": "розмова між фірмою та кандидатом перед прийомом на роботу",
-      "ru": "разговор между фирмой и кандидатом перед приёмом на работу"
-    },
-    "def": {
-      "de": "Ich freue mich <g>darauf, dass</g> ich morgen zu einem <b>Vorstellungsgespräch</b> eingeladen wurde.",
-      "en": "I am looking forward <g>to the fact that</g> I was invited to a <b>job interview</b> tomorrow.",
-      "uk": "Я радію <g>тому, що</g> мене запросили на <b>співбесіду</b> завтра.",
-      "ru": "Я рад <g>тому, что</g> меня пригласили на <b>собеседование</b> завтра."
-    },
-    "gram": "verben_praep_dass_satz",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Vorstellungsgespräche"
       ]
     }
   },
@@ -31887,64 +28912,6 @@ var VOCAB = [
     "gram": "verben_praep_dass_satz",
     "info": {
       "num": "sg"
-    }
-  },
-  {
-    "id": "k9_010",
-    "cat": "k9",
-    "term": {
-      "de": "die Weiterbildung",
-      "en": "further training",
-      "uk": "підвищення кваліфікації",
-      "ru": "повышение квалификации"
-    },
-    "short": {
-      "de": "ein Kurs oder ein Training, mit dem man neue berufliche Kenntnisse lernt",
-      "en": "a course or training in which you learn new professional skills",
-      "uk": "курс або тренінг, під час якого людина здобуває нові професійні знання",
-      "ru": "курс или тренинг, в ходе которого человек получает новые профессиональные знания"
-    },
-    "def": {
-      "de": "Für diese <g>berufliche</g> <b>Weiterbildung</b> braucht man keine Vorkenntnisse.",
-      "en": "No prior knowledge is required for this professional <b>further training</b>.",
-      "uk": "Для цього професійного <b>підвищення кваліфікації</b> попередні знання не потрібні.",
-      "ru": "Для этого профессионального <b>повышения квалификации</b> предварительные знания не нужны."
-    },
-    "gram": "adjektive_auf_ig_isch",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Weiterbildungen"
-      ]
-    }
-  },
-  {
-    "id": "k9_011",
-    "cat": "k9",
-    "term": {
-      "de": "der / die Angestellte",
-      "en": "employee",
-      "uk": "службовець / службовиця",
-      "ru": "служащий / служащая"
-    },
-    "short": {
-      "de": "eine Person, die für eine Firma arbeitet und dafür Geld bekommt",
-      "en": "a person who works for a company and is paid for it",
-      "uk": "особа, яка працює на фірму і отримує за це гроші",
-      "ru": "лицо, которое работает на фирму и получает за это деньги"
-    },
-    "def": {
-      "de": "Als <g>langjährige</g> <b>Angestellte</b> kennt sie die Firma besser als jeder andere.",
-      "en": "As a long-standing <b>employee</b>, she knows the company better than anyone else.",
-      "uk": "Як багаторічна <b>службовиця</b>, вона знає фірму краще за будь-кого іншого.",
-      "ru": "Как многолетняя <b>служащая</b>, она знает фирму лучше, чем кто-либо другой."
-    },
-    "gram": "adjektive_auf_ig_isch",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Angestellten"
-      ]
     }
   },
   {
@@ -32147,29 +29114,6 @@ var VOCAB = [
     "gram": "konjunktiv2_wuensche_b1"
   },
   {
-    "id": "k9_021",
-    "cat": "k9",
-    "term": {
-      "de": "flexibel",
-      "en": "flexible",
-      "uk": "гнучкий",
-      "ru": "гибкий"
-    },
-    "short": {
-      "de": "so, dass man sich leicht an neue Situationen anpassen kann",
-      "en": "able to easily adapt to new situations",
-      "uk": "такий, що легко пристосовується до нових ситуацій",
-      "ru": "такой, который легко приспосабливается к новым ситуациям"
-    },
-    "def": {
-      "de": "<g>Ich hätte gern</g> <b>flexiblere</b> Arbeitszeiten in meinem neuen Job.",
-      "en": "<g>I would like</g> more <b>flexible</b> working hours in my new job.",
-      "uk": "<g>Я хотів би</g> мати <b>гнучкіший</b> робочий графік на новій роботі.",
-      "ru": "<g>Я хотел бы</g> иметь более <b>гибкий</b> график работы на новой работе."
-    },
-    "gram": "konjunktiv2_wuensche_b1"
-  },
-  {
     "id": "k9_022",
     "cat": "k9",
     "term": {
@@ -32196,7 +29140,8 @@ var VOCAB = [
       "v": [
         "die Kollegen / die Kolleginnen"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k9_024",
@@ -32248,52 +29193,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k9_026",
-    "cat": "k9",
-    "term": {
-      "de": "sich bewerben",
-      "en": "to apply",
-      "uk": "подавати заявку",
-      "ru": "подавать заявку"
-    },
-    "short": {
-      "de": "offiziell um eine Stelle bitten, indem man Unterlagen schickt",
-      "en": "to officially request a position by sending documents",
-      "uk": "офіційно просити посаду, надсилаючи документи",
-      "ru": "официально просить должность, отправляя документы"
-    },
-    "def": {
-      "de": "<g>Wenn</g> diese Stelle noch frei <g>wäre</g>, <g>würde</g> ich <b>mich</b> sofort <b>bewerben</b>.",
-      "en": "<g>If</g> this position <g>were</g> still open, I <g>would</g> <b>apply</b> right away.",
-      "uk": "<g>Якби</g> ця посада все ще була вільною, я б одразу <b>подав заявку</b>.",
-      "ru": "<g>Если бы</g> эта должность всё ещё была свободна, я бы сразу <b>подал заявку</b>."
-    },
-    "gram": "nebensatz_wenn_konjunktiv2_irreal"
-  },
-  {
-    "id": "k9_027",
-    "cat": "k9",
-    "term": {
-      "de": "die Motivation",
-      "en": "motivation",
-      "uk": "мотивація",
-      "ru": "мотивация"
-    },
-    "short": {
-      "de": "der innere Antrieb, etwas zu tun",
-      "en": "the inner drive to do something",
-      "uk": "внутрішнє прагнення щось робити",
-      "ru": "внутреннее стремление что-то делать"
-    },
-    "def": {
-      "de": "<g>Wenn</g> ich mehr <b>Motivation</b> <g>hätte</g>, <g>würde</g> ich abends noch einen Kurs <g>machen</g>.",
-      "en": "<g>If</g> I <g>had</g> more <b>motivation</b>, I <g>would</g> still <g>take</g> a course in the evening.",
-      "uk": "<g>Якби</g> в мене було більше <b>мотивації</b>, я б увечері ще й ходив на курси.",
-      "ru": "<g>Если бы</g> у меня было больше <b>мотивации</b>, я бы вечером ещё занимался на курсах."
-    },
-    "gram": "nebensatz_wenn_konjunktiv2_irreal"
-  },
-  {
     "id": "k9_029",
     "cat": "k9",
     "term": {
@@ -32313,52 +29212,6 @@ var VOCAB = [
       "en": "<g>If</g> I <g>got</g> a better <b>chance</b>, I <g>would</g> <g>take</g> it immediately.",
       "uk": "<g>Якби</g> я отримав кращий <b>шанс</b>, я б одразу ним скористався.",
       "ru": "<g>Если бы</g> я получил лучший <b>шанс</b>, я бы сразу им воспользовался."
-    },
-    "gram": "nebensatz_wenn_konjunktiv2_irreal"
-  },
-  {
-    "id": "k9_030",
-    "cat": "k9",
-    "term": {
-      "de": "der Arbeitgeber",
-      "en": "employer",
-      "uk": "роботодавець",
-      "ru": "работодатель"
-    },
-    "short": {
-      "de": "eine Firma oder Person, bei der man angestellt ist",
-      "en": "a company or person that employs you",
-      "uk": "фірма чи особа, на яку працює людина",
-      "ru": "фирма или лицо, у которого работает человек"
-    },
-    "def": {
-      "de": "<g>Wenn</g> mein <b>Arbeitgeber</b> flexibler <g>wäre</g>, <g>könnte</g> ich öfter von zu Hause <g>arbeiten</g>.",
-      "en": "<g>If</g> my <b>employer</b> <g>were</g> more flexible, I <g>could</g> <g>work</g> from home more often.",
-      "uk": "<g>Якби</g> мій <b>роботодавець</b> був гнучкішим, я міг би частіше працювати з дому.",
-      "ru": "<g>Если бы</g> мой <b>работодатель</b> был более гибким, я мог бы чаще работать из дома."
-    },
-    "gram": "nebensatz_wenn_konjunktiv2_irreal"
-  },
-  {
-    "id": "k9_031",
-    "cat": "k9",
-    "term": {
-      "de": "zufrieden",
-      "en": "satisfied",
-      "uk": "задоволений",
-      "ru": "довольный"
-    },
-    "short": {
-      "de": "so, dass man mit etwas glücklich und einverstanden ist",
-      "en": "happy and content with something",
-      "uk": "такий, що почувається щасливим і задоволеним чимось",
-      "ru": "такой, который чувствует себя счастливым и довольным чем-то"
-    },
-    "def": {
-      "de": "<g>Wenn</g> ich mit meinem Job <g><b>zufriedener</b></g> <g>wäre</g>, <g>würde</g> ich nicht ständig ans Kündigen <g>denken</g>.",
-      "en": "<g>If</g> I <g>were</g> more <b>satisfied</b> with my job, I <g>would</g> not constantly <g>think</g> about quitting.",
-      "uk": "<g>Якби</g> я був <b>задоволенішим</b> своєю роботою, я б не думав постійно про звільнення.",
-      "ru": "<g>Если бы</g> я был <b>более довольным</b> своей работой, я бы не думал постоянно об увольнении."
     },
     "gram": "nebensatz_wenn_konjunktiv2_irreal"
   },
@@ -32386,30 +29239,8 @@ var VOCAB = [
     "gram": "verben_praep_dass_satz",
     "info": {
       "num": "pl"
-    }
-  },
-  {
-    "id": "k9_033",
-    "cat": "k9",
-    "term": {
-      "de": "das Zeugnis",
-      "en": "certificate",
-      "uk": "свідоцтво",
-      "ru": "справка"
     },
-    "short": {
-      "de": "ein offizielles Dokument, das Leistungen oder Erfahrungen bestätigt",
-      "en": "an official document confirming achievements or experience",
-      "uk": "офіційний документ, що підтверджує досягнення чи досвід",
-      "ru": "официальный документ, подтверждающий достижения или опыт"
-    },
-    "def": {
-      "de": "Der Personalchef besteht <g>darauf, dass</g> ich alle <b>Zeugnisse</b> mitbringe.",
-      "en": "The HR manager insists <g>that</g> I bring all my <b>certificates</b>.",
-      "uk": "Керівник відділу кадрів наполягає на <g>тому, щоб</g> я приніс усі <b>свідоцтва</b>.",
-      "ru": "Начальник отдела кадров настаивает на <g>том, чтобы</g> я принёс все <b>справки</b>."
-    },
-    "gram": "verben_praep_dass_satz"
+    "prio": 2
   },
   {
     "id": "k9_034",
@@ -32527,29 +29358,6 @@ var VOCAB = [
     "gram": "verben_praep_dass_satz"
   },
   {
-    "id": "k9_039",
-    "cat": "k9",
-    "term": {
-      "de": "der Bewerber / die Bewerberin",
-      "en": "applicant",
-      "uk": "кандидат",
-      "ru": "кандидат"
-    },
-    "short": {
-      "de": "eine Person, die sich um eine Stelle bewirbt",
-      "en": "a person who applies for a position",
-      "uk": "особа, яка подає заявку на посаду",
-      "ru": "лицо, подающее заявку на должность"
-    },
-    "def": {
-      "de": "Ein guter <b>Bewerber</b> sollte auch <g>selbstständig</g> arbeiten können.",
-      "en": "A good <b>applicant</b> should also be able to work independently.",
-      "uk": "Гарний <b>кандидат</b> має вміти також самостійно працювати.",
-      "ru": "Хороший <b>кандидат</b> должен уметь также самостоятельно работать."
-    },
-    "gram": "adjektive_auf_ig_isch"
-  },
-  {
     "id": "k9_040",
     "cat": "k9",
     "term": {
@@ -32570,7 +29378,8 @@ var VOCAB = [
       "uk": "На співбесіді варто чітко назвати свої найважливіші <b>сильні сторони</b>.",
       "ru": "На собеседовании стоит чётко назвать свои самые важные <b>сильные стороны</b>."
     },
-    "gram": "adjektive_auf_ig_isch"
+    "gram": "adjektive_auf_ig_isch",
+    "prio": 2
   },
   {
     "id": "k9_041",
@@ -32593,36 +29402,8 @@ var VOCAB = [
       "uk": "Типове питання на співбесіді стосується власних <b>слабких сторін</b>.",
       "ru": "Типичный вопрос на собеседовании касается собственных <b>слабых сторон</b>."
     },
-    "gram": "adjektive_auf_ig_isch"
-  },
-  {
-    "id": "k9_042",
-    "cat": "k9",
-    "term": {
-      "de": "die Frage",
-      "en": "question",
-      "uk": "питання",
-      "ru": "вопрос"
-    },
-    "short": {
-      "de": "das, was man jemandem sagt, um eine Antwort zu bekommen",
-      "en": "something you say to someone to get an answer",
-      "uk": "те, що кажуть комусь, щоб отримати відповідь",
-      "ru": "то, что говорят кому-то, чтобы получить ответ"
-    },
-    "def": {
-      "de": "Der Personalchef stellte eine ziemlich <g>kritische</g> <b>Frage</b>.",
-      "en": "The HR manager asked a rather critical <b>question</b>.",
-      "uk": "Керівник відділу кадрів поставив доволі критичне <b>питання</b>.",
-      "ru": "Начальник отдела кадров задал довольно критичный <b>вопрос</b>."
-    },
     "gram": "adjektive_auf_ig_isch",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Fragen"
-      ]
-    }
+    "prio": 2
   },
   {
     "id": "k9_044",
@@ -32645,7 +29426,8 @@ var VOCAB = [
       "uk": "Вона дуже спокійно <b>відреагувала</b> на складне питання.",
       "ru": "Она очень спокойно <b>отреагировала</b> на сложный вопрос."
     },
-    "gram": "adjektive_auf_ig_isch"
+    "gram": "adjektive_auf_ig_isch",
+    "prio": 2
   },
   {
     "id": "k9_045",
@@ -32668,7 +29450,8 @@ var VOCAB = [
       "uk": "За прийом нових співробітників <b>відповідає</b> відділ кадрів.",
       "ru": "За приём новых сотрудников <b>отвечает</b> отдел кадров."
     },
-    "gram": "adjektive_auf_ig_isch"
+    "gram": "adjektive_auf_ig_isch",
+    "prio": 2
   },
   {
     "id": "k9_046",
@@ -32692,87 +29475,6 @@ var VOCAB = [
       "ru": "Приятная <b>манера держаться</b> производит хорошее первое впечатление."
     },
     "gram": "adjektive_auf_ig_isch"
-  },
-  {
-    "id": "k9_047",
-    "cat": "k9",
-    "term": {
-      "de": "die Pause",
-      "en": "break",
-      "uk": "перерва",
-      "ru": "перерыв"
-    },
-    "short": {
-      "de": "eine kurze Zeit, in der man nicht arbeitet und sich ausruht",
-      "en": "a short time when you don't work and rest",
-      "uk": "короткий час, коли не працюють і відпочивають",
-      "ru": "короткое время, когда не работают и отдыхают"
-    },
-    "def": {
-      "de": "Wir machen <g>regelmäßig</g> eine kurze <b>Pause</b> während der Arbeit.",
-      "en": "We regularly take a short <b>break</b> during work.",
-      "uk": "Ми регулярно робимо коротку <b>перерву</b> під час роботи.",
-      "ru": "Мы регулярно делаем короткий <b>перерыв</b> во время работы."
-    },
-    "gram": "adjektive_auf_ig_isch",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Pausen"
-      ]
-    }
-  },
-  {
-    "id": "k9_048",
-    "cat": "k9",
-    "term": {
-      "de": "der Feierabend",
-      "en": "end of the workday",
-      "uk": "кінець робочого дня",
-      "ru": "конец рабочего дня"
-    },
-    "short": {
-      "de": "das Ende der Arbeitszeit am Tag",
-      "en": "the end of the working day",
-      "uk": "закінчення робочого часу протягом дня",
-      "ru": "окончание рабочего времени в течение дня"
-    },
-    "def": {
-      "de": "Nach einem <g>stressigen</g> Tag freue ich mich sehr auf den <b>Feierabend</b>.",
-      "en": "After a stressful day, I really look forward to the <b>end of the workday</b>.",
-      "uk": "Після напруженого дня я з нетерпінням чекаю <b>кінця робочого дня</b>.",
-      "ru": "После напряжённого дня я с нетерпением жду <b>конца рабочего дня</b>."
-    },
-    "gram": "adjektive_auf_ig_isch"
-  },
-  {
-    "id": "k9_049",
-    "cat": "k9",
-    "term": {
-      "de": "der Arbeitsplatz",
-      "en": "workplace",
-      "uk": "робоче місце",
-      "ru": "рабочее место"
-    },
-    "short": {
-      "de": "der Ort oder die Stelle, an der man arbeitet",
-      "en": "the place or spot where you work",
-      "uk": "місце, де людина працює",
-      "ru": "место, где человек работает"
-    },
-    "def": {
-      "de": "Ein <g>ergonomischer</g> <b>Arbeitsplatz</b> ist wichtig für die Gesundheit.",
-      "en": "An ergonomic <b>workplace</b> is important for your health.",
-      "uk": "Ергономічне <b>робоче місце</b> важливе для здоровʼя.",
-      "ru": "Эргономичное <b>рабочее место</b> важно для здоровья."
-    },
-    "gram": "adjektive_auf_ig_isch",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Arbeitsplätze"
-      ]
-    }
   },
   {
     "id": "k9_051",
@@ -32957,35 +29659,6 @@ var VOCAB = [
       "ru": "<g>Я хотел бы</g> оплату, <b>соответствующую результатам работы</b>, ведь я каждый день работаю дольше."
     },
     "gram": "konjunktiv2_wuensche_b1"
-  },
-  {
-    "id": "k9_059",
-    "cat": "k9",
-    "term": {
-      "de": "die Million",
-      "en": "million",
-      "uk": "мільйон",
-      "ru": "миллион"
-    },
-    "short": {
-      "de": "die Zahl, die tausendmal tausend ist",
-      "en": "the number that is a thousand times a thousand",
-      "uk": "число, яке дорівнює тисячі тисяч",
-      "ru": "число, которое равно тысяче тысяч"
-    },
-    "def": {
-      "de": "München ist eine Stadt, <g>die</g> mehr als eine <b>Million</b> Einwohner hat.",
-      "en": "Munich is a city <g>that</g> has more than a <b>million</b> inhabitants.",
-      "uk": "Мюнхен — це місто, <g>яке</g> має понад <b>мільйон</b> мешканців.",
-      "ru": "Мюнхен — это город, <g>который</g> имеет более <b>миллиона</b> жителей."
-    },
-    "gram": "relativsatz_nominativ_sondern",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Millionen"
-      ]
-    }
   },
   {
     "id": "k9_060",
@@ -33630,35 +30303,6 @@ var VOCAB = [
       "ru": "<b>Составление</b> отчёта заняло два дня."
     },
     "gram": "perfekt_wdh_b1"
-  },
-  {
-    "id": "k9_088",
-    "cat": "k9",
-    "term": {
-      "de": "das Fax",
-      "en": "fax",
-      "uk": "факс",
-      "ru": "факс"
-    },
-    "short": {
-      "de": "ein Gerät, das ein Dokument über die Telefonleitung an ein anderes Gerät schickt",
-      "en": "a device that sends a document over the telephone line to another device",
-      "uk": "пристрій, який передає документ телефонною лінією на інший пристрій",
-      "ru": "устройство, которое передаёт документ по телефонной линии на другое устройство"
-    },
-    "def": {
-      "de": "<g>Könnten Sie</g> mir das Dokument bitte per <b>Fax</b> schicken?",
-      "en": "<g>Could you</g> please send me the document by <b>fax</b>?",
-      "uk": "<g>Могли б Ви</g>, будь ласка, надіслати мені документ по <b>факсу</b>?",
-      "ru": "<g>Могли бы Вы</g>, пожалуйста, отправить мне документ по <b>факсу</b>?"
-    },
-    "gram": "hoefliche_bitten_konjunktiv_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Faxe"
-      ]
-    }
   },
   {
     "id": "k9_089",
@@ -34331,6 +30975,265 @@ var VOCAB = [
     "gram": "praeteritum_wdh_b1"
   },
   {
+    "id": "k9_118",
+    "cat": "k9",
+    "term": {
+      "de": "die Kurzbewerbung",
+      "en": "short application",
+      "uk": "коротка заява",
+      "ru": "краткое заявление"
+    },
+    "short": {
+      "de": "ein kurzes Schreiben, mit dem man sich bei einer Firma bewirbt",
+      "en": "a short letter with which you apply to a company",
+      "uk": "короткий лист, яким подаєш заявку до фірми",
+      "ru": "короткое письмо, которым подаёшь заявку в фирму"
+    },
+    "def": {
+      "de": "Ich achte <g>darauf</g>, <g>dass</g> meine <b>Kurzbewerbung</b> nicht länger als eine Seite ist.",
+      "en": "I make sure <g>that</g> my <b>short application</b> is no longer than one page.",
+      "uk": "Я стежу <g>за тим</g>, <g>щоб</g> моя <b>коротка заява</b> була не довша за одну сторінку.",
+      "ru": "Я слежу <g>за тем</g>, <g>чтобы</g> моё <b>краткое заявление</b> было не длиннее одной страницы."
+    },
+    "gram": "verben_praep_dass_satz",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kurzbewerbungen"
+      ]
+    }
+  },
+  {
+    "id": "k9_119",
+    "cat": "k9",
+    "term": {
+      "de": "der Einstand",
+      "en": "welcome treat",
+      "uk": "проставлення",
+      "ru": "проставление"
+    },
+    "short": {
+      "de": "eine kleine Feier, die man am Anfang in einer neuen Firma für die Kollegen macht",
+      "en": "a small party you give for your colleagues when you start at a new company",
+      "uk": "невелике частування для колег на початку роботи в новій фірмі",
+      "ru": "небольшое угощение для коллег в начале работы в новой фирме"
+    },
+    "def": {
+      "de": "Der <b>Einstand</b> von Paul war sehr <g>lustig</g>: Er hat für alle Kuchen gebacken.",
+      "en": "Paul's <b>welcome treat</b> was great <g>fun</g>: he baked cake for everyone.",
+      "uk": "<b>Проставлення</b> Пауля було дуже <g>веселим</g>: він спік для всіх пиріг.",
+      "ru": "<b>Проставление</b> Пауля было очень <g>весёлым</g>: он испёк для всех пирог."
+    },
+    "gram": "adjektive_auf_ig_isch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Einstände"
+      ]
+    }
+  },
+  {
+    "id": "k9_120",
+    "cat": "k9",
+    "term": {
+      "de": "der Ratschlag",
+      "en": "piece of advice",
+      "uk": "порада",
+      "ru": "совет"
+    },
+    "short": {
+      "de": "eine Empfehlung, was jemand tun sollte",
+      "en": "a recommendation about what someone should do",
+      "uk": "рекомендація, що комусь варто зробити",
+      "ru": "рекомендация, что кому-то стоит сделать"
+    },
+    "def": {
+      "de": "Ich <g>hätte</g> gern einen <b>Ratschlag</b> von dir: Soll ich die Stelle wechseln?",
+      "en": "I <g>would like</g> a <b>piece of advice</b> from you: should I change jobs?",
+      "uk": "Я <g>хотіла б</g> отримати від тебе <b>пораду</b>: мені змінити роботу?",
+      "ru": "Я <g>хотела бы</g> получить от тебя <b>совет</b>: мне сменить работу?"
+    },
+    "gram": "konjunktiv2_wuensche_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Ratschläge"
+      ]
+    }
+  },
+  {
+    "id": "k9_121",
+    "cat": "k9",
+    "term": {
+      "de": "die Schlüsselqualifikation",
+      "en": "key skill",
+      "uk": "ключова навичка",
+      "ru": "ключевой навык"
+    },
+    "short": {
+      "de": "eine Fähigkeit, die man in vielen Berufen braucht",
+      "en": "an ability you need in many jobs",
+      "uk": "уміння, потрібне в багатьох професіях",
+      "ru": "умение, нужное во многих профессиях"
+    },
+    "def": {
+      "de": "Eine <g>wichtige</g> <b>Schlüsselqualifikation</b> ist heute Teamfähigkeit.",
+      "en": "An <g>important</g> <b>key skill</b> today is the ability to work in a team.",
+      "uk": "<g>Важлива</g> <b>ключова навичка</b> сьогодні — уміння працювати в команді.",
+      "ru": "<g>Важный</g> <b>ключевой навык</b> сегодня — умение работать в команде."
+    },
+    "gram": "adjektive_auf_ig_isch",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Schlüsselqualifikationen"
+      ]
+    }
+  },
+  {
+    "id": "k9_122",
+    "cat": "k9",
+    "term": {
+      "de": "die Referenz",
+      "en": "reference",
+      "uk": "рекомендація",
+      "ru": "рекомендация"
+    },
+    "short": {
+      "de": "eine Person oder ein Schreiben, die zeigen, dass man gut gearbeitet hat",
+      "en": "a person or letter showing that you have done good work",
+      "uk": "людина чи лист, які підтверджують, що ти добре працював",
+      "ru": "человек или письмо, которые подтверждают, что ты хорошо работал"
+    },
+    "def": {
+      "de": "Die Firma bittet <g>darum</g>, <g>dass</g> ich eine <b>Referenz</b> vom letzten Arbeitgeber mitbringe.",
+      "en": "The company asks me to bring a <b>reference</b> from my last employer.",
+      "uk": "Фірма просить <g>про те</g>, <g>щоб</g> я принесла <b>рекомендацію</b> від останнього роботодавця.",
+      "ru": "Фирма просит <g>о том</g>, <g>чтобы</g> я принесла <b>рекомендацию</b> от последнего работодателя."
+    },
+    "gram": "verben_praep_dass_satz",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Referenzen"
+      ]
+    }
+  },
+  {
+    "id": "k9_123",
+    "cat": "k9",
+    "term": {
+      "de": "zufrieden sein mit",
+      "en": "to be satisfied with",
+      "uk": "бути задоволеним",
+      "ru": "быть довольным"
+    },
+    "short": {
+      "de": "etwas gut finden und nichts anderes wollen",
+      "en": "to find something good and not want anything else",
+      "uk": "вважати щось добрим і не хотіти іншого",
+      "ru": "считать что-то хорошим и не хотеть другого"
+    },
+    "def": {
+      "de": "Mit meiner neuen Stelle <b>bin</b> ich sehr <b>zufrieden</b>, nur der Weg ist lang.",
+      "en": "I <b>am</b> very <b>satisfied with</b> my new job, only the journey is long.",
+      "uk": "Я дуже <b>задоволена</b> новою роботою, тільки дорога довга.",
+      "ru": "Я очень <b>довольна</b> новой работой, только дорога длинная."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k9_124",
+    "cat": "k9",
+    "term": {
+      "de": "erfüllen",
+      "en": "to meet",
+      "uk": "відповідати",
+      "ru": "соответствовать"
+    },
+    "short": {
+      "de": "das machen oder haben, was verlangt wird",
+      "en": "to do or have what is required",
+      "uk": "робити чи мати те, що вимагають",
+      "ru": "делать или иметь то, что требуют"
+    },
+    "def": {
+      "de": "Ich <g>würde</g> gern alle Anforderungen der Stelle <b>erfüllen</b>.",
+      "en": "I <g>would</g> like to <b>meet</b> all the requirements of the job.",
+      "uk": "Я <g>хотіла б</g> <b>відповідати</b> всім вимогам вакансії.",
+      "ru": "Я <g>хотела бы</g> <b>соответствовать</b> всем требованиям вакансии."
+    },
+    "gram": "konjunktiv2_wuensche_b1",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "erfüllt",
+        "erfüllte",
+        "hat erfüllt"
+      ]
+    }
+  },
+  {
+    "id": "k9_125",
+    "cat": "k9",
+    "term": {
+      "de": "die Hilfskraft",
+      "en": "assistant",
+      "uk": "помічник",
+      "ru": "помощник"
+    },
+    "short": {
+      "de": "eine Person, die bei einfachen Arbeiten hilft",
+      "en": "a person who helps with simple tasks",
+      "uk": "людина, яка допомагає з простою роботою",
+      "ru": "человек, который помогает с простой работой"
+    },
+    "def": {
+      "de": "Im Sommer arbeitet mein Sohn als <b>Hilfskraft</b> in einem Hotel.",
+      "en": "In summer my son works as an <b>assistant</b> in a hotel.",
+      "uk": "Улітку мій син працює <b>помічником</b> у готелі.",
+      "ru": "Летом мой сын работает <b>помощником</b> в гостинице."
+    },
+    "gram": "",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Hilfskräfte"
+      ]
+    }
+  },
+  {
+    "id": "k9_126",
+    "cat": "k9",
+    "term": {
+      "de": "bedauern",
+      "en": "to regret",
+      "uk": "шкодувати",
+      "ru": "сожалеть"
+    },
+    "short": {
+      "de": "traurig sein, weil etwas nicht so ist, wie man es möchte",
+      "en": "to be sad because something is not as you would like",
+      "uk": "сумувати, бо щось не так, як хочеться",
+      "ru": "грустить, потому что что-то не так, как хочется"
+    },
+    "def": {
+      "de": "Ich <b>bedauere</b> sehr, dass ich keine Zeit habe – <g>wenn</g> ich Zeit <g>hätte</g>, <g>würde</g> ich helfen.",
+      "en": "I <b>regret</b> very much that I have no time – <g>if</g> I <g>had</g> time, I <g>would</g> help.",
+      "uk": "Я дуже <b>шкодую</b>, що не маю часу, — <g>якби</g> я мала час, я б допомогла.",
+      "ru": "Я очень <b>сожалею</b>, что у меня нет времени, — <g>если бы</g> у меня было время, я бы помогла."
+    },
+    "gram": "nebensatz_wenn_konjunktiv2_irreal",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "bedauert",
+        "bedauerte",
+        "hat bedauert"
+      ]
+    }
+  },
+  {
     "id": "k10_001",
     "cat": "k10",
     "term": {
@@ -34351,7 +31254,8 @@ var VOCAB = [
       "uk": "Слід добре розігрітися, <g>перш ніж</g> активно <b>рухатися</b> під час спорту.",
       "ru": "Следует хорошо размяться, <g>прежде чем</g> активно <b>двигаться</b> во время спорта."
     },
-    "gram": "nebensatz_mit_bevor"
+    "gram": "nebensatz_mit_bevor",
+    "prio": 2
   },
   {
     "id": "k10_002",
@@ -34402,35 +31306,6 @@ var VOCAB = [
       "t": "noun",
       "v": [
         "die Workouts"
-      ]
-    }
-  },
-  {
-    "id": "k10_004",
-    "cat": "k10",
-    "term": {
-      "de": "der Muskel",
-      "en": "muscle",
-      "uk": "мʼяз",
-      "ru": "мышца"
-    },
-    "short": {
-      "de": "ein Teil des Körpers, mit dem man sich bewegt",
-      "en": "a part of the body that you use to move",
-      "uk": "частина тіла, за допомогою якої людина рухається",
-      "ru": "часть тела, с помощью которой человек двигается"
-    },
-    "def": {
-      "de": "Nach dem Training tut mir jeder <g>einzelne</g> <b>Muskel</b> weh.",
-      "en": "After training, every single <b>muscle</b> hurts.",
-      "uk": "Після тренування болить кожен окремий <b>мʼяз</b>.",
-      "ru": "После тренировки болит каждая отдельная <b>мышца</b>."
-    },
-    "gram": "adjektivdeklination_bestimmter_artikel",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Muskeln"
       ]
     }
   },
@@ -34542,7 +31417,8 @@ var VOCAB = [
       "v": [
         "die Siege"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k10_009",
@@ -34566,35 +31442,6 @@ var VOCAB = [
       "ru": "Произошло нечто особенное, когда самый молодой игрок <b>забил гол</b>."
     },
     "gram": "adjektive_als_nomen"
-  },
-  {
-    "id": "k10_010",
-    "cat": "k10",
-    "term": {
-      "de": "die Sportart",
-      "en": "type of sport",
-      "uk": "вид спорту",
-      "ru": "вид спорта"
-    },
-    "short": {
-      "de": "eine bestimmte Art von Sport, zum Beispiel Fußball oder Schwimmen",
-      "en": "a particular type of sport, for example football or swimming",
-      "uk": "певний вид спорту, наприклад футбол чи плавання",
-      "ru": "определённый вид спорта, например футбол или плавание"
-    },
-    "def": {
-      "de": "<g>Nichts Neues</g> gab es bei dieser <b>Sportart</b>, die Regeln bleiben immer gleich.",
-      "en": "There was nothing new about this <b>type of sport</b>, the rules always stay the same.",
-      "uk": "Нічого нового не було в цьому <b>виді спорту</b>, правила завжди залишаються однаковими.",
-      "ru": "Ничего нового не было в этом <b>виде спорта</b>, правила всегда остаются одинаковыми."
-    },
-    "gram": "adjektive_als_nomen",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Sportarten"
-      ]
-    }
   },
   {
     "id": "k10_012",
@@ -34670,29 +31517,6 @@ var VOCAB = [
         "die Spendenläufe"
       ]
     }
-  },
-  {
-    "id": "k10_015",
-    "cat": "k10",
-    "term": {
-      "de": "veranstalten",
-      "en": "to organise an event",
-      "uk": "організовувати захід",
-      "ru": "организовывать мероприятие"
-    },
-    "short": {
-      "de": "etwas organisieren, zum Beispiel eine Veranstaltung oder ein Fest",
-      "en": "to organise something, for example an event or a party",
-      "uk": "організовувати щось, наприклад захід чи свято",
-      "ru": "организовывать что-либо, например мероприятие или праздник"
-    },
-    "def": {
-      "de": "Der Verein möchte <g>etwas Großes</g> <b>veranstalten</b>, um mehr Mitglieder zu gewinnen.",
-      "en": "The club wants to <b>organise</b> something big to attract more members.",
-      "uk": "Клуб хоче <b>організувати</b> щось грандіозне, щоб залучити більше членів.",
-      "ru": "Клуб хочет <b>организовать</b> что-то грандиозное, чтобы привлечь больше членов."
-    },
-    "gram": "adjektive_als_nomen"
   },
   {
     "id": "k10_016",
@@ -34790,7 +31614,8 @@ var VOCAB = [
       "uk": "<g>Перш ніж</g> змагання <g>почнеться</g>, мені треба повністю <b>зосередитися</b>.",
       "ru": "<g>Прежде чем</g> соревнование <g>начнётся</g>, мне нужно полностью <b>сосредоточиться</b>."
     },
-    "gram": "nebensatz_mit_bevor"
+    "gram": "nebensatz_mit_bevor",
+    "prio": 2
   },
   {
     "id": "k10_020",
@@ -34813,7 +31638,8 @@ var VOCAB = [
       "uk": "<g>Перш ніж</g> <g>вирушити</g>, тобі слід перевірити своє <b>спорядження</b>.",
       "ru": "<g>Прежде чем</g> <g>отправиться</g>, тебе следует проверить своё <b>снаряжение</b>."
     },
-    "gram": "nebensatz_mit_bevor"
+    "gram": "nebensatz_mit_bevor",
+    "prio": 2
   },
   {
     "id": "k10_021",
@@ -34859,7 +31685,8 @@ var VOCAB = [
       "uk": "<g>Перш ніж</g> важливе змагання <g>почнеться</g>, багато спортсменів стають <b>нервовими</b>.",
       "ru": "<g>Прежде чем</g> важное соревнование <g>начнётся</g>, многие спортсмены становятся <b>нервными</b>."
     },
-    "gram": "nebensatz_mit_bevor"
+    "gram": "nebensatz_mit_bevor",
+    "prio": 2
   },
   {
     "id": "k10_024",
@@ -34905,7 +31732,8 @@ var VOCAB = [
       "uk": "Уся <b>команда</b> була в захваті від результату.",
       "ru": "Вся <b>команда</b> была в восторге от результата."
     },
-    "gram": "adjektivdeklination_bestimmter_artikel"
+    "gram": "adjektivdeklination_bestimmter_artikel",
+    "prio": 2
   },
   {
     "id": "k10_026",
@@ -34997,7 +31825,8 @@ var VOCAB = [
       "uk": "Спортивні <b>досягнення</b> команди значно покращилися.",
       "ru": "Спортивные <b>достижения</b> команды значительно улучшились."
     },
-    "gram": "adjektivdeklination_bestimmter_artikel"
+    "gram": "adjektivdeklination_bestimmter_artikel",
+    "prio": 2
   },
   {
     "id": "k10_030",
@@ -35052,29 +31881,6 @@ var VOCAB = [
     "gram": "komparativ_superlativ_vor_nomen"
   },
   {
-    "id": "k10_033",
-    "cat": "k10",
-    "term": {
-      "de": "die Ausdauer",
-      "en": "endurance",
-      "uk": "витривалість",
-      "ru": "выносливость"
-    },
-    "short": {
-      "de": "die Fähigkeit, eine Anstrengung lange durchzuhalten",
-      "en": "the ability to keep up an effort for a long time",
-      "uk": "здатність довго витримувати навантаження",
-      "ru": "способность долго выдерживать нагрузку"
-    },
-    "def": {
-      "de": "Mit <g>einer besseren</g> <b>Ausdauer</b> hätte er noch schneller laufen können.",
-      "en": "With <g>better</g> <b>endurance</b>, he could have run even faster.",
-      "uk": "Із <g>кращою</g> <b>витривалістю</b> він міг би бігти ще швидше.",
-      "ru": "С <g>лучшей</g> <b>выносливостью</b> он мог бы бежать ещё быстрее."
-    },
-    "gram": "komparativ_superlativ_vor_nomen"
-  },
-  {
     "id": "k10_034",
     "cat": "k10",
     "term": {
@@ -35095,7 +31901,8 @@ var VOCAB = [
       "uk": "<g><b>Найслабшого</b></g> гравця все одно похвалили за старанність.",
       "ru": "<g><b>Самого слабого</b></g> игрока всё равно похвалили за старание."
     },
-    "gram": "komparativ_superlativ_vor_nomen"
+    "gram": "komparativ_superlativ_vor_nomen",
+    "prio": 2
   },
   {
     "id": "k10_035",
@@ -35118,7 +31925,8 @@ var VOCAB = [
       "uk": "<g>Довша</g> <b>дистанція</b> стала справжнім викликом для багатьох бігунів.",
       "ru": "<g>Более длинная</g> <b>дистанция</b> стала настоящим испытанием для многих бегунов."
     },
-    "gram": "komparativ_superlativ_vor_nomen"
+    "gram": "komparativ_superlativ_vor_nomen",
+    "prio": 2
   },
   {
     "id": "k10_036",
@@ -35140,29 +31948,6 @@ var VOCAB = [
       "en": "A <g>higher</g> <b>pace</b> helped her overtake the competition.",
       "uk": "<g>Вищий</g> <b>темп</b> допоміг їй обійти суперників.",
       "ru": "<g>Более высокий</g> <b>темп</b> помог ей обогнать соперников."
-    },
-    "gram": "komparativ_superlativ_vor_nomen"
-  },
-  {
-    "id": "k10_037",
-    "cat": "k10",
-    "term": {
-      "de": "die Zeit",
-      "en": "time",
-      "uk": "час",
-      "ru": "время"
-    },
-    "short": {
-      "de": "die Dauer, die man für etwas braucht, gemessen zum Beispiel bei einem Rennen",
-      "en": "the duration needed for something, measured for example in a race",
-      "uk": "тривалість, потрібна для чогось, виміряна, наприклад, у забігу",
-      "ru": "продолжительность, необходимая для чего-то, измеренная, например, в забеге"
-    },
-    "def": {
-      "de": "<g>Die schnellste</g> <b>Zeit</b> des Tages wurde von einer 16-Jährigen erzielt.",
-      "en": "The <g>fastest</g> <b>time</b> of the day was set by a 16-year-old.",
-      "uk": "<g>Найкращий</g> <b>час</b> дня показала 16-річна дівчина.",
-      "ru": "<g>Лучшее</g> <b>время</b> дня показала 16-летняя девушка."
     },
     "gram": "komparativ_superlativ_vor_nomen"
   },
@@ -35347,58 +32132,6 @@ var VOCAB = [
       "en": "There is nothing more exciting than <b>trying out</b> a new sport.",
       "uk": "Немає нічого захопливішого, ніж <b>спробувати</b> новий вид спорту.",
       "ru": "Нет ничего более увлекательного, чем <b>попробовать</b> новый вид спорта."
-    },
-    "gram": "adjektive_als_nomen"
-  },
-  {
-    "id": "k10_049",
-    "cat": "k10",
-    "term": {
-      "de": "der Verein",
-      "en": "club",
-      "uk": "клуб",
-      "ru": "клуб"
-    },
-    "short": {
-      "de": "eine organisierte Gruppe von Menschen mit einem gemeinsamen Interesse",
-      "en": "an organised group of people with a shared interest",
-      "uk": "організована група людей зі спільним інтересом",
-      "ru": "организованная группа людей с общим интересом"
-    },
-    "def": {
-      "de": "<g>Etwas Tolles</g> an unserem <b>Verein</b> ist, dass jeder willkommen ist.",
-      "en": "Something great about our <b>club</b> is that everyone is welcome.",
-      "uk": "Дещо чудове в нашому <b>клубі</b> — те, що всі раді кожному.",
-      "ru": "Что-то замечательное в нашем <b>клубе</b> — то, что каждому рады."
-    },
-    "gram": "adjektive_als_nomen",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Vereine"
-      ]
-    }
-  },
-  {
-    "id": "k10_050",
-    "cat": "k10",
-    "term": {
-      "de": "die Bewegung",
-      "en": "exercise",
-      "uk": "рух",
-      "ru": "движение"
-    },
-    "short": {
-      "de": "das aktive Nutzen des Körpers, zum Beispiel beim Sport",
-      "en": "actively using your body, for example during sport",
-      "uk": "активне використання тіла, наприклад під час спорту",
-      "ru": "активное использование тела, например во время спорта"
-    },
-    "def": {
-      "de": "<g>Nichts Gesünderes</g> gibt es als tägliche <b>Bewegung</b> an der frischen Luft.",
-      "en": "There is nothing healthier than daily <b>exercise</b> in the fresh air.",
-      "uk": "Немає нічого кориснішого за щоденний <b>рух</b> на свіжому повітрі.",
-      "ru": "Нет ничего полезнее ежедневного <b>движения</b> на свежем воздухе."
     },
     "gram": "adjektive_als_nomen"
   },
@@ -36119,6 +32852,91 @@ var VOCAB = [
     "gram": "verben_als_nomen"
   },
   {
+    "id": "k10_082",
+    "cat": "k10",
+    "term": {
+      "de": "springen",
+      "en": "to jump",
+      "uk": "стрибати",
+      "ru": "прыгать"
+    },
+    "short": {
+      "de": "sich mit den Beinen kräftig vom Boden abstoßen",
+      "en": "to push off the ground hard with your legs",
+      "uk": "сильно відштовхуватися ногами від землі",
+      "ru": "сильно отталкиваться ногами от земли"
+    },
+    "def": {
+      "de": "Lena ist die <g>beste</g> Sportlerin im Verein: Sie <b>springt</b> am weitesten.",
+      "en": "Lena is the <g>best</g> athlete in the club: she <b>jumps</b> the furthest.",
+      "uk": "Лена — <g>найкраща</g> спортсменка в клубі: вона <b>стрибає</b> найдалі.",
+      "ru": "Лена — <g>лучшая</g> спортсменка в клубе: она <b>прыгает</b> дальше всех."
+    },
+    "gram": "komparativ_superlativ_vor_nomen",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "springt",
+        "sprang",
+        "ist gesprungen"
+      ]
+    }
+  },
+  {
+    "id": "k10_083",
+    "cat": "k10",
+    "term": {
+      "de": "gelassen",
+      "en": "calm",
+      "uk": "спокійний",
+      "ru": "спокойный"
+    },
+    "short": {
+      "de": "ruhig und ohne Stress",
+      "en": "relaxed and without stress",
+      "uk": "врівноважений і без стресу",
+      "ru": "уравновешенный и без стресса"
+    },
+    "def": {
+      "de": "<g>Bevor</g> der Wettkampf beginnt, bleibt unsere Trainerin ganz <b>gelassen</b>.",
+      "en": "<g>Before</g> the competition starts, our coach stays completely <b>calm</b>.",
+      "uk": "<g>Перш ніж</g> почнуться змагання, наша тренерка залишається цілком <b>спокійною</b>.",
+      "ru": "<g>Перед тем как</g> начнутся соревнования, наш тренер остаётся совершенно <b>спокойной</b>."
+    },
+    "gram": "nebensatz_mit_bevor"
+  },
+  {
+    "id": "k10_084",
+    "cat": "k10",
+    "term": {
+      "de": "aufgeben",
+      "en": "to give up",
+      "uk": "здаватися",
+      "ru": "сдаваться"
+    },
+    "short": {
+      "de": "mit etwas aufhören, weil es zu schwer ist",
+      "en": "to stop doing something because it is too hard",
+      "uk": "припинити щось, бо це надто важко",
+      "ru": "прекратить что-то, потому что это слишком трудно"
+    },
+    "def": {
+      "de": "<g>Bevor</g> du <b>aufgibst</b>, versuch es noch einmal!",
+      "en": "<g>Before</g> you <b>give up</b>, try once more!",
+      "uk": "<g>Перш ніж</g> <b>здатися</b>, спробуй ще раз!",
+      "ru": "<g>Прежде чем</g> <b>сдаться</b>, попробуй ещё раз!"
+    },
+    "gram": "nebensatz_mit_bevor",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "gibt auf",
+        "gab auf",
+        "hat aufgegeben"
+      ]
+    }
+  },
+  {
     "id": "k11_001",
     "cat": "k11",
     "term": {
@@ -36279,38 +33097,6 @@ var VOCAB = [
       "ru": "Она <b>воспитывает ребёнка одна</b>, но ей <g>не нужно</g> справляться со всем самой — сестра часто ей помогает."
     },
     "gram": "nicht_brauchen_zu"
-  },
-  {
-    "id": "k11_008",
-    "cat": "k11",
-    "term": {
-      "de": "die Kindertagesstätte",
-      "en": "daycare centre",
-      "uk": "дитячий садок",
-      "ru": "детский сад"
-    },
-    "short": {
-      "de": "eine Einrichtung, in der kleine Kinder tagsüber betreut werden",
-      "en": "a facility where small children are looked after during the day",
-      "uk": "заклад, де маленьких дітей доглядають протягом дня",
-      "ru": "учреждение, где за маленькими детьми присматривают в течение дня"
-    },
-    "def": {
-      "de": "<g>Unsere</g> <b>Kindertagesstätte</b> hat leider keinen freien Platz mehr.",
-      "en": "<g>Our</g> <b>daycare centre</b> unfortunately no longer has a free place.",
-      "uk": "У <g>нашому</g> <b>дитячому садку</b>, на жаль, більше немає вільного місця.",
-      "ru": "В <g>нашем</g> <b>детском саду</b>, к сожалению, больше нет свободного места."
-    },
-    "gram": "indefinitpronomen_possessivpronomen",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Kindertagesstätten"
-      ]
-    },
-    "syn": [
-      "Kita"
-    ]
   },
   {
     "id": "k11_009",
@@ -36498,7 +33284,8 @@ var VOCAB = [
       "uk": "Молода пара <b>розійшлася</b> лише через рік.",
       "ru": "Молодая пара <b>рассталась</b> всего через год."
     },
-    "gram": "nomen_auf_chen"
+    "gram": "nomen_auf_chen",
+    "prio": 2
   },
   {
     "id": "k11_016",
@@ -36639,29 +33426,6 @@ var VOCAB = [
     "gram": "adjektive_als_nomen"
   },
   {
-    "id": "k11_024",
-    "cat": "k11",
-    "term": {
-      "de": "der Haushalt",
-      "en": "household",
-      "uk": "домашнє господарство",
-      "ru": "домашнее хозяйство"
-    },
-    "short": {
-      "de": "alle Aufgaben, die man braucht, um eine Wohnung oder ein Haus zu führen",
-      "en": "all the tasks needed to run a flat or house",
-      "uk": "усі справи, потрібні для ведення квартири чи будинку",
-      "ru": "все дела, необходимые для ведения квартиры или дома"
-    },
-    "def": {
-      "de": "<g>Während</g> ich arbeite, kümmert sich mein Mann um den <b>Haushalt</b>.",
-      "en": "<g>While</g> I work, my husband takes care of the <b>household</b>.",
-      "uk": "<g>Поки</g> я працюю, мій чоловік дбає про <b>домашнє господарство</b>.",
-      "ru": "<g>Пока</g> я работаю, мой муж заботится о <b>домашнем хозяйстве</b>."
-    },
-    "gram": "nebensatz_mit_waehrend"
-  },
-  {
     "id": "k11_026",
     "cat": "k11",
     "term": {
@@ -36704,29 +33468,6 @@ var VOCAB = [
       "en": "<g>While</g> both parents are responsible for the <b>upbringing</b>, they also share the housework.",
       "uk": "<g>Поки</g> обоє батьків відповідають за <b>виховання</b>, вони також ділять домашні обовʼязки.",
       "ru": "<g>Пока</g> оба родителя отвечают за <b>воспитание</b>, они также делят домашние обязанности."
-    },
-    "gram": "nebensatz_mit_waehrend"
-  },
-  {
-    "id": "k11_028",
-    "cat": "k11",
-    "term": {
-      "de": "berufstätig",
-      "en": "employed",
-      "uk": "працевлаштований",
-      "ru": "работающий"
-    },
-    "short": {
-      "de": "eine bezahlte Arbeit oder einen Beruf ausüben",
-      "en": "having a paid job or profession",
-      "uk": "мати оплачувану роботу чи професію",
-      "ru": "иметь оплачиваемую работу или профессию"
-    },
-    "def": {
-      "de": "<g>Während</g> sie <b>berufstätig</b> ist, geht ihr Mann in Elternzeit.",
-      "en": "<g>While</g> she is <b>employed</b>, her husband goes on parental leave.",
-      "uk": "<g>Поки</g> вона <b>працює</b>, її чоловік іде в декретну відпустку.",
-      "ru": "<g>Пока</g> она <b>работает</b>, её муж уходит в декретный отпуск."
     },
     "gram": "nebensatz_mit_waehrend"
   },
@@ -36843,7 +33584,8 @@ var VOCAB = [
       "uk": "Тобі <g>не потрібно</g> <b>хвилюватися</b> — ми разом знайдемо рішення.",
       "ru": "Тебе <g>не нужно</g> <b>волноваться</b> — мы вместе найдём решение."
     },
-    "gram": "nicht_brauchen_zu"
+    "gram": "nicht_brauchen_zu",
+    "prio": 2
   },
   {
     "id": "k11_036",
@@ -36984,35 +33726,6 @@ var VOCAB = [
     "gram": "indefinitpronomen_possessivpronomen"
   },
   {
-    "id": "k11_044",
-    "cat": "k11",
-    "term": {
-      "de": "die Aufgabe",
-      "en": "task",
-      "uk": "завдання",
-      "ru": "задание"
-    },
-    "short": {
-      "de": "etwas, das man erledigen soll",
-      "en": "something you are supposed to get done",
-      "uk": "те, що потрібно виконати",
-      "ru": "то, что нужно выполнить"
-    },
-    "def": {
-      "de": "<g>Etwas</g> an dieser <b>Aufgabe</b> war typisch für die alte Rollenverteilung.",
-      "en": "<g>Something</g> about this <b>task</b> was typical of the old division of roles.",
-      "uk": "<g>Дещо</g> в цьому <b>завданні</b> було типовим для старого розподілу ролей.",
-      "ru": "<g>Кое-что</g> в этом <b>задании</b> было типичным для старого распределения ролей."
-    },
-    "gram": "indefinitpronomen_possessivpronomen",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Aufgaben"
-      ]
-    }
-  },
-  {
     "id": "k11_046",
     "cat": "k11",
     "term": {
@@ -37126,29 +33839,6 @@ var VOCAB = [
       "ru": "<b>Радужная семья</b> гордо повесила маленький флажок перед домом."
     },
     "gram": "nomen_auf_chen"
-  },
-  {
-    "id": "k11_051",
-    "cat": "k11",
-    "term": {
-      "de": "das Alter",
-      "en": "age",
-      "uk": "вік",
-      "ru": "возраст"
-    },
-    "short": {
-      "de": "wie viele Jahre eine Person alt ist",
-      "en": "how many years old a person is",
-      "uk": "скільки років особі",
-      "ru": "сколько лет человеку"
-    },
-    "def": {
-      "de": "In welchem <b>Alter</b> hast du angefangen, <g>zu arbeiten</g>?",
-      "en": "At what <b>age</b> did you start working?",
-      "uk": "У якому <b>віці</b> ти почав працювати?",
-      "ru": "В каком <b>возрасте</b> ты начал работать?"
-    },
-    "gram": "infinitiv_mit_zu"
   },
   {
     "id": "k11_052",
@@ -37542,6 +34232,193 @@ var VOCAB = [
     "gram": "konnektoren_wdh_b1"
   },
   {
+    "id": "k11_069",
+    "cat": "k11",
+    "term": {
+      "de": "die Verwandtschaft",
+      "en": "relatives",
+      "uk": "родичі",
+      "ru": "родственники"
+    },
+    "short": {
+      "de": "alle Menschen, die zur Familie gehören",
+      "en": "all the people who belong to the family",
+      "uk": "усі люди, які належать до родини",
+      "ru": "все люди, которые относятся к семье"
+    },
+    "def": {
+      "de": "Zur Hochzeit kommt die ganze <b>Verwandtschaft</b>, auch die Cousins aus Polen.",
+      "en": "All the <b>relatives</b> are coming to the wedding, including the cousins from Poland.",
+      "uk": "На весілля приїдуть усі <b>родичі</b>, навіть двоюрідні брати з Польщі.",
+      "ru": "На свадьбу приедут все <b>родственники</b>, даже двоюродные братья из Польши."
+    },
+    "gram": "",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
+    "id": "k11_070",
+    "cat": "k11",
+    "term": {
+      "de": "das Verständnis",
+      "en": "understanding",
+      "uk": "розуміння",
+      "ru": "понимание"
+    },
+    "short": {
+      "de": "wenn man die Situation oder die Gefühle von jemandem versteht",
+      "en": "when you understand someone's situation or feelings",
+      "uk": "коли розумієш ситуацію чи почуття когось",
+      "ru": "когда понимаешь ситуацию или чувства кого-то"
+    },
+    "def": {
+      "de": "Du <g>brauchst</g> dich nicht <g>zu</g> entschuldigen, ich habe <b>Verständnis</b> für deine Situation.",
+      "en": "You <g>don't need to</g> apologise, I have <b>understanding</b> for your situation.",
+      "uk": "Тобі <g>не треба</g> вибачатися, я з <b>розумінням</b> ставлюся до твоєї ситуації.",
+      "ru": "Тебе <g>не нужно</g> извиняться, я с <b>пониманием</b> отношусь к твоей ситуации."
+    },
+    "gram": "nicht_brauchen_zu",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
+    "id": "k11_071",
+    "cat": "k11",
+    "term": {
+      "de": "die Mediennutzung",
+      "en": "media use",
+      "uk": "використання медіа",
+      "ru": "использование медиа"
+    },
+    "short": {
+      "de": "wie oft und wie lange man Handy, Computer oder Fernsehen benutzt",
+      "en": "how often and how long you use a phone, computer or TV",
+      "uk": "як часто й довго користуєшся телефоном, компʼютером чи телевізором",
+      "ru": "как часто и как долго пользуешься телефоном, компьютером или телевизором"
+    },
+    "def": {
+      "de": "Viele Eltern machen sich Sorgen über die <b>Mediennutzung</b> ihrer Kinder.",
+      "en": "Many parents worry about their children's <b>media use</b>.",
+      "uk": "Багато батьків турбуються через <b>використання медіа</b> їхніми дітьми.",
+      "ru": "Многие родители беспокоятся об <b>использовании медиа</b> их детьми."
+    },
+    "gram": "",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
+    "id": "k11_072",
+    "cat": "k11",
+    "term": {
+      "de": "der Tod",
+      "en": "death",
+      "uk": "смерть",
+      "ru": "смерть"
+    },
+    "short": {
+      "de": "das Ende vom Leben",
+      "en": "the end of life",
+      "uk": "кінець життя",
+      "ru": "конец жизни"
+    },
+    "def": {
+      "de": "Nach dem <b>Tod</b> ihres Mannes ist sie zu ihrer Tochter gezogen.",
+      "en": "After the <b>death</b> of her husband she moved in with her daughter.",
+      "uk": "Після <b>смерті</b> чоловіка вона переїхала до доньки.",
+      "ru": "После <b>смерти</b> мужа она переехала к дочери."
+    },
+    "gram": "",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
+    "id": "k11_073",
+    "cat": "k11",
+    "term": {
+      "de": "bügeln",
+      "en": "to iron",
+      "uk": "прасувати",
+      "ru": "гладить"
+    },
+    "short": {
+      "de": "Kleidung mit einem heißen Gerät glatt machen",
+      "en": "to make clothes smooth with a hot appliance",
+      "uk": "розгладжувати одяг гарячим приладом",
+      "ru": "разглаживать одежду горячим прибором"
+    },
+    "def": {
+      "de": "<g>Während</g> mein Mann kocht, <b>bügle</b> ich die Hemden.",
+      "en": "<g>While</g> my husband is cooking, I <b>iron</b> the shirts.",
+      "uk": "<g>Поки</g> мій чоловік готує, я <b>прасую</b> сорочки.",
+      "ru": "<g>Пока</g> мой муж готовит, я <b>глажу</b> рубашки."
+    },
+    "gram": "nebensatz_mit_waehrend",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "bügelt",
+        "bügelte",
+        "hat gebügelt"
+      ]
+    }
+  },
+  {
+    "id": "k11_074",
+    "cat": "k11",
+    "term": {
+      "de": "das Heim",
+      "en": "care home",
+      "uk": "будинок для літніх людей",
+      "ru": "дом для пожилых людей"
+    },
+    "short": {
+      "de": "ein Haus, in dem alte oder kranke Menschen wohnen und Hilfe bekommen",
+      "en": "a house where old or sick people live and get help",
+      "uk": "будинок, де живуть і отримують допомогу літні чи хворі люди",
+      "ru": "дом, где живут и получают помощь пожилые или больные люди"
+    },
+    "def": {
+      "de": "Meine Oma lebt seit einem Jahr in einem <b>Heim</b> für Senioren.",
+      "en": "My grandma has been living in a <b>care home</b> for a year.",
+      "uk": "Моя бабуся вже рік живе в <b>будинку для літніх людей</b>.",
+      "ru": "Моя бабушка уже год живёт в <b>доме для пожилых людей</b>."
+    },
+    "gram": "",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Heime"
+      ]
+    }
+  },
+  {
+    "id": "k11_075",
+    "cat": "k11",
+    "term": {
+      "de": "der User / die Userin",
+      "en": "user",
+      "uk": "користувач / користувачка",
+      "ru": "пользователь / пользовательница"
+    },
+    "short": {
+      "de": "eine Person, die eine App oder eine Internetseite benutzt",
+      "en": "a person who uses an app or a website",
+      "uk": "людина, яка користується застосунком чи сайтом",
+      "ru": "человек, который пользуется приложением или сайтом"
+    },
+    "def": {
+      "de": "Viele <b>User</b> lesen die Regeln einer App nie genau.",
+      "en": "Many <b>users</b> never read the rules of an app carefully.",
+      "uk": "Багато <b>користувачів</b> ніколи уважно не читають правила застосунку.",
+      "ru": "Многие <b>пользователи</b> никогда внимательно не читают правила приложения."
+    },
+    "gram": ""
+  },
+  {
     "id": "k12_001",
     "cat": "k12",
     "term": {
@@ -37617,36 +34494,8 @@ var VOCAB = [
     "gram": "plusquamperfekt",
     "info": {
       "num": "sg"
-    }
-  },
-  {
-    "id": "k12_004",
-    "cat": "k12",
-    "term": {
-      "de": "der Lebenslauf",
-      "en": "CV",
-      "uk": "резюме",
-      "ru": "резюме"
     },
-    "short": {
-      "de": "ein Dokument mit Informationen über die eigene Ausbildung und Berufserfahrung",
-      "en": "a document with information about one's own education and work experience",
-      "uk": "документ з інформацією про власну освіту та досвід роботи",
-      "ru": "документ с информацией о собственном образовании и опыте работы"
-    },
-    "def": {
-      "de": "Er <g>hatte</g> seinen <b>Lebenslauf</b> schon <g>aktualisiert</g>, bevor die Stellenanzeige veröffentlicht wurde.",
-      "en": "He <g>had</g> already <g>updated</g> his <b>CV</b> before the job advertisement was published.",
-      "uk": "Він уже оновив своє <b>резюме</b> до того, як оголошення про вакансію було опубліковано.",
-      "ru": "Он уже обновил своё <b>резюме</b> до того, как объявление о вакансии было опубликовано."
-    },
-    "gram": "plusquamperfekt",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Lebensläufe"
-      ]
-    }
+    "prio": 2
   },
   {
     "id": "k12_005",
@@ -37675,36 +34524,8 @@ var VOCAB = [
       "v": [
         "die Ausbildungen"
       ]
-    }
-  },
-  {
-    "id": "k12_006",
-    "cat": "k12",
-    "term": {
-      "de": "der Schulabschluss",
-      "en": "school-leaving qualification",
-      "uk": "атестат про освіту",
-      "ru": "школьный аттестат"
     },
-    "short": {
-      "de": "das Zeugnis, das man am Ende der Schulzeit bekommt",
-      "en": "the certificate you receive at the end of your school years",
-      "uk": "атестат, який отримують після завершення навчання в школі",
-      "ru": "аттестат, который получают по окончании школы"
-    },
-    "def": {
-      "de": "Ohne <g>brauchbaren</g> <b>Schulabschluss</b> ist es schwer, eine Ausbildung zu finden.",
-      "en": "Without a usable <b>school-leaving qualification</b>, it is difficult to find an apprenticeship.",
-      "uk": "Без придатного <b>атестата про освіту</b> важко знайти місце для навчання.",
-      "ru": "Без пригодного <b>школьного аттестата</b> трудно найти место для обучения."
-    },
-    "gram": "adjektive_auf_bar_los",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Schulabschlüsse"
-      ]
-    }
+    "prio": 2
   },
   {
     "id": "k12_007",
@@ -37791,32 +34612,6 @@ var VOCAB = [
       "v": [
         "die Gewerkschaften"
       ]
-    }
-  },
-  {
-    "id": "k12_010",
-    "cat": "k12",
-    "term": {
-      "de": "die Arbeitserlaubnis",
-      "en": "work permit",
-      "uk": "дозвіл на роботу",
-      "ru": "разрешение на работу"
-    },
-    "short": {
-      "de": "das offizielle Recht, in einem Land arbeiten zu dürfen",
-      "en": "the official right to be allowed to work in a country",
-      "uk": "офіційне право працювати в певній країні",
-      "ru": "официальное право работать в стране"
-    },
-    "def": {
-      "de": "Ohne gültige <b>Arbeitserlaubnis</b> bleibt man leider oft <g>arbeitslos</g>.",
-      "en": "Without a valid <b>work permit</b>, you unfortunately often remain unemployed.",
-      "uk": "Без чинного <b>дозволу на роботу</b> людина, на жаль, часто залишається безробітною.",
-      "ru": "Без действующего <b>разрешения на работу</b> человек, к сожалению, часто остаётся безработным."
-    },
-    "gram": "adjektive_auf_bar_los",
-    "info": {
-      "num": "sg"
     }
   },
   {
@@ -37930,32 +34725,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k12_015",
-    "cat": "k12",
-    "term": {
-      "de": "außerhalb",
-      "en": "outside of",
-      "uk": "поза межами",
-      "ru": "за пределами"
-    },
-    "short": {
-      "de": "nicht in einem bestimmten Bereich, sondern draußen davon",
-      "en": "not within a certain area, but outside of it",
-      "uk": "не в межах певної сфери, а поза нею",
-      "ru": "не в пределах определённой сферы, а за её пределами"
-    },
-    "def": {
-      "de": "<b>Außerhalb</b> der Geschäftszeiten ist leider niemand <g>erreichbar</g>.",
-      "en": "<b>Outside of</b> business hours, unfortunately no one is reachable.",
-      "uk": "<b>Поза</b> робочим часом, на жаль, ніхто не є доступним.",
-      "ru": "<b>За пределами</b> рабочего времени, к сожалению, никто не доступен."
-    },
-    "gram": "adjektive_auf_bar_los",
-    "info": {
-      "case": "G"
-    }
-  },
-  {
     "id": "k12_018",
     "cat": "k12",
     "term": {
@@ -38002,29 +34771,6 @@ var VOCAB = [
     "gram": "nebensatz_mit_nachdem"
   },
   {
-    "id": "k12_020",
-    "cat": "k12",
-    "term": {
-      "de": "die Behörde",
-      "en": "authority",
-      "uk": "установа",
-      "ru": "учреждение"
-    },
-    "short": {
-      "de": "eine staatliche Einrichtung, die offizielle Aufgaben erledigt",
-      "en": "a government institution that carries out official tasks",
-      "uk": "державний заклад, який виконує офіційні завдання",
-      "ru": "государственное учреждение, выполняющее официальные задачи"
-    },
-    "def": {
-      "de": "<g>Nachdem</g> er bei der <b>Behörde</b> alle Papiere abgegeben <g>hatte</g>, musste er nur noch warten.",
-      "en": "<g>After</g> he <g>had</g> submitted all the papers at the <b>authority</b>, he only had to wait.",
-      "uk": "<g>Після того як</g> він подав усі документи в <b>установу</b>, йому залишалося лише чекати.",
-      "ru": "<g>После того как</g> он подал все документы в <b>учреждение</b>, ему оставалось только ждать."
-    },
-    "gram": "nebensatz_mit_nachdem"
-  },
-  {
     "id": "k12_021",
     "cat": "k12",
     "term": {
@@ -38045,30 +34791,8 @@ var VOCAB = [
       "uk": "<g>Після того як</g> вона подала <b>заяву</b>, минуло кілька тижнів до відповіді.",
       "ru": "<g>После того как</g> она подала <b>заявление</b>, прошло несколько недель до ответа."
     },
-    "gram": "nebensatz_mit_nachdem"
-  },
-  {
-    "id": "k12_022",
-    "cat": "k12",
-    "term": {
-      "de": "übersetzen",
-      "en": "to translate",
-      "uk": "перекладати",
-      "ru": "переводить"
-    },
-    "short": {
-      "de": "einen Text von einer Sprache in eine andere übertragen",
-      "en": "to convert a text from one language into another",
-      "uk": "передавати текст з однієї мови іншою",
-      "ru": "передавать текст с одного языка на другой"
-    },
-    "def": {
-      "de": "<g>Nachdem</g> er seine Dokumente <b>übersetzen</b> lassen <g>hatte</g>, konnte er sie einreichen.",
-      "en": "<g>After</g> he <g>had</g> his documents <b>translated</b>, he could submit them.",
-      "uk": "<g>Після того як</g> він <b>переклав</b> свої документи, він зміг їх подати.",
-      "ru": "<g>После того как</g> он <b>перевёл</b> свои документы, он смог их подать."
-    },
-    "gram": "nebensatz_mit_nachdem"
+    "gram": "nebensatz_mit_nachdem",
+    "prio": 2
   },
   {
     "id": "k12_023",
@@ -38120,7 +34844,8 @@ var VOCAB = [
       "v": [
         "die Wohnungen"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k12_026",
@@ -38149,7 +34874,8 @@ var VOCAB = [
       "v": [
         "die Firmen"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k12_027",
@@ -38227,81 +34953,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k12_030",
-    "cat": "k12",
-    "term": {
-      "de": "studieren",
-      "en": "to study at university",
-      "uk": "навчатися в університеті",
-      "ru": "учиться в университете"
-    },
-    "short": {
-      "de": "an einer Universität oder Hochschule lernen",
-      "en": "to learn at a university or college",
-      "uk": "навчатися в університеті чи виші",
-      "ru": "учиться в университете или вузе"
-    },
-    "def": {
-      "de": "Bevor er auswanderte, <g>hatte</g> er in seinem Heimatland Medizin <g><b>studiert</b></g>.",
-      "en": "Before he emigrated, he <g>had</g> <g><b>studied</b></g> medicine in his home country.",
-      "uk": "До того як він емігрував, він уже <b>вивчав</b> медицину на батьківщині.",
-      "ru": "До того как он эмигрировал, он уже <b>изучал</b> медицину на родине."
-    },
-    "gram": "plusquamperfekt"
-  },
-  {
-    "id": "k12_031",
-    "cat": "k12",
-    "term": {
-      "de": "die Position",
-      "en": "position",
-      "uk": "посада",
-      "ru": "должность"
-    },
-    "short": {
-      "de": "eine bestimmte Stelle oder Funktion in einer Firma",
-      "en": "a certain post or role in a company",
-      "uk": "певна посада чи функція у фірмі",
-      "ru": "определённая должность или функция в фирме"
-    },
-    "def": {
-      "de": "Bevor sie kündigte, <g>hatte</g> sie eine leitende <b>Position</b> <g>innegehabt</g>.",
-      "en": "Before she resigned, she <g>had</g> <g>held</g> a leading <b>position</b>.",
-      "uk": "До того як вона звільнилася, вона обіймала керівну <b>посаду</b>.",
-      "ru": "До того как она уволилась, она занимала руководящую <b>должность</b>."
-    },
-    "gram": "plusquamperfekt",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Positionen"
-      ]
-    }
-  },
-  {
-    "id": "k12_033",
-    "cat": "k12",
-    "term": {
-      "de": "organisieren",
-      "en": "to organise",
-      "uk": "організовувати",
-      "ru": "организовывать"
-    },
-    "short": {
-      "de": "dafür sorgen, dass etwas gut geplant und geordnet abläuft",
-      "en": "to ensure that something runs in a well-planned, orderly way",
-      "uk": "забезпечувати, щоб щось відбувалося добре сплановано й упорядковано",
-      "ru": "обеспечивать, чтобы что-то происходило хорошо спланированно и упорядоченно"
-    },
-    "def": {
-      "de": "<g>Das <b>Organisieren</b></g> von Terminen gehört zu meinen täglichen Aufgaben.",
-      "en": "<g><b>Organising</b></g> appointments is one of my daily tasks.",
-      "uk": "<b>Організація</b> зустрічей — одне з моїх щоденних завдань.",
-      "ru": "<b>Организация</b> встреч — одна из моих ежедневных задач."
-    },
-    "gram": "infinitiv_als_nomen"
-  },
-  {
     "id": "k12_035",
     "cat": "k12",
     "term": {
@@ -38368,7 +35019,8 @@ var VOCAB = [
       "uk": "<b>Прийняття рішень</b> під тиском часу — звичайна справа для керівника.",
       "ru": "<b>Принятие решений</b> под давлением времени — обычное дело для руководителя."
     },
-    "gram": "infinitiv_als_nomen"
+    "gram": "infinitiv_als_nomen",
+    "prio": 2
   },
   {
     "id": "k12_038",
@@ -38391,7 +35043,8 @@ var VOCAB = [
       "uk": "<b>Уміння слухати</b> — одна з найважливіших навичок у роботі з клієнтами.",
       "ru": "<b>Умение слушать</b> — один из важнейших навыков в работе с клиентами."
     },
-    "gram": "infinitiv_als_nomen"
+    "gram": "infinitiv_als_nomen",
+    "prio": 2
   },
   {
     "id": "k12_039",
@@ -38440,87 +35093,6 @@ var VOCAB = [
     "gram": "infinitiv_als_nomen"
   },
   {
-    "id": "k12_042",
-    "cat": "k12",
-    "term": {
-      "de": "der Arbeitsvertrag",
-      "en": "employment contract",
-      "uk": "трудовий договір",
-      "ru": "трудовой договор"
-    },
-    "short": {
-      "de": "ein offizielles Dokument, das die Bedingungen einer Arbeit festlegt",
-      "en": "an official document that sets out the terms of a job",
-      "uk": "офіційний документ, який встановлює умови роботи",
-      "ru": "официальный документ, устанавливающий условия работы"
-    },
-    "def": {
-      "de": "Der <b>Arbeitsvertrag</b> ist nach der Probezeit leichter <g>kündbar</g>.",
-      "en": "The <b>employment contract</b> is easier to terminate after the probationary period.",
-      "uk": "<b>Трудовий договір</b> легше розірвати після випробувального терміну.",
-      "ru": "<b>Трудовой договор</b> легче расторгнуть после испытательного срока."
-    },
-    "gram": "adjektive_auf_bar_los"
-  },
-  {
-    "id": "k12_043",
-    "cat": "k12",
-    "term": {
-      "de": "die Prüfung",
-      "en": "exam",
-      "uk": "іспит",
-      "ru": "экзамен"
-    },
-    "short": {
-      "de": "ein Test, mit dem man Wissen oder Können überprüft",
-      "en": "a test used to check knowledge or ability",
-      "uk": "тест, яким перевіряють знання чи вміння",
-      "ru": "тест, которым проверяют знания или умения"
-    },
-    "def": {
-      "de": "Die <b>Prüfung</b> ist zum Glück <g>wiederholbar</g>, falls man durchfällt.",
-      "en": "The <b>exam</b> can fortunately be repeated if you fail.",
-      "uk": "<b>Іспит</b>, на щастя, можна перескласти, якщо не здаси.",
-      "ru": "<b>Экзамен</b>, к счастью, можно пересдать, если не сдашь."
-    },
-    "gram": "adjektive_auf_bar_los",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Prüfungen"
-      ]
-    }
-  },
-  {
-    "id": "k12_045",
-    "cat": "k12",
-    "term": {
-      "de": "der Fehler",
-      "en": "mistake",
-      "uk": "помилка",
-      "ru": "ошибка"
-    },
-    "short": {
-      "de": "etwas, das nicht richtig gemacht wurde",
-      "en": "something that was not done correctly",
-      "uk": "те, що зроблено неправильно",
-      "ru": "то, что сделано неправильно"
-    },
-    "def": {
-      "de": "Die meisten <b>Fehler</b> in dieser Arbeit sind leicht <g>vermeidbar</g>.",
-      "en": "Most <b>mistakes</b> in this work are easily avoidable.",
-      "uk": "Більшості <b>помилок</b> у цій роботі легко уникнути.",
-      "ru": "Большинства <b>ошибок</b> в этой работе легко избежать."
-    },
-    "gram": "adjektive_auf_bar_los",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Fehler"
-      ]
-    }
-  },
-  {
     "id": "k12_046",
     "cat": "k12",
     "term": {
@@ -38544,35 +35116,6 @@ var VOCAB = [
     "gram": "adjektive_auf_bar_los"
   },
   {
-    "id": "k12_047",
-    "cat": "k12",
-    "term": {
-      "de": "der Wechsel",
-      "en": "transition",
-      "uk": "перехід",
-      "ru": "переход"
-    },
-    "short": {
-      "de": "der Übergang von einer Sache zu einer anderen",
-      "en": "the move from one thing to another",
-      "uk": "перехід від однієї речі до іншої",
-      "ru": "переход от одной вещи к другой"
-    },
-    "def": {
-      "de": "Der <b>Wechsel</b> in die neue Abteilung verlief völlig <g>problemlos</g>.",
-      "en": "The <b>transition</b> to the new department went completely smoothly.",
-      "uk": "<b>Перехід</b> у новий відділ пройшов зовсім без проблем.",
-      "ru": "<b>Переход</b> в новый отдел прошёл совершенно без проблем."
-    },
-    "gram": "adjektive_auf_bar_los",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Wechsel"
-      ]
-    }
-  },
-  {
     "id": "k12_049",
     "cat": "k12",
     "term": {
@@ -38594,58 +35137,6 @@ var VOCAB = [
       "ru": "Её <b>квалификация</b> была хорошо сопоставима с немецким дипломом."
     },
     "gram": "adjektive_auf_bar_los"
-  },
-  {
-    "id": "k12_050",
-    "cat": "k12",
-    "term": {
-      "de": "der Titel",
-      "en": "title",
-      "uk": "звання",
-      "ru": "звание"
-    },
-    "short": {
-      "de": "eine offizielle Bezeichnung für einen akademischen Grad oder eine Position",
-      "en": "an official designation for an academic degree or position",
-      "uk": "офіційна назва академічного ступеня чи посади",
-      "ru": "официальное название учёной степени или должности"
-    },
-    "def": {
-      "de": "Akademische <b>Titel</b> sind nicht immer eins zu eins <g>übertragbar</g>.",
-      "en": "Academic <b>titles</b> are not always directly transferable.",
-      "uk": "Академічні <b>звання</b> не завжди можна прямо перенести з однієї країни в іншу.",
-      "ru": "Академические <b>звания</b> не всегда можно напрямую перенести из одной страны в другую."
-    },
-    "gram": "adjektive_auf_bar_los"
-  },
-  {
-    "id": "k12_051",
-    "cat": "k12",
-    "term": {
-      "de": "der Anfang",
-      "en": "beginning",
-      "uk": "початок",
-      "ru": "начало"
-    },
-    "short": {
-      "de": "der erste Teil oder der Beginn von etwas",
-      "en": "the first part or the start of something",
-      "uk": "перша частина або початок чогось",
-      "ru": "первая часть или начало чего-то"
-    },
-    "def": {
-      "de": "Am <b>Anfang</b> <g>des</g> Monats bekomme ich mein Gehalt.",
-      "en": "At the <b>beginning</b> <g>of the</g> month I get my salary.",
-      "uk": "На <b>початку</b> місяця я отримую зарплату.",
-      "ru": "В <b>начале</b> месяца я получаю зарплату."
-    },
-    "gram": "genitiv",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Anfänge"
-      ]
-    }
   },
   {
     "id": "k12_052",
@@ -39384,29 +35875,6 @@ var VOCAB = [
     "gram": "deshalb_deswegen_trotzdem"
   },
   {
-    "id": "k12_084",
-    "cat": "k12",
-    "term": {
-      "de": "das Unternehmen",
-      "en": "company",
-      "uk": "підприємство",
-      "ru": "предприятие"
-    },
-    "short": {
-      "de": "eine Firma",
-      "en": "a company",
-      "uk": "фірма",
-      "ru": "фирма"
-    },
-    "def": {
-      "de": "Das <b>Unternehmen</b> <g>hat</g> im letzten Jahr 50 neue Mitarbeiter eingestellt.",
-      "en": "The <b>company</b> hired 50 new employees last year.",
-      "uk": "<b>Підприємство</b> минулого року найняло 50 нових працівників.",
-      "ru": "<b>Предприятие</b> в прошлом году наняло 50 новых сотрудников."
-    },
-    "gram": "perfekt_wdh_b1"
-  },
-  {
     "id": "k12_085",
     "cat": "k12",
     "term": {
@@ -39612,29 +36080,6 @@ var VOCAB = [
       "ru": "Моя <b>расчёска</b> непригодна, ведь сломался зубец."
     },
     "gram": "adjektive_auf_bar_los"
-  },
-  {
-    "id": "k12_094",
-    "cat": "k12",
-    "term": {
-      "de": "schneiden",
-      "en": "to cut",
-      "uk": "стригти",
-      "ru": "стричь"
-    },
-    "short": {
-      "de": "mit einer Schere oder einem Messer in Teile teilen oder kürzer machen, zum Beispiel Haare",
-      "en": "to divide into pieces or make shorter with scissors or a knife, for example hair",
-      "uk": "розділяти на частини або вкорочувати ножицями чи ножем, наприклад волосся",
-      "ru": "разделять на части или укорачивать ножницами или ножом, например волосы"
-    },
-    "def": {
-      "de": "Der Friseur <g>hat</g> mir die Haare ganz kurz <b>geschnitten</b>.",
-      "en": "The hairdresser <b>cut</b> my hair very short.",
-      "uk": "Перукар <b>підстриг</b> мені волосся дуже коротко.",
-      "ru": "Парикмахер <b>постриг</b> мне волосы очень коротко."
-    },
-    "gram": "perfekt_wdh_b1"
   },
   {
     "id": "k12_095",
@@ -39890,6 +36335,199 @@ var VOCAB = [
     "gram": "nebensatz_mit_damit_wdh_b1"
   },
   {
+    "id": "k12_106",
+    "cat": "k12",
+    "term": {
+      "de": "entstehen",
+      "en": "to develop",
+      "uk": "виникати",
+      "ru": "возникать"
+    },
+    "short": {
+      "de": "langsam anfangen zu existieren",
+      "en": "to slowly begin to exist",
+      "uk": "поступово починати існувати",
+      "ru": "постепенно начинать существовать"
+    },
+    "def": {
+      "de": "<g>Nachdem</g> wir oft zusammen gekocht hatten, <b>entstand</b> eine echte Freundschaft.",
+      "en": "<g>After</g> we had often cooked together, a real friendship <b>developed</b>.",
+      "uk": "<g>Після того як</g> ми часто готували разом, <b>виникла</b> справжня дружба.",
+      "ru": "<g>После того как</g> мы часто готовили вместе, <b>возникла</b> настоящая дружба."
+    },
+    "gram": "nebensatz_mit_nachdem",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "entsteht",
+        "entstand",
+        "ist entstanden"
+      ]
+    }
+  },
+  {
+    "id": "k12_107",
+    "cat": "k12",
+    "term": {
+      "de": "die Erfüllung",
+      "en": "fulfilment",
+      "uk": "самореалізація",
+      "ru": "самореализация"
+    },
+    "short": {
+      "de": "das gute Gefühl, wenn man etwas Sinnvolles tut",
+      "en": "the good feeling when you do something meaningful",
+      "uk": "добре відчуття, коли робиш щось змістовне",
+      "ru": "хорошее чувство, когда делаешь что-то значимое"
+    },
+    "def": {
+      "de": "Im <g>Helfen</g> finde ich meine <b>Erfüllung</b>.",
+      "en": "I find my <b>fulfilment</b> in <g>helping</g>.",
+      "uk": "<b>Самореалізацію</b> я знаходжу в <g>допомозі</g> іншим.",
+      "ru": "<b>Самореализацию</b> я нахожу в <g>помощи</g> другим."
+    },
+    "gram": "infinitiv_als_nomen",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
+    "id": "k12_108",
+    "cat": "k12",
+    "term": {
+      "de": "der Personalleiter",
+      "en": "head of HR",
+      "uk": "керівник відділу кадрів",
+      "ru": "руководитель отдела кадров"
+    },
+    "short": {
+      "de": "die Person, die die Personalabteilung leitet",
+      "en": "the person who runs the HR department",
+      "uk": "людина, яка керує відділом кадрів",
+      "ru": "человек, который руководит отделом кадров"
+    },
+    "def": {
+      "de": "Der <b>Personalleiter</b> hat meinen Lebenslauf gelesen und mich zum Gespräch eingeladen.",
+      "en": "The <b>head of HR</b> read my CV and invited me to an interview.",
+      "uk": "<b>Керівник відділу кадрів</b> прочитав моє резюме й запросив мене на співбесіду.",
+      "ru": "<b>Руководитель отдела кадров</b> прочитал моё резюме и пригласил меня на собеседование."
+    },
+    "gram": "",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Personalleiter"
+      ]
+    }
+  },
+  {
+    "id": "k12_109",
+    "cat": "k12",
+    "term": {
+      "de": "das Feedback",
+      "en": "feedback",
+      "uk": "зворотний звʼязок",
+      "ru": "обратная связь"
+    },
+    "short": {
+      "de": "eine Rückmeldung, was gut war und was man besser machen kann",
+      "en": "a response about what was good and what could be better",
+      "uk": "відгук про те, що було добре і що можна покращити",
+      "ru": "отзыв о том, что было хорошо и что можно улучшить"
+    },
+    "def": {
+      "de": "Zu meinen Aufgaben gehört das <g>Geben</g> von <b>Feedback</b> an neue Kollegen.",
+      "en": "My tasks include <g>giving</g> <b>feedback</b> to new colleagues.",
+      "uk": "До моїх обовʼязків належить <g>надання</g> <b>зворотного звʼязку</b> новим колегам.",
+      "ru": "В мои обязанности входит <g>предоставление</g> <b>обратной связи</b> новым коллегам."
+    },
+    "gram": "infinitiv_als_nomen",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
+    "id": "k12_110",
+    "cat": "k12",
+    "term": {
+      "de": "die Kenntnis",
+      "en": "knowledge",
+      "uk": "знання",
+      "ru": "знание"
+    },
+    "short": {
+      "de": "das, was man in einem Bereich weiß und kann",
+      "en": "what you know and can do in a field",
+      "uk": "те, що знаєш і вмієш у певній галузі",
+      "ru": "то, что знаешь и умеешь в определённой области"
+    },
+    "def": {
+      "de": "Für diese Stelle sind gute <b>Kenntnisse</b> in Buchhaltung wichtig.",
+      "en": "Good <b>knowledge</b> of accounting is important for this job.",
+      "uk": "Для цієї посади важливі добрі <b>знання</b> бухгалтерії.",
+      "ru": "Для этой должности важны хорошие <b>знания</b> бухгалтерии."
+    },
+    "gram": "",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kenntnisse"
+      ]
+    }
+  },
+  {
+    "id": "k12_111",
+    "cat": "k12",
+    "term": {
+      "de": "qualifiziert",
+      "en": "qualified",
+      "uk": "кваліфікований",
+      "ru": "квалифицированный"
+    },
+    "short": {
+      "de": "mit der richtigen Ausbildung für eine Arbeit",
+      "en": "with the right training for a job",
+      "uk": "з відповідною освітою для роботи",
+      "ru": "с подходящим образованием для работы"
+    },
+    "def": {
+      "de": "Die Firma sucht <b>qualifizierte</b> Mitarbeiter für die Pflege.",
+      "en": "The company is looking for <b>qualified</b> staff for care work.",
+      "uk": "Фірма шукає <b>кваліфікованих</b> працівників для догляду.",
+      "ru": "Фирма ищет <b>квалифицированных</b> сотрудников для ухода."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k12_112",
+    "cat": "k12",
+    "term": {
+      "de": "die Perspektive",
+      "en": "prospect",
+      "uk": "перспектива",
+      "ru": "перспектива"
+    },
+    "short": {
+      "de": "eine Möglichkeit für die Zukunft",
+      "en": "a possibility for the future",
+      "uk": "можливість на майбутнє",
+      "ru": "возможность на будущее"
+    },
+    "def": {
+      "de": "<g>Nachdem</g> ich den Sprachkurs gemacht hatte, hatte ich eine neue berufliche <b>Perspektive</b>.",
+      "en": "<g>After</g> I had done the language course, I had a new career <b>prospect</b>.",
+      "uk": "<g>Після того як</g> я закінчила мовний курс, у мене зʼявилася нова професійна <b>перспектива</b>.",
+      "ru": "<g>После того как</g> я закончила языковой курс, у меня появилась новая профессиональная <b>перспектива</b>."
+    },
+    "gram": "nebensatz_mit_nachdem",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Perspektiven"
+      ]
+    }
+  },
+  {
     "id": "k13_001",
     "cat": "k13",
     "term": {
@@ -40000,32 +36638,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k13_010",
-    "cat": "k13",
-    "term": {
-      "de": "die Toleranz",
-      "en": "tolerance",
-      "uk": "толерантність",
-      "ru": "толерантность"
-    },
-    "short": {
-      "de": "die Bereitschaft, andere Meinungen und Lebensweisen zu akzeptieren",
-      "en": "the willingness to accept other opinions and ways of life",
-      "uk": "готовність приймати інші думки й способи життя",
-      "ru": "готовность принимать другие мнения и образы жизни"
-    },
-    "def": {
-      "de": "Die Erziehung <g>toleranter</g> Kinder beginnt mit der eigenen <b>Toleranz</b> der Eltern.",
-      "en": "Raising tolerant children begins with the parents' own <b>tolerance</b>.",
-      "uk": "Виховання толерантних дітей починається з власної <b>толерантності</b> батьків.",
-      "ru": "Воспитание толерантных детей начинается с собственной <b>толерантности</b> родителей."
-    },
-    "gram": "adjektivendung_genitiv",
-    "info": {
-      "num": "sg"
-    }
-  },
-  {
     "id": "k13_011",
     "cat": "k13",
     "term": {
@@ -40050,29 +36662,6 @@ var VOCAB = [
     "info": {
       "num": "sg"
     }
-  },
-  {
-    "id": "k13_013",
-    "cat": "k13",
-    "term": {
-      "de": "unterstützen",
-      "en": "to support",
-      "uk": "підтримувати",
-      "ru": "поддерживать"
-    },
-    "short": {
-      "de": "jemandem helfen, ein Ziel zu erreichen",
-      "en": "to help someone achieve a goal",
-      "uk": "допомагати комусь досягти мети",
-      "ru": "помогать кому-либо достичь цели"
-    },
-    "def": {
-      "de": "Der <g>erfolgreiche</g> Verein <b>unterstützt</b> viele Familien in der Region.",
-      "en": "The successful club <b>supports</b> many families in the region.",
-      "uk": "Успішний клуб <b>підтримує</b> багато сімей у регіоні.",
-      "ru": "Успешный клуб <b>поддерживает</b> много семей в регионе."
-    },
-    "gram": "adjektive_auf_voll_reich"
   },
   {
     "id": "k13_014",
@@ -40170,7 +36759,8 @@ var VOCAB = [
       "uk": "Лавку в парку <g>потрібно</g> терміново <g><b>відремонтувати</b></g>.",
       "ru": "Скамейку в парке <g>нужно</g> срочно <g><b>отремонтировать</b></g>."
     },
-    "gram": "passiv_mit_modalverben"
+    "gram": "passiv_mit_modalverben",
+    "prio": 2
   },
   {
     "id": "k13_019",
@@ -40193,30 +36783,8 @@ var VOCAB = [
       "uk": "Пожертви <g>можна</g> також <g><b>збирати</b></g> онлайн.",
       "ru": "Пожертвования <g>можно</g> также <g><b>собирать</b></g> онлайн."
     },
-    "gram": "passiv_mit_modalverben"
-  },
-  {
-    "id": "k13_021",
-    "cat": "k13",
-    "term": {
-      "de": "verteilen",
-      "en": "to distribute",
-      "uk": "розподіляти",
-      "ru": "распределять"
-    },
-    "short": {
-      "de": "etwas auf mehrere Personen oder Orte aufteilen",
-      "en": "to divide something among several people or places",
-      "uk": "розподіляти щось між кількома людьми чи місцями",
-      "ru": "распределять что-то между несколькими людьми или местами"
-    },
-    "def": {
-      "de": "Die Lebensmittel <g>müssen</g> gerecht <g><b>verteilt werden</b></g>.",
-      "en": "The food <g>must</g> be <g><b>distributed</b></g> fairly.",
-      "uk": "Продукти <g>потрібно</g> справедливо <g><b>розподілити</b></g>.",
-      "ru": "Продукты <g>нужно</g> справедливо <g><b>распределить</b></g>."
-    },
-    "gram": "passiv_mit_modalverben"
+    "gram": "passiv_mit_modalverben",
+    "prio": 2
   },
   {
     "id": "k13_022",
@@ -40265,35 +36833,6 @@ var VOCAB = [
     "gram": "passiv_mit_modalverben"
   },
   {
-    "id": "k13_025",
-    "cat": "k13",
-    "term": {
-      "de": "die Krankheit",
-      "en": "illness",
-      "uk": "хвороба",
-      "ru": "болезнь"
-    },
-    "short": {
-      "de": "ein Zustand, bei dem der Körper nicht gesund ist",
-      "en": "a condition in which the body is not healthy",
-      "uk": "стан, коли тіло нездорове",
-      "ru": "состояние, при котором тело нездорово"
-    },
-    "def": {
-      "de": "<g>Wegen einer schweren</g> <b>Krankheit</b> konnte er nicht mehr aktiv mitarbeiten.",
-      "en": "<g>Because of a serious</g> <b>illness</b>, he could no longer actively participate.",
-      "uk": "<g>Через тяжку</g> <b>хворобу</b> він більше не міг активно допомагати.",
-      "ru": "<g>Из-за тяжёлой</g> <b>болезни</b> он больше не мог активно участвовать."
-    },
-    "gram": "praepositionen_mit_genitiv",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Krankheiten"
-      ]
-    }
-  },
-  {
     "id": "k13_026",
     "cat": "k13",
     "term": {
@@ -40314,36 +36853,8 @@ var VOCAB = [
       "uk": "<g>Незважаючи на погану</g> <b>погоду</b>, на акцію прийшло багато волонтерів.",
       "ru": "<g>Несмотря на плохую</g> <b>погоду</b>, на акцию пришло много волонтёров."
     },
-    "gram": "praepositionen_mit_genitiv"
-  },
-  {
-    "id": "k13_027",
-    "cat": "k13",
-    "term": {
-      "de": "der Termin",
-      "en": "appointment",
-      "uk": "зустріч",
-      "ru": "встреча"
-    },
-    "short": {
-      "de": "eine bestimmte Zeit, zu der man etwas machen oder wohin man gehen möchte",
-      "en": "a certain time when you want to do something or go somewhere",
-      "uk": "конкретний час, коли хочеш щось зробити або кудись піти",
-      "ru": "конкретное время, когда хочешь что-то сделать или куда-то пойти"
-    },
-    "def": {
-      "de": "<g>Wegen eines wichtigen</g> <b>Termins</b> musste sie die Sitzung verlassen.",
-      "en": "<g>Because of an important</g> <b>appointment</b>, she had to leave the meeting.",
-      "uk": "<g>Через важливу</g> <b>зустріч</b> їй довелося покинути засідання.",
-      "ru": "<g>Из-за важной</g> <b>встречи</b> ей пришлось покинуть заседание."
-    },
     "gram": "praepositionen_mit_genitiv",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Termine"
-      ]
-    }
+    "prio": 2
   },
   {
     "id": "k13_028",
@@ -40413,32 +36924,6 @@ var VOCAB = [
       "ru": "<g>Из-за</g> <b>нехватки</b> волонтёров проект пришлось отложить."
     },
     "gram": "praepositionen_mit_genitiv"
-  },
-  {
-    "id": "k13_031",
-    "cat": "k13",
-    "term": {
-      "de": "die Ferien",
-      "en": "holidays",
-      "uk": "канікули",
-      "ru": "каникулы"
-    },
-    "short": {
-      "de": "die freie Zeit ohne Schule oder Arbeit, meist im Sommer",
-      "en": "free time without school or work, usually in summer",
-      "uk": "вільний час без навчання чи роботи, зазвичай улітку",
-      "ru": "свободное время без учёбы или работы, обычно летом"
-    },
-    "def": {
-      "de": "<g>Während der</g> <b>Ferien</b> arbeiten viele Studierende ehrenamtlich.",
-      "en": "<g>During the</g> <b>holidays</b>, many students do voluntary work.",
-      "uk": "<g>Під час</g> <b>канікул</b> багато студентів займаються волонтерством.",
-      "ru": "<g>Во время</g> <b>каникул</b> многие студенты занимаются волонтёрством."
-    },
-    "gram": "praepositionen_mit_genitiv",
-    "info": {
-      "num": "pl"
-    }
   },
   {
     "id": "k13_032",
@@ -40599,33 +37084,8 @@ var VOCAB = [
       "uk": "Через успішний <b>проєкт</b> група отримала більше фінансування.",
       "ru": "Из-за успешного <b>проекта</b> группа получила больше финансирования."
     },
-    "gram": "adjektivendung_genitiv"
-  },
-  {
-    "id": "k13_039",
-    "cat": "k13",
-    "term": {
-      "de": "die Hilfe",
-      "en": "help",
-      "uk": "допомога",
-      "ru": "помощь"
-    },
-    "short": {
-      "de": "die Unterstützung, die man jemandem gibt",
-      "en": "the support you give to someone",
-      "uk": "підтримка, яку надають комусь",
-      "ru": "поддержка, которую оказывают кому-то"
-    },
-    "def": {
-      "de": "Trotz der <g>schnellen</g> <b>Hilfe</b> konnte das Haus nicht gerettet werden.",
-      "en": "Despite the quick <b>help</b>, the house could not be saved.",
-      "uk": "Незважаючи на швидку <b>допомогу</b>, будинок не вдалося врятувати.",
-      "ru": "Несмотря на быструю <b>помощь</b>, дом не удалось спасти."
-    },
     "gram": "adjektivendung_genitiv",
-    "info": {
-      "num": "sg"
-    }
+    "prio": 2
   },
   {
     "id": "k13_041",
@@ -40648,30 +37108,8 @@ var VOCAB = [
       "uk": "<b>Повага</b> в групі зростала завдяки <g>довірливій</g> співпраці.",
       "ru": "<b>Уважение</b> в группе росло благодаря <g>доверительному</g> сотрудничеству."
     },
-    "gram": "adjektive_auf_voll_reich"
-  },
-  {
-    "id": "k13_042",
-    "cat": "k13",
-    "term": {
-      "de": "die Liebe",
-      "en": "love",
-      "uk": "любов",
-      "ru": "любовь"
-    },
-    "short": {
-      "de": "ein starkes, warmes Gefühl der Zuneigung",
-      "en": "a strong, warm feeling of affection",
-      "uk": "сильне тепле почуття прихильності",
-      "ru": "сильное тёплое чувство привязанности"
-    },
-    "def": {
-      "de": "Ihre <b>Liebe</b> zur Arbeit machte sie zu einer besonders <g>hilfreichen</g> Kollegin.",
-      "en": "Her <b>love</b> for the work made her an especially <g>helpful</g> colleague.",
-      "uk": "Її <b>любов</b> до роботи робила її особливо <g>корисною</g> колегою.",
-      "ru": "Её <b>любовь</b> к работе делала её особенно <g>полезной</g> коллегой."
-    },
-    "gram": "adjektive_auf_voll_reich"
+    "gram": "adjektive_auf_voll_reich",
+    "prio": 2
   },
   {
     "id": "k13_043",
@@ -40746,7 +37184,8 @@ var VOCAB = [
       "uk": "Її <b>сила</b> допомагала їй залишатися спокійною навіть у <g>вимогливій</g> ситуації.",
       "ru": "Её <b>сила</b> помогала ей оставаться спокойной даже в <g>требовательной</g> ситуации."
     },
-    "gram": "adjektive_auf_voll_reich"
+    "gram": "adjektive_auf_voll_reich",
+    "prio": 2
   },
   {
     "id": "k13_047",
@@ -40770,64 +37209,6 @@ var VOCAB = [
       "ru": "<b>Доверие</b> общины росло благодаря <g>успешному</g> сотрудничеству."
     },
     "gram": "adjektive_auf_voll_reich"
-  },
-  {
-    "id": "k13_048",
-    "cat": "k13",
-    "term": {
-      "de": "die Idee",
-      "en": "idea",
-      "uk": "ідея",
-      "ru": "идея"
-    },
-    "short": {
-      "de": "ein neuer Gedanke oder Plan",
-      "en": "a new thought or plan",
-      "uk": "нова думка чи план",
-      "ru": "новая мысль или план"
-    },
-    "def": {
-      "de": "Ihre <b>Idee</b> erwies sich als <g>wertvoll</g> für das ganze Team.",
-      "en": "Her <b>idea</b> turned out to be <g>valuable</g> for the whole team.",
-      "uk": "Її <b>ідея</b> виявилася <g>цінною</g> для всієї команди.",
-      "ru": "Её <b>идея</b> оказалась <g>ценной</g> для всей команды."
-    },
-    "gram": "adjektive_auf_voll_reich",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Ideen"
-      ]
-    }
-  },
-  {
-    "id": "k13_049",
-    "cat": "k13",
-    "term": {
-      "de": "der Tag",
-      "en": "day",
-      "uk": "день",
-      "ru": "день"
-    },
-    "short": {
-      "de": "ein Zeitraum von 24 Stunden",
-      "en": "a period of 24 hours",
-      "uk": "проміжок часу тривалістю 24 години",
-      "ru": "промежуток времени длиной 24 часа"
-    },
-    "def": {
-      "de": "Es war ein <b>Tag</b> voller <g>hilfreicher</g> Begegnungen und neuer Kontakte.",
-      "en": "It was a <b>day</b> full of <g>helpful</g> encounters and new contacts.",
-      "uk": "Це був <b>день</b>, повний <g>корисних</g> знайомств і нових контактів.",
-      "ru": "Это был <b>день</b>, полный <g>полезных</g> знакомств и новых контактов."
-    },
-    "gram": "adjektive_auf_voll_reich",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Tage"
-      ]
-    }
   },
   {
     "id": "k13_050",
@@ -40945,32 +37326,227 @@ var VOCAB = [
     "gram": "praeteritum_wdh_b1"
   },
   {
-    "id": "k14_002",
-    "cat": "k14",
+    "id": "k13_055",
+    "cat": "k13",
     "term": {
-      "de": "das Einfamilienhaus",
-      "en": "single-family house",
-      "uk": "одноквартирний будинок",
-      "ru": "одноквартирный дом"
+      "de": "die Mitgliedschaft",
+      "en": "membership",
+      "uk": "членство",
+      "ru": "членство"
     },
     "short": {
-      "de": "ein Haus, in dem nur eine Familie lebt",
-      "en": "a house in which only one family lives",
-      "uk": "будинок, у якому живе лише одна сімʼя",
-      "ru": "дом, в котором живёт только одна семья"
+      "de": "wenn man offiziell zu einem Verein oder einer Gruppe gehört",
+      "en": "when you officially belong to a club or group",
+      "uk": "коли офіційно належиш до клубу чи групи",
+      "ru": "когда официально принадлежишь к клубу или группе"
     },
     "def": {
-      "de": "Wir haben unser <b>Einfamilienhaus</b> von einem freundlichen <g>Herrn</g> gekauft.",
-      "en": "We bought our <b>single-family house</b> from a friendly gentleman.",
-      "uk": "Ми купили наш <b>одноквартирний будинок</b> у привітного пана.",
-      "ru": "Мы купили наш <b>одноквартирный дом</b> у приветливого господина."
+      "de": "Die <b>Mitgliedschaft</b> im Verein ist für mich sehr <g>wertvoll</g>, weil ich dort viele Freunde habe.",
+      "en": "<b>Membership</b> of the club is very <g>valuable</g> to me because I have many friends there.",
+      "uk": "<b>Членство</b> в клубі для мене дуже <g>цінне</g>, бо я маю там багато друзів.",
+      "ru": "<b>Членство</b> в клубе для меня очень <g>ценно</g>, потому что у меня там много друзей."
     },
-    "gram": "n_deklination",
+    "gram": "adjektive_auf_voll_reich",
     "forms": {
       "t": "noun",
       "v": [
-        "die Einfamilienhäuser"
+        "die Mitgliedschaften"
       ]
+    }
+  },
+  {
+    "id": "k13_056",
+    "cat": "k13",
+    "term": {
+      "de": "sich verlassen auf",
+      "en": "to rely on",
+      "uk": "покладатися на",
+      "ru": "полагаться на"
+    },
+    "short": {
+      "de": "sicher sein, dass jemand hilft oder etwas so macht, wie man es erwartet",
+      "en": "to be sure that someone will help or do something as expected",
+      "uk": "бути певним, що хтось допоможе чи зробить щось, як очікуєш",
+      "ru": "быть уверенным, что кто-то поможет или сделает что-то, как ожидаешь"
+    },
+    "def": {
+      "de": "<b>Auf</b> meine <g>liebevolle</g> Nachbarin kann ich mich immer <b>verlassen</b>.",
+      "en": "I can always <b>rely on</b> my <g>caring</g> neighbour.",
+      "uk": "Я завжди можу <b>покластися на</b> мою <g>турботливу</g> сусідку.",
+      "ru": "Я всегда могу <b>положиться на</b> мою <g>заботливую</g> соседку."
+    },
+    "gram": "adjektive_auf_voll_reich",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "verlässt",
+        "verließ",
+        "hat verlassen"
+      ]
+    },
+    "info": {
+      "case": "A"
+    }
+  },
+  {
+    "id": "k13_057",
+    "cat": "k13",
+    "term": {
+      "de": "aufmerksam",
+      "en": "attentive",
+      "uk": "уважний",
+      "ru": "внимательный"
+    },
+    "short": {
+      "de": "so, dass man gut merkt, was andere brauchen",
+      "en": "noticing well what others need",
+      "uk": "такий, що добре помічає, чого потребують інші",
+      "ru": "такой, который хорошо замечает, что нужно другим"
+    },
+    "def": {
+      "de": "Meine Freundin ist sehr <b>aufmerksam</b> und <g>rücksichtsvoll</g>.",
+      "en": "My friend is very <b>attentive</b> and <g>considerate</g>.",
+      "uk": "Моя подруга дуже <b>уважна</b> й <g>делікатна</g>.",
+      "ru": "Моя подруга очень <b>внимательная</b> и <g>деликатная</g>."
+    },
+    "gram": "adjektive_auf_voll_reich"
+  },
+  {
+    "id": "k13_058",
+    "cat": "k13",
+    "term": {
+      "de": "ziehen",
+      "en": "to pull",
+      "uk": "тягнути",
+      "ru": "тянуть"
+    },
+    "short": {
+      "de": "etwas mit Kraft zu sich oder hinter sich bewegen",
+      "en": "to move something towards or behind you with force",
+      "uk": "з силою рухати щось до себе чи за собою",
+      "ru": "с силой двигать что-то к себе или за собой"
+    },
+    "def": {
+      "de": "Der schwere Schrank <g>muss</g> vorsichtig an die Wand <b>gezogen</b> <g>werden</g>.",
+      "en": "The heavy wardrobe <g>must be</g> <b>pulled</b> carefully to the wall.",
+      "uk": "Важку шафу <g>треба</g> обережно <b>підтягнути</b> до стіни.",
+      "ru": "Тяжёлый шкаф <g>нужно</g> осторожно <b>подтянуть</b> к стене."
+    },
+    "gram": "passiv_mit_modalverben",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "zieht",
+        "zog",
+        "hat gezogen"
+      ]
+    },
+    "info": {
+      "sense": "bewegen"
+    }
+  },
+  {
+    "id": "k13_059",
+    "cat": "k13",
+    "term": {
+      "de": "geschickt",
+      "en": "skilful",
+      "uk": "вправний",
+      "ru": "ловкий"
+    },
+    "short": {
+      "de": "so, dass man etwas gut mit den Händen machen kann",
+      "en": "able to do things well with your hands",
+      "uk": "такий, що вміє добре робити щось руками",
+      "ru": "такой, который умеет хорошо делать что-то руками"
+    },
+    "def": {
+      "de": "Mein Nachbar ist handwerklich sehr <b>geschickt</b> und repariert alles selbst.",
+      "en": "My neighbour is very <b>skilful</b> with his hands and repairs everything himself.",
+      "uk": "Мій сусід дуже <b>вправний</b> у ремеслі й усе ремонтує сам.",
+      "ru": "Мой сосед очень <b>ловкий</b> в ремесле и всё ремонтирует сам."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k13_060",
+    "cat": "k13",
+    "term": {
+      "de": "ein gutes / schlechtes Gewissen haben",
+      "en": "to have a clear / guilty conscience",
+      "uk": "мати чисте / нечисте сумління",
+      "ru": "иметь чистую / нечистую совесть"
+    },
+    "short": {
+      "de": "sich nach dem, was man getan hat, gut oder schlecht fühlen",
+      "en": "to feel good or bad about what you have done",
+      "uk": "почуватися добре чи погано через те, що зробив",
+      "ru": "чувствовать себя хорошо или плохо из-за того, что сделал"
+    },
+    "def": {
+      "de": "<g>Wegen meiner Absage</g> <b>habe</b> ich ein <b>schlechtes Gewissen</b>.",
+      "en": "I <b>have a guilty conscience</b> <g>because of my cancellation</g>.",
+      "uk": "<g>Через мою відмову</g> в мене <b>нечисте сумління</b>.",
+      "ru": "<g>Из-за моего отказа</g> у меня <b>нечистая совесть</b>."
+    },
+    "gram": "praepositionen_mit_genitiv"
+  },
+  {
+    "id": "k13_061",
+    "cat": "k13",
+    "term": {
+      "de": "der Mut",
+      "en": "courage",
+      "uk": "мужність",
+      "ru": "мужество"
+    },
+    "short": {
+      "de": "wenn man etwas Schwieriges tut, obwohl man Angst hat",
+      "en": "when you do something difficult although you are afraid",
+      "uk": "коли робиш щось складне, хоча боїшся",
+      "ru": "когда делаешь что-то трудное, хотя боишься"
+    },
+    "def": {
+      "de": "Wir bewundern sie wegen <g>ihres großen</g> <b>Mutes</b>.",
+      "en": "We admire her for <g>her great</g> <b>courage</b>.",
+      "uk": "Ми захоплюємося нею через її велику <b>мужність</b>.",
+      "ru": "Мы восхищаемся ею из-за её большого <b>мужества</b>."
+    },
+    "gram": "adjektivendung_genitiv",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
+    "id": "k13_062",
+    "cat": "k13",
+    "term": {
+      "de": "der Kreis",
+      "en": "circle",
+      "uk": "коло",
+      "ru": "круг"
+    },
+    "short": {
+      "de": "eine Gruppe von Menschen, die sich gut kennen",
+      "en": "a group of people who know each other well",
+      "uk": "група людей, які добре знають одне одного",
+      "ru": "группа людей, которые хорошо знают друг друга"
+    },
+    "def": {
+      "de": "Unser <b>Kreis</b> ist klein, aber sehr <g>liebevoll</g>.",
+      "en": "Our <b>circle</b> is small but very <g>caring</g>.",
+      "uk": "Наше <b>коло</b> невелике, але дуже <g>турботливе</g>.",
+      "ru": "Наш <b>круг</b> небольшой, но очень <g>заботливый</g>."
+    },
+    "gram": "adjektive_auf_voll_reich",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Kreise"
+      ]
+    },
+    "info": {
+      "sense": "Gruppe"
     }
   },
   {
@@ -41029,32 +37605,6 @@ var VOCAB = [
       "v": [
         "die Warmmieten"
       ]
-    }
-  },
-  {
-    "id": "k14_005",
-    "cat": "k14",
-    "term": {
-      "de": "die Nebenkosten",
-      "en": "utility costs",
-      "uk": "комунальні витрати",
-      "ru": "коммунальные расходы"
-    },
-    "short": {
-      "de": "zusätzliche Kosten für eine Wohnung, zum Beispiel für Wasser und Müll",
-      "en": "additional costs for a flat, for example for water and waste",
-      "uk": "додаткові витрати на квартиру, наприклад на воду й вивезення сміття",
-      "ru": "дополнительные расходы на квартиру, например на воду и вывоз мусора"
-    },
-    "def": {
-      "de": "Wir haben eine Wohnung gefunden, <g>wo</g> die <b>Nebenkosten</b> sehr niedrig sind.",
-      "en": "We found a flat <g>where</g> the <b>utility costs</b> are very low.",
-      "uk": "Ми знайшли квартиру, <g>де</g> <b>комунальні витрати</b> дуже низькі.",
-      "ru": "Мы нашли квартиру, <g>где</g> <b>коммунальные расходы</b> очень низкие."
-    },
-    "gram": "relativsatz_wo_was",
-    "info": {
-      "num": "pl"
     }
   },
   {
@@ -41315,64 +37865,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k14_016",
-    "cat": "k14",
-    "term": {
-      "de": "die Innenstadt",
-      "en": "city centre",
-      "uk": "центр міста",
-      "ru": "центр города"
-    },
-    "short": {
-      "de": "der zentrale Teil einer Stadt",
-      "en": "the central part of a city",
-      "uk": "центральна частина міста",
-      "ru": "центральная часть города"
-    },
-    "def": {
-      "de": "Die <g>hochpreisige</g> <b>Innenstadt</b> zieht vor allem wohlhabende Familien an.",
-      "en": "The high-priced <b>city centre</b> mainly attracts wealthy families.",
-      "uk": "Дороговартісний <b>центр міста</b> приваблює насамперед заможні родини.",
-      "ru": "Дорогой <b>центр города</b> привлекает в основном состоятельные семьи."
-    },
-    "gram": "adjektive_super_hoch_ueber_extra",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Innenstädte"
-      ]
-    }
-  },
-  {
-    "id": "k14_017",
-    "cat": "k14",
-    "term": {
-      "de": "der Mensch",
-      "en": "person",
-      "uk": "людина",
-      "ru": "человек"
-    },
-    "short": {
-      "de": "eine Person",
-      "en": "a person",
-      "uk": "особа",
-      "ru": "лицо, персона"
-    },
-    "def": {
-      "de": "Ich mag diesen freundlichen <g><b>Menschen</b></g> aus der Nachbarschaft sehr.",
-      "en": "I really like this friendly <b>person</b> from the neighbourhood.",
-      "uk": "Мені дуже подобається ця приязна <b>людина</b> із сусідства.",
-      "ru": "Мне очень нравится этот приветливый <b>человек</b> из соседства."
-    },
-    "gram": "n_deklination",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Menschen"
-      ]
-    }
-  },
-  {
     "id": "k14_018",
     "cat": "k14",
     "term": {
@@ -41431,35 +37923,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k14_021",
-    "cat": "k14",
-    "term": {
-      "de": "der Student / die Studentin",
-      "en": "student",
-      "uk": "студент",
-      "ru": "студент"
-    },
-    "short": {
-      "de": "eine Person, die an einer Universität studiert",
-      "en": "a person who studies at a university",
-      "uk": "особа, яка навчається в університеті",
-      "ru": "лицо, обучающееся в университете"
-    },
-    "def": {
-      "de": "Im Erdgeschoss habe ich einen <g><b>Studenten</b></g> aus Spanien kennengelernt.",
-      "en": "On the ground floor, I got to know a <b>student</b> from Spain.",
-      "uk": "На першому поверсі я познайомився зі <b>студентом</b> з Іспанії.",
-      "ru": "На первом этаже я познакомился со <b>студентом</b> из Испании."
-    },
-    "gram": "n_deklination",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Studenten / die Studentinnen"
-      ]
-    }
-  },
-  {
     "id": "k14_022",
     "cat": "k14",
     "term": {
@@ -41486,7 +37949,8 @@ var VOCAB = [
       "v": [
         "die Polizisten / die Polizistinnen"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k14_023",
@@ -41576,35 +38040,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k14_027",
-    "cat": "k14",
-    "term": {
-      "de": "die Kaution",
-      "en": "deposit",
-      "uk": "застава",
-      "ru": "залог"
-    },
-    "short": {
-      "de": "eine Summe Geld, die man bei Mietbeginn als Sicherheit zahlt",
-      "en": "a sum of money paid as security at the start of a tenancy",
-      "uk": "сума грошей, яку сплачують як забезпечення на початку оренди",
-      "ru": "сумма денег, выплачиваемая как обеспечение в начале аренды"
-    },
-    "def": {
-      "de": "Die <b>Kaution</b>, <g>auf die</g> wir monatelang gewartet haben, wurde endlich zurücküberwiesen.",
-      "en": "The <b>deposit</b> <g>for which</g> we waited for months was finally transferred back.",
-      "uk": "<b>Заставу</b>, <g>на яку</g> ми чекали місяцями, нарешті повернули.",
-      "ru": "<b>Залог</b>, <g>которого</g> мы ждали месяцами, наконец вернули."
-    },
-    "gram": "relativsatz_mit_praeposition",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Kautionen"
-      ]
-    }
-  },
-  {
     "id": "k14_028",
     "cat": "k14",
     "term": {
@@ -41630,35 +38065,6 @@ var VOCAB = [
       "t": "noun",
       "v": [
         "die Renovierungen"
-      ]
-    }
-  },
-  {
-    "id": "k14_029",
-    "cat": "k14",
-    "term": {
-      "de": "der Balkon",
-      "en": "balcony",
-      "uk": "балкон",
-      "ru": "балкон"
-    },
-    "short": {
-      "de": "ein kleiner Bereich außerhalb einer Wohnung, oft mit Geländer",
-      "en": "a small area outside a flat, often with a railing",
-      "uk": "невелика ділянка за межами квартири, часто з поручнями",
-      "ru": "небольшая площадка за пределами квартиры, часто с перилами"
-    },
-    "def": {
-      "de": "Das ist der <b>Balkon</b>, <g>von dem aus</g> man das Meer sehen kann.",
-      "en": "That's the <b>balcony</b> <g>from which</g> you can see the sea.",
-      "uk": "Це <b>балкон</b>, <g>з якого</g> видно море.",
-      "ru": "Это <b>балкон</b>, <g>с которого</g> видно море."
-    },
-    "gram": "relativsatz_mit_praeposition",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Balkone"
       ]
     }
   },
@@ -41721,64 +38127,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k14_033",
-    "cat": "k14",
-    "term": {
-      "de": "das Viertel",
-      "en": "neighbourhood",
-      "uk": "квартал",
-      "ru": "квартал"
-    },
-    "short": {
-      "de": "ein bestimmter Teil einer Stadt",
-      "en": "a particular part of a city",
-      "uk": "певна частина міста",
-      "ru": "определённая часть города"
-    },
-    "def": {
-      "de": "Das ist das <b>Viertel</b>, <g>wo</g> ich aufgewachsen bin.",
-      "en": "That's the <b>neighbourhood</b> <g>where</g> I grew up.",
-      "uk": "Це <b>квартал</b>, <g>де</g> я виріс.",
-      "ru": "Это <b>квартал</b>, <g>где</g> я вырос."
-    },
-    "gram": "relativsatz_wo_was",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Viertel"
-      ]
-    }
-  },
-  {
-    "id": "k14_035",
-    "cat": "k14",
-    "term": {
-      "de": "das Café",
-      "en": "café",
-      "uk": "кафе",
-      "ru": "кафе"
-    },
-    "short": {
-      "de": "ein Ort, an dem man Kaffee und andere Getränke trinken kann",
-      "en": "a place where you can drink coffee and other beverages",
-      "uk": "місце, де можна пити каву та інші напої",
-      "ru": "место, где можно пить кофе и другие напитки"
-    },
-    "def": {
-      "de": "Das ist das <b>Café</b>, <g>wo</g> wir uns immer treffen.",
-      "en": "That's the <b>café</b> <g>where</g> we always meet.",
-      "uk": "Це <b>кафе</b>, <g>де</g> ми завжди зустрічаємося.",
-      "ru": "Это <b>кафе</b>, <g>где</g> мы всегда встречаемся."
-    },
-    "gram": "relativsatz_wo_was",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Cafés"
-      ]
-    }
-  },
-  {
     "id": "k14_036",
     "cat": "k14",
     "term": {
@@ -41804,214 +38152,6 @@ var VOCAB = [
       "t": "noun",
       "v": [
         "die Lieblingsplätze"
-      ]
-    }
-  },
-  {
-    "id": "k14_037",
-    "cat": "k14",
-    "term": {
-      "de": "alles",
-      "en": "everything",
-      "uk": "усе",
-      "ru": "всё"
-    },
-    "short": {
-      "de": "die gesamte Menge von etwas, ohne Ausnahme",
-      "en": "the whole amount of something, without exception",
-      "uk": "уся кількість чогось без винятку",
-      "ru": "всё количество чего-то без исключения"
-    },
-    "def": {
-      "de": "<g><b>Alles</b></g>, <g>was</g> ich mir für die neue Wohnung gewünscht habe, ist Wirklichkeit geworden.",
-      "en": "<g><b>Everything</b></g> <g>that</g> I wished for the new flat came true.",
-      "uk": "<g><b>Усе</b></g>, <g>що</g> я хотів для нової квартири, стало реальністю.",
-      "ru": "<g><b>Всё</b></g>, <g>что</g> я хотел для новой квартиры, стало реальностью."
-    },
-    "gram": "relativsatz_wo_was"
-  },
-  {
-    "id": "k14_038",
-    "cat": "k14",
-    "term": {
-      "de": "nichts",
-      "en": "nothing",
-      "uk": "нічого",
-      "ru": "ничего"
-    },
-    "short": {
-      "de": "keine einzige Sache",
-      "en": "not a single thing",
-      "uk": "жодної речі",
-      "ru": "ни одной вещи"
-    },
-    "def": {
-      "de": "Es gibt <g><b>nichts</b></g>, <g>was</g> mir an dieser Wohnung nicht gefällt.",
-      "en": "There is <g><b>nothing</b></g> <g>that</g> I don't like about this flat.",
-      "uk": "Немає <g><b>нічого</b></g>, <g>що</g> мені не подобається в цій квартирі.",
-      "ru": "Нет <g><b>ничего</b></g>, <g>что</g> мне не нравится в этой квартире."
-    },
-    "gram": "relativsatz_wo_was"
-  },
-  {
-    "id": "k14_039",
-    "cat": "k14",
-    "term": {
-      "de": "das Beste",
-      "en": "the best",
-      "uk": "найкраще",
-      "ru": "лучшее"
-    },
-    "short": {
-      "de": "die beste Sache oder der beste Teil von etwas",
-      "en": "the best thing or the best part of something",
-      "uk": "найкраща річ чи найкраща частина чогось",
-      "ru": "лучшая вещь или лучшая часть чего-то"
-    },
-    "def": {
-      "de": "Der Ausblick ist <g><b>das Beste</b></g>, <g>was</g> diese Wohnung zu bieten hat.",
-      "en": "The view is <g><b>the best thing</b></g> <g>that</g> this flat has to offer.",
-      "uk": "Краєвид — це <g><b>найкраще</b></g>, <g>що</g> може запропонувати ця квартира.",
-      "ru": "Вид — это <g><b>лучшее</b></g>, <g>что</g> может предложить эта квартира."
-    },
-    "gram": "relativsatz_wo_was"
-  },
-  {
-    "id": "k14_040",
-    "cat": "k14",
-    "term": {
-      "de": "etwas",
-      "en": "something",
-      "uk": "щось",
-      "ru": "что-то"
-    },
-    "short": {
-      "de": "eine unbestimmte Sache oder Menge",
-      "en": "an unspecified thing or amount",
-      "uk": "невизначена річ чи кількість",
-      "ru": "неопределённая вещь или количество"
-    },
-    "def": {
-      "de": "Ich suche <g><b>etwas</b></g>, <g>was</g> zu meinem Budget passt.",
-      "en": "I'm looking for <g><b>something</b></g> <g>that</g> fits my budget.",
-      "uk": "Я шукаю <g><b>щось</b></g>, <g>що</g> відповідає моєму бюджету.",
-      "ru": "Я ищу <g><b>что-то</b></g>, <g>что</g> подходит моему бюджету."
-    },
-    "gram": "relativsatz_wo_was"
-  },
-  {
-    "id": "k14_041",
-    "cat": "k14",
-    "term": {
-      "de": "die Familie",
-      "en": "family",
-      "uk": "сімʼя",
-      "ru": "семья"
-    },
-    "short": {
-      "de": "eine Gruppe von Menschen, die miteinander verwandt sind, zum Beispiel Eltern und Kinder",
-      "en": "a group of people related to each other, for example parents and children",
-      "uk": "група людей, повʼязаних родинними стосунками, наприклад батьки й діти",
-      "ru": "группа людей, связанных родственными отношениями, например родители и дети"
-    },
-    "def": {
-      "de": "Das ist die <b>Familie</b>, <g>der</g> wir die Wohnung vermietet haben.",
-      "en": "That's the <b>family</b> <g>to whom</g> we rented the flat.",
-      "uk": "Це <b>сімʼя</b>, <g>якій</g> ми здали квартиру в оренду.",
-      "ru": "Это <b>семья</b>, <g>которой</g> мы сдали квартиру в аренду."
-    },
-    "gram": "relativpronomen_dativ_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Familien"
-      ]
-    }
-  },
-  {
-    "id": "k14_042",
-    "cat": "k14",
-    "term": {
-      "de": "das Ehepaar",
-      "en": "married couple",
-      "uk": "подружжя",
-      "ru": "супружеская пара"
-    },
-    "short": {
-      "de": "ein verheiratetes Paar",
-      "en": "a married couple",
-      "uk": "пара людей у шлюбі",
-      "ru": "пара людей в браке"
-    },
-    "def": {
-      "de": "Das ist das <b>Ehepaar</b>, <g>dem</g> das Haus gehört.",
-      "en": "That's the <b>married couple</b> <g>to whom</g> the house belongs.",
-      "uk": "Це <b>подружжя</b>, <g>якому</g> належить будинок.",
-      "ru": "Это <b>супружеская пара</b>, <g>которой</g> принадлежит дом."
-    },
-    "gram": "relativpronomen_dativ_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Ehepaare"
-      ]
-    }
-  },
-  {
-    "id": "k14_044",
-    "cat": "k14",
-    "term": {
-      "de": "der Handwerker / die Handwerkerin",
-      "en": "tradesperson",
-      "uk": "майстер",
-      "ru": "мастер"
-    },
-    "short": {
-      "de": "eine Person, die praktische Arbeiten wie Reparaturen professionell ausführt",
-      "en": "a person who professionally does practical work like repairs",
-      "uk": "особа, яка професійно виконує практичну роботу, як-от ремонт",
-      "ru": "лицо, профессионально выполняющее практическую работу, например ремонт"
-    },
-    "def": {
-      "de": "Das ist der <b>Handwerker</b>, <g>dem</g> wir vertrauen.",
-      "en": "That's the <b>tradesman</b> <g>whom</g> we trust.",
-      "uk": "Це <b>майстер</b>, <g>якому</g> ми довіряємо.",
-      "ru": "Это <b>мастер</b>, <g>которому</g> мы доверяем."
-    },
-    "gram": "relativpronomen_dativ_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Handwerker / die Handwerkerinnen"
-      ]
-    }
-  },
-  {
-    "id": "k14_045",
-    "cat": "k14",
-    "term": {
-      "de": "die Hausverwaltung",
-      "en": "property management",
-      "uk": "управління будинком",
-      "ru": "управление домом"
-    },
-    "short": {
-      "de": "das Unternehmen oder die Person, die sich um ein Gebäude kümmert",
-      "en": "the company or person that looks after a building",
-      "uk": "компанія чи особа, яка піклується про будівлю",
-      "ru": "компания или лицо, заботящееся о здании"
-    },
-    "def": {
-      "de": "Das ist die <b>Hausverwaltung</b>, <g>der</g> wir jeden Monat die Miete überweisen.",
-      "en": "That's the <b>property management</b> <g>to whom</g> we transfer the rent every month.",
-      "uk": "Це <b>управління будинком</b>, <g>якому</g> ми щомісяця перераховуємо орендну плату.",
-      "ru": "Это <b>управление домом</b>, <g>которому</g> мы ежемесячно переводим арендную плату."
-    },
-    "gram": "relativpronomen_dativ_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Hausverwaltungen"
       ]
     }
   },
@@ -42045,61 +38185,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k14_047",
-    "cat": "k14",
-    "term": {
-      "de": "die Kinder",
-      "en": "children",
-      "uk": "діти",
-      "ru": "дети"
-    },
-    "short": {
-      "de": "die jungen Menschen, die noch keine Erwachsenen sind",
-      "en": "young people who are not yet adults",
-      "uk": "молоді люди, які ще не є дорослими",
-      "ru": "молодые люди, которые ещё не являются взрослыми"
-    },
-    "def": {
-      "de": "Das sind die <b>Kinder</b>, <g>denen</g> der Garten besonders gefällt.",
-      "en": "Those are the <b>children</b> <g>who</g> especially like the garden.",
-      "uk": "Це <b>діти</b>, <g>яким</g> особливо подобається сад.",
-      "ru": "Это <b>дети</b>, <g>которым</g> особенно нравится сад."
-    },
-    "gram": "relativpronomen_dativ_wdh_b1",
-    "info": {
-      "num": "pl"
-    }
-  },
-  {
-    "id": "k14_048",
-    "cat": "k14",
-    "term": {
-      "de": "der Gast",
-      "en": "guest",
-      "uk": "гість",
-      "ru": "гость"
-    },
-    "short": {
-      "de": "eine Person, die zu Besuch kommt",
-      "en": "a person who comes to visit",
-      "uk": "особа, яка приходить у гості",
-      "ru": "лицо, приходящее в гости"
-    },
-    "def": {
-      "de": "Das sind die <b>Gäste</b>, <g>denen</g> wir das Gästezimmer anbieten.",
-      "en": "Those are the <b>guests</b> <g>to whom</g> we offer the guest room.",
-      "uk": "Це <b>гості</b>, <g>яким</g> ми пропонуємо гостьову кімнату.",
-      "ru": "Это <b>гости</b>, <g>которым</g> мы предлагаем гостевую комнату."
-    },
-    "gram": "relativpronomen_dativ_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Gäste"
-      ]
-    }
-  },
-  {
     "id": "k14_049",
     "cat": "k14",
     "term": {
@@ -42126,7 +38211,8 @@ var VOCAB = [
       "v": [
         "die Aussichten"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k14_050",
@@ -42210,7 +38296,8 @@ var VOCAB = [
       "v": [
         "die Preise"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k14_053",
@@ -42239,29 +38326,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k14_054",
-    "cat": "k14",
-    "term": {
-      "de": "ruhig",
-      "en": "quiet",
-      "uk": "тихий",
-      "ru": "тихий"
-    },
-    "short": {
-      "de": "ohne Lärm oder Störung",
-      "en": "without noise or disturbance",
-      "uk": "без шуму чи перешкод",
-      "ru": "без шума или помех"
-    },
-    "def": {
-      "de": "Diese <b>ruhige</b> Straße liegt in einem <g>superzentralen</g> Viertel.",
-      "en": "This <b>quiet</b> street is in a <g>super-central</g> neighbourhood.",
-      "uk": "Ця <b>тиха</b> вулиця розташована в <g>надцентральному</g> районі.",
-      "ru": "Эта <b>тихая</b> улица расположена в <g>сверхцентральном</g> районе."
-    },
-    "gram": "adjektive_super_hoch_ueber_extra"
-  },
-  {
     "id": "k14_055",
     "cat": "k14",
     "term": {
@@ -42282,7 +38346,8 @@ var VOCAB = [
       "uk": "<b>Світла</b> вітальня має <g>більші, ніж зазвичай,</g> вікна.",
       "ru": "<b>Светлая</b> гостиная имеет <g>больше среднего</g> окна."
     },
-    "gram": "adjektive_super_hoch_ueber_extra"
+    "gram": "adjektive_super_hoch_ueber_extra",
+    "prio": 2
   },
   {
     "id": "k14_056",
@@ -42387,29 +38452,6 @@ var VOCAB = [
         "die Anrufbeantworter"
       ]
     }
-  },
-  {
-    "id": "k14_060",
-    "cat": "k14",
-    "term": {
-      "de": "sich verabschieden",
-      "en": "to say goodbye",
-      "uk": "прощатися",
-      "ru": "прощаться"
-    },
-    "short": {
-      "de": "am Ende eines Treffens oder Gesprächs Auf Wiedersehen sagen",
-      "en": "to say goodbye at the end of a meeting or conversation",
-      "uk": "казати до побачення наприкінці зустрічі чи розмови",
-      "ru": "говорить до свидания в конце встречи или разговора"
-    },
-    "def": {
-      "de": "Am Ende des Telefonats sollte man sich stets höflich und <g>extrafreundlich</g> <b>verabschieden</b>.",
-      "en": "At the end of a phone call, you should always <b>say goodbye</b> politely and extra kindly.",
-      "uk": "Наприкінці телефонної розмови слід завжди ввічливо й дуже дружньо <b>прощатися</b>.",
-      "ru": "В конце телефонного разговора следует всегда вежливо и очень дружелюбно <b>прощаться</b>."
-    },
-    "gram": "adjektive_super_hoch_ueber_extra"
   },
   {
     "id": "k14_061",
@@ -42904,6 +38946,152 @@ var VOCAB = [
     "gram": "nebensatz_mit_obwohl"
   },
   {
+    "id": "k14_082",
+    "cat": "k14",
+    "term": {
+      "de": "ausrichten",
+      "en": "to pass on",
+      "uk": "передавати",
+      "ru": "передавать"
+    },
+    "short": {
+      "de": "eine Nachricht an eine andere Person weitergeben",
+      "en": "to give a message to another person",
+      "uk": "передавати повідомлення іншій людині",
+      "ru": "передавать сообщение другому человеку"
+    },
+    "def": {
+      "de": "Frau Weber ist gerade in einer Besprechung – soll ich ihr etwas <b>ausrichten</b>?",
+      "en": "Ms Weber is in a meeting at the moment – shall I <b>pass on</b> a message to her?",
+      "uk": "Пані Вебер зараз на нараді — мені щось їй <b>передати</b>?",
+      "ru": "Госпожа Вебер сейчас на совещании — мне что-то ей <b>передать</b>?"
+    },
+    "gram": "",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "richtet aus",
+        "richtete aus",
+        "hat ausgerichtet"
+      ]
+    }
+  },
+  {
+    "id": "k14_083",
+    "cat": "k14",
+    "term": {
+      "de": "begegnen",
+      "en": "to run into",
+      "uk": "зустрічати",
+      "ru": "встречать"
+    },
+    "short": {
+      "de": "jemanden zufällig treffen",
+      "en": "to meet someone by chance",
+      "uk": "випадково зустріти когось",
+      "ru": "случайно встретить кого-то"
+    },
+    "def": {
+      "de": "Gestern bin ich im Treppenhaus unserem neuen <g>Nachbarn</g> <b>begegnet</b>.",
+      "en": "Yesterday I <b>ran into</b> our new <g>neighbour</g> on the stairs.",
+      "uk": "Учора я <b>зустріла</b> нашого нового <g>сусіда</g> на сходах.",
+      "ru": "Вчера я <b>встретила</b> нашего нового <g>соседа</g> на лестнице."
+    },
+    "gram": "n_deklination",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "begegnet",
+        "begegnete",
+        "ist begegnet"
+      ]
+    }
+  },
+  {
+    "id": "k14_084",
+    "cat": "k14",
+    "term": {
+      "de": "die Terminvereinbarung",
+      "en": "making an appointment",
+      "uk": "запис на прийом",
+      "ru": "запись на приём"
+    },
+    "short": {
+      "de": "wenn man einen Termin festmacht",
+      "en": "when you fix an appointment",
+      "uk": "коли домовляєшся про час зустрічі",
+      "ru": "когда договариваешься о времени встречи"
+    },
+    "def": {
+      "de": "Für eine <b>Terminvereinbarung</b> rufen Sie bitte vormittags an.",
+      "en": "For <b>making an appointment</b>, please call in the morning.",
+      "uk": "Для <b>запису на прийом</b> телефонуйте, будь ласка, до обіду.",
+      "ru": "Для <b>записи на приём</b> звоните, пожалуйста, до обеда."
+    },
+    "gram": "",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Terminvereinbarungen"
+      ]
+    }
+  },
+  {
+    "id": "k14_085",
+    "cat": "k14",
+    "term": {
+      "de": "der Fußboden",
+      "en": "floor",
+      "uk": "підлога",
+      "ru": "пол"
+    },
+    "short": {
+      "de": "die Fläche unten im Zimmer, auf der man geht",
+      "en": "the surface at the bottom of a room that you walk on",
+      "uk": "поверхня внизу кімнати, по якій ходять",
+      "ru": "поверхность внизу комнаты, по которой ходят"
+    },
+    "def": {
+      "de": "Der <b>Fußboden</b>, <g>auf dem</g> wir sitzen, ist aus altem Holz.",
+      "en": "The <b>floor</b> <g>on which</g> we are sitting is made of old wood.",
+      "uk": "<b>Підлога</b>, <g>на якій</g> ми сидимо, зі старого дерева.",
+      "ru": "<b>Пол</b>, <g>на котором</g> мы сидим, из старого дерева."
+    },
+    "gram": "relativsatz_mit_praeposition",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Fußböden"
+      ]
+    }
+  },
+  {
+    "id": "k14_086",
+    "cat": "k14",
+    "term": {
+      "de": "die Suche",
+      "en": "search",
+      "uk": "пошук",
+      "ru": "поиск"
+    },
+    "short": {
+      "de": "wenn man versucht, etwas zu finden",
+      "en": "when you try to find something",
+      "uk": "коли намагаєшся щось знайти",
+      "ru": "когда пытаешься что-то найти"
+    },
+    "def": {
+      "de": "Die <b>Suche</b> nach einer Wohnung, <g>in der</g> Haustiere erlaubt sind, ist schwer.",
+      "en": "The <b>search</b> for a flat <g>in which</g> pets are allowed is hard.",
+      "uk": "<b>Пошук</b> квартири, <g>у якій</g> дозволено тримати тварин, — це складно.",
+      "ru": "<b>Поиск</b> квартиры, <g>в которой</g> разрешено держать животных, — это сложно."
+    },
+    "gram": "relativsatz_mit_praeposition",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
     "id": "k15_001",
     "cat": "k15",
     "term": {
@@ -43014,35 +39202,6 @@ var VOCAB = [
     "gram": "partizip2_als_adjektiv"
   },
   {
-    "id": "k15_005",
-    "cat": "k15",
-    "term": {
-      "de": "der Integrationskurs",
-      "en": "integration course",
-      "uk": "інтеграційний курс",
-      "ru": "интеграционный курс"
-    },
-    "short": {
-      "de": "ein Kurs, der beim Erlernen der Sprache und beim Leben in einem neuen Land hilft",
-      "en": "a course that helps with learning the language and living in a new country",
-      "uk": "курс, який допомагає у вивченні мови та адаптації до життя в новій країні",
-      "ru": "курс, который помогает в изучении языка и адаптации к жизни в новой стране"
-    },
-    "def": {
-      "de": "Der <g>erfolgreich abgeschlossene</g> <b>Integrationskurs</b> ist eine wichtige Voraussetzung für die Einbürgerung.",
-      "en": "The <g>successfully completed</g> <b>integration course</b> is an important requirement for naturalisation.",
-      "uk": "Успішно завершений <b>інтеграційний курс</b> є важливою умовою для натуралізації.",
-      "ru": "Успешно завершённый <b>интеграционный курс</b> является важным условием для натурализации."
-    },
-    "gram": "partizip2_als_adjektiv",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Integrationskurse"
-      ]
-    }
-  },
-  {
     "id": "k15_006",
     "cat": "k15",
     "term": {
@@ -43069,32 +39228,6 @@ var VOCAB = [
       "v": [
         "die Aufenthaltsrechte"
       ]
-    }
-  },
-  {
-    "id": "k15_007",
-    "cat": "k15",
-    "term": {
-      "de": "die Aufenthaltserlaubnis",
-      "en": "residence permit",
-      "uk": "дозвіл на проживання",
-      "ru": "разрешение на проживание"
-    },
-    "short": {
-      "de": "das offizielle Dokument, das den legalen Aufenthalt in einem Land erlaubt",
-      "en": "the official document that permits legal residence in a country",
-      "uk": "офіційний документ, що дозволяє законно проживати в країні",
-      "ru": "официальный документ, разрешающий законно проживать в стране"
-    },
-    "def": {
-      "de": "Für den Antrag braucht man <g>entweder</g> eine <b>Aufenthaltserlaubnis</b> <g>oder</g> einen anderen gültigen Nachweis.",
-      "en": "For the application, you need <g>either</g> a <b>residence permit</b> <g>or</g> another valid proof.",
-      "uk": "Для заяви потрібен <g>або</g> <b>дозвіл на проживання</b>, <g>або</g> інше чинне підтвердження.",
-      "ru": "Для заявления нужно <g>либо</g> <b>разрешение на проживание</b>, <g>либо</g> другое действующее подтверждение."
-    },
-    "gram": "entweder_oder",
-    "info": {
-      "num": "sg"
     }
   },
   {
@@ -43211,29 +39344,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k15_012",
-    "cat": "k15",
-    "term": {
-      "de": "vollständig",
-      "en": "complete",
-      "uk": "повний",
-      "ru": "полный"
-    },
-    "short": {
-      "de": "ganz und ohne dass etwas fehlt",
-      "en": "complete and with nothing missing",
-      "uk": "повний, без нічого відсутнього",
-      "ru": "полный, без чего-либо отсутствующего"
-    },
-    "def": {
-      "de": "Der Antrag muss <g>entweder</g> <b>vollständig</b> ausgefüllt <g>oder</g> gar nicht eingereicht werden.",
-      "en": "The application must <g>either</g> be filled out <b>completely</b> <g>or</g> not submitted at all.",
-      "uk": "Заяву потрібно <g>або</g> заповнити <b>повністю</b>, <g>або</g> взагалі не подавати.",
-      "ru": "Заявление нужно <g>либо</g> заполнить <b>полностью</b>, <g>либо</g> вообще не подавать."
-    },
-    "gram": "entweder_oder"
-  },
-  {
     "id": "k15_013",
     "cat": "k15",
     "term": {
@@ -43332,64 +39442,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k15_017",
-    "cat": "k15",
-    "term": {
-      "de": "der Pass",
-      "en": "passport",
-      "uk": "паспорт",
-      "ru": "паспорт"
-    },
-    "short": {
-      "de": "ein amtliches Dokument, mit dem man sich im Ausland ausweisen kann",
-      "en": "an official document used to identify yourself abroad",
-      "uk": "офіційний документ, яким посвідчують особу за кордоном",
-      "ru": "официальный документ, которым удостоверяют личность за границей"
-    },
-    "def": {
-      "de": "<g>Deutscher</g> <b>Pass</b> bedeutet für viele Menschen ein neues Kapitel im Leben.",
-      "en": "A German <b>passport</b> means a new chapter in life for many people.",
-      "uk": "Німецький <b>паспорт</b> означає для багатьох людей новий розділ у житті.",
-      "ru": "Немецкий <b>паспорт</b> означает для многих людей новую главу в жизни."
-    },
-    "gram": "adjektivdeklination_ohne_artikel",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Pässe"
-      ]
-    }
-  },
-  {
-    "id": "k15_018",
-    "cat": "k15",
-    "term": {
-      "de": "die Arbeit",
-      "en": "work",
-      "uk": "робота",
-      "ru": "работа"
-    },
-    "short": {
-      "de": "die Tätigkeit, die man beruflich ausübt",
-      "en": "the activity you carry out professionally",
-      "uk": "діяльність, яку виконують професійно",
-      "ru": "деятельность, которую выполняют профессионально"
-    },
-    "def": {
-      "de": "<g>Harte</g> <b>Arbeit</b> führt oft zum Erfolg.",
-      "en": "Hard <b>work</b> often leads to success.",
-      "uk": "Важка <b>робота</b> часто веде до успіху.",
-      "ru": "Тяжёлая <b>работа</b> часто ведёт к успеху."
-    },
-    "gram": "adjektivdeklination_ohne_artikel",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Arbeiten"
-      ]
-    }
-  },
-  {
     "id": "k15_019",
     "cat": "k15",
     "term": {
@@ -43409,32 +39461,6 @@ var VOCAB = [
       "en": "Great <b>patience</b> is necessary in this bureaucratic process.",
       "uk": "Велике <b>терпіння</b> необхідне в цьому бюрократичному процесі.",
       "ru": "Большое <b>терпение</b> необходимо в этом бюрократическом процессе."
-    },
-    "gram": "adjektivdeklination_ohne_artikel",
-    "info": {
-      "num": "sg"
-    }
-  },
-  {
-    "id": "k15_021",
-    "cat": "k15",
-    "term": {
-      "de": "das Leben",
-      "en": "life",
-      "uk": "життя",
-      "ru": "жизнь"
-    },
-    "short": {
-      "de": "die Zeit, die ein Mensch lebt, mit allen ihren Erfahrungen",
-      "en": "the time a person lives, with all its experiences",
-      "uk": "час, який людина живе, з усім її досвідом",
-      "ru": "время, которое человек живёт, со всем его опытом"
-    },
-    "def": {
-      "de": "<g>Neues</g> <b>Leben</b> in einem fremden Land beginnt oft mit vielen Herausforderungen.",
-      "en": "A new <b>life</b> in a foreign country often begins with many challenges.",
-      "uk": "Нове <b>життя</b> в чужій країні часто починається з багатьох викликів.",
-      "ru": "Новая <b>жизнь</b> в чужой стране часто начинается со множества трудностей."
     },
     "gram": "adjektivdeklination_ohne_artikel",
     "info": {
@@ -43497,35 +39523,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k15_025",
-    "cat": "k15",
-    "term": {
-      "de": "das Kind",
-      "en": "child",
-      "uk": "дитина",
-      "ru": "ребёнок"
-    },
-    "short": {
-      "de": "ein junger Mensch, der noch nicht erwachsen ist",
-      "en": "a young person who is not yet an adult",
-      "uk": "молода людина, яка ще не є дорослою",
-      "ru": "молодой человек, который ещё не является взрослым"
-    },
-    "def": {
-      "de": "Das <g>weinende</g> <b>Kind</b> wurde schnell von seiner Mutter getröstet.",
-      "en": "The <g>crying</g> <b>child</b> was quickly comforted by its mother.",
-      "uk": "<b>Дитину</b>, що плакала, швидко заспокоїла мама.",
-      "ru": "Плачущего <b>ребёнка</b> быстро успокоила мама."
-    },
-    "gram": "partizip1_als_adjektiv",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Kinder"
-      ]
-    }
-  },
-  {
     "id": "k15_026",
     "cat": "k15",
     "term": {
@@ -43551,35 +39548,6 @@ var VOCAB = [
       "t": "noun",
       "v": [
         "die Mengen"
-      ]
-    }
-  },
-  {
-    "id": "k15_027",
-    "cat": "k15",
-    "term": {
-      "de": "die Zahl",
-      "en": "number",
-      "uk": "кількість",
-      "ru": "число"
-    },
-    "short": {
-      "de": "eine Menge, die man zählen kann",
-      "en": "an amount that can be counted",
-      "uk": "кількість, яку можна порахувати",
-      "ru": "количество, которое можно посчитать"
-    },
-    "def": {
-      "de": "Die <g>steigende</g> <b>Zahl</b> der Einbürgerungen freut die Behörden.",
-      "en": "The <g>rising</g> <b>number</b> of naturalisations pleases the authorities.",
-      "uk": "Зростаюча <b>кількість</b> натуралізацій радує органи влади.",
-      "ru": "Растущее <b>число</b> натурализаций радует органы власти."
-    },
-    "gram": "partizip1_als_adjektiv",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Zahlen"
       ]
     }
   },
@@ -43613,35 +39581,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k15_029",
-    "cat": "k15",
-    "term": {
-      "de": "das Problem",
-      "en": "problem",
-      "uk": "проблема",
-      "ru": "проблема"
-    },
-    "short": {
-      "de": "eine schwierige Situation, die gelöst werden muss",
-      "en": "a difficult situation that needs to be solved",
-      "uk": "складна ситуація, яку потрібно вирішити",
-      "ru": "сложная ситуация, которую нужно решить"
-    },
-    "def": {
-      "de": "Das <g>bestehende</g> <b>Problem</b> mit den Unterlagen wurde schnell gelöst.",
-      "en": "The <g>existing</g> <b>problem</b> with the documents was quickly resolved.",
-      "uk": "Наявну <b>проблему</b> з документами швидко вирішили.",
-      "ru": "Существующую <b>проблему</b> с документами быстро решили."
-    },
-    "gram": "partizip1_als_adjektiv",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Probleme"
-      ]
-    }
-  },
-  {
     "id": "k15_030",
     "cat": "k15",
     "term": {
@@ -43668,7 +39607,8 @@ var VOCAB = [
       "v": [
         "die Mitarbeiter / die Mitarbeiterinnen"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k15_031",
@@ -43726,36 +39666,8 @@ var VOCAB = [
       "v": [
         "die Situationen"
       ]
-    }
-  },
-  {
-    "id": "k15_033",
-    "cat": "k15",
-    "term": {
-      "de": "das Dokument",
-      "en": "document",
-      "uk": "документ",
-      "ru": "документ"
     },
-    "short": {
-      "de": "ein offizielles Schriftstück",
-      "en": "an official piece of writing",
-      "uk": "офіційний письмовий документ",
-      "ru": "официальный письменный документ"
-    },
-    "def": {
-      "de": "Das <g>übersetzte</g> <b>Dokument</b> musste zusätzlich beglaubigt werden.",
-      "en": "The <g>translated</g> <b>document</b> had to be additionally certified.",
-      "uk": "Перекладений <b>документ</b> потрібно було додатково засвідчити.",
-      "ru": "Переведённый <b>документ</b> нужно было дополнительно заверить."
-    },
-    "gram": "partizip2_als_adjektiv",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Dokumente"
-      ]
-    }
+    "prio": 2
   },
   {
     "id": "k15_037",
@@ -43812,35 +39724,6 @@ var VOCAB = [
       "t": "noun",
       "v": [
         "die Wohnsitze"
-      ]
-    }
-  },
-  {
-    "id": "k15_041",
-    "cat": "k15",
-    "term": {
-      "de": "der Reisepass",
-      "en": "passport",
-      "uk": "закордонний паспорт",
-      "ru": "загранпаспорт"
-    },
-    "short": {
-      "de": "ein Dokument, mit dem man ins Ausland reisen kann",
-      "en": "a document that allows you to travel abroad",
-      "uk": "документ, з яким можна подорожувати за кордон",
-      "ru": "документ, с которым можно путешествовать за границу"
-    },
-    "def": {
-      "de": "Für die Reise braucht man <g>entweder</g> einen gültigen <b>Reisepass</b> <g>oder</g> einen Personalausweis.",
-      "en": "For the trip, you need <g>either</g> a valid <b>passport</b> <g>or</g> an ID card.",
-      "uk": "Для подорожі потрібен <g>або</g> чинний <b>закордонний паспорт</b>, <g>або</g> посвідчення особи.",
-      "ru": "Для поездки нужен <g>либо</g> действующий <b>загранпаспорт</b>, <g>либо</g> удостоверение личности."
-    },
-    "gram": "entweder_oder",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Reisepässe"
       ]
     }
   },
@@ -43903,7 +39786,8 @@ var VOCAB = [
     },
     "info": {
       "sense": "Identität"
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k15_045",
@@ -43955,65 +39839,8 @@ var VOCAB = [
       "uk": "Заяву можна подати <g>або</g> <b>особисто</b>, <g>або</g> надіслати поштою.",
       "ru": "Заявление можно подать <g>либо</g> <b>лично</b>, <g>либо</g> отправить по почте."
     },
-    "gram": "entweder_oder"
-  },
-  {
-    "id": "k15_049",
-    "cat": "k15",
-    "term": {
-      "de": "das Interview",
-      "en": "interview",
-      "uk": "співбесіда",
-      "ru": "собеседование"
-    },
-    "short": {
-      "de": "ein offizielles Gespräch, in dem man Fragen beantwortet",
-      "en": "an official conversation in which you answer questions",
-      "uk": "офіційна розмова, під час якої відповідають на запитання",
-      "ru": "официальный разговор, во время которого отвечают на вопросы"
-    },
-    "def": {
-      "de": "Man muss <g>entweder</g> zum <b>Interview</b> erscheinen <g>oder</g> einen guten Grund für die Absage nennen.",
-      "en": "You must <g>either</g> attend the <b>interview</b> <g>or</g> give a good reason for cancelling.",
-      "uk": "Потрібно <g>або</g> зʼявитися на <b>співбесіду</b>, <g>або</g> назвати поважну причину відмови.",
-      "ru": "Нужно <g>либо</g> явиться на <b>собеседование</b>, <g>либо</g> назвать уважительную причину отказа."
-    },
     "gram": "entweder_oder",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Interviews"
-      ]
-    }
-  },
-  {
-    "id": "k15_050",
-    "cat": "k15",
-    "term": {
-      "de": "der Sachbearbeiter / die Sachbearbeiterin",
-      "en": "caseworker",
-      "uk": "працівник",
-      "ru": "сотрудник"
-    },
-    "short": {
-      "de": "eine Person bei einer Behörde, die für einen bestimmten Fall zuständig ist",
-      "en": "a person at an office responsible for a particular case",
-      "uk": "особа в установі, відповідальна за конкретну справу",
-      "ru": "лицо в учреждении, ответственное за конкретное дело"
-    },
-    "def": {
-      "de": "Man spricht <g>entweder</g> mit dem zuständigen <b>Sachbearbeiter</b> <g>oder</g> wartet auf eine schriftliche Antwort.",
-      "en": "You <g>either</g> speak with the responsible <b>caseworker</b> <g>or</g> wait for a written reply.",
-      "uk": "Можна <g>або</g> поговорити з відповідальним <b>працівником</b>, <g>або</g> почекати на письмову відповідь.",
-      "ru": "Можно <g>либо</g> поговорить с ответственным <b>сотрудником</b>, <g>либо</g> подождать письменного ответа."
-    },
-    "gram": "entweder_oder",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Sachbearbeiter / die Sachbearbeiterinnen"
-      ]
-    }
+    "prio": 2
   },
   {
     "id": "k15_051",
@@ -44173,29 +40000,6 @@ var VOCAB = [
       "en": "My grandfather came to Germany as a young <b>guest worker</b> in the sixties.",
       "uk": "Мій дід приїхав до Німеччини в шістдесятих роках як молодий <b>гастарбайтер</b>.",
       "ru": "Мой дед приехал в Германию в шестидесятых годах как молодой <b>гастарбайтер</b>."
-    },
-    "gram": "adjektivdeklination_ohne_artikel"
-  },
-  {
-    "id": "k15_058",
-    "cat": "k15",
-    "term": {
-      "de": "die Heimat",
-      "en": "homeland",
-      "uk": "батьківщина",
-      "ru": "родина"
-    },
-    "short": {
-      "de": "der Ort oder das Land, wo man zu Hause ist und aufgewachsen ist",
-      "en": "the place or country where you are at home and where you grew up",
-      "uk": "місце чи країна, де ти вдома і де виріс",
-      "ru": "место или страна, где ты дома и где вырос"
-    },
-    "def": {
-      "de": "Nach <g>langen</g> Jahren im Ausland kehrte sie in ihre <b>Heimat</b> zurück.",
-      "en": "After long years abroad she returned to her <b>homeland</b>.",
-      "uk": "Після довгих років за кордоном вона повернулася на свою <b>батьківщину</b>.",
-      "ru": "После долгих лет за границей она вернулась на свою <b>родину</b>."
     },
     "gram": "adjektivdeklination_ohne_artikel"
   },
@@ -45615,6 +41419,119 @@ var VOCAB = [
     "gram": "genitiv"
   },
   {
+    "id": "k15_120",
+    "cat": "k15",
+    "term": {
+      "de": "die Migration",
+      "en": "migration",
+      "uk": "міграція",
+      "ru": "миграция"
+    },
+    "short": {
+      "de": "wenn Menschen in ein anderes Land ziehen, um dort zu leben",
+      "en": "when people move to another country to live there",
+      "uk": "коли люди переїжджають в іншу країну, щоб там жити",
+      "ru": "когда люди переезжают в другую страну, чтобы там жить"
+    },
+    "def": {
+      "de": "Das Thema <b>Migration</b> spielt in der deutschen Politik seit Jahren eine große Rolle.",
+      "en": "The topic of <b>migration</b> has played a big role in German politics for years.",
+      "uk": "Тема <b>міграції</b> вже багато років відіграє велику роль у німецькій політиці.",
+      "ru": "Тема <b>миграции</b> уже много лет играет большую роль в немецкой политике."
+    },
+    "gram": "",
+    "info": {
+      "num": "sg"
+    }
+  },
+  {
+    "id": "k15_121",
+    "cat": "k15",
+    "term": {
+      "de": "die Auswanderung",
+      "en": "emigration",
+      "uk": "еміграція",
+      "ru": "эмиграция"
+    },
+    "short": {
+      "de": "wenn man sein Heimatland verlässt, um woanders zu leben",
+      "en": "when you leave your home country to live elsewhere",
+      "uk": "коли залишаєш батьківщину, щоб жити деінде",
+      "ru": "когда покидаешь родину, чтобы жить в другом месте"
+    },
+    "def": {
+      "de": "Nach der <b>Auswanderung</b> aus Kasachstan musste die Familie ganz neu anfangen.",
+      "en": "After <b>emigration</b> from Kazakhstan the family had to start completely anew.",
+      "uk": "Після <b>еміграції</b> з Казахстану родині довелося почати все спочатку.",
+      "ru": "После <b>эмиграции</b> из Казахстана семье пришлось начать всё сначала."
+    },
+    "gram": "",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Auswanderungen"
+      ]
+    }
+  },
+  {
+    "id": "k15_122",
+    "cat": "k15",
+    "term": {
+      "de": "die Einwanderung",
+      "en": "immigration",
+      "uk": "імміграція",
+      "ru": "иммиграция"
+    },
+    "short": {
+      "de": "wenn man in ein neues Land kommt, um dort zu leben",
+      "en": "when you come to a new country to live there",
+      "uk": "коли приїжджаєш у нову країну, щоб там жити",
+      "ru": "когда приезжаешь в новую страну, чтобы там жить"
+    },
+    "def": {
+      "de": "Die <b>Einwanderung</b> nach Deutschland ist für Fachkräfte heute leichter als früher.",
+      "en": "<b>Immigration</b> to Germany is easier for skilled workers today than it used to be.",
+      "uk": "<b>Імміграція</b> до Німеччини для фахівців сьогодні легша, ніж раніше.",
+      "ru": "<b>Иммиграция</b> в Германию для специалистов сегодня легче, чем раньше."
+    },
+    "gram": "",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Einwanderungen"
+      ]
+    }
+  },
+  {
+    "id": "k15_123",
+    "cat": "k15",
+    "term": {
+      "de": "die Gesellschaft",
+      "en": "society",
+      "uk": "суспільство",
+      "ru": "общество"
+    },
+    "short": {
+      "de": "alle Menschen, die in einem Land zusammenleben",
+      "en": "all the people who live together in a country",
+      "uk": "усі люди, які разом живуть у країні",
+      "ru": "все люди, которые вместе живут в стране"
+    },
+    "def": {
+      "de": "<g>Gute</g> Sprachkenntnisse helfen, in der <b>Gesellschaft</b> anzukommen.",
+      "en": "<g>Good</g> language skills help you to find your place in <b>society</b>.",
+      "uk": "<g>Добре</g> знання мови допомагає влитися в <b>суспільство</b>.",
+      "ru": "<g>Хорошее</g> знание языка помогает влиться в <b>общество</b>."
+    },
+    "gram": "adjektivdeklination_ohne_artikel",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Gesellschaften"
+      ]
+    }
+  },
+  {
     "id": "k16_001",
     "cat": "k16",
     "term": {
@@ -45684,53 +41601,8 @@ var VOCAB = [
     "gram": "satzverbindungen_ueberblick",
     "info": {
       "case": "A"
-    }
-  },
-  {
-    "id": "k16_004",
-    "cat": "k16",
-    "term": {
-      "de": "verreisen",
-      "en": "to go on a trip",
-      "uk": "вирушати в подорож",
-      "ru": "отправляться в путешествие"
     },
-    "short": {
-      "de": "für eine Zeit an einen anderen Ort fahren, meistens im Urlaub",
-      "en": "to travel to another place for a while, usually on holiday",
-      "uk": "виїжджати на певний час в інше місце, зазвичай у відпустку",
-      "ru": "уезжать на некоторое время в другое место, обычно в отпуск"
-    },
-    "def": {
-      "de": "Bevor wir <b>verreisen</b>, <g>nehme</g> ich meine Kamera unbedingt <g>mit</g>.",
-      "en": "Before we <b>go on a trip</b>, I definitely <g>take</g> my camera <g>with me</g>.",
-      "uk": "Перш ніж ми <b>вирушимо в подорож</b>, я обовʼязково візьму з собою камеру.",
-      "ru": "Прежде чем мы <b>отправимся в путешествие</b>, я обязательно возьму с собой камеру."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
-  },
-  {
-    "id": "k16_005",
-    "cat": "k16",
-    "term": {
-      "de": "übernachten",
-      "en": "to stay overnight",
-      "uk": "ночувати",
-      "ru": "ночевать"
-    },
-    "short": {
-      "de": "die Nacht an einem bestimmten Ort verbringen, oft nicht zu Hause",
-      "en": "to spend the night in a certain place, often not at home",
-      "uk": "проводити ніч у певному місці, часто не вдома",
-      "ru": "проводить ночь в определённом месте, часто не дома"
-    },
-    "def": {
-      "de": "Wir <b>übernachten</b> im Hotel, aber morgen <g>fahren</g> wir schon <g>weiter</g> zur nächsten Stadt.",
-      "en": "We are <b>staying overnight</b> at the hotel, but tomorrow we are already <g>moving</g> <g>on</g> to the next city.",
-      "uk": "Ми <b>ночуємо</b> в готелі, але завтра вже їдемо далі до наступного міста.",
-      "ru": "Мы <b>ночуем</b> в отеле, но завтра уже едем дальше в следующий город."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "prio": 2
   },
   {
     "id": "k16_006",
@@ -45889,29 +41761,6 @@ var VOCAB = [
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
   {
-    "id": "k16_013",
-    "cat": "k16",
-    "term": {
-      "de": "fliehen",
-      "en": "to flee",
-      "uk": "тікати",
-      "ru": "убегать"
-    },
-    "short": {
-      "de": "schnell weglaufen, um einer Gefahr zu entkommen",
-      "en": "to run away quickly to escape a danger",
-      "uk": "швидко тікати, щоб уникнути небезпеки",
-      "ru": "быстро убегать, чтобы избежать опасности"
-    },
-    "def": {
-      "de": "Der Täter versuchte zu <b>fliehen</b>, aber die Polizei <g>brachte</g> ihn schnell <g>zurück</g> in die Zelle.",
-      "en": "The perpetrator tried to <b>flee</b>, but the police quickly <g>brought</g> him <g>back</g> to the cell.",
-      "uk": "Злочинець намагався <b>втекти</b>, але поліція швидко повернула його назад до камери.",
-      "ru": "Преступник пытался <b>сбежать</b>, но полиция быстро вернула его назад в камеру."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
-  },
-  {
     "id": "k16_014",
     "cat": "k16",
     "term": {
@@ -45970,32 +41819,6 @@ var VOCAB = [
     }
   },
   {
-    "id": "k16_016",
-    "cat": "k16",
-    "term": {
-      "de": "die Architektur",
-      "en": "architecture",
-      "uk": "архітектура",
-      "ru": "архитектура"
-    },
-    "short": {
-      "de": "die Kunst und Wissenschaft, Gebäude zu planen und zu bauen",
-      "en": "the art and science of planning and constructing buildings",
-      "uk": "мистецтво і наука проєктування та будівництва споруд",
-      "ru": "искусство и наука проектирования и строительства зданий"
-    },
-    "def": {
-      "de": "Die moderne <b>Architektur</b> der Stadt und die alten Gebäude <g>passen</g> überraschend gut <g>zusammen</g>.",
-      "en": "The city's modern <b>architecture</b> and the old buildings surprisingly <g>go</g> <g>well together</g>.",
-      "uk": "Сучасна <b>архітектура</b> міста та старі будівлі напрочуд добре поєднуються.",
-      "ru": "Современная <b>архитектура</b> города и старые здания на удивление хорошо сочетаются."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1",
-    "info": {
-      "num": "sg"
-    }
-  },
-  {
     "id": "k16_017",
     "cat": "k16",
     "term": {
@@ -46022,7 +41845,8 @@ var VOCAB = [
       "v": [
         "die Feiern"
       ]
-    }
+    },
+    "prio": 2
   },
   {
     "id": "k16_018",
@@ -46048,64 +41872,6 @@ var VOCAB = [
     "gram": "satzverbindungen_ueberblick",
     "info": {
       "sense": "Ruhe"
-    }
-  },
-  {
-    "id": "k16_019",
-    "cat": "k16",
-    "term": {
-      "de": "die Reise",
-      "en": "trip",
-      "uk": "подорож",
-      "ru": "путешествие"
-    },
-    "short": {
-      "de": "eine Fahrt an einen anderen Ort, meistens für längere Zeit",
-      "en": "a trip to another place, usually for a longer time",
-      "uk": "поїздка в інше місце, зазвичай на тривалий час",
-      "ru": "поездка в другое место, обычно на длительное время"
-    },
-    "def": {
-      "de": "Wir machen die <b>Reise</b>, <g>obwohl</g> das Wetter nicht ideal ist.",
-      "en": "We are going on the <b>trip</b>, <g>although</g> the weather isn't ideal.",
-      "uk": "Ми вирушаємо в <b>подорож</b>, <g>хоча</g> погода не ідеальна.",
-      "ru": "Мы отправляемся в <b>путешествие</b>, <g>хотя</g> погода не идеальная."
-    },
-    "gram": "satzverbindungen_ueberblick",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Reisen"
-      ]
-    }
-  },
-  {
-    "id": "k16_021",
-    "cat": "k16",
-    "term": {
-      "de": "das Fest",
-      "en": "party",
-      "uk": "свято",
-      "ru": "праздник"
-    },
-    "short": {
-      "de": "eine große, oft öffentliche Feier",
-      "en": "a large, often public celebration",
-      "uk": "велике, часто публічне святкування",
-      "ru": "большое, часто публичное празднование"
-    },
-    "def": {
-      "de": "<b>Feiern</b> wir das <b>Fest</b> im Garten, <g>oder</g> gehen wir lieber in ein Restaurant?",
-      "en": "Shall we <b>celebrate</b> the <b>party</b> in the garden, <g>or</g> would we rather go to a restaurant?",
-      "uk": "<b>Святкуємо</b> <b>свято</b> в саду, <g>чи</g> краще підемо в ресторан?",
-      "ru": "<b>Празднуем</b> в саду, <g>или</g> лучше пойдём в ресторан?"
-    },
-    "gram": "satzverbindungen_ueberblick",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Feste"
-      ]
     }
   },
   {
@@ -46221,30 +41987,8 @@ var VOCAB = [
       "uk": "Коли ти <b>повертаєшся</b> з подорожі?",
       "ru": "Когда ты <b>возвращаешься</b> из путешествия?"
     },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
-  },
-  {
-    "id": "k16_031",
-    "cat": "k16",
-    "term": {
-      "de": "aufräumen",
-      "en": "to tidy up",
-      "uk": "прибирати",
-      "ru": "убирать"
-    },
-    "short": {
-      "de": "Ordnung machen, Dinge an ihren Platz räumen",
-      "en": "to put things in order, to put things back in their place",
-      "uk": "наводити лад, класти речі на місце",
-      "ru": "наводить порядок, класть вещи на место"
-    },
-    "def": {
-      "de": "Nach dem Fest <g><b>räumen</b></g> wir gemeinsam <g><b>auf</b></g>.",
-      "en": "After the party, we <g><b>tidy</b></g> <g><b>up</b></g> together.",
-      "uk": "Після свята ми разом <b>прибираємо</b>.",
-      "ru": "После праздника мы вместе <b>убираем</b>."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "prio": 2
   },
   {
     "id": "k16_032",
@@ -46399,104 +42143,6 @@ var VOCAB = [
       "t": "noun",
       "v": [
         "die Beweise"
-      ]
-    }
-  },
-  {
-    "id": "k16_038",
-    "cat": "k16",
-    "term": {
-      "de": "aussteigen",
-      "en": "to get off",
-      "uk": "виходити з транспорту",
-      "ru": "выходить из транспорта"
-    },
-    "short": {
-      "de": "ein Fahrzeug, zum Beispiel einen Bus, verlassen",
-      "en": "to leave a vehicle, for example a bus",
-      "uk": "залишати транспорт, наприклад автобус",
-      "ru": "покидать транспорт, например автобус"
-    },
-    "def": {
-      "de": "An der nächsten Haltestelle <g><b>steigen</b></g> wir <g><b>aus</b></g>.",
-      "en": "We <g><b>get</b></g> <g><b>off</b></g> at the next stop.",
-      "uk": "Ми <b>виходимо</b> на наступній зупинці.",
-      "ru": "Мы <b>выходим</b> на следующей остановке."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
-  },
-  {
-    "id": "k16_039",
-    "cat": "k16",
-    "term": {
-      "de": "einsteigen",
-      "en": "to get on",
-      "uk": "сідати в транспорт",
-      "ru": "садиться в транспорт"
-    },
-    "short": {
-      "de": "in ein Fahrzeug, zum Beispiel einen Bus, hineingehen",
-      "en": "to get into a vehicle, for example a bus",
-      "uk": "заходити в транспорт, наприклад автобус",
-      "ru": "заходить в транспорт, например автобус"
-    },
-    "def": {
-      "de": "Wir <g><b>steigen</b></g> hier in die U-Bahn <g><b>ein</b></g>.",
-      "en": "We <g><b>get</b></g> <g><b>on</b></g> the subway here.",
-      "uk": "Ми <b>сідаємо</b> тут у метро.",
-      "ru": "Мы <b>садимся</b> здесь в метро."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
-  },
-  {
-    "id": "k16_040",
-    "cat": "k16",
-    "term": {
-      "de": "umsteigen",
-      "en": "to change",
-      "uk": "пересідати",
-      "ru": "пересаживаться"
-    },
-    "short": {
-      "de": "von einem Fahrzeug in ein anderes wechseln, um weiterzufahren",
-      "en": "to switch from one vehicle to another to continue your journey",
-      "uk": "переходити з одного транспорту в інший, щоб продовжити поїздку",
-      "ru": "переходить с одного транспорта на другой, чтобы продолжить поездку"
-    },
-    "def": {
-      "de": "Am Hauptbahnhof <g><b>steigen</b></g> wir in die andere Linie <g><b>um</b></g>.",
-      "en": "At the main station, we <g><b>change</b></g> to the other line.",
-      "uk": "На головному вокзалі ми <b>пересідаємо</b> на іншу лінію.",
-      "ru": "На главном вокзале мы <b>пересаживаемся</b> на другую линию."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
-  },
-  {
-    "id": "k16_041",
-    "cat": "k16",
-    "term": {
-      "de": "der Abflug",
-      "en": "flight departure",
-      "uk": "вильот",
-      "ru": "вылет"
-    },
-    "short": {
-      "de": "der Moment, wenn ein Flugzeug losfliegt",
-      "en": "the moment when an aeroplane takes off",
-      "uk": "момент, коли літак злітає",
-      "ru": "момент, когда самолёт взлетает"
-    },
-    "def": {
-      "de": "Der <b>Abflug</b> ist um 6.45 Uhr, <g>deshalb</g> müssen wir früh aufstehen.",
-      "en": "<b>Departure</b> is at 6.45 a.m., <g>that is why</g> we have to get up early.",
-      "uk": "<b>Вильот</b> о 6:45, <g>тому</g> нам треба рано вставати.",
-      "ru": "<b>Вылет</b> в 6:45, <g>поэтому</g> нам нужно рано вставать."
-    },
-    "gram": "satzverbindungen_ueberblick",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Abflüge"
       ]
     }
   },
@@ -46777,35 +42423,6 @@ var VOCAB = [
     "gram": "praepositionen_mit_genitiv"
   },
   {
-    "id": "k16_054",
-    "cat": "k16",
-    "term": {
-      "de": "das Reisebüro",
-      "en": "travel agency",
-      "uk": "турагентство",
-      "ru": "турагентство"
-    },
-    "short": {
-      "de": "ein Geschäft, in dem man Reisen buchen kann",
-      "en": "a shop where you can book trips",
-      "uk": "магазин, де можна забронювати подорожі",
-      "ru": "магазин, где можно забронировать поездки"
-    },
-    "def": {
-      "de": "Im <b>Reisebüro</b> <g>habe</g> ich eine Reise nach Griechenland gebucht.",
-      "en": "I booked a trip to Greece at the <b>travel agency</b>.",
-      "uk": "У <b>турагентстві</b> я забронював поїздку до Греції.",
-      "ru": "В <b>турагентстве</b> я забронировал поездку в Грецию."
-    },
-    "gram": "perfekt_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Reisebüros"
-      ]
-    }
-  },
-  {
     "id": "k16_055",
     "cat": "k16",
     "term": {
@@ -46967,38 +42584,6 @@ var VOCAB = [
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
   {
-    "id": "k16_062",
-    "cat": "k16",
-    "term": {
-      "de": "das Doppelzimmer",
-      "en": "double room",
-      "uk": "двомісний номер",
-      "ru": "двухместный номер"
-    },
-    "short": {
-      "de": "ein Hotelzimmer für zwei Personen",
-      "en": "a hotel room for two people",
-      "uk": "готельний номер для двох осіб",
-      "ru": "гостиничный номер для двух человек"
-    },
-    "def": {
-      "de": "Wir <g>kommen</g> am Freitag <g>an</g> und möchten ein <b>Doppelzimmer</b> für zwei Nächte buchen.",
-      "en": "We arrive on Friday and would like to book a <b>double room</b> for two nights.",
-      "uk": "Ми приїжджаємо в пʼятницю й хочемо забронювати <b>двомісний номер</b> на дві ночі.",
-      "ru": "Мы приезжаем в пятницу и хотим забронировать <b>двухместный номер</b> на две ночи."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Doppelzimmer"
-      ]
-    },
-    "syn": [
-      "DZ"
-    ]
-  },
-  {
     "id": "k16_063",
     "cat": "k16",
     "term": {
@@ -47045,64 +42630,6 @@ var VOCAB = [
     "gram": "trennbare_verben_praefixe_wdh_b1"
   },
   {
-    "id": "k16_065",
-    "cat": "k16",
-    "term": {
-      "de": "das Einzelzimmer",
-      "en": "single room",
-      "uk": "одномісний номер",
-      "ru": "одноместный номер"
-    },
-    "short": {
-      "de": "ein Hotelzimmer für eine Person",
-      "en": "a hotel room for one person",
-      "uk": "готельний номер для однієї особи",
-      "ru": "гостиничный номер для одного человека"
-    },
-    "def": {
-      "de": "Für meine Dienstreise <g>habe</g> ich ein <b>Einzelzimmer</b> gebucht.",
-      "en": "For my business trip I booked a <b>single room</b>.",
-      "uk": "Для свого відрядження я забронював <b>одномісний номер</b>.",
-      "ru": "Для своей командировки я забронировал <b>одноместный номер</b>."
-    },
-    "gram": "perfekt_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Einzelzimmer"
-      ]
-    },
-    "syn": [
-      "EZ"
-    ]
-  },
-  {
-    "id": "k16_066",
-    "cat": "k16",
-    "term": {
-      "de": "das Gepäck",
-      "en": "luggage",
-      "uk": "багаж",
-      "ru": "багаж"
-    },
-    "short": {
-      "de": "die Koffer und Taschen, die man auf einer Reise mitnimmt",
-      "en": "the suitcases and bags that you take with you on a trip",
-      "uk": "валізи й сумки, які береш із собою в подорож",
-      "ru": "чемоданы и сумки, которые берёшь с собой в поездку"
-    },
-    "def": {
-      "de": "Mein <b>Gepäck</b> <g>ist</g> leider nicht angekommen.",
-      "en": "Unfortunately my <b>luggage</b> did not arrive.",
-      "uk": "Мій <b>багаж</b>, на жаль, не прибув.",
-      "ru": "Мой <b>багаж</b>, к сожалению, не прибыл."
-    },
-    "gram": "perfekt_wdh_b1",
-    "info": {
-      "num": "sg"
-    }
-  },
-  {
     "id": "k16_067",
     "cat": "k16",
     "term": {
@@ -47147,32 +42674,6 @@ var VOCAB = [
       "ru": "Мой чемодан появился на <b>багажной ленте</b> последним."
     },
     "gram": "wechselpraepositionen_wdh_b1"
-  },
-  {
-    "id": "k16_069",
-    "cat": "k16",
-    "term": {
-      "de": "die Halbpension",
-      "en": "half board",
-      "uk": "напівпансіон",
-      "ru": "полупансион"
-    },
-    "short": {
-      "de": "eine Hotelbuchung mit Frühstück und Abendessen",
-      "en": "a hotel booking with breakfast and dinner",
-      "uk": "бронювання в готелі зі сніданком і вечерею",
-      "ru": "бронирование в гостинице с завтраком и ужином"
-    },
-    "def": {
-      "de": "Bei <b>Halbpension</b> <g>fällt</g> das Mittagessen <g>aus</g>: Es gibt nur Frühstück und Abendessen.",
-      "en": "With <b>half board</b> there is no lunch: only breakfast and dinner.",
-      "uk": "При <b>напівпансіоні</b> обіду немає: лише сніданок і вечеря.",
-      "ru": "При <b>полупансионе</b> обеда нет: только завтрак и ужин."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1",
-    "syn": [
-      "HP"
-    ]
   },
   {
     "id": "k16_070",
@@ -47336,35 +42837,6 @@ var VOCAB = [
     "gram": "wechselpraepositionen_wdh_b1"
   },
   {
-    "id": "k16_077",
-    "cat": "k16",
-    "term": {
-      "de": "die Übernachtung",
-      "en": "overnight stay",
-      "uk": "ночівля",
-      "ru": "ночёвка"
-    },
-    "short": {
-      "de": "wenn man eine Nacht an einem Ort schläft, zum Beispiel im Hotel",
-      "en": "when you sleep for one night in a place, for example in a hotel",
-      "uk": "коли спиш одну ніч у якомусь місці, наприклад у готелі",
-      "ru": "когда спишь одну ночь в каком-то месте, например в гостинице"
-    },
-    "def": {
-      "de": "Wir <g>reisen</g> morgen <g>an</g> und brauchen nur eine <b>Übernachtung</b> im Doppelzimmer.",
-      "en": "We are arriving tomorrow and only need one <b>overnight stay</b> in a double room.",
-      "uk": "Ми приїжджаємо завтра й потребуємо лише одну <b>ночівлю</b> у двомісному номері.",
-      "ru": "Мы приезжаем завтра и нуждаемся только в одной <b>ночёвке</b> в двухместном номере."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Übernachtungen"
-      ]
-    }
-  },
-  {
     "id": "k16_078",
     "cat": "k16",
     "term": {
@@ -47435,29 +42907,6 @@ var VOCAB = [
       "ru": "<b>Умывальная</b> находится в конце коридора."
     },
     "gram": "genitiv"
-  },
-  {
-    "id": "k16_081",
-    "cat": "k16",
-    "term": {
-      "de": "der Zoll",
-      "en": "customs",
-      "uk": "митниця",
-      "ru": "таможня"
-    },
-    "short": {
-      "de": "die Stelle an der Grenze, die prüft, welche Waren man mitbringt",
-      "en": "the place at the border that checks which goods you bring with you",
-      "uk": "місце на кордоні, яке перевіряє, які товари ти привозиш",
-      "ru": "место на границе, которое проверяет, какие товары ты привозишь"
-    },
-    "def": {
-      "de": "Beim <b>Zoll</b> <g>macht</g> der Beamte meinen Koffer <g>auf</g>.",
-      "en": "At <b>customs</b> the officer opens my suitcase.",
-      "uk": "На <b>митниці</b> працівник відкриває мою валізу.",
-      "ru": "На <b>таможне</b> сотрудник открывает мой чемодан."
-    },
-    "gram": "trennbare_verben_praefixe_wdh_b1"
   },
   {
     "id": "k16_082",
@@ -47805,64 +43254,6 @@ var VOCAB = [
     "gram": "genitiv"
   },
   {
-    "id": "k16_097",
-    "cat": "k16",
-    "term": {
-      "de": "der Ausgang",
-      "en": "exit",
-      "uk": "вихід",
-      "ru": "выход"
-    },
-    "short": {
-      "de": "die Tür, durch die man ein Gebäude verlässt",
-      "en": "the door through which you leave a building",
-      "uk": "двері, через які виходиш з будівлі",
-      "ru": "дверь, через которую выходишь из здания"
-    },
-    "def": {
-      "de": "Der <b>Ausgang</b>, <g>den</g> Sie im Notfall benutzen sollen, ist rechts.",
-      "en": "The <b>exit</b> <g>that</g> you should use in an emergency is on the right.",
-      "uk": "<b>Вихід</b>, <g>яким</g> слід користуватися у разі небезпеки, розташований праворуч.",
-      "ru": "<b>Выход</b>, <g>которым</g> следует пользоваться в случае опасности, находится справа."
-    },
-    "gram": "relativsatz_akkusativ_b1",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Ausgänge"
-      ]
-    }
-  },
-  {
-    "id": "k16_098",
-    "cat": "k16",
-    "term": {
-      "de": "das Dorf",
-      "en": "village",
-      "uk": "село",
-      "ru": "деревня"
-    },
-    "short": {
-      "de": "ein kleiner Ort auf dem Land mit wenigen Häusern",
-      "en": "a small place in the countryside with few houses",
-      "uk": "невелике місце в сільській місцевості з небагатьма будинками",
-      "ru": "небольшое место в сельской местности с немногими домами"
-    },
-    "def": {
-      "de": "Wir wohnen in einem <g>kleinen</g> <b>Dorf</b> in den Bergen.",
-      "en": "We live in a small <b>village</b> in the mountains.",
-      "uk": "Ми живемо в невеликому <b>селі</b> в горах.",
-      "ru": "Мы живём в небольшой <b>деревне</b> в горах."
-    },
-    "gram": "adjektivdeklination_bestimmter_artikel",
-    "forms": {
-      "t": "noun",
-      "v": [
-        "die Dörfer"
-      ]
-    }
-  },
-  {
     "id": "k16_099",
     "cat": "k16",
     "term": {
@@ -48160,6 +43551,338 @@ var VOCAB = [
       "ru": "Пожалуйста, не останавливайтесь, <g>а</g> <b>идите дальше</b>!"
     },
     "gram": "relativsatz_nominativ_sondern"
+  },
+  {
+    "id": "k16_112",
+    "cat": "k16",
+    "term": {
+      "de": "der Anlass",
+      "en": "occasion",
+      "uk": "привід",
+      "ru": "повод"
+    },
+    "short": {
+      "de": "ein Ereignis, wegen dem man etwas Besonderes macht",
+      "en": "an event because of which you do something special",
+      "uk": "подія, через яку робиш щось особливе",
+      "ru": "событие, из-за которого делаешь что-то особенное"
+    },
+    "def": {
+      "de": "Wir feiern heute, <g>denn</g> es gibt einen besonderen <b>Anlass</b>: Oma wird achtzig.",
+      "en": "We are celebrating today, <g>because</g> there is a special <b>occasion</b>: Grandma is turning eighty.",
+      "uk": "Ми сьогодні святкуємо, <g>адже</g> є особливий <b>привід</b>: бабусі виповнюється вісімдесят.",
+      "ru": "Мы сегодня празднуем, <g>ведь</g> есть особый <b>повод</b>: бабушке исполняется восемьдесят."
+    },
+    "gram": "satzverbindungen_ueberblick",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Anlässe"
+      ]
+    }
+  },
+  {
+    "id": "k16_114",
+    "cat": "k16",
+    "term": {
+      "de": "die Silvesterfeier",
+      "en": "New Year's Eve party",
+      "uk": "новорічна вечірка",
+      "ru": "новогодняя вечеринка"
+    },
+    "short": {
+      "de": "ein Fest in der Nacht vom 31. Dezember auf den 1. Januar",
+      "en": "a party on the night of 31 December",
+      "uk": "свято в ніч з 31 грудня на 1 січня",
+      "ru": "праздник в ночь с 31 декабря на 1 января"
+    },
+    "def": {
+      "de": "Wir gehen zur <b>Silvesterfeier</b>, <g>aber</g> um eins sind wir wieder zu Hause.",
+      "en": "We are going to the <b>New Year's Eve party</b>, <g>but</g> we'll be home again at one.",
+      "uk": "Ми йдемо на <b>новорічну вечірку</b>, <g>але</g> о першій уже будемо вдома.",
+      "ru": "Мы идём на <b>новогоднюю вечеринку</b>, <g>но</g> в час уже будем дома."
+    },
+    "gram": "satzverbindungen_ueberblick",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Silvesterfeiern"
+      ]
+    }
+  },
+  {
+    "id": "k16_115",
+    "cat": "k16",
+    "term": {
+      "de": "das Ritual",
+      "en": "ritual",
+      "uk": "ритуал",
+      "ru": "ритуал"
+    },
+    "short": {
+      "de": "eine Handlung, die man immer gleich wiederholt",
+      "en": "an action that you always repeat in the same way",
+      "uk": "дія, яку завжди повторюють однаково",
+      "ru": "действие, которое всегда повторяют одинаково"
+    },
+    "def": {
+      "de": "Der Adventskranz ist ein altes <b>Ritual</b>, <g>doch</g> viele junge Leute kennen ihn kaum.",
+      "en": "The Advent wreath is an old <b>ritual</b>, <g>yet</g> many young people hardly know it.",
+      "uk": "Адвентовий вінок — давній <b>ритуал</b>, <g>проте</g> багато молодих людей майже його не знають.",
+      "ru": "Адвентский венок — старый <b>ритуал</b>, <g>однако</g> многие молодые люди почти его не знают."
+    },
+    "gram": "satzverbindungen_ueberblick",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Rituale"
+      ]
+    }
+  },
+  {
+    "id": "k16_116",
+    "cat": "k16",
+    "term": {
+      "de": "die Zeremonie",
+      "en": "ceremony",
+      "uk": "церемонія",
+      "ru": "церемония"
+    },
+    "short": {
+      "de": "ein feierlicher, offizieller Ablauf bei einem besonderen Anlass",
+      "en": "a formal, official procedure on a special occasion",
+      "uk": "урочиста офіційна подія з особливої нагоди",
+      "ru": "торжественное официальное событие по особому поводу"
+    },
+    "def": {
+      "de": "Die <b>Zeremonie</b> im Standesamt war kurz, <g>denn</g> danach gab es ein großes Fest.",
+      "en": "The <b>ceremony</b> at the registry office was short, <g>because</g> there was a big party afterwards.",
+      "uk": "<b>Церемонія</b> в РАЦСі була короткою, <g>адже</g> потім було велике свято.",
+      "ru": "<b>Церемония</b> в ЗАГСе была короткой, <g>ведь</g> потом был большой праздник."
+    },
+    "gram": "satzverbindungen_ueberblick",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Zeremonien"
+      ]
+    }
+  },
+  {
+    "id": "k16_117",
+    "cat": "k16",
+    "term": {
+      "de": "der Täter",
+      "en": "offender",
+      "uk": "злочинець",
+      "ru": "преступник"
+    },
+    "short": {
+      "de": "eine Person, die eine Straftat gemacht hat",
+      "en": "a person who has committed a crime",
+      "uk": "людина, яка скоїла злочин",
+      "ru": "человек, который совершил преступление"
+    },
+    "def": {
+      "de": "Die Polizei hat den <b>Täter</b> schon nach zwei Tagen gefunden.",
+      "en": "The police found the <b>offender</b> after just two days.",
+      "uk": "Поліція знайшла <b>злочинця</b> вже через два дні.",
+      "ru": "Полиция нашла <b>преступника</b> уже через два дня."
+    },
+    "gram": "",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Täter"
+      ]
+    }
+  },
+  {
+    "id": "k16_118",
+    "cat": "k16",
+    "term": {
+      "de": "versteckt",
+      "en": "hidden",
+      "uk": "прихований",
+      "ru": "скрытый"
+    },
+    "short": {
+      "de": "so, dass man es nicht sofort sieht",
+      "en": "so that you don't see it straight away",
+      "uk": "такий, що його одразу не видно",
+      "ru": "такой, что его сразу не видно"
+    },
+    "def": {
+      "de": "Die Polizei hat die <g><b>versteckte</b></g> Kamera im Laden gefunden.",
+      "en": "The police found the <b>hidden</b> camera in the shop.",
+      "uk": "Поліція знайшла <b>приховану</b> камеру в магазині.",
+      "ru": "Полиция нашла <b>скрытую</b> камеру в магазине."
+    },
+    "gram": "partizip2_als_adjektiv"
+  },
+  {
+    "id": "k16_119",
+    "cat": "k16",
+    "term": {
+      "de": "strafbar",
+      "en": "punishable",
+      "uk": "карний",
+      "ru": "наказуемый"
+    },
+    "short": {
+      "de": "so, dass man dafür eine Strafe bekommen kann",
+      "en": "something you can be punished for",
+      "uk": "такий, за який можна отримати покарання",
+      "ru": "такой, за который можно получить наказание"
+    },
+    "def": {
+      "de": "Autofahren ohne Führerschein ist in Deutschland <b>strafbar</b>.",
+      "en": "Driving without a licence is <b>punishable</b> in Germany.",
+      "uk": "Керування авто без посвідчення в Німеччині <b>карне</b>.",
+      "ru": "Вождение без прав в Германии <b>наказуемо</b>."
+    },
+    "gram": ""
+  },
+  {
+    "id": "k16_120",
+    "cat": "k16",
+    "term": {
+      "de": "die Spur",
+      "en": "trace",
+      "uk": "слід",
+      "ru": "след"
+    },
+    "short": {
+      "de": "ein Zeichen, das zeigt, dass jemand da war",
+      "en": "a sign showing that someone was there",
+      "uk": "знак, який показує, що хтось там був",
+      "ru": "знак, который показывает, что кто-то там был"
+    },
+    "def": {
+      "de": "Die Polizei hat am Fenster eine wichtige <b>Spur</b> gefunden.",
+      "en": "The police found an important <b>trace</b> at the window.",
+      "uk": "Поліція знайшла біля вікна важливий <b>слід</b>.",
+      "ru": "Полиция нашла у окна важный <b>след</b>."
+    },
+    "gram": "",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Spuren"
+      ]
+    }
+  },
+  {
+    "id": "k16_121",
+    "cat": "k16",
+    "term": {
+      "de": "die Geschwindigkeit",
+      "en": "speed",
+      "uk": "швидкість",
+      "ru": "скорость"
+    },
+    "short": {
+      "de": "wie schnell etwas fährt oder sich bewegt",
+      "en": "how fast something drives or moves",
+      "uk": "наскільки швидко щось їде чи рухається",
+      "ru": "насколько быстро что-то едет или движется"
+    },
+    "def": {
+      "de": "In der Stadt ist die <g><b>Geschwindigkeit</b></g> auf 50 Kilometer pro Stunde begrenzt.",
+      "en": "In town the <b>speed</b> is limited to 50 kilometres per hour.",
+      "uk": "У місті <b>швидкість</b> обмежена 50 кілометрами на годину.",
+      "ru": "В городе <b>скорость</b> ограничена 50 километрами в час."
+    },
+    "gram": "nomen_auf_heit_keit",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Geschwindigkeiten"
+      ]
+    }
+  },
+  {
+    "id": "k16_122",
+    "cat": "k16",
+    "term": {
+      "de": "schweigen",
+      "en": "to remain silent",
+      "uk": "мовчати",
+      "ru": "молчать"
+    },
+    "short": {
+      "de": "nichts sagen",
+      "en": "to say nothing",
+      "uk": "нічого не казати",
+      "ru": "ничего не говорить"
+    },
+    "def": {
+      "de": "Der Verdächtige <b>schweigt</b> und sagt der Polizei kein Wort.",
+      "en": "The suspect <b>remains silent</b> and says not a word to the police.",
+      "uk": "Підозрюваний <b>мовчить</b> і не каже поліції ні слова.",
+      "ru": "Подозреваемый <b>молчит</b> и не говорит полиции ни слова."
+    },
+    "gram": "",
+    "forms": {
+      "t": "verb",
+      "v": [
+        "schweigt",
+        "schwieg",
+        "hat geschwiegen"
+      ]
+    }
+  },
+  {
+    "id": "k16_123",
+    "cat": "k16",
+    "term": {
+      "de": "flach",
+      "en": "flat",
+      "uk": "рівнинний",
+      "ru": "равнинный"
+    },
+    "short": {
+      "de": "ohne Berge und Hügel",
+      "en": "without mountains or hills",
+      "uk": "без гір і пагорбів",
+      "ru": "без гор и холмов"
+    },
+    "def": {
+      "de": "Die Landschaft im Norden ist sehr <b>flach</b>, <g>deshalb</g> fahren dort viele Leute Fahrrad.",
+      "en": "The landscape in the north is very <b>flat</b>, <g>so</g> many people cycle there.",
+      "uk": "Місцевість на півночі дуже <b>рівнинна</b>, <g>тому</g> там багато хто їздить на велосипеді.",
+      "ru": "Местность на севере очень <b>равнинная</b>, <g>поэтому</g> там многие ездят на велосипеде."
+    },
+    "gram": "deshalb_deswegen_trotzdem"
+  },
+  {
+    "id": "k16_113",
+    "cat": "k16",
+    "term": {
+      "de": "die Demonstration",
+      "en": "demonstration",
+      "uk": "демонстрація",
+      "ru": "демонстрация"
+    },
+    "short": {
+      "de": "wenn viele Menschen auf der Straße für oder gegen etwas protestieren",
+      "en": "when many people protest in the street for or against something",
+      "uk": "коли багато людей протестують на вулиці за щось чи проти чогось",
+      "ru": "когда много людей протестуют на улице за что-то или против чего-то"
+    },
+    "def": {
+      "de": "Am Samstag <g>findet</g> in der Innenstadt eine große <b>Demonstration</b> <g>statt</g>.",
+      "en": "On Saturday a big <b>demonstration</b> is <g>taking place</g> in the city centre.",
+      "uk": "У суботу в центрі міста <g>відбудеться</g> велика <b>демонстрація</b>.",
+      "ru": "В субботу в центре города <g>пройдёт</g> большая <b>демонстрация</b>."
+    },
+    "gram": "trennbare_verben_praefixe_wdh_b1",
+    "forms": {
+      "t": "noun",
+      "v": [
+        "die Demonstrationen"
+      ]
+    }
   }
 ];
 
