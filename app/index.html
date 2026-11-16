@@ -1,1 +1,91 @@
-
+<!doctype html>
+<html lang="uk" translate="no">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0d2b1a">
+<title>MOVA — завантажити застосунок</title>
+<meta name="description" content="MOVA — німецька для життя й роботи. Застосунок для iPhone, iPad і Android.">
+<meta property="og:title" content="MOVA — німецька для життя й роботи">
+<meta property="og:description" content="Застосунок для iPhone, iPad і Android.">
+<meta property="og:image" content="https://mova.now/og-image.png">
+<meta property="og:url" content="https://mova.now/app">
+<link rel="icon" href="/icon-192.png">
+<!--
+  mova.now/app — одне посилання для всіх пристроїв:
+    iPhone / iPad          → App Store
+    Android                → ANDROID_URL (поки йде закрите тестування в Google Play — веб-застосунок,
+                             бо сторінка Play для не-тестувальників показує «не знайдено»;
+                             після виходу в продакшн замінити на PLAY_URL)
+    комп'ютер та інше      → ця сторінка з кнопками
+  ?stay=1 — не перенаправляти (щоб перевірити сторінку з телефона).
+-->
+<script>
+(function(){
+  var APPSTORE_URL = 'https://apps.apple.com/app/id6834117566';
+  var PLAY_URL     = 'https://play.google.com/store/apps/details?id=now.mova.app';
+  var WEB_URL      = 'https://mova.now/';
+  var ANDROID_URL  = WEB_URL;   // після продакшн-релізу в Google Play: PLAY_URL
+  window.MOVA_LINKS = { appstore: APPSTORE_URL, play: PLAY_URL, web: WEB_URL, android: ANDROID_URL };
+  if (/[?&]stay=1/.test(location.search)) return;
+  var ua = navigator.userAgent || '';
+  var ios = /iPhone|iPad|iPod/i.test(ua) || (/Macintosh/i.test(ua) && (navigator.maxTouchPoints | 0) > 1);
+  // Відкрито зсередини застосунку з Google Play (TWA) — він уже встановлений, ведемо в нього.
+  if (/^android-app:\/\//.test(document.referrer || '')) { location.replace(WEB_URL); return; }
+  if (ios) { location.replace(APPSTORE_URL); return; }
+  if (/Android/i.test(ua)) { location.replace(ANDROID_URL); return; }
+})();
+</script>
+<style>
+  :root{ --bg:#f6f2e8; --card:#fffdf7; --ink:#0d2b1a; --muted:#5d6b62; --gold:#c9a84c; --line:#e7dfcc; }
+  @media (prefers-color-scheme: dark){ :root{ --bg:#0b1f14; --card:#11291b; --ink:#f3ecd9; --muted:#a9b5ad; --line:#24402f; } }
+  *{ box-sizing:border-box }
+  body{ margin:0; min-height:100vh; display:flex; align-items:center; justify-content:center;
+        background:var(--bg); color:var(--ink); padding:24px 16px;
+        font:16px/1.45 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  .card{ width:100%; max-width:420px; background:var(--card); border:1px solid var(--line);
+         border-radius:20px; padding:32px 24px; text-align:center; }
+  .logo{ width:84px; height:84px; border-radius:20px; display:block; margin:0 auto 16px; }
+  h1{ font-size:24px; margin:0 0 6px; }
+  p{ margin:0 0 24px; color:var(--muted); }
+  a.btn{ display:block; padding:14px 16px; margin:0 0 12px; border-radius:14px; text-decoration:none;
+         font-weight:600; background:var(--ink); color:var(--bg); }
+  a.btn.alt{ background:transparent; color:var(--ink); border:1px solid var(--line); }
+  .soon{ font-size:13px; color:var(--muted); margin:-6px 0 14px; }
+</style>
+</head>
+<body>
+<main class="card">
+  <img class="logo" src="/icon-192.png" alt="MOVA">
+  <h1 data-t="title">MOVA</h1>
+  <p data-t="sub">Німецька для життя й роботи. Вчимося граючи. Говоримо по-справжньому.</p>
+  <a class="btn" id="b-ios" href="https://apps.apple.com/app/id6834117566" data-t="ios">App Store (iPhone, iPad)</a>
+  <a class="btn alt" id="b-and" href="https://mova.now/" data-t="and">Android</a>
+  <div class="soon" id="soon" data-t="soon">Google Play — незабаром. Поки що MOVA на Android працює в браузері.</div>
+  <a class="btn alt" href="https://mova.now/" data-t="web">Відкрити в браузері</a>
+</main>
+<script>
+(function(){
+  var T = {
+    uk:{ sub:'Німецька для життя й роботи. Вчимося граючи. Говоримо по-справжньому.', ios:'App Store (iPhone, iPad)', and:'Android', soon:'Google Play — незабаром. Поки що MOVA на Android працює в браузері.', web:'Відкрити в браузері' },
+    ru:{ sub:'Немецкий для жизни и работы. Учимся играя. Говорим по-настоящему.', ios:'App Store (iPhone, iPad)', and:'Android', soon:'Google Play — скоро. Пока MOVA на Android работает в браузере.', web:'Открыть в браузере' },
+    de:{ sub:'Deutsch für Leben und Arbeit. Spielend lernen. Wirklich sprechen.', ios:'App Store (iPhone, iPad)', and:'Android', soon:'Google Play — bald. Bis dahin läuft MOVA auf Android im Browser.', web:'Im Browser öffnen' },
+    en:{ sub:'German for life and work. Learn through play. Speak for real.', ios:'App Store (iPhone, iPad)', and:'Android', soon:'Google Play is coming soon. Until then, MOVA runs in the browser on Android.', web:'Open in browser' }
+  };
+  var l = (navigator.language || 'uk').slice(0,2).toLowerCase();
+  var d = T[l] || T.en;
+  document.documentElement.lang = T[l] ? l : 'en';
+  var els = document.querySelectorAll('[data-t]');
+  for (var i = 0; i < els.length; i++) { var k = els[i].getAttribute('data-t'); if (d[k]) els[i].textContent = d[k]; }
+  var L = window.MOVA_LINKS || {};
+  if (L.android && L.android !== L.web) {   // Google Play вже доступний для всіх
+    document.getElementById('b-and').href = L.android;
+    document.getElementById('b-and').textContent = 'Google Play (Android)';
+    document.getElementById('soon').style.display = 'none';
+  } else {
+    document.getElementById('b-and').style.display = 'none';   // поки Play недоступний — лише «у браузері»
+  }
+})();
+</script>
+</body>
+</html>
