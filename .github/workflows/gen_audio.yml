@@ -22,7 +22,7 @@ concurrency:
 jobs:
   # Легка перевірка ПЕРЕД важким джобом генерації: чи змінився в коміті,
   # що задеплоївся, хоч один файл, від якого реально залежить аудіо
-  # (бази курсів "<COURSE>.js" + спільний characters.js). Оновлення
+  # (теки баз курсів "data/<COURSE>/" + спільний characters.js). Оновлення
   # index.html, sw.js чи будь-чого іншого не додає нових карток/фраз для
   # озвучення — раніше в таких випадках generate все одно запускався й
   # проходив повний скрипт (checkout, install deps, скан усіх баз) лише
@@ -66,8 +66,10 @@ jobs:
           # Список файлів баз курсів беремо прямо з COURSES у gen_audio.py
           # (а не дублюємо вручну тут) — щоб при додаванні нового курсу в
           # скрипті цей перелік не розійшовся й сам собою лишався точним.
+          # Бази курсів gen_audio.py читає з розбитих тек data/<курс>/ (повних
+          # <курс>.js на сервері немає), тож стежимо саме за цими теками.
           COURSE_FILES=$(sed -n '/^COURSES = \[/,/\]/p' gen_audio.py \
-            | grep -oE "'[^']+'" | tr -d "'" | sed 's/$/.js/')
+            | grep -oE "'[^']+'" | tr -d "'" | sed 's|^|data/|; s|$|/|')
           WATCH_FILES=$(printf 'characters.js\n%s' "$COURSE_FILES")
           echo "Файли, що впливають на аудіо:"
           echo "$WATCH_FILES"
@@ -122,7 +124,7 @@ jobs:
       # маніфести gen_audio.py сам стягує з R2 (r2_pull_manifests), тож локальна
       # audio/ містить лише маніфести й щойно згенеровані файли — це й робить
       # швидким крок збереження після Cancel нижче. Історія git теж не потрібна.
-      - name: Checkout repository (без audio/ і data/)
+      - name: Checkout repository (без audio/; data/ потрібна — з неї читаються бази курсів)
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event.workflow_run.head_sha || github.sha }}
@@ -131,7 +133,6 @@ jobs:
           sparse-checkout: |
             /*
             !/audio/
-            !/data/
           sparse-checkout-cone-mode: false
 
       - name: Set up Python
