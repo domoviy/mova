@@ -205,10 +205,10 @@ def field_wants_timing(internal_cat, field, lang, primary_lang):
     allowed = CATEGORIES_WITH_TIMING[internal_cat]
     return allowed is None or field in allowed
 
-# Список курсів. Для кожного курсу база лежить у файлі "<COURSE>.js"
-# у тій самій директорії, що й цей скрипт, а аудіо генерується в
+# Список курсів. Для кожного курсу база лежить у теці "data/<COURSE>/"
+# (розбита база, див. load_course_data), а аудіо генерується в
 # audio/<COURSE>/... — назва папки аудіо і префікс ключів у
-# audio/manifest.json ЗАВЖДИ збігаються з назвою файлу бази без .js.
+# audio/manifest.json ЗАВЖДИ збігаються з назвою теки бази в data/.
 COURSES = [
     'Deutsch-B2-Beruf',
     'Financial-Accounting-Foundations',
@@ -1038,7 +1038,7 @@ def _js_literal_to_json(src):
 def _parse_js_array_blocks(content, file_path, skip_vars=()):
     """Спільна логіка розбору 'var/let/const/export NAME = [...]' блоків
     з тексту JS-файлу — використовується і для файлів курсів
-    (load_js_database), і для спільного characters.js
+    (раніше — load_js_database), і для спільного characters.js
     (load_characters_file). Повертає список (var_name, items) — items
     це вже розпарсений Python-список словників.
 
@@ -1152,46 +1152,66 @@ def load_characters_file(file_path=CHARACTERS_FILE):
     return []
 
 
-def load_js_database(file_path):
-    with open(file_path, 'r', encoding='utf-8') as f:
-        content = f.read()
+# Бази курсів читаються з розбитих файлів data/<COURSE>/ (результат split-course.js, ті самі,
+# що завантажує застосунок), а не з монолітного "<COURSE>.js" — на сервері повних баз немає:
+#   core.json        — globals (PRIMARY_LANG, AUDIO_CONFIG, CATS, LESSONS, QUIZ, FORMS, …) + order
+#   all.json         — усі колекції (VOCAB, DIALOGE, …): основна мова + структура
+#   all.<lang>.json  — переклади однією мовою, вирівняні за індексом (null = нічого)
+# Склеюємо всі мови назад — так само, як mergeInto() у index.html (MovaCourse). Значення в JSON
+# уже «чисті» (split-course.js виконує файл курсу у vm), тож коментарі в AUDIO_CONFIG і людяний
+# JS-синтаксис масивів тут більше не заважають.
+DATA_ROOT = pathlib.Path('data')
 
-    # PRIMARY_LANG — мова, якою завжди озвучуються дистрактори та сирий
-    # 'answer' Sprachbau-картки (зараз 'de', але читаємо з бази, а не
-    # хардкодимо — узгоджено з тим самим принципом на клієнті, де
-    # index.html бере PRIMARY_LANG, а не літеральне 'de').
-    primary_lang = "de"
-    primary_match = re.search(r'PRIMARY_LANG\s*=\s*["\']([a-z]{2})["\']', content)
-    if primary_match:
-        primary_lang = primary_match.group(1)
+def course_data_dir(course):
+    return DATA_ROOT / course
 
-    config = {"de": ["100", "080"], "en": ["100"], "uk": ["100"], "ru": ["100"]}
-    config_match = re.search(r'AUDIO_CONFIG\s*=\s*(\{.*?\})', content, re.DOTALL)
-    if config_match:
-        try:
-            # AUDIO_CONFIG у файлах курсів пишеться з коментарями
-            # (закоментовані мови/пояснення праворуч від значень) — це
-            # валідний JS, але невалідний JSON. Без цієї очистки
-            # json.loads() ЗАВЖДИ падав на будь-якому "//"-коментарі
-            # всередині об'єкта, виняток тихо ковтався (голий except),
-            # і функція мовчки відкочувалась на дефолт (усі 4 мови,
-            # 100+080) — навіть якщо курс явно закоментував/прибрав
-            # частину мов. Саме це сталось із
-            # Financial-Accounting-Foundations.js: de/ru закоментовані,
-            # а фактично генерувались усі мови на обох швидкостях.
-            clean_config = re.sub(r'//.*', '', config_match.group(1))
-            clean_config = re.sub(r'/\*.*?\*/', '', clean_config, flags=re.DOTALL)
-            clean_config = re.sub(r',\s*([\]\}])', r'\1', clean_config)
-            config = json.loads(clean_config.replace("'", '"'))
-        except Exception as e:
-            print(f"⚠ Не вдалося розпарсити AUDIO_CONFIG у {file_path}, використовую дефолт (усі мови, 100+080): {e}", flush=True)
+def _merge_lang_side(target, side):
+    """Накладає sidecar перекладу на базу НА МІСЦІ (масиви — за індексом)."""
+    if side is None or target is None:
+        return
+    if isinstance(target, list):
+        for i in range(min(len(target), len(side))):
+            if side[i] is not None and isinstance(target[i], (dict, list)):
+                _merge_lang_side(target[i], side[i])
+        return
+    for k, sv in side.items():
+        if isinstance(sv, (dict, list)) and isinstance(target.get(k), (dict, list)):
+            _merge_lang_side(target[k], sv)
+        else:
+            target[k] = sv
+
+def load_course_data(course):
+    """Повертає (audio_config, raw_items, primary_lang) курсу з data/<course>/.
+    raw_items — усі елементи з id з колекцій all.json і масивів core.globals,
+    крім CATS/LESSONS/CHARACTERS; кожен із "_fallback_var" = назва масиву."""
+    d = course_data_dir(course)
+    with open(d / 'core.json', 'r', encoding='utf-8') as f:
+        core = json.load(f)
+    with open(d / 'all.json', 'r', encoding='utf-8') as f:
+        colls = json.load(f)
+    for lang in core.get('langs', {}).get('others', []):
+        side_file = d / f'all.{lang}.json'
+        if side_file.exists():
+            with open(side_file, 'r', encoding='utf-8') as f:
+                _merge_lang_side(colls, json.load(f))
+
+    g = core.get('globals', {})
+    primary_lang = g.get('PRIMARY_LANG') or 'de'
+    config = g.get('AUDIO_CONFIG')
+    if not isinstance(config, dict) or not config:
+        print(f"⚠ Курс '{course}': AUDIO_CONFIG у core.json нема — використовую дефолт (усі мови, de 100+080).", flush=True)
+        config = {"de": ["100", "080"], "en": ["100"], "uk": ["100"], "ru": ["100"]}
+
+    # QUIZ, FORMS, SB_CATS, REGIONS, EXAM_SIM лежать у core.globals, решта — в all.json.
+    for name, value in g.items():
+        if isinstance(value, list) and name not in colls:
+            colls[name] = value
 
     raw_items = []
-    # CHARACTERS у файлах курсів більше НЕ визначається (винесено в
-    # спільний characters.js, див. load_characters_file() вище) — але
-    # якщо раптом і трапиться в старому/ще не мігрованому файлі курсу,
-    # просто ігноруємо його тут: джерело правди тепер одне.
-    for var_name, items in _parse_js_array_blocks(content, file_path, skip_vars=("CATS", "LESSONS", "CHARACTERS")):
+    for var_name, items in colls.items():
+        # CHARACTERS — у спільному characters.js (load_characters_file); CATS/LESSONS не озвучуються.
+        if var_name in ("CATS", "LESSONS", "CHARACTERS") or not isinstance(items, list):
+            continue
         for item in items:
             if isinstance(item, dict) and "id" in item:
                 item["_fallback_var"] = var_name
@@ -2050,12 +2070,12 @@ async def main():
     course_lang_order = {}
 
     for course in COURSES:
-      course_file = pathlib.Path(f"{course}.js")
-      if not course_file.exists():
-          print(f"⚠ Курс '{course}': файл бази '{course_file}' не знайдено — "
+      course_core = course_data_dir(course) / 'core.json'
+      if not course_core.exists():
+          print(f"⚠ Курс '{course}': розбитої бази '{course_core}' не знайдено — "
                 f"курс пропущено (ймовірно, ще не залитий на сервер).", flush=True)
           continue
-      audio_config, raw_items, primary_lang = load_js_database(f"{course}.js")
+      audio_config, raw_items, primary_lang = load_course_data(course)
       audio_base = AUDIO_ROOT / course
       course_lang_order[course] = [primary_lang] + [l for l in audio_config.keys() if l != primary_lang]
       print(f"— Курс '{course}': знайдено {len(raw_items)} елементів бази.", flush=True)
