@@ -20,37 +20,54 @@ jobs:
       contents: write
 
     steps:
+      # Лише останній коміт: повна історія (fetch-depth: 0) тягнула всю стару
+      # теку audio/ і займала більшу частину ~2 хв запуску. Для бампа версії й
+      # push історія не потрібна.
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
-
-      - name: Bump versions
-        run: |
-          # Версія = номер запуску + короткий SHA: напр. 142-a1b2c3d
-          NEW_VERSION="${{ github.run_number }}-$(echo ${{ github.sha }} | cut -c1-7)"
-          echo "Нова версія: $NEW_VERSION"
-
-          # sw.js — CACHE_VERSION
-          sed -i "s|const CACHE_VERSION = '.*';|const CACHE_VERSION = '${NEW_VERSION}';|" sw.js
-
-          # index.html — APP_VERSION
-          sed -i "s|const APP_VERSION = '.*';|const APP_VERSION = '${NEW_VERSION}';|" index.html
-
-          echo "sw.js:"; grep "CACHE_VERSION" sw.js
-          echo "index.html:"; grep "APP_VERSION" index.html
+          ref: main
+          fetch-depth: 1
 
       - name: Configure Git Bot
         run: |
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
-      - name: Commit updated versions
+      # КІЛЬКА ПУШІВ ПОСПІЛЬ (завантаження файлів у різні теки через сайт GitHub
+      # = окремий коміт на кожну теку) запускають кілька копій цього workflow
+      # паралельно. Раніше друга копія падала на git push (гілка вже пішла вперед)
+      # і приходив лист "All jobs have failed". Тепер при відмові push беремо
+      # свіжий main, заново ставимо версію й пробуємо ще раз (до 5 спроб).
+      - name: Bump versions and push
         run: |
-          git add sw.js index.html
-          if git diff --staged --quiet; then
-            echo "Версії не змінились — пропускаємо коміт"
-          else
-            git commit -m "⚙️ Version bump to ${NEW_VERSION} [skip ci]"
-            git push
-          fi
+          # Версія = номер запуску + короткий SHA: напр. 142-a1b2c3d
+          NEW_VERSION="${{ github.run_number }}-$(echo ${{ github.sha }} | cut -c1-7)"
+          echo "Нова версія: $NEW_VERSION"
+
+          for attempt in 1 2 3 4 5; do
+            sed -i "s|const CACHE_VERSION = '.*';|const CACHE_VERSION = '${NEW_VERSION}';|" sw.js
+            sed -i "s|const APP_VERSION = '.*';|const APP_VERSION = '${NEW_VERSION}';|" index.html
+            grep "CACHE_VERSION" sw.js | head -1
+            grep -o "const APP_VERSION = '[^']*';" index.html
+
+            git add sw.js index.html
+            if git diff --staged --quiet; then
+              echo "Версії не змінились — пропускаємо коміт"
+              exit 0
+            fi
+            git commit -q -m "⚙️ Version bump to ${NEW_VERSION} [skip ci]"
+
+            if git push origin HEAD:main; then
+              echo "Готово (спроба $attempt)"
+              exit 0
+            fi
+
+            echo "Push відхилено: main змінився. Беремо свіжий main і повторюємо..."
+            sleep $((attempt * 3))
+            git fetch -q --depth=1 origin main
+            git reset -q --hard origin/main
+          done
+
+          echo "Не вдалося запушити після 5 спроб"
+          exit 1
