@@ -1198,9 +1198,13 @@ def load_course_data(course):
     g = core.get('globals', {})
     primary_lang = g.get('PRIMARY_LANG') or 'de'
     config = g.get('AUDIO_CONFIG')
+    # Немає або порожній AUDIO_CONFIG — курс НЕ озвучуємо. Раніше тут підставлявся дефолт
+    # «усі мови, de 100+080», і застаріла база на сервері (AUDIO_CONFIG = {}) запустила
+    # тисячі непотрібних завдань (de 080, en/uk/ru). Краще нічого, ніж зайві години генерації.
     if not isinstance(config, dict) or not config:
-        print(f"⚠ Курс '{course}': AUDIO_CONFIG у core.json нема — використовую дефолт (усі мови, de 100+080).", flush=True)
-        config = {"de": ["100", "080"], "en": ["100"], "uk": ["100"], "ru": ["100"]}
+        print(f"⚠ Курс '{course}': AUDIO_CONFIG у core.json нема або порожній — курс НЕ озвучую. "
+              f"Задайте AUDIO_CONFIG у базі курсу й залийте свіжу data/{course}/.", flush=True)
+        config = {}
 
     # QUIZ, FORMS, SB_CATS, REGIONS, EXAM_SIM лежать у core.globals, решта — в all.json.
     for name, value in g.items():
