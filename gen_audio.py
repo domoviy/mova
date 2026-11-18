@@ -306,7 +306,20 @@ class ManifestStore:
                 self.shards[(lang, rate)] = dict(shard)
                 for short_key, value in shard.items():
                     self.data[join_mkey(course, lang, rate, short_key)] = value
+        # Самовідновлення index.json: якщо шард видалили з R2 вручну (напр. зайву теку
+        # de/080), стягнутий index.json ще перелічує його, і клієнт шукав би шард, якого
+        # нема. Перебудований з наявних шардів індекс, що відрізняється від стягнутого,
+        # позначаємо для заливки — навіть якщо генерувати для курсу нічого.
+        old_shards = None
+        try:
+            with open(index_path(course), 'r', encoding='utf-8') as f:
+                old_shards = json.load(f).get('shards')
+        except Exception:
+            pass
         self._sync_index()
+        if old_shards is not None and self._index_counts and old_shards != self._index_counts and STORAGE != 'git':
+            print(f"— [{course}] index.json перебудовано з наявних шардів: {old_shards} → {self._index_counts}", flush=True)
+            _R2_PENDING_MANIFESTS.add(_audio_rel(index_path(course)))
 
     def get(self, mkey, default=None):
         return self.data.get(mkey, default)
@@ -2820,6 +2833,8 @@ async def main():
     print(f"Знайдено нових/змінених завдань для генерації: {total_tasks}", flush=True)
     if not tasks:
         print("Всі файли синхронізовані з manifest.json.", flush=True)
+        if _R2_PENDING_MANIFESTS:
+            save_batch(0)   # лише перебудовані index.json (див. ManifestStore.__init__)
         return
 
     semaphore = asyncio.Semaphore(WORKERS)
