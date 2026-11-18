@@ -144,21 +144,27 @@ jobs:
         run: |
           pip install edge-tts mutagen
 
+      # Порожній rclone.conf: сховище 'r2' задається змінними RCLONE_CONFIG_R2_* (вище), а без
+      # файлу rclone на КОЖЕН виклик пише NOTICE «Config file ... not found - using defaults».
       - name: Install rclone
-        run: curl -fsSL https://rclone.org/install.sh | sudo bash
+        run: |
+          curl -fsSL https://rclone.org/install.sh | sudo bash
+          mkdir -p ~/.config/rclone && touch ~/.config/rclone/rclone.conf
 
       # Якщо ключі R2 не підхопились — падаємо тут, до генерації, з явною помилкою.
       - name: Перевірка доступу до R2
         run: rclone lsf r2:mova-audio --max-depth 1
 
       # Один потік із паузою 1.2с між запитами (менше ризик rate-limit від Edge TTS);
-      # проміжна заливка в R2 — пачками по 5 файлів (маленьке вікно ризику втрати прогресу).
+      # проміжна заливка в R2 — пачками по 25 завдань. Кожна заливка — два запуски rclone (~4с,
+      # генерація в цей час стоїть); при пачці 5 це додавало ~30% до часу прогону. Ризик втрати
+      # не зріс: при Cancel усе згенероване доливає крок «Save progress after cancel» нижче.
       - name: Generate audio files
         env:
           TTS_STORAGE: r2
           TTS_WORKERS: '1'
           TTS_DELAY: '1.2'
-          TTS_COMMIT_LIMIT: '5'
+          TTS_COMMIT_LIMIT: '25'
         run: python gen_audio.py
 
       # ЗБЕРЕЖЕННЯ ПІСЛЯ СКАСУВАННЯ: при натисканні "Cancel workflow" скрипт за секунди
