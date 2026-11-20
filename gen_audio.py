@@ -332,12 +332,24 @@ class ManifestStore:
         _atomic_write_json(shard_path(self.course, lang, rate), shard)
         self._sync_index()
 
+    def remove(self, mkey):
+        """Прибирає запис із шарда (поле зникло з картки — див. prune_removed_vocab_fields)."""
+        _, lang, rate, short_key = split_mkey(mkey)
+        shard = self.shards.get((lang, rate))
+        if shard is None or short_key not in shard:
+            return False
+        del shard[short_key]
+        self.data.pop(mkey, None)
+        _atomic_write_json(shard_path(self.course, lang, rate), shard)
+        self._sync_index()
+        return True
+
     def _sync_index(self):
         """index.json — перелік шардів, які ІСНУЮТЬ. Клієнт за ним розрізняє «шарда нема
         (аудіо такою мовою/швидкістю не існує)» і «шард ще не завантажено». Перезаписуємо
         лише коли змінився склад або кількість ключів."""
         counts = {f"{l}/{r}": len(sh) for (l, r), sh in sorted(self.shards.items()) if sh}
-        if counts and counts != self._index_counts:
+        if (counts or self._index_counts) and counts != self._index_counts:
             _atomic_write_json(index_path(self.course), {"v": 2, "shards": counts})
             self._index_counts = counts
 
@@ -1697,6 +1709,7 @@ def git_commit_and_push(count):
 # посилається на файл, якого ще немає в R2. Списки очищаються лише після успішної заливки —
 # невдала спроба повториться з наступною пачкою або у фінальному збереженні.
 _R2_PENDING_FILES = set()       # шляхи відносно AUDIO_ROOT (mp3 і .words.json)
+_R2_PENDING_DELETES = set()     # шляхи відносно AUDIO_ROOT — видалити з R2 (prune_removed_vocab_fields)
 _R2_PENDING_MANIFESTS = set()   # шляхи відносно AUDIO_ROOT (manifest.json шардів, index.json)
 
 def _audio_rel(path):
@@ -1736,15 +1749,111 @@ def _rclone_copy_list(rel_paths, cache_control):
     finally:
         os.unlink(list_file)
 
+def _rclone_delete_list(rel_paths):
+    if not rel_paths:
+        return
+    import tempfile
+    with tempfile.NamedTemporaryFile('w', suffix='.txt', delete=False, encoding='utf-8') as f:
+        f.write('\n'.join(sorted(rel_paths)) + '\n')
+        list_file = f.name
+    try:
+        subprocess.run([
+            "rclone", "delete", R2_DEST,
+            "--files-from-raw", list_file, "--no-traverse",
+            "--retries", "3", "--low-level-retries", "10",
+        ], check=True, timeout=R2_TIMEOUT)
+    finally:
+        os.unlink(list_file)
+
 def r2_upload_pending():
-    files, manifests = set(_R2_PENDING_FILES), set(_R2_PENDING_MANIFESTS)
-    if not files and not manifests:
+    files, manifests, deletes = set(_R2_PENDING_FILES), set(_R2_PENDING_MANIFESTS), set(_R2_PENDING_DELETES)
+    if not files and not manifests and not deletes:
         return
     _rclone_copy_list(files, "public, max-age=600")
     _rclone_copy_list(manifests, "no-cache")
+    # Видалення — ПІСЛЯ маніфестів: клієнт спершу перестає посилатись на файл, і лише
+    # тоді файл зникає (а не навпаки — тоді був би 404 на ще «живий» запис манифесту).
+    _rclone_delete_list(deletes)
     _R2_PENDING_FILES.difference_update(files)
     _R2_PENDING_MANIFESTS.difference_update(manifests)
-    print(f"--- [R2] Залито {len(files)} аудіофайлів і {len(manifests)} маніфестів ---", flush=True)
+    _R2_PENDING_DELETES.difference_update(deletes)
+    print(f"--- [R2] Залито {len(files)} аудіофайлів і {len(manifests)} маніфестів"
+          f"{f', видалено {len(deletes)} файлів' if deletes else ''} ---", flush=True)
+
+# ── Прибирання аудіо полів, яких у картці VOCAB більше немає ─────
+# Приклад: у A1 short замінили малюнком (поле pic) — short зник з картки, а його mp3
+# лишились би в сховищі й у манифесті назавжди. Тут прибираємо запис манифесту й файли
+# (mp3 + .words.json) для term/short/def/forms, яких у картці вже немає (або немає
+# цією мовою). Лише для карток, що Є в базі: видалені цілі картки не чіпаємо — так
+# вужче й безпечніше. Запобіжники:
+#   • мова враховується, лише якщо в курсі є хоч одна картка з текстом цією мовою в
+#     цьому полі (якщо мовний файл data/ не завантажився — нічого не видаляємо);
+#   • більше TTS_PRUNE_MAX (типово 300) видалень на курс — зупиняємось без видалення
+#     (схоже на зіпсовану базу; свідомо велике прибирання — підняти ліміт);
+#   • TTS_PRUNE=0 — вимкнути прибирання взагалі.
+PRUNE_ENABLED = os.environ.get('TTS_PRUNE', '1') != '0'
+PRUNE_MAX = int(os.environ.get('TTS_PRUNE_MAX', '300'))
+PRUNE_FIELDS = ("term", "short", "def")
+_NON_VOCAB_PREFIXES = ("sbs_", "forum_", "story_", "email_", "brief_", "dlg_")
+_PRUNED_TOTAL = 0
+
+def _is_vocab_item(item):
+    item_id = item.get("id") or ""
+    return (item.get("_fallback_var") != "QUIZ" and isinstance(item.get("term"), dict)
+            and not item_id.startswith(_NON_VOCAB_PREFIXES))
+
+def prune_removed_vocab_fields(course, raw_items, primary_lang):
+    """Повертає кількість прибраних записів манифесту."""
+    global _PRUNED_TOTAL
+    if not PRUNE_ENABLED:
+        return 0
+    store = STORES[course]
+    vocab = [it for it in raw_items if _is_vocab_item(it)]
+    langs_with_text = {f: {l for it in vocab if isinstance(it.get(f), dict)
+                           for l, txt in it[f].items() if isinstance(txt, str) and txt.strip()}
+                       for f in PRUNE_FIELDS}
+    has_forms = any(isinstance(it.get("forms"), dict) and it["forms"].get("v") for it in vocab)
+    victims = []
+    for it in vocab:
+        item_id = it["id"]
+        cat_lower = item_id.split('_')[0].lower()
+        for (lang, rate), shard in store.shards.items():
+            for field in PRUNE_FIELDS + ("forms",):
+                if f"{cat_lower}/{item_id}_{field}" not in shard:
+                    continue
+                if field == "forms":
+                    fv = it.get("forms").get("v") if isinstance(it.get("forms"), dict) else None
+                    gone = has_forms and not (isinstance(fv, list) and any(isinstance(x, str) and x.strip() for x in fv))
+                else:
+                    txt = it.get(field, {}).get(lang) if isinstance(it.get(field), dict) else None
+                    gone = lang in langs_with_text[field] and not (isinstance(txt, str) and txt.strip())
+                if gone:
+                    victims.append((item_id, cat_lower, field, lang, rate))
+    if not victims:
+        return 0
+    if len(victims) > PRUNE_MAX:
+        print(f"⚠ [{course}] Прибирання аудіо: {len(victims)} записів без поля в картці — більше "
+              f"за ліміт TTS_PRUNE_MAX={PRUNE_MAX}. Нічого не видалено (перевірте базу або підніміть ліміт).", flush=True)
+        return 0
+    audio_base = AUDIO_ROOT / course
+    for item_id, cat_lower, field, lang, rate in victims:
+        mkey = f"{course}/{lang}/{rate}/{cat_lower}/{item_id}_{field}_{lang}_{rate}"
+        if not store.remove(mkey):
+            continue
+        r2_mark_manifests(course, mkey)
+        mp3 = audio_base / lang / rate / cat_lower / f"{item_id}_{field}_{lang}_{rate}.mp3"
+        for f in (mp3, mp3.with_suffix('.words.json')):
+            if STORAGE != 'git':
+                _R2_PENDING_DELETES.add(_audio_rel(f))
+            if f.exists():
+                f.unlink()   # git/both: видалення потрапить у коміт через git add audio/
+    _PRUNED_TOTAL += len(victims)
+    by_field = {}
+    for v in victims:
+        by_field[v[2]] = by_field.get(v[2], 0) + 1
+    print(f"🧹 [{course}] Прибрано аудіо полів, яких більше немає в картках: {len(victims)} "
+          f"({', '.join(f'{k}: {n}' for k, n in sorted(by_field.items()))}).", flush=True)
+    return len(victims)
 
 def r2_pull_manifests():
     """Режим 'r2': аудіо в репозиторії немає, тож ManifestStore не мав би з чого читати — і
@@ -2100,6 +2209,7 @@ async def main():
       # Манифест курсу — шарди audio/<course>/<lang>/<rate>/manifest.json (див. ManifestStore).
       # Той самий об'єкт далі використовується і для запису (write_to_manifest_file).
       manifest_data = STORES[course] = ManifestStore(course)
+      prune_removed_vocab_fields(course, raw_items, primary_lang)
 
       for item in raw_items:
         item_id = item["id"]
@@ -2833,7 +2943,7 @@ async def main():
     print(f"Знайдено нових/змінених завдань для генерації: {total_tasks}", flush=True)
     if not tasks:
         print("Всі файли синхронізовані з manifest.json.", flush=True)
-        if _R2_PENDING_MANIFESTS:
+        if _R2_PENDING_MANIFESTS or _PRUNED_TOTAL:
             save_batch(0)   # лише перебудовані index.json (див. ManifestStore.__init__)
         return
 
@@ -2896,7 +3006,7 @@ async def main():
     # fail-fast (stop_requested) — усе згенероване й записане в manifest.json
     # до моменту зупинки має бути збережено в репозиторії, а не загублене на
     # диску ефемерного runner'а.
-    if stats["batch_counter"] > 0 or _R2_PENDING_FILES or _R2_PENDING_MANIFESTS:
+    if stats["batch_counter"] > 0 or _R2_PENDING_FILES or _R2_PENDING_MANIFESTS or _PRUNED_TOTAL:
         try:
             save_batch(stats["batch_counter"])
         except Exception as e:
