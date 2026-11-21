@@ -170,7 +170,7 @@ R2_TIMEOUT = float(os.environ.get('TTS_R2_TIMEOUT', '300'))
 # те саме обмеження, що вже діяло для redemittel). Додати нову
 # категорію/поле в область дії підсвітки — один рядок тут.
 CATEGORIES_WITH_TIMING = {
-    "vocab":       {"term", "short", "def", "forms"},
+    "vocab":       {"term", "short", "def", "def2", "def3", "forms"},
     "sprachbau":   {"sentence"},
     "redemittel":  None,
     # Forumsbeitrag (forum_XXX) — той самий принцип, що redemittel:
@@ -372,7 +372,10 @@ VOICE_MAPPING = {
     "vocab": {
         "term":  {"de": "de-DE-KatjaNeural",  "uk": "uk-UA-PolinaNeural", "en": "en-US-AriaNeural",        "ru": "ru-RU-SvetlanaNeural"},
         "short": {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-GB-RyanNeural",        "ru": "ru-RU-DmitryNeural"},
-        "def":   {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
+        "def":   {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"},
+        # Додаткові приклади до слова (необов'язкові) — той самий голос, що й def.
+        "def2":  {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"},
+        "def3":  {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
     },
     "sprachbau": {
         "sentence":    {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-GuyNeural",   "ru": "ru-RU-DmitryNeural"},
@@ -1793,7 +1796,7 @@ def r2_upload_pending():
 #   • TTS_PRUNE=0 — вимкнути прибирання взагалі.
 PRUNE_ENABLED = os.environ.get('TTS_PRUNE', '1') != '0'
 PRUNE_MAX = int(os.environ.get('TTS_PRUNE_MAX', '300'))
-PRUNE_FIELDS = ("term", "short", "def")
+PRUNE_FIELDS = ("term", "short", "def", "def2", "def3")
 _NON_VOCAB_PREFIXES = ("sbs_", "forum_", "story_", "email_", "brief_", "dlg_")
 _PRUNED_TOTAL = 0
 
@@ -2175,7 +2178,7 @@ async def main():
 
     tasks = []
     fields_map = {
-        "vocab": ["term", "short", "def"],
+        "vocab": ["term", "short", "def", "def2", "def3"],
         "sprachbau": ["sentence", "answer", "explanation"],
         # "redemittel" тут немає навмисно — набір реплік dlg_XXX змінний
         # (q, a, q1, a1, q2, ...), обчислюється динамічно redemittel_fields().
