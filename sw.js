@@ -1,6 +1,6 @@
 // sw.js — Service Worker для MOVA PWA
 // CACHE_VERSION оновлюється автоматично GitHub Actions при кожному деплої
-const CACHE_VERSION = '1118-0530e82';
+const CACHE_VERSION = '1119-27c21c2';
 const CACHE_NAME = `mova-${CACHE_VERSION}`;
 // Аудіо (mp3) живе в ОКРЕМОМУ кеші без версії. CACHE_NAME змінюється на кожен деплой, а
 // activate нижче видаляє всі старі кеші — тож mp3 у ньому перекачувались би після кожного
