@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["3TTAQSQGHM.now.mova.app"],
+        "components": [
+          { "/": "/app", "?": { "ref": "*" }, "comment": "Запрошення й друзі: mova.now/app?ref=u-<код> відкриває MOVA одразу" },
+          { "/": "/app/", "?": { "ref": "*" } }
+        ]
+      }
+    ]
+  }
+}
