@@ -457,13 +457,32 @@ function viseme(ch){
   return 'mid';
 }
 
-// Говоріння. getProgress() → 0..1 (позиція аудіо) або null (аудіо ще не почалось —
-// тоді рот рухається за власним темпом ~14 літер/с). isActive() → false, щоб зупинити.
-// Погляд: на співрозмовника → на користувача (40%) → знову на співрозмовника (80%).
-function talk(el, text, side, getProgress, isActive){
+// Говоріння. getState() → null (аудіо ще не почалось — рот іде за власним темпом
+// ~14 літер/с) або {t, d, words}: поточний час і тривалість аудіо, words — таймінг
+// слів [{word, start, end}] із .words.json. З таймінгом рот відкривається лише
+// всередині слова (форма — за літерою, що звучить), а в паузах і на перших 50 мс
+// кожного слова закритий — видно ритм мовлення. Без таймінгу — позиція в тексті
+// пропорційно часу (на пробілах рот теж коротко закривається).
+// isActive() → false, щоб зупинити. Погляд: на співрозмовника → на користувача
+// (40% репліки) → знову на співрозмовника (80%).
+function lettersOf(w){ return String(w || '').replace(/[^0-9A-Za-zÀ-ÖØ-öø-ÿĀ-žА-яЁёЇїІіЄєҐґ]/g, ''); }
+function mouthAt(words, t){
+  for(var i = 0; i < words.length; i++){
+    var w = words[i];
+    if(t < w.start) return { m:'closed' };            // пауза перед словом
+    if(t < w.end){
+      if(t - w.start < 0.05) return { m:'closed', start:true, word:w.word };
+      var L = lettersOf(w.word); if(!L) return { m:'closed' };
+      var f = (t - w.start) / Math.max(0.05, w.end - w.start);
+      return { m: viseme(L[Math.min(L.length - 1, Math.floor(f * L.length))]), word:w.word, w0:w.start };
+    }
+  }
+  return { m:'closed' };                              // після останнього слова
+}
+function talk(el, text, side, getState, isActive){
   if(!el) return function(){};
   text = String(text || '').replace(/<[^>]+>/g, '').replace(/&[a-z]+;/g, ' ');
-  var n = text.length || 1, stopped = false, t0 = performance.now(), lastIdx = -1, phase = 0, lastFrame = 0;
+  var n = text.length || 1, stopped = false, t0 = performance.now(), lastKey = '', phase = 0, lastFrame = 0, lastWord = null;
   el.classList.add('talking');
   gaze(el, side, 'partner');
   function stop(){
@@ -472,20 +491,25 @@ function talk(el, text, side, getProgress, isActive){
     mouth(el, 'closed');
     gaze(el, side, 'partner');
   }
+  function emph(){ el.classList.add('emph'); setTimeout(function(){ el.classList.remove('emph'); }, 260); }
   (function frame(now){
     if(stopped) return;
     if((isActive && !isActive()) || !el.isConnected){ stop(); return; }
-    if(now - lastFrame >= 60){
+    if(now - lastFrame >= 40){
       lastFrame = now;
-      var p = getProgress ? getProgress() : null;
-      if(p == null) p = Math.min(.999, (now - t0) / (n * 70));
-      var idx = Math.min(n - 1, Math.floor(p * n));
-      if(idx !== lastIdx){
-        var ch = text[idx];
-        mouth(el, viseme(ch));
-        if(ch && ch !== ch.toLowerCase()){ el.classList.add('emph'); setTimeout(function(){ el.classList.remove('emph'); }, 260); }
-        lastIdx = idx;
+      var st = getState ? getState() : null, p, m;
+      if(typeof st === 'number') st = { t: st, d: 1 };
+      if(st && st.words && st.words.length){
+        var r = mouthAt(st.words, st.t);
+        m = r.m; p = st.d ? st.t / st.d : 0;
+        if(r.w0 != null && r.w0 !== lastWord){ lastWord = r.w0; var c0 = lettersOf(r.word).charAt(0); if(c0 && c0 !== c0.toLowerCase()) emph(); }
+      } else {
+        p = (st && st.d) ? st.t / st.d : Math.min(.999, (now - t0) / (n * 70));
+        var idx = Math.min(n - 1, Math.floor(p * n)), ch = text[idx];
+        m = viseme(ch);
+        if(idx !== lastWord){ lastWord = idx; if(ch && ch !== ch.toLowerCase()) emph(); }
       }
+      if(m !== lastKey){ mouth(el, m); lastKey = m; }
       if(phase === 0 && p >= .4){ phase = 1; gaze(el, side, 'user'); }
       else if(phase === 1 && p >= .8){ phase = 2; gaze(el, side, 'partner'); }
     }
