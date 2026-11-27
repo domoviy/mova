@@ -399,6 +399,18 @@ var CSS = [
   ".mch .happy{display:none}.mch.joy .eo{display:none}.mch.joy .happy{display:inline}",
   ".mch .bl,.mch .br{transform-box:fill-box;transform-origin:center;transition:transform .2s}",
   ".mch.emph .bl,.mch.emph .br{transform:translateY(-2.5px)}",
+  // реакції: «знаю» — брови вгору й радісний підскок; «не знаю» — брови «будиночком», м'який нахил
+  ".mch.joy .bl,.mch.joy .br{transform:translateY(-2px)}",
+  ".mch.oops .bl{transform:translateY(-2px) rotate(-12deg)}.mch.oops .br{transform:translateY(-2px) rotate(12deg)}",
+  ".mch.joy .hd,.mch.joy .hb{animation:mchJoy .9s ease-in-out}",
+  "@keyframes mchJoy{0%,100%{transform:none}20%{transform:translateY(-3px)}40%{transform:translateY(1px)}60%{transform:translateY(-2px)}80%{transform:none}}",
+  ".mch.oops .hd,.mch.oops .hb{animation:mchOops 1.2s ease-in-out}",
+  "@keyframes mchOops{0%,100%{transform:none}25%,75%{transform:rotate(5deg)}}",
+  // «твоя черга»: кивок; «слухаю»: голова трохи набік, повільні кивки «так-так»
+  ".mch.nod .hd,.mch.nod .hb{animation:mchNod .9s ease-in-out}",
+  "@keyframes mchNod{0%,100%{transform:none}25%,65%{transform:translateY(2.5px) rotate(.6deg)}45%{transform:translateY(-.5px)}}",
+  ".mch.listen .hd,.mch.listen .hb{animation:mchListen 1.8s ease-in-out infinite}",
+  "@keyframes mchListen{0%,100%{transform:rotate(-4deg)}30%{transform:rotate(-4deg) translateY(1.8px)}55%{transform:rotate(-4deg)}}",
   ".mch.alive .breath{animation:mchBreath 4.6s ease-in-out infinite}",
   "@keyframes mchBreath{0%,100%{transform:none}50%{transform:translateY(-.9px)}}",
   ".mch.talking .hd,.mch.talking .hb{animation:mchTalk 1.1s ease-in-out infinite}",
@@ -413,7 +425,7 @@ var CSS = [
   ".mch .eye.l{scale:calc(1 + .3*min(var(--t),0)) 1}",
   ".mch .earR{translate:calc(max(var(--t),0)*-6px) 0}",
   ".mch .earL{translate:calc(min(var(--t),0)*-6px) 0}",
-  "@media (prefers-reduced-motion:reduce){.mch.alive .breath,.mch.talking .hd,.mch.talking .hb{animation:none}}"
+  "@media (prefers-reduced-motion:reduce){.mch.alive .breath,.mch.talking .hd,.mch.talking .hb,.mch.joy .hd,.mch.joy .hb,.mch.oops .hd,.mch.oops .hb,.mch.nod .hd,.mch.nod .hb,.mch.listen .hd,.mch.listen .hb{animation:none}}"
 ].join('\n');
 function ensureStyle(){
   if(document.getElementById('mova-char-style')) return;
