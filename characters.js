@@ -223,7 +223,7 @@ function neckW(skin, sh){
 function neckM(skin, sh){
   return '<path d="M85 126 L85 148 C85 155 80 159 73 161 L127 161 C120 159 115 155 115 148 L115 126Z" fill="'+skin+'"/>'+
          '<path d="M85 131 C92 145 108 145 115 131 L115 143 C106 148 94 148 85 143Z" fill="'+sh+'"/>'+
-         '<path d="M73 158 L127 158 L127 178 L73 178Z" fill="'+skin+'"/>';
+         '<path d="M78 159.6 L122 159.6 L127 161.6 L127 178 L73 178 L73 161.6Z" fill="'+skin+'"/>';
 }
 function faceW(skin){ return '<path d="M64 92 C64 66 80 52 100 52 C120 52 136 66 136 92 C136 116 120 136 100 136 C80 136 64 116 64 92Z" fill="'+skin+'"/>'; }
 function faceM(skin, sh){
@@ -330,7 +330,7 @@ function mia(){
 function david(){
   var skin='#d29a72', sh='#b97e57', hair='#33251e', hairL='#4d3a2f';
   var beard =
-    '<g class="jaw"><path d="M64 96 C64 112 70 128 82 136 C90 141 110 141 118 136 C130 128 136 112 136 96 L131.5 98 C131 110 125 119 117 121 C110 116 90 116 83 121 C75 119 69 110 68.5 98Z" fill="'+hair+'"/></g>'+
+    '<g class="jaw"><path d="M63 94 C60.5 113 66.5 131.5 80 140 C89 145 111 145 120 140 C133.5 131.5 139.5 113 137 94 L131.5 98 C131 110 125 119 117 121 C110 116 90 116 83 121 C75 119 69 110 68.5 98Z" fill="'+hair+'"/></g>'+
     '<path d="M87 117.5 C93 113 107 113 113 117.5 C107 119.5 93 119.5 87 117.5Z" fill="'+hair+'"/>';
   var head =
     faceM(skin, sh)+
@@ -469,8 +469,8 @@ function viseme(ch){
   return 'mid';
 }
 
-// Говоріння. getState() → null (аудіо ще не почалось — рот іде за власним темпом
-// ~14 літер/с) або {t, d, words}: поточний час і тривалість аудіо, words — таймінг
+// Говоріння. getState() → false (аудіо ще не звучить — рот закритий і чекає),
+// null (аудіо немає зовсім — рот іде за власним темпом ~14 літер/с) або {t, d, words}: поточний час і тривалість аудіо, words — таймінг
 // слів [{word, start, end}] із .words.json. З таймінгом рот відкривається лише
 // всередині слова (форма — за літерою, що звучить), а в паузах і на перших 50 мс
 // кожного слова закритий — видно ритм мовлення. Без таймінгу — позиція в тексті
@@ -511,7 +511,11 @@ function talk(el, text, side, getState, isActive){
       lastFrame = now;
       var st = getState ? getState() : null, p, m;
       if(typeof st === 'number') st = { t: st, d: 1 };
-      if(st && st.words && st.words.length){
+      if(st === false){
+        // Аудіо ще вантажиться / буферизується / на паузі — рот закритий, репліка
+        // не «просувається» (інакше персонаж договорює фразу до того, як її чути).
+        m = 'closed'; p = 0; t0 = now;
+      } else if(st && st.words && st.words.length){
         var r = mouthAt(st.words, st.t);
         m = r.m; p = st.d ? st.t / st.d : 0;
         if(r.w0 != null && r.w0 !== lastWord){ lastWord = r.w0; var c0 = lettersOf(r.word).charAt(0); if(c0 && c0 !== c0.toLowerCase()) emph(); }
@@ -522,7 +526,8 @@ function talk(el, text, side, getState, isActive){
         if(idx !== lastWord){ lastWord = idx; if(ch && ch !== ch.toLowerCase()) emph(); }
       }
       if(m !== lastKey){ mouth(el, m); lastKey = m; }
-      if(phase === 0 && p >= .4){ phase = 1; gaze(el, side, 'user'); }
+      if(st === false){}
+      else if(phase === 0 && p >= .4){ phase = 1; gaze(el, side, 'user'); }
       else if(phase === 1 && p >= .8){ phase = 2; gaze(el, side, 'partner'); }
     }
     requestAnimationFrame(frame);
