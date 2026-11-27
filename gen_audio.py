@@ -973,23 +973,23 @@ def trim_wanted(course, internal_cat):
 
 # ── Голоси персонажів для карток слів (VOCAB) ──────────────────
 # Для курсів із TTS_VOICES_COURSES (через кому або "all") поля VOICED_FIELDS мовою курсу
-# (PRIMARY_LANG) озвучуються ще й голосом КОЖНОГО персонажа цієї мови з characters.js:
+# (PRIMARY_LANG) озвучуються ще й голосом ПЕРСОНАЖА, ПРИЗНАЧЕНОГО КАРТЦІ полем spk:
 #   <id>_<поле>-<персонаж>_<мова>_<швидкість>.mp3, напр. aln_001_term-w_anna_de_100.mp3
 # (персонаж — id без мовного префікса: de_w_anna → w_anna). Звичайний файл <id>_<поле>_…
-# (голос із VOICE_MAPPING) лишається: його грають старі версії застосунку й він — запасний,
-# поки варіантів ще нема. Застосунок сам бачить у маніфесті, які варіанти є, і обирає один
-# персонаж на картку (vocabVoicePick в index.html), тож term, forms і def звучать одним голосом.
-# short у цих курсах читає диктор (NARRATOR_VOICE) — без персонажа на екрані.
+# (голос із VOICE_MAPPING) лишається: його грають старі версії застосунку й він — запасний.
+# Застосунок бачить у маніфесті, які варіанти є (vocabVoiceVariant в index.html).
 #
-# Необов'язкове поле картки spk — хто МОЖЕ озвучувати картку (коли це видно з тексту:
-# «Ich bin Krankenschwester» — жінка). Немає поля — будь-хто з персонажів.
-#   spk: 'w'                          — лише жінки (усі поля)
-#   spk: 'de_m_mark' або ['de_w_anna','de_w_julia'] — конкретні персонажі (усі поля)
-#   spk: {def: 'w', def2: 'de_m_mark'} — окремо для полів; поля, яких тут нема, — будь-хто;
-#                                        forms іде за term.
+# Поле картки spk (схема з 27.11.2026, план .claude/plans/audio-voices-plan.md):
+#   spk: {term: 'de_w_julia', def: 'de_m_max'} — term читає Julia (а з нею forms і short:
+#        одна людина називає слово й пояснює його), приклад def — Max; def2/def3 — свої ключі.
+#   spk: 'de_w_julia'                 — один персонаж на всі поля картки.
+#   spk: 'w' / 'm' / список           — лише ці персонажі (стара схема; генерує кожного зі списку).
+#   Немає spk (або для поля нічого не призначено) — варіантів голосами персонажів НЕ генеруємо:
+#   поле звучить звичайним файлом, голосом за замовчуванням (VOICE_MAPPING). Варіанти, яких
+#   за цією схемою не має бути, прибирає prune_stale_voice_variants (у межах TTS_PRUNE_MAX).
 # Персонажа можна писати з мовним префіксом чи без (de_w_anna = w_anna) — схема мовно-нейтральна.
 VOICES_COURSES = {c.strip() for c in os.environ.get('TTS_VOICES_COURSES', '').split(',') if c.strip()}
-VOICED_FIELDS = tuple(f.strip() for f in os.environ.get('TTS_VOICES_FIELDS', 'term,forms,def,def2,def3').split(',') if f.strip())
+VOICED_FIELDS = tuple(f.strip() for f in os.environ.get('TTS_VOICES_FIELDS', 'term,forms,short,def,def2,def3').split(',') if f.strip())
 NARRATOR_VOICE = os.environ.get('TTS_NARRATOR_VOICE', 'en-US-EmmaMultilingualNeural')
 VOICE_VARIANT_SEP = '-'
 _SPK_WARNED = set()
@@ -1008,12 +1008,13 @@ def course_speakers(characters_list, lang):
     return out
 
 def card_speakers(item, field, speakers, lang):
-    """Персонажі, якими озвучувати поле картки (з урахуванням spk)."""
+    """Персонажі, якими озвучувати поле картки: лише ті, кого призначено в spk.
+    Нічого не призначено — [] (поле звучить голосом за замовчуванням, без варіантів)."""
     spk = item.get("spk")
     if isinstance(spk, dict):
-        spk = spk.get(field, spk.get("term") if field == "forms" else None)
+        spk = spk.get(field, spk.get("term") if field in ("forms", "short") else None)
     if spk is None or spk == "" or spk == []:
-        return speakers
+        return []
     wanted = spk if isinstance(spk, list) else [spk]
     by_suffix = {s[0]: s for s in speakers}
     out, bad = [], []
@@ -1031,9 +1032,7 @@ def card_speakers(item, field, speakers, lang):
     if bad and (item.get("id"), field) not in _SPK_WARNED:
         _SPK_WARNED.add((item.get("id"), field))
         print(f"⚠ {item.get('id')}: spk {bad} — такого персонажа мови {lang} немає в characters.js.", flush=True)
-    if not out:
-        # Помилка в spk не повинна лишити картку без голосу — тоді будь-хто.
-        return speakers
+    # Помилка в spk (персонажа нема в characters.js) — без варіантів: звучить голос за замовчуванням.
     return out
 
 _MP3_BITRATES_V2_L3 = (0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, 0)
@@ -2089,6 +2088,10 @@ def add_voice_variant_tasks(tasks, manifest_data, expected, item, course, audio_
     item_id = item["id"]
     want_timing = field_wants_timing("vocab", field, lang, primary_lang)
     trim = trim_wanted(course, "vocab")
+    # Варіанти голосами персонажів — лише для основної (найбільшої) швидкості курсу: повільна
+    # швидкість звучить звичайним файлом (застосунок сам падає на нього, якщо варіанта нема).
+    # План — одна швидкість на курс, «Повільно» через браузер (.claude/plans/audio-voices-plan.md).
+    rates = [max(rates, key=lambda r: int(r))] if rates else rates
     for suffix, voice, _gender in card_speakers(item, field, speakers, lang):
         vfield = f"{field}{VOICE_VARIANT_SEP}{suffix}"
         for rate in rates:
@@ -2642,7 +2645,7 @@ async def main():
       if voices_wanted(course):
           print(f"— [{course}] Голоси персонажів ({len(speakers)}): "
                 f"{', '.join(s[0] for s in speakers) or 'немає персонажів мови ' + primary_lang}; "
-                f"поля {', '.join(VOICED_FIELDS)}; short — диктор {NARRATOR_VOICE}.", flush=True)
+                f"поля {', '.join(VOICED_FIELDS)}; лише персонажі зі spk картки.", flush=True)
 
       for item in raw_items:
         item_id = item["id"]
@@ -3161,10 +3164,8 @@ async def main():
                                 voice = get_voice_id(internal_cat, role, lang)
                     else:
                         voice = get_voice_id(internal_cat, field, lang)
-                        # Курси з голосами персонажів: short мовою курсу читає диктор.
-                        if (internal_cat == "vocab" and field == "short" and lang == primary_lang
-                                and voices_wanted(course)):
-                            voice = NARRATOR_VOICE
+                        # short мовою курсу тепер читає персонаж картки (варіант, як term);
+                        # звичайний файл short — голосом за замовчуванням.
                     rates = audio_config.get(lang, ["100"])
                     if (internal_cat == "vocab" and lang == primary_lang and field in VOICED_FIELDS
                             and voices_wanted(course)):
