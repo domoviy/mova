@@ -37,6 +37,13 @@ except ImportError:
     # пропускається (див. коментар у synthesize_speech), решта
     # генерації працює як і раніше.
 
+try:
+    import miniaudio
+except ImportError:
+    miniaudio = None
+    # Потрібно лише для обрізання тиші (TTS_TRIM_COURSES, див. trim_mp3_silence):
+    # декодує mp3 у PCM, щоб знайти, де реально починається й закінчується голос.
+
 if edge_tts:
     # ── Патч вимови Multilingual-голосів (Julia тощо) — ВИМКНЕНО ───
     # Раніше тут підмінявся edge_tts.communicate.mkssml(), щоб обгортати
@@ -894,11 +901,23 @@ def compute_content_hash(cleaned_text, voice, rate):
 # want_timing стає True.
 TIMED_SUFFIX = "+t"
 
-def manifest_value(content_hash, want_timing):
+# Суфікс "+c" (cut): у mp3 обрізано тишу на початку й у кінці (trim_mp3_silence),
+# а .words.json зсунуто на вирізаний початок. Стоїть ПЕРЕД "+t" ("<hash>+c+t"):
+# застосунок перевіряє таймінг через v.slice(-2) === '+t', тож "+t" має лишатися
+# в кінці. Запис без "+c" у курсі/категорії з увімкненим обрізанням — старий файл
+# із паузами: генератор перегенерує його (TRIM), а застосунок до того часу
+# грає його як раніше. Значення змінюється лише для реально перегенерованого
+# файлу, тож користувачі заново завантажують тільки його.
+TRIMMED_SUFFIX = "+c"
+
+def manifest_value(content_hash, want_timing, trimmed=False):
     """Значення, що пишеться в manifest.json для ключа: content_hash,
-    доповнений позначкою TIMED_SUFFIX, якщо для цього файлу мав бути (і,
-    відповідно, вже є) згенерований .words.json."""
-    return f"{content_hash}{TIMED_SUFFIX}" if want_timing else content_hash
+    доповнений позначкою TRIMMED_SUFFIX (тишу обрізано) і TIMED_SUFFIX,
+    якщо для цього файлу мав бути (і, відповідно, вже є) згенерований
+    .words.json."""
+    return (f"{content_hash}"
+            f"{TRIMMED_SUFFIX if trimmed else ''}"
+            f"{TIMED_SUFFIX if want_timing else ''}")
 
 def manifest_hash_part(value):
     """Витягує чистий content_hash зі значення manifest.json — незалежно
@@ -909,7 +928,131 @@ def manifest_hash_part(value):
     сам mp3 без потреби."""
     if value is None:
         return None
-    return value[:-len(TIMED_SUFFIX)] if value.endswith(TIMED_SUFFIX) else value
+    if value.endswith(TIMED_SUFFIX):
+        value = value[:-len(TIMED_SUFFIX)]
+    if value.endswith(TRIMMED_SUFFIX):
+        value = value[:-len(TRIMMED_SUFFIX)]
+    return value
+
+
+# ── Обрізання тиші на початку й у кінці mp3 ─────────────────────────────
+# Edge TTS дає ~0,2 с тиші перед голосом і 0,4–1,2 с після (залежно від
+# голосу й швидкості). На коротких словах це помітно і на слух, і на хвилі
+# («еквалайзері») у вправі на вимову. Тишу вирізаємо цілими mp3-кадрами —
+# без перекодування, тобто без втрати якості й без ffmpeg.
+#
+# Вмикається лише для курсів із TTS_TRIM_COURSES (через кому або "all") і
+# категорій із TTS_TRIM_CATS (типово лише vocab: term/short/def/def2/def3/forms).
+# Діалоги свідомо не чіпаємо: між репліками природна пауза потрібна.
+TRIM_COURSES = {c.strip() for c in os.environ.get('TTS_TRIM_COURSES', '').split(',') if c.strip()}
+TRIM_CATS = {c.strip() for c in os.environ.get('TTS_TRIM_CATS', 'vocab').split(',') if c.strip()}
+# Скільки тиші лишати перед першим і після останнього звуку голосу (с).
+# Початок: ще +2 «розгінні» кадри (TRIM_PRIME_FRAMES), тож фактично ~0,08–0,1 с.
+TRIM_LEAD_KEEP = float(os.environ.get('TTS_TRIM_LEAD', '0.03'))
+TRIM_TAIL_KEEP = float(os.environ.get('TTS_TRIM_TAIL', '0.15'))
+# Кожен кадр Edge-mp3 бере частину своїх даних із попередніх кадрів («бітовий
+# резервуар», до 255 байт ≈ 2 кадри). Тому перед першим потрібним кадром
+# лишаємо 2 кадри тиші: декодер на них «розганяється» (видає тишу), а голос
+# далі декодується повністю.
+TRIM_PRIME_FRAMES = 2
+# Поріг «голосу»: частка від найгучнішого вікна 5 мс. Низький, щоб тихі
+# приголосні на краях слова (f, h, s) не прийняти за тишу.
+TRIM_REL_THRESHOLD = 0.01
+TRIM_ABS_THRESHOLD = 30          # у семплах int16 — шум кодування нижче за це
+# Після обрізання енергія голосу має зберегтися щонайменше на стільки; інакше
+# файл лишаємо як був (краще пауза, ніж зрізаний звук).
+TRIM_MIN_ENERGY_KEPT = 0.97
+
+def trim_wanted(course, internal_cat):
+    """Чи обрізати тишу у файлах цього курсу й категорії (див. TRIM_COURSES)."""
+    if not TRIM_COURSES or internal_cat not in TRIM_CATS:
+        return False
+    return 'all' in TRIM_COURSES or course in TRIM_COURSES
+
+_MP3_BITRATES_V2_L3 = (0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, 0)
+_MP3_SAMPLE_RATES = {2: (22050, 24000, 16000), 0: (11025, 12000, 8000)}  # MPEG-2 / MPEG-2.5
+
+def _mp3_frames(data):
+    """Межі кадрів mp3 як [(зсув, розмір)] і частота дискретизації.
+    Лише MPEG-2/2.5 Layer III без ID3 — саме такі файли дає Edge TTS
+    (24 кГц, 48 кбіт/с, моно). Для будь-чого іншого — None (файл не чіпаємо)."""
+    frames, i, sr = [], 0, None
+    while i + 4 <= len(data):
+        b0, b1, b2 = data[i], data[i + 1], data[i + 2]
+        if b0 != 0xFF or (b1 & 0xE0) != 0xE0:
+            return None
+        ver, layer = (b1 >> 3) & 3, (b1 >> 1) & 3
+        bri, sri, pad = b2 >> 4, (b2 >> 2) & 3, (b2 >> 1) & 1
+        if layer != 1 or ver not in _MP3_SAMPLE_RATES or sri == 3 or not _MP3_BITRATES_V2_L3[bri]:
+            return None
+        cur_sr = _MP3_SAMPLE_RATES[ver][sri]
+        if sr is None:
+            sr = cur_sr
+        elif cur_sr != sr:
+            return None
+        size = 72000 * _MP3_BITRATES_V2_L3[bri] // cur_sr + pad
+        if i + size > len(data):
+            break                       # неповний останній кадр — відкидаємо
+        frames.append((i, size))
+        i += size
+    return (frames, sr) if frames else None
+
+def _speech_bounds(pcm, sr):
+    """(початок, кінець) голосу в секундах за гучністю вікнами по 5 мс, або None."""
+    win = max(1, sr // 200)
+    rms = []
+    for s in range(0, len(pcm) - win + 1, win):
+        chunk = pcm[s:s + win]
+        rms.append((sum(x * x for x in chunk) / win) ** 0.5)
+    if not rms:
+        return None
+    th = max(max(rms) * TRIM_REL_THRESHOLD, TRIM_ABS_THRESHOLD)
+    active = [k for k, v in enumerate(rms) if v > th]
+    if not active:
+        return None
+    return active[0] * win / sr, (active[-1] + 1) * win / sr
+
+def _energy(pcm, sr, t0=0.0, t1=None):
+    a = max(0, int(t0 * sr))
+    b = len(pcm) if t1 is None else min(len(pcm), int(t1 * sr))
+    return sum(x * x for x in pcm[a:b])
+
+def trim_mp3_silence(path):
+    """Обрізає тишу на початку й у кінці mp3 (цілими кадрами, без перекодування).
+    Повертає, на скільки секунд зсунувся початок (на це треба зсунути таймінг
+    слів), або 0.0, якщо файл не змінено."""
+    data = pathlib.Path(path).read_bytes()
+    parsed = _mp3_frames(data)
+    if not parsed:
+        print(f"⚠️  Обрізання тиші: невідомий формат mp3 — {path} лишено як є.", flush=True)
+        return 0.0
+    frames, sr = parsed
+    frame_dur = 576 / sr                # MPEG-2/2.5 Layer III: 576 семплів на кадр
+    pcm = miniaudio.decode(data, output_format=miniaudio.SampleFormat.SIGNED16,
+                           nchannels=1, sample_rate=sr).samples
+    bounds = _speech_bounds(pcm, sr)
+    if not bounds:
+        return 0.0
+    onset, offset = bounds
+    n = len(frames)
+    drop = max(0, int((onset - TRIM_LEAD_KEEP) / frame_dur) - TRIM_PRIME_FRAMES)
+    # +1 кадр: декодер добудовує кінець кадру разом із наступним (перекриття MDCT).
+    end = min(n, int((offset + TRIM_TAIL_KEEP) / frame_dur) + 2)
+    if end - drop < 1 or (drop == 0 and end >= n):
+        return 0.0
+    first_off = frames[drop][0]
+    last_off, last_size = frames[end - 1]
+    trimmed = data[first_off:last_off + last_size]
+
+    # Контроль: голос після обрізання має бути на місці повністю.
+    new_pcm = miniaudio.decode(trimmed, output_format=miniaudio.SampleFormat.SIGNED16,
+                               nchannels=1, sample_rate=sr).samples
+    kept = _energy(new_pcm, sr) / max(1, _energy(pcm, sr, onset, offset))
+    if kept < TRIM_MIN_ENERGY_KEPT:
+        print(f"⚠️  Обрізання тиші: після обрізання лишилось {kept:.1%} енергії голосу — {path} лишено як є.", flush=True)
+        return 0.0
+    pathlib.Path(path).write_bytes(trimmed)
+    return drop * frame_dur
 
 def _error_snippet(text, pos, context=80):
     """Фрагмент тексту навколо позиції помилки json.loads (pos —
@@ -1523,7 +1666,7 @@ def _stream_reached_turn_end(communicate, max_ssml_bytes=4000):
     return communicate.state.get('cumulative_audio_bytes', 0) > 0
 
 
-async def synthesize_speech(text, voice, rate_str, output_path, want_timing=False):
+async def synthesize_speech(text, voice, rate_str, output_path, want_timing=False, trim=False):
     """Генерація аудіо через Edge TTS — з ТРЬОМА незалежними рівнями
     перевірки цілісності (кожен ловить свій клас обриву з'єднання,
     жоден не є надлишковим):
@@ -1669,6 +1812,16 @@ async def synthesize_speech(text, voice, rate_str, output_path, want_timing=Fals
                     f"зупинилася б раніше за звук, файл не буде збережений."
                 )
 
+    # Обрізання тиші — ПІСЛЯ всіх перевірок цілісності (вони звіряють таймінг
+    # з ОРИГІНАЛЬНИМ файлом). Таймінг слів зсуваємо на вирізаний початок.
+    if trim:
+        shift = trim_mp3_silence(output_path)
+        if shift:
+            for w in words:
+                w['start'] = round(max(0.0, w['start'] - shift), 3)
+                w['end'] = round(max(0.0, w['end'] - shift), 3)
+
+    if want_timing:
         timing_path = pathlib.Path(str(output_path)).with_suffix('.words.json')
         with open(timing_path, 'w', encoding='utf-8') as f:
             json.dump(words, f, ensure_ascii=False)
@@ -1930,8 +2083,13 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
         # хешу через баг, або Edge TTS все ж дає різну паузу/наголос між
         # викликами), був реальним. Простіше й надійніше — завжди мати
         # mp3 і .words.json з ОДНОГО й того самого виклику синтезу.
+        trim = trim_wanted(task["course"], task["internal_cat"])
         if task.get("existing_hash") is None:
             reason = "NEW"
+        elif trim and task.get("existing_hash") == task.get("content_hash"):
+            # Текст і голос ті самі — файл перегенеровується лише заради
+            # обрізання тиші (старий запис без TRIMMED_SUFFIX).
+            reason = "TRIM"
         elif task.get("want_timing"):
             reason = "TIMING-BACKFILL" if task.get("existing_hash") == task.get("content_hash") else f"CHANGED {task['existing_hash']}→{task['content_hash']}"
         else:
@@ -1976,7 +2134,7 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
             synth_timeout = synth_timeout_for(task["cleaned"])
             try:
                 await asyncio.wait_for(
-                    synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path, want_timing=task.get("want_timing", False)),
+                    synthesize_speech(task["cleaned"], task["voice"], task["rate"], file_path, want_timing=task.get("want_timing", False), trim=trim),
                     timeout=synth_timeout
                 )
                 synthesized = True
@@ -2062,7 +2220,7 @@ async def worker_task(task, semaphore, stats, lock, total_tasks):
         # спроба закомітити повторилась на наступній пачці чи в
         # фінальному флаші (в кінці main()).
         async with lock:
-            write_to_manifest_file(task["course"], task["mkey"], manifest_value(task["content_hash"], task.get("want_timing", False)))
+            write_to_manifest_file(task["course"], task["mkey"], manifest_value(task["content_hash"], task.get("want_timing", False), trim))
             r2_mark_generated(file_path)
             stats["generated"] += 1
             stats["batch_counter"] += 1
@@ -2167,6 +2325,11 @@ def migrate_course_manifests_to_shards():
 
 async def main():
     print(f"Запуск генератора MOVA TTS (Edge TTS). Сховище: {STORAGE}.", flush=True)
+    if TRIM_COURSES:
+        # Без декодера файли позначались би "+c" без реального обрізання.
+        if miniaudio is None:
+            raise SystemExit("❌ TTS_TRIM_COURSES задано, але пакет 'miniaudio' не встановлено (pip install miniaudio).")
+        print(f"Обрізання тиші: курси {', '.join(sorted(TRIM_COURSES))}; категорії {', '.join(sorted(TRIM_CATS))}.", flush=True)
     if STORAGE in ('r2', 'both'):
         import shutil
         if not shutil.which('rclone'):
@@ -2253,7 +2416,7 @@ async def main():
                         # Як у vocab: порівнюємо з очікуваним значенням (хеш + "+t",
                         # якщо потрібен таймінг) — старі записи квізу без таймінгу
                         # підуть на TIMING-BACKFILL (mp3 + .words.json разом).
-                        if existing_value != manifest_value(content_hash, want_timing):
+                        if existing_value != manifest_value(content_hash, want_timing, trim_wanted(course, "quiz")):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -2380,7 +2543,7 @@ async def main():
                         existing_value = manifest_data.get(mkey)
                         existing_hash = manifest_hash_part(existing_value)
 
-                        if existing_value != manifest_value(content_hash, want_timing):
+                        if existing_value != manifest_value(content_hash, want_timing, trim_wanted(course, internal_cat)):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -2442,7 +2605,7 @@ async def main():
                         existing_value = manifest_data.get(mkey)
                         existing_hash = manifest_hash_part(existing_value)
 
-                        if existing_value != manifest_value(content_hash, want_timing):
+                        if existing_value != manifest_value(content_hash, want_timing, trim_wanted(course, internal_cat)):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -2502,7 +2665,7 @@ async def main():
                         existing_value = manifest_data.get(mkey)
                         existing_hash = manifest_hash_part(existing_value)
 
-                        if existing_value != manifest_value(content_hash, want_timing):
+                        if existing_value != manifest_value(content_hash, want_timing, trim_wanted(course, internal_cat)):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -2555,7 +2718,7 @@ async def main():
                         existing_value = manifest_data.get(mkey)
                         existing_hash = manifest_hash_part(existing_value)
 
-                        if existing_value != manifest_value(content_hash, want_timing):
+                        if existing_value != manifest_value(content_hash, want_timing, trim_wanted(course, internal_cat)):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -2631,7 +2794,7 @@ async def main():
                         existing_value = manifest_data.get(mkey)
                         existing_hash = manifest_hash_part(existing_value)
 
-                        if existing_value != manifest_value(content_hash, want_timing):
+                        if existing_value != manifest_value(content_hash, want_timing, trim_wanted(course, internal_cat)):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -2754,7 +2917,7 @@ async def main():
                         # таймінгу — у всіх трьох випадках mp3 перегенеровується
                         # РАЗОМ з .words.json, з одного виклику синтезу — див.
                         # worker_task).
-                        if existing_value != manifest_value(content_hash, want_timing):
+                        if existing_value != manifest_value(content_hash, want_timing, trim_wanted(course, internal_cat)):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
@@ -2804,7 +2967,7 @@ async def main():
                         want_timing = field_wants_timing("vocab", field, primary_lang, primary_lang)
                         existing_value = manifest_data.get(mkey)
                         existing_hash = manifest_hash_part(existing_value)
-                        if existing_value != manifest_value(content_hash, want_timing):
+                        if existing_value != manifest_value(content_hash, want_timing, trim_wanted(course, internal_cat)):
                             tasks.append({
                                 "id": item_id,
                                 "course": course,
