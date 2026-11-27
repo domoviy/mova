@@ -2728,18 +2728,35 @@ async def main():
             if course not in QUIZ_AUDIO_COURSES:
                 continue
             cat_lower = item_id.split('_')[0].lower()
-            for field, source in (("question", item.get("question")),
-                                  ("answer", quiz_correct_answer(item))):
+            # Питання з пропуском {{BLANK}} (квіз модуля, як у Sprachbausteine):
+            # саме питання НЕ озвучуємо (речення з паузою лише плутає), а «answer» —
+            # це все речення з підставленою правильною відповіддю. Відповідь із
+            # кількох частин («traut … zu») заповнює пропуски по черзі.
+            q_src = item.get("question") if isinstance(item.get("question"), dict) else {}
+            ans_src = quiz_correct_answer(item)
+            has_blank = any(isinstance(v, str) and "{{BLANK}}" in v for v in q_src.values())
+            if has_blank:
+                filled = {}
+                for lang, qtext in q_src.items():
+                    a = ans_src.get(lang) if isinstance(ans_src, dict) else None
+                    if not isinstance(qtext, str) or "{{BLANK}}" not in qtext or not isinstance(a, str) or not a.strip():
+                        continue
+                    parts = [p.strip() for p in a.split("…")]
+                    if len(parts) != qtext.count("{{BLANK}}"):
+                        parts = [a.strip()] * qtext.count("{{BLANK}}")
+                    for p in parts:
+                        qtext = qtext.replace("{{BLANK}}", p, 1)
+                    filled[lang] = qtext
+                fields = (("answer", filled),)
+            else:
+                fields = (("question", q_src), ("answer", ans_src))
+            for field, source in fields:
                 if not isinstance(source, dict):
                     continue
                 for lang, text in source.items():
                     if lang not in audio_config: continue
                     if not isinstance(text, str) or not text.strip(): continue
 
-                    # Пропуск у питанні квізу модуля («Mein Vertrag ist ___.») — коротка пауза,
-                    # а не «Unterstrich»: TTS читає «…» як паузу.
-                    if field == "question":
-                        text = re.sub(r'_{2,}', '…', text)
                     cleaned = clean_text(text, lang)
                     if not cleaned:
                         continue
