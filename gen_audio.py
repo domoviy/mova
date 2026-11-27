@@ -231,7 +231,29 @@ COURSES = [
 # В інших курсах QUIZ, як і раніше, НЕ озвучується — щоб ця фіча не запустила
 # несподівану генерацію для вже готових курсів. Захочете озвучити QUIZ ще
 # в якомусь курсі — просто додайте його сюди.
-QUIZ_AUDIO_COURSES = {'Leben-in-Deutschland'}
+QUIZ_AUDIO_COURSES = {'Leben-in-Deutschland', 'Deutsch-B2-Beruf'}
+
+# ── Службові фрази (спільні для всіх курсів) ──────────────────────
+# Голосові попередження таймера в симуляціях іспиту й тесті Leben in Deutschland
+# («Sie haben noch 5 Minuten.»): застосунок грає їх після звукового сигналу, тож на
+# заблокованому телефоні людина чує не лише «пік», а що саме сталося. Лише мова курсу,
+# один голос. Файли: audio/_system/<мова>/<ключ>.mp3, маніфест audio/_system/manifest.json
+# {"<мова>/<ключ>": "<хеш>"} — застосунок бере хеш як ?v= (новий голос/текст → новий файл
+# в обхід кешу). Тека _system не входить у COURSES, тож r2_cleanup_orphans її не чіпає.
+# Нова мова курсу — додати її фрази сюди. Голос — TTS_SYSTEM_VOICE_<МОВА> або типовий нижче
+# (після вибору дикторки — її голос з characters.js).
+SYSTEM_PHRASES = {
+    "de": {
+        "timer_15min": "Sie haben noch 15 Minuten.",
+        "timer_5min":  "Sie haben noch 5 Minuten.",
+        "timer_1min":  "Sie haben noch eine Minute.",
+        "timer_10sec": "Noch 10 Sekunden.",
+        "timer_start": "Bitte beginnen Sie jetzt.",
+        "timer_end":   "Die Zeit ist um.",
+    },
+}
+SYSTEM_VOICES = {"de": "de-DE-KatjaNeural"}
+SYSTEM_DIR = '_system'
 
 AUDIO_ROOT = pathlib.Path('audio')
 
@@ -2292,6 +2314,50 @@ def r2_pull_manifests():
                          "(або задайте TTS_ALLOW_EMPTY_R2=1, якщо бакет справді порожній).")
     print(f"— [R2] Маніфести отримано: {n} курс(ів).", flush=True)
 
+async def generate_system_phrases():
+    """Службові фрази (SYSTEM_PHRASES) → audio/_system/<мова>/<ключ>.mp3 + маніфест.
+    Генерує лише нові/змінені (хеш тексту й голосу); помилка однієї фрази не зупиняє прогін."""
+    root = AUDIO_ROOT / SYSTEM_DIR
+    man_path = root / 'manifest.json'
+    try:
+        manifest = json.loads(man_path.read_text(encoding='utf-8')) if man_path.exists() else {}
+    except Exception:
+        manifest = {}
+    changed = 0
+    for lang, phrases in SYSTEM_PHRASES.items():
+        voice = os.environ.get(f'TTS_SYSTEM_VOICE_{lang.upper()}') or SYSTEM_VOICES.get(lang)
+        if not voice:
+            continue
+        for key, text in phrases.items():
+            mkey = f"{lang}/{key}"
+            h = compute_content_hash(text, voice, "100")
+            out = root / lang / f"{key}.mp3"
+            if manifest.get(mkey) == h and (STORAGE == 'r2' or out.exists()):
+                continue
+            out.parent.mkdir(parents=True, exist_ok=True)
+            ok = False
+            for attempt in range(3):
+                try:
+                    await synthesize_speech(text, voice, "100", str(out), want_timing=False)
+                    ok = True
+                    break
+                except Exception as e:
+                    print(f"⚠ [_system] {mkey}: спроба {attempt + 1} не вдалася ({e}).", flush=True)
+                    await asyncio.sleep(2 * (attempt + 1))
+            if not ok:
+                continue
+            manifest[mkey] = h
+            r2_mark_generated(out)
+            changed += 1
+    if changed:
+        man_path.parent.mkdir(parents=True, exist_ok=True)
+        _atomic_write_json(man_path, manifest)
+        if STORAGE != 'git':
+            _R2_PENDING_MANIFESTS.add(_audio_rel(man_path))
+        print(f"— [_system] Службових фраз згенеровано: {changed}.", flush=True)
+    else:
+        print("— [_system] Службові фрази без змін.", flush=True)
+
 def save_batch(count):
     """Зберігає пачку туди, куди вказує TTS_STORAGE. Падає (raise) при невдачі — виклики
     нижче тоді не обнуляють batch_counter, і спроба повториться."""
@@ -2600,6 +2666,7 @@ async def main():
         r2_pull_manifests()
     migrate_legacy_manifest()
     migrate_course_manifests_to_shards()
+    await generate_system_phrases()
 
     tasks = []
     fields_map = {
@@ -2669,6 +2736,10 @@ async def main():
                     if lang not in audio_config: continue
                     if not isinstance(text, str) or not text.strip(): continue
 
+                    # Пропуск у питанні квізу модуля («Mein Vertrag ist ___.») — коротка пауза,
+                    # а не «Unterstrich»: TTS читає «…» як паузу.
+                    if field == "question":
+                        text = re.sub(r'_{2,}', '…', text)
                     cleaned = clean_text(text, lang)
                     if not cleaned:
                         continue
