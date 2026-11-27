@@ -300,6 +300,7 @@ class ManifestStore:
         self.data = {}            # повний mkey → значення
         self.shards = {}          # (lang, rate) → {short_key: значення}
         self._index_counts = {}   # що зараз записано в index.json: "lang/rate" → N
+        self.bad_shards = set()   # (lang, rate), чий manifest.json не прочитався (див. r2_cleanup_orphans)
         base = AUDIO_ROOT / course
         if base.exists():
             for path in sorted(base.glob(f'*/*/{SHARD_FILE}')):
@@ -309,6 +310,7 @@ class ManifestStore:
                         shard = json.load(f)
                 except Exception as e:
                     print(f"⚠ Шард {path} не прочитано ({e}) — його записи вважаються відсутніми.", flush=True)
+                    self.bad_shards.add((lang, rate))
                     continue
                 self.shards[(lang, rate)] = dict(shard)
                 for short_key, value in shard.items():
@@ -1206,7 +1208,7 @@ def _js_literal_to_json(src):
     return ''.join(out)
 
 
-def _parse_js_array_blocks(content, file_path, skip_vars=()):
+def _parse_js_array_blocks(content, file_path, skip_vars=(), only_vars=None):
     """Спільна логіка розбору 'var/let/const/export NAME = [...]' блоків
     з тексту JS-файлу — використовується і для файлів курсів
     (раніше — load_js_database), і для спільного characters.js
@@ -1230,6 +1232,10 @@ def _parse_js_array_blocks(content, file_path, skip_vars=()):
         # взагалі (не засмічуємо лог помилками про дані, які генератор усе
         # одно ігнорує, напр. LESSONS/CATS у gen_audio).
         if var_name in skip_vars:
+            continue
+        # only_vars — навпаки, парсимо ЛИШЕ ці масиви (characters.js містить ще
+        # CSS і код малювання персонажів — масиви, що не є даними).
+        if only_vars is not None and var_name not in only_vars:
             continue
         clean_array = re.sub(r'//.*', '', array_content)
         clean_array = re.sub(r'/\*.*?\*/', '', clean_array, flags=re.DOTALL)
@@ -1316,7 +1322,7 @@ def load_characters_file(file_path=CHARACTERS_FILE):
     # тексту перед парсингом, замість того щоб резолвити саме значення.
     content = re.sub(r',?\s*"avatar"\s*:\s*CHARACTER_AVATARS\.\w+', '', content)
 
-    for var_name, items in _parse_js_array_blocks(content, file_path):
+    for var_name, items in _parse_js_array_blocks(content, file_path, only_vars=("CHARACTERS",)):
         if var_name == "CHARACTERS":
             return items
     print(f"⚠ У файлі '{file_path}' не знайдено var CHARACTERS.", flush=True)
@@ -2010,6 +2016,116 @@ def prune_removed_vocab_fields(course, raw_items, primary_lang):
     print(f"🧹 [{course}] Прибрано аудіо полів, яких більше немає в картках: {len(victims)} "
           f"({', '.join(f'{k}: {n}' for k, n in sorted(by_field.items()))}).", flush=True)
     return len(victims)
+
+# ── Прибирання «мертвих» файлів у R2 ────────────────────────────
+# Після змін баз у бакеті лишаються mp3/.words.json, на які вже не посилається жоден
+# маніфест (видалені картки, змінені id, поля, що зникли до появи prune...). Застосунок
+# грає лише те, що є в маніфесті, тож такі файли — просто мертвий вантаж.
+# TTS_ORPHANS: '' — вимкнено (типово), 'report' — лише показати, 'delete' — видалити.
+# Запускається в САМОМУ КІНЦІ прогону, коли все згенероване й маніфести вже залито.
+# Запобіжники (видалення з R2 не відкотиш):
+#   • курс перевіряємо, лише якщо його маніфести завантажились у цьому прогоні;
+#   • видаляємо лише mp3 і .words.json у теках <мова>/<швидкість>/<категорія>/;
+#   • .words.json не чіпаємо, якщо його mp3 ще живий (навіть без "+t");
+#   • ціла тека <мова>/<швидкість> без маніфесту (або з нечитаним маніфестом) — лише
+#     у звіті: так виглядає і свідомо прибрана швидкість, і збій завантаження маніфесту;
+#   • якщо «зайвих» більше за TTS_ORPHANS_MAX_SHARE (типово 30 %) файлів курсу —
+#     курс пропускаємо без видалення (схоже на зіпсований маніфест);
+#   • теки курсів, яких немає в COURSES, — лише у звіті.
+ORPHANS_MODE = os.environ.get('TTS_ORPHANS', '').strip().lower()
+ORPHANS_MAX_SHARE = float(os.environ.get('TTS_ORPHANS_MAX_SHARE', '0.3'))
+ORPHANS_LIST_TIMEOUT = float(os.environ.get('TTS_ORPHANS_LIST_TIMEOUT', '900'))
+
+def _rclone_lsf(remote, *extra):
+    out = subprocess.run(["rclone", "lsf", remote, "--fast-list", *extra],
+                         check=True, timeout=ORPHANS_LIST_TIMEOUT, capture_output=True, text=True)
+    return [l.strip() for l in out.stdout.splitlines() if l.strip()]
+
+def find_orphans(store, listing):
+    """Розбирає список файлів курсу в R2 (шляхи відносно теки курсу).
+    Повертає (orphans, skipped_dirs, counted): orphans — шляхи до видалення;
+    skipped_dirs — {"lang/rate": к-сть файлів} для тек без прочитаного маніфесту;
+    counted — скільки аудіофайлів курсу взагалі перевірено."""
+    live_mp3 = set()
+    live_words = set()
+    for (lang, rate), shard in store.shards.items():
+        for short_key, value in shard.items():
+            cat, name = short_key.split('/', 1)
+            base = f"{lang}/{rate}/{cat}/{name}_{lang}_{rate}"
+            live_mp3.add(base + '.mp3')
+            live_words.add(base + '.words.json')   # див. запобіжник про .words.json вище
+    orphans, skipped_dirs, counted = [], {}, 0
+    for p in listing:
+        if not (p.endswith('.mp3') or p.endswith('.words.json')):
+            continue                       # manifest.json, index.json тощо
+        parts = p.split('/')
+        if len(parts) != 4:
+            continue                       # незвична структура — не чіпаємо
+        key = (parts[0], parts[1])
+        if key not in store.shards or key in store.bad_shards:
+            d = f"{parts[0]}/{parts[1]}"
+            skipped_dirs[d] = skipped_dirs.get(d, 0) + 1
+            continue
+        counted += 1
+        live = live_mp3 if p.endswith('.mp3') else live_words
+        if p not in live:
+            orphans.append(p)
+    return orphans, skipped_dirs, counted
+
+def r2_cleanup_orphans():
+    if ORPHANS_MODE not in ('report', 'delete') or STORAGE not in ('r2', 'both'):
+        return
+    delete = ORPHANS_MODE == 'delete'
+    print(f"— [R2] Пошук файлів, яких немає в маніфестах ({'видалення' if delete else 'лише звіт'}) ...", flush=True)
+    try:
+        top = {d.rstrip('/') for d in _rclone_lsf(R2_DEST, "--dirs-only")}
+    except Exception as e:
+        print(f"⚠️  [R2] Не вдалося отримати список тек ({e}) — перевірку пропущено.", flush=True)
+        return
+    unknown = sorted(top - set(COURSES))
+    if unknown:
+        print(f"   Теки курсів, яких немає в COURSES (не чіпаю): {', '.join(unknown)}", flush=True)
+    total_found = total_deleted = 0
+    for course in COURSES:
+        store = STORES.get(course)
+        if course not in top:
+            continue
+        if store is None or not store.shards:
+            print(f"   [{course}] маніфести в цьому прогоні не завантажено — пропущено.", flush=True)
+            continue
+        try:
+            listing = _rclone_lsf(f"{R2_DEST}/{course}", "-R", "--files-only")
+        except Exception as e:
+            print(f"⚠️  [{course}] Не вдалося отримати список файлів ({e}) — пропущено.", flush=True)
+            continue
+        orphans, skipped_dirs, counted = find_orphans(store, listing)
+        for d, n in sorted(skipped_dirs.items()):
+            print(f"   [{course}] тека {d}: {n} файлів, маніфесту немає або не прочитано — не чіпаю "
+                  f"(якщо швидкість прибрано свідомо, теку можна видалити вручну).", flush=True)
+        if not orphans:
+            print(f"   [{course}] зайвих файлів немає (перевірено {counted}).", flush=True)
+            continue
+        total_found += len(orphans)
+        by_dir = {}
+        for p in orphans:
+            k = f"{p.split('/')[0]}/{p.split('/')[1]} {'.words.json' if p.endswith('.words.json') else '.mp3'}"
+            by_dir[k] = by_dir.get(k, 0) + 1
+        print(f"   [{course}] зайвих: {len(orphans)} з {counted} "
+              f"({', '.join(f'{k}: {n}' for k, n in sorted(by_dir.items()))}). "
+              f"Приклади: {', '.join(sorted(orphans)[:5])}", flush=True)
+        if not delete:
+            continue
+        if len(orphans) > ORPHANS_MAX_SHARE * max(1, counted):
+            print(f"⚠️  [{course}] Зайвих більше {ORPHANS_MAX_SHARE:.0%} файлів курсу — схоже на "
+                  f"зіпсований маніфест. Нічого не видалено (свідомо — підніміть TTS_ORPHANS_MAX_SHARE).", flush=True)
+            continue
+        try:
+            _rclone_delete_list([f"{course}/{p}" for p in orphans])
+            total_deleted += len(orphans)
+            print(f"   [{course}] видалено {len(orphans)} файлів.", flush=True)
+        except Exception as e:
+            print(f"⚠️  [{course}] Видалення не вдалося ({e}).", flush=True)
+    print(f"— [R2] Зайвих файлів знайдено: {total_found}, видалено: {total_deleted}.", flush=True)
 
 def r2_pull_manifests():
     """Режим 'r2': аудіо в репозиторії немає, тож ManifestStore не мав би з чого читати — і
@@ -3111,6 +3227,7 @@ async def main():
         print("Всі файли синхронізовані з manifest.json.", flush=True)
         if _R2_PENDING_MANIFESTS or _PRUNED_TOTAL:
             save_batch(0)   # лише перебудовані index.json (див. ManifestStore.__init__)
+        r2_cleanup_orphans()
         return
 
     semaphore = asyncio.Semaphore(WORKERS)
@@ -3180,6 +3297,11 @@ async def main():
             print("   Аудіофайли й записи manifest.json цієї пачки НЕ потрапили в сховище", flush=True)
             print("   (лишились би лише на диску ефемерного runner'а і загубились би без сліду).", flush=True)
             sys.exit(1)
+
+    # Пошук мертвих файлів — лише після повного й успішного прогону: на цей момент усе
+    # згенероване вже в R2, а маніфести актуальні.
+    if not stats["stop_requested"]:
+        r2_cleanup_orphans()
 
     if stats["stop_requested"]:
         print(f"🛑 Прогін зупинено достроково: {stats['stop_reason']}", flush=True)
