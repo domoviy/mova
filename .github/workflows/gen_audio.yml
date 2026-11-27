@@ -142,7 +142,7 @@ jobs:
 
       - name: Install Dependencies
         run: |
-          pip install edge-tts mutagen
+          pip install edge-tts mutagen miniaudio
 
       # Порожній rclone.conf: сховище 'r2' задається змінними RCLONE_CONFIG_R2_* (вище), а без
       # файлу rclone на КОЖЕН виклик пише NOTICE «Config file ... not found - using defaults».
@@ -165,6 +165,17 @@ jobs:
           TTS_WORKERS: '1'
           TTS_DELAY: '1.2'
           TTS_COMMIT_LIMIT: '25'
+          # Обрізання тиші на початку й у кінці (лише VOCAB: term/short/def/def2/def3/forms).
+          # Тест на C1-Beruf; далі — через кому інші курси або "all". Старі файли цих курсів
+          # (без "+c" у маніфесті) перегенеровуються автоматично, позначка TRIM у лозі.
+          TTS_TRIM_COURSES: 'Deutsch-C1-Beruf'
+          # Прибирання аудіо полів, яких у картках більше немає: ліміт на курс за прогін.
+          # 900 — щоб пройшли 850 старих short у A1 (поле замінено малюнком у 425 картках).
+          TTS_PRUNE_MAX: '900'
+          # Файли в R2, на які не посилається жоден маніфест (мертвий вантаж після змін баз):
+          # 'delete' — видалити, 'report' — лише показати в лозі, '' — не перевіряти.
+          # Запобіжники — у r2_cleanup_orphans() у gen_audio.py.
+          TTS_ORPHANS: 'delete'
         run: python gen_audio.py
 
       # ЗБЕРЕЖЕННЯ ПІСЛЯ СКАСУВАННЯ: при натисканні "Cancel workflow" скрипт за секунди
