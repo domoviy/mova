@@ -971,6 +971,71 @@ def trim_wanted(course, internal_cat):
         return False
     return 'all' in TRIM_COURSES or course in TRIM_COURSES
 
+# ── Голоси персонажів для карток слів (VOCAB) ──────────────────
+# Для курсів із TTS_VOICES_COURSES (через кому або "all") поля VOICED_FIELDS мовою курсу
+# (PRIMARY_LANG) озвучуються ще й голосом КОЖНОГО персонажа цієї мови з characters.js:
+#   <id>_<поле>-<персонаж>_<мова>_<швидкість>.mp3, напр. aln_001_term-w_anna_de_100.mp3
+# (персонаж — id без мовного префікса: de_w_anna → w_anna). Звичайний файл <id>_<поле>_…
+# (голос із VOICE_MAPPING) лишається: його грають старі версії застосунку й він — запасний,
+# поки варіантів ще нема. Застосунок сам бачить у маніфесті, які варіанти є, і обирає один
+# персонаж на картку (vocabVoicePick в index.html), тож term, forms і def звучать одним голосом.
+# short у цих курсах читає диктор (NARRATOR_VOICE) — без персонажа на екрані.
+#
+# Необов'язкове поле картки spk — хто МОЖЕ озвучувати картку (коли це видно з тексту:
+# «Ich bin Krankenschwester» — жінка). Немає поля — будь-хто з персонажів.
+#   spk: 'w'                          — лише жінки (усі поля)
+#   spk: 'de_m_mark' або ['de_w_anna','de_w_julia'] — конкретні персонажі (усі поля)
+#   spk: {def: 'w', def2: 'de_m_mark'} — окремо для полів; поля, яких тут нема, — будь-хто;
+#                                        forms іде за term.
+# Персонажа можна писати з мовним префіксом чи без (de_w_anna = w_anna) — схема мовно-нейтральна.
+VOICES_COURSES = {c.strip() for c in os.environ.get('TTS_VOICES_COURSES', '').split(',') if c.strip()}
+VOICED_FIELDS = tuple(f.strip() for f in os.environ.get('TTS_VOICES_FIELDS', 'term,forms,def,def2,def3').split(',') if f.strip())
+NARRATOR_VOICE = os.environ.get('TTS_NARRATOR_VOICE', 'en-US-EmmaMultilingualNeural')
+VOICE_VARIANT_SEP = '-'
+_SPK_WARNED = set()
+
+def voices_wanted(course):
+    return bool(VOICES_COURSES) and ('all' in VOICES_COURSES or course in VOICES_COURSES)
+
+def course_speakers(characters_list, lang):
+    """[(suffix, edge_tts, gender)] персонажів мови lang у порядку characters.js."""
+    out = []
+    for c in characters_list or []:
+        cid, voice = c.get("id") or "", c.get("edge_tts")
+        if c.get("lang") != lang or not voice or not cid.startswith(lang + "_"):
+            continue
+        out.append((cid[len(lang) + 1:], voice, c.get("gender") or ""))
+    return out
+
+def card_speakers(item, field, speakers, lang):
+    """Персонажі, якими озвучувати поле картки (з урахуванням spk)."""
+    spk = item.get("spk")
+    if isinstance(spk, dict):
+        spk = spk.get(field, spk.get("term") if field == "forms" else None)
+    if spk is None or spk == "" or spk == []:
+        return speakers
+    wanted = spk if isinstance(spk, list) else [spk]
+    by_suffix = {s[0]: s for s in speakers}
+    out, bad = [], []
+    for w in wanted:
+        w = str(w).strip()
+        if w in ("w", "m"):
+            out += [s for s in speakers if s[2] == w and s not in out]
+            continue
+        suffix = w[len(lang) + 1:] if w.startswith(lang + "_") else w
+        if suffix in by_suffix:
+            if by_suffix[suffix] not in out:
+                out.append(by_suffix[suffix])
+        else:
+            bad.append(w)
+    if bad and (item.get("id"), field) not in _SPK_WARNED:
+        _SPK_WARNED.add((item.get("id"), field))
+        print(f"⚠ {item.get('id')}: spk {bad} — такого персонажа мови {lang} немає в characters.js.", flush=True)
+    if not out:
+        # Помилка в spk не повинна лишити картку без голосу — тоді будь-хто.
+        return speakers
+    return out
+
 _MP3_BITRATES_V2_L3 = (0, 8, 16, 24, 32, 40, 48, 56, 64, 80, 96, 112, 128, 144, 160, 0)
 _MP3_SAMPLE_RATES = {2: (22050, 24000, 16000), 0: (11025, 12000, 8000)}  # MPEG-2 / MPEG-2.5
 
@@ -2017,6 +2082,84 @@ def prune_removed_vocab_fields(course, raw_items, primary_lang):
           f"({', '.join(f'{k}: {n}' for k, n in sorted(by_field.items()))}).", flush=True)
     return len(victims)
 
+def add_voice_variant_tasks(tasks, manifest_data, expected, item, course, audio_base, cat_lower,
+                            field, lang, cleaned, rates, primary_lang, speakers):
+    """Завдання на варіанти поля голосами персонажів (див. VOICES_COURSES). expected — множина
+    mkey, які мають існувати (для prune_stale_voice_variants)."""
+    item_id = item["id"]
+    want_timing = field_wants_timing("vocab", field, lang, primary_lang)
+    trim = trim_wanted(course, "vocab")
+    for suffix, voice, _gender in card_speakers(item, field, speakers, lang):
+        vfield = f"{field}{VOICE_VARIANT_SEP}{suffix}"
+        for rate in rates:
+            mkey = f"{course}/{lang}/{rate}/{cat_lower}/{item_id}_{vfield}_{lang}_{rate}"
+            expected.add(mkey)
+            content_hash = compute_content_hash(cleaned, voice, rate)
+            existing_value = manifest_data.get(mkey)
+            if existing_value == manifest_value(content_hash, want_timing, trim):
+                continue
+            tasks.append({
+                "id": item_id,
+                "course": course,
+                "audio_base": audio_base,
+                "internal_cat": "vocab",
+                "cat_lower": cat_lower,
+                "sub": vfield,
+                "lang": lang,
+                "rate": rate,
+                "cleaned": cleaned,
+                "voice": voice,
+                "filename": f"{item_id}_{vfield}_{lang}_{rate}.mp3",
+                "mkey": mkey,
+                "content_hash": content_hash,
+                "existing_hash": manifest_hash_part(existing_value),
+                "want_timing": want_timing,
+                "primary_lang": primary_lang
+            })
+
+# Ключ варіанта голосом персонажа в шарді: "<cat>/<id>_<поле>-<персонаж>".
+_VOICE_VARIANT_RE = re.compile(r'^([^/]+)/(.+?)_(term|short|def\d?|forms)' + re.escape(VOICE_VARIANT_SEP) + r'([a-z]+_[a-z0-9]+)$')
+
+def prune_stale_voice_variants(course, raw_items, expected):
+    """Прибирає варіанти голосами персонажів, яких більше не має бути: курс вимкнено в
+    TTS_VOICES_COURSES, персонажа прибрано зі spk чи characters.js, поле зникло з картки.
+    Лише для карток, що Є в базі, і в межах TTS_PRUNE_MAX — як prune_removed_vocab_fields."""
+    global _PRUNED_TOTAL
+    if not PRUNE_ENABLED:
+        return 0
+    store = STORES[course]
+    ids = {it.get("id") for it in raw_items if _is_vocab_item(it)}
+    victims = []
+    for (lang, rate), shard in store.shards.items():
+        for key in list(shard):
+            m = _VOICE_VARIANT_RE.match(key)
+            if not m or m.group(2) not in ids:
+                continue
+            mkey = f"{course}/{lang}/{rate}/{key}_{lang}_{rate}"
+            if mkey not in expected:
+                victims.append((mkey, lang, rate, key))
+    if not victims:
+        return 0
+    if len(victims) > PRUNE_MAX:
+        print(f"⚠ [{course}] Голоси персонажів: {len(victims)} зайвих варіантів — більше за ліміт "
+              f"TTS_PRUNE_MAX={PRUNE_MAX}. Нічого не видалено (перевірте TTS_VOICES_COURSES/spk або підніміть ліміт).", flush=True)
+        return 0
+    audio_base = AUDIO_ROOT / course
+    for mkey, lang, rate, key in victims:
+        if not store.remove(mkey):
+            continue
+        r2_mark_manifests(course, mkey)
+        cat_lower, name = key.split('/', 1)
+        mp3 = audio_base / lang / rate / cat_lower / f"{name}_{lang}_{rate}.mp3"
+        for f in (mp3, mp3.with_suffix('.words.json')):
+            if STORAGE != 'git':
+                _R2_PENDING_DELETES.add(_audio_rel(f))
+            if f.exists():
+                f.unlink()
+    _PRUNED_TOTAL += len(victims)
+    print(f"🧹 [{course}] Прибрано зайвих варіантів голосами персонажів: {len(victims)}.", flush=True)
+    return len(victims)
+
 # ── Прибирання «мертвих» файлів у R2 ────────────────────────────
 # Після змін баз у бакеті лишаються mp3/.words.json, на які вже не посилається жоден
 # маніфест (видалені картки, змінені id, поля, що зникли до появи prune...). Застосунок
@@ -2492,6 +2635,14 @@ async def main():
       # Той самий об'єкт далі використовується і для запису (write_to_manifest_file).
       manifest_data = STORES[course] = ManifestStore(course)
       prune_removed_vocab_fields(course, raw_items, primary_lang)
+      # Голоси персонажів (TTS_VOICES_COURSES): хто є для мови курсу і які mkey варіантів
+      # мають бути — решту варіантів прибирає prune_stale_voice_variants() після циклу.
+      speakers = course_speakers(characters_list, primary_lang) if voices_wanted(course) else []
+      voice_expected = set()
+      if voices_wanted(course):
+          print(f"— [{course}] Голоси персонажів ({len(speakers)}): "
+                f"{', '.join(s[0] for s in speakers) or 'немає персонажів мови ' + primary_lang}; "
+                f"поля {', '.join(VOICED_FIELDS)}; short — диктор {NARRATOR_VOICE}.", flush=True)
 
       for item in raw_items:
         item_id = item["id"]
@@ -3010,7 +3161,16 @@ async def main():
                                 voice = get_voice_id(internal_cat, role, lang)
                     else:
                         voice = get_voice_id(internal_cat, field, lang)
+                        # Курси з голосами персонажів: short мовою курсу читає диктор.
+                        if (internal_cat == "vocab" and field == "short" and lang == primary_lang
+                                and voices_wanted(course)):
+                            voice = NARRATOR_VOICE
                     rates = audio_config.get(lang, ["100"])
+                    if (internal_cat == "vocab" and lang == primary_lang and field in VOICED_FIELDS
+                            and voices_wanted(course)):
+                        add_voice_variant_tasks(tasks, manifest_data, voice_expected, item, course,
+                                                audio_base, cat_lower, field, lang, cleaned, rates,
+                                                primary_lang, speakers)
 
                     for rate in rates:
                         filename = f"{item_id}_{field}_{lang}_{rate}.mp3"
@@ -3071,6 +3231,11 @@ async def main():
                 if cleaned:
                     field = "forms"
                     voice = get_voice_id("vocab", "term", primary_lang)
+                    if field in VOICED_FIELDS and voices_wanted(course):
+                        add_voice_variant_tasks(tasks, manifest_data, voice_expected, item, course,
+                                                audio_base, cat_lower, field, primary_lang, cleaned,
+                                                audio_config.get(primary_lang, ["100"]),
+                                                primary_lang, speakers)
                     for rate in audio_config.get(primary_lang, ["100"]):
                         filename = f"{item_id}_{field}_{primary_lang}_{rate}.mp3"
                         mkey = f"{course}/{primary_lang}/{rate}/{cat_lower}/{item_id}_{field}_{primary_lang}_{rate}"
@@ -3149,6 +3314,8 @@ async def main():
                                 "want_timing": False,
                                 "primary_lang": primary_lang
                             })
+
+      prune_stale_voice_variants(course, raw_items, voice_expected)
 
       # Grammatik-Trainer — ОДИН файл на УНІКАЛЬНЕ слово курсу (не на
       # картку+поле!). Пул теми — 4-11 слів, використовує його кожна
