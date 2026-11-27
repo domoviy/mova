@@ -172,7 +172,7 @@ jobs:
           # Голоси персонажів для карток слів (схема з 27.11.2026): term, forms і short читає
           # персонаж spk.term картки, приклад def — spk.def. Картки без spk — голос за
           # замовчуванням (без варіантів). Варіанти — лише для основної швидкості курсу.
-          TTS_VOICES_COURSES: 'Deutsch-C1-Beruf,Deutsch-B2-Beruf'
+          TTS_VOICES_COURSES: 'Deutsch-C1-Beruf,Deutsch-B2-Beruf,Deutsch-A1'
           TTS_NARRATOR_VOICE: 'en-US-EmmaMultilingualNeural'
           # Прибирання аудіо полів, яких у картках більше немає: ліміт на курс за прогін.
           # 12000 — разове: у C1-Beruf прибираємо ~11 000 варіантів інших голосів (стара схема
