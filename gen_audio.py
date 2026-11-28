@@ -177,7 +177,7 @@ R2_TIMEOUT = float(os.environ.get('TTS_R2_TIMEOUT', '300'))
 # те саме обмеження, що вже діяло для redemittel). Додати нову
 # категорію/поле в область дії підсвітки — один рядок тут.
 CATEGORIES_WITH_TIMING = {
-    "vocab":       {"term", "short", "def", "def2", "def3", "forms"},
+    "vocab":       {"term", "short", "def", "def2", "def3", "def4", "def5", "def6", "def7", "def8", "forms"},
     "sprachbau":   {"sentence"},
     "redemittel":  None,
     # Forumsbeitrag (forum_XXX) — той самий принцип, що redemittel:
@@ -406,7 +406,13 @@ VOICE_MAPPING = {
         "def":   {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"},
         # Додаткові приклади до слова (необов'язкові) — той самий голос, що й def.
         "def2":  {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"},
-        "def3":  {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
+        "def3":  {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"},
+        # def4–def8 — до 8 прикладів (напр. «Ich heiße …» усіма персонажами в A1); голос як def.
+        "def4":  {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"},
+        "def5":  {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"},
+        "def6":  {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"},
+        "def7":  {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"},
+        "def8":  {"de": "de-DE-KillianNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-ChristopherNeural", "ru": "ru-RU-DmitryNeural"}
     },
     "sprachbau": {
         "sentence":    {"de": "de-DE-ConradNeural", "uk": "uk-UA-OstapNeural",  "en": "en-US-GuyNeural",   "ru": "ru-RU-DmitryNeural"},
@@ -1003,7 +1009,7 @@ def trim_wanted(course, internal_cat):
 #
 # Поле картки spk (схема з 27.11.2026, план .claude/plans/audio-voices-plan.md):
 #   spk: {term: 'de_w_julia', def: 'de_m_max'} — term читає Julia (а з нею forms і short:
-#        одна людина називає слово й пояснює його), приклад def — Max; def2/def3 — свої ключі.
+#        одна людина називає слово й пояснює його), приклад def — Max; def2…def8 — свої ключі.
 #   spk: 'de_w_julia'                 — один персонаж на всі поля картки.
 #   spk: 'w' / 'm' / список           — лише ці персонажі (стара схема; генерує кожного зі списку).
 #   Немає spk (або для поля нічого не призначено) — варіантів голосами персонажів НЕ генеруємо:
@@ -1011,7 +1017,7 @@ def trim_wanted(course, internal_cat):
 #   за цією схемою не має бути, прибирає prune_stale_voice_variants (у межах TTS_PRUNE_MAX).
 # Персонажа можна писати з мовним префіксом чи без (de_w_anna = w_anna) — схема мовно-нейтральна.
 VOICES_COURSES = {c.strip() for c in os.environ.get('TTS_VOICES_COURSES', '').split(',') if c.strip()}
-VOICED_FIELDS = tuple(f.strip() for f in os.environ.get('TTS_VOICES_FIELDS', 'term,forms,short,def,def2,def3').split(',') if f.strip())
+VOICED_FIELDS = tuple(f.strip() for f in os.environ.get('TTS_VOICES_FIELDS', 'term,forms,short,def,def2,def3,def4,def5,def6,def7,def8').split(',') if f.strip())
 NARRATOR_VOICE = os.environ.get('TTS_NARRATOR_VOICE', 'en-US-EmmaMultilingualNeural')
 VOICE_VARIANT_SEP = '-'
 _SPK_WARNED = set()
@@ -1597,6 +1603,13 @@ def _looks_truncated(cleaned_text, boundary_words):
         # перевірити нічим, не караємо хибним "обірвано".
         return False
 
+    # Edge TTS інколи звітує КІЛЬКА слів однією подією — число разом із
+    # сусідами: "50 Prozent", "von 10 Prozent", "als 50 Prozent" (живий
+    # прогін 2026-11-28, mq_k7m4_16, zar_009). Без розбиття за пробілами
+    # кінець фрази не збігався з текстом і справний файл відкидався як
+    # "обірваний" на всіх 3 спробах. Розбиваємо такі події на слова.
+    boundary_words = [p for w in boundary_words for p in str(w).split()]
+
     expected_norm = [_norm_word(w) for w in expected]
     got_norm = [_norm_word(w) for w in boundary_words]
 
@@ -2041,7 +2054,7 @@ def r2_upload_pending():
 #   • TTS_PRUNE=0 — вимкнути прибирання взагалі.
 PRUNE_ENABLED = os.environ.get('TTS_PRUNE', '1') != '0'
 PRUNE_MAX = int(os.environ.get('TTS_PRUNE_MAX', '300'))
-PRUNE_FIELDS = ("term", "short", "def", "def2", "def3")
+PRUNE_FIELDS = ("term", "short", "def", "def2", "def3", "def4", "def5", "def6", "def7", "def8")
 _NON_VOCAB_PREFIXES = ("sbs_", "forum_", "story_", "email_", "brief_", "dlg_")
 _PRUNED_TOTAL = 0
 
@@ -2670,7 +2683,7 @@ async def main():
 
     tasks = []
     fields_map = {
-        "vocab": ["term", "short", "def", "def2", "def3"],
+        "vocab": ["term", "short", "def", "def2", "def3", "def4", "def5", "def6", "def7", "def8"],
         "sprachbau": ["sentence", "answer", "explanation"],
         # "redemittel" тут немає навмисно — набір реплік dlg_XXX змінний
         # (q, a, q1, a1, q2, ...), обчислюється динамічно redemittel_fields().
